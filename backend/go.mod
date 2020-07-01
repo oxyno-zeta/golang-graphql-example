@@ -32,6 +32,7 @@ require (
 	github.com/uber/jaeger-client-go v2.24.0+incompatible
 	github.com/uber/jaeger-lib v2.2.0+incompatible
 	github.com/vektah/gqlparser/v2 v2.0.1
+	github.com/xtgo/uuid v0.0.0-20140804021211-a0b114877d4c
 	golang.org/x/crypto v0.0.0-20200208060501-ecb85df21340 // indirect
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9 // indirect
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a

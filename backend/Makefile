@@ -102,14 +102,16 @@ test/coverage:
 .PHONY: down/services
 down/services:
 	@echo "Down services"
+	docker rm -f postgres || true
 
 .PHONY: setup/services
 setup/services: down/services
 	@echo "Setup services"
+	docker run -d --rm --name postgres -p 5432:5432 postgres:11
 
-.PHONY: setup/mocks
-setup/mocks:
-	go generate ./...
+.PHONY: setup/generate
+setup/generate:
+	$(GO) generate ./...
 
 .PHONY: setup/dep/install
 setup/dep/install:
@@ -132,4 +134,4 @@ endif
 
 .PHONY: setup/dep/update
 setup/dep/update:
-	go get -u ./...
+	$(GO) get -u ./...

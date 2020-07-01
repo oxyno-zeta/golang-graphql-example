@@ -16,5 +16,6 @@ type Client interface {
 func NewMetricsClient() Client {
 	ctx := &prometheusMetrics{}
 	ctx.register()
+
 	return ctx
 }
