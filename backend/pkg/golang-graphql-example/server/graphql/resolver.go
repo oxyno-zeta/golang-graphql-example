@@ -1,6 +1,6 @@
 package graphql
 
-import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
+import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 
 //go:generate go run github.com/99designs/gqlgen
 
@@ -9,5 +9,5 @@ import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/
 // It serves as dependency injection for your app, add any dependencies you require here.
 
 type Resolver struct {
-	todos []*model.Todo
+	BusiServices *business.Services
 }

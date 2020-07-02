@@ -11,7 +11,7 @@ type Services struct {
 	TodoSvc todos.Service
 }
 
-func (s *Services) Migrate() error {
+func (s *Services) MigrateDB() error {
 	gdb := s.db.GetGormDB()
 
 	// Run automigrate on all structures

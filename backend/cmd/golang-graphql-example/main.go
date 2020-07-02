@@ -4,6 +4,7 @@ import (
 	"time"
 
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
@@ -77,8 +78,17 @@ func main() {
 		}
 	})
 
+	// Create business services
+	busServices := business.NewServices(db)
+
+	// Migrate database
+	err = busServices.MigrateDB()
+	if err != nil {
+		logger.Fatal(err)
+	}
+
 	// Create servers
-	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc)
+	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices)
 	intSvr := server.NewInternalServer(logger, cfgManager, metricsCl)
 
 	// Add checker for internal server
