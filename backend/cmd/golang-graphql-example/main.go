@@ -4,9 +4,11 @@ import (
 	"time"
 
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server"
@@ -72,14 +74,29 @@ func main() {
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err := db.Reconnect()
+		err2 := db.Reconnect()
 		if err != nil {
-			logger.Fatal(err)
+			logger.Fatal(err2)
+		}
+	})
+
+	// Create lock distributor service
+	ld := lockdistributor.NewService(cfgManager, db)
+	// Initialize lock distributor
+	err = ld.Initialize(logger)
+	if err != nil {
+		logger.Fatal(err)
+	}
+	// Add configuration reload hook
+	cfgManager.AddOnChangeHook(func() {
+		err2 := ld.Initialize(logger)
+		if err != nil {
+			logger.Fatal(err2)
 		}
 	})
 
 	// Create business services
-	busServices := business.NewServices(db)
+	busServices := business.NewServices(db, ld)
 
 	// Migrate database
 	err = busServices.MigrateDB()
@@ -87,9 +104,23 @@ func main() {
 		logger.Fatal(err)
 	}
 
+	// Create authentication service
+	authenticationSvc := authentication.NewService(cfgManager)
+
 	// Create servers
-	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices)
+	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices, authenticationSvc)
 	intSvr := server.NewInternalServer(logger, cfgManager, metricsCl)
+
+	// Generate server
+	err = svr.GenerateServer()
+	if err != nil {
+		logger.Fatal(err)
+	}
+	// Generate internal server
+	err = intSvr.GenerateServer()
+	if err != nil {
+		logger.Fatal(err)
+	}
 
 	// Add checker for internal server
 	intSvr.AddChecker(&server.CheckerInput{

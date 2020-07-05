@@ -1,6 +1,8 @@
 package database
 
 import (
+	"database/sql"
+
 	"github.com/jinzhu/gorm"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
@@ -8,6 +10,7 @@ import (
 
 type DB interface {
 	GetGormDB() *gorm.DB
+	GetSQLDB() *sql.DB
 	Connect() error
 	Close() error
 	Ping() error

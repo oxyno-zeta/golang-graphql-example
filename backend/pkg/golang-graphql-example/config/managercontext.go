@@ -152,6 +152,9 @@ func (ctx *managercontext) loadDefaultConfigurationValues(vip *viper.Viper) {
 	vip.SetDefault("log.format", DefaultLogFormat)
 	vip.SetDefault("server.port", DefaultPort)
 	vip.SetDefault("internalServer.port", DefaultInternalPort)
+	vip.SetDefault("lockDistributor.tableName", DefaultLockDistributorTableName)
+	vip.SetDefault("lockDistributor.leaseDuration", DefaultLockDistributorLeaseDuration)
+	vip.SetDefault("lockDistributor.heartbeatFrequency", DefaultLockDistributionHeartbeatFrequency)
 }
 
 func generateViperInstances(files []os.FileInfo) []*viper.Viper {

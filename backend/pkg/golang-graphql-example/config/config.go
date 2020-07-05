@@ -12,13 +12,52 @@ const DefaultPort = 8080
 // DefaultInternalPort Default internal port
 const DefaultInternalPort = 9090
 
+// Default lock distributor table name
+const DefaultLockDistributorTableName = "locks"
+
+// Default lock distribution lease duration
+const DefaultLockDistributorLeaseDuration = "3s"
+
+// Default lock distributor heartbeat frequency
+const DefaultLockDistributionHeartbeatFrequency = "1s"
+
 // Config Configuration object
 type Config struct {
-	Log            *LogConfig      `mapstructure:"log"`
-	Tracing        *TracingConfig  `mapstructure:"tracing"`
-	Server         *ServerConfig   `mapstructure:"server"`
-	InternalServer *ServerConfig   `mapstructure:"internalServer"`
-	Database       *DatabaseConfig `mapstructure:"database" validate:"required"`
+	Log                    *LogConfig              `mapstructure:"log"`
+	Tracing                *TracingConfig          `mapstructure:"tracing"`
+	Server                 *ServerConfig           `mapstructure:"server"`
+	InternalServer         *ServerConfig           `mapstructure:"internalServer"`
+	Database               *DatabaseConfig         `mapstructure:"database" validate:"required"`
+	LockDistributor        *LockDistributorConfig  `mapstructure:"lockDistributor" validate:"required"`
+	OIDCAuthentication     *OIDCAuthConfig         `mapstructure:"oidcAuthentication"`
+	OPAServerAuthorization *OPAServerAuthorization `mapstructure:"opaServerAuthorization"`
+}
+
+// LockDistributorConfig Lock distributor configuration
+type LockDistributorConfig struct {
+	TableName          string `mapstructure:"tableName" validate:"required"`
+	LeaseDuration      string `mapstructure:"leaseDuration" validate:"required"`
+	HeartbeatFrequency string `mapstructure:"heartbeatFrequency" validate:"required"`
+}
+
+// OIDCAuthConfig OpenID Connect authentication configurations
+type OIDCAuthConfig struct {
+	ClientID      string            `mapstructure:"clientID" validate:"required"`
+	ClientSecret  *CredentialConfig `mapstructure:"clientSecret" validate:"omitempty,dive"`
+	IssuerURL     string            `mapstructure:"issuerUrl" validate:"required,url"`
+	RedirectURL   string            `mapstructure:"redirectUrl" validate:"required,url"`
+	Scopes        []string          `mapstructure:"scope"`
+	State         string            `mapstructure:"state" validate:"required"`
+	GroupClaim    string            `mapstructure:"groupClaim"`
+	CookieName    string            `mapstructure:"cookieName"`
+	EmailVerified bool              `mapstructure:"emailVerified"`
+	CookieSecure  bool              `mapstructure:"cookieSecure"`
+}
+
+// OPAServerAuthorization OPA Server authorization
+type OPAServerAuthorization struct {
+	URL  string            `mapstructure:"url" validate:"required,url"`
+	Tags map[string]string `mapstructure:"tags"`
 }
 
 // TracingConfig represents the Tracing configuration structure

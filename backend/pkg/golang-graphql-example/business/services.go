@@ -4,6 +4,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
 	todoModels "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor"
 )
 
 type Services struct {
@@ -20,7 +21,7 @@ func (s *Services) MigrateDB() error {
 	return res.Error
 }
 
-func NewServices(db database.DB) *Services {
+func NewServices(db database.DB, ld lockdistributor.Service) *Services {
 	// Create todos service
 	todoSvc := todos.NewService(db)
 

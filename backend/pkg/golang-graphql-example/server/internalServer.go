@@ -21,6 +21,7 @@ type InternalServer struct {
 	cfgManager config.Manager
 	metricsCl  metrics.Client
 	checkers   []*health.Config
+	server     *http.Server
 }
 
 type CheckerInput struct {
@@ -47,7 +48,7 @@ func (svr *InternalServer) AddChecker(chI *CheckerInput) {
 	})
 }
 
-func (svr *InternalServer) Listen() error {
+func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	// Set release mod
 	gin.SetMode(gin.ReleaseMode)
 	// Create router
@@ -68,30 +69,45 @@ func (svr *InternalServer) Listen() error {
 	// Add checkers
 	err := h.AddChecks(svr.checkers)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	// Start health checker
 	err = h.Start()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	// Add metrics path
 	router.GET("/metrics", gin.WrapH(svr.metricsCl.GetPrometheusHTTPHandler()))
 	router.GET("/health", gin.WrapH(handlers.NewJSONHandlerFunc(h, nil)))
 
+	return router, nil
+}
+
+func (svr *InternalServer) Listen() error {
+	svr.logger.Infof("Internal server listening on %s", svr.server.Addr)
+	err := svr.server.ListenAndServe()
+
+	return err
+}
+
+func (svr *InternalServer) GenerateServer() error {
 	// Get configuration
 	cfg := svr.cfgManager.GetConfig()
-
+	// Generate internal router
+	r, err := svr.generateInternalRouter()
+	if err != nil {
+		return err
+	}
 	// Create server
 	addr := cfg.InternalServer.ListenAddr + ":" + strconv.Itoa(cfg.InternalServer.Port)
 	server := &http.Server{
 		Addr:    addr,
-		Handler: router,
+		Handler: r,
 	}
-	// Listen
-	svr.logger.Infof("Internal Server listening on %s", addr)
+	// Store server
+	svr.server = server
 
-	return server.ListenAndServe()
+	return nil
 }

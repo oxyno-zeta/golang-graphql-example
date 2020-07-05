@@ -9,6 +9,7 @@ import (
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
@@ -20,24 +21,68 @@ import (
 )
 
 type Server struct {
-	logger       log.Logger
-	cfgManager   config.Manager
-	metricsCl    metrics.Client
-	tracingSvc   tracing.Service
-	busiServices *business.Services
+	logger            log.Logger
+	cfgManager        config.Manager
+	metricsCl         metrics.Client
+	tracingSvc        tracing.Service
+	busiServices      *business.Services
+	authenticationSvc authentication.Client
+	server            *http.Server
 }
 
-func NewServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client, tracingSvc tracing.Service, busiServices *business.Services) *Server {
+// nolint:whitespace
+func NewServer(
+	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client,
+	tracingSvc tracing.Service, busiServices *business.Services,
+	authenticationSvc authentication.Client,
+) *Server {
 	return &Server{
-		logger:       logger,
-		cfgManager:   cfgManager,
-		metricsCl:    metricsCl,
-		tracingSvc:   tracingSvc,
-		busiServices: busiServices,
+		logger:            logger,
+		cfgManager:        cfgManager,
+		metricsCl:         metricsCl,
+		tracingSvc:        tracingSvc,
+		busiServices:      busiServices,
+		authenticationSvc: authenticationSvc,
 	}
 }
 
-func (svr *Server) Listen() error {
+func (svr *Server) GenerateServer() error {
+	// Get configuration
+	cfg := svr.cfgManager.GetConfig()
+	// Generate router
+	r, err := svr.generateRouter()
+	if err != nil {
+		return err
+	}
+
+	// Create server
+	addr := cfg.Server.ListenAddr + ":" + strconv.Itoa(cfg.Server.Port)
+	server := &http.Server{
+		Addr:    addr,
+		Handler: r,
+	}
+
+	// Prepare for configuration onChange
+	svr.cfgManager.AddOnChangeHook(func() {
+		// Generate router
+		r, err2 := svr.generateRouter()
+		if err2 != nil {
+			svr.logger.Fatal(err2)
+		}
+		// Change server handler
+		server.Handler = r
+		svr.logger.Info("Server handler reloaded")
+	})
+
+	// Store server
+	svr.server = server
+
+	return nil
+}
+
+func (svr *Server) generateRouter() (http.Handler, error) {
+	// Get configuration
+	cfg := svr.cfgManager.GetConfig()
 	// Set release mod
 	gin.SetMode(gin.ReleaseMode)
 	// Create router
@@ -50,6 +95,19 @@ func (svr *Server) Listen() error {
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument())
 
+	// Add authentication middleware if configuration exists
+	if cfg.OIDCAuthentication != nil {
+		// Add endpoints
+		err := svr.authenticationSvc.OIDCEndpoints(router)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		// Add authentication middleware
+		router.Use(svr.authenticationSvc.Middleware())
+	}
+
 	// Add static files
 	router.Use(static.Serve("/", static.LocalFile("static/", true)))
 
@@ -57,19 +115,14 @@ func (svr *Server) Listen() error {
 	router.POST("/api/graphql", graphqlHandler(svr.busiServices))
 	router.GET("/api/graphql", playgroundHandler())
 
-	// Get configuration
-	cfg := svr.cfgManager.GetConfig()
+	return router, nil
+}
 
-	// Create server
-	addr := cfg.Server.ListenAddr + ":" + strconv.Itoa(cfg.Server.Port)
-	server := &http.Server{
-		Addr:    addr,
-		Handler: router,
-	}
-	// Listen
-	svr.logger.Infof("Server listening on %s", addr)
+func (svr *Server) Listen() error {
+	svr.logger.Infof("Server listening on %s", svr.server.Addr)
+	err := svr.server.ListenAndServe()
 
-	return server.ListenAndServe()
+	return err
 }
 
 // Defining the Graphql handler

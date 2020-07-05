@@ -1,6 +1,7 @@
 package database
 
 import (
+	"database/sql"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -15,6 +16,10 @@ type postresdb struct {
 	logger     log.Logger
 	db         *gorm.DB
 	cfgManager config.Manager
+}
+
+func (ctx *postresdb) GetSQLDB() *sql.DB {
+	return ctx.db.DB()
 }
 
 // GetGormDB will return a gorm database object

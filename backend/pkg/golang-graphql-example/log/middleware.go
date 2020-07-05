@@ -3,6 +3,7 @@ package log
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,18 @@ type logContextKey struct {
 const loggerGinCtxKey = "LoggerCtxKey"
 
 var loggerCtxKey = &logContextKey{name: "logger"}
+
+func GetLoggerFromContext(req *http.Request) Logger {
+	logger, _ := req.Context().Value(loggerCtxKey).(Logger)
+	return logger
+}
+
+func GetLoggerFromGin(c *gin.Context) Logger {
+	val, _ := c.Get(loggerGinCtxKey)
+	logger := val.(Logger)
+
+	return logger
+}
 
 func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpanID func(ctx context.Context) string) gin.HandlerFunc {
 	return func(c *gin.Context) {
