@@ -21,6 +21,12 @@ const DefaultLockDistributorLeaseDuration = "3s"
 // Default lock distributor heartbeat frequency
 const DefaultLockDistributionHeartbeatFrequency = "1s"
 
+// Default OIDC scopes
+var DefaultOIDCScopes = []string{"openid", "email", "profile"}
+
+// Default cookie name
+const DefaultCookieName = "oidc"
+
 // Config Configuration object
 type Config struct {
 	Log                    *LogConfig              `mapstructure:"log"`
@@ -48,7 +54,6 @@ type OIDCAuthConfig struct {
 	RedirectURL   string            `mapstructure:"redirectUrl" validate:"required,url"`
 	Scopes        []string          `mapstructure:"scope"`
 	State         string            `mapstructure:"state" validate:"required"`
-	GroupClaim    string            `mapstructure:"groupClaim"`
 	CookieName    string            `mapstructure:"cookieName"`
 	EmailVerified bool              `mapstructure:"emailVerified"`
 	CookieSecure  bool              `mapstructure:"cookieSecure"`

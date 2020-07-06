@@ -274,6 +274,23 @@ func (ctx *managercontext) loadConfiguration() error {
 
 // Load default values based on business rules
 func loadBusinessDefaultValues(out *Config) error {
+	// Load default oidc configurations
+	if out.OIDCAuthentication != nil {
+		// Add default scopes
+		if out.OIDCAuthentication.Scopes == nil {
+			out.OIDCAuthentication.Scopes = DefaultOIDCScopes
+		}
+		// Add default cookie name
+		if out.OIDCAuthentication.CookieName == "" {
+			out.OIDCAuthentication.CookieName = DefaultCookieName
+		}
+	}
+
+	// Load default tags for opa authorization
+	if out.OPAServerAuthorization != nil && out.OPAServerAuthorization.Tags == nil {
+		out.OPAServerAuthorization.Tags = map[string]string{}
+	}
+
 	// TODO Load default values based on business rules
 	return nil
 }
@@ -282,6 +299,14 @@ func loadBusinessDefaultValues(out *Config) error {
 func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 	// Initialize answer
 	result := make([]*CredentialConfig, 0)
+
+	// Load credential for OIDC configuration
+	if out.OIDCAuthentication != nil && out.OIDCAuthentication.ClientSecret != nil {
+		err := loadCredential(out.OIDCAuthentication.ClientSecret)
+		if err != nil {
+			return nil, err
+		}
+	}
 
 	// TODO Load credential configs here
 

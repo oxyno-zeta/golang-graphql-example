@@ -137,3 +137,5 @@ config.yaml
 dist/
 _dist/
 coverage.html
+*.tar.gz
+run/

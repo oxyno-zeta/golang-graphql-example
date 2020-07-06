@@ -13,6 +13,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -47,6 +48,10 @@ func main() {
 			logger.Error(err)
 		}
 	})
+
+	// Getting version
+	v := version.GetVersion()
+	logger.Infof("Starting version: %s (git commit: %s) built on %s", v.Version, v.GitCommit, v.BuildDate)
 
 	// Create metrics client
 	metricsCl := metrics.NewMetricsClient()

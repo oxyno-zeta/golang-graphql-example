@@ -28,15 +28,15 @@ type service struct {
 }
 
 // GetAuthenticatedUser will get authenticated user in context
-func GetAuthenticatedUserFromContext(req *http.Request) models.OIDCUser {
-	res, _ := req.Context().Value(userContextKey).(models.OIDCUser)
+func GetAuthenticatedUserFromContext(ctx context.Context) *models.OIDCUser {
+	res, _ := ctx.Value(userContextKey).(*models.OIDCUser)
 	return res
 }
 
 // GetAuthenticatedUser will get authenticated user in context
-func GetAuthenticatedUserFromGin(c *gin.Context) models.OIDCUser {
+func GetAuthenticatedUserFromGin(c *gin.Context) *models.OIDCUser {
 	res, _ := c.Get(userContextKeyName)
-	res1 := res.(models.OIDCUser)
+	res1 := res.(*models.OIDCUser)
 
 	return res1
 }
@@ -202,11 +202,11 @@ func (s *service) Middleware() gin.HandlerFunc {
 		}
 
 		// Add user to request context by creating a new context
-		ctx := context.WithValue(c.Request.Context(), userContextKey, ouser)
+		ctx := context.WithValue(c.Request.Context(), userContextKey, &ouser)
 		// Create new request with new context
 		c.Request = c.Request.WithContext(ctx)
 		// Add it to gin context
-		c.Set(userContextKeyName, ouser)
+		c.Set(userContextKeyName, &ouser)
 
 		logger.Infof("OIDC User authenticated: %s", ouser.GetIdentifier())
 		c.Next()

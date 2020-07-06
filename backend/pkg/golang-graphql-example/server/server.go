@@ -10,6 +10,7 @@ import (
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
@@ -106,6 +107,11 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 
 		// Add authentication middleware
 		router.Use(svr.authenticationSvc.Middleware())
+
+		// Add authorization middleware is configuration exists
+		if cfg.OPAServerAuthorization != nil {
+			router.Use(authorization.Middleware(cfg.OPAServerAuthorization))
+		}
 	}
 
 	// Add static files

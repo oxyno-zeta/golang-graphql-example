@@ -103,11 +103,28 @@ test/coverage:
 down/services:
 	@echo "Down services"
 	docker rm -f postgres || true
+	docker rm -f opa || true
+	docker rm -f keycloak || true
+
+.PHONY: down/metrics-services
+down/metrics-services:
+	@echo "Down metrics services"
+	docker rm -f prometheus || true
+	docker rm -f grafana || true
+
+.PHONY: setup/metrics-services
+setup/metrics-services:
+	@echo "Setup metrics services"
+	docker run --rm -d --name prometheus -v $(CURDIR)/local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
+	docker run --rm -d --name grafana --network=host grafana/grafana:7.0.3
 
 .PHONY: setup/services
 setup/services: down/services
 	@echo "Setup services"
-	docker run -d --rm --name postgres -p 5432:5432 postgres:11
+	docker run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/run/postgres:/var/lib/postgresql/data postgres:12
+	tar czvf local-resources/opa/bundle.tar.gz --directory=local-resources/opa/bundle example/
+	docker run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa run --server --log-level debug --log-format text --bundle /bundle.tar.gz
+	docker run -d --rm --name keycloak -p 8088:8080 -e KEYCLOAK_IMPORT=/tmp/realm-export.json -v $(CURDIR)/local-resources/keycloak/realm-export.json:/tmp/realm-export.json -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak:10.0.0
 
 .PHONY: setup/generate
 setup/generate:

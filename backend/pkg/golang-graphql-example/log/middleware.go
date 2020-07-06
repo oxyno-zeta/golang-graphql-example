@@ -3,7 +3,6 @@ package log
 import (
 	"context"
 	"fmt"
-	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -17,8 +16,8 @@ const loggerGinCtxKey = "LoggerCtxKey"
 
 var loggerCtxKey = &logContextKey{name: "logger"}
 
-func GetLoggerFromContext(req *http.Request) Logger {
-	logger, _ := req.Context().Value(loggerCtxKey).(Logger)
+func GetLoggerFromContext(ctx context.Context) Logger {
+	logger, _ := ctx.Value(loggerCtxKey).(Logger)
 	return logger
 }
 
