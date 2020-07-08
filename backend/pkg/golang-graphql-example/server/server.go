@@ -4,7 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/99designs/gqlgen-contrib/gqlopentracing"
 	"github.com/99designs/gqlgen/graphql/handler"
+	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
 	"github.com/99designs/gqlgen/graphql/playground"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/static"
@@ -138,6 +140,8 @@ func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	h := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{
 		Resolvers: &graphql.Resolver{BusiServices: busiServices},
 	}))
+	h.Use(apollotracing.Tracer{})
+	h.Use(gqlopentracing.Tracer{})
 
 	return func(c *gin.Context) {
 		h.ServeHTTP(c.Writer, c.Request)

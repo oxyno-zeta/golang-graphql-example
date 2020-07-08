@@ -5,6 +5,7 @@ go 1.13
 require (
 	cirello.io/pglock v1.8.0
 	github.com/99designs/gqlgen v0.11.3
+	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/InVisionApp/go-health/v2 v2.1.2
 	github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd // indirect
 	github.com/coreos/go-oidc v2.2.1+incompatible
