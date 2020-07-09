@@ -9,6 +9,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
 	"github.com/99designs/gqlgen/graphql/playground"
 	helmet "github.com/danielkov/gin-helmet"
+	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
@@ -90,7 +91,12 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	gin.SetMode(gin.ReleaseMode)
 	// Create router
 	router := gin.New()
+	// Manage no route
+	router.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusNotFound, gin.H{"error": "404 not found"})
+	})
 	// Add middlewares
+	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
 	router.Use(gin.Recovery())
 	router.Use(helmet.Default())
 	router.Use(middlewares.RequestID(svr.logger))
