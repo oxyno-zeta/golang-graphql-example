@@ -87,6 +87,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 
 	router.GET(loginPath, func(c *gin.Context) {
 		c.Redirect(http.StatusFound, config.AuthCodeURL(state))
+		c.Abort()
 	})
 
 	router.GET(mainRedirectURLObject.Path, func(c *gin.Context) {
@@ -150,6 +151,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 
 		logger.Info("Successful authentication detected")
 		c.Redirect(http.StatusTemporaryRedirect, "/")
+		c.Abort()
 	})
 
 	return nil
@@ -175,6 +177,7 @@ func (s *service) Middleware() gin.HandlerFunc {
 			logger.Error("No auth header or cookie detected, redirect to oidc login")
 			// Redirect
 			c.Redirect(http.StatusTemporaryRedirect, loginPath)
+			c.Abort()
 
 			return
 		}
