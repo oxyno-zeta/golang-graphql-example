@@ -6,6 +6,7 @@ import (
 )
 
 type Dao interface {
+	MigrateDB() error
 	GetAll() ([]*models.Todo, error)
 	CreateOrUpdate(tt *models.Todo) (*models.Todo, error)
 	FindByID(id string) (*models.Todo, error)

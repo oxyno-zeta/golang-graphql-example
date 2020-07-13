@@ -3,10 +3,16 @@ package todos
 import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
 type service struct {
 	dao daos.Dao
+}
+
+func (s *service) MigrateDB(systemLogger log.Logger) error {
+	systemLogger.Debug("Migrate database for Todos")
+	return s.dao.MigrateDB()
 }
 
 func (s *service) GetAll() ([]*models.Todo, error) {

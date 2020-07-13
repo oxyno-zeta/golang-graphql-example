@@ -9,6 +9,15 @@ type dao struct {
 	db database.DB
 }
 
+func (d *dao) MigrateDB() error {
+	// Get gorm database
+	gdb := d.db.GetGormDB()
+	// Migrate
+	res := gdb.AutoMigrate(&models.Todo{})
+
+	return res.Error
+}
+
 func (d *dao) FindByID(id string) (*models.Todo, error) {
 	// Get gorm db
 	db := d.db.GetGormDB()

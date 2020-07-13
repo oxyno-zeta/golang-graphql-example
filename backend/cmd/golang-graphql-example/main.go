@@ -101,7 +101,7 @@ func main() {
 	})
 
 	// Create business services
-	busServices := business.NewServices(db, ld)
+	busServices := business.NewServices(logger, db, ld)
 
 	// Migrate database
 	err = busServices.MigrateDB()
