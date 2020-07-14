@@ -16,7 +16,7 @@ func (s *service) Middleware() gin.HandlerFunc {
 		// Get user from request
 		ouser := authentication.GetAuthenticatedUserFromGin(c)
 
-		authorized, err := s.isOPAServerAuthorized(c.Request, ouser)
+		authorized, err := s.isRequestAuthorized(c.Request, ouser)
 		// Check error
 		if err != nil {
 			logger.Error(err)
