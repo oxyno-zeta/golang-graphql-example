@@ -10,6 +10,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
 
@@ -58,6 +59,8 @@ type opaAnswer struct {
 }
 
 func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bool, error) {
+	// Get logger
+	logger := log.GetLoggerFromContext(ctx)
 	// Get configuration to check that authorization can be calculated
 	cfg := s.cfgManager.GetConfig().OPAServerAuthorization
 	if cfg == nil {
@@ -85,7 +88,21 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 		return false, err
 	}
 
-	return s.requestOPAServer(ctx, cfg, bb)
+	authorized, err := s.requestOPAServer(ctx, cfg, bb)
+	// Check error
+	if err != nil {
+		return false, err
+	}
+
+	// Check if user isn't authorized
+	if !authorized {
+		logger.Infof("User %s not authorized for action %s on resource %s", user.GetIdentifier(), action, resource)
+		return false, nil
+	}
+
+	logger.Infof("User %s authorized for action %s on resource %s", user.GetIdentifier(), action, resource)
+
+	return true, nil
 }
 
 func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAuthorization, body []byte) (bool, error) {
