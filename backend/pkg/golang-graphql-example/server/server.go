@@ -31,6 +31,7 @@ type Server struct {
 	tracingSvc        tracing.Service
 	busiServices      *business.Services
 	authenticationSvc authentication.Client
+	authorizationSvc  authorization.Service
 	server            *http.Server
 }
 
@@ -38,7 +39,7 @@ type Server struct {
 func NewServer(
 	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client,
 	tracingSvc tracing.Service, busiServices *business.Services,
-	authenticationSvc authentication.Client,
+	authenticationSvc authentication.Client, authoSvc authorization.Service,
 ) *Server {
 	return &Server{
 		logger:            logger,
@@ -47,6 +48,7 @@ func NewServer(
 		tracingSvc:        tracingSvc,
 		busiServices:      busiServices,
 		authenticationSvc: authenticationSvc,
+		authorizationSvc:  authoSvc,
 	}
 }
 
@@ -118,7 +120,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 
 		// Add authorization middleware is configuration exists
 		if cfg.OPAServerAuthorization != nil {
-			router.Use(authorization.Middleware(cfg.OPAServerAuthorization))
+			router.Use(svr.authorizationSvc.Middleware())
 		}
 	}
 

@@ -6,18 +6,17 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
-func Middleware(opaServerCfg *config.OPAServerAuthorization) gin.HandlerFunc {
+func (s *service) Middleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Get logger
 		logger := log.GetLoggerFromGin(c)
 		// Get user from request
 		ouser := authentication.GetAuthenticatedUserFromGin(c)
 
-		authorized, err := isOPAServerAuthorized(c.Request, ouser, opaServerCfg)
+		authorized, err := s.isOPAServerAuthorized(c.Request, ouser)
 		// Check error
 		if err != nil {
 			logger.Error(err)

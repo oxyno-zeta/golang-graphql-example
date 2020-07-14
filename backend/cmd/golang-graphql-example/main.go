@@ -5,6 +5,7 @@ import (
 
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
@@ -100,6 +101,9 @@ func main() {
 		}
 	})
 
+	// Create authentication service
+	authoSvc := authorization.NewService(cfgManager)
+
 	// Create business services
 	busServices := business.NewServices(logger, db, ld)
 
@@ -113,7 +117,7 @@ func main() {
 	authenticationSvc := authentication.NewService(cfgManager)
 
 	// Create servers
-	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices, authenticationSvc)
+	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices, authenticationSvc, authoSvc)
 	intSvr := server.NewInternalServer(logger, cfgManager, metricsCl)
 
 	// Generate server

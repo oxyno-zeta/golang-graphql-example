@@ -11,6 +11,10 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
 
+type service struct {
+	cfgManager config.Manager
+}
+
 type inputOPA struct {
 	Input *inputDataOPA `json:"input"`
 }
@@ -36,7 +40,9 @@ type opaAnswer struct {
 	Result bool `json:"result"`
 }
 
-func isOPAServerAuthorized(req *http.Request, oidcUser *models.OIDCUser, opaServerCfg *config.OPAServerAuthorization) (bool, error) {
+func (s *service) isOPAServerAuthorized(req *http.Request, oidcUser *models.OIDCUser) (bool, error) {
+	// Get configuration
+	opaServerCfg := s.cfgManager.GetConfig().OPAServerAuthorization
 	// Get trace from request
 	trace := tracing.GetTraceFromContext(req.Context())
 	// Generate child trace
