@@ -39,6 +39,8 @@ func (ctx *postresdb) Connect() error {
 	if err != nil {
 		return err
 	}
+	// Disable logger
+	dbResult.LogMode(false)
 	// Save gorm db object
 	ctx.db = dbResult
 
