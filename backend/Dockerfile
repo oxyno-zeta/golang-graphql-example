@@ -17,4 +17,4 @@ RUN chown -R $UID:$GID /$USER
 
 USER $USER
 
-ENTRYPOINT [ "/$USER/$APP" ]
+ENTRYPOINT [ "/appuser/golang-graphql-example" ]
