@@ -9,7 +9,7 @@ exec:
 
 # Uncomment to enable federation
 # federation:
-#   filename: graph/generated/federation.go
+#   filename: pkg/golang-graphql-example/server/graphql/generated/federation.go
 #   package: generated
 
 # Where should any generated models go?
