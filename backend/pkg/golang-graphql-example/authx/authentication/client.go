@@ -7,7 +7,7 @@ import (
 
 type Client interface {
 	// Middleware will redirect authentication to basic auth or OIDC depending on request path and resources declared
-	Middleware() gin.HandlerFunc
+	Middleware(redirectPathList []string) gin.HandlerFunc
 	// OIDCEndpoints will set OpenID Connect endpoints for authentication and callback
 	OIDCEndpoints(router gin.IRouter) error
 }

@@ -116,7 +116,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		}
 
 		// Add authentication middleware
-		router.Use(svr.authenticationSvc.Middleware())
+		router.Use(svr.authenticationSvc.Middleware([]string{"/"}))
 
 		// Add authorization middleware is configuration exists
 		if cfg.OPAServerAuthorization != nil {

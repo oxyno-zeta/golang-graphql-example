@@ -13,6 +13,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/thoas/go-funk"
 	"golang.org/x/oauth2"
 )
 
@@ -157,7 +158,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	return nil
 }
 
-func (s *service) Middleware() gin.HandlerFunc {
+func (s *service) Middleware(redirectPathList []string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Get logger
 		logger := log.GetLoggerFromGin(c)
@@ -175,9 +176,17 @@ func (s *service) Middleware() gin.HandlerFunc {
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
 			logger.Error("No auth header or cookie detected, redirect to oidc login")
-			// Redirect
-			c.Redirect(http.StatusTemporaryRedirect, loginPath)
-			c.Abort()
+
+			if funk.ContainsString(redirectPathList, c.Request.URL.Path) {
+				// Redirect
+				c.Redirect(http.StatusTemporaryRedirect, loginPath)
+				c.Abort()
+
+				return
+			}
+
+			// Unauthorized error
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
 
 			return
 		}
