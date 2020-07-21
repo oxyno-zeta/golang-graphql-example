@@ -3,6 +3,7 @@ package todos
 import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
@@ -15,8 +16,8 @@ func (s *service) MigrateDB(systemLogger log.Logger) error {
 	return s.dao.MigrateDB()
 }
 
-func (s *service) GetAll() ([]*models.Todo, error) {
-	return s.dao.GetAll()
+func (s *service) GetAllPaginated(page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error) {
+	return s.dao.GetAllPaginated(page)
 }
 
 func (s *service) Create(inp *InputCreateTodo) (*models.Todo, error) {

@@ -1,0 +1,25 @@
+type Todo {
+  id: ID!
+  text: String!
+  done: Boolean!
+  creationDate: String!
+}
+
+input NewTodo {
+  text: String!
+}
+
+input UpdateTodo {
+  id: ID!
+  text: String!
+}
+
+type TodoConnection {
+  edges: [TodoEdge]
+  pageInfo: PageInfo!
+}
+
+type TodoEdge {
+  cursor: String!
+  node: Todo
+}

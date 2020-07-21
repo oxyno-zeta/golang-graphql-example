@@ -4,12 +4,13 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
 type Service interface {
 	MigrateDB(systemLogger log.Logger) error
-	GetAll() ([]*models.Todo, error)
+	GetAllPaginated(page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error)
 	Create(inp *InputCreateTodo) (*models.Todo, error)
 	Update(inp *InputUpdateTodo) (*models.Todo, error)
 	Close(id string) (*models.Todo, error)

@@ -10,6 +10,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
@@ -43,13 +44,22 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTo
 	return mappers.MapTodo(tt), nil
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	res, err := r.BusiServices.TodoSvc.GetAll()
+func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int) (*model.TodoConnection, error) {
+	// Create pagination input
+	pageInput, err := utils.GetPageInput(after, before, first, last)
+	// Check error
 	if err != nil {
 		return nil, err
 	}
 
-	return mappers.MapTodos(res), nil
+	// Call business
+	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(pageInput)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	return mappers.MapTodoConnection(allTodos, pageOut), nil
 }
 
 // Mutation returns generated.MutationResolver implementation.

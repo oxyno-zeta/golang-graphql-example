@@ -2,24 +2,8 @@
 #
 # https://gqlgen.com/getting-started/
 
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  creationDate: String!
-}
-
 type Query {
-  todos: [Todo]!
-}
-
-input NewTodo {
-  text: String!
-}
-
-input UpdateTodo {
-  id: ID!
-  text: String!
+  todos(after: String, before: String, first: Int, last: Int): TodoConnection
 }
 
 type Mutation {

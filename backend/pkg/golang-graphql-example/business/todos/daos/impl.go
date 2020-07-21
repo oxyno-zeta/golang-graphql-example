@@ -3,6 +3,7 @@ package daos
 import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 )
 
 type dao struct {
@@ -50,19 +51,17 @@ func (d *dao) CreateOrUpdate(tt *models.Todo) (*models.Todo, error) {
 	return tt, nil
 }
 
-func (d *dao) GetAll() ([]*models.Todo, error) {
+func (d *dao) GetAllPaginated(page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error) {
 	// Get gorm db
 	db := d.db.GetGormDB()
 	// result
 	res := make([]*models.Todo, 0)
 	// Find todos
-	dbres := db.Find(&res)
-
-	err := dbres.Error
+	pageOut, err := pagination.Paging(db, nil, nil, page, &res)
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
-	return res, nil
+	return res, pageOut, nil
 }
