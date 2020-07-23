@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"path"
+	"regexp"
 	"strings"
 
 	"github.com/coreos/go-oidc"
@@ -158,7 +159,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	return nil
 }
 
-func (s *service) Middleware(redirectPathList []string) gin.HandlerFunc {
+func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Get logger
 		logger := log.GetLoggerFromGin(c)
@@ -177,16 +178,20 @@ func (s *service) Middleware(redirectPathList []string) gin.HandlerFunc {
 		if jwtContent == "" {
 			logger.Error("No auth header or cookie detected, redirect to oidc login")
 
-			if funk.ContainsString(redirectPathList, c.Request.URL.Path) {
-				// Redirect
-				c.Redirect(http.StatusTemporaryRedirect, loginPath)
-				c.Abort()
+			// Find a potential match into all regexps
+			match := funk.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
+				return reg.MatchString(c.Request.URL.Path)
+			})
 
+			if match != nil {
+				// Unauthorized error
+				c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
 				return
 			}
 
-			// Unauthorized error
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+			// Redirect
+			c.Redirect(http.StatusTemporaryRedirect, loginPath)
+			c.Abort()
 
 			return
 		}

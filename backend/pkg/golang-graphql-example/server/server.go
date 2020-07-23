@@ -2,6 +2,7 @@ package server
 
 import (
 	"net/http"
+	"regexp"
 	"strconv"
 
 	"github.com/99designs/gqlgen-contrib/gqlopentracing"
@@ -115,8 +116,15 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 			return nil, err
 		}
 
+		// Create unauthorized path regexp
+		apiReg, err := regexp.Compile("^/api")
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
 		// Add authentication middleware
-		router.Use(svr.authenticationSvc.Middleware([]string{"/"}))
+		router.Use(svr.authenticationSvc.Middleware([]*regexp.Regexp{apiReg}))
 
 		// Add authorization middleware is configuration exists
 		if cfg.OPAServerAuthorization != nil {
