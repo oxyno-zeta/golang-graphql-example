@@ -8,6 +8,7 @@ import (
 	"path"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/coreos/go-oidc"
 	"github.com/gin-gonic/gin"
@@ -177,21 +178,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
 			logger.Error("No auth header or cookie detected, redirect to oidc login")
-
-			// Find a potential match into all regexps
-			match := funk.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
-				return reg.MatchString(c.Request.URL.Path)
-			})
-
-			if match != nil {
-				// Unauthorized error
-				c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
-				return
-			}
-
-			// Redirect
-			c.Redirect(http.StatusTemporaryRedirect, loginPath)
-			c.Abort()
+			redirectOrAuthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -204,7 +191,17 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Check error
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			// Flush potential cookie
+			http.SetCookie(c.Writer, &http.Cookie{
+				Expires:  time.Unix(0, 0),
+				Name:     cfg.OIDCAuthentication.CookieName,
+				Value:    "",
+				HttpOnly: true,
+				Secure:   cfg.OIDCAuthentication.CookieSecure,
+				Path:     "/",
+			})
+
+			redirectOrAuthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -213,7 +210,17 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		err = idToken.Claims(&ouser)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			// Flush potential cookie
+			http.SetCookie(c.Writer, &http.Cookie{
+				Expires:  time.Unix(0, 0),
+				Name:     cfg.OIDCAuthentication.CookieName,
+				Value:    "",
+				HttpOnly: true,
+				Secure:   cfg.OIDCAuthentication.CookieSecure,
+				Path:     "/",
+			})
+
+			redirectOrAuthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -228,6 +235,23 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		logger.Infof("OIDC User authenticated: %s", ouser.GetIdentifier())
 		c.Next()
 	}
+}
+
+func redirectOrAuthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Regexp) {
+	// Find a potential match into all regexps
+	match := funk.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
+		return reg.MatchString(c.Request.URL.Path)
+	})
+
+	if match != nil {
+		// Unauthorized error
+		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		return
+	}
+
+	// Redirect
+	c.Redirect(http.StatusTemporaryRedirect, loginPath)
+	c.Abort()
 }
 
 func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string, error) {
