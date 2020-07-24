@@ -96,7 +96,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router := gin.New()
 	// Manage no route
 	router.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusNotFound, gin.H{"error": "404 not found"})
+		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{"error": "404 not found"})
 	})
 	// Add middlewares
 	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
@@ -107,17 +107,17 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument())
 
+	// Create api prefix path regexp
+	apiReg, err := regexp.Compile("^/api")
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
 	// Add authentication middleware if configuration exists
 	if cfg.OIDCAuthentication != nil {
 		// Add endpoints
 		err := svr.authenticationSvc.OIDCEndpoints(router)
-		// Check error
-		if err != nil {
-			return nil, err
-		}
-
-		// Create unauthorized path regexp
-		apiReg, err := regexp.Compile("^/api")
 		// Check error
 		if err != nil {
 			return nil, err
@@ -132,12 +132,23 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		}
 	}
 
-	// Add static files
-	router.Use(static.Serve("/", static.LocalFile("static/", true)))
-
 	// Add graphql endpoints
 	router.POST("/api/graphql", graphqlHandler(svr.busiServices))
 	router.GET("/api/graphql", playgroundHandler())
+
+	// Add gin html files for answer
+	router.LoadHTMLGlob("static/*.html")
+	// Add static files
+	router.Use(static.Serve("/", static.LocalFile("static/", true)))
+	// Add specialized support for SPA based UI
+	router.Use(func(c *gin.Context) {
+		// Check if patch isn't matching api based prefix
+		if !apiReg.MatchString(c.Request.RequestURI) {
+			// Answer with index.html to all possible path
+			c.HTML(http.StatusOK, "index.html", nil)
+			c.Abort()
+		}
+	})
 
 	return router, nil
 }
