@@ -20,7 +20,7 @@ func (s *service) Middleware() gin.HandlerFunc {
 		// Check error
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
 			return
 		}
@@ -30,7 +30,7 @@ func (s *service) Middleware() gin.HandlerFunc {
 			err := fmt.Errorf("forbidden user %s", ouser.GetIdentifier())
 
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": err.Error()})
 
 			return
 		}

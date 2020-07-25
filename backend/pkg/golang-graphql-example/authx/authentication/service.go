@@ -124,7 +124,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Check if error exists
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -143,7 +143,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			err := errors.New("redirect url is invalid")
 
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -151,7 +151,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if c.Query("state") != state {
 			err := errors.New("state did not match")
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -160,7 +160,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Check if error exists
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -168,7 +168,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if err != nil {
 			err = errors.New("failed to exchange token: " + err.Error())
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -176,7 +176,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if !ok {
 			err = errors.New("no id_token field in token")
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -184,7 +184,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if err != nil {
 			err = errors.New("failed to verify ID Token: " + err.Error())
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 
@@ -194,7 +194,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		err = idToken.Claims(&resp)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 		// Now, we know that we can open jwt token to get claims
@@ -236,7 +236,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Check if error exists
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 
 			return
 		}
