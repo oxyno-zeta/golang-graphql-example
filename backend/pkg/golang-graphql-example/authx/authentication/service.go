@@ -3,6 +3,7 @@ package authentication
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"net/url"
 	"path"
@@ -13,6 +14,7 @@ import (
 	"github.com/coreos/go-oidc"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/thoas/go-funk"
@@ -22,6 +24,7 @@ import (
 const callbackPath = "/auth/oidc/callback"
 const loginPath = "/auth/oidc"
 const userContextKeyName = "USER_CONTEXT_KEY"
+const redirectQueryKey = "rd"
 
 var userContextKey = &contextKey{name: userContextKeyName}
 
@@ -42,6 +45,29 @@ func GetAuthenticatedUserFromGin(c *gin.Context) *models.OIDCUser {
 	res1 := res.(*models.OIDCUser)
 
 	return res1
+}
+
+func buildOauthRedirectURIParam(mainRedirectURLStr, rdVal string) (oauth2.AuthCodeOption, error) {
+	oidcRedirectURL, err := url.Parse(mainRedirectURLStr)
+	// Check if error exists
+	if err != nil {
+		return nil, err
+	}
+	// Get query params
+	qsValues := oidcRedirectURL.Query()
+	// Check if redirect value exists
+	if rdVal != "" {
+		// Add query param
+		qsValues.Add(redirectQueryKey, rdVal)
+	}
+	// Add query params to oidc redirect url
+	oidcRedirectURL.RawQuery = qsValues.Encode()
+	// Build new oidc redirect url string
+	oidcRedirectURLStr := oidcRedirectURL.String()
+
+	authP := oauth2.SetAuthURLParam("redirect_uri", oidcRedirectURLStr)
+
+	return authP, nil
 }
 
 // OIDCEndpoints will set OpenID Connect endpoints for authentication and callback
@@ -89,13 +115,37 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	s.verifier = verifier
 
 	router.GET(loginPath, func(c *gin.Context) {
-		c.Redirect(http.StatusFound, config.AuthCodeURL(state))
+		// Get logger from request
+		logger := log.GetLoggerFromGin(c)
+		// Get redirect query from query params
+		rdVal := c.Query(redirectQueryKey)
+		// Need to build new oidc redirect url
+		authParam, err := buildOauthRedirectURIParam(mainRedirectURLStr, rdVal)
+		// Check if error exists
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			return
+		}
+
+		c.Redirect(http.StatusFound, config.AuthCodeURL(state, authParam))
 		c.Abort()
 	})
 
 	router.GET(mainRedirectURLObject.Path, func(c *gin.Context) {
 		// Get logger from request
 		logger := log.GetLoggerFromGin(c)
+
+		// Get redirect url
+		rdVal := c.Query(redirectQueryKey)
+		// Check if rdVal exists and that redirect url value is valid
+		if rdVal != "" && !isValidRedirect(rdVal) {
+			err := errors.New("redirect url is invalid")
+
+			logger.Error(err)
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err})
+			return
+		}
 
 		// Check state
 		if c.Query("state") != state {
@@ -105,7 +155,16 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			return
 		}
 
-		oauth2Token, err := config.Exchange(ctx, c.Query("code"))
+		// Build auth param
+		authParam, err := buildOauthRedirectURIParam(mainRedirectURLStr, rdVal)
+		// Check if error exists
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err})
+			return
+		}
+
+		oauth2Token, err := config.Exchange(ctx, c.Query("code"), authParam)
 		if err != nil {
 			err = errors.New("failed to exchange token: " + err.Error())
 			logger.Error(err)
@@ -150,10 +209,16 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			Path:     "/",
 		}
 
+		// Set cookie
 		http.SetCookie(c.Writer, cookie)
 
+		// Manage default redirect case
+		if rdVal == "" {
+			rdVal = "/"
+		}
+
 		logger.Info("Successful authentication detected")
-		c.Redirect(http.StatusTemporaryRedirect, "/")
+		c.Redirect(http.StatusTemporaryRedirect, rdVal)
 		c.Abort()
 	})
 
@@ -178,7 +243,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
 			logger.Error("No auth header or cookie detected, redirect to oidc login")
-			redirectOrAuthorized(c, unauthorizedPathRegexList)
+			s.redirectOrAuthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -201,7 +266,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 				Path:     "/",
 			})
 
-			redirectOrAuthorized(c, unauthorizedPathRegexList)
+			s.redirectOrAuthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -220,7 +285,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 				Path:     "/",
 			})
 
-			redirectOrAuthorized(c, unauthorizedPathRegexList)
+			s.redirectOrAuthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -237,7 +302,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 	}
 }
 
-func redirectOrAuthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Regexp) {
+func (s *service) redirectOrAuthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Regexp) {
 	// Find a potential match into all regexps
 	match := funk.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
 		return reg.MatchString(c.Request.URL.Path)
@@ -249,8 +314,21 @@ func redirectOrAuthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Re
 		return
 	}
 
+	// Initialize redirect URI
+	rdURI := loginPath
+	// Check if redirect URI must be created
+	// If request path isn't equal to login path, build redirect URI to keep incoming request
+	if c.Request.RequestURI != loginPath {
+		// Build incoming request
+		incomingURI := utils.GetRequestURL(c.Request)
+		// URL Encode it
+		urlEncodedIncomingURI := url.QueryEscape(incomingURI)
+		// Build redirect URI
+		rdURI = fmt.Sprintf("%s?%s=%s", loginPath, redirectQueryKey, urlEncodedIncomingURI)
+	}
+
 	// Redirect
-	c.Redirect(http.StatusTemporaryRedirect, loginPath)
+	c.Redirect(http.StatusTemporaryRedirect, rdURI)
 	c.Abort()
 }
 
@@ -291,4 +369,9 @@ func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string,
 	}
 
 	return "", nil
+}
+
+// IsValidRedirect checks whether the redirect URL is whitelisted
+func isValidRedirect(redirect string) bool {
+	return strings.HasPrefix(redirect, "http://") || strings.HasPrefix(redirect, "https://")
 }
