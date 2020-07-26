@@ -8,13 +8,12 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
-const TodoIDPrefix = "todos"
-
 func (r *todoResolver) ID(ctx context.Context, obj *models.Todo) (string, error) {
-	return utils.ToIDRelay(TodoIDPrefix, obj.ID), nil
+	return utils.ToIDRelay(mappers.TodoIDPrefix, obj.ID), nil
 }
 
 func (r *todoResolver) CreationDate(ctx context.Context, obj *models.Todo) (string, error) {

@@ -7,6 +7,8 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
+const TodoIDPrefix = "todos"
+
 func MapTodoConnection(allTodos []*models.Todo, pageOut *pagination.PageOutput) *model.TodoConnection {
 	var res model.TodoConnection
 
