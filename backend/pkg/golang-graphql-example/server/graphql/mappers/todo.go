@@ -7,17 +7,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
-const TodoIDPrefix = "todos"
-
-func MapTodo(tt *models.Todo) *model.Todo {
-	return &model.Todo{
-		CreationDate: utils.FormatTime(tt.CreatedAt),
-		Done:         tt.Done,
-		ID:           utils.ToIDRelay(TodoIDPrefix, tt.ID),
-		Text:         tt.Text,
-	}
-}
-
 func MapTodoConnection(allTodos []*models.Todo, pageOut *pagination.PageOutput) *model.TodoConnection {
 	var res model.TodoConnection
 
@@ -28,7 +17,7 @@ func MapTodoConnection(allTodos []*models.Todo, pageOut *pagination.PageOutput) 
 		// Create new edge
 		res.Edges = append(res.Edges, &model.TodoEdge{
 			Cursor: utils.GetPaginateCursor(i, pageOut.Skip),
-			Node:   MapTodo(todo),
+			Node:   todo,
 		})
 	}
 

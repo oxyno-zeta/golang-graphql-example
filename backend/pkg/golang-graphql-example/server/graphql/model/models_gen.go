@@ -2,6 +2,10 @@
 
 package model
 
+import (
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+)
+
 type NewTodo struct {
 	Text string `json:"text"`
 }
@@ -13,21 +17,14 @@ type PageInfo struct {
 	EndCursor       *string `json:"endCursor"`
 }
 
-type Todo struct {
-	ID           string `json:"id"`
-	Text         string `json:"text"`
-	Done         bool   `json:"done"`
-	CreationDate string `json:"creationDate"`
-}
-
 type TodoConnection struct {
 	Edges    []*TodoEdge `json:"edges"`
 	PageInfo *PageInfo   `json:"pageInfo"`
 }
 
 type TodoEdge struct {
-	Cursor string `json:"cursor"`
-	Node   *Todo  `json:"node"`
+	Cursor string       `json:"cursor"`
+	Node   *models.Todo `json:"node"`
 }
 
 type UpdateTodo struct {

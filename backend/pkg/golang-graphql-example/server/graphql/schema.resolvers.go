@@ -7,13 +7,14 @@ import (
 	"context"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*models.Todo, error) {
 	inp := &todos.InputCreateTodo{Text: input.Text}
 	tt, err := r.BusiServices.TodoSvc.Create(inp)
 	// Check error
@@ -21,19 +22,19 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 		return nil, err
 	}
 
-	return mappers.MapTodo(tt), nil
+	return tt, nil
 }
 
-func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model.Todo, error) {
+func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*models.Todo, error) {
 	res, err := r.BusiServices.TodoSvc.Close(todoID)
 	if err != nil {
 		return nil, err
 	}
 
-	return mappers.MapTodo(res), nil
+	return res, nil
 }
 
-func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*model.Todo, error) {
+func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error) {
 	inp := &todos.InputUpdateTodo{ID: input.ID, Text: input.Text}
 	tt, err := r.BusiServices.TodoSvc.Update(inp)
 	// Check error
@@ -41,7 +42,7 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTo
 		return nil, err
 	}
 
-	return mappers.MapTodo(tt), nil
+	return tt, nil
 }
 
 func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int) (*model.TodoConnection, error) {
