@@ -1,11 +1,13 @@
 package server
 
 import (
+	"context"
 	"net/http"
 	"regexp"
 	"strconv"
 
 	"github.com/99designs/gqlgen-contrib/gqlopentracing"
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
 	"github.com/99designs/gqlgen/graphql/playground"
@@ -23,6 +25,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 
 type Server struct {
@@ -167,6 +170,13 @@ func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	h := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{
 		Resolvers: &graphql.Resolver{BusiServices: busiServices},
 	}))
+	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
+		logger := log.GetLoggerFromContext(ctx)
+		// Log error
+		logger.Error(err)
+		// Return
+		return gqlgraphql.DefaultErrorPresenter(ctx, err)
+	})
 	h.Use(apollotracing.Tracer{})
 	h.Use(gqlopentracing.Tracer{})
 
