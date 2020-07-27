@@ -26,7 +26,14 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 }
 
 func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*models.Todo, error) {
-	res, err := r.BusiServices.TodoSvc.Close(ctx, todoID)
+	// Manage relay id
+	bid, err := utils.FromIDRelay(todoID, mappers.TodoIDPrefix)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := r.BusiServices.TodoSvc.Close(ctx, bid)
 	if err != nil {
 		return nil, err
 	}
@@ -35,7 +42,14 @@ func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model
 }
 
 func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error) {
-	inp := &todos.InputUpdateTodo{ID: input.ID, Text: input.Text}
+	// Manage relay id
+	bid, err := utils.FromIDRelay(input.ID, mappers.TodoIDPrefix)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	inp := &todos.InputUpdateTodo{ID: bid, Text: input.Text}
 	tt, err := r.BusiServices.TodoSvc.Update(ctx, inp)
 	// Check error
 	if err != nil {
