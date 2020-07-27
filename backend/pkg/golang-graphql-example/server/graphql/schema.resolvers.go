@@ -16,7 +16,7 @@ import (
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*models.Todo, error) {
 	inp := &todos.InputCreateTodo{Text: input.Text}
-	tt, err := r.BusiServices.TodoSvc.Create(inp)
+	tt, err := r.BusiServices.TodoSvc.Create(ctx, inp)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -26,7 +26,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 }
 
 func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*models.Todo, error) {
-	res, err := r.BusiServices.TodoSvc.Close(todoID)
+	res, err := r.BusiServices.TodoSvc.Close(ctx, todoID)
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +36,7 @@ func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model
 
 func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error) {
 	inp := &todos.InputUpdateTodo{ID: input.ID, Text: input.Text}
-	tt, err := r.BusiServices.TodoSvc.Update(inp)
+	tt, err := r.BusiServices.TodoSvc.Update(ctx, inp)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -54,7 +54,7 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 	}
 
 	// Call business
-	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(pageInput)
+	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput)
 	// Check error
 	if err != nil {
 		return nil, err

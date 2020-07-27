@@ -128,11 +128,6 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 
 		// Add authentication middleware
 		router.Use(svr.authenticationSvc.Middleware([]*regexp.Regexp{apiReg}))
-
-		// Add authorization middleware is configuration exists
-		if cfg.OPAServerAuthorization != nil {
-			router.Use(svr.authorizationSvc.Middleware())
-		}
 	}
 
 	// Add graphql endpoints

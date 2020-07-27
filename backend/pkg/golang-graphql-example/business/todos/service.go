@@ -1,14 +1,20 @@
 package todos
 
 import (
+	"context"
+	"fmt"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
+const mainAuthorizationPrefix = "todo"
+
 type service struct {
-	dao daos.Dao
+	dao     daos.Dao
+	authSvc authorizationService
 }
 
 func (s *service) MigrateDB(systemLogger log.Logger) error {
@@ -16,11 +22,33 @@ func (s *service) MigrateDB(systemLogger log.Logger) error {
 	return s.dao.MigrateDB()
 }
 
-func (s *service) GetAllPaginated(page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error) {
+func (s *service) GetAllPaginated(ctx context.Context, page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error) {
+	// Check authorization
+	err := s.authSvc.CheckAuthorized(
+		ctx,
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, "List"),
+		"",
+	)
+	// Check error
+	if err != nil {
+		return nil, nil, err
+	}
+
 	return s.dao.GetAllPaginated(page)
 }
 
-func (s *service) Create(inp *InputCreateTodo) (*models.Todo, error) {
+func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error) {
+	// Check authorization
+	err := s.authSvc.CheckAuthorized(
+		ctx,
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, "Create"),
+		"",
+	)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
 	tt := &models.Todo{
 		Text: inp.Text,
 	}
@@ -28,7 +56,18 @@ func (s *service) Create(inp *InputCreateTodo) (*models.Todo, error) {
 	return s.dao.CreateOrUpdate(tt)
 }
 
-func (s *service) Update(inp *InputUpdateTodo) (*models.Todo, error) {
+func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error) {
+	// Check authorization
+	err := s.authSvc.CheckAuthorized(
+		ctx,
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, "Update"),
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, inp.ID),
+	)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
 	// Search by id first
 	tt, err := s.dao.FindByID(inp.ID)
 	if err != nil {
@@ -40,7 +79,18 @@ func (s *service) Update(inp *InputUpdateTodo) (*models.Todo, error) {
 	return s.dao.CreateOrUpdate(tt)
 }
 
-func (s *service) Close(id string) (*models.Todo, error) {
+func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
+	// Check authorization
+	err := s.authSvc.CheckAuthorized(
+		ctx,
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, "Close"),
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, id),
+	)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
 	// Search by id first
 	tt, err := s.dao.FindByID(id)
 	if err != nil {

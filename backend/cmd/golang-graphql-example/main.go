@@ -105,7 +105,7 @@ func main() {
 	authoSvc := authorization.NewService(cfgManager)
 
 	// Create business services
-	busServices := business.NewServices(logger, db, ld)
+	busServices := business.NewServices(logger, db, authoSvc, ld)
 
 	// Migrate database
 	err = busServices.MigrateDB()

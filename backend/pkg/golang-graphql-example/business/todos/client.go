@@ -1,6 +1,8 @@
 package todos
 
 import (
+	"context"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
@@ -8,12 +10,16 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
+type authorizationService interface {
+	CheckAuthorized(ctx context.Context, action, resource string) error
+}
+
 type Service interface {
 	MigrateDB(systemLogger log.Logger) error
-	GetAllPaginated(page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error)
-	Create(inp *InputCreateTodo) (*models.Todo, error)
-	Update(inp *InputUpdateTodo) (*models.Todo, error)
-	Close(id string) (*models.Todo, error)
+	GetAllPaginated(ctx context.Context, page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error)
+	Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error)
+	Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error)
+	Close(ctx context.Context, id string) (*models.Todo, error)
 }
 
 type InputCreateTodo struct {
@@ -25,9 +31,9 @@ type InputUpdateTodo struct {
 	Text string
 }
 
-func NewService(db database.DB) Service {
+func NewService(db database.DB, authSvc authorizationService) Service {
 	// Create dao
 	dao := daos.NewDao(db)
 
-	return &service{dao: dao}
+	return &service{dao: dao, authSvc: authSvc}
 }
