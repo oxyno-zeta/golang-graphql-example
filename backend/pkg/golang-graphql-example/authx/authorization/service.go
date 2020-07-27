@@ -105,6 +105,22 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 	return true, nil
 }
 
+func (s *service) CheckAuthorized(ctx context.Context, action, resource string) error {
+	// Call is authorized
+	res, err := s.IsAuthorized(ctx, action, resource)
+	// Check error
+	if err != nil {
+		return err
+	}
+
+	// Check not authorized
+	if !res {
+		return ErrForbidden
+	}
+
+	return nil
+}
+
 func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAuthorization, body []byte) (bool, error) {
 	// Get trace from context
 	trace := tracing.GetTraceFromContext(ctx)
