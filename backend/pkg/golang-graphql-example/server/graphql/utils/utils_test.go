@@ -219,6 +219,26 @@ func TestGetPageInput(t *testing.T) {
 				Limit: 2,
 			},
 		},
+		{
+			name: "after is an empty string and first is present",
+			args: args{
+				after: toStarString(""),
+				first: toStarInt(2),
+			},
+			want: &pagination.PageInput{
+				Skip:  0,
+				Limit: 2,
+			},
+		},
+		{
+			name: "before is an empty string",
+			args: args{
+				before: toStarString(""),
+				last:   toStarInt(2),
+			},
+			wantErr:     true,
+			errorString: "last must be used with before element",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

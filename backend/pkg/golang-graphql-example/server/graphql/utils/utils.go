@@ -85,7 +85,7 @@ func GetPageInput(after *string, before *string, first *int, last *int) (*pagina
 		return nil, errors.New("before must be used with last element")
 	}
 	// Check before and last case 2
-	if before == nil && last != nil {
+	if (before == nil || *before == "") && last != nil {
 		return nil, errors.New("last must be used with before element")
 	}
 	// Check first and after
@@ -105,7 +105,7 @@ func GetPageInput(after *string, before *string, first *int, last *int) (*pagina
 	var res pagination.PageInput
 
 	// Before case
-	if before != nil {
+	if before != nil && *before != "" {
 		i, err := parsePaginateCursor(*before)
 		// Check error
 		if err != nil {
@@ -122,7 +122,7 @@ func GetPageInput(after *string, before *string, first *int, last *int) (*pagina
 	}
 
 	// After case
-	if after != nil {
+	if after != nil && *after != "" {
 		i, err := parsePaginateCursor(*after)
 		// Check error
 		if err != nil {
@@ -134,7 +134,7 @@ func GetPageInput(after *string, before *string, first *int, last *int) (*pagina
 	}
 
 	// First not null and after is
-	if after == nil && first != nil {
+	if (after == nil || *after == "") && first != nil {
 		res.Limit = *first
 	}
 
