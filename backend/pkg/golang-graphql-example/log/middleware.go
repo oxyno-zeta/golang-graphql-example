@@ -2,10 +2,10 @@ package log
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 )
 
 type logContextKey struct {
@@ -51,7 +51,7 @@ func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpan
 		logFields["user_agent"] = r.UserAgent()
 		logFields["client_ip"] = c.ClientIP()
 
-		logFields["uri"] = fmt.Sprintf("%s://%s%s", scheme, r.Host, r.RequestURI)
+		logFields["uri"] = utils.GetRequestURL(c.Request)
 
 		// Log request id
 		logFields["request_id"] = getRequestID(c)
