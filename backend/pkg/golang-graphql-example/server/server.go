@@ -108,7 +108,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(svr.tracingSvc.Middleware(middlewares.GetRequestIDFromContext))
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
-	router.Use(svr.metricsCl.Instrument())
+	router.Use(svr.metricsCl.Instrument("business"))
 
 	// Create api prefix path regexp
 	apiReg, err := regexp.Compile("^/api")

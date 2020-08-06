@@ -12,9 +12,9 @@ import (
 
 type prometheusMetrics struct {
 	reqCnt *prometheus.CounterVec
-	resSz  prometheus.Summary
-	reqDur prometheus.Summary
-	reqSz  prometheus.Summary
+	resSz  *prometheus.SummaryVec
+	reqDur *prometheus.SummaryVec
+	reqSz  *prometheus.SummaryVec
 	up     prometheus.Gauge
 }
 
@@ -23,7 +23,7 @@ func (ctx *prometheusMetrics) GetPrometheusHTTPHandler() http.Handler {
 }
 
 // Instrument will instrument gin routes
-func (ctx *prometheusMetrics) Instrument() gin.HandlerFunc {
+func (ctx *prometheusMetrics) Instrument(serverName string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		start := time.Now()
 
@@ -35,10 +35,10 @@ func (ctx *prometheusMetrics) Instrument() gin.HandlerFunc {
 		elapsed := float64(time.Since(start)) / float64(time.Second)
 		resSz := float64(c.Writer.Size())
 
-		ctx.reqDur.Observe(elapsed)
-		ctx.reqCnt.WithLabelValues(status, c.Request.Method, c.Request.Host, c.Request.URL.Path).Inc()
-		ctx.reqSz.Observe(float64(reqSz))
-		ctx.resSz.Observe(resSz)
+		ctx.reqDur.WithLabelValues(serverName).Observe(elapsed)
+		ctx.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, c.Request.URL.Path).Inc()
+		ctx.reqSz.WithLabelValues(serverName).Observe(float64(reqSz))
+		ctx.resSz.WithLabelValues(serverName).Observe(resSz)
 	}
 }
 
@@ -76,31 +76,34 @@ func (ctx *prometheusMetrics) register() {
 			Name: "http_requests_total",
 			Help: "How many HTTP requests processed, partitioned by status code and HTTP method.",
 		},
-		[]string{"status_code", "method", "host", "path"},
+		[]string{"server_name", "status_code", "method", "host", "path"},
 	)
 	prometheus.MustRegister(ctx.reqCnt)
 
-	ctx.reqDur = prometheus.NewSummary(
+	ctx.reqDur = prometheus.NewSummaryVec(
 		prometheus.SummaryOpts{
 			Name: "http_request_duration_seconds",
 			Help: "The HTTP request latencies in seconds.",
 		},
+		[]string{"server_name"},
 	)
 	prometheus.MustRegister(ctx.reqDur)
 
-	ctx.reqSz = prometheus.NewSummary(
+	ctx.reqSz = prometheus.NewSummaryVec(
 		prometheus.SummaryOpts{
 			Name: "http_request_size_bytes",
 			Help: "The HTTP request sizes in bytes.",
 		},
+		[]string{"server_name"},
 	)
 	prometheus.MustRegister(ctx.reqSz)
 
-	ctx.resSz = prometheus.NewSummary(
+	ctx.resSz = prometheus.NewSummaryVec(
 		prometheus.SummaryOpts{
 			Name: "http_response_size_bytes",
 			Help: "The HTTP response sizes in bytes.",
 		},
+		[]string{"server_name"},
 	)
 	prometheus.MustRegister(ctx.resSz)
 

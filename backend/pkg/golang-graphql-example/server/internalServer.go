@@ -58,7 +58,7 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	router.Use(helmet.Default())
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
-	router.Use(svr.metricsCl.Instrument())
+	router.Use(svr.metricsCl.Instrument("internal"))
 
 	// Create a new health instance
 	h := health.New()

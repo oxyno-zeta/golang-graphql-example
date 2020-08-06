@@ -8,7 +8,7 @@ import (
 
 // Client Client metrics interface
 type Client interface {
-	Instrument() gin.HandlerFunc
+	Instrument(serverName string) gin.HandlerFunc
 	GetPrometheusHTTPHandler() http.Handler
 }
 
