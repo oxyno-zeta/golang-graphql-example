@@ -1,14 +1,22 @@
 package log
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
+	"github.com/pkg/errors"
 	logrus "github.com/sirupsen/logrus"
 )
 
 type loggerIns struct {
 	logrus.FieldLogger
+}
+
+// This is dirty pkg/errors.
+type stackTracer interface {
+	StackTrace() errors.StackTrace
 }
 
 func (ll *loggerIns) GetTracingLogger() TracingLogger {
@@ -81,6 +89,32 @@ func (ll *loggerIns) WithError(err error) Logger {
 	// Create new field logger
 	fieldL := ll.FieldLogger.WithError(err)
 
+	addStackTrace := func(pError stackTracer) {
+		// Get stack trace from error
+		st := pError.StackTrace()
+		// Stringify stack trace
+		valued := fmt.Sprintf("%+v", st)
+		// Remove all tabs
+		valued = strings.Replace(valued, "\t", "", -1)
+		// Split on new line
+		stack := strings.Split(valued, "\n")
+		// Remove first empty string
+		stack = stack[1:]
+		// Add stack trace to field logger
+		fieldL = fieldL.WithField("stack", strings.Join(stack, ","))
+	}
+
+	// Check if error is matching stack trace interface
+	if err2, ok := err.(stackTracer); ok {
+		addStackTrace(err2)
+	}
+
+	// Check if error cause is matching stack trace interface
+	if err2, ok := errors.Cause(err).(stackTracer); ok {
+		addStackTrace(err2)
+	}
+
+	// Return new logger
 	return &loggerIns{
 		FieldLogger: fieldL,
 	}

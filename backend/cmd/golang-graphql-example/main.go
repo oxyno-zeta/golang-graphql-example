@@ -28,7 +28,7 @@ func main() {
 	// Load configuration
 	err := cfgManager.Load()
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 
 	// Get configuration
@@ -36,7 +36,7 @@ func main() {
 	// Configure logger
 	err = logger.Configure(cfg.Log.Level, cfg.Log.Format, cfg.Log.FilePath)
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 
 	// Watch change for logger (special case)
@@ -46,7 +46,7 @@ func main() {
 		// Configure logger
 		err = logger.Configure(cfg.Log.Level, cfg.Log.Format, cfg.Log.FilePath)
 		if err != nil {
-			logger.Error(err)
+			logger.WithError(err).Error(err)
 		}
 	})
 
@@ -61,13 +61,13 @@ func main() {
 	tracingSvc, err := tracing.New(cfgManager, logger)
 	// Check error
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 	// Prepare on reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err2 := tracingSvc.Reload()
 		if err2 != nil {
-			logger.Fatal(err2)
+			logger.WithError(err).Fatal(err2)
 		}
 	})
 
@@ -76,13 +76,13 @@ func main() {
 	// Connect to engine
 	err = db.Connect()
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err2 := db.Reconnect()
 		if err != nil {
-			logger.Fatal(err2)
+			logger.WithError(err).Fatal(err2)
 		}
 	})
 
@@ -91,13 +91,13 @@ func main() {
 	// Initialize lock distributor
 	err = ld.Initialize(logger)
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err2 := ld.Initialize(logger)
 		if err != nil {
-			logger.Fatal(err2)
+			logger.WithError(err).Fatal(err2)
 		}
 	})
 
@@ -110,7 +110,7 @@ func main() {
 	// Migrate database
 	err = busServices.MigrateDB()
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 
 	// Create authentication service
@@ -123,12 +123,12 @@ func main() {
 	// Generate server
 	err = svr.GenerateServer()
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 	// Generate internal server
 	err = intSvr.GenerateServer()
 	if err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 
 	// Add checker for internal server
@@ -144,6 +144,6 @@ func main() {
 	g.Go(intSvr.Listen)
 
 	if err := g.Wait(); err != nil {
-		logger.Fatal(err)
+		logger.WithError(err).Fatal(err)
 	}
 }

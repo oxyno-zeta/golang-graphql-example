@@ -7,6 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/pkg/errors"
 
 	// Import this for dialect usage in gorm
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -37,7 +38,7 @@ func (ctx *postresdb) Connect() error {
 	dbResult, err := gorm.Open(cfg.Database.Dialect, cfg.Database.ConnectionURL)
 	// Check if error exists
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Disable logger
 	dbResult.LogMode(false)
@@ -60,7 +61,12 @@ func (ctx *postresdb) Close() error {
 func (ctx *postresdb) Ping() error {
 	// Ping database to test connection
 	pingErr := ctx.db.DB().Ping()
-	return pingErr
+	// Check error
+	if pingErr != nil {
+		return errors.WithStack(pingErr)
+	}
+
+	return nil
 }
 
 func (ctx *postresdb) Reconnect() error {
@@ -71,7 +77,7 @@ func (ctx *postresdb) Reconnect() error {
 	// Connect to new database
 	err := ctx.Connect()
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Wait for 1 sec before closing connection to old db
 	// Here, we suppose that waiting 1 second is enough for reload

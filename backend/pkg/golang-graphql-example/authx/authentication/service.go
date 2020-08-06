@@ -2,7 +2,6 @@ package authentication
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -10,6 +9,8 @@ import (
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/pkg/errors"
 
 	"github.com/coreos/go-oidc"
 	"github.com/gin-gonic/gin"
