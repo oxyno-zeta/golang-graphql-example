@@ -82,6 +82,6 @@ func (ll *loggerIns) WithError(err error) Logger {
 	fieldL := ll.FieldLogger.WithError(err)
 
 	return &loggerIns{
-		FieldLogger: fieldL.Logger,
+		FieldLogger: fieldL,
 	}
 }
