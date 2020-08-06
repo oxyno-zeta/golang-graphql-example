@@ -69,7 +69,7 @@ func (ctx *managercontext) Load() error {
 				return
 			}
 			// Call all hooks
-			funk.ForEach(ctx.onChangeHooks, func(hook func()) { hook() })
+			funk.ForEach(ctx.onChangeHooks, func(hook func()) { go hook() })
 		})
 		// Watch for configuration changes
 		vip.WatchConfig()
@@ -255,7 +255,7 @@ func (ctx *managercontext) loadConfiguration() error {
 					return
 				}
 				// Call all hooks
-				funk.ForEach(ctx.onChangeHooks, func(hook func()) { hook() })
+				funk.ForEach(ctx.onChangeHooks, func(hook func()) { go hook() })
 			})
 			// Add channel to list of channels
 			ctx.internalFileWatchChannels = append(ctx.internalFileWatchChannels, ch)
