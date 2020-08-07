@@ -168,7 +168,7 @@ func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
 		logger := log.GetLoggerFromContext(ctx)
 		// Log error
-		logger.Error(err)
+		logger.WithError(err).Error(err)
 		// Return
 		return gqlgraphql.DefaultErrorPresenter(ctx, err)
 	})
