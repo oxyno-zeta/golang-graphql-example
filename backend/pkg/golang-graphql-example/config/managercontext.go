@@ -291,6 +291,11 @@ func loadBusinessDefaultValues(out *Config) error {
 		out.OPAServerAuthorization.Tags = map[string]string{}
 	}
 
+	// Load default tracing configuration
+	if out.Tracing == nil {
+		out.Tracing = &TracingConfig{Enabled: false}
+	}
+
 	// TODO Load default values based on business rules
 	return nil
 }
