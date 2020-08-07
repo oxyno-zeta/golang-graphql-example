@@ -3,13 +3,9 @@ package authorization
 import (
 	"context"
 
-	"github.com/pkg/errors"
-
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 )
-
-var ErrForbidden = errors.New("forbidden")
 
 type Service interface {
 	// Http middleware
