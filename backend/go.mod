@@ -42,6 +42,7 @@ require (
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
 	google.golang.org/appengine v1.6.5 // indirect
+	gopkg.in/go-playground/assert.v1 v1.2.1
 	gopkg.in/ini.v1 v1.52.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
 )

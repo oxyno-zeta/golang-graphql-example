@@ -244,7 +244,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
 			logger.Error("No auth header or cookie detected, redirect to oidc login")
-			s.redirectOrUnauthorized(c, unauthorizedPathRegexList)
+			redirectOrUnauthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -267,7 +267,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 				Path:     "/",
 			})
 
-			s.redirectOrUnauthorized(c, unauthorizedPathRegexList)
+			redirectOrUnauthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -286,7 +286,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 				Path:     "/",
 			})
 
-			s.redirectOrUnauthorized(c, unauthorizedPathRegexList)
+			redirectOrUnauthorized(c, unauthorizedPathRegexList)
 
 			return
 		}
@@ -303,7 +303,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 	}
 }
 
-func (s *service) redirectOrUnauthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Regexp) {
+func redirectOrUnauthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Regexp) {
 	// Find a potential match into all regexps
 	match := funk.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
 		return reg.MatchString(c.Request.URL.Path)
