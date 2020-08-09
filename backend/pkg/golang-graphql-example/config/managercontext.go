@@ -311,6 +311,8 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 		if err != nil {
 			return nil, err
 		}
+
+		result = append(result, out.OIDCAuthentication.ClientSecret)
 	}
 
 	// TODO Load credential configs here
