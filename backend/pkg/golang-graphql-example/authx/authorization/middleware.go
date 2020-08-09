@@ -1,11 +1,10 @@
 package authorization
 
 import (
-	"fmt"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
@@ -20,17 +19,17 @@ func (s *service) Middleware() gin.HandlerFunc {
 		// Check error
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 
 			return
 		}
 
 		// Check if user is authorized
 		if !authorized {
-			err := fmt.Errorf("forbidden user %s", ouser.GetIdentifier())
+			err = errors.NewForbiddenError("forbidden")
 
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusForbidden, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 
 			return
 		}
