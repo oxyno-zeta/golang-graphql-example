@@ -17,7 +17,7 @@ import (
 )
 
 // Main configuration folder path
-const mainConfigFolderPath = "conf/"
+var mainConfigFolderPath = "conf/"
 
 // TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials
 var TemplateErrLoadingEnvCredentialEmpty = "error loading credentials, environment variable %s is empty"

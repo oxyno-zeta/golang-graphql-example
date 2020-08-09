@@ -21,7 +21,7 @@ const DefaultLockDistributorLeaseDuration = "3s"
 // Default lock distributor heartbeat frequency
 const DefaultLockDistributionHeartbeatFrequency = "1s"
 
-// Default OIDC scopes
+// DefaultOIDCScopes Default OIDC scopes
 var DefaultOIDCScopes = []string{"openid", "email", "profile"}
 
 // Default cookie name
