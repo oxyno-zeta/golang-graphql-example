@@ -15,6 +15,7 @@ import (
 	"github.com/coreos/go-oidc"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
+	cerrors "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
@@ -125,7 +126,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Check if error exists
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
@@ -141,18 +142,18 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		rdVal := c.Query(redirectQueryKey)
 		// Check if rdVal exists and that redirect url value is valid
 		if rdVal != "" && !isValidRedirect(rdVal) {
-			err := errors.New("redirect url is invalid")
+			err := cerrors.NewInvalidInputError("redirect url is invalid")
 
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
 		// Check state
 		if c.Query("state") != state {
-			err := errors.New("state did not match")
+			err := cerrors.NewInvalidInputError("state did not match")
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
@@ -161,31 +162,31 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Check if error exists
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
 		oauth2Token, err := config.Exchange(ctx, c.Query("code"), authParam)
 		if err != nil {
-			err = errors.New("failed to exchange token: " + err.Error())
+			err = cerrors.NewInternalServerError("failed to exchange token: " + err.Error())
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
 		rawIDToken, ok := oauth2Token.Extra("id_token").(string)
 		if !ok {
-			err = errors.New("no id_token field in token")
+			err = cerrors.NewInternalServerError("no id_token field in token")
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
 		idToken, err := verifier.Verify(ctx, rawIDToken)
 		if err != nil {
-			err = errors.New("failed to verify ID Token: " + err.Error())
+			err = cerrors.NewInternalServerError("failed to verify ID Token: " + err.Error())
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 
@@ -195,7 +196,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		err = idToken.Claims(&resp)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 			return
 		}
 		// Now, we know that we can open jwt token to get claims
@@ -237,7 +238,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Check if error exists
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			utils.AnswerWithError(c, err)
 
 			return
 		}
@@ -311,7 +312,9 @@ func redirectOrUnauthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.
 
 	if match != nil {
 		// Unauthorized error
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		err := cerrors.NewUnauthorizedError("unauthorized")
+		utils.AnswerWithError(c, err)
+
 		return
 	}
 
