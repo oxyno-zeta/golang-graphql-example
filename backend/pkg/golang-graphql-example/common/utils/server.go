@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
 func GetRequestURL(r *http.Request) string {
@@ -59,4 +62,17 @@ func parseForwarded(forwarded string) (addr, proto, host string) {
 	}
 
 	return
+}
+
+func AnswerWithError(c *gin.Context, err error) {
+	// Try to cast as common error
+	err2, ok := err.(errors.Error)
+	// Check if cast was a success
+	if ok {
+		c.AbortWithStatusJSON(err2.StatusCode(), gin.H{"error": err2.Error()})
+		return
+	}
+
+	// Manage non common error
+	c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 }

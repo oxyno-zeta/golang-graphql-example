@@ -4,7 +4,16 @@ package utils
 
 import (
 	"net/http"
+	"net/http/httptest"
 	"testing"
+
+	gerrors "errors"
+
+	errors2 "github.com/pkg/errors"
+
+	"github.com/gin-gonic/gin"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetRequestURL(t *testing.T) {
@@ -76,6 +85,55 @@ func Test_RequestHost(t *testing.T) {
 			if got := RequestHost(req); got != tt.want {
 				t.Errorf("RequestHost() = %v, want %v", got, tt.want)
 			}
+		})
+	}
+}
+
+func TestAnswerWithError(t *testing.T) {
+	type args struct {
+		err error
+	}
+	tests := []struct {
+		name               string
+		args               args
+		expectedBody       string
+		expectedStatusCode int
+	}{
+		{
+			name: "not common error",
+			args: args{
+				err: gerrors.New("fake"),
+			},
+			expectedBody:       "{\"error\":\"fake\"}",
+			expectedStatusCode: 500,
+		},
+		{
+			name: "not common error 2",
+			args: args{
+				err: errors2.New("fake"),
+			},
+			expectedBody:       "{\"error\":\"fake\"}",
+			expectedStatusCode: 500,
+		},
+		{
+			name: "common conflict error",
+			args: args{
+				err: errors.NewConflictError("fake"),
+			},
+			expectedBody:       "{\"error\":\"fake\"}",
+			expectedStatusCode: 409,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			w := httptest.NewRecorder()
+			c, _ := gin.CreateTestContext(w)
+
+			AnswerWithError(c, tt.args.err)
+
+			// Tests
+			assert.Equal(t, tt.expectedStatusCode, w.Code)
+			assert.JSONEq(t, tt.expectedBody, w.Body.String())
 		})
 	}
 }

@@ -11,4 +11,5 @@ type Error interface {
 	error
 	stackTracerError
 	Extensions() map[string]interface{}
+	StatusCode() int
 }
