@@ -3,6 +3,7 @@ package config
 import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 
 // Manager
+//go:generate mockgen -destination=./mocks/mock_Manager.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config Manager
 type Manager interface {
 	// Load configuration
 	Load() error
