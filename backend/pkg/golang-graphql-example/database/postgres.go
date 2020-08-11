@@ -41,7 +41,11 @@ func (ctx *postresdb) Connect() error {
 		return errors.WithStack(err)
 	}
 	// Disable logger
-	dbResult.LogMode(false)
+	dbResult = dbResult.LogMode(false)
+	// Set now function
+	dbResult = dbResult.SetNowFuncOverride(func() time.Time {
+		return time.Now().UTC()
+	})
 	// Save gorm db object
 	ctx.db = dbResult
 
