@@ -319,7 +319,10 @@ type Mutation {
   updateTodo(input: UpdateTodo): Todo!
 }
 `, BuiltIn: false},
-	&ast.Source{Name: "graphql/todo.graphql", Input: `type Todo {
+	&ast.Source{Name: "graphql/todo.graphql", Input: `"""
+This represents a Todo object
+"""
+type Todo {
   id: ID!
   text: String!
   done: Boolean!

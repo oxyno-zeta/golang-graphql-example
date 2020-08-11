@@ -1,3 +1,6 @@
+"""
+This represents a Todo object
+"""
 type Todo {
   id: ID!
   text: String!
