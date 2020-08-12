@@ -40,7 +40,7 @@ func (s *service) Initialize(logger log.Logger) error {
 		pglock.WithLeaseDuration(ld),
 		pglock.WithHeartbeatFrequency(hf),
 		pglock.WithCustomTable(cfg.LockDistributor.TableName),
-		pglock.WithLogger(logger),
+		pglock.WithLogger(logger.GetLockDistributorLogger()),
 	)
 	// Check error
 	if err != nil {

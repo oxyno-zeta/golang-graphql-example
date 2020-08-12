@@ -39,12 +39,17 @@ type Logger interface {
 	Panicln(args ...interface{})
 
 	GetTracingLogger() TracingLogger
+	GetLockDistributorLogger() LockDistributorLogger
 }
 
 type TracingLogger interface {
 	Error(msg string)
 	Infof(msg string, args ...interface{})
 	Debugf(msg string, args ...interface{})
+}
+
+type LockDistributorLogger interface {
+	Println(args ...interface{})
 }
 
 func NewLogger() Logger {

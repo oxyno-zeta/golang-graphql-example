@@ -25,6 +25,12 @@ func (ll *loggerIns) GetTracingLogger() TracingLogger {
 	}
 }
 
+func (ll *loggerIns) GetLockDistributorLogger() LockDistributorLogger {
+	return &lockDistributorLogger{
+		logger: ll,
+	}
+}
+
 func (ll *loggerIns) Configure(level string, format string, filePath string) error {
 	// Parse log level
 	lvl, err := logrus.ParseLevel(level)
