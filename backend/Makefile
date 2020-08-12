@@ -4,6 +4,8 @@ PKG				  := github.com/oxyno-zeta/$(PROJECT_NAME)
 
 # go option
 GO        ?= go
+# Uncomment to enable vendor
+GO_VENDOR := # -mod=vendor
 TAGS      :=
 TESTS     := .
 TESTFLAGS :=
@@ -32,6 +34,8 @@ HAS_GIT := $(shell command -v git;)
 HAS_GOLANGCI_LINT := $(shell command -v golangci-lint;)
 HAS_CURL:=$(shell command -v curl;)
 HAS_MOCKGEN:=$(shell command -v mockgen;)
+# Uncomment to use gox instead of goreleaser
+# HAS_GOX := $(shell command -v gox;)
 
 .DEFAULT_GOAL := code/lint
 
@@ -45,7 +49,12 @@ code/lint: setup/dep/install
 
 .PHONY: code/build
 code/build: code/clean setup/dep/install
-	$(GO) build -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
+	$(GO) build $(GO_VENDOR) -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
+
+# Uncomment to use gox instead of goreleaser
+# .PHONY: code/build-cross
+# code/build-cross: code/clean setup/dep/install
+# 	CGO_ENABLED=0 GOFLAGS="$(GO_VENDOR)" gox -output="$(DISTDIR)/bin/{{.OS}}-{{.Arch}}/{{.Dir}}" -osarch='$(TARGETS)' $(if $(TAGS),-tags '$(TAGS)',) -ldflags '$(LDFLAGS)' ${PKG}/cmd/${PROJECT_NAME}
 
 .PHONY: code/build-cross
 code/build-cross: code/clean setup/dep/install
@@ -64,6 +73,11 @@ code/clean:
 #  Release  #
 #############
 
+# Uncomment to use gox instead of goreleaser
+# .PHONY: release/all
+# release/all: code/clean setup/dep/install code/build-cross
+# 	cp Dockerfile $(DISTDIR)/bin/linux-amd64
+
 .PHONY: release/all
 release/all: code/clean setup/dep/install
 ifdef HAS_GORELEASER
@@ -79,15 +93,15 @@ endif
 
 .PHONY: test/all
 test/all: setup/dep/install
-	$(GO) test --tags=unit,integration -v -coverpkg=./pkg/... -coverprofile=c.out.tmp ./pkg/...
+	$(GO) test $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/unit
 test/unit: setup/dep/install
-	$(GO) test --tags=unit -v -coverpkg=./pkg/... -coverprofile=c.out.tmp ./pkg/...
+	$(GO) test $(GO_VENDOR) --tags=unit -v -coverpkg=./pkg/... -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/integration
 test/integration: setup/dep/install
-	$(GO) test --tags=integration -v -coverpkg=./pkg/... -coverprofile=c.out.tmp ./pkg/...
+	$(GO) test $(GO_VENDOR) --tags=integration -v -coverpkg=./pkg/... -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/coverage
 test/coverage:
@@ -140,7 +154,7 @@ setup/services: down/services
 
 .PHONY: setup/generate
 setup/generate:
-	$(GO) generate ./...
+	$(GO) $(GO_VENDOR) generate ./...
 
 .PHONY: setup/dep/install
 setup/dep/install:
@@ -158,9 +172,18 @@ ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
 	go get -u github.com/golang/mock/mockgen@v1.4.3
 endif
+# Uncomment to use gox instead of goreleaser
+# ifndef HAS_GOX
+# 	@echo "=> Installing gox"
+# 	go get -u github.com/mitchellh/gox
+# endif
 	go mod download
 	go mod tidy
 
 .PHONY: setup/dep/update
 setup/dep/update:
 	$(GO) get -u ./...
+
+.PHONY: setup/dep/vendor
+setup/dep/vendor:
+	$(GO) mod vendor

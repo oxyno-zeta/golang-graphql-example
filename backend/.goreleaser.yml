@@ -8,6 +8,8 @@ before:
 builds:
   - main: ./cmd/golang-graphql-example
     binary: golang-graphql-example
+    # flags:
+    #   - -mod=vendor
     ldflags:
       - -extldflags "-static"
       - -X github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version.Version={{ .Tag }}
@@ -35,10 +37,6 @@ archives:
   - format_overrides:
       - goos: windows
         format: zip
-    files:
-      - LICENSE
-      - README.md
-      - templates/*
 checksum:
   name_template: "checksums.txt"
 snapshot:
