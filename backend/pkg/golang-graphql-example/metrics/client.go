@@ -7,8 +7,11 @@ import (
 )
 
 // Client Client metrics interface
+//go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics Client
 type Client interface {
+	// Instrument web server
 	Instrument(serverName string) gin.HandlerFunc
+	// Get prometheus handler for http expose
 	GetPrometheusHTTPHandler() http.Handler
 }
 

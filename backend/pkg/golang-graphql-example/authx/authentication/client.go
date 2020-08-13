@@ -7,6 +7,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 )
 
+//go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication Client
 type Client interface {
 	// Middleware will redirect authentication to basic auth or OIDC depending on request path and resources declared
 	Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.HandlerFunc

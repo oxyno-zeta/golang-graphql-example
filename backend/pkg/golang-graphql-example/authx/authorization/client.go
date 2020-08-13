@@ -7,6 +7,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 )
 
+//go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization Service
 type Service interface {
 	// Http middleware
 	Middleware() gin.HandlerFunc
