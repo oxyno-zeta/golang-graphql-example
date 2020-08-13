@@ -175,7 +175,9 @@ linters-settings:
     # report any comments starting with keywords, this is useful for TODO or FIXME comments that
     # might be left in the code accidentally and should be resolved before merging
     keywords:
-      [] # default keywords are TODO, BUG, and FIXME, these can be overwritten by this setting
+      # default keywords are TODO, BUG, and FIXME, these can be overwritten by this setting
+      - BUG
+      - FIXME
       # - NOTE
       # - OPTIMIZE # marks code that should be optimized before merging
       # - HACK # marks hack-arounds that should be removed before merging
@@ -225,7 +227,6 @@ linters:
     - maligned
     - depguard
     - misspell
-    - lll
     - unparam
     - dogsled
     - nakedret
@@ -240,6 +241,7 @@ linters:
     - gochecknoglobals
     - gocyclo
     - funlen
+    - lll
     - gocognit
   disable-all: false
   presets:
