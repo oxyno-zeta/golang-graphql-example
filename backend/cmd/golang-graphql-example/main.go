@@ -65,9 +65,9 @@ func main() {
 	}
 	// Prepare on reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err2 := tracingSvc.Reload()
-		if err2 != nil {
-			logger.WithError(err).Fatal(err2)
+		err = tracingSvc.Reload()
+		if err != nil {
+			logger.WithError(err).Fatal(err)
 		}
 	})
 
@@ -80,9 +80,9 @@ func main() {
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err2 := db.Reconnect()
+		err = db.Reconnect()
 		if err != nil {
-			logger.WithError(err).Fatal(err2)
+			logger.WithError(err).Fatal(err)
 		}
 	})
 
@@ -95,9 +95,9 @@ func main() {
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err2 := ld.Initialize(logger)
+		err = ld.Initialize(logger)
 		if err != nil {
-			logger.WithError(err).Fatal(err2)
+			logger.WithError(err).Fatal(err)
 		}
 	})
 
