@@ -28,6 +28,14 @@ func GetLoggerFromGin(c *gin.Context) Logger {
 	return logger
 }
 
+func SetLoggerToContext(ctx context.Context, logger Logger) context.Context {
+	return context.WithValue(ctx, loggerCtxKey, logger)
+}
+
+func SetLoggerToGin(c *gin.Context, logger Logger) {
+	c.Set(loggerGinCtxKey, logger)
+}
+
 func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpanID func(ctx context.Context) string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		t1 := time.Now()
@@ -67,8 +75,8 @@ func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpan
 		requestLogger.Debugln("request started")
 
 		// Add logger to request
-		c.Set(loggerGinCtxKey, requestLogger)
-		c.Request = c.Request.WithContext(context.WithValue(c.Request.Context(), loggerCtxKey, requestLogger))
+		SetLoggerToGin(c, requestLogger)
+		c.Request = c.Request.WithContext(SetLoggerToContext(c.Request.Context(), requestLogger))
 
 		// Next
 		c.Next()
