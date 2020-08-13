@@ -49,6 +49,14 @@ func GetAuthenticatedUserFromGin(c *gin.Context) *models.OIDCUser {
 	return res1
 }
 
+func SetAuthenticatedUserToContext(ctx context.Context, us *models.OIDCUser) context.Context {
+	return context.WithValue(ctx, userContextKey, us)
+}
+
+func SetAuthenticatedUserToGin(c *gin.Context, us *models.OIDCUser) {
+	c.Set(userContextKeyName, us)
+}
+
 func buildOauthRedirectURIParam(mainRedirectURLStr, rdVal string) (oauth2.AuthCodeOption, error) {
 	oidcRedirectURL, err := url.Parse(mainRedirectURLStr)
 	// Check if error exists
@@ -292,12 +300,10 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 			return
 		}
 
-		// Add user to request context by creating a new context
-		ctx := context.WithValue(c.Request.Context(), userContextKey, &ouser)
 		// Create new request with new context
-		c.Request = c.Request.WithContext(ctx)
+		c.Request = c.Request.WithContext(SetAuthenticatedUserToContext(c.Request.Context(), &ouser))
 		// Add it to gin context
-		c.Set(userContextKeyName, &ouser)
+		SetAuthenticatedUserToGin(c, &ouser)
 
 		logger.Infof("OIDC User authenticated: %s", ouser.GetIdentifier())
 		c.Next()
