@@ -35,7 +35,7 @@ func (ctx *postresdb) Connect() error {
 
 	ctx.logger.Debugf("Trying to connect to database engine of type %s", cfg.Database.Dialect)
 	// Connect to database
-	dbResult, err := gorm.Open(cfg.Database.Dialect, cfg.Database.ConnectionURL)
+	dbResult, err := gorm.Open(cfg.Database.Dialect, cfg.Database.ConnectionURL.Value)
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
