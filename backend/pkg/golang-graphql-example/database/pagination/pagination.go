@@ -33,7 +33,7 @@ func Paging(db *gorm.DB, filterFunc func(db *gorm.DB) *gorm.DB, orderBy []string
 	// Check if order by exists
 	if len(orderBy) == 0 {
 		// Set default
-		orderBy = []string{"created_at ASC"}
+		orderBy = []string{"created_at DESC"}
 	}
 
 	// Apply order by
