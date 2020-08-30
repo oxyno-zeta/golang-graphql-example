@@ -9,7 +9,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/pkg/errors"
 
-	// Import this for dialect usage in gorm
+	// Import this for dialect usage in gorm.
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
@@ -23,12 +23,12 @@ func (ctx *postresdb) GetSQLDB() *sql.DB {
 	return ctx.db.DB()
 }
 
-// GetGormDB will return a gorm database object
+// GetGormDB will return a gorm database object.
 func (ctx *postresdb) GetGormDB() *gorm.DB {
 	return ctx.db
 }
 
-// Connect will connect to database engine
+// Connect will connect to database engine.
 func (ctx *postresdb) Connect() error {
 	// Get configuration
 	cfg := ctx.cfgManager.GetConfig()
@@ -55,13 +55,14 @@ func (ctx *postresdb) Connect() error {
 	return nil
 }
 
-// Close will close connection to database
+// Close will close connection to database.
 func (ctx *postresdb) Close() error {
 	ctx.logger.Info("Closing database connection")
+
 	return ctx.db.Close()
 }
 
-// Ping will ping database engine in order to test connection to engine
+// Ping will ping database engine in order to test connection to engine.
 func (ctx *postresdb) Ping() error {
 	// Ping database to test connection
 	pingErr := ctx.db.DB().Ping()

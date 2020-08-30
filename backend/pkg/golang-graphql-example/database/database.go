@@ -10,21 +10,21 @@ import (
 
 //go:generate mockgen -destination=./mocks/mock_DB.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database DB
 type DB interface {
-	// Get Gorm db object
+	// Get Gorm db object.
 	GetGormDB() *gorm.DB
-	// Get SQL db object
+	// Get SQL db object.
 	GetSQLDB() *sql.DB
-	// Connect to database
+	// Connect to database.
 	Connect() error
-	// Close database connection
+	// Close database connection.
 	Close() error
-	// Ping database
+	// Ping database.
 	Ping() error
-	// Reconnect to database
+	// Reconnect to database.
 	Reconnect() error
 }
 
-// NewDatabase will generate a new DB object
+// NewDatabase will generate a new DB object.
 func NewDatabase(cfgManager config.Manager, logger log.Logger) DB {
 	return &postresdb{logger: logger, cfgManager: cfgManager}
 }

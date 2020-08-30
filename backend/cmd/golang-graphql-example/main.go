@@ -135,7 +135,7 @@ func main() {
 	intSvr.AddChecker(&server.CheckerInput{
 		Name:     "database",
 		CheckFn:  db.Ping,
-		Interval: 2 * time.Second,
+		Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
 	})
 
 	var g errgroup.Group

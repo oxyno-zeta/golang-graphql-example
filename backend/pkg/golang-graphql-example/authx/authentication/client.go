@@ -9,9 +9,9 @@ import (
 
 //go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication Client
 type Client interface {
-	// Middleware will redirect authentication to basic auth or OIDC depending on request path and resources declared
+	// Middleware will redirect authentication to basic auth or OIDC depending on request path and resources declared.
 	Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.HandlerFunc
-	// OIDCEndpoints will set OpenID Connect endpoints for authentication and callback
+	// OIDCEndpoints will set OpenID Connect endpoints for authentication and callback.
 	OIDCEndpoints(router gin.IRouter) error
 }
 

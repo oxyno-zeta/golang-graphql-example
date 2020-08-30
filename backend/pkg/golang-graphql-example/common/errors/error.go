@@ -6,7 +6,7 @@ type stackTracerError interface {
 	StackTrace() errors.StackTrace
 }
 
-// Error is the interface all common errors must implement
+// Error is the interface all common errors must implement.
 type Error interface {
 	error
 	stackTracerError

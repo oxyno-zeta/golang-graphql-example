@@ -15,7 +15,7 @@ type Client interface {
 	GetPrometheusHTTPHandler() http.Handler
 }
 
-// NewMetricsClient will generate a new Client
+// NewMetricsClient will generate a new Client.
 func NewMetricsClient() Client {
 	ctx := &prometheusMetrics{}
 	ctx.register()

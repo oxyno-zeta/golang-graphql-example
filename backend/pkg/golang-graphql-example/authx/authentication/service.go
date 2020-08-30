@@ -35,13 +35,14 @@ type service struct {
 	cfgManager config.Manager
 }
 
-// GetAuthenticatedUser will get authenticated user in context
+// GetAuthenticatedUser will get authenticated user in context.
 func GetAuthenticatedUserFromContext(ctx context.Context) *models.OIDCUser {
 	res, _ := ctx.Value(userContextKey).(*models.OIDCUser)
+
 	return res
 }
 
-// GetAuthenticatedUser will get authenticated user in context
+// GetAuthenticatedUser will get authenticated user in context.
 func GetAuthenticatedUserFromGin(c *gin.Context) *models.OIDCUser {
 	res, _ := c.Get(userContextKeyName)
 	res1 := res.(*models.OIDCUser)
@@ -49,10 +50,12 @@ func GetAuthenticatedUserFromGin(c *gin.Context) *models.OIDCUser {
 	return res1
 }
 
+// SetAuthenticatedUserToContext will set user in context.
 func SetAuthenticatedUserToContext(ctx context.Context, us *models.OIDCUser) context.Context {
 	return context.WithValue(ctx, userContextKey, us)
 }
 
+// SetAuthenticatedUserToGin will set user in gin context.
 func SetAuthenticatedUserToGin(c *gin.Context, us *models.OIDCUser) {
 	c.Set(userContextKeyName, us)
 }
@@ -80,7 +83,7 @@ func buildOauthRedirectURIParam(mainRedirectURLStr, rdVal string) (oauth2.AuthCo
 	return authP, nil
 }
 
-// OIDCEndpoints will set OpenID Connect endpoints for authentication and callback
+// OIDCEndpoints will set OpenID Connect endpoints for authentication and callback.
 func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	ctx := context.Background()
 
@@ -135,6 +138,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if err != nil {
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -154,6 +158,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -162,6 +167,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			err := cerrors.NewInvalidInputError("state did not match")
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -171,6 +177,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if err != nil {
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -179,6 +186,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			err = cerrors.NewInternalServerError("failed to exchange token: " + err.Error())
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -187,6 +195,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			err = cerrors.NewInternalServerError("no id_token field in token")
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -195,6 +204,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			err = cerrors.NewInternalServerError("failed to verify ID Token: " + err.Error())
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 
@@ -205,6 +215,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		if err != nil {
 			logger.Error(err)
 			utils.AnswerWithError(c, err)
+
 			return
 		}
 		resp.OriginalToken = rawIDToken
@@ -370,7 +381,7 @@ func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string,
 	if err != nil {
 		logger.Debug("Can't load auth cookie")
 
-		if err != http.ErrNoCookie {
+		if !errors.Is(err, http.ErrNoCookie) {
 			return "", err
 		}
 	}
@@ -382,7 +393,7 @@ func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string,
 	return "", nil
 }
 
-// IsValidRedirect checks whether the redirect URL is whitelisted
+// IsValidRedirect checks whether the redirect URL is whitelisted.
 func isValidRedirect(redirect string) bool {
 	return strings.HasPrefix(redirect, "http://") || strings.HasPrefix(redirect, "https://")
 }

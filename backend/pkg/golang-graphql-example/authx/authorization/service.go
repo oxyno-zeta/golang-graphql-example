@@ -98,6 +98,7 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 	// Check if user isn't authorized
 	if !authorized {
 		logger.Infof("User %s not authorized for action %s on resource %s", user.GetIdentifier(), action, resource)
+
 		return false, nil
 	}
 
@@ -131,8 +132,15 @@ func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServer
 	// Add data
 	childTrace.SetTag("opa.uri", opaCfg.URL)
 
+	// Change NewRequest to NewRequestWithContext and pass context it
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, opaCfg.URL, bytes.NewBuffer(body))
+	if err != nil {
+		return false, err
+	}
+	// Add content type
+	req.Header.Add("Content-Type", "application/json")
 	// Making request to OPA server
-	resp, err := http.Post(opaCfg.URL, "application/json", bytes.NewBuffer(body))
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return false, err
 	}

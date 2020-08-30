@@ -16,10 +16,10 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-// Main configuration folder path
+// Main configuration folder path.
 var mainConfigFolderPath = "conf/"
 
-// TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials
+// TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials.
 var TemplateErrLoadingEnvCredentialEmpty = "error loading credentials, environment variable %s is empty"
 
 var validate = validator.New()
@@ -78,7 +78,7 @@ func (ctx *managercontext) Load() error {
 	return nil
 }
 
-// Imported and modified from viper v1.7.0
+// Imported and modified from viper v1.7.0.
 func (ctx *managercontext) watchInternalFile(filePath string, forceStop chan bool, onChange func()) {
 	initWG := sync.WaitGroup{}
 	initWG.Add(1)
@@ -102,10 +102,12 @@ func (ctx *managercontext) watchInternalFile(filePath string, forceStop chan boo
 				select {
 				case <-forceStop:
 					eventsWG.Done()
+
 					return
 				case event, ok := <-watcher.Events:
 					if !ok { // 'Events' channel is closed
 						eventsWG.Done()
+
 						return
 					}
 
@@ -116,13 +118,14 @@ func (ctx *managercontext) watchInternalFile(filePath string, forceStop chan boo
 					const writeOrCreateMask = fsnotify.Write | fsnotify.Create
 					if (filepath.Clean(event.Name) == configFile &&
 						event.Op&writeOrCreateMask != 0) ||
-						(currentConfigFile != "" && currentConfigFile != realConfigFile) { // nolint: whitespace
+						(currentConfigFile != "" && currentConfigFile != realConfigFile) {
 						realConfigFile = currentConfigFile
 
 						// Call on change
 						onChange()
 					} else if filepath.Clean(event.Name) == configFile && event.Op&fsnotify.Remove&fsnotify.Remove != 0 {
 						eventsWG.Done()
+
 						return
 					}
 
@@ -272,7 +275,7 @@ func (ctx *managercontext) loadConfiguration() error {
 	return nil
 }
 
-// Load default values based on business rules
+// Load default values based on business rules.
 func loadBusinessDefaultValues(out *Config) error {
 	// Load default oidc configurations
 	if out.OIDCAuthentication != nil {
@@ -300,7 +303,7 @@ func loadBusinessDefaultValues(out *Config) error {
 	return nil
 }
 
-// Load credential configs here
+// Load credential configs here.
 func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 	// Initialize answer
 	result := make([]*CredentialConfig, 0)
@@ -350,7 +353,7 @@ func loadCredential(credCfg *CredentialConfig) error {
 	return nil
 }
 
-// GetConfig allow to get configuration object
+// GetConfig allow to get configuration object.
 func (ctx *managercontext) GetConfig() *Config {
 	return ctx.cfg
 }

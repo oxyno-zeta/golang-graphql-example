@@ -15,6 +15,7 @@ import (
 
 const maxPageSize = 50
 const paginationIDPrefix = "paginate"
+const relayIDSplitSize = 2
 
 func ToIDRelay(prefix, id string) string {
 	return base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", prefix, id)))
@@ -31,7 +32,7 @@ func FromIDRelay(relayID, prefix string) (string, error) {
 	idContent := string(idBb)
 	// Split
 	sp := strings.Split(idContent, ":")
-	if len(sp) != 2 {
+	if len(sp) != relayIDSplitSize {
 		return "", errors.New("format error on relay token")
 	}
 	// Check that first item of split is a good

@@ -22,7 +22,7 @@ func (ctx *prometheusMetrics) GetPrometheusHTTPHandler() http.Handler {
 	return promhttp.Handler()
 }
 
-// Instrument will instrument gin routes
+// Instrument will instrument gin routes.
 func (ctx *prometheusMetrics) Instrument(serverName string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		start := time.Now()

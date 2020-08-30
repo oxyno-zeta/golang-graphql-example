@@ -2,6 +2,7 @@ package log
 
 import (
 	"context"
+	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -16,8 +17,11 @@ const loggerGinCtxKey = "LoggerCtxKey"
 
 var loggerCtxKey = &logContextKey{name: "logger"}
 
+const nsToMs = 1000000.0
+
 func GetLoggerFromContext(ctx context.Context) Logger {
 	logger, _ := ctx.Value(loggerCtxKey).(Logger)
+
 	return logger
 }
 
@@ -89,18 +93,18 @@ func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpan
 		endFields := map[string]interface{}{
 			"resp_status":       status,
 			"resp_bytes_length": bytes,
-			"resp_elapsed_ms":   float64(time.Since(t1).Nanoseconds()) / 1000000.0,
+			"resp_elapsed_ms":   float64(time.Since(t1).Nanoseconds()) / nsToMs,
 		}
 
 		endRequestLogger := requestLogger.WithFields(endFields)
 
 		logFunc := endRequestLogger.Infoln
 
-		if status >= 300 && status < 400 {
+		if status >= http.StatusMultipleChoices && status < http.StatusBadGateway {
 			logFunc = endRequestLogger.Warnln
 		}
 
-		if status >= 400 {
+		if status >= http.StatusBadGateway {
 			logFunc = endRequestLogger.Errorln
 		}
 

@@ -7,5 +7,6 @@ type customHealthChecker struct {
 func (chc *customHealthChecker) Status() (interface{}, error) {
 	// Run function
 	err := chc.fn()
+
 	return nil, err
 }

@@ -39,7 +39,6 @@ type Server struct {
 	server            *http.Server
 }
 
-// nolint:whitespace
 func NewServer(
 	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client,
 	tracingSvc tracing.Service, busiServices *business.Services,
@@ -158,7 +157,7 @@ func (svr *Server) Listen() error {
 	return err
 }
 
-// Defining the Graphql handler
+// Defining the Graphql handler.
 func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
@@ -180,7 +179,7 @@ func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	}
 }
 
-// Defining the Playground handler
+// Defining the Playground handler.
 func playgroundHandler() gin.HandlerFunc {
 	h := playground.Handler("GraphQL", "/api/graphql")
 

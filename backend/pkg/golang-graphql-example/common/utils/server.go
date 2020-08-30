@@ -9,6 +9,8 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
+const forwardedLength = 2
+
 func GetRequestURL(r *http.Request) string {
 	scheme := "http"
 	if r.TLS != nil {
@@ -45,7 +47,7 @@ func parseForwarded(forwarded string) (addr, proto, host string) {
 	}
 
 	for _, forwardedPair := range strings.Split(forwarded, ";") {
-		if tv := strings.SplitN(forwardedPair, "=", 2); len(tv) == 2 {
+		if tv := strings.SplitN(forwardedPair, "=", forwardedLength); len(tv) == forwardedLength {
 			token, value := tv[0], tv[1]
 			token = strings.TrimSpace(token)
 			value = strings.TrimSpace(strings.Trim(value, `"`))
@@ -70,6 +72,7 @@ func AnswerWithError(c *gin.Context, err error) {
 	// Check if cast was a success
 	if ok {
 		c.AbortWithStatusJSON(err2.StatusCode(), gin.H{"error": err2.Error()})
+
 		return
 	}
 

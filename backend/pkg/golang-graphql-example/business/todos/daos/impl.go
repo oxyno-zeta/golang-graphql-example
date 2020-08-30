@@ -1,6 +1,8 @@
 package daos
 
 import (
+	"errors"
+
 	"github.com/jinzhu/gorm"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
@@ -32,7 +34,7 @@ func (d *dao) FindByID(id string) (*models.Todo, error) {
 	err := dbres.Error
 	if err != nil {
 		// Check if it is a not found error
-		if err == gorm.ErrRecordNotFound {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, nil
 		}
 

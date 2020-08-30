@@ -9,7 +9,7 @@ type PageInput struct {
 	Limit int
 }
 
-// PageOutput
+// PageOutput.
 type PageOutput struct {
 	TotalRecord int
 	Offset      int
@@ -19,7 +19,7 @@ type PageOutput struct {
 	HasNext     bool
 }
 
-// Paging
+// Paging.
 func Paging(db *gorm.DB, filterFunc func(db *gorm.DB) *gorm.DB, orderBy []string, p *PageInput, result interface{}) (*PageOutput, error) {
 	if p.Limit == 0 {
 		p.Limit = 10

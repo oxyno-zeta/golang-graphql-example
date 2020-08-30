@@ -19,6 +19,7 @@ type service struct {
 
 func (s *service) MigrateDB(systemLogger log.Logger) error {
 	systemLogger.Debug("Migrate database for Todos")
+
 	return s.dao.MigrateDB()
 }
 
