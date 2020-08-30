@@ -207,6 +207,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			utils.AnswerWithError(c, err)
 			return
 		}
+		resp.OriginalToken = rawIDToken
 		// Now, we know that we can open jwt token to get claims
 
 		// Build cookie
