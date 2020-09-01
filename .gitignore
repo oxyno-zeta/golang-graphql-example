@@ -137,4 +137,4 @@ dist/
 _dist/
 coverage.html
 *.tar.gz
-run/
+.run/
