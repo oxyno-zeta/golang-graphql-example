@@ -170,7 +170,7 @@ ifndef HAS_GIT
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
-	go get -u github.com/golang/mock/mockgen@v1.4.3
+	go get -u github.com/golang/mock/mockgen@v1.4.4
 endif
 # Uncomment to use gox instead of goreleaser
 # ifndef HAS_GOX
