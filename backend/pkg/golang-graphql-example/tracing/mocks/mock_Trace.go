@@ -10,42 +10,42 @@ import (
 	reflect "reflect"
 )
 
-// MockTrace is a mock of Trace interface.
+// MockTrace is a mock of Trace interface
 type MockTrace struct {
 	ctrl     *gomock.Controller
 	recorder *MockTraceMockRecorder
 }
 
-// MockTraceMockRecorder is the mock recorder for MockTrace.
+// MockTraceMockRecorder is the mock recorder for MockTrace
 type MockTraceMockRecorder struct {
 	mock *MockTrace
 }
 
-// NewMockTrace creates a new mock instance.
+// NewMockTrace creates a new mock instance
 func NewMockTrace(ctrl *gomock.Controller) *MockTrace {
 	mock := &MockTrace{ctrl: ctrl}
 	mock.recorder = &MockTraceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use.
+// EXPECT returns an object that allows the caller to indicate expected use
 func (m *MockTrace) EXPECT() *MockTraceMockRecorder {
 	return m.recorder
 }
 
-// Finish mocks base method.
+// Finish mocks base method
 func (m *MockTrace) Finish() {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "Finish")
 }
 
-// Finish indicates an expected call of Finish.
+// Finish indicates an expected call of Finish
 func (mr *MockTraceMockRecorder) Finish() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Finish", reflect.TypeOf((*MockTrace)(nil).Finish))
 }
 
-// GetChildTrace mocks base method.
+// GetChildTrace mocks base method
 func (m *MockTrace) GetChildTrace(arg0 string) tracing.Trace {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetChildTrace", arg0)
@@ -53,13 +53,13 @@ func (m *MockTrace) GetChildTrace(arg0 string) tracing.Trace {
 	return ret0
 }
 
-// GetChildTrace indicates an expected call of GetChildTrace.
+// GetChildTrace indicates an expected call of GetChildTrace
 func (mr *MockTraceMockRecorder) GetChildTrace(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChildTrace", reflect.TypeOf((*MockTrace)(nil).GetChildTrace), arg0)
 }
 
-// GetTraceID mocks base method.
+// GetTraceID mocks base method
 func (m *MockTrace) GetTraceID() string {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTraceID")
@@ -67,19 +67,19 @@ func (m *MockTrace) GetTraceID() string {
 	return ret0
 }
 
-// GetTraceID indicates an expected call of GetTraceID.
+// GetTraceID indicates an expected call of GetTraceID
 func (mr *MockTraceMockRecorder) GetTraceID() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTraceID", reflect.TypeOf((*MockTrace)(nil).GetTraceID))
 }
 
-// SetTag mocks base method.
+// SetTag mocks base method
 func (m *MockTrace) SetTag(arg0 string, arg1 interface{}) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "SetTag", arg0, arg1)
 }
 
-// SetTag indicates an expected call of SetTag.
+// SetTag indicates an expected call of SetTag
 func (mr *MockTraceMockRecorder) SetTag(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTag", reflect.TypeOf((*MockTrace)(nil).SetTag), arg0, arg1)

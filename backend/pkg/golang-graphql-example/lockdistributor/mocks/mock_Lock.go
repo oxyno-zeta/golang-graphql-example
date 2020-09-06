@@ -9,30 +9,30 @@ import (
 	reflect "reflect"
 )
 
-// MockLock is a mock of Lock interface.
+// MockLock is a mock of Lock interface
 type MockLock struct {
 	ctrl     *gomock.Controller
 	recorder *MockLockMockRecorder
 }
 
-// MockLockMockRecorder is the mock recorder for MockLock.
+// MockLockMockRecorder is the mock recorder for MockLock
 type MockLockMockRecorder struct {
 	mock *MockLock
 }
 
-// NewMockLock creates a new mock instance.
+// NewMockLock creates a new mock instance
 func NewMockLock(ctrl *gomock.Controller) *MockLock {
 	mock := &MockLock{ctrl: ctrl}
 	mock.recorder = &MockLockMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use.
+// EXPECT returns an object that allows the caller to indicate expected use
 func (m *MockLock) EXPECT() *MockLockMockRecorder {
 	return m.recorder
 }
 
-// Acquire mocks base method.
+// Acquire mocks base method
 func (m *MockLock) Acquire() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Acquire")
@@ -40,13 +40,13 @@ func (m *MockLock) Acquire() error {
 	return ret0
 }
 
-// Acquire indicates an expected call of Acquire.
+// Acquire indicates an expected call of Acquire
 func (mr *MockLockMockRecorder) Acquire() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Acquire", reflect.TypeOf((*MockLock)(nil).Acquire))
 }
 
-// Release mocks base method.
+// Release mocks base method
 func (m *MockLock) Release() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Release")
@@ -54,7 +54,7 @@ func (m *MockLock) Release() error {
 	return ret0
 }
 
-// Release indicates an expected call of Release.
+// Release indicates an expected call of Release
 func (mr *MockLockMockRecorder) Release() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Release", reflect.TypeOf((*MockLock)(nil).Release))

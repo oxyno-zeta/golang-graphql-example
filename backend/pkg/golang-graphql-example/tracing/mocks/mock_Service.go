@@ -12,30 +12,30 @@ import (
 	reflect "reflect"
 )
 
-// MockService is a mock of Service interface.
+// MockService is a mock of Service interface
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
 }
 
-// MockServiceMockRecorder is the mock recorder for MockService.
+// MockServiceMockRecorder is the mock recorder for MockService
 type MockServiceMockRecorder struct {
 	mock *MockService
 }
 
-// NewMockService creates a new mock instance.
+// NewMockService creates a new mock instance
 func NewMockService(ctrl *gomock.Controller) *MockService {
 	mock := &MockService{ctrl: ctrl}
 	mock.recorder = &MockServiceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use.
+// EXPECT returns an object that allows the caller to indicate expected use
 func (m *MockService) EXPECT() *MockServiceMockRecorder {
 	return m.recorder
 }
 
-// GetTracer mocks base method.
+// GetTracer mocks base method
 func (m *MockService) GetTracer() opentracing.Tracer {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTracer")
@@ -43,13 +43,13 @@ func (m *MockService) GetTracer() opentracing.Tracer {
 	return ret0
 }
 
-// GetTracer indicates an expected call of GetTracer.
+// GetTracer indicates an expected call of GetTracer
 func (mr *MockServiceMockRecorder) GetTracer() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTracer", reflect.TypeOf((*MockService)(nil).GetTracer))
 }
 
-// Middleware mocks base method.
+// Middleware mocks base method
 func (m *MockService) Middleware(arg0 func(context.Context) string) gin.HandlerFunc {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Middleware", arg0)
@@ -57,13 +57,13 @@ func (m *MockService) Middleware(arg0 func(context.Context) string) gin.HandlerF
 	return ret0
 }
 
-// Middleware indicates an expected call of Middleware.
+// Middleware indicates an expected call of Middleware
 func (mr *MockServiceMockRecorder) Middleware(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Middleware", reflect.TypeOf((*MockService)(nil).Middleware), arg0)
 }
 
-// Reload mocks base method.
+// Reload mocks base method
 func (m *MockService) Reload() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Reload")
@@ -71,7 +71,7 @@ func (m *MockService) Reload() error {
 	return ret0
 }
 
-// Reload indicates an expected call of Reload.
+// Reload indicates an expected call of Reload
 func (mr *MockServiceMockRecorder) Reload() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reload", reflect.TypeOf((*MockService)(nil).Reload))
