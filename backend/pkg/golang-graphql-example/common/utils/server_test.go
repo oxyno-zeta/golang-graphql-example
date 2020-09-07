@@ -120,7 +120,7 @@ func TestAnswerWithError(t *testing.T) {
 			args: args{
 				err: errors.NewConflictError("fake"),
 			},
-			expectedBody:       "{\"error\":\"fake\"}",
+			expectedBody:       "{\"error\":\"fake\",\"extensions\":{\"code\":\"CONFLICT\"}}",
 			expectedStatusCode: 409,
 		},
 	}

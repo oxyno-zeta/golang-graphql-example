@@ -71,7 +71,10 @@ func AnswerWithError(c *gin.Context, err error) {
 	err2, ok := err.(errors.Error)
 	// Check if cast was a success
 	if ok {
-		c.AbortWithStatusJSON(err2.StatusCode(), gin.H{"error": err2.Error()})
+		c.AbortWithStatusJSON(err2.StatusCode(), gin.H{
+			"error":      err2.Error(),
+			"extensions": err2.Extensions(),
+		})
 
 		return
 	}

@@ -114,7 +114,7 @@ func Test_authentication(t *testing.T) {
 				"Content-Type": "application/json; charset=utf-8",
 			},
 			checkBody:    true,
-			expectedBody: "{\"error\":\"unauthorized\"}",
+			expectedBody: "{\"error\":\"unauthorized\",\"extensions\":{\"code\":\"UNAUTHORIZED\"}}",
 		},
 		{
 			name: "invalid token should redirect to login path",

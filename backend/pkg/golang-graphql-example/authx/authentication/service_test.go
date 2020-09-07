@@ -268,7 +268,7 @@ func Test_service_redirectOrUnauthorized(t *testing.T) {
 			expectedStatusCode:     401,
 			expectedLocationHeader: "",
 			checkBody:              true,
-			expectedBody:           "{\"error\":\"unauthorized\"}",
+			expectedBody:           "{\"error\":\"unauthorized\",\"extensions\":{\"code\":\"UNAUTHORIZED\"}}",
 		},
 	}
 	for _, tt := range tests {
