@@ -32,6 +32,5 @@ require (
 	github.com/vektah/gqlparser/v2 v2.0.1
 	golang.org/x/oauth2 v0.0.0-20200902213428-5d25da1a8d43
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
-	golang.org/x/tools v0.0.0-20200904185747-39188db58858 // indirect
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
 )
