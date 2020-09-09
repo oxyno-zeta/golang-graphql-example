@@ -43,6 +43,9 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  SortOrderEnum:
+    model:
+      - ./pkg/golang-graphql-example/database/pagination.SortOrderEnum
   Todo:
     model:
       - github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models.Todo

@@ -1,6 +1,26 @@
+"""
+Pagination information
+"""
 type PageInfo {
+  """
+  Has a next page ?
+  """
   hasNextPage: Boolean!
+  """
+  Has a previous page ?
+  """
   hasPreviousPage: Boolean!
+  """
+  Shortcut to first edge cursor in the result chunk
+  """
   startCursor: String
+  """
+  Shortcut to last edge cursor in the result chunk
+  """
   endCursor: String
+}
+
+enum SortOrderEnum {
+  ASC
+  DESC
 }
