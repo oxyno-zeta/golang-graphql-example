@@ -4,6 +4,8 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+const dbColTagName = "db_col"
+
 type PageInput struct {
 	Skip  int
 	Limit int
