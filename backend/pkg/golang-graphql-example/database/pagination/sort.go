@@ -32,17 +32,13 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	indData := indirect.Interface()
 	// Get type of indirect value
 	typeOfIndi := reflect.TypeOf(indData)
+	// Get type of searched enum
+	supportedEnumType := reflect.TypeOf(&SortOrderEnumAsc)
+
 	// Loop over all num fields
 	for i := 0; i < indirect.NumField(); i++ {
 		// Get field type
 		fType := typeOfIndi.Field(i)
-		// Get field value
-		fVal := indirect.Field(i)
-		// Test if field is nil
-		if fVal.IsNil() {
-			// Skip field because of nil
-			continue
-		}
 		// Get tag on field
 		tagVal := fType.Tag.Get(dbColTagName)
 		// Check that field have a tag set and correct
@@ -50,15 +46,21 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 			// Skip this value
 			continue
 		}
+		// Check that type is supported
+		if fType.Type != supportedEnumType {
+			return nil, errors.NewInternalServerError("field with sort tag must be a *SortOrderEnum")
+		}
+		// Get field value
+		fVal := indirect.Field(i)
+		// Test if field is nil
+		if fVal.IsNil() {
+			// Skip field because of nil
+			continue
+		}
 		// Get value from field
 		val := fVal.Interface()
 		// Cast value to Sort Order Enum
-		enu, ok := val.(*SortOrderEnum)
-		// Check if cast is ok
-		if !ok {
-			// Cannot cast and tag present => error
-			return nil, errors.NewInternalServerError("field with sort tag must be a *SortOrderEnum")
-		}
+		enu := val.(*SortOrderEnum)
 		// Apply order
 		res = res.Order(fmt.Sprintf("%s %s", tagVal, enu.String()))
 	}

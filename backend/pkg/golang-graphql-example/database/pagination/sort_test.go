@@ -31,6 +31,9 @@ func Test_manageSortOrder(t *testing.T) {
 		Fake1 *SortOrderEnum `db_col:"fake_1"`
 		Fake2 string
 	}
+	type Sort6 struct {
+		Fake1 SortOrderEnum `db_col:"fake_1"`
+	}
 	type args struct {
 		sort interface{}
 	}
@@ -61,11 +64,55 @@ func Test_manageSortOrder(t *testing.T) {
 			},
 		},
 		{
-			name: "full set sort object",
+			name: "full set sort pointer object",
 			args: args{
 				sort: &Sort1{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
 			},
 			expectedSortQuery: "ORDER BY fake_1 ASC,fake_2 DESC",
+		},
+		{
+			name: "full set sort object",
+			args: args{
+				sort: Sort1{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
+			},
+			expectedSortQuery: "ORDER BY fake_1 ASC,fake_2 DESC",
+		},
+		{
+			name: "ignored filed",
+			args: args{
+				sort: &Sort2{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
+			},
+			expectedSortQuery: "ORDER BY fake_1 ASC",
+		},
+		{
+			name: "no tag",
+			args: args{
+				sort: &Sort3{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
+			},
+			expectedSortQuery: "ORDER BY fake_1 ASC",
+		},
+		{
+			name: "tag but not on right type",
+			args: args{
+				sort: &Sort4{Fake1: &SortOrderEnumAsc, Fake2: "fake"},
+			},
+			wantErr:     true,
+			errorString: "field with sort tag must be a *SortOrderEnum",
+		},
+		{
+			name: "wrong type without field must be ignored",
+			args: args{
+				sort: &Sort5{Fake1: &SortOrderEnumAsc, Fake2: "fake"},
+			},
+			expectedSortQuery: "ORDER BY fake_1 ASC",
+		},
+		{
+			name: "wrong enum type used (no pointer)",
+			args: args{
+				sort: &Sort6{Fake1: SortOrderEnumAsc},
+			},
+			wantErr:     true,
+			errorString: "field with sort tag must be a *SortOrderEnum",
 		},
 	}
 	for _, tt := range tests {
