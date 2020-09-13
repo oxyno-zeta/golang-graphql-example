@@ -1,3 +1,5 @@
+// +build unit
+
 package pagination
 
 import (
@@ -117,7 +119,7 @@ func Test_manageSortOrder(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			sqlDB, mock, err := sqlmock.New()
+			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
 			if err != nil {
 				t.Error(err)
 				return
@@ -144,7 +146,7 @@ func Test_manageSortOrder(t *testing.T) {
 			}
 
 			// Create expected query
-			expectedQuery := `SELECT \* FROM "people" ` + tt.expectedSortQuery
+			expectedQuery := `SELECT * FROM "people" ` + tt.expectedSortQuery
 			if tt.expectedSortQuery != "" {
 				expectedQuery += " "
 			}
