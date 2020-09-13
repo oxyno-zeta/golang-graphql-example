@@ -8,6 +8,9 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
+// Supported enum type for testing purpose
+var supportedEnumType = reflect.TypeOf(new(SortOrderEnum))
+
 func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	// Check if sort isn't nil
 	if sort == nil {
@@ -32,8 +35,6 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	indData := indirect.Interface()
 	// Get type of indirect value
 	typeOfIndi := reflect.TypeOf(indData)
-	// Get type of searched enum
-	supportedEnumType := reflect.TypeOf(&SortOrderEnumAsc)
 
 	// Loop over all num fields
 	for i := 0; i < indirect.NumField(); i++ {
