@@ -11,6 +11,9 @@ import (
 // Supported generic filter type for testing purpose
 var supportedGenericFilterType = reflect.TypeOf(new(GenericFilter))
 
+// AND field
+const andFieldName = "AND"
+
 func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	// Check if filter isn't nil
 	if filter == nil {
@@ -26,7 +29,7 @@ func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	rKind := rVal.Kind()
 	// Check if kind is supported
 	if rKind != reflect.Struct && rKind != reflect.Ptr {
-		return nil, errors.NewInternalServerError("filter must be an object")
+		return nil, errors.NewInvalidInputError("filter must be an object")
 	}
 
 	// Indirect value
@@ -51,8 +54,8 @@ func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 		fVal := indirect.Field(i)
 		// Check if value is a pointer or not
 		if fVal.Kind() != reflect.Ptr {
-			return nil, errors.NewInternalServerErrorWithError(
-				fmt.Errorf("field %s with filter tag must be a pointer to an object", fType.Name),
+			return nil, errors.NewInvalidInputError(
+				fmt.Sprintf("field %s with filter tag must be a *GenericFilter", fType.Name),
 			)
 		}
 		// Test if field is nil
@@ -61,27 +64,55 @@ func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 			continue
 		}
 		// Get value from field
-		// val := fVal.Interface()
+		val := fVal.Interface()
 
-		switch fType.Type {
-		case supportedGenericFilterType:
-			// Cast value
-			// v := val.(*GenericFilter)
-			// res = manageGenericFilter(tagVal, v, res)
-		default:
-			return nil, errors.NewInternalServerErrorWithError(
-				fmt.Errorf("unsupported field type for filter: %s", fType.Name),
+		// Check that type is supported
+		if fType.Type != supportedGenericFilterType {
+			return nil, errors.NewInvalidInputError(
+				fmt.Sprintf("field %s with filter tag must be a *GenericFilter", fType.Name),
 			)
 		}
-		// // Check that type is supported
-		// if fType.Type != supportedEnumType {
-		// 	return nil, errors.NewInternalServerError("field with filter tag must be a *SortOrderEnum")
-		// }
-		// // Cast value to Sort Order Enum
-		// enu := val.(*SortOrderEnum)
-		// // Apply order
-		// res = res.Order(fmt.Sprintf("%s %s", tagVal, enu.String()))
+
+		// Cast value
+		v := val.(*GenericFilter)
+		// Manage generic filter
+		res2, err := manageGenericFilter(tagVal, v, res)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res = res2
 	}
+
+	// Manage AND cases
+	// Get field AND
+	andRVal := indirect.FieldByName(andFieldName)
+	// Check if it exists
+	if !andRVal.IsZero() {
+		// AND field is detected
+		// Check that type is an array
+		if andRVal.Kind() != reflect.Array {
+			return nil, errors.NewInvalidInputError("field AND must be an array")
+		}
+
+		// Loop over items in array
+		for i := 0; i < andRVal.Len(); i++ {
+			// Get element at index
+			andElement := andRVal.Index(i)
+			// Call manage filter
+			res2, err := manageFilter(andElement, res)
+			// Check error
+			if err != nil {
+				return nil, err
+			}
+			// Save result
+			res = res2
+		}
+	}
+
+	// Manage OR cases
+	// TODO
 
 	// Return
 	return res, nil

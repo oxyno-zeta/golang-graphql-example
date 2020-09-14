@@ -9,103 +9,119 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// func Test_manageFilter(t *testing.T) {
-// 	starInterface := func(s interface{}) *interface{} { return &s }
-// 	type Person struct {
-// 		Name string
-// 	}
-// 	type FilterSt1 struct {
-// 		Field1 *GenericFilter `db_col:"field_1"`
-// 	}
-// 	type args struct {
-// 		filter interface{}
-// 	}
-// 	tests := []struct {
-// 		name                      string
-// 		args                      args
-// 		expectedIntermediateQuery string
-// 		expectedArgs              []driver.Value
-// 		wantErr                   bool
-// 		errorString               string
-// 	}{
-// 		// {
-// 		// 	name:        "wrong input",
-// 		// 	args:        args{filter: false},
-// 		// 	wantErr:     true,
-// 		// 	errorString: "filter must be an object",
-// 		// },
-// 		// {
-// 		// 	name: "nil sort object",
-// 		// 	args: args{
-// 		// 		filter: nil,
-// 		// 	},
-// 		// 	expectedIntermediateQuery: "",
-// 		// },
-// 		// {
-// 		// 	name: "",
-// 		// 	args: args{
-// 		// 		filter: &FilterSt1{
-// 		// 			Field1: &GenericFilter{
-// 		// 				Eq:     starInterface("fake"),
-// 		// 				NotGte: "dkk",
-// 		// 				NotEq:  1,
-// 		// 			},
-// 		// 		},
-// 		// 	},
-// 		// 	expectedIntermediateQuery: "WHERE (field_1 = $1) AND (dazd = $2)",
-// 		// 	expectedArgs:              []driver.Value{"fake", "oazdko"},
-// 		// },
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
-// 			if err != nil {
-// 				t.Error(err)
-// 				return
-// 			}
-// 			defer sqlDB.Close()
+func Test_manageFilter(t *testing.T) {
+	starInterface := func(s interface{}) *interface{} { return &s }
+	type Person struct {
+		Name string
+	}
+	type Filter1 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+	}
+	type Filter2 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"-"`
+	}
+	type Filter3 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter
+	}
+	type Filter4 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 string         `db_col:"field_2"`
+	}
+	type Filter5 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 GenericFilter  `db_col:"field_2"`
+	}
+	type args struct {
+		filter interface{}
+	}
+	tests := []struct {
+		name                      string
+		args                      args
+		expectedIntermediateQuery string
+		expectedArgs              []driver.Value
+		wantErr                   bool
+		errorString               string
+	}{
+		{
+			name:        "wrong input",
+			args:        args{filter: false},
+			wantErr:     true,
+			errorString: "filter must be an object",
+		},
+		{
+			name: "nil sort object",
+			args: args{
+				filter: nil,
+			},
+			expectedIntermediateQuery: "",
+		},
+		{
+			name: "",
+			args: args{
+				filter: &Filter1{
+					Field1: &GenericFilter{
+						Eq:     starInterface("fake"),
+						NotGte: "dkk",
+						NotEq:  1,
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 = $1) AND (dazd = $2)",
+			expectedArgs:              []driver.Value{"fake", "oazdko"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			defer sqlDB.Close()
 
-// 			db, err := gorm.Open("postgres", sqlDB)
-// 			if err != nil {
-// 				t.Error(err)
-// 				return
-// 			}
-// 			db.LogMode(false)
+			db, err := gorm.Open("postgres", sqlDB)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			db.LogMode(false)
 
-// 			got, err := manageFilter(tt.args.filter, db)
-// 			if (err != nil) != tt.wantErr {
-// 				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.wantErr)
-// 			}
-// 			if err != nil && err.Error() != tt.errorString {
-// 				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.errorString)
-// 				return
-// 			}
-// 			if err != nil {
-// 				return
-// 			}
+			got, err := manageFilter(tt.args.filter, db)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.wantErr)
+			}
+			if err != nil && err.Error() != tt.errorString {
+				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.errorString)
+				return
+			}
+			if err != nil {
+				return
+			}
 
-// 			// Create expected query
-// 			expectedQuery := `SELECT * FROM "people" ` + tt.expectedIntermediateQuery
-// 			if tt.expectedIntermediateQuery != "" {
-// 				expectedQuery += " "
-// 			}
-// 			expectedQuery += "LIMIT 1"
+			// Create expected query
+			expectedQuery := `SELECT * FROM "people" ` + tt.expectedIntermediateQuery
+			if tt.expectedIntermediateQuery != "" {
+				expectedQuery += " "
+			}
+			expectedQuery += "LIMIT 1"
 
-// 			mock.ExpectQuery(expectedQuery).
-// 				WithArgs(tt.expectedArgs...).
-// 				WillReturnRows(
-// 					sqlmock.NewRows([]string{"name"}).AddRow("fake"),
-// 				)
+			mock.ExpectQuery(expectedQuery).
+				WithArgs(tt.expectedArgs...).
+				WillReturnRows(
+					sqlmock.NewRows([]string{"name"}).AddRow("fake"),
+				)
 
-// 			// Run fake find to force query to be run
-// 			res := got.First(&Person{})
-// 			// Test error
-// 			if res.Error != nil {
-// 				t.Error(res.Error)
-// 			}
-// 		})
-// 	}
-// }
+			// Run fake find to force query to be run
+			res := got.First(&Person{})
+			// Test error
+			if res.Error != nil {
+				t.Error(res.Error)
+			}
+		})
+	}
+}
 
 type StringTestEnum string
 
