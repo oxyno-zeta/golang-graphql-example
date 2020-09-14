@@ -136,7 +136,7 @@ func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 		s, err := getStringValue(v.Contains)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.NewInvalidInputError("contains " + err.Error())
 		}
 
 		dbRes = dbRes.Where(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s%%", s))
@@ -147,7 +147,7 @@ func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 		s, err := getStringValue(v.NotContains)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.NewInvalidInputError("notContains " + err.Error())
 		}
 
 		dbRes = dbRes.Not(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s%%", s))
@@ -158,7 +158,7 @@ func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 		s, err := getStringValue(v.StartsWith)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.NewInvalidInputError("startsWith " + err.Error())
 		}
 
 		dbRes = dbRes.Where(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%s%%", s))
@@ -169,7 +169,7 @@ func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 		s, err := getStringValue(v.NotStartsWith)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.NewInvalidInputError("notStartsWith " + err.Error())
 		}
 
 		dbRes = dbRes.Not(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%s%%", s))
@@ -180,7 +180,7 @@ func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 		s, err := getStringValue(v.EndsWith)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.NewInvalidInputError("endsWith " + err.Error())
 		}
 
 		dbRes = dbRes.Where(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s", s))
@@ -191,7 +191,7 @@ func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 		s, err := getStringValue(v.NotEndsWith)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.NewInvalidInputError("notEndsWith " + err.Error())
 		}
 
 		dbRes = dbRes.Not(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s", s))

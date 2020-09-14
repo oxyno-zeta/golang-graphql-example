@@ -848,7 +848,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: starInterface(FakeStringTestEnum)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		{
 			name: "contains case with int",
@@ -856,7 +856,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: 1},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		{
 			name: "contains case with *int",
@@ -864,7 +864,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: starInterface(1)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		{
 			name: "contains case with date",
@@ -872,7 +872,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: now},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		{
 			name: "contains case with *date",
@@ -880,7 +880,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: starInterface(now)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		{
 			name: "contains case with bool",
@@ -888,7 +888,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: true},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		{
 			name: "contains case with *bool",
@@ -896,7 +896,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{Contains: starInterface(true)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "contains value must be a string or *string",
 		},
 		// NOT CONTAINS
 		{
@@ -929,7 +929,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: starInterface(FakeStringTestEnum)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		{
 			name: "not contains case with int",
@@ -937,7 +937,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: 1},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		{
 			name: "not contains case with *int",
@@ -945,7 +945,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: starInterface(1)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		{
 			name: "not contains case with date",
@@ -953,7 +953,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: now},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		{
 			name: "not contains case with *date",
@@ -961,7 +961,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: starInterface(now)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		{
 			name: "not contains case with bool",
@@ -969,7 +969,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: true},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		{
 			name: "not contains case with *bool",
@@ -977,7 +977,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotContains: starInterface(true)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notContains value must be a string or *string",
 		},
 		// STARTS WITH
 		{
@@ -1010,7 +1010,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: starInterface(FakeStringTestEnum)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		{
 			name: "starts with case with int",
@@ -1018,7 +1018,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: 1},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		{
 			name: "starts with case with *int",
@@ -1026,7 +1026,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: starInterface(1)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		{
 			name: "starts with case with date",
@@ -1034,7 +1034,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: now},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		{
 			name: "starts with case with *date",
@@ -1042,7 +1042,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: starInterface(now)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		{
 			name: "starts with case with bool",
@@ -1050,7 +1050,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: true},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		{
 			name: "starts with case with *bool",
@@ -1058,7 +1058,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{StartsWith: starInterface(true)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "startsWith value must be a string or *string",
 		},
 		// NOT STARTS WITH
 		{
@@ -1091,7 +1091,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: starInterface(FakeStringTestEnum)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		{
 			name: "not starts with case with int",
@@ -1099,7 +1099,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: 1},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		{
 			name: "not starts with case with *int",
@@ -1107,7 +1107,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: starInterface(1)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		{
 			name: "not starts with case with date",
@@ -1115,7 +1115,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: now},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		{
 			name: "not starts with case with *date",
@@ -1123,7 +1123,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: starInterface(now)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		{
 			name: "not starts with case with bool",
@@ -1131,7 +1131,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: true},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		{
 			name: "not starts with case with *bool",
@@ -1139,7 +1139,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: starInterface(true)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notStartsWith value must be a string or *string",
 		},
 		// ENDS WITH
 		{
@@ -1172,7 +1172,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: starInterface(FakeStringTestEnum)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		{
 			name: "ends with case with int",
@@ -1180,7 +1180,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: 1},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		{
 			name: "ends with case with *int",
@@ -1188,7 +1188,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: starInterface(1)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		{
 			name: "ends with case with date",
@@ -1196,7 +1196,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: now},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		{
 			name: "ends with case with *date",
@@ -1204,7 +1204,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: starInterface(now)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		{
 			name: "ends with case with bool",
@@ -1212,7 +1212,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: true},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		{
 			name: "ends with case with *bool",
@@ -1220,7 +1220,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{EndsWith: starInterface(true)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "endsWith value must be a string or *string",
 		},
 		// NOT ENDS WITH
 		{
@@ -1253,7 +1253,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: starInterface(FakeStringTestEnum)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		{
 			name: "not ends with case with int",
@@ -1261,7 +1261,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: 1},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		{
 			name: "not ends with case with *int",
@@ -1269,7 +1269,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: starInterface(1)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		{
 			name: "not ends with case with date",
@@ -1277,7 +1277,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: now},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		{
 			name: "not ends with case with *date",
@@ -1285,7 +1285,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: starInterface(now)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		{
 			name: "not ends with case with bool",
@@ -1293,7 +1293,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: true},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		{
 			name: "not ends with case with *bool",
@@ -1301,7 +1301,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				v: &GenericFilter{NotEndsWith: starInterface(true)},
 			},
 			wantErr:     true,
-			errorString: "value must be a string or *string",
+			errorString: "notEndsWith value must be a string or *string",
 		},
 		// IN
 		{
