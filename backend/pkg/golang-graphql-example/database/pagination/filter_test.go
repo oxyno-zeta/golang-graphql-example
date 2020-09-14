@@ -979,14 +979,427 @@ func Test_manageGenericFilter(t *testing.T) {
 			wantErr:     true,
 			errorString: "value must be a string or *string",
 		},
+		// STARTS WITH
+		{
+			name: "starts with case with *string",
+			args: args{
+				v: &GenericFilter{StartsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"fake%"},
+		},
+		{
+			name: "starts with case with *string",
+			args: args{
+				v: &GenericFilter{StartsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"fake%"},
+		},
+		{
+			name: "starts with case with Enum struct",
+			args: args{
+				v: &GenericFilter{StartsWith: FakeStringTestEnum},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"FAKE%"},
+		},
+		{
+			name: "starts with case with *Enum struct",
+			args: args{
+				v: &GenericFilter{StartsWith: starInterface(FakeStringTestEnum)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "starts with case with int",
+			args: args{
+				v: &GenericFilter{StartsWith: 1},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "starts with case with *int",
+			args: args{
+				v: &GenericFilter{StartsWith: starInterface(1)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "starts with case with date",
+			args: args{
+				v: &GenericFilter{StartsWith: now},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "starts with case with *date",
+			args: args{
+				v: &GenericFilter{StartsWith: starInterface(now)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "starts with case with bool",
+			args: args{
+				v: &GenericFilter{StartsWith: true},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "starts with case with *bool",
+			args: args{
+				v: &GenericFilter{StartsWith: starInterface(true)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		// NOT STARTS WITH
+		{
+			name: "not starts with case with *string",
+			args: args{
+				v: &GenericFilter{NotStartsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE NOT (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"fake%"},
+		},
+		{
+			name: "not starts with case with *string",
+			args: args{
+				v: &GenericFilter{NotStartsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE NOT (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"fake%"},
+		},
+		{
+			name: "not starts with case with Enum struct",
+			args: args{
+				v: &GenericFilter{NotStartsWith: FakeStringTestEnum},
+			},
+			expectedIntermediateQuery: "WHERE NOT (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"FAKE%"},
+		},
+		{
+			name: "not starts with case with *Enum struct",
+			args: args{
+				v: &GenericFilter{NotStartsWith: starInterface(FakeStringTestEnum)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not starts with case with int",
+			args: args{
+				v: &GenericFilter{NotStartsWith: 1},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not starts with case with *int",
+			args: args{
+				v: &GenericFilter{NotStartsWith: starInterface(1)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not starts with case with date",
+			args: args{
+				v: &GenericFilter{NotStartsWith: now},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not starts with case with *date",
+			args: args{
+				v: &GenericFilter{NotStartsWith: starInterface(now)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not starts with case with bool",
+			args: args{
+				v: &GenericFilter{NotStartsWith: true},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not starts with case with *bool",
+			args: args{
+				v: &GenericFilter{NotStartsWith: starInterface(true)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		// ENDS WITH
+		{
+			name: "ends with case with *string",
+			args: args{
+				v: &GenericFilter{EndsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"%fake"},
+		},
+		{
+			name: "ends with case with *string",
+			args: args{
+				v: &GenericFilter{EndsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"%fake"},
+		},
+		{
+			name: "ends with case with Enum struct",
+			args: args{
+				v: &GenericFilter{EndsWith: FakeStringTestEnum},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"%FAKE"},
+		},
+		{
+			name: "ends with case with *Enum struct",
+			args: args{
+				v: &GenericFilter{EndsWith: starInterface(FakeStringTestEnum)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "ends with case with int",
+			args: args{
+				v: &GenericFilter{EndsWith: 1},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "ends with case with *int",
+			args: args{
+				v: &GenericFilter{EndsWith: starInterface(1)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "ends with case with date",
+			args: args{
+				v: &GenericFilter{EndsWith: now},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "ends with case with *date",
+			args: args{
+				v: &GenericFilter{EndsWith: starInterface(now)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "ends with case with bool",
+			args: args{
+				v: &GenericFilter{EndsWith: true},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "ends with case with *bool",
+			args: args{
+				v: &GenericFilter{EndsWith: starInterface(true)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		// NOT ENDS WITH
+		{
+			name: "not ends with case with *string",
+			args: args{
+				v: &GenericFilter{NotEndsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE NOT (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"%fake"},
+		},
+		{
+			name: "not ends with case with *string",
+			args: args{
+				v: &GenericFilter{NotEndsWith: starString("fake")},
+			},
+			expectedIntermediateQuery: "WHERE NOT (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"%fake"},
+		},
+		{
+			name: "not ends with case with Enum struct",
+			args: args{
+				v: &GenericFilter{NotEndsWith: FakeStringTestEnum},
+			},
+			expectedIntermediateQuery: "WHERE NOT (field_1 LIKE $1)",
+			expectedArgs:              []driver.Value{"%FAKE"},
+		},
+		{
+			name: "not ends with case with *Enum struct",
+			args: args{
+				v: &GenericFilter{NotEndsWith: starInterface(FakeStringTestEnum)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not ends with case with int",
+			args: args{
+				v: &GenericFilter{NotEndsWith: 1},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not ends with case with *int",
+			args: args{
+				v: &GenericFilter{NotEndsWith: starInterface(1)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not ends with case with date",
+			args: args{
+				v: &GenericFilter{NotEndsWith: now},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not ends with case with *date",
+			args: args{
+				v: &GenericFilter{NotEndsWith: starInterface(now)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not ends with case with bool",
+			args: args{
+				v: &GenericFilter{NotEndsWith: true},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
+		{
+			name: "not ends with case with *bool",
+			args: args{
+				v: &GenericFilter{NotEndsWith: starInterface(true)},
+			},
+			wantErr:     true,
+			errorString: "value must be a string or *string",
+		},
 		// IN
 		{
-			name: "in case with string",
+			name: "in case with []string",
 			args: args{
-				v: &GenericFilter{In: "fake"},
+				v: &GenericFilter{In: []string{"fake"}},
 			},
 			expectedIntermediateQuery: "WHERE (field_1 IN ($1))",
 			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "in case with []*string",
+			args: args{
+				v: &GenericFilter{In: []*string{starString("fake")}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 IN ($1))",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "in case with []string with 2 values",
+			args: args{
+				v: &GenericFilter{In: []string{"fake", "fake2"}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 IN ($1,$2))",
+			expectedArgs:              []driver.Value{"fake", "fake2"},
+		},
+		{
+			name: "in case with []int",
+			args: args{
+				v: &GenericFilter{In: []int{1}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 IN ($1))",
+			expectedArgs:              []driver.Value{1},
+		},
+		{
+			name: "in case with []int with 2 values",
+			args: args{
+				v: &GenericFilter{In: []int{1, 2}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 IN ($1,$2))",
+			expectedArgs:              []driver.Value{1, 2},
+		},
+		{
+			name: "in case with []Enum",
+			args: args{
+				v: &GenericFilter{In: []StringTestEnum{FakeStringTestEnum}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 IN ($1))",
+			expectedArgs:              []driver.Value{"FAKE"},
+		},
+		// NOT IN
+		{
+			name: "not in case with []string",
+			args: args{
+				v: &GenericFilter{NotIn: []string{"fake"}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 NOT IN ($1))",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "not in case with []*string",
+			args: args{
+				v: &GenericFilter{NotIn: []*string{starString("fake")}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 NOT IN ($1))",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "not in case with []string with 2 values",
+			args: args{
+				v: &GenericFilter{NotIn: []string{"fake", "fake2"}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 NOT IN ($1,$2))",
+			expectedArgs:              []driver.Value{"fake", "fake2"},
+		},
+		{
+			name: "not in case with []int",
+			args: args{
+				v: &GenericFilter{NotIn: []int{1}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 NOT IN ($1))",
+			expectedArgs:              []driver.Value{1},
+		},
+		{
+			name: "not in case with []int with 2 values",
+			args: args{
+				v: &GenericFilter{NotIn: []int{1, 2}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 NOT IN ($1,$2))",
+			expectedArgs:              []driver.Value{1, 2},
+		},
+		{
+			name: "not in case with []Enum",
+			args: args{
+				v: &GenericFilter{NotIn: []StringTestEnum{FakeStringTestEnum}},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 NOT IN ($1))",
+			expectedArgs:              []driver.Value{"FAKE"},
 		},
 	}
 	for _, tt := range tests {
