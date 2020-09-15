@@ -14,7 +14,10 @@ var supportedGenericFilterType = reflect.TypeOf(new(GenericFilter))
 // AND field
 const andFieldName = "AND"
 
-func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
+// OR field
+const orFieldName = "OR"
+
+func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
 	// Check if filter isn't nil
 	if filter == nil {
 		// Stop here
@@ -29,6 +32,13 @@ func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	rKind := rVal.Kind()
 	// Check if kind is supported
 	if rKind != reflect.Struct && rKind != reflect.Ptr {
+		// Check if skip input not an object is enabled
+		// This is used in recursive calls in order to avoid errors when OR or AND cases aren't an object supported
+		if skipInputNotObject {
+			return db, nil
+		}
+
+		// No skip => Error
 		return nil, errors.NewInvalidInputError("filter must be an object")
 	}
 
@@ -86,33 +96,75 @@ func manageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	}
 
 	// Manage AND cases
-	// Get field AND
-	andRVal := indirect.FieldByName(andFieldName)
+	// Check in type that AND key exists
+	_, exists := typeOfIndi.FieldByName(andFieldName)
 	// Check if it exists
-	if !andRVal.IsZero() {
+	if exists {
 		// AND field is detected
-		// Check that type is an array
-		if andRVal.Kind() != reflect.Array {
-			return nil, errors.NewInvalidInputError("field AND must be an array")
-		}
-
-		// Loop over items in array
-		for i := 0; i < andRVal.Len(); i++ {
-			// Get element at index
-			andElement := andRVal.Index(i)
-			// Call manage filter
-			res2, err := manageFilter(andElement, res)
-			// Check error
-			if err != nil {
-				return nil, err
+		// Get field AND
+		andRVal := indirect.FieldByName(andFieldName)
+		// Check that type is a slice
+		if andRVal.Kind() == reflect.Slice {
+			// Loop over items in array
+			for i := 0; i < andRVal.Len(); i++ {
+				// Get element at index
+				andElementRVal := andRVal.Index(i)
+				// Get value behind
+				andElement := andElementRVal.Interface()
+				// Call manage filter
+				res2, err := manageFilter(andElement, res, originalDb, true)
+				// Check error
+				if err != nil {
+					return nil, err
+				}
+				// Save result
+				res = res2
 			}
-			// Save result
-			res = res2
 		}
 	}
 
 	// Manage OR cases
-	// TODO
+	// Check in type that OR key exists
+	_, exists = typeOfIndi.FieldByName(orFieldName)
+	// Check if it exists
+	if exists {
+		// OR field is detected
+		// Get field OR
+		orRVal := indirect.FieldByName(orFieldName)
+
+		// Check that type is a slice
+		if orRVal.Kind() == reflect.Slice {
+			// Get array length
+			lgt := orRVal.Len()
+			// Check length in order to ignore it it is 0
+			if lgt != 0 {
+				// Array is populated
+				// Loop over elements
+				for i := 0; i < lgt; i++ {
+					// Get element
+					elemRVal := orRVal.Index(i)
+					// Get data behind
+					elem := elemRVal.Interface()
+					// Call manage filter WITH the original db in order to create a pure subquery
+					// See here: https://gorm.io/docs/advanced_query.html#Group-Conditions
+					res2, err := manageFilter(elem, originalDb, originalDb, true)
+					// Check error
+					if err != nil {
+						return nil, err
+					}
+					// Manage result
+					// Check if it is the first element
+					if i == 0 {
+						// First element must be managed as a where
+						res = res.Where(res2)
+					} else {
+						// This is the other cases
+						res = res.Or(res2)
+					}
+				}
+			}
+		}
+	}
 
 	// Return
 	return res, nil

@@ -11,118 +11,426 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-// func Test_manageFilter(t *testing.T) {
-// 	starInterface := func(s interface{}) *interface{} { return &s }
-// 	type Person struct {
-// 		Name string
-// 	}
-// 	type Filter1 struct {
-// 		Field1 *GenericFilter `db_col:"field_1"`
-// 	}
-// 	type Filter2 struct {
-// 		Field1 *GenericFilter `db_col:"field_1"`
-// 		Field2 *GenericFilter `db_col:"-"`
-// 	}
-// 	type Filter3 struct {
-// 		Field1 *GenericFilter `db_col:"field_1"`
-// 		Field2 *GenericFilter
-// 	}
-// 	type Filter4 struct {
-// 		Field1 *GenericFilter `db_col:"field_1"`
-// 		Field2 string         `db_col:"field_2"`
-// 	}
-// 	type Filter5 struct {
-// 		Field1 *GenericFilter `db_col:"field_1"`
-// 		Field2 GenericFilter  `db_col:"field_2"`
-// 	}
-// 	type args struct {
-// 		filter interface{}
-// 	}
-// 	tests := []struct {
-// 		name                      string
-// 		args                      args
-// 		expectedIntermediateQuery string
-// 		expectedArgs              []driver.Value
-// 		wantErr                   bool
-// 		errorString               string
-// 	}{
-// 		{
-// 			name:        "wrong input",
-// 			args:        args{filter: false},
-// 			wantErr:     true,
-// 			errorString: "filter must be an object",
-// 		},
-// 		{
-// 			name: "nil sort object",
-// 			args: args{
-// 				filter: nil,
-// 			},
-// 			expectedIntermediateQuery: "",
-// 		},
-// 		{
-// 			name: "",
-// 			args: args{
-// 				filter: &Filter1{
-// 					Field1: &GenericFilter{
-// 						Eq:     starInterface("fake"),
-// 						NotGte: "dkk",
-// 						NotEq:  1,
-// 					},
-// 				},
-// 			},
-// 			expectedIntermediateQuery: "WHERE (field_1 = $1) AND dazd = $2",
-// 			expectedArgs:              []driver.Value{"fake", "oazdko"},
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
-// 			if err != nil {
-// 				t.Error(err)
-// 				return
-// 			}
-// 			defer sqlDB.Close()
+func Test_manageFilter(t *testing.T) {
+	starInterface := func(s interface{}) *interface{} { return &s }
+	type Person struct {
+		Name string
+	}
+	type Filter1 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+	}
+	type Filter2 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"-"`
+	}
+	type Filter3 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter
+	}
+	type Filter4 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 string         `db_col:"field_2"`
+	}
+	type Filter5 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 GenericFilter  `db_col:"field_2"`
+	}
+	type Filter6 struct {
+		OR     []*Filter6
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter7 struct {
+		AND    []*Filter7
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter8 struct {
+		AND    []*Filter8
+		OR     []*Filter8
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter9 struct {
+		OR     string
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter10 struct {
+		OR     []string
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter11 struct {
+		OR     []*Person
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type args struct {
+		filter interface{}
+	}
+	tests := []struct {
+		name                      string
+		args                      args
+		expectedIntermediateQuery string
+		expectedArgs              []driver.Value
+		wantErr                   bool
+		errorString               string
+	}{
+		{
+			name:        "wrong input",
+			args:        args{filter: false},
+			wantErr:     true,
+			errorString: "filter must be an object",
+		},
+		{
+			name: "nil sort object",
+			args: args{
+				filter: nil,
+			},
+			expectedIntermediateQuery: "",
+		},
+		{
+			name: "one field",
+			args: args{
+				filter: &Filter1{
+					Field1: &GenericFilter{
+						Eq: starInterface("fake"),
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "one field with nil",
+			args: args{
+				filter: &Filter1{
+					Field1: nil,
+				},
+			},
+			expectedIntermediateQuery: "",
+			expectedArgs:              []driver.Value{},
+		},
+		{
+			name: "2 fields with one ignored (tag ingore)",
+			args: args{
+				filter: &Filter2{
+					Field1: &GenericFilter{
+						Eq: "fake",
+					},
+					Field2: &GenericFilter{
+						Contains: "fak",
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "2 fields with one ignored (no tag)",
+			args: args{
+				filter: &Filter3{
+					Field1: &GenericFilter{
+						Eq: "fake",
+					},
+					Field2: &GenericFilter{
+						Contains: "fak",
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "tag with wrong type",
+			args: args{
+				filter: &Filter4{
+					Field1: &GenericFilter{
+						Eq: "fake",
+					},
+					Field2: "fake",
+				},
+			},
+			wantErr:     true,
+			errorString: "field Field2 with filter tag must be a *GenericFilter",
+		},
+		{
+			name: "tag with wrong type 2",
+			args: args{
+				filter: &Filter5{
+					Field1: &GenericFilter{
+						Eq: "fake",
+					},
+					Field2: GenericFilter{
+						Contains: "fak",
+					},
+				},
+			},
+			wantErr:     true,
+			errorString: "field Field2 with filter tag must be a *GenericFilter",
+		},
+		{
+			name: "OR and root fields",
+			args: args{
+				filter: &Filter6{
+					OR: []*Filter6{
+						{
+							Field1: &GenericFilter{Eq: "fake2"},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+					Field1: &GenericFilter{
+						Eq: "fake",
+					},
+					Field2: &GenericFilter{
+						Contains: "fak",
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_2 LIKE $2 AND field_1 = $3 OR field_1 = $4",
+			expectedArgs:              []driver.Value{"fake", "%fak%", "fake2", "fake3"},
+		},
+		{
+			name: "OR list without any root fields",
+			args: args{
+				filter: &Filter6{
+					OR: []*Filter6{
+						{
+							Field1: &GenericFilter{Eq: "fake2"},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1 OR field_1 = $2",
+			expectedArgs:              []driver.Value{"fake2", "fake3"},
+		},
+		{
+			name: "OR cascade list with root fields on second level",
+			args: args{
+				filter: &Filter6{
+					OR: []*Filter6{
+						{
+							Field1: &GenericFilter{Eq: "fake2"},
+							OR: []*Filter6{
+								{
+									Field2: &GenericFilter{Eq: "fake"},
+								},
+								{
+									Field2: &GenericFilter{Eq: "fake4"},
+								},
+							},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 = $1 AND field_2 = $2 OR field_2 = $3) OR field_1 = $4",
+			expectedArgs:              []driver.Value{"fake2", "fake", "fake4", "fake3"},
+		},
+		{
+			name: "OR cascade list without root fields on second level",
+			args: args{
+				filter: &Filter6{
+					OR: []*Filter6{
+						{
+							OR: []*Filter6{
+								{
+									Field2: &GenericFilter{Eq: "fake"},
+								},
+								{
+									Field2: &GenericFilter{Eq: "fake4"},
+								},
+							},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE (field_2 = $1 OR field_2 = $2) OR field_1 = $3",
+			expectedArgs:              []driver.Value{"fake", "fake4", "fake3"},
+		},
+		{
+			name: "OR with an unsupported type (string) should be ignored",
+			args: args{
+				filter: &Filter9{
+					OR:     "fake1",
+					Field1: &GenericFilter{Eq: "fake"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "OR with an unsupported type ([]string) should be ignored",
+			args: args{
+				filter: &Filter10{
+					OR:     []string{"fake1"},
+					Field1: &GenericFilter{Eq: "fake"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "OR with an unsupported type ([]*Person) should be ignored",
+			args: args{
+				filter: &Filter11{
+					OR:     []*Person{{Name: "fake1"}},
+					Field1: &GenericFilter{Eq: "fake"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "AND and root fields",
+			args: args{
+				filter: &Filter7{
+					AND: []*Filter7{
+						{
+							Field1: &GenericFilter{Eq: "fake2"},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+					Field1: &GenericFilter{
+						Eq: "fake",
+					},
+					Field2: &GenericFilter{
+						Contains: "fak",
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_2 LIKE $2 AND field_1 = $3 AND field_1 = $4",
+			expectedArgs:              []driver.Value{"fake", "%fak%", "fake2", "fake3"},
+		},
+		{
+			name: "AND and without root fields",
+			args: args{
+				filter: &Filter7{
+					AND: []*Filter7{
+						{
+							Field1: &GenericFilter{Eq: "fake2"},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_1 = $2",
+			expectedArgs:              []driver.Value{"fake2", "fake3"},
+		},
+		{
+			name: "AND cascade list with root fields on second level",
+			args: args{
+				filter: &Filter7{
+					AND: []*Filter7{
+						{
+							Field1: &GenericFilter{Eq: "fake2"},
+							AND: []*Filter7{
+								{
+									Field2: &GenericFilter{Eq: "fake"},
+								},
+								{
+									Field2: &GenericFilter{Eq: "fake4"},
+								},
+							},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_2 = $2 AND field_2 = $3 AND field_1 = $4",
+			expectedArgs:              []driver.Value{"fake2", "fake", "fake4", "fake3"},
+		},
+		{
+			name: "AND cascade list without root fields on second level",
+			args: args{
+				filter: &Filter7{
+					AND: []*Filter7{
+						{
+							AND: []*Filter7{
+								{
+									Field2: &GenericFilter{Eq: "fake"},
+								},
+								{
+									Field2: &GenericFilter{Eq: "fake4"},
+								},
+							},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_2 = $1 AND field_2 = $2 AND field_1 = $3",
+			expectedArgs:              []driver.Value{"fake", "fake4", "fake3"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			defer sqlDB.Close()
 
-// 			db, err := gorm.Open(postgres.New(postgres.Config{Conn: sqlDB}), &gorm.Config{})
-// 			if err != nil {
-// 				t.Error(err)
-// 				return
-// 			}
+			db, err := gorm.Open(postgres.New(postgres.Config{Conn: sqlDB}), &gorm.Config{Logger: logger.Discard})
+			if err != nil {
+				t.Error(err)
+				return
+			}
 
-// 			got, err := manageFilter(tt.args.filter, db)
-// 			if (err != nil) != tt.wantErr {
-// 				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.wantErr)
-// 			}
-// 			if err != nil && err.Error() != tt.errorString {
-// 				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.errorString)
-// 				return
-// 			}
-// 			if err != nil {
-// 				return
-// 			}
+			got, err := manageFilter(tt.args.filter, db, db, false)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.wantErr)
+			}
+			if err != nil && err.Error() != tt.errorString {
+				t.Errorf("manageFilter() error = %v, wantErr %v", err, tt.errorString)
+				return
+			}
+			if err != nil {
+				return
+			}
 
-// 			// Create expected query
-// 			expectedQuery := `SELECT * FROM "people" ` + tt.expectedIntermediateQuery
-// 			if tt.expectedIntermediateQuery != "" {
-// 				expectedQuery += " "
-// 			}
-// 			expectedQuery += "LIMIT 1"
+			// Create expected query
+			expectedQuery := `SELECT * FROM "people" ` + tt.expectedIntermediateQuery
+			if tt.expectedIntermediateQuery != "" {
+				expectedQuery += " "
+			}
+			expectedQuery += `ORDER BY "people"."name" LIMIT 1`
 
-// 			mock.ExpectQuery(expectedQuery).
-// 				WithArgs(tt.expectedArgs...).
-// 				WillReturnRows(
-// 					sqlmock.NewRows([]string{"name"}).AddRow("fake"),
-// 				)
+			mock.ExpectQuery(expectedQuery).
+				WithArgs(tt.expectedArgs...).
+				WillReturnRows(
+					sqlmock.NewRows([]string{"name"}).AddRow("fake"),
+				)
 
-// 			// Run fake find to force query to be run
-// 			res := got.First(&Person{})
-// 			// Test error
-// 			if res.Error != nil {
-// 				t.Error(res.Error)
-// 			}
-// 		})
-// 	}
-// }
+			// Run fake find to force query to be run
+			res := got.First(&Person{})
+			// Test error
+			if res.Error != nil {
+				t.Error(res.Error)
+			}
+		})
+	}
+}
 
 type StringTestEnum string
 
