@@ -91,7 +91,6 @@ type ServerConfig struct {
 // DatabaseConfig Database configuration.
 type DatabaseConfig struct {
 	ConnectionURL *CredentialConfig `mapstructure:"connectionUrl" validate:"required"`
-	Dialect       string            `mapstructure:"dialect" validate:"required"`
 }
 
 // CredentialConfig Credential Configurations.

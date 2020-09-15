@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/jinzhu/gorm"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
+	"gorm.io/gorm"
 )
 
 // Supported generic filter type for testing purpose

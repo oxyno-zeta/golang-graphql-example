@@ -3,10 +3,10 @@ package daos
 import (
 	"errors"
 
-	"github.com/jinzhu/gorm"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
+	"gorm.io/gorm"
 )
 
 type dao struct {
@@ -17,9 +17,9 @@ func (d *dao) MigrateDB() error {
 	// Get gorm database
 	gdb := d.db.GetGormDB()
 	// Migrate
-	res := gdb.AutoMigrate(&models.Todo{})
+	err := gdb.AutoMigrate(&models.Todo{})
 
-	return res.Error
+	return err
 }
 
 func (d *dao) FindByID(id string) (*models.Todo, error) {

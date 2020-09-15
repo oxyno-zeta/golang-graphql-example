@@ -6,7 +6,8 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 func Test_manageSortOrder(t *testing.T) {
@@ -126,12 +127,11 @@ func Test_manageSortOrder(t *testing.T) {
 			}
 			defer sqlDB.Close()
 
-			db, err := gorm.Open("postgres", sqlDB)
+			db, err := gorm.Open(postgres.New(postgres.Config{Conn: sqlDB}), &gorm.Config{})
 			if err != nil {
 				t.Error(err)
 				return
 			}
-			db.LogMode(false)
 
 			got, err := manageSortOrder(tt.args.sort, db)
 			if (err != nil) != tt.wantErr {

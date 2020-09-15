@@ -4,13 +4,13 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/jinzhu/gorm"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/pkg/errors"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 
-	// Import this for dialect usage in gorm.
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"gorm.io/driver/postgres"
 )
 
 type postresdb struct {
@@ -19,7 +19,7 @@ type postresdb struct {
 	cfgManager config.Manager
 }
 
-func (ctx *postresdb) GetSQLDB() *sql.DB {
+func (ctx *postresdb) GetSQLDB() (*sql.DB, error) {
 	return ctx.db.DB()
 }
 
@@ -33,23 +33,39 @@ func (ctx *postresdb) Connect() error {
 	// Get configuration
 	cfg := ctx.cfgManager.GetConfig()
 
-	ctx.logger.Debugf("Trying to connect to database engine of type %s", cfg.Database.Dialect)
+	ctx.logger.Debug("Trying to connect to database engine of type PostgreSQL")
 	// Connect to database
-	dbResult, err := gorm.Open(cfg.Database.Dialect, cfg.Database.ConnectionURL.Value)
+	dbResult, err := gorm.Open(postgres.Open(cfg.Database.ConnectionURL.Value), &gorm.Config{
+		// Insert now function to be sure that automatic dates are in UTC
+		NowFunc: func() time.Time {
+			return time.Now().UTC()
+		},
+		// Remove logger
+		Logger: logger.Discard,
+	})
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	// Disable logger
-	dbResult = dbResult.LogMode(false)
-	// Set now function
-	dbResult = dbResult.SetNowFuncOverride(func() time.Time {
-		return time.Now().UTC()
-	})
+
+	// Trying to ping database
+	sqlDB, err := dbResult.DB()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Ping db
+	err = sqlDB.Ping()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
 	// Save gorm db object
 	ctx.db = dbResult
 
-	ctx.logger.Infof("Successfully connected to database engine of type %s", cfg.Database.Dialect)
+	ctx.logger.Info("Successfully connected to database engine of type PostgreSQL")
 
 	// Return
 	return nil
@@ -58,14 +74,26 @@ func (ctx *postresdb) Connect() error {
 // Close will close connection to database.
 func (ctx *postresdb) Close() error {
 	ctx.logger.Info("Closing database connection")
+	// Get sql database
+	sqlDB, err := ctx.db.DB()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
-	return ctx.db.Close()
+	return sqlDB.Close()
 }
 
 // Ping will ping database engine in order to test connection to engine.
 func (ctx *postresdb) Ping() error {
+	// Get sql database
+	sqlDB, err := ctx.db.DB()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 	// Ping database to test connection
-	pingErr := ctx.db.DB().Ping()
+	pingErr := sqlDB.Ping()
 	// Check error
 	if pingErr != nil {
 		return errors.WithStack(pingErr)
@@ -75,12 +103,16 @@ func (ctx *postresdb) Ping() error {
 }
 
 func (ctx *postresdb) Reconnect() error {
-	// Get old gorm database
-	oldDB := ctx.db
+	// Get old sql db object
+	sqlDB, err := ctx.db.DB()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 	// Defer closing old database connection
-	defer oldDB.Close()
+	defer sqlDB.Close()
 	// Connect to new database
-	err := ctx.Connect()
+	err = ctx.Connect()
 	if err != nil {
 		return errors.WithStack(err)
 	}

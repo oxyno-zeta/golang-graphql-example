@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/gofrs/uuid"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Base contains common columns for all tables.
@@ -16,11 +16,14 @@ type Base struct {
 }
 
 // BeforeCreate will set a UUID rather than numeric ID.
-func (base *Base) BeforeCreate(scope *gorm.Scope) error {
+func (base *Base) BeforeCreate(tx *gorm.DB) error {
 	uuid, err := uuid.NewV4()
 	if err != nil {
 		return err
 	}
 
-	return scope.SetColumn("ID", uuid.String())
+	// Save new id
+	base.ID = uuid.String()
+
+	return nil
 }

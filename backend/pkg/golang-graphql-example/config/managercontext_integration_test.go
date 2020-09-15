@@ -56,7 +56,7 @@ log:
 database:
   connectionUrl:
     value: host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
-  dialect: postgres
+
 `,
 			},
 			expectedResult: &Config{
@@ -67,7 +67,6 @@ database:
 				Tracing: &TracingConfig{Enabled: false},
 				Database: &DatabaseConfig{
 					ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
-					Dialect:       "postgres",
 				},
 				Server:         &ServerConfig{Port: 8080},
 				InternalServer: &ServerConfig{Port: 9090},
@@ -158,7 +157,7 @@ log:
 database:
   connectionUrl:
     value: host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
-  dialect: postgres
+
 `,
 		"tracing.yaml": `
 tracing:
@@ -216,7 +215,7 @@ tracing:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-			Dialect:       "postgres",
+
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -259,7 +258,7 @@ log:
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-				Dialect:       "postgres",
+
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -291,7 +290,7 @@ log:
 database:
   connectionUrl:
     value: host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
-  dialect: postgres
+
 `,
 		"tracing.yaml": `
 tracing:
@@ -359,7 +358,7 @@ oidcAuthentication:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-			Dialect:       "postgres",
+
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -413,7 +412,7 @@ oidcAuthentication:
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-				Dialect:       "postgres",
+
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -458,7 +457,7 @@ log:
 database:
   connectionUrl:
     value: host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
-  dialect: postgres
+
 `,
 		"tracing.yaml": `
 tracing:
@@ -516,7 +515,7 @@ tracing:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-			Dialect:       "postgres",
+
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -560,7 +559,7 @@ configuration with error
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-				Dialect:       "postgres",
+
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -588,7 +587,7 @@ log:
 database:
   connectionUrl:
     value: host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
-  dialect: postgres
+
 `,
 		"tracing.yaml": `
 tracing:
@@ -657,7 +656,7 @@ opaServerAuthorization:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-			Dialect:       "postgres",
+
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -707,7 +706,7 @@ opaServerAuthorization:
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-				Dialect:       "postgres",
+
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -760,7 +759,7 @@ log:
 database:
   connectionUrl:
     value: host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable
-  dialect: postgres
+
 `,
 	}
 
@@ -814,7 +813,7 @@ database:
 		},
 		Tracing: &TracingConfig{Enabled: false},
 		Database: &DatabaseConfig{
-			Dialect:       "postgres",
+
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{

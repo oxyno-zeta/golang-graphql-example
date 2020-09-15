@@ -18,7 +18,6 @@ require (
 	github.com/go-playground/validator/v10 v10.3.0
 	github.com/gofrs/uuid v3.3.0+incompatible
 	github.com/golang/mock v1.4.4
-	github.com/jinzhu/gorm v1.9.16
 	github.com/opentracing-contrib/go-gin v0.0.0-20190301172248-2e18f8b9c7d4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.9.1
@@ -34,4 +33,6 @@ require (
 	golang.org/x/oauth2 v0.0.0-20200902213428-5d25da1a8d43
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
+	gorm.io/driver/postgres v1.0.0
+	gorm.io/gorm v1.20.1
 )

@@ -32,10 +32,17 @@ func (s *service) Initialize(logger log.Logger) error {
 	}
 
 	// Get sql database
-	sqlDB := s.db.GetSQLDB()
+	sqlDB, err := s.db.GetSQLDB()
+	// Check error
+	if err != nil {
+		return err
+	}
+
+	// Log
+	logger.Debug("Trying to create lock distributor client")
 
 	// Create pglock client
-	c, err := pglock.New(
+	c, err := pglock.UnsafeNew(
 		sqlDB,
 		pglock.WithLeaseDuration(ld),
 		pglock.WithHeartbeatFrequency(hf),
@@ -55,6 +62,9 @@ func (s *service) Initialize(logger log.Logger) error {
 
 	// Save client
 	s.cl = c
+
+	// Log
+	logger.Info("Successfully created lock distributor client")
 
 	return nil
 }

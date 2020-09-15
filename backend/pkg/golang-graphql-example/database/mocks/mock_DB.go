@@ -7,7 +7,7 @@ package mocks
 import (
 	sql "database/sql"
 	gomock "github.com/golang/mock/gomock"
-	gorm "github.com/jinzhu/gorm"
+	gorm "gorm.io/gorm"
 	reflect "reflect"
 )
 
@@ -77,11 +77,12 @@ func (mr *MockDBMockRecorder) GetGormDB() *gomock.Call {
 }
 
 // GetSQLDB mocks base method
-func (m *MockDB) GetSQLDB() *sql.DB {
+func (m *MockDB) GetSQLDB() (*sql.DB, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetSQLDB")
 	ret0, _ := ret[0].(*sql.DB)
-	return ret0
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
 }
 
 // GetSQLDB indicates an expected call of GetSQLDB

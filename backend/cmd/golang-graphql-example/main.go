@@ -3,7 +3,6 @@ package main
 import (
 	"time"
 
-	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"

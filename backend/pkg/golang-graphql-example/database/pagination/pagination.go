@@ -1,7 +1,7 @@
 package pagination
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 const dbColTagName = "db_col"
@@ -32,6 +32,13 @@ func Paging(db *gorm.DB, filterFunc func(db *gorm.DB) *gorm.DB, orderBy []string
 		db = filterFunc(db)
 	}
 
+	var count int64 = 0
+	db = db.Model(result).Count(&count)
+	// Check error
+	if db.Error != nil {
+		return nil, db.Error
+	}
+
 	// Check if order by exists
 	if len(orderBy) == 0 {
 		// Set default
@@ -51,18 +58,11 @@ func Paging(db *gorm.DB, filterFunc func(db *gorm.DB) *gorm.DB, orderBy []string
 		return nil, db.Error
 	}
 
-	count := 0
-	db = db.Offset(-1).Count(&count)
-	// Check error
-	if db.Error != nil {
-		return nil, db.Error
-	}
-
-	paginator.TotalRecord = count
+	paginator.TotalRecord = int(count)
 	paginator.Skip = p.Skip
 	paginator.Limit = p.Limit
 
-	paginator.HasNext = (p.Limit+p.Skip < count)
+	paginator.HasNext = (p.Limit+p.Skip < paginator.TotalRecord)
 	paginator.HasPrevious = (p.Skip != 0)
 
 	return &paginator, nil
