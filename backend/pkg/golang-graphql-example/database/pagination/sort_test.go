@@ -8,6 +8,7 @@ import (
 	"github.com/DATA-DOG/go-sqlmock"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 func Test_manageSortOrder(t *testing.T) {
@@ -58,41 +59,42 @@ func Test_manageSortOrder(t *testing.T) {
 			args: args{
 				sort: nil,
 			},
-			expectedSortQuery: "",
+			expectedSortQuery: `ORDER BY "people"."name"`,
 		},
 		{
 			name: "empty sort object",
 			args: args{
 				sort: &Sort1{},
 			},
+			expectedSortQuery: `ORDER BY "people"."name"`,
 		},
 		{
 			name: "full set sort pointer object",
 			args: args{
 				sort: &Sort1{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
 			},
-			expectedSortQuery: "ORDER BY fake_1 ASC,fake_2 DESC",
+			expectedSortQuery: `ORDER BY fake_1 ASC,fake_2 DESC,"people"."name"`,
 		},
 		{
 			name: "full set sort object",
 			args: args{
 				sort: Sort1{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
 			},
-			expectedSortQuery: "ORDER BY fake_1 ASC,fake_2 DESC",
+			expectedSortQuery: `ORDER BY fake_1 ASC,fake_2 DESC,"people"."name"`,
 		},
 		{
 			name: "ignored filed",
 			args: args{
 				sort: &Sort2{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
 			},
-			expectedSortQuery: "ORDER BY fake_1 ASC",
+			expectedSortQuery: `ORDER BY fake_1 ASC,"people"."name"`,
 		},
 		{
 			name: "no tag",
 			args: args{
 				sort: &Sort3{Fake1: &SortOrderEnumAsc, Fake2: &SortOrderEnumDesc},
 			},
-			expectedSortQuery: "ORDER BY fake_1 ASC",
+			expectedSortQuery: `ORDER BY fake_1 ASC,"people"."name"`,
 		},
 		{
 			name: "tag but not on right type",
@@ -100,14 +102,14 @@ func Test_manageSortOrder(t *testing.T) {
 				sort: &Sort4{Fake1: &SortOrderEnumAsc, Fake2: "fake"},
 			},
 			wantErr:     true,
-			errorString: "field with sort tag must be a *SortOrderEnum",
+			errorString: "field Fake2 with sort tag must be a *SortOrderEnum",
 		},
 		{
 			name: "wrong type without field must be ignored",
 			args: args{
 				sort: &Sort5{Fake1: &SortOrderEnumAsc, Fake2: "fake"},
 			},
-			expectedSortQuery: "ORDER BY fake_1 ASC",
+			expectedSortQuery: `ORDER BY fake_1 ASC,"people"."name"`,
 		},
 		{
 			name: "wrong enum type used (no pointer)",
@@ -115,7 +117,7 @@ func Test_manageSortOrder(t *testing.T) {
 				sort: &Sort6{Fake1: SortOrderEnumAsc},
 			},
 			wantErr:     true,
-			errorString: "field with sort tag must be a *SortOrderEnum",
+			errorString: "field Fake1 with sort tag must be a *SortOrderEnum",
 		},
 	}
 	for _, tt := range tests {
@@ -127,7 +129,7 @@ func Test_manageSortOrder(t *testing.T) {
 			}
 			defer sqlDB.Close()
 
-			db, err := gorm.Open(postgres.New(postgres.Config{Conn: sqlDB}), &gorm.Config{})
+			db, err := gorm.Open(postgres.New(postgres.Config{Conn: sqlDB}), &gorm.Config{Logger: logger.Discard})
 			if err != nil {
 				t.Error(err)
 				return
@@ -146,11 +148,7 @@ func Test_manageSortOrder(t *testing.T) {
 			}
 
 			// Create expected query
-			expectedQuery := `SELECT * FROM "people" ` + tt.expectedSortQuery
-			if tt.expectedSortQuery != "" {
-				expectedQuery += " "
-			}
-			expectedQuery += "LIMIT 1"
+			expectedQuery := `SELECT * FROM "people" ` + tt.expectedSortQuery + " LIMIT 1"
 			mock.ExpectQuery(expectedQuery).WithArgs().WillReturnRows(
 				sqlmock.NewRows([]string{"name"}).AddRow("fake"),
 			)

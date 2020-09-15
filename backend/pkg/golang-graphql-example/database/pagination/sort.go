@@ -26,7 +26,7 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	rKind := rVal.Kind()
 	// Check if kind is supported
 	if rKind != reflect.Struct && rKind != reflect.Ptr {
-		return nil, errors.NewInternalServerError("sort must be an object")
+		return nil, errors.NewInvalidInputError("sort must be an object")
 	}
 
 	// Indirect value
@@ -49,7 +49,7 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 		}
 		// Check that type is supported
 		if fType.Type != supportedEnumType {
-			return nil, errors.NewInternalServerError("field with sort tag must be a *SortOrderEnum")
+			return nil, errors.NewInvalidInputError(fmt.Sprintf("field %s with sort tag must be a *SortOrderEnum", fType.Name))
 		}
 		// Get field value
 		fVal := indirect.Field(i)
