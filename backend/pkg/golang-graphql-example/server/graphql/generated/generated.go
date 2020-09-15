@@ -13,6 +13,7 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
@@ -59,7 +60,7 @@ type ComplexityRoot struct {
 	}
 
 	Query struct {
-		Todos func(childComplexity int, after *string, before *string, first *int, last *int) int
+		Todos func(childComplexity int, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) int
 	}
 
 	Todo struct {
@@ -86,7 +87,7 @@ type MutationResolver interface {
 	UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error)
 }
 type QueryResolver interface {
-	Todos(ctx context.Context, after *string, before *string, first *int, last *int) (*model.TodoConnection, error)
+	Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) (*model.TodoConnection, error)
 }
 type TodoResolver interface {
 	ID(ctx context.Context, obj *models.Todo) (string, error)
@@ -183,7 +184,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Todos(childComplexity, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int)), true
+		return e.complexity.Query.Todos(childComplexity, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int), args["sort"].(*models.SortOrder), args["filter"].(*models.Filter)), true
 
 	case "Todo.creationDate":
 		if e.complexity.Todo.CreationDate == nil {
@@ -310,7 +311,37 @@ var sources = []*ast.Source{
 # https://gqlgen.com/getting-started/
 
 type Query {
-  todos(after: String, before: String, first: Int, last: Int): TodoConnection
+  todos(
+    """
+    Cursor delimiter after you want data (used with first only)
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Forward-pagination-arguments
+    """
+    after: String
+    """
+    Cursor delimiter before you want data (used with after only)
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Backward-pagination-arguments
+    """
+    before: String
+    """
+    First elements
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Forward-pagination-arguments
+    """
+    first: Int
+    """
+    Last elements (used only with before)
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Backward-pagination-arguments
+    """
+    last: Int
+    """
+    Sort
+    """
+    sort: TodoSortOrder
+    filter: TodoFilter
+  ): TodoConnection
 }
 
 type Mutation {
@@ -347,12 +378,50 @@ type TodoEdge {
   cursor: String!
   node: Todo
 }
+
+input TodoSortOrder {
+  createdAt: SortOrderEnum
+  updatedAt: SortOrderEnum
+  text: SortOrderEnum
+  done: SortOrderEnum
+}
+
+input StringFilter {
+  Eq: String
+  NotEq: String
+  Contains: String
+  NotContains: String
+}
+
+input TodoFilter {
+  Text: StringFilter
+}
 `, BuiltIn: false},
-	{Name: "graphql/utils.graphql", Input: `type PageInfo {
+	{Name: "graphql/utils.graphql", Input: `"""
+Pagination information
+"""
+type PageInfo {
+  """
+  Has a next page ?
+  """
   hasNextPage: Boolean!
+  """
+  Has a previous page ?
+  """
   hasPreviousPage: Boolean!
+  """
+  Shortcut to first edge cursor in the result chunk
+  """
   startCursor: String
+  """
+  Shortcut to last edge cursor in the result chunk
+  """
   endCursor: String
+}
+
+enum SortOrderEnum {
+  ASC
+  DESC
 }
 `, BuiltIn: false},
 }
@@ -461,6 +530,24 @@ func (ec *executionContext) field_Query_todos_args(ctx context.Context, rawArgs 
 		}
 	}
 	args["last"] = arg3
+	var arg4 *models.SortOrder
+	if tmp, ok := rawArgs["sort"]; ok {
+		ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("sort"))
+		arg4, err = ec.unmarshalOTodoSortOrder2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐSortOrder(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["sort"] = arg4
+	var arg5 *models.Filter
+	if tmp, ok := rawArgs["filter"]; ok {
+		ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("filter"))
+		arg5, err = ec.unmarshalOTodoFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐFilter(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["filter"] = arg5
 	return args, nil
 }
 
@@ -779,7 +866,7 @@ func (ec *executionContext) _Query_todos(ctx context.Context, field graphql.Coll
 	fc.Args = args
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Todos(rctx, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int))
+		return ec.resolvers.Query().Todos(rctx, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int), args["sort"].(*models.SortOrder), args["filter"].(*models.Filter))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -2203,6 +2290,114 @@ func (ec *executionContext) unmarshalInputNewTodo(ctx context.Context, obj inter
 	return it, nil
 }
 
+func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj interface{}) (pagination.GenericFilter, error) {
+	var it pagination.GenericFilter
+	var asMap = obj.(map[string]interface{})
+
+	for k, v := range asMap {
+		switch k {
+		case "Eq":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Eq"))
+			it.Eq, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "NotEq":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotEq"))
+			it.NotEq, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "Contains":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Contains"))
+			it.Contains, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "NotContains":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotContains"))
+			it.NotContains, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		}
+	}
+
+	return it, nil
+}
+
+func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj interface{}) (models.Filter, error) {
+	var it models.Filter
+	var asMap = obj.(map[string]interface{})
+
+	for k, v := range asMap {
+		switch k {
+		case "Text":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Text"))
+			it.Text, err = ec.unmarshalOStringFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐGenericFilter(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		}
+	}
+
+	return it, nil
+}
+
+func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj interface{}) (models.SortOrder, error) {
+	var it models.SortOrder
+	var asMap = obj.(map[string]interface{})
+
+	for k, v := range asMap {
+		switch k {
+		case "createdAt":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("createdAt"))
+			it.CreatedAt, err = ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐSortOrderEnum(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "updatedAt":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("updatedAt"))
+			it.UpdatedAt, err = ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐSortOrderEnum(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "text":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("text"))
+			it.Text, err = ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐSortOrderEnum(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "done":
+			var err error
+
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("done"))
+			it.Done, err = ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐSortOrderEnum(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		}
+	}
+
+	return it, nil
+}
+
 func (ec *executionContext) unmarshalInputUpdateTodo(ctx context.Context, obj interface{}) (model.UpdateTodo, error) {
 	var it model.UpdateTodo
 	var asMap = obj.(map[string]interface{})
@@ -3062,6 +3257,22 @@ func (ec *executionContext) marshalOInt2ᚖint(ctx context.Context, sel ast.Sele
 	return graphql.MarshalInt(*v)
 }
 
+func (ec *executionContext) unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐSortOrderEnum(ctx context.Context, v interface{}) (*pagination.SortOrderEnum, error) {
+	if v == nil {
+		return nil, nil
+	}
+	var res = new(pagination.SortOrderEnum)
+	err := res.UnmarshalGQL(v)
+	return res, graphql.WrapErrorWithInputPath(ctx, err)
+}
+
+func (ec *executionContext) marshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐSortOrderEnum(ctx context.Context, sel ast.SelectionSet, v *pagination.SortOrderEnum) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	return v
+}
+
 func (ec *executionContext) unmarshalOString2string(ctx context.Context, v interface{}) (string, error) {
 	res, err := graphql.UnmarshalString(v)
 	return res, graphql.WrapErrorWithInputPath(ctx, err)
@@ -3084,6 +3295,14 @@ func (ec *executionContext) marshalOString2ᚖstring(ctx context.Context, sel as
 		return graphql.Null
 	}
 	return graphql.MarshalString(*v)
+}
+
+func (ec *executionContext) unmarshalOStringFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋpaginationᚐGenericFilter(ctx context.Context, v interface{}) (*pagination.GenericFilter, error) {
+	if v == nil {
+		return nil, nil
+	}
+	res, err := ec.unmarshalInputStringFilter(ctx, v)
+	return &res, graphql.WrapErrorWithInputPath(ctx, err)
 }
 
 func (ec *executionContext) marshalOTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐTodo(ctx context.Context, sel ast.SelectionSet, v *models.Todo) graphql.Marshaler {
@@ -3145,6 +3364,22 @@ func (ec *executionContext) marshalOTodoEdge2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgo
 		return graphql.Null
 	}
 	return ec._TodoEdge(ctx, sel, v)
+}
+
+func (ec *executionContext) unmarshalOTodoFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐFilter(ctx context.Context, v interface{}) (*models.Filter, error) {
+	if v == nil {
+		return nil, nil
+	}
+	res, err := ec.unmarshalInputTodoFilter(ctx, v)
+	return &res, graphql.WrapErrorWithInputPath(ctx, err)
+}
+
+func (ec *executionContext) unmarshalOTodoSortOrder2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐSortOrder(ctx context.Context, v interface{}) (*models.SortOrder, error) {
+	if v == nil {
+		return nil, nil
+	}
+	res, err := ec.unmarshalInputTodoSortOrder(ctx, v)
+	return &res, graphql.WrapErrorWithInputPath(ctx, err)
 }
 
 func (ec *executionContext) unmarshalOUpdateTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋmodelᚐUpdateTodo(ctx context.Context, v interface{}) (*model.UpdateTodo, error) {

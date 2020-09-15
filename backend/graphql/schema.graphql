@@ -3,7 +3,37 @@
 # https://gqlgen.com/getting-started/
 
 type Query {
-  todos(after: String, before: String, first: Int, last: Int): TodoConnection
+  todos(
+    """
+    Cursor delimiter after you want data (used with first only)
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Forward-pagination-arguments
+    """
+    after: String
+    """
+    Cursor delimiter before you want data (used with after only)
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Backward-pagination-arguments
+    """
+    before: String
+    """
+    First elements
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Forward-pagination-arguments
+    """
+    first: Int
+    """
+    Last elements (used only with before)
+
+    See here: https://relay.dev/graphql/connections.htm#sec-Backward-pagination-arguments
+    """
+    last: Int
+    """
+    Sort
+    """
+    sort: TodoSortOrder
+    filter: TodoFilter
+  ): TodoConnection
 }
 
 type Mutation {

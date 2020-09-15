@@ -43,6 +43,9 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  StringFilter:
+    model:
+      - ./pkg/golang-graphql-example/database/pagination.GenericFilter
   SortOrderEnum:
     model:
       - ./pkg/golang-graphql-example/database/pagination.SortOrderEnum
@@ -52,6 +55,12 @@ models:
     fields:
       id:
         resolver: true
+  TodoFilter:
+    model:
+      - ./pkg/golang-graphql-example/business/todos/models.Filter
+  TodoSortOrder:
+    model:
+      - ./pkg/golang-graphql-example/business/todos/models.SortOrder
   ID:
     model:
       - github.com/99designs/gqlgen/graphql.ID

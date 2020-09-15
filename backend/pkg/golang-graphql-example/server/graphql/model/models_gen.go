@@ -10,11 +10,16 @@ type NewTodo struct {
 	Text string `json:"text"`
 }
 
+// Pagination information
 type PageInfo struct {
-	HasNextPage     bool    `json:"hasNextPage"`
-	HasPreviousPage bool    `json:"hasPreviousPage"`
-	StartCursor     *string `json:"startCursor"`
-	EndCursor       *string `json:"endCursor"`
+	// Has a next page ?
+	HasNextPage bool `json:"hasNextPage"`
+	// Has a previous page ?
+	HasPreviousPage bool `json:"hasPreviousPage"`
+	// Shortcut to first edge cursor in the result chunk
+	StartCursor *string `json:"startCursor"`
+	// Shortcut to last edge cursor in the result chunk
+	EndCursor *string `json:"endCursor"`
 }
 
 type TodoConnection struct {

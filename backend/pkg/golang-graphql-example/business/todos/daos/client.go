@@ -8,7 +8,7 @@ import (
 
 type Dao interface {
 	MigrateDB() error
-	GetAllPaginated(page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error)
+	GetAllPaginated(page *pagination.PageInput, sort *models.SortOrder) ([]*models.Todo, *pagination.PageOutput, error)
 	CreateOrUpdate(tt *models.Todo) (*models.Todo, error)
 	FindByID(id string) (*models.Todo, error)
 }

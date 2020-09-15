@@ -26,3 +26,21 @@ type TodoEdge {
   cursor: String!
   node: Todo
 }
+
+input TodoSortOrder {
+  createdAt: SortOrderEnum
+  updatedAt: SortOrderEnum
+  text: SortOrderEnum
+  done: SortOrderEnum
+}
+
+input StringFilter {
+  Eq: String
+  NotEq: String
+  Contains: String
+  NotContains: String
+}
+
+input TodoFilter {
+  Text: StringFilter
+}

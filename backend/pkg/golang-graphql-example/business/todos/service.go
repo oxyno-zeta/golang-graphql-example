@@ -23,7 +23,7 @@ func (s *service) MigrateDB(systemLogger log.Logger) error {
 	return s.dao.MigrateDB()
 }
 
-func (s *service) GetAllPaginated(ctx context.Context, page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error) {
+func (s *service) GetAllPaginated(ctx context.Context, page *pagination.PageInput, sort *models.SortOrder) ([]*models.Todo, *pagination.PageOutput, error) {
 	// Check authorization
 	err := s.authSvc.CheckAuthorized(
 		ctx,
@@ -35,7 +35,7 @@ func (s *service) GetAllPaginated(ctx context.Context, page *pagination.PageInpu
 		return nil, nil, err
 	}
 
-	return s.dao.GetAllPaginated(page)
+	return s.dao.GetAllPaginated(page, sort)
 }
 
 func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error) {

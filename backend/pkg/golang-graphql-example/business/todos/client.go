@@ -16,7 +16,7 @@ type authorizationService interface {
 
 type Service interface {
 	MigrateDB(systemLogger log.Logger) error
-	GetAllPaginated(ctx context.Context, page *pagination.PageInput) ([]*models.Todo, *pagination.PageOutput, error)
+	GetAllPaginated(ctx context.Context, page *pagination.PageInput, sort *models.SortOrder) ([]*models.Todo, *pagination.PageOutput, error)
 	Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error)
 	Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error)
 	Close(ctx context.Context, id string) (*models.Todo, error)

@@ -59,7 +59,7 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTo
 	return tt, nil
 }
 
-func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int) (*model.TodoConnection, error) {
+func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) (*model.TodoConnection, error) {
 	// Create pagination input
 	pageInput, err := utils.GetPageInput(after, before, first, last)
 	// Check error
@@ -68,7 +68,7 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 	}
 
 	// Call business
-	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput)
+	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, nil)
 	// Check error
 	if err != nil {
 		return nil, err
