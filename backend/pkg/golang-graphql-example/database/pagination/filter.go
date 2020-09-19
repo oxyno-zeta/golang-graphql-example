@@ -112,13 +112,13 @@ func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObjec
 				// Get value behind
 				andElement := andElementRVal.Interface()
 				// Call manage filter
-				res2, err := manageFilter(andElement, res, originalDb, true)
+				res2, err := manageFilter(andElement, originalDb, originalDb, true)
 				// Check error
 				if err != nil {
 					return nil, err
 				}
 				// Save result
-				res = res2
+				res = res.Where(res2)
 			}
 		}
 	}
