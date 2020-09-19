@@ -6,6 +6,14 @@ import (
 	"strconv"
 )
 
+// SortOrderEnum is used to sort data.
+// This must be used as a pointer in other structures to be used automatically in sort.
+// Moreover, a tag containing the database field must be declared.
+// Example:
+// type Sort struct {
+// 	Field1 *SortOrderEnum `dbfield:"field_1"`
+// }
+// .
 type SortOrderEnum string
 
 var (
