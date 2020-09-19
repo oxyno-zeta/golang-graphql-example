@@ -1,3 +1,5 @@
+//+build unit
+
 package pagination
 
 import (
@@ -80,6 +82,10 @@ func Test_manageFilter(t *testing.T) {
 		AND    []*Person
 		Field1 *GenericFilter `db_col:"field_1"`
 		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter15 struct {
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *Person        `db_col:"field_2"`
 	}
 	type args struct {
 		filter interface{}
@@ -180,6 +186,17 @@ func Test_manageFilter(t *testing.T) {
 					Field2: GenericFilter{
 						Contains: "fak",
 					},
+				},
+			},
+			wantErr:     true,
+			errorString: "field Field2 with filter tag must be a *GenericFilter",
+		},
+		{
+			name: "tag with wrong type 3 (struct pointer)",
+			args: args{
+				filter: &Filter15{
+					Field1: &GenericFilter{Eq: "fake"},
+					Field2: &Person{Name: "fake"},
 				},
 			},
 			wantErr:     true,
