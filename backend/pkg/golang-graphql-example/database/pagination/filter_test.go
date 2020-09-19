@@ -66,6 +66,21 @@ func Test_manageFilter(t *testing.T) {
 		Field1 *GenericFilter `db_col:"field_1"`
 		Field2 *GenericFilter `db_col:"field_2"`
 	}
+	type Filter12 struct {
+		AND    string
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter13 struct {
+		AND    []string
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
+	type Filter14 struct {
+		AND    []*Person
+		Field1 *GenericFilter `db_col:"field_1"`
+		Field2 *GenericFilter `db_col:"field_2"`
+	}
 	type args struct {
 		filter interface{}
 	}
@@ -316,7 +331,7 @@ func Test_manageFilter(t *testing.T) {
 			expectedArgs:              []driver.Value{"fake", "%fak%", "fake2", "fake3"},
 		},
 		{
-			name: "AND and without root fields",
+			name: "AND without root fields",
 			args: args{
 				filter: &Filter7{
 					AND: []*Filter7{
@@ -354,7 +369,7 @@ func Test_manageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_2 = $2 AND field_2 = $3 AND field_1 = $4",
+			expectedIntermediateQuery: "WHERE (field_1 = $1 AND field_2 = $2 AND field_2 = $3) AND field_1 = $4",
 			expectedArgs:              []driver.Value{"fake2", "fake", "fake4", "fake3"},
 		},
 		{
@@ -378,8 +393,161 @@ func Test_manageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE field_2 = $1 AND field_2 = $2 AND field_1 = $3",
+			expectedIntermediateQuery: "WHERE (field_2 = $1 AND field_2 = $2) AND field_1 = $3",
 			expectedArgs:              []driver.Value{"fake", "fake4", "fake3"},
+		},
+		{
+			name: "AND with an unsupported type (string) should be ignored",
+			args: args{
+				filter: &Filter12{
+					AND:    "fake1",
+					Field1: &GenericFilter{Eq: "fake"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "AND with an unsupported type ([]string) should be ignored",
+			args: args{
+				filter: &Filter13{
+					AND:    []string{"fake1"},
+					Field1: &GenericFilter{Eq: "fake"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "AND with an unsupported type ([]*Person) should be ignored",
+			args: args{
+				filter: &Filter14{
+					AND:    []*Person{{Name: "fake1"}},
+					Field1: &GenericFilter{Eq: "fake"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "AND and OR with root fields and OR with AND inside",
+			args: args{
+				filter: &Filter8{
+					AND: []*Filter8{
+						{
+							AND: []*Filter8{
+								{
+									Field2: &GenericFilter{Eq: "fake1"},
+								},
+								{
+									Field2: &GenericFilter{Eq: "fake2"},
+								},
+							},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake3"},
+						},
+					},
+					OR: []*Filter8{
+						{
+							OR: []*Filter8{
+								{
+									Field2: &GenericFilter{Eq: "fake4"},
+								},
+								{
+									Field2: &GenericFilter{Eq: "fake5"},
+								},
+							},
+							Field2: &GenericFilter{Eq: "fake10"},
+						},
+						{
+							Field1: &GenericFilter{Eq: "fake6"},
+						},
+						{
+							AND: []*Filter8{
+								{
+									Field1: &GenericFilter{Eq: "fake7"},
+								},
+								{
+									OR: []*Filter8{
+										{
+											Field2: &GenericFilter{Eq: "fake8"},
+										},
+										{
+											Field2: &GenericFilter{Eq: "fake9"},
+										},
+									},
+								},
+							},
+						},
+					},
+					Field1: &GenericFilter{Eq: "fake11"},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND (field_2 = $2 AND field_2 = $3) AND field_1 = $4" +
+				" AND (field_2 = $5 AND field_2 = $6 OR field_2 = $7) OR field_1 = $8" +
+				" OR (field_1 = $9 AND (field_2 = $10 OR field_2 = $11))",
+			expectedArgs: []driver.Value{
+				"fake11",
+				"fake1",
+				"fake2",
+				"fake3",
+				"fake10",
+				"fake4",
+				"fake5",
+				"fake6",
+				"fake7",
+				"fake8",
+				"fake9",
+			},
+		},
+		{
+			name: "OR AND cascade",
+			args: args{
+				filter: &Filter8{
+					OR: []*Filter8{
+						{
+							AND: []*Filter8{
+								{Field1: &GenericFilter{Eq: "fake1"}},
+								{Field1: &GenericFilter{Eq: "fake2"}},
+							},
+						},
+						{Field2: &GenericFilter{Eq: "fake3"}},
+						{
+							AND: []*Filter8{
+								{Field1: &GenericFilter{Eq: "fake4"}},
+								{Field1: &GenericFilter{Eq: "fake5"}},
+							},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 = $1 AND field_1 = $2) OR field_2 = $3 OR (field_1 = $4 AND field_1 = $5)",
+			expectedArgs:              []driver.Value{"fake1", "fake2", "fake3", "fake4", "fake5"},
+		},
+		{
+			name: "AND OR cascade",
+			args: args{
+				filter: &Filter8{
+					AND: []*Filter8{
+						{
+							OR: []*Filter8{
+								{Field1: &GenericFilter{Eq: "fake1"}},
+								{Field1: &GenericFilter{Eq: "fake2"}},
+							},
+						},
+						{Field2: &GenericFilter{Eq: "fake3"}},
+						{
+							OR: []*Filter8{
+								{Field1: &GenericFilter{Eq: "fake4"}},
+								{Field1: &GenericFilter{Eq: "fake5"}},
+							},
+						},
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE (field_1 = $1 OR field_1 = $2) AND field_2 = $3 AND (field_1 = $4 OR field_1 = $5)",
+			expectedArgs:              []driver.Value{"fake1", "fake2", "fake3", "fake4", "fake5"},
 		},
 	}
 	for _, tt := range tests {
