@@ -19,73 +19,73 @@ func Test_manageFilter(t *testing.T) {
 		Name string
 	}
 	type Filter1 struct {
-		Field1 *GenericFilter `db_col:"field_1"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
 	}
 	type Filter2 struct {
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"-"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"-"`
 	}
 	type Filter3 struct {
-		Field1 *GenericFilter `db_col:"field_1"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
 		Field2 *GenericFilter
 	}
 	type Filter4 struct {
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 string         `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 string         `dbcolumn:"field_2"`
 	}
 	type Filter5 struct {
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 GenericFilter  `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 GenericFilter  `dbcolumn:"field_2"`
 	}
 	type Filter6 struct {
 		OR     []*Filter6
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter7 struct {
 		AND    []*Filter7
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter8 struct {
 		AND    []*Filter8
 		OR     []*Filter8
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter9 struct {
 		OR     string
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter10 struct {
 		OR     []string
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter11 struct {
 		OR     []*Person
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter12 struct {
 		AND    string
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter13 struct {
 		AND    []string
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter14 struct {
 		AND    []*Person
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *GenericFilter `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *GenericFilter `dbcolumn:"field_2"`
 	}
 	type Filter15 struct {
-		Field1 *GenericFilter `db_col:"field_1"`
-		Field2 *Person        `db_col:"field_2"`
+		Field1 *GenericFilter `dbcolumn:"field_1"`
+		Field2 *Person        `dbcolumn:"field_2"`
 	}
 	type args struct {
 		filter interface{}

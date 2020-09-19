@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-const dbColTagName = "db_col"
+const dbColTagName = "dbcolumn"
 
 type PageInput struct {
 	Skip  int
