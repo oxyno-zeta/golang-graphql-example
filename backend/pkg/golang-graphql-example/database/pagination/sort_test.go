@@ -59,14 +59,14 @@ func Test_manageSortOrder(t *testing.T) {
 			args: args{
 				sort: nil,
 			},
-			expectedSortQuery: `ORDER BY "people"."name"`,
+			expectedSortQuery: `ORDER BY created_at DESC,"people"."name"`,
 		},
 		{
 			name: "empty sort object",
 			args: args{
 				sort: &Sort1{},
 			},
-			expectedSortQuery: `ORDER BY "people"."name"`,
+			expectedSortQuery: `ORDER BY created_at DESC,"people"."name"`,
 		},
 		{
 			name: "full set sort pointer object",

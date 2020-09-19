@@ -15,7 +15,7 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	// Check if sort isn't nil
 	if sort == nil {
 		// Stop here
-		return db, nil
+		return manageDefaultSort(db), nil
 	}
 
 	// Create result
@@ -35,6 +35,8 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	indData := indirect.Interface()
 	// Get type of indirect value
 	typeOfIndi := reflect.TypeOf(indData)
+	// Variable to know at the end if one sort was applied
+	sortApplied := false
 
 	// Loop over all num fields
 	for i := 0; i < indirect.NumField(); i++ {
@@ -64,7 +66,18 @@ func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 		enu := val.(*SortOrderEnum)
 		// Apply order
 		res = res.Order(fmt.Sprintf("%s %s", tagVal, enu.String()))
+		// Store sort applied
+		sortApplied = true
+	}
+
+	// Check if one sort was applied or not in order to put the default one
+	if !sortApplied {
+		res = manageDefaultSort(res)
 	}
 
 	return res, nil
+}
+
+func manageDefaultSort(db *gorm.DB) *gorm.DB {
+	return db.Order("created_at DESC")
 }
