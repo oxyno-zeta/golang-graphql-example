@@ -8,13 +8,13 @@ import (
 	"gorm.io/gorm"
 )
 
-// Supported generic filter type for testing purpose
+// Supported generic filter type for testing purpose.
 var supportedGenericFilterType = reflect.TypeOf(new(GenericFilter))
 
-// AND field
+// AND field.
 const andFieldName = "AND"
 
-// OR field
+// OR field.
 const orFieldName = "OR"
 
 func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
