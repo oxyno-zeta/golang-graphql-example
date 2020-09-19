@@ -16,27 +16,27 @@ func Test_manageSortOrder(t *testing.T) {
 		Name string
 	}
 	type Sort1 struct {
-		Fake1 *SortOrderEnum `dbcolumn:"fake_1"`
-		Fake2 *SortOrderEnum `dbcolumn:"fake_2"`
+		Fake1 *SortOrderEnum `dbfield:"fake_1"`
+		Fake2 *SortOrderEnum `dbfield:"fake_2"`
 	}
 	type Sort2 struct {
-		Fake1 *SortOrderEnum `dbcolumn:"fake_1"`
-		Fake2 *SortOrderEnum `dbcolumn:"-"`
+		Fake1 *SortOrderEnum `dbfield:"fake_1"`
+		Fake2 *SortOrderEnum `dbfield:"-"`
 	}
 	type Sort3 struct {
-		Fake1 *SortOrderEnum `dbcolumn:"fake_1"`
+		Fake1 *SortOrderEnum `dbfield:"fake_1"`
 		Fake2 *SortOrderEnum
 	}
 	type Sort4 struct {
-		Fake1 *SortOrderEnum `dbcolumn:"fake_1"`
-		Fake2 string         `dbcolumn:"fake_2"`
+		Fake1 *SortOrderEnum `dbfield:"fake_1"`
+		Fake2 string         `dbfield:"fake_2"`
 	}
 	type Sort5 struct {
-		Fake1 *SortOrderEnum `dbcolumn:"fake_1"`
+		Fake1 *SortOrderEnum `dbfield:"fake_1"`
 		Fake2 string
 	}
 	type Sort6 struct {
-		Fake1 SortOrderEnum `dbcolumn:"fake_1"`
+		Fake1 SortOrderEnum `dbfield:"fake_1"`
 	}
 	type args struct {
 		sort interface{}
