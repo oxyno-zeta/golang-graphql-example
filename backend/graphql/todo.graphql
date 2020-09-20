@@ -3,9 +3,10 @@ This represents a Todo object
 """
 type Todo {
   id: ID!
+  createdAt: String!
+  updatedAt: String!
   text: String!
   done: Boolean!
-  creationDate: String!
 }
 
 input NewTodo {
@@ -34,13 +35,9 @@ input TodoSortOrder {
   done: SortOrderEnum
 }
 
-input StringFilter {
-  Eq: String
-  NotEq: String
-  Contains: String
-  NotContains: String
-}
-
 input TodoFilter {
+  CreatedAt: DateFilter
+  UpdatedAt: DateFilter
   Text: StringFilter
+  Done: BooleanFilter
 }
