@@ -22,11 +22,38 @@ type PageOutput struct {
 	HasNext     bool
 }
 
-// Paging.
-func Paging(result interface{}, db *gorm.DB, p *PageInput, sort interface{}, filter interface{}, extraFunc func(db *gorm.DB) *gorm.DB) (*PageOutput, error) {
+// Paging function in order to have a paginated sorted and filters list of objects.
+// Parameters:
+// - result: Must be a pointer to a list of objects
+// - db: Gorm database
+// - p: Pagination input
+// - sort: Must be a pointer to an object with *SortOrderEnum objects with tags
+// - filter: Must be a pointer to an object with *GenericFilter objects or implementing the GenericFilterBuilder interface and with tags
+// - extraFunc: This function is called after filters and before any sorts
+// .
+func Paging(
+	result interface{},
+	db *gorm.DB,
+	p *PageInput,
+	sort interface{},
+	filter interface{},
+	extraFunc func(db *gorm.DB) *gorm.DB,
+) (*PageOutput, error) {
 	// Manage default limit
 	if p.Limit == 0 {
 		p.Limit = 10
+	}
+
+	// Apply filter
+	db, err := manageFilter(filter, db, db, false)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Extra function
+	if extraFunc != nil {
+		db = extraFunc(db)
 	}
 
 	// Count all objects
@@ -38,22 +65,10 @@ func Paging(result interface{}, db *gorm.DB, p *PageInput, sort interface{}, fil
 	}
 
 	// Apply sort
-	db, err := manageSortOrder(sort, db)
+	db, err = manageSortOrder(sort, db)
 	// Check error
 	if err != nil {
 		return nil, err
-	}
-
-	// Apply filter
-	db, err = manageFilter(filter, db, db, false)
-	// Check error
-	if err != nil {
-		return nil, err
-	}
-
-	// Extra function
-	if extraFunc != nil {
-		db = extraFunc(db)
 	}
 
 	// Create paginator output
