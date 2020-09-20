@@ -1,6 +1,10 @@
 package pagination
 
-// GenericFilter is a structure that will handle filters.
+import (
+	"time"
+)
+
+// GenericFilter is a structure that will handle filters other than Date.
 // This must be used as a pointer in other structures to be used automatically in filters.
 // Moreover, a tag containing the database field must be declared.
 // Example:
@@ -51,4 +55,226 @@ type GenericFilter struct {
 	In interface{}
 	// Allow to test if value isn't in array
 	NotIn interface{}
+}
+
+// DateFilter is a structure that will handle filters for dates.
+// This must be used as a pointer in other structures to be used automatically in filters.
+// Moreover, a tag containing the database field must be declared.
+// Example:
+// type Filter struct {
+// 	Field1 *DateFilter `dbfield:"field_1"`
+// }
+// .
+type DateFilter struct {
+	// Allow to test equality to
+	Eq *string
+	// Allow to test non equality to
+	NotEq *string
+	// Allow to test greater or equal than
+	Gte *string
+	// Allow to test not greater or equal than
+	NotGte *string
+	// Allow to test greater than
+	Gt *string
+	// Allow to test not greater than
+	NotGt *string
+	// Allow to test less or equal than
+	Lte *string
+	// Allow to test not less or equal than
+	NotLte *string
+	// Allow to test less than
+	Lt *string
+	// Allow to test not less than
+	NotLt *string
+	// Allow to test if value is in array
+	In []string
+	// Allow to test if value isn't in array
+	NotIn []string
+}
+
+type GenericFilterBuilder interface {
+	GetGenericFilter() (*GenericFilter, error)
+}
+
+func (g *GenericFilter) GetGenericFilter() (*GenericFilter, error) { return g, nil }
+
+func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
+	// Create result
+	res := &GenericFilter{}
+
+	// Eq case
+	if d.Eq != nil {
+		// Parse time
+		t, err := parseTime(*d.Eq)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.Eq = t
+	}
+
+	// Not Eq case
+	if d.NotEq != nil {
+		// Parse time
+		t, err := parseTime(*d.NotEq)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.NotEq = t
+	}
+
+	// Gte case
+	if d.Gte != nil {
+		// Parse time
+		t, err := parseTime(*d.Gte)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.Gte = t
+	}
+
+	// Not Gte case
+	if d.NotGte != nil {
+		// Parse time
+		t, err := parseTime(*d.NotGte)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.NotGte = t
+	}
+
+	// Gt case
+	if d.Gt != nil {
+		// Parse time
+		t, err := parseTime(*d.Gt)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.Gt = t
+	}
+
+	// Not Gt case
+	if d.NotGt != nil {
+		// Parse time
+		t, err := parseTime(*d.NotGt)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.NotGt = t
+	}
+
+	// Lte case
+	if d.Lte != nil {
+		// Parse time
+		t, err := parseTime(*d.Lte)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.Lte = t
+	}
+
+	// Not Lte case
+	if d.NotLte != nil {
+		// Parse time
+		t, err := parseTime(*d.NotLte)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.NotLte = t
+	}
+
+	// Lt case
+	if d.Lt != nil {
+		// Parse time
+		t, err := parseTime(*d.Lt)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.Lt = t
+	}
+
+	// Not Lt case
+	if d.NotLt != nil {
+		// Parse time
+		t, err := parseTime(*d.NotLt)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.NotLt = t
+	}
+
+	// In case
+	if d.In != nil {
+		// Parse time
+		t, err := parseTimes(d.In)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.In = t
+	}
+
+	// Not In case
+	if d.NotIn != nil {
+		// Parse time
+		t, err := parseTimes(d.NotIn)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		res.NotIn = t
+	}
+
+	return res, nil
+}
+
+func parseTime(x string) (*time.Time, error) {
+	// Parse date
+	t, err := time.Parse(time.RFC3339, x)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	return &t, nil
+}
+
+func parseTimes(x []string) ([]*time.Time, error) {
+	// Prepare result
+	res := make([]*time.Time, 0)
+
+	// Loop over all values
+	for _, v := range x {
+		// Parse time
+		t, err := parseTime(v)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Append
+		res = append(res, t)
+	}
+
+	return res, nil
 }

@@ -6,12 +6,13 @@ import (
 
 const dbColTagName = "dbfield"
 
+// PageInput represents an input pagination configuration.
 type PageInput struct {
 	Skip  int
 	Limit int
 }
 
-// PageOutput.
+// PageOutput represents an output pagination structure.
 type PageOutput struct {
 	TotalRecord int
 	Offset      int
@@ -22,16 +23,13 @@ type PageOutput struct {
 }
 
 // Paging.
-func Paging(db *gorm.DB, filterFunc func(db *gorm.DB) *gorm.DB, orderBy []string, p *PageInput, result interface{}) (*PageOutput, error) {
+func Paging(result interface{}, db *gorm.DB, p *PageInput, sort interface{}, filter interface{}, extraFunc func(db *gorm.DB) *gorm.DB) (*PageOutput, error) {
+	// Manage default limit
 	if p.Limit == 0 {
 		p.Limit = 10
 	}
 
-	// Filter function
-	if filterFunc != nil {
-		db = filterFunc(db)
-	}
-
+	// Count all objects
 	var count int64 = 0
 	db = db.Model(result).Count(&count)
 	// Check error
@@ -39,19 +37,29 @@ func Paging(db *gorm.DB, filterFunc func(db *gorm.DB) *gorm.DB, orderBy []string
 		return nil, db.Error
 	}
 
-	// Check if order by exists
-	if len(orderBy) == 0 {
-		// Set default
-		orderBy = []string{"created_at DESC"}
+	// Apply sort
+	db, err := manageSortOrder(sort, db)
+	// Check error
+	if err != nil {
+		return nil, err
 	}
 
-	// Apply order by
-	for _, o := range orderBy {
-		db = db.Order(o)
+	// Apply filter
+	db, err = manageFilter(filter, db, db, false)
+	// Check error
+	if err != nil {
+		return nil, err
 	}
 
+	// Extra function
+	if extraFunc != nil {
+		db = extraFunc(db)
+	}
+
+	// Create paginator output
 	var paginator PageOutput
 
+	// Request to database with limit and offset
 	db = db.Limit(p.Limit).Offset(p.Skip).Find(result)
 	// Check error
 	if db.Error != nil {

@@ -43,6 +43,15 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  IntFilter:
+    model:
+      - ./pkg/golang-graphql-example/database/pagination.GenericFilter
+  BooleanFilter:
+    model:
+      - ./pkg/golang-graphql-example/database/pagination.GenericFilter
+  DateFilter:
+    model:
+      - ./pkg/golang-graphql-example/database/pagination.DateFilter
   StringFilter:
     model:
       - ./pkg/golang-graphql-example/database/pagination.GenericFilter

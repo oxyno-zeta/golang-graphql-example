@@ -20,7 +20,178 @@ type PageInfo {
   endCursor: String
 }
 
+"""
+Sort for enumeration
+"""
 enum SortOrderEnum {
   ASC
   DESC
+}
+
+"""
+String filter structure
+"""
+input StringFilter {
+  """
+  Allow to test equality to
+  """
+  Eq: String
+  """
+  Allow to test non equality to
+  """
+  NotEq: String
+  """
+  Allow to test if a string contains another string.
+  """
+  Contains: String
+  """
+  Allow to test if a string isn't containing another string.
+  """
+  NotContains: String
+  """
+  Allow to test if a string starts with another string.
+  """
+  StartsWith: String
+  """
+  Allow to test if a string isn't starting with another string.
+  """
+  NotStartsWith: String
+  """
+  Allow to test if a string ends with another string.
+  """
+  EndsWith: String
+  """
+  Allow to test if a string isn't ending with another string.
+  """
+  NotEndsWith: String
+  """
+  Allow to test if value is in array
+  """
+  In: [String]
+  """
+  Allow to test if value isn't in array
+  """
+  NotIn: [String]
+}
+
+"""
+Integer filter structure
+"""
+input IntFilter {
+  """
+  Allow to test equality to
+  """
+  Eq: Int
+  """
+  Allow to test non equality to
+  """
+  NotEq: Int
+  """
+  Allow to test greater or equal than
+  """
+  Gte: Int
+  """
+  Allow to test not greater or equal than
+  """
+  NotGte: Int
+  """
+  Allow to test greater than
+  """
+  Gt: Int
+  """
+  Allow to test not greater than
+  """
+  NotGt: Int
+  """
+  Allow to test less or equal than
+  """
+  Lte: Int
+  """
+  Allow to test not less or equal than
+  """
+  NotLte: Int
+  """
+  Allow to test less than
+  """
+  Lt: Int
+  """
+  Allow to test not less than
+  """
+  NotLt: Int
+  """
+  Allow to test if value is in array
+  """
+  In: [Int]
+  """
+  Allow to test if value isn't in array
+  """
+  NotIn: [Int]
+}
+
+"""
+Boolean filter structure
+"""
+input BooleanFilter {
+  """
+  Allow to test equality to
+  """
+  Eq: Boolean
+  """
+  Allow to test non equality to
+  """
+  NotEq: Boolean
+}
+
+"""
+Date filter structure
+"""
+input DateFilter {
+  """
+  Allow to test equality to
+  """
+  Eq: String
+  """
+  Allow to test non equality to
+  """
+  NotEq: String
+  """
+  Allow to test greater or equal than
+  """
+  Gte: String
+  """
+  Allow to test not greater or equal than
+  """
+  NotGte: String
+  """
+  Allow to test greater than
+  """
+  Gt: String
+  """
+  Allow to test not greater than
+  """
+  NotGt: String
+  """
+  Allow to test less or equal than
+  """
+  Lte: String
+  """
+  Allow to test not less or equal than
+  """
+  NotLte: String
+  """
+  Allow to test less than
+  """
+  Lt: String
+  """
+  Allow to test not less than
+  """
+  NotLt: String
+  """
+  Allow to test if value is in array
+  """
+  In: [String]
+  """
+  Allow to test if value isn't in array
+  """
+  NotIn: [String]
 }

@@ -1,5 +1,3 @@
-// +build unit
-
 package pagination
 
 import (
@@ -174,7 +172,7 @@ func Test_manageFilter(t *testing.T) {
 				},
 			},
 			wantErr:     true,
-			errorString: "field Field2 with filter tag must be a *GenericFilter",
+			errorString: "field Field2 with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface",
 		},
 		{
 			name: "tag with wrong type 2",
@@ -189,7 +187,7 @@ func Test_manageFilter(t *testing.T) {
 				},
 			},
 			wantErr:     true,
-			errorString: "field Field2 with filter tag must be a *GenericFilter",
+			errorString: "field Field2 with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface",
 		},
 		{
 			name: "tag with wrong type 3 (struct pointer)",
@@ -200,7 +198,7 @@ func Test_manageFilter(t *testing.T) {
 				},
 			},
 			wantErr:     true,
-			errorString: "field Field2 with filter tag must be a *GenericFilter",
+			errorString: "field Field2 with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface",
 		},
 		{
 			name: "OR and root fields",
@@ -625,7 +623,7 @@ type IntTestEnum int
 
 const FakeIntTestEum IntTestEnum = 1
 
-func Test_manageGenericFilter(t *testing.T) {
+func Test_manageFilterRequest(t *testing.T) {
 	starInterface := func(s interface{}) interface{} { return &s }
 	starString := func(s string) *string { return &s }
 	now := time.Now()
@@ -634,8 +632,7 @@ func Test_manageGenericFilter(t *testing.T) {
 		Name string
 	}
 	type args struct {
-		v  *GenericFilter
-		db *gorm.DB
+		v *GenericFilter
 	}
 	tests := []struct {
 		name                      string
@@ -1976,7 +1973,7 @@ func Test_manageGenericFilter(t *testing.T) {
 				return
 			}
 
-			got, err := manageGenericFilter("field_1", tt.args.v, db)
+			got, err := manageFilterRequest("field_1", tt.args.v, db)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("manageGenericFilter() error = %v, wantErr %v", err, tt.wantErr)
 			}

@@ -8,9 +8,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// Supported generic filter type for testing purpose.
-var supportedGenericFilterType = reflect.TypeOf(new(GenericFilter))
-
 // AND field.
 const andFieldName = "AND"
 
@@ -18,18 +15,17 @@ const andFieldName = "AND"
 const orFieldName = "OR"
 
 func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
-	// Check if filter isn't nil
-	if filter == nil {
-		// Stop here
-		return db, nil
-	}
-
 	// Create result
 	res := db
 	// Get reflect value of filter object
 	rVal := reflect.ValueOf(filter)
 	// Get kind of filter
 	rKind := rVal.Kind()
+	// Check if filter isn't nil
+	if rKind == reflect.Invalid || (rKind == reflect.Ptr && rVal.IsNil()) {
+		// Stop here
+		return res, nil
+	}
 	// Check if kind is supported
 	if rKind != reflect.Struct && rKind != reflect.Ptr {
 		// Check if skip input not an object is enabled
@@ -65,7 +61,7 @@ func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObjec
 		// Check if value is a pointer or not
 		if fVal.Kind() != reflect.Ptr {
 			return nil, errors.NewInvalidInputError(
-				fmt.Sprintf("field %s with filter tag must be a *GenericFilter", fType.Name),
+				fmt.Sprintf("field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface", fType.Name),
 			)
 		}
 		// Test if field is nil
@@ -76,17 +72,23 @@ func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObjec
 		// Get value from field
 		val := fVal.Interface()
 
+		// Try to cast it as GenericFilterBuilder
+		v1, castGFB := val.(GenericFilterBuilder)
 		// Check that type is supported
-		if fType.Type != supportedGenericFilterType {
+		if !castGFB {
 			return nil, errors.NewInvalidInputError(
-				fmt.Sprintf("field %s with filter tag must be a *GenericFilter", fType.Name),
+				fmt.Sprintf("field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface", fType.Name),
 			)
 		}
 
 		// Cast value
-		v := val.(*GenericFilter)
-		// Manage generic filter
-		res2, err := manageGenericFilter(tagVal, v, res)
+		v, err := v1.GetGenericFilter()
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Manage filter request
+		res2, err := manageFilterRequest(tagVal, v, res)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -170,7 +172,7 @@ func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObjec
 	return res, nil
 }
 
-func manageGenericFilter(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB, error) {
+func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB, error) {
 	// Create result
 	dbRes := db
 	// Check Equal case

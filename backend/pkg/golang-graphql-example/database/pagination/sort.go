@@ -8,22 +8,21 @@ import (
 	"gorm.io/gorm"
 )
 
-// Supported enum type for testing purpose
+// Supported enum type for testing purpose.
 var supportedEnumType = reflect.TypeOf(new(SortOrderEnum))
 
 func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
-	// Check if sort isn't nil
-	if sort == nil {
-		// Stop here
-		return manageDefaultSort(db), nil
-	}
-
 	// Create result
 	res := db
 	// Get reflect value of sort object
 	rVal := reflect.ValueOf(sort)
 	// Get kind of sort
 	rKind := rVal.Kind()
+	// Check nil
+	if rKind == reflect.Invalid || (rKind == reflect.Ptr && rVal.IsNil()) {
+		// Stop here
+		return manageDefaultSort(res), nil
+	}
 	// Check if kind is supported
 	if rKind != reflect.Struct && rKind != reflect.Ptr {
 		return nil, errors.NewInvalidInputError("sort must be an object")
