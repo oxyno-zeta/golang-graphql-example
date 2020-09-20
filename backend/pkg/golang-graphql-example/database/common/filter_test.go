@@ -1,6 +1,6 @@
 // +build unit
 
-package pagination
+package common
 
 import (
 	"database/sql/driver"
@@ -15,8 +15,12 @@ import (
 
 func Test_manageFilter(t *testing.T) {
 	starInterface := func(s interface{}) *interface{} { return &s }
-	now := time.Now()
-	nowStr := now.Format(time.RFC3339)
+	dateStr := "2020-09-19T23:10:35+02:00"
+	date, err := time.Parse(time.RFC3339, dateStr)
+	if err != nil {
+		t.Error(err)
+		return
+	}
 	type Person struct {
 		Name string
 	}
@@ -120,11 +124,11 @@ func Test_manageFilter(t *testing.T) {
 			name: "date filter",
 			args: args{
 				filter: &Filter16{
-					Field1: &DateFilter{Eq: &nowStr},
+					Field1: &DateFilter{Eq: &dateStr},
 				},
 			},
 			expectedIntermediateQuery: "WHERE field_1 = $1",
-			expectedArgs:              []driver.Value{now},
+			expectedArgs:              []driver.Value{date},
 		},
 		{
 			name: "one field",

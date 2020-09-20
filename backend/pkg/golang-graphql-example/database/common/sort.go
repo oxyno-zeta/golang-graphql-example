@@ -1,4 +1,4 @@
-package pagination
+package common
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 // Supported enum type for testing purpose.
 var supportedEnumType = reflect.TypeOf(new(SortOrderEnum))
 
-func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
+func ManageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 	// Create result
 	res := db
 	// Get reflect value of sort object

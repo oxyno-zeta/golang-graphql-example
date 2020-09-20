@@ -1,6 +1,6 @@
 // +build unit
 
-package pagination
+package common
 
 import (
 	"testing"
@@ -11,7 +11,7 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-func Test_manageSortOrder(t *testing.T) {
+func Test_ManageSortOrder(t *testing.T) {
 	type Person struct {
 		Name string
 	}
@@ -135,12 +135,12 @@ func Test_manageSortOrder(t *testing.T) {
 				return
 			}
 
-			got, err := manageSortOrder(tt.args.sort, db)
+			got, err := ManageSortOrder(tt.args.sort, db)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("manageSortOrder() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("ManageSortOrder() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if err != nil && err.Error() != tt.errorString {
-				t.Errorf("manageSortOrder() error = %v, wantErr %v", err, tt.errorString)
+				t.Errorf("ManageSortOrder() error = %v, wantErr %v", err, tt.errorString)
 				return
 			}
 			if err != nil {

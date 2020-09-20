@@ -1,5 +1,3 @@
-// +build unit
-
 package pagination
 
 import (
@@ -8,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -16,10 +15,10 @@ import (
 func TestPaging(t *testing.T) {
 	type Person struct{ Name string }
 	type Sort struct {
-		Name *SortOrderEnum `dbfield:"name"`
+		Name *common.SortOrderEnum `dbfield:"name"`
 	}
 	type Filter struct {
-		Name *GenericFilter `dbfield:"name"`
+		Name *common.GenericFilter `dbfield:"name"`
 	}
 	type args struct {
 		p         *PageInput
@@ -90,8 +89,8 @@ func TestPaging(t *testing.T) {
 			name: "sort, filter, no extra function with next and previous page and skip",
 			args: args{
 				p:      &PageInput{Limit: 5, Skip: 20},
-				sort:   &Sort{Name: &SortOrderEnumDesc},
-				filter: &Filter{Name: &GenericFilter{Eq: "fake"}},
+				sort:   &Sort{Name: &common.SortOrderEnumDesc},
+				filter: &Filter{Name: &common.GenericFilter{Eq: "fake"}},
 			},
 			countExpectedIntermediateQuery:  "WHERE name = $1",
 			countExpectedArgs:               []driver.Value{"fake"},

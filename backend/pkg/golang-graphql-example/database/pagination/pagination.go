@@ -1,10 +1,9 @@
 package pagination
 
 import (
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"gorm.io/gorm"
 )
-
-const dbColTagName = "dbfield"
 
 // PageInput represents an input pagination configuration.
 type PageInput struct {
@@ -44,7 +43,7 @@ func Paging(
 	}
 
 	// Apply filter
-	db, err := manageFilter(filter, db, db, false)
+	db, err := common.ManageFilter(filter, db)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -64,7 +63,7 @@ func Paging(
 	}
 
 	// Apply sort
-	db, err = manageSortOrder(sort, db)
+	db, err = common.ManageSortOrder(sort, db)
 	// Check error
 	if err != nil {
 		return nil, err

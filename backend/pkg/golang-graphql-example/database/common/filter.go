@@ -1,4 +1,4 @@
-package pagination
+package common
 
 import (
 	"fmt"
@@ -13,6 +13,10 @@ const andFieldName = "AND"
 
 // OR field.
 const orFieldName = "OR"
+
+func ManageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
+	return manageFilter(filter, db, db, false)
+}
 
 func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) { //nolint:unparam // Because seems to be bugged...
 	// Create result

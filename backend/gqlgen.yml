@@ -45,19 +45,19 @@ autobind:
 models:
   IntFilter:
     model:
-      - ./pkg/golang-graphql-example/database/pagination.GenericFilter
+      - ./pkg/golang-graphql-example/database/common.GenericFilter
   BooleanFilter:
     model:
-      - ./pkg/golang-graphql-example/database/pagination.GenericFilter
+      - ./pkg/golang-graphql-example/database/common.GenericFilter
   DateFilter:
     model:
-      - ./pkg/golang-graphql-example/database/pagination.DateFilter
+      - ./pkg/golang-graphql-example/database/common.DateFilter
   StringFilter:
     model:
-      - ./pkg/golang-graphql-example/database/pagination.GenericFilter
+      - ./pkg/golang-graphql-example/database/common.GenericFilter
   SortOrderEnum:
     model:
-      - ./pkg/golang-graphql-example/database/pagination.SortOrderEnum
+      - ./pkg/golang-graphql-example/database/common.SortOrderEnum
   Todo:
     model:
       - github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models.Todo
