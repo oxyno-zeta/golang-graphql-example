@@ -14,7 +14,7 @@ const andFieldName = "AND"
 // OR field.
 const orFieldName = "OR"
 
-func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
+func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) { //nolint:unparam // Because seems to be bugged...
 	// Create result
 	res := db
 	// Get reflect value of filter object
@@ -114,7 +114,7 @@ func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObjec
 				// Get value behind
 				andElement := andElementRVal.Interface()
 				// Call manage filter
-				res2, err := manageFilter(andElement, originalDb, originalDb, true)
+				res2, err := manageFilter(andElement, originalDB, originalDB, true)
 				// Check error
 				if err != nil {
 					return nil, err
@@ -149,7 +149,7 @@ func manageFilter(filter interface{}, db, originalDb *gorm.DB, skipInputNotObjec
 					elem := elemRVal.Interface()
 					// Call manage filter WITH the original db in order to create a pure subquery
 					// See here: https://gorm.io/docs/advanced_query.html#Group-Conditions
-					res2, err := manageFilter(elem, originalDb, originalDb, true)
+					res2, err := manageFilter(elem, originalDB, originalDB, true)
 					// Check error
 					if err != nil {
 						return nil, err
