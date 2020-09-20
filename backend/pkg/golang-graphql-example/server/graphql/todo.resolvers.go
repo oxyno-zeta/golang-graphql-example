@@ -16,8 +16,12 @@ func (r *todoResolver) ID(ctx context.Context, obj *models.Todo) (string, error)
 	return utils.ToIDRelay(mappers.TodoIDPrefix, obj.ID), nil
 }
 
-func (r *todoResolver) CreationDate(ctx context.Context, obj *models.Todo) (string, error) {
+func (r *todoResolver) CreatedAt(ctx context.Context, obj *models.Todo) (string, error) {
 	return utils.FormatTime(obj.CreatedAt), nil
+}
+
+func (r *todoResolver) UpdatedAt(ctx context.Context, obj *models.Todo) (string, error) {
+	return utils.FormatTime(obj.UpdatedAt), nil
 }
 
 // Todo returns generated.TodoResolver implementation.

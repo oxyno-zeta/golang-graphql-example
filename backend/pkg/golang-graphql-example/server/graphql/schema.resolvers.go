@@ -68,7 +68,7 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 	}
 
 	// Call business
-	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, nil)
+	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, sort, filter)
 	// Check error
 	if err != nil {
 		return nil, err
