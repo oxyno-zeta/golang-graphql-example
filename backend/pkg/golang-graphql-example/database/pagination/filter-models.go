@@ -92,6 +92,9 @@ type DateFilter struct {
 	NotIn []string
 }
 
+// GenericFilterBuilder is an interface that must be implemented in order to work automatic filter.
+// This is done like this in order to add more fields in GenericFilter without the need of upgrading
+// all code in other to be compatible.
 type GenericFilterBuilder interface {
 	GetGenericFilter() (*GenericFilter, error)
 }
