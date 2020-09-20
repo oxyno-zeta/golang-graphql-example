@@ -15,7 +15,6 @@ type PageInput struct {
 // PageOutput represents an output pagination structure.
 type PageOutput struct {
 	TotalRecord int
-	Offset      int
 	Limit       int
 	Skip        int
 	HasPrevious bool
