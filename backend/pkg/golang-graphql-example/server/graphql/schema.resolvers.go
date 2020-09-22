@@ -74,7 +74,14 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 		return nil, err
 	}
 
-	return mappers.MapTodoConnection(allTodos, pageOut), nil
+	var res model.TodoConnection
+	err = utils.MapConnection(&res, allTodos, pageOut)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	return &res, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
