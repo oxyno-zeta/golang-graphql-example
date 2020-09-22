@@ -43,6 +43,9 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  PageInfo:
+    model:
+      - ./pkg/golang-graphql-example/server/graphql/utils.PageInfo
   IntFilter:
     model:
       - ./pkg/golang-graphql-example/database/common.GenericFilter

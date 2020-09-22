@@ -10,7 +10,6 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 )
 
 const maxPageSize = 50
@@ -51,8 +50,8 @@ func GetPaginateCursor(tableIndex, skip int) string {
 	return ToIDRelay(paginationIDPrefix, fmt.Sprintf("%d", tableIndex+skip+1))
 }
 
-func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *model.PageInfo {
-	var res model.PageInfo
+func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *PageInfo {
+	var res PageInfo
 
 	// Check if start cursor exists
 	if startCursor != "" {
