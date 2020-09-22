@@ -17,24 +17,27 @@ var pageInfoSupportedType = reflect.TypeOf(new(PageInfo))
 var cursorSupportedType = reflect.TypeOf("")
 
 func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagination.PageOutput) error {
+	// Validate that connection result isn't nil
+	if connectionResult == nil {
+		return errors.New("connection result argument mustn't be nil")
+	}
+	// Validate that input isn't nil
+	if list == nil {
+		return errors.New("list argument mustn't be nil")
+	}
+
 	// Create page info cursors
 	startCursor := ""
 	endCursor := ""
 
 	// Reflect input
 	listVal := reflect.ValueOf(list)
-	// Validate that input isn't nil
-	if listVal.IsNil() {
-		return errors.New("input list mustn't be nil")
+	// Check that list is a slice
+	if listVal.Kind() != reflect.Slice {
+		return errors.New("list argument must be a slice")
 	}
 	// Get list length
 	listLen := listVal.Len()
-	// Check if length is equal to 0
-	if listLen == 0 {
-		// Stop here
-		return nil
-	}
-
 	// Get last index of list
 	lastIndex := listLen - 1
 
@@ -42,7 +45,7 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	connectionResultVal := reflect.ValueOf(connectionResult)
 	// Check that top is a pointer
 	if connectionResultVal.Kind() != reflect.Ptr {
-		return errors.New("result must be a pointer to a connection object")
+		return errors.New("connection result argument must be a pointer to a connection object")
 	}
 
 	// Get connection pointer type
