@@ -35,7 +35,7 @@ func Paging(
 	p *PageInput,
 	sort interface{},
 	filter interface{},
-	extraFunc func(db *gorm.DB) *gorm.DB,
+	extraFunc func(db *gorm.DB) (*gorm.DB, error),
 ) (*PageOutput, error) {
 	// Manage default limit
 	if p.Limit == 0 {
@@ -51,7 +51,11 @@ func Paging(
 
 	// Extra function
 	if extraFunc != nil {
-		db = extraFunc(db)
+		db, err = extraFunc(db)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	// Count all objects

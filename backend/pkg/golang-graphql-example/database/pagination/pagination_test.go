@@ -1,7 +1,10 @@
+// +build unit
+
 package pagination
 
 import (
 	"database/sql/driver"
+	"errors"
 	"reflect"
 	"testing"
 
@@ -24,7 +27,7 @@ func TestPaging(t *testing.T) {
 		p         *PageInput
 		sort      interface{}
 		filter    interface{}
-		extraFunc func(db *gorm.DB) *gorm.DB
+		extraFunc func(db *gorm.DB) (*gorm.DB, error)
 	}
 	tests := []struct {
 		name                            string
@@ -100,11 +103,21 @@ func TestPaging(t *testing.T) {
 			want:                            &PageOutput{TotalRecord: 30, Limit: 5, Skip: 20, HasNext: true, HasPrevious: true},
 		},
 		{
+			name: "extra function throwing error",
+			args: args{
+				p: &PageInput{Limit: 5, Skip: 20},
+				extraFunc: func(db *gorm.DB) (*gorm.DB, error) {
+					return nil, errors.New("fake")
+				},
+			},
+			wantErr: true,
+		},
+		{
 			name: "no sort, no filter, extra function with next and previous page and skip",
 			args: args{
 				p: &PageInput{Limit: 5, Skip: 20},
-				extraFunc: func(db *gorm.DB) *gorm.DB {
-					return db.Where("fake = ?", "fake1")
+				extraFunc: func(db *gorm.DB) (*gorm.DB, error) {
+					return db.Where("fake = ?", "fake1"), nil
 				},
 			},
 			countExpectedIntermediateQuery:  "WHERE fake = $1",
