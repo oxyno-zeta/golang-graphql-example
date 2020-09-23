@@ -1,14 +1,16 @@
+// +build unit
+
 package utils
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMapConnection(t *testing.T) {
-	// starString := func(s string) *string { return &s }
+	starString := func(s string) *string { return &s }
 	type Person struct{ Name string }
 	type PersonEdge struct {
 		Cursor string
@@ -285,6 +287,60 @@ func TestMapConnection(t *testing.T) {
 			},
 			testResult: true,
 		},
+		{
+			name: "2 elements in list array without any previous and next page",
+			args: args{
+				result:  &PersonConnection{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			expectedResult: &PersonConnection{
+				Edges: []*PersonEdge{
+					{
+						Cursor: "cGFnaW5hdGU6MQ==",
+						Node:   &Person{Name: "fake1"},
+					},
+					{
+						Cursor: "cGFnaW5hdGU6Mg==",
+						Node:   &Person{Name: "fake2"},
+					},
+				},
+				PageInfo: &PageInfo{
+					HasNextPage:     false,
+					HasPreviousPage: false,
+					StartCursor:     starString("cGFnaW5hdGU6MQ=="),
+					EndCursor:       starString("cGFnaW5hdGU6Mg=="),
+				},
+			},
+			testResult: true,
+		},
+		{
+			name: "2 elements in list array with previous and next page",
+			args: args{
+				result:  &PersonConnection{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{HasNext: true, HasPrevious: true},
+			},
+			expectedResult: &PersonConnection{
+				Edges: []*PersonEdge{
+					{
+						Cursor: "cGFnaW5hdGU6MQ==",
+						Node:   &Person{Name: "fake1"},
+					},
+					{
+						Cursor: "cGFnaW5hdGU6Mg==",
+						Node:   &Person{Name: "fake2"},
+					},
+				},
+				PageInfo: &PageInfo{
+					HasNextPage:     true,
+					HasPreviousPage: true,
+					StartCursor:     starString("cGFnaW5hdGU6MQ=="),
+					EndCursor:       starString("cGFnaW5hdGU6Mg=="),
+				},
+			},
+			testResult: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -296,8 +352,8 @@ func TestMapConnection(t *testing.T) {
 				t.Errorf("MapConnection() error = %v, wantErr %v", err, tt.errorString)
 				return
 			}
-			if tt.testResult && !reflect.DeepEqual(tt.args.result, tt.expectedResult) {
-				t.Errorf("MapConnection() result = %v, want %v", tt.args.result, tt.expectedResult)
+			if tt.testResult {
+				assert.Equal(t, tt.expectedResult, tt.args.result)
 			}
 		})
 	}
