@@ -58,6 +58,10 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	if !exists {
 		return errors.New("field Edges not found in connection object")
 	}
+	// Check that edges is a slice
+	if edgesType.Type.Kind() != reflect.Slice {
+		return errors.New("field Edges must be a slice")
+	}
 	// Get page info type
 	pageInfoType, exists := connectionType.FieldByName(pageInfoFieldName)
 	// Check if field PageInfo exists
@@ -71,8 +75,16 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 
 	// Get edge pointer type
 	edgeTypePtr := edgesType.Type.Elem()
+	// Check that Edge type is a pointer in slice
+	if edgeTypePtr.Kind() != reflect.Ptr {
+		return errors.New("field Edges must be a slice of pointer of structs ([]*Edge)")
+	}
 	// Get edge type
 	edgeTypeStruct := edgeTypePtr.Elem()
+	// Check that Edge is really a struct after pointer
+	if edgeTypeStruct.Kind() != reflect.Struct {
+		return errors.New("field Edges must be a slice of pointer of structs ([]*Edge)")
+	}
 
 	// Check that Edge have a Cursor key
 	cursorType, exists := edgeTypeStruct.FieldByName(cursorFieldName)
@@ -82,7 +94,7 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	}
 	// Check that cursor type is string
 	if cursorType.Type != cursorSupportedType {
-		return errors.New("field Cursor must be a string")
+		return errors.New("field Cursor from Edge object must be a string")
 	}
 
 	// Get list type

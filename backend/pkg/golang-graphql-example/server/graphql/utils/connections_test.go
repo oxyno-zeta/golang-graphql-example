@@ -28,6 +28,9 @@ func TestMapConnection(t *testing.T) {
 		Cursor string
 		Node   Person
 	}
+	type WrongEdge5 struct {
+		Cursor string
+	}
 	type PersonConnection struct {
 		Edges    []*PersonEdge
 		PageInfo *PageInfo
@@ -36,6 +39,14 @@ func TestMapConnection(t *testing.T) {
 	}
 	type WrongConnection2 struct {
 		Edges    []string
+		PageInfo *PageInfo
+	}
+	type WrongConnection11 struct {
+		Edges    []*string
+		PageInfo *PageInfo
+	}
+	type WrongConnection12 struct {
+		Edges    string
 		PageInfo *PageInfo
 	}
 	type WrongConnection3 struct {
@@ -67,6 +78,10 @@ func TestMapConnection(t *testing.T) {
 	}
 	type WrongConnection10 struct {
 		Edges    []*WrongEdge4
+		PageInfo *PageInfo
+	}
+	type WrongConnection13 struct {
+		Edges    []*WrongEdge5
 		PageInfo *PageInfo
 	}
 	type args struct {
@@ -131,6 +146,126 @@ func TestMapConnection(t *testing.T) {
 			},
 			wantErr:     true,
 			errorString: "field Edges not found in connection object",
+		},
+		{
+			name: "Edges with a slice of wrong slice type ([]string)",
+			args: args{
+				result:  &WrongConnection2{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Edges must be a slice of pointer of structs ([]*Edge)",
+		},
+		{
+			name: "Edges with a slice of wrong slice type ([]*string)",
+			args: args{
+				result:  &WrongConnection11{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Edges must be a slice of pointer of structs ([]*Edge)",
+		},
+		{
+			name: "Edges with a slice of wrong slice type ([]PersonEdge)",
+			args: args{
+				result:  &WrongConnection3{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Edges must be a slice of pointer of structs ([]*Edge)",
+		},
+		{
+			name: "Edges with a slice of wrong slice type (string)",
+			args: args{
+				result:  &WrongConnection12{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Edges must be a slice",
+		},
+		{
+			name: "PageInfo with wrong slice type (string)",
+			args: args{
+				result:  &WrongConnection4{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field PageInfo isn't with the type *PageInfo",
+		},
+		{
+			name: "PageInfo with wrong slice type (PageInfo)",
+			args: args{
+				result:  &WrongConnection5{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field PageInfo isn't with the type *PageInfo",
+		},
+		{
+			name: "PageInfo field not found",
+			args: args{
+				result:  &WrongConnection6{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field PageInfo not found in connection object",
+		},
+		{
+			name: "Edge without any needed key",
+			args: args{
+				result:  &WrongConnection7{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Cursor not found in Edge object",
+		},
+		{
+			name: "Edge with cursor not a string",
+			args: args{
+				result:  &WrongConnection8{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Cursor from Edge object must be a string",
+		},
+		{
+			name: "Edge with Node field not a valid structure",
+			args: args{
+				result:  &WrongConnection9{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Node must have the same type of items in the list argument",
+		},
+		{
+			name: "Edge with Node field not a valid structure",
+			args: args{
+				result:  &WrongConnection10{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Node must have the same type of items in the list argument",
+		},
+		{
+			name: "Edge without Node",
+			args: args{
+				result:  &WrongConnection13{},
+				list:    []*Person{{Name: "fake1"}, {Name: "fake2"}},
+				pageOut: &pagination.PageOutput{},
+			},
+			wantErr:     true,
+			errorString: "field Node not found in Edge object",
 		},
 		{
 			name: "empty list array",
