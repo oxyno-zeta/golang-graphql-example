@@ -8,7 +8,6 @@ import (
 	"testing"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 )
 
 func Test_ToIDRelay(t *testing.T) {
@@ -395,19 +394,19 @@ func Test_GetPageInfo(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want *model.PageInfo
+		want *PageInfo
 	}{
 		{
 			name: "empty",
 			args: args{},
-			want: &model.PageInfo{},
+			want: &PageInfo{},
 		},
 		{
 			name: "start cursor exists",
 			args: args{
 				startCursor: "start",
 			},
-			want: &model.PageInfo{
+			want: &PageInfo{
 				StartCursor: toStarString("start"),
 			},
 		},
@@ -416,7 +415,7 @@ func Test_GetPageInfo(t *testing.T) {
 			args: args{
 				endCursor: "end",
 			},
-			want: &model.PageInfo{
+			want: &PageInfo{
 				EndCursor: toStarString("end"),
 			},
 		},
@@ -428,7 +427,7 @@ func Test_GetPageInfo(t *testing.T) {
 					HasPrevious: true,
 				},
 			},
-			want: &model.PageInfo{
+			want: &PageInfo{
 				HasNextPage:     true,
 				HasPreviousPage: true,
 			},
