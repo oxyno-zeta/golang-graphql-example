@@ -42,53 +42,70 @@ func Paging(
 		p.Limit = 10
 	}
 
-	// Apply filter
-	db, err := common.ManageFilter(filter, db)
-	// Check error
-	if err != nil {
-		return nil, err
-	}
+	var count int64 = 0
 
-	// Extra function
-	if extraFunc != nil {
-		db, err = extraFunc(db)
+	// Create transaction to avoid situations where count and find are different
+	err := db.Transaction(func(db *gorm.DB) error {
+		// Apply filter
+		db, err := common.ManageFilter(filter, db)
 		// Check error
 		if err != nil {
-			return nil, err
+			return err
 		}
-	}
 
-	// Count all objects
-	var count int64 = 0
-	db = db.Model(result).Count(&count)
-	// Check error
-	if db.Error != nil {
-		return nil, db.Error
-	}
+		// Extra function
+		if extraFunc != nil {
+			db, err = extraFunc(db)
+			// Check error
+			if err != nil {
+				return err
+			}
+		}
 
-	// Apply sort
-	db, err = common.ManageSortOrder(sort, db)
+		// Count all objects
+		db = db.Model(result).Count(&count)
+		// Check error
+		if db.Error != nil {
+			return db.Error
+		}
+
+		// Apply sort
+		db, err = common.ManageSortOrder(sort, db)
+		// Check error
+		if err != nil {
+			return err
+		}
+
+		// Request to database with limit and offset
+		db = db.Limit(p.Limit).Offset(p.Skip).Find(result)
+		// Check error
+		if db.Error != nil {
+			return db.Error
+		}
+
+		return nil
+	})
+
 	// Check error
 	if err != nil {
 		return nil, err
 	}
 
-	// Create paginator output
+	return getPageOutput(p, count), nil
+}
+
+func getPageOutput(p *PageInput, count int64) *PageOutput {
 	var paginator PageOutput
-
-	// Request to database with limit and offset
-	db = db.Limit(p.Limit).Offset(p.Skip).Find(result)
-	// Check error
-	if db.Error != nil {
-		return nil, db.Error
-	}
-
+	// Create total record
 	paginator.TotalRecord = int(count)
+	// Store skip
 	paginator.Skip = p.Skip
+	// Store limit
 	paginator.Limit = p.Limit
-
+	// Calculate has next page
 	paginator.HasNext = (p.Limit+p.Skip < paginator.TotalRecord)
+	// Calculate has previous page
 	paginator.HasPrevious = (p.Skip != 0)
 
-	return &paginator, nil
+	return &paginator
 }

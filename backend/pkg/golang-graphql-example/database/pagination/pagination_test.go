@@ -10,6 +10,7 @@ import (
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
+	"github.com/stretchr/testify/assert"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -148,6 +149,7 @@ func TestPaging(t *testing.T) {
 			// Create expected query
 			selectExpectedQuery := `SELECT * FROM "people" ` + tt.selectExpectedIntermediateQuery
 
+			mock.ExpectBegin()
 			mock.ExpectQuery(countExpectedQuery).
 				WithArgs(tt.countExpectedArgs...).
 				WillReturnRows(
@@ -158,6 +160,7 @@ func TestPaging(t *testing.T) {
 				WillReturnRows(
 					sqlmock.NewRows([]string{"name"}).AddRow("fake"),
 				)
+			mock.ExpectCommit()
 
 			res := make([]*Person, 0)
 
@@ -170,6 +173,110 @@ func TestPaging(t *testing.T) {
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("Paging() = %v, want %v", got, tt.want)
 			}
+		})
+	}
+}
+
+func Test_getPageOutput(t *testing.T) {
+	type args struct {
+		p     *PageInput
+		count int64
+	}
+	tests := []struct {
+		name string
+		args args
+		want *PageOutput
+	}{
+		{
+			name: "no skip and count < limit",
+			args: args{
+				p: &PageInput{
+					Limit: 10,
+					Skip:  0,
+				},
+				count: 6,
+			},
+			want: &PageOutput{
+				TotalRecord: 6,
+				Limit:       10,
+				Skip:        0,
+				HasNext:     false,
+				HasPrevious: false,
+			},
+		},
+		{
+			name: "skip and count < limit",
+			args: args{
+				p: &PageInput{
+					Limit: 10,
+					Skip:  3,
+				},
+				count: 6,
+			},
+			want: &PageOutput{
+				TotalRecord: 6,
+				Limit:       10,
+				Skip:        3,
+				HasNext:     false,
+				HasPrevious: true,
+			},
+		},
+		{
+			name: "skip and count < limit with more elements => previous page detected",
+			args: args{
+				p: &PageInput{
+					Limit: 10,
+					Skip:  25,
+				},
+				count: 30,
+			},
+			want: &PageOutput{
+				TotalRecord: 30,
+				Limit:       10,
+				Skip:        25,
+				HasNext:     false,
+				HasPrevious: true,
+			},
+		},
+		{
+			name: "no skip and count > limit => next page detected",
+			args: args{
+				p: &PageInput{
+					Limit: 10,
+					Skip:  0,
+				},
+				count: 15,
+			},
+			want: &PageOutput{
+				TotalRecord: 15,
+				Limit:       10,
+				Skip:        0,
+				HasNext:     true,
+				HasPrevious: false,
+			},
+		},
+		{
+			name: "skip and count > limit => next and previous page detected",
+			args: args{
+				p: &PageInput{
+					Limit: 10,
+					Skip:  7,
+				},
+				count: 25,
+			},
+			want: &PageOutput{
+				TotalRecord: 25,
+				Limit:       10,
+				Skip:        7,
+				HasNext:     true,
+				HasPrevious: true,
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := getPageOutput(tt.args.p, tt.args.count)
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }
