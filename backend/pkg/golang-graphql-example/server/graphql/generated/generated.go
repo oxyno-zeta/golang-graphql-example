@@ -440,43 +440,43 @@ input StringFilter {
   """
   Allow to test equality to
   """
-  Eq: String
+  eq: String
   """
   Allow to test non equality to
   """
-  NotEq: String
+  notEq: String
   """
   Allow to test if a string contains another string.
   """
-  Contains: String
+  contains: String
   """
   Allow to test if a string isn't containing another string.
   """
-  NotContains: String
+  notContains: String
   """
   Allow to test if a string starts with another string.
   """
-  StartsWith: String
+  startsWith: String
   """
   Allow to test if a string isn't starting with another string.
   """
-  NotStartsWith: String
+  notStartsWith: String
   """
   Allow to test if a string ends with another string.
   """
-  EndsWith: String
+  endsWith: String
   """
   Allow to test if a string isn't ending with another string.
   """
-  NotEndsWith: String
+  notEndsWith: String
   """
   Allow to test if value is in array
   """
-  In: [String]
+  in: [String]
   """
   Allow to test if value isn't in array
   """
-  NotIn: [String]
+  notIn: [String]
 }
 
 """
@@ -486,51 +486,51 @@ input IntFilter {
   """
   Allow to test equality to
   """
-  Eq: Int
+  eq: Int
   """
   Allow to test non equality to
   """
-  NotEq: Int
+  notEq: Int
   """
   Allow to test greater or equal than
   """
-  Gte: Int
+  gte: Int
   """
   Allow to test not greater or equal than
   """
-  NotGte: Int
+  notGte: Int
   """
   Allow to test greater than
   """
-  Gt: Int
+  gt: Int
   """
   Allow to test not greater than
   """
-  NotGt: Int
+  notGt: Int
   """
   Allow to test less or equal than
   """
-  Lte: Int
+  lte: Int
   """
   Allow to test not less or equal than
   """
-  NotLte: Int
+  notLte: Int
   """
   Allow to test less than
   """
-  Lt: Int
+  lt: Int
   """
   Allow to test not less than
   """
-  NotLt: Int
+  notLt: Int
   """
   Allow to test if value is in array
   """
-  In: [Int]
+  in: [Int]
   """
   Allow to test if value isn't in array
   """
-  NotIn: [Int]
+  notIn: [Int]
 }
 
 """
@@ -540,11 +540,11 @@ input BooleanFilter {
   """
   Allow to test equality to
   """
-  Eq: Boolean
+  eq: Boolean
   """
   Allow to test non equality to
   """
-  NotEq: Boolean
+  notEq: Boolean
 }
 
 """
@@ -554,51 +554,51 @@ input DateFilter {
   """
   Allow to test equality to
   """
-  Eq: String
+  eq: String
   """
   Allow to test non equality to
   """
-  NotEq: String
+  notEq: String
   """
   Allow to test greater or equal than
   """
-  Gte: String
+  gte: String
   """
   Allow to test not greater or equal than
   """
-  NotGte: String
+  notGte: String
   """
   Allow to test greater than
   """
-  Gt: String
+  gt: String
   """
   Allow to test not greater than
   """
-  NotGt: String
+  notGt: String
   """
   Allow to test less or equal than
   """
-  Lte: String
+  lte: String
   """
   Allow to test not less or equal than
   """
-  NotLte: String
+  notLte: String
   """
   Allow to test less than
   """
-  Lt: String
+  lt: String
   """
   Allow to test not less than
   """
-  NotLt: String
+  notLt: String
   """
   Allow to test if value is in array
   """
-  In: [String]
+  in: [String]
   """
   Allow to test if value isn't in array
   """
-  NotIn: [String]
+  notIn: [String]
 }
 `, BuiltIn: false},
 }
@@ -2487,18 +2487,18 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 
 	for k, v := range asMap {
 		switch k {
-		case "Eq":
+		case "eq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Eq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("eq"))
 			it.Eq, err = ec.unmarshalOBoolean2ᚖbool(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotEq":
+		case "notEq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotEq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notEq"))
 			it.NotEq, err = ec.unmarshalOBoolean2ᚖbool(ctx, v)
 			if err != nil {
 				return it, err
@@ -2515,98 +2515,98 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 
 	for k, v := range asMap {
 		switch k {
-		case "Eq":
+		case "eq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Eq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("eq"))
 			it.Eq, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotEq":
+		case "notEq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotEq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notEq"))
 			it.NotEq, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Gte":
+		case "gte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Gte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("gte"))
 			it.Gte, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotGte":
+		case "notGte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotGte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notGte"))
 			it.NotGte, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Gt":
+		case "gt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Gt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("gt"))
 			it.Gt, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotGt":
+		case "notGt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotGt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notGt"))
 			it.NotGt, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Lte":
+		case "lte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Lte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("lte"))
 			it.Lte, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotLte":
+		case "notLte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotLte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notLte"))
 			it.NotLte, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Lt":
+		case "lt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Lt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("lt"))
 			it.Lt, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotLt":
+		case "notLt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotLt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notLt"))
 			it.NotLt, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "In":
+		case "in":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("In"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("in"))
 			it.In, err = ec.unmarshalOString2ᚕstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotIn":
+		case "notIn":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotIn"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notIn"))
 			it.NotIn, err = ec.unmarshalOString2ᚕstring(ctx, v)
 			if err != nil {
 				return it, err
@@ -2623,98 +2623,98 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 
 	for k, v := range asMap {
 		switch k {
-		case "Eq":
+		case "eq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Eq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("eq"))
 			it.Eq, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotEq":
+		case "notEq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotEq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notEq"))
 			it.NotEq, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Gte":
+		case "gte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Gte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("gte"))
 			it.Gte, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotGte":
+		case "notGte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotGte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notGte"))
 			it.NotGte, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Gt":
+		case "gt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Gt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("gt"))
 			it.Gt, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotGt":
+		case "notGt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotGt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notGt"))
 			it.NotGt, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Lte":
+		case "lte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Lte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("lte"))
 			it.Lte, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotLte":
+		case "notLte":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotLte"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notLte"))
 			it.NotLte, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Lt":
+		case "lt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Lt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("lt"))
 			it.Lt, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotLt":
+		case "notLt":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotLt"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notLt"))
 			it.NotLt, err = ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "In":
+		case "in":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("In"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("in"))
 			it.In, err = ec.unmarshalOInt2ᚕᚖint(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotIn":
+		case "notIn":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotIn"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notIn"))
 			it.NotIn, err = ec.unmarshalOInt2ᚕᚖint(ctx, v)
 			if err != nil {
 				return it, err
@@ -2751,82 +2751,82 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 
 	for k, v := range asMap {
 		switch k {
-		case "Eq":
+		case "eq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Eq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("eq"))
 			it.Eq, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotEq":
+		case "notEq":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotEq"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notEq"))
 			it.NotEq, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Contains":
+		case "contains":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("Contains"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("contains"))
 			it.Contains, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotContains":
+		case "notContains":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotContains"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notContains"))
 			it.NotContains, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "StartsWith":
+		case "startsWith":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("StartsWith"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("startsWith"))
 			it.StartsWith, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotStartsWith":
+		case "notStartsWith":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotStartsWith"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notStartsWith"))
 			it.NotStartsWith, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "EndsWith":
+		case "endsWith":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("EndsWith"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("endsWith"))
 			it.EndsWith, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotEndsWith":
+		case "notEndsWith":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotEndsWith"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notEndsWith"))
 			it.NotEndsWith, err = ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "In":
+		case "in":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("In"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("in"))
 			it.In, err = ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "NotIn":
+		case "notIn":
 			var err error
 
-			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("NotIn"))
+			ctx := graphql.WithFieldInputContext(ctx, graphql.NewFieldInputWithField("notIn"))
 			it.NotIn, err = ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
 				return it, err

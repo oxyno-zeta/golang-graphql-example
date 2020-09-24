@@ -35,43 +35,43 @@ input StringFilter {
   """
   Allow to test equality to
   """
-  Eq: String
+  eq: String
   """
   Allow to test non equality to
   """
-  NotEq: String
+  notEq: String
   """
   Allow to test if a string contains another string.
   """
-  Contains: String
+  contains: String
   """
   Allow to test if a string isn't containing another string.
   """
-  NotContains: String
+  notContains: String
   """
   Allow to test if a string starts with another string.
   """
-  StartsWith: String
+  startsWith: String
   """
   Allow to test if a string isn't starting with another string.
   """
-  NotStartsWith: String
+  notStartsWith: String
   """
   Allow to test if a string ends with another string.
   """
-  EndsWith: String
+  endsWith: String
   """
   Allow to test if a string isn't ending with another string.
   """
-  NotEndsWith: String
+  notEndsWith: String
   """
   Allow to test if value is in array
   """
-  In: [String]
+  in: [String]
   """
   Allow to test if value isn't in array
   """
-  NotIn: [String]
+  notIn: [String]
 }
 
 """
@@ -81,51 +81,51 @@ input IntFilter {
   """
   Allow to test equality to
   """
-  Eq: Int
+  eq: Int
   """
   Allow to test non equality to
   """
-  NotEq: Int
+  notEq: Int
   """
   Allow to test greater or equal than
   """
-  Gte: Int
+  gte: Int
   """
   Allow to test not greater or equal than
   """
-  NotGte: Int
+  notGte: Int
   """
   Allow to test greater than
   """
-  Gt: Int
+  gt: Int
   """
   Allow to test not greater than
   """
-  NotGt: Int
+  notGt: Int
   """
   Allow to test less or equal than
   """
-  Lte: Int
+  lte: Int
   """
   Allow to test not less or equal than
   """
-  NotLte: Int
+  notLte: Int
   """
   Allow to test less than
   """
-  Lt: Int
+  lt: Int
   """
   Allow to test not less than
   """
-  NotLt: Int
+  notLt: Int
   """
   Allow to test if value is in array
   """
-  In: [Int]
+  in: [Int]
   """
   Allow to test if value isn't in array
   """
-  NotIn: [Int]
+  notIn: [Int]
 }
 
 """
@@ -135,11 +135,11 @@ input BooleanFilter {
   """
   Allow to test equality to
   """
-  Eq: Boolean
+  eq: Boolean
   """
   Allow to test non equality to
   """
-  NotEq: Boolean
+  notEq: Boolean
 }
 
 """
@@ -149,49 +149,49 @@ input DateFilter {
   """
   Allow to test equality to
   """
-  Eq: String
+  eq: String
   """
   Allow to test non equality to
   """
-  NotEq: String
+  notEq: String
   """
   Allow to test greater or equal than
   """
-  Gte: String
+  gte: String
   """
   Allow to test not greater or equal than
   """
-  NotGte: String
+  notGte: String
   """
   Allow to test greater than
   """
-  Gt: String
+  gt: String
   """
   Allow to test not greater than
   """
-  NotGt: String
+  notGt: String
   """
   Allow to test less or equal than
   """
-  Lte: String
+  lte: String
   """
   Allow to test not less or equal than
   """
-  NotLte: String
+  notLte: String
   """
   Allow to test less than
   """
-  Lt: String
+  lt: String
   """
   Allow to test not less than
   """
-  NotLt: String
+  notLt: String
   """
   Allow to test if value is in array
   """
-  In: [String]
+  in: [String]
   """
   Allow to test if value isn't in array
   """
-  NotIn: [String]
+  notIn: [String]
 }
