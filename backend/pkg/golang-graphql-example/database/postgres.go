@@ -40,6 +40,12 @@ func (ctx *postresdb) Connect() error {
 		},
 		// Add logger
 		Logger: ctx.logger.GetGormLogger(),
+		// Disable foreign key constraint when migrating
+		DisableForeignKeyConstraintWhenMigrating: cfg.Database.DisableForeignKeyWhenMigrating,
+		// Allow global update
+		AllowGlobalUpdate: cfg.Database.AllowGlobalUpdate,
+		// Prepare statement for caching
+		PrepareStmt: cfg.Database.PrepareStatement,
 	}
 
 	ctx.logger.Debug("Trying to connect to database engine of type PostgreSQL")

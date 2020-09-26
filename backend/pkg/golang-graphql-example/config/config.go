@@ -90,7 +90,10 @@ type ServerConfig struct {
 
 // DatabaseConfig Database configuration.
 type DatabaseConfig struct {
-	ConnectionURL *CredentialConfig `mapstructure:"connectionUrl" validate:"required"`
+	ConnectionURL                  *CredentialConfig `mapstructure:"connectionUrl" validate:"required"`
+	DisableForeignKeyWhenMigrating bool              `mapstructure:"disableForeignKeyWhenMigrating"`
+	AllowGlobalUpdate              bool              `mapstructure:"allowGlobalUpdate"`
+	PrepareStatement               bool              `mapstructure:"prepareStatement"`
 }
 
 // CredentialConfig Credential Configurations.
