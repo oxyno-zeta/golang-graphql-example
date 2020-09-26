@@ -1,7 +1,12 @@
 package log
 
 import (
+	"context"
+	"time"
+
 	"github.com/sirupsen/logrus"
+
+	gormlogger "gorm.io/gorm/logger"
 )
 
 type Logger interface {
@@ -40,6 +45,7 @@ type Logger interface {
 
 	GetTracingLogger() TracingLogger
 	GetLockDistributorLogger() LockDistributorLogger
+	GetGormLogger() gormlogger.Interface
 }
 
 type TracingLogger interface {
@@ -50,6 +56,14 @@ type TracingLogger interface {
 
 type LockDistributorLogger interface {
 	Println(args ...interface{})
+}
+
+type GormLogger interface {
+	LogMode(gormlogger.LogLevel) GormLogger
+	Info(context.Context, string, ...interface{})
+	Warn(context.Context, string, ...interface{})
+	Error(context.Context, string, ...interface{})
+	Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error)
 }
 
 func NewLogger() Logger {

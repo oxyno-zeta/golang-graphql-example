@@ -8,7 +8,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 
 	"gorm.io/driver/postgres"
 )
@@ -33,16 +32,19 @@ func (ctx *postresdb) Connect() error {
 	// Get configuration
 	cfg := ctx.cfgManager.GetConfig()
 
-	ctx.logger.Debug("Trying to connect to database engine of type PostgreSQL")
-	// Connect to database
-	dbResult, err := gorm.Open(postgres.Open(cfg.Database.ConnectionURL.Value), &gorm.Config{
+	// Create gorm configuration
+	gcfg := &gorm.Config{
 		// Insert now function to be sure that automatic dates are in UTC
 		NowFunc: func() time.Time {
 			return time.Now().UTC()
 		},
-		// Remove logger
-		Logger: logger.Discard,
-	})
+		// Add logger
+		Logger: ctx.logger.GetGormLogger(),
+	}
+
+	ctx.logger.Debug("Trying to connect to database engine of type PostgreSQL")
+	// Connect to database
+	dbResult, err := gorm.Open(postgres.Open(cfg.Database.ConnectionURL.Value), gcfg)
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
