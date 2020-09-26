@@ -32,6 +32,17 @@ func (ctx *postresdb) Connect() error {
 	// Get configuration
 	cfg := ctx.cfgManager.GetConfig()
 
+	var sqlConnectionMaxLifetimeDuration time.Duration
+	// Try to parse sql connection max lifetime duration
+	if cfg.Database.SQLConnectionMaxLifetimeDuration != "" {
+		var err error
+		sqlConnectionMaxLifetimeDuration, err = time.ParseDuration(cfg.Database.SQLConnectionMaxLifetimeDuration)
+		// Check error
+		if err != nil {
+			return err
+		}
+	}
+
 	// Create gorm configuration
 	gcfg := &gorm.Config{
 		// Insert now function to be sure that automatic dates are in UTC
@@ -68,6 +79,24 @@ func (ctx *postresdb) Connect() error {
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
+	}
+
+	// Check if max idle connections exists
+	if cfg.Database.SQLMaxIdleConnections != 0 {
+		// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
+		sqlDB.SetMaxIdleConns(cfg.Database.SQLMaxIdleConnections)
+	}
+
+	// Check if max opened connections exists
+	if cfg.Database.SQLMaxOpenConnections != 0 {
+		// SetMaxOpenConns sets the maximum number of open connections to the database.
+		sqlDB.SetMaxOpenConns(cfg.Database.SQLMaxOpenConnections)
+	}
+
+	// Check if connection max lifetime exists
+	if cfg.Database.SQLConnectionMaxLifetimeDuration != "" {
+		// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
+		sqlDB.SetConnMaxLifetime(sqlConnectionMaxLifetimeDuration)
 	}
 
 	// Save gorm db object
