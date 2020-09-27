@@ -102,7 +102,7 @@ type ServerCorsConfig struct {
 	AllowWebSockets         *bool    `mapstructure:"allowWebSockets"`
 	AllowFiles              *bool    `mapstructure:"allowFiles"`
 	AllowAllOrigins         *bool    `mapstructure:"allowAllOrigins"`
-	UseDefaultConfiguration bool     `mapstructure:"useDefaultConfigration"`
+	UseDefaultConfiguration bool     `mapstructure:"useDefaultConfiguration"`
 }
 
 // DatabaseConfig Database configuration.
