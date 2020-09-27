@@ -103,11 +103,18 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	// Add middlewares
 	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
 	router.Use(gin.Recovery())
-	router.Use(helmet.Default())
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(svr.tracingSvc.Middleware(middlewares.GetRequestIDFromContext))
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument("business"))
+	// Add helmet for security
+	router.Use(helmet.Default())
+	// Add cors if configured
+	err := manageCORS(router, cfg.Server)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
 
 	// Create api prefix path regexp
 	apiReg, err := regexp.Compile("^/api")

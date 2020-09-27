@@ -49,6 +49,9 @@ func (svr *InternalServer) AddChecker(chI *CheckerInput) {
 }
 
 func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
+	// Get configuration
+	cfg := svr.cfgManager.GetConfig()
+
 	// Set release mod
 	gin.SetMode(gin.ReleaseMode)
 	// Create router
@@ -59,6 +62,12 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument("internal"))
+	// Add cors if configured
+	err := manageCORS(router, cfg.InternalServer)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
 
 	// Create a new health instance
 	h := health.New()
@@ -67,7 +76,7 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	h.DisableLogging()
 
 	// Add checkers
-	err := h.AddChecks(svr.checkers)
+	err = h.AddChecks(svr.checkers)
 	if err != nil {
 		return nil, err
 	}

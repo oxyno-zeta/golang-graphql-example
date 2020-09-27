@@ -84,8 +84,25 @@ type LogConfig struct {
 
 // ServerConfig Server configuration.
 type ServerConfig struct {
-	ListenAddr string `mapstructure:"listenAddr"`
-	Port       int    `mapstructure:"port" validate:"required"`
+	ListenAddr string            `mapstructure:"listenAddr"`
+	Port       int               `mapstructure:"port" validate:"required"`
+	CORS       *ServerCorsConfig `mapstructure:"cors" validate:"omitempty"`
+}
+
+// ServerCorsConfig Server CORS configuration.
+type ServerCorsConfig struct {
+	AllowOrigins            []string `mapstructure:"allowOrigins"`
+	AllowMethods            []string `mapstructure:"allowMethods"`
+	AllowHeaders            []string `mapstructure:"allowHeaders"`
+	ExposeHeaders           []string `mapstructure:"exposeHeaders"`
+	MaxAgeDuration          string   `mapstructure:"maxAgeDuration"`
+	AllowCredentials        *bool    `mapstructure:"allowCredentials"`
+	AllowWildcard           *bool    `mapstructure:"allowWildcard"`
+	AllowBrowserExtensions  *bool    `mapstructure:"allowBrowserExtensions"`
+	AllowWebSockets         *bool    `mapstructure:"allowWebSockets"`
+	AllowFiles              *bool    `mapstructure:"allowFiles"`
+	AllowAllOrigins         *bool    `mapstructure:"allowAllOrigins"`
+	UseDefaultConfiguration bool     `mapstructure:"useDefaultConfigration"`
 }
 
 // DatabaseConfig Database configuration.
