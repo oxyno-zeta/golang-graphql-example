@@ -2,7 +2,7 @@ package graphql
 
 import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 
-//go:generate go run github.com/99designs/gqlgen
+//go:generate gqlgen generate
 
 // This file will not be regenerated automatically.
 //
