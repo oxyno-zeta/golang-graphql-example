@@ -108,7 +108,7 @@ func (ll *loggerIns) WithError(err error) Logger {
 		// Stringify stack trace
 		valued := fmt.Sprintf("%+v", st)
 		// Remove all tabs
-		valued = strings.Replace(valued, "\t", "", -1)
+		valued = strings.ReplaceAll(valued, "\t", "")
 		// Split on new line
 		stack := strings.Split(valued, "\n")
 		// Remove first empty string
