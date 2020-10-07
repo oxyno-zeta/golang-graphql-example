@@ -68,8 +68,9 @@ func (ctx *managercontext) Load() error {
 				// Stop here and do not call hooks => configuration is unstable
 				return
 			}
-			// Call all hooks
-			funk.ForEach(ctx.onChangeHooks, func(hook func()) { go hook() })
+			// Call all hooks in sequence in order to manage correctly reload database and after
+			// services that depends on it
+			funk.ForEach(ctx.onChangeHooks, func(hook func()) { hook() })
 		})
 		// Watch for configuration changes
 		vip.WatchConfig()
@@ -257,8 +258,9 @@ func (ctx *managercontext) loadConfiguration() error {
 					// Stop here and do not call hooks => configuration is unstable
 					return
 				}
-				// Call all hooks
-				funk.ForEach(ctx.onChangeHooks, func(hook func()) { go hook() })
+				// Call all hooks in sequence in order to manage correctly reload database and after
+				// services that depends on it
+				funk.ForEach(ctx.onChangeHooks, func(hook func()) { hook() })
 			})
 			// Add channel to list of channels
 			ctx.internalFileWatchChannels = append(ctx.internalFileWatchChannels, ch)
