@@ -17,6 +17,8 @@ func TestDateFilter_GetGenericFilter(t *testing.T) {
 		return
 	}
 
+	date = date.UTC()
+
 	type fields struct {
 		Eq     *string
 		NotEq  *string

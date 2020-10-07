@@ -21,6 +21,8 @@ func Test_manageFilter(t *testing.T) {
 		t.Error(err)
 		return
 	}
+	date = date.UTC()
+
 	type Person struct {
 		Name string
 	}

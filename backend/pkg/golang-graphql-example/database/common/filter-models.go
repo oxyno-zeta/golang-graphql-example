@@ -260,6 +260,9 @@ func parseTime(x string) (*time.Time, error) {
 		return nil, err
 	}
 
+	// Force utc
+	t = t.UTC()
+
 	return &t, nil
 }
 
