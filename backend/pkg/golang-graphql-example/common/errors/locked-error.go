@@ -26,7 +26,7 @@ func NewLockedErrorWithExtensionsAndError(err error, customExtensions map[string
 	// Add code in custom extensions
 	customExtensions["code"] = "LOCKED"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusLocked,

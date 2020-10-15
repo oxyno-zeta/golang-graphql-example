@@ -26,7 +26,7 @@ func NewForbiddenErrorWithExtensionsAndError(err error, customExtensions map[str
 	// Add code in custom extensions
 	customExtensions["code"] = "FORBIDDEN"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusForbidden,

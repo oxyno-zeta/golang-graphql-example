@@ -26,7 +26,7 @@ func NewConflictErrorWithExtensionsAndError(err error, customExtensions map[stri
 	// Add code in custom extensions
 	customExtensions["code"] = "CONFLICT"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusConflict,

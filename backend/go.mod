@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	cirello.io/pglock v1.8.0
-	github.com/99designs/gqlgen v0.12.2
+	github.com/99designs/gqlgen v0.13.0
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/DATA-DOG/go-sqlmock v1.3.3
 	github.com/InVisionApp/go-health/v2 v2.1.2
@@ -30,7 +30,7 @@ require (
 	github.com/thoas/go-funk v0.7.0
 	github.com/uber/jaeger-client-go v2.25.0+incompatible
 	github.com/uber/jaeger-lib v2.2.0+incompatible
-	github.com/vektah/gqlparser/v2 v2.0.1
+	github.com/vektah/gqlparser/v2 v2.1.0
 	golang.org/x/oauth2 v0.0.0-20200902213428-5d25da1a8d43
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect

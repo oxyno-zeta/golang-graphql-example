@@ -26,7 +26,7 @@ func NewTooManyRequestsErrorWithExtensionsAndError(err error, customExtensions m
 	// Add code in custom extensions
 	customExtensions["code"] = "TOO_MANY_REQUESTS"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusTooManyRequests,

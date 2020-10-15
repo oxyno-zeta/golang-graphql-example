@@ -26,7 +26,7 @@ func NewUnauthorizedErrorWithExtensionsAndError(err error, customExtensions map[
 	// Add code in custom extensions
 	customExtensions["code"] = "UNAUTHORIZED"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusUnauthorized,

@@ -26,7 +26,7 @@ func NewInvalidInputErrorWithExtensionsAndError(err error, customExtensions map[
 	// Add code in custom extensions
 	customExtensions["code"] = "INVALID_INPUT"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusBadRequest,

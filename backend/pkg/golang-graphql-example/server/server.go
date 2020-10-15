@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"errors"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -18,6 +19,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
+	cerrors "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
@@ -172,7 +174,21 @@ func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 		Resolvers: &graphql.Resolver{BusiServices: busiServices},
 	}))
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
+		// Get logger
 		logger := log.GetLoggerFromContext(ctx)
+		// Initialize potential generic error
+		var err2 *cerrors.GenericError
+		// Get generic error if available
+		if errors.As(err, &err2) {
+			// Log error
+			logger.WithError(err2).Error(err2)
+			// Return graphql error
+			return &gqlerror.Error{
+				Path:       gqlgraphql.GetPath(ctx),
+				Extensions: err2.Extensions(),
+				Message:    err2.Error(),
+			}
+		}
 		// Log error
 		logger.WithError(err).Error(err)
 		// Return

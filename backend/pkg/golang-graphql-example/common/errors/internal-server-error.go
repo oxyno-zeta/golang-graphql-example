@@ -26,7 +26,7 @@ func NewInternalServerErrorWithExtensionsAndError(err error, customExtensions ma
 	// Add code in custom extensions
 	customExtensions["code"] = "INTERNAL_SERVER_ERROR"
 	// Return new error
-	return &defaultError{
+	return &GenericError{
 		err:        errors.WithStack(err),
 		ext:        customExtensions,
 		statusCode: http.StatusInternalServerError,
