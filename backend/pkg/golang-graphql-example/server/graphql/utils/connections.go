@@ -77,13 +77,13 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	edgeTypePtr := edgesType.Type.Elem()
 	// Check that Edge type is a pointer in slice
 	if edgeTypePtr.Kind() != reflect.Ptr {
-		return errors.New("field Edges must be a slice of pointer of structs ([]*Edge)")
+		return errors.New("field Edges must be a slice of struct pointers ([]*Edge)")
 	}
 	// Get edge type
 	edgeTypeStruct := edgeTypePtr.Elem()
 	// Check that Edge is really a struct after pointer
 	if edgeTypeStruct.Kind() != reflect.Struct {
-		return errors.New("field Edges must be a slice of pointer of structs ([]*Edge)")
+		return errors.New("field Edges must be a slice of struct pointers ([]*Edge)")
 	}
 
 	// Check that Edge have a Cursor key

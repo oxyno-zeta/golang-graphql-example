@@ -157,7 +157,7 @@ func TestMapConnection(t *testing.T) {
 				pageOut: &pagination.PageOutput{},
 			},
 			wantErr:     true,
-			errorString: "field Edges must be a slice of pointer of structs ([]*Edge)",
+			errorString: "field Edges must be a slice of struct pointers ([]*Edge)",
 		},
 		{
 			name: "Edges with a slice of wrong slice type ([]*string)",
@@ -167,7 +167,7 @@ func TestMapConnection(t *testing.T) {
 				pageOut: &pagination.PageOutput{},
 			},
 			wantErr:     true,
-			errorString: "field Edges must be a slice of pointer of structs ([]*Edge)",
+			errorString: "field Edges must be a slice of struct pointers ([]*Edge)",
 		},
 		{
 			name: "Edges with a slice of wrong slice type ([]PersonEdge)",
@@ -177,7 +177,7 @@ func TestMapConnection(t *testing.T) {
 				pageOut: &pagination.PageOutput{},
 			},
 			wantErr:     true,
-			errorString: "field Edges must be a slice of pointer of structs ([]*Edge)",
+			errorString: "field Edges must be a slice of struct pointers ([]*Edge)",
 		},
 		{
 			name: "Edges with a slice of wrong slice type (string)",
