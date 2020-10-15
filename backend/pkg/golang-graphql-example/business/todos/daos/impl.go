@@ -65,7 +65,13 @@ func (d *dao) GetAllPaginated(page *pagination.PageInput, sort *models.SortOrder
 	// result
 	res := make([]*models.Todo, 0)
 	// Find todos
-	pageOut, err := pagination.Paging(&res, db, page, sort, filter, nil)
+	pageOut, err := pagination.Paging(&res, &pagination.PagingOptions{
+		DB:        db,
+		PageInput: page,
+		Sort:      sort,
+		Filter:    filter,
+		ExtraFunc: nil,
+	})
 	// Check error
 	if err != nil {
 		return nil, nil, err

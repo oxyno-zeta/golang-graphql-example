@@ -20,42 +20,48 @@ type PageOutput struct {
 	HasNext     bool
 }
 
+// PagingOptions represents pagination options.
+type PagingOptions struct {
+	// Gorm database
+	DB *gorm.DB
+	// Pagination input
+	PageInput *PageInput
+	// Must be a pointer to an object with *SortOrderEnum objects with tags
+	Sort interface{}
+	// Must be a pointer to an object with *GenericFilter objects or implementing the GenericFilterBuilder interface and with tags
+	Filter interface{}
+	// This function is called after filters and before any sorts
+	ExtraFunc func(db *gorm.DB) (*gorm.DB, error)
+}
+
 // Paging function in order to have a paginated sorted and filters list of objects.
 // Parameters:
 // - result: Must be a pointer to a list of objects
-// - db: Gorm database
-// - p: Pagination input
-// - sort: Must be a pointer to an object with *SortOrderEnum objects with tags
-// - filter: Must be a pointer to an object with *GenericFilter objects or implementing the GenericFilterBuilder interface and with tags
-// - extraFunc: This function is called after filters and before any sorts
+// - options: Pagination options
 // .
 func Paging(
 	result interface{},
-	db *gorm.DB,
-	p *PageInput,
-	sort interface{},
-	filter interface{},
-	extraFunc func(db *gorm.DB) (*gorm.DB, error),
+	options *PagingOptions,
 ) (*PageOutput, error) {
 	// Manage default limit
-	if p.Limit == 0 {
-		p.Limit = 10
+	if options.PageInput.Limit == 0 {
+		options.PageInput.Limit = 10
 	}
 
 	var count int64 = 0
 
 	// Create transaction to avoid situations where count and find are different
-	err := db.Transaction(func(db *gorm.DB) error {
+	err := options.DB.Transaction(func(db *gorm.DB) error {
 		// Apply filter
-		db, err := common.ManageFilter(filter, db)
+		db, err := common.ManageFilter(options.Filter, db)
 		// Check error
 		if err != nil {
 			return err
 		}
 
 		// Extra function
-		if extraFunc != nil {
-			db, err = extraFunc(db)
+		if options.ExtraFunc != nil {
+			db, err = options.ExtraFunc(db)
 			// Check error
 			if err != nil {
 				return err
@@ -70,14 +76,14 @@ func Paging(
 		}
 
 		// Apply sort
-		db, err = common.ManageSortOrder(sort, db)
+		db, err = common.ManageSortOrder(options.Sort, db)
 		// Check error
 		if err != nil {
 			return err
 		}
 
 		// Request to database with limit and offset
-		db = db.Limit(p.Limit).Offset(p.Skip).Find(result)
+		db = db.Limit(options.PageInput.Limit).Offset(options.PageInput.Skip).Find(result)
 		// Check error
 		if db.Error != nil {
 			return db.Error
@@ -91,7 +97,7 @@ func Paging(
 		return nil, err
 	}
 
-	return getPageOutput(p, count), nil
+	return getPageOutput(options.PageInput, count), nil
 }
 
 func getPageOutput(p *PageInput, count int64) *PageOutput {
