@@ -1,4 +1,4 @@
-// +build unit
+//+build unit
 
 package pagination
 
@@ -24,11 +24,15 @@ func TestPaging(t *testing.T) {
 	type Filter struct {
 		Name *common.GenericFilter `dbfield:"name"`
 	}
+	type Projection struct {
+		Name bool `dbfield:"name"`
+	}
 	type args struct {
-		p         *PageInput
-		sort      interface{}
-		filter    interface{}
-		extraFunc func(db *gorm.DB) (*gorm.DB, error)
+		p          *PageInput
+		sort       interface{}
+		filter     interface{}
+		projection interface{}
+		extraFunc  func(db *gorm.DB) (*gorm.DB, error)
 	}
 	tests := []struct {
 		name                            string
@@ -37,6 +41,7 @@ func TestPaging(t *testing.T) {
 		countExpectedArgs               []driver.Value
 		selectExpectedIntermediateQuery string
 		selectExpectedArgs              []driver.Value
+		selectExpectedProjectionQuery   string
 		countResult                     int
 		want                            *PageOutput
 		wantErr                         bool
@@ -51,6 +56,7 @@ func TestPaging(t *testing.T) {
 			countResult:                     3,
 			selectExpectedIntermediateQuery: "ORDER BY created_at DESC LIMIT 10",
 			selectExpectedArgs:              []driver.Value{},
+			selectExpectedProjectionQuery:   "*",
 			want:                            &PageOutput{TotalRecord: 3, Limit: 10},
 		},
 		{
@@ -63,6 +69,7 @@ func TestPaging(t *testing.T) {
 			countResult:                     3,
 			selectExpectedIntermediateQuery: "ORDER BY created_at DESC LIMIT 5",
 			selectExpectedArgs:              []driver.Value{},
+			selectExpectedProjectionQuery:   "*",
 			want:                            &PageOutput{TotalRecord: 3, Limit: 5},
 		},
 		{
@@ -75,6 +82,7 @@ func TestPaging(t *testing.T) {
 			countResult:                     30,
 			selectExpectedIntermediateQuery: "ORDER BY created_at DESC LIMIT 5",
 			selectExpectedArgs:              []driver.Value{},
+			selectExpectedProjectionQuery:   "*",
 			want:                            &PageOutput{TotalRecord: 30, Limit: 5, HasNext: true},
 		},
 		{
@@ -87,6 +95,7 @@ func TestPaging(t *testing.T) {
 			countResult:                     30,
 			selectExpectedIntermediateQuery: "ORDER BY created_at DESC LIMIT 5 OFFSET 20",
 			selectExpectedArgs:              []driver.Value{},
+			selectExpectedProjectionQuery:   "*",
 			want:                            &PageOutput{TotalRecord: 30, Limit: 5, Skip: 20, HasNext: true, HasPrevious: true},
 		},
 		{
@@ -101,6 +110,7 @@ func TestPaging(t *testing.T) {
 			countResult:                     30,
 			selectExpectedIntermediateQuery: "WHERE name = $1 ORDER BY name DESC LIMIT 5 OFFSET 20",
 			selectExpectedArgs:              []driver.Value{"fake"},
+			selectExpectedProjectionQuery:   "*",
 			want:                            &PageOutput{TotalRecord: 30, Limit: 5, Skip: 20, HasNext: true, HasPrevious: true},
 		},
 		{
@@ -126,6 +136,23 @@ func TestPaging(t *testing.T) {
 			countResult:                     30,
 			selectExpectedIntermediateQuery: "WHERE fake = $1 ORDER BY created_at DESC LIMIT 5 OFFSET 20",
 			selectExpectedArgs:              []driver.Value{"fake1"},
+			selectExpectedProjectionQuery:   "*",
+			want:                            &PageOutput{TotalRecord: 30, Limit: 5, Skip: 20, HasNext: true, HasPrevious: true},
+		},
+		{
+			name: "sort, filter, projection, no extra function with next and previous page and skip",
+			args: args{
+				p:          &PageInput{Limit: 5, Skip: 20},
+				sort:       &Sort{Name: &common.SortOrderEnumDesc},
+				filter:     &Filter{Name: &common.GenericFilter{Eq: "fake"}},
+				projection: &Projection{Name: true},
+			},
+			countExpectedIntermediateQuery:  "WHERE name = $1",
+			countExpectedArgs:               []driver.Value{"fake"},
+			countResult:                     30,
+			selectExpectedIntermediateQuery: "WHERE name = $1 ORDER BY name DESC LIMIT 5 OFFSET 20",
+			selectExpectedArgs:              []driver.Value{"fake"},
+			selectExpectedProjectionQuery:   `"name"`,
 			want:                            &PageOutput{TotalRecord: 30, Limit: 5, Skip: 20, HasNext: true, HasPrevious: true},
 		},
 	}
@@ -147,7 +174,8 @@ func TestPaging(t *testing.T) {
 			// Create expected query
 			countExpectedQuery := `SELECT count(1) FROM "people" ` + tt.countExpectedIntermediateQuery
 			// Create expected query
-			selectExpectedQuery := `SELECT * FROM "people" ` + tt.selectExpectedIntermediateQuery
+			selectExpectedQuery := `SELECT ` + tt.selectExpectedProjectionQuery +
+				` FROM "people" ` + tt.selectExpectedIntermediateQuery
 
 			mock.ExpectBegin()
 			mock.ExpectQuery(countExpectedQuery).
@@ -164,7 +192,14 @@ func TestPaging(t *testing.T) {
 
 			res := make([]*Person, 0)
 
-			got, err := Paging(&res, db, tt.args.p, tt.args.sort, tt.args.filter, tt.args.extraFunc)
+			got, err := Paging(&res, &PagingOptions{
+				DB:         db,
+				PageInput:  tt.args.p,
+				Sort:       tt.args.sort,
+				Filter:     tt.args.filter,
+				Projection: tt.args.projection,
+				ExtraFunc:  tt.args.extraFunc,
+			})
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Paging() error = %v, wantErr %v", err, tt.wantErr)
 				return
