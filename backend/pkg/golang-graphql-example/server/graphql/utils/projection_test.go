@@ -17,22 +17,20 @@ func TestManageSimpleProjection(t *testing.T) {
 		Field1 bool
 	}
 	type Out2 struct {
-		Field1 bool `graphql_field:"-"`
+		Field1 bool `graphqlfield:"-"`
 	}
 	type Out3 struct {
-		Field1 string `graphql_field:"field1"`
+		Field1 string `graphqlfield:"field1"`
 	}
 	type Out4 struct {
-		Field1 *string `graphql_field:"field1"`
+		Field1 *string `graphqlfield:"field1"`
 	}
 	type Out5 struct {
-		Field1 bool `graphql_field:"field1"`
-	}
-	type InnerOut1 struct {
-		InnerField1 bool `graphql_field:"innerField1"`
+		Field1 bool `graphqlfield:"field1"`
 	}
 	type Out6 struct {
-		Field1 *InnerOut1 `graphql_field:"field1"`
+		Field1 bool `graphqlfield:"field1"`
+		Field2 bool `graphqlfield:"field2"`
 	}
 	type args struct {
 		fctx          *graphql.FieldContext
@@ -79,7 +77,7 @@ func TestManageSimpleProjection(t *testing.T) {
 				fctx: &graphql.FieldContext{
 					Field: graphql.CollectedField{
 						Selections: ast.SelectionSet{
-							&ast.Field{Name: "field1"},
+							&ast.Field{Name: "field1", Alias: "field1"},
 						},
 					},
 				},
@@ -93,7 +91,7 @@ func TestManageSimpleProjection(t *testing.T) {
 				fctx: &graphql.FieldContext{
 					Field: graphql.CollectedField{
 						Selections: ast.SelectionSet{
-							&ast.Field{Name: "field1"},
+							&ast.Field{Name: "field1", Alias: "field1"},
 						},
 					},
 				},
@@ -121,13 +119,13 @@ func TestManageSimpleProjection(t *testing.T) {
 				fctx: &graphql.FieldContext{
 					Field: graphql.CollectedField{
 						Selections: ast.SelectionSet{
-							&ast.Field{Name: "field1"},
+							&ast.Field{Name: "field1", Alias: "field1"},
 						},
 					},
 				},
 			},
 			wantErr:     true,
-			errorString: "field Field1 must be a boolean or a pointer to a struct",
+			errorString: "field Field1 must be a boolean",
 		},
 		{
 			name: "not a boolean or a struct ptr: *string",
@@ -136,13 +134,13 @@ func TestManageSimpleProjection(t *testing.T) {
 				fctx: &graphql.FieldContext{
 					Field: graphql.CollectedField{
 						Selections: ast.SelectionSet{
-							&ast.Field{Name: "field1"},
+							&ast.Field{Name: "field1", Alias: "field1"},
 						},
 					},
 				},
 			},
 			wantErr:     true,
-			errorString: "field Field1 must be a boolean or a pointer to a struct",
+			errorString: "field Field1 must be a boolean",
 		},
 		{
 			name: "simple field",
@@ -151,7 +149,7 @@ func TestManageSimpleProjection(t *testing.T) {
 				fctx: &graphql.FieldContext{
 					Field: graphql.CollectedField{
 						Selections: ast.SelectionSet{
-							&ast.Field{Name: "field1"},
+							&ast.Field{Name: "field1", Alias: "field1"},
 						},
 					},
 				},
@@ -159,23 +157,33 @@ func TestManageSimpleProjection(t *testing.T) {
 			want: &Out5{Field1: true},
 		},
 		{
-			name: "inner field",
+			name: "multiple fields: all set",
 			args: args{
 				projectionOut: &Out6{},
 				fctx: &graphql.FieldContext{
 					Field: graphql.CollectedField{
 						Selections: ast.SelectionSet{
-							&ast.Field{
-								Name: "field1",
-								SelectionSet: ast.SelectionSet{
-									&ast.Field{Name: "innerField1"},
-								},
-							},
+							&ast.Field{Name: "field1", Alias: "field1"},
+							&ast.Field{Name: "field2", Alias: "field2"},
 						},
 					},
 				},
 			},
-			want: &Out6{Field1: &InnerOut1{InnerField1: true}},
+			want: &Out6{Field1: true, Field2: true},
+		},
+		{
+			name: "multiple fields: not all set",
+			args: args{
+				projectionOut: &Out6{},
+				fctx: &graphql.FieldContext{
+					Field: graphql.CollectedField{
+						Selections: ast.SelectionSet{
+							&ast.Field{Name: "field1", Alias: "field1"},
+						},
+					},
+				},
+			},
+			want: &Out6{Field1: true, Field2: false},
 		},
 	}
 	for _, tt := range tests {
@@ -205,11 +213,8 @@ func TestManageConnectionNodeProjection(t *testing.T) {
 	type Out1 struct {
 		Fake string
 	}
-	type InnerOut1 struct {
-		InnerField1 bool `graphql_field:"innerField1"`
-	}
 	type Out2 struct {
-		Field1 *InnerOut1 `graphql_field:"field1"`
+		Field1 bool `graphqlfield:"field1"`
 	}
 	type args struct {
 		fctx          *graphql.FieldContext
@@ -275,7 +280,7 @@ func TestManageConnectionNodeProjection(t *testing.T) {
 							&ast.Field{
 								Name: "edges",
 								SelectionSet: ast.SelectionSet{
-									&ast.Field{Name: "field1"},
+									&ast.Field{Name: "field1", Alias: "field1"},
 								},
 							},
 						},
@@ -299,9 +304,6 @@ func TestManageConnectionNodeProjection(t *testing.T) {
 										SelectionSet: ast.SelectionSet{
 											&ast.Field{
 												Name: "field1",
-												SelectionSet: ast.SelectionSet{
-													&ast.Field{Name: "innerField1"},
-												},
 											},
 										},
 									},
@@ -312,9 +314,7 @@ func TestManageConnectionNodeProjection(t *testing.T) {
 				},
 			},
 			want: &Out2{
-				Field1: &InnerOut1{
-					InnerField1: true,
-				},
+				Field1: true,
 			},
 		},
 	}

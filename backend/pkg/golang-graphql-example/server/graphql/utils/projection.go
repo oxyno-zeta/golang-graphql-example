@@ -10,7 +10,7 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-const graphqlFieldTagKey = "graphql_field"
+const graphqlFieldTagKey = "graphqlfield"
 
 func ManageConnectionNodeProjection(
 	ctx context.Context,
@@ -57,7 +57,6 @@ func ManageConnectionNodeProjection(
 
 	// Start projection on this path
 	err = manageGraphqlProjection(
-		octx,
 		graphql.CollectFields(octx, fNode.Selections, nil),
 		projectionOut,
 	)
@@ -83,7 +82,6 @@ func ManageSimpleProjection(
 
 	// Manage graphql projection
 	err = manageGraphqlProjection(
-		graphql.GetOperationContext(ctx),
 		graphql.CollectFieldsCtx(ctx, nil),
 		projectionOut,
 	)
@@ -122,7 +120,6 @@ func validateProjectionOut(projectionOut interface{}) error {
 }
 
 func manageGraphqlProjection(
-	gctx *graphql.OperationContext,
 	gfields []graphql.CollectedField,
 	projectionOut interface{},
 ) error {
@@ -156,39 +153,16 @@ func manageGraphqlProjection(
 			// Field isn't found => continue to next field
 			continue
 		}
-		// Cast
-		gfield := gfieldInt.(graphql.CollectedField)
 
 		// Check if field is a boolean
 		if fieldType.Type.Kind() == reflect.Bool {
 			pOutVal.Field(i).SetBool(true)
 			// Stop here
-			return nil
-		} else if fieldType.Type.Kind() == reflect.Ptr { // Check if field is a pointer
-			// Get type behind pointer
-			vType := fieldType.Type.Elem()
-			// Check if type is a struct
-			if vType.Kind() != reflect.Struct {
-				return fmt.Errorf("field %s must be a boolean or a pointer to a struct", fieldType.Name)
+			continue
 			}
-			// Create new value
-			vVal := reflect.New(vType)
-			// Get interface value
-			interVal := vVal.Interface()
-			// Call recursive function
-			err := manageGraphqlProjection(gctx, graphql.CollectFields(gctx, gfield.Selections, nil), interVal)
-			// Check error
-			if err != nil {
-				return err
-			}
-			// Affect value to projection output
-			pOutVal.Field(i).Set(vVal)
-			// No error => stop
-			return nil
-		}
 
 		// Field is found but type isn't supported
-		return fmt.Errorf("field %s must be a boolean or a pointer to a struct", fieldType.Name)
+		return fmt.Errorf("field %s must be a boolean", fieldType.Name)
 	}
 
 	// Default
