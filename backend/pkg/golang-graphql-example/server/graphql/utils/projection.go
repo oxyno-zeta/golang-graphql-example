@@ -2,11 +2,11 @@ package utils
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"reflect"
 
 	"github.com/99designs/gqlgen/graphql"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/thoas/go-funk"
 )
 
@@ -97,14 +97,14 @@ func ManageSimpleProjection(
 func validateProjectionOut(projectionOut interface{}) error {
 	// Check if input is nil
 	if projectionOut == nil {
-		return errors.New("projection output cannot be nil")
+		return errors.NewInvalidInputError("projection output cannot be nil")
 	}
 
 	// Get projection type
 	projOutType := reflect.TypeOf(projectionOut)
 	// Check if projection out is a pointer
 	if projOutType.Kind() != reflect.Ptr {
-		return errors.New("projection output must be a pointer to an object")
+		return errors.NewInvalidInputError("projection output must be a pointer to an object")
 	}
 	// Get projection out value
 	projOutVal := reflect.ValueOf(projectionOut)
@@ -112,7 +112,7 @@ func validateProjectionOut(projectionOut interface{}) error {
 	indVal := reflect.Indirect(projOutVal)
 	// Check indirect value type
 	if indVal.Kind() != reflect.Struct {
-		return errors.New("projection output must be a pointer to an object")
+		return errors.NewInvalidInputError("projection output must be a pointer to an object")
 	}
 
 	// Default
@@ -159,7 +159,7 @@ func manageGraphqlProjection(
 			pOutVal.Field(i).SetBool(true)
 			// Stop here
 			continue
-			}
+		}
 
 		// Field is found but type isn't supported
 		return fmt.Errorf("field %s must be a boolean", fieldType.Name)
