@@ -21,6 +21,7 @@ type Service interface {
 		page *pagination.PageInput,
 		sort *models.SortOrder,
 		filter *models.Filter,
+		projection *models.Projection,
 	) ([]*models.Todo, *pagination.PageOutput, error)
 	Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error)
 	Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error)

@@ -30,6 +30,8 @@ type PagingOptions struct {
 	Sort interface{}
 	// Must be a pointer to an object with *GenericFilter objects or implementing the GenericFilterBuilder interface and with tags
 	Filter interface{}
+	// Must be a pointer to an object with booleans with tags
+	Projection interface{}
 	// This function is called after filters and before any sorts
 	ExtraFunc func(db *gorm.DB) (*gorm.DB, error)
 }
@@ -77,6 +79,13 @@ func Paging(
 
 		// Apply sort
 		db, err = common.ManageSortOrder(options.Sort, db)
+		// Check error
+		if err != nil {
+			return err
+		}
+
+		// Apply projection
+		db, err = common.ManageProjection(options.Projection, db)
 		// Check error
 		if err != nil {
 			return err

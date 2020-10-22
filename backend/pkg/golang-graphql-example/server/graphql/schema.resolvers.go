@@ -67,8 +67,16 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 		return nil, err
 	}
 
+	// Build projection from graphql fields
+	projection := &models.Projection{}
+	err = utils.ManageConnectionNodeProjection(ctx, projection)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
 	// Call business
-	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, sort, filter)
+	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, sort, filter, projection)
 	// Check error
 	if err != nil {
 		return nil, err

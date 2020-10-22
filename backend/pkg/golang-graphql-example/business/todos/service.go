@@ -28,6 +28,7 @@ func (s *service) GetAllPaginated(
 	page *pagination.PageInput,
 	sort *models.SortOrder,
 	filter *models.Filter,
+	projection *models.Projection,
 ) ([]*models.Todo, *pagination.PageOutput, error) {
 	// Check authorization
 	err := s.authSvc.CheckAuthorized(
@@ -40,7 +41,7 @@ func (s *service) GetAllPaginated(
 		return nil, nil, err
 	}
 
-	return s.dao.GetAllPaginated(page, sort, filter)
+	return s.dao.GetAllPaginated(page, sort, filter, projection)
 }
 
 func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error) {

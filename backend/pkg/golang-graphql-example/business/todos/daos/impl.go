@@ -59,18 +59,24 @@ func (d *dao) CreateOrUpdate(tt *models.Todo) (*models.Todo, error) {
 	return tt, nil
 }
 
-func (d *dao) GetAllPaginated(page *pagination.PageInput, sort *models.SortOrder, filter *models.Filter) ([]*models.Todo, *pagination.PageOutput, error) {
+func (d *dao) GetAllPaginated(
+	page *pagination.PageInput,
+	sort *models.SortOrder,
+	filter *models.Filter,
+	projection *models.Projection,
+) ([]*models.Todo, *pagination.PageOutput, error) {
 	// Get gorm db
 	db := d.db.GetGormDB()
 	// result
 	res := make([]*models.Todo, 0)
 	// Find todos
 	pageOut, err := pagination.Paging(&res, &pagination.PagingOptions{
-		DB:        db,
-		PageInput: page,
-		Sort:      sort,
-		Filter:    filter,
-		ExtraFunc: nil,
+		DB:         db,
+		PageInput:  page,
+		Sort:       sort,
+		Filter:     filter,
+		Projection: projection,
+		ExtraFunc:  nil,
 	})
 	// Check error
 	if err != nil {
