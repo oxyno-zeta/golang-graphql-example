@@ -34,6 +34,7 @@ type Query {
     sort: TodoSortOrder
     filter: TodoFilter
   ): TodoConnection
+  todo(id: String!): Todo
 }
 
 type Mutation {

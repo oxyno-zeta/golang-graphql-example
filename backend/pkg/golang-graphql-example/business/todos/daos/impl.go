@@ -5,6 +5,7 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	"gorm.io/gorm"
 )
@@ -22,16 +23,22 @@ func (d *dao) MigrateDB() error {
 	return err
 }
 
-func (d *dao) FindByID(id string) (*models.Todo, error) {
+func (d *dao) FindByID(id string, projection interface{}) (*models.Todo, error) {
 	// Get gorm db
 	db := d.db.GetGormDB()
 	// result
 	res := &models.Todo{}
+	// Apply projection
+	db, err := common.ManageProjection(projection, db)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
 	// Find in db
 	dbres := db.Where("id = ?", id).First(res)
 
 	// Check error
-	err := dbres.Error
+	err = dbres.Error
 	if err != nil {
 		// Check if it is a not found error
 		if errors.Is(err, gorm.ErrRecordNotFound) {

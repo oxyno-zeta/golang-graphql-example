@@ -92,6 +92,21 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 	return &res, nil
 }
 
+func (r *queryResolver) Todo(ctx context.Context, id string) (*models.Todo, error) {
+	// Get projection
+	proj := &models.Projection{}
+	err := utils.ManageSimpleProjection(ctx, proj)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Call business
+	res, err := r.BusiServices.TodoSvc.FindByID(ctx, id, proj)
+
+	return res, err
+}
+
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 

@@ -23,6 +23,7 @@ type Service interface {
 		filter *models.Filter,
 		projection *models.Projection,
 	) ([]*models.Todo, *pagination.PageOutput, error)
+	FindByID(ctx context.Context, id string, projection interface{}) (*models.Todo, error)
 	Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error)
 	Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error)
 	Close(ctx context.Context, id string) (*models.Todo, error)

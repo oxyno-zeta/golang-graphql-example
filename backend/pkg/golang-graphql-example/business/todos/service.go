@@ -23,6 +23,28 @@ func (s *service) MigrateDB(systemLogger log.Logger) error {
 	return s.dao.MigrateDB()
 }
 
+func (s *service) FindByID(ctx context.Context, id string, projection interface{}) (*models.Todo, error) {
+	// Check authorization
+	err := s.authSvc.CheckAuthorized(
+		ctx,
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, "Get"),
+		fmt.Sprintf("%s:%s", mainAuthorizationPrefix, id),
+	)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Find by id
+	res, err := s.dao.FindByID(id, projection)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
 func (s *service) GetAllPaginated(
 	ctx context.Context,
 	page *pagination.PageInput,
@@ -76,7 +98,7 @@ func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Tod
 	}
 
 	// Search by id first
-	tt, err := s.dao.FindByID(inp.ID)
+	tt, err := s.dao.FindByID(inp.ID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +121,7 @@ func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
 	}
 
 	// Search by id first
-	tt, err := s.dao.FindByID(id)
+	tt, err := s.dao.FindByID(id, nil)
 	if err != nil {
 		return nil, err
 	}
