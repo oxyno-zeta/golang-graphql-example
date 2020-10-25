@@ -156,6 +156,10 @@ setup/services: down/services
 setup/generate:
 	$(GO) $(GO_VENDOR) generate ./...
 
+.PHONY: setup/graphql
+setup/graphql:
+	gqlgen generate
+
 .PHONY: setup/dep/install
 setup/dep/install:
 ifndef HAS_GOLANGCI_LINT
