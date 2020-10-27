@@ -8,6 +8,7 @@ import (
 	"strconv"
 
 	"github.com/99designs/gqlgen-contrib/gqlopentracing"
+	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
@@ -196,6 +197,7 @@ func graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	})
 	h.Use(apollotracing.Tracer{})
 	h.Use(gqlopentracing.Tracer{})
+	h.Use(gqlprometheus.Tracer{})
 
 	return func(c *gin.Context) {
 		h.ServeHTTP(c.Writer, c.Request)

@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+
+	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
 )
 
 type prometheusMetrics struct {
@@ -115,4 +117,7 @@ func (ctx *prometheusMetrics) register() {
 	)
 	ctx.up.Set(1)
 	prometheus.MustRegister(ctx.up)
+
+	// Register gqlgen graphql prometheus metrics
+	gqlprometheus.Register()
 }
