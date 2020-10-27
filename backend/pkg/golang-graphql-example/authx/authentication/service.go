@@ -27,6 +27,8 @@ const callbackPath = "/auth/oidc/callback"
 const loginPath = "/auth/oidc"
 const userContextKeyName = "USER_CONTEXT_KEY"
 const redirectQueryKey = "rd"
+const stateRedirectSeparator = ":"
+const stateLength = 2
 
 var userContextKey = &contextKey{name: userContextKeyName}
 
@@ -58,29 +60,6 @@ func SetAuthenticatedUserToContext(ctx context.Context, us *models.OIDCUser) con
 // SetAuthenticatedUserToGin will set user in gin context.
 func SetAuthenticatedUserToGin(c *gin.Context, us *models.OIDCUser) {
 	c.Set(userContextKeyName, us)
-}
-
-func buildOauthRedirectURIParam(mainRedirectURLStr, rdVal string) (oauth2.AuthCodeOption, error) {
-	oidcRedirectURL, err := url.Parse(mainRedirectURLStr)
-	// Check if error exists
-	if err != nil {
-		return nil, err
-	}
-	// Get query params
-	qsValues := oidcRedirectURL.Query()
-	// Check if redirect value exists
-	if rdVal != "" {
-		// Add query param
-		qsValues.Add(redirectQueryKey, rdVal)
-	}
-	// Add query params to oidc redirect url
-	oidcRedirectURL.RawQuery = qsValues.Encode()
-	// Build new oidc redirect url string
-	oidcRedirectURLStr := oidcRedirectURL.String()
-
-	authP := oauth2.SetAuthURLParam("redirect_uri", oidcRedirectURLStr)
-
-	return authP, nil
 }
 
 // OIDCEndpoints will set OpenID Connect endpoints for authentication and callback.
@@ -128,21 +107,13 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	s.verifier = verifier
 
 	router.GET(loginPath, func(c *gin.Context) {
-		// Get logger from request
-		logger := log.GetLoggerFromGin(c)
 		// Get redirect query from query params
 		rdVal := c.Query(redirectQueryKey)
-		// Need to build new oidc redirect url
-		authParam, err := buildOauthRedirectURIParam(mainRedirectURLStr, rdVal)
-		// Check if error exists
-		if err != nil {
-			logger.Error(err)
-			utils.AnswerWithError(c, err)
+		// Build new state with redirect value
+		// Same solution as here: https://github.com/oauth2-proxy/oauth2-proxy/blob/3fa42edb7350219d317c4bd47faf5da6192dc70f/oauthproxy.go#L751
+		newState := state + stateRedirectSeparator + rdVal
 
-			return
-		}
-
-		c.Redirect(http.StatusFound, config.AuthCodeURL(state, authParam))
+		c.Redirect(http.StatusFound, config.AuthCodeURL(newState))
 		c.Abort()
 	})
 
@@ -150,8 +121,37 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Get logger from request
 		logger := log.GetLoggerFromGin(c)
 
-		// Get redirect url
-		rdVal := c.Query(redirectQueryKey)
+		// Get state from request
+		reqQueryState := c.Query("state")
+		// Check if state exists
+		if reqQueryState == "" {
+			err := cerrors.NewInvalidInputError("state not found in request")
+
+			logger.Error(err)
+			utils.AnswerWithError(c, err)
+
+			return
+		}
+
+		// Split request query state to get redirect url and original state
+		split := strings.SplitN(reqQueryState, stateRedirectSeparator, stateLength)
+		// Prepare and affect values
+		reqState := split[0]
+		rdVal := ""
+		// Check if length is ok to include a redirect url
+		if len(split) == stateLength {
+			rdVal = split[1]
+		}
+
+		// Check state
+		if reqState != state {
+			err := cerrors.NewInvalidInputError("state did not match")
+			logger.Error(err)
+			utils.AnswerWithError(c, err)
+
+			return
+		}
+
 		// Check if rdVal exists and that redirect url value is valid
 		if rdVal != "" && !isValidRedirect(rdVal) {
 			err := cerrors.NewInvalidInputError("redirect url is invalid")
@@ -162,26 +162,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			return
 		}
 
-		// Check state
-		if c.Query("state") != state {
-			err := cerrors.NewInvalidInputError("state did not match")
-			logger.Error(err)
-			utils.AnswerWithError(c, err)
-
-			return
-		}
-
-		// Build auth param
-		authParam, err := buildOauthRedirectURIParam(mainRedirectURLStr, rdVal)
-		// Check if error exists
-		if err != nil {
-			logger.Error(err)
-			utils.AnswerWithError(c, err)
-
-			return
-		}
-
-		oauth2Token, err := config.Exchange(ctx, c.Query("code"), authParam)
+		oauth2Token, err := config.Exchange(ctx, c.Query("code"))
 		if err != nil {
 			err = cerrors.NewInternalServerError("failed to exchange token: " + err.Error())
 			logger.Error(err)
