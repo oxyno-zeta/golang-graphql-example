@@ -47,6 +47,14 @@ HAS_MOCKGEN:=$(shell command -v mockgen;)
 code/lint: setup/dep/install
 	golangci-lint run ./...
 
+.PHONY: code/generate
+code/generate:
+	$(GO) $(GO_VENDOR) generate ./...
+
+.PHONY: code/graphql
+code/graphql:
+	gqlgen generate
+
 .PHONY: code/build
 code/build: code/clean setup/dep/install
 	$(GO) build $(GO_VENDOR) -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
@@ -151,14 +159,6 @@ setup/services: down/services
 	tar czvf .local-resources/opa/bundle.tar.gz --directory=.local-resources/opa/bundle example/
 	docker run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa run --server --log-level debug --log-format text --bundle /bundle.tar.gz
 	docker run -d --rm --name keycloak -p 8088:8080 -e KEYCLOAK_IMPORT=/tmp/realm-export.json -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/tmp/realm-export.json -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak:10.0.0
-
-.PHONY: setup/generate
-setup/generate:
-	$(GO) $(GO_VENDOR) generate ./...
-
-.PHONY: setup/graphql
-setup/graphql:
-	gqlgen generate
 
 .PHONY: setup/dep/install
 setup/dep/install:
