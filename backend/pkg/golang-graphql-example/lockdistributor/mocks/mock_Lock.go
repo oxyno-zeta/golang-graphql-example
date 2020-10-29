@@ -46,6 +46,21 @@ func (mr *MockLockMockRecorder) Acquire() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Acquire", reflect.TypeOf((*MockLock)(nil).Acquire))
 }
 
+// IsAlreadyTaken mocks base method
+func (m *MockLock) IsAlreadyTaken() (bool, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "IsAlreadyTaken")
+	ret0, _ := ret[0].(bool)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// IsAlreadyTaken indicates an expected call of IsAlreadyTaken
+func (mr *MockLockMockRecorder) IsAlreadyTaken() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsAlreadyTaken", reflect.TypeOf((*MockLock)(nil).IsAlreadyTaken))
+}
+
 // Release mocks base method
 func (m *MockLock) Release() error {
 	m.ctrl.T.Helper()
