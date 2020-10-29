@@ -47,13 +47,25 @@ HAS_MOCKGEN:=$(shell command -v mockgen;)
 code/lint: setup/dep/install
 	golangci-lint run ./...
 
+.PHONY: code/graphql/concat
+code/graphql/concat:
+	cat graphql/*.graphql > tools/graphql-inspector/validation.graphql
+	@echo "you must commit this file for graphql non breaking change check"
+
+.PHONY: code/graphql/no-break-check
+code/graphql/no-break-check:  code/graphql/concat
+	graphql-inspector diff 'git:origin/dev:./tools/graphql-inspector/validation.graphql' './tools/graphql-inspector/validation.graphql'
+
+.PHONY: code/graphql/generate
+code/graphql/generate:
+	gqlgen generate
+
 .PHONY: code/generate
 code/generate:
 	$(GO) $(GO_VENDOR) generate ./...
 
 .PHONY: code/graphql
-code/graphql:
-	gqlgen generate
+code/graphql: code/graphql/generate code/graphql/concat
 
 .PHONY: code/build
 code/build: code/clean setup/dep/install
