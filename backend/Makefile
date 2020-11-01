@@ -54,7 +54,7 @@ code/graphql/concat:
 
 .PHONY: code/graphql/no-break-check
 code/graphql/no-break-check:  code/graphql/concat
-	graphql-inspector diff 'git:origin/dev:./tools/graphql-inspector/validation.graphql' './tools/graphql-inspector/validation.graphql'
+	graphql-inspector diff 'git:origin/master:./tools/graphql-inspector/validation.graphql' './tools/graphql-inspector/validation.graphql'
 
 .PHONY: code/graphql/generate
 code/graphql/generate:
