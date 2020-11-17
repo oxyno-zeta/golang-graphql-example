@@ -9,6 +9,8 @@ import (
 // Moreover, a tag containing the database field must be declared.
 // Example:
 // type Filter struct {
+//  AND []*Filter
+//  OR []*Filter
 // 	Field1 *GenericFilter `dbfield:"field_1"`
 // }
 // .
@@ -66,6 +68,8 @@ type GenericFilter struct {
 // Moreover, a tag containing the database field must be declared.
 // Example:
 // type Filter struct {
+//  AND []*Filter
+//  OR []*Filter
 // 	Field1 *DateFilter `dbfield:"field_1"`
 // }
 // .
