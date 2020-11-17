@@ -492,6 +492,14 @@ input StringFilter {
   Allow to test if value isn't in array
   """
   notIn: [String]
+  """
+  Allow to test if value is null
+  """
+  isNull: Boolean
+  """
+  Allow to test if value is not null
+  """
+  isNotNull: Boolean
 }
 
 """
@@ -546,6 +554,14 @@ input IntFilter {
   Allow to test if value isn't in array
   """
   notIn: [Int]
+  """
+  Allow to test if value is null
+  """
+  isNull: Boolean
+  """
+  Allow to test if value is not null
+  """
+  isNotNull: Boolean
 }
 
 """
@@ -614,6 +630,14 @@ input DateFilter {
   Allow to test if value isn't in array
   """
   notIn: [String]
+  """
+  Allow to test if value is null
+  """
+  isNull: Boolean
+  """
+  Allow to test if value is not null
+  """
+  isNotNull: Boolean
 }
 `, BuiltIn: false},
 }
@@ -2731,6 +2755,22 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 			if err != nil {
 				return it, err
 			}
+		case "isNull":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNull"))
+			it.IsNull, err = ec.unmarshalOBoolean2bool(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "isNotNull":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNotNull"))
+			it.IsNotNull, err = ec.unmarshalOBoolean2bool(ctx, v)
+			if err != nil {
+				return it, err
+			}
 		}
 	}
 
@@ -2836,6 +2876,22 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notIn"))
 			it.NotIn, err = ec.unmarshalOInt2ᚕᚖint(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "isNull":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNull"))
+			it.IsNull, err = ec.unmarshalOBoolean2bool(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "isNotNull":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNotNull"))
+			it.IsNotNull, err = ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -2948,6 +3004,22 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notIn"))
 			it.NotIn, err = ec.unmarshalOString2ᚕᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "isNull":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNull"))
+			it.IsNull, err = ec.unmarshalOBoolean2bool(ctx, v)
+			if err != nil {
+				return it, err
+			}
+		case "isNotNull":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNotNull"))
+			it.IsNotNull, err = ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
 				return it, err
 			}
