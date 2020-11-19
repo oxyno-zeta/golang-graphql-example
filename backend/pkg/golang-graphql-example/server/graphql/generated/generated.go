@@ -412,10 +412,10 @@ input TodoSortOrder {
 }
 
 input TodoFilter {
-  CreatedAt: DateFilter
-  UpdatedAt: DateFilter
-  Text: StringFilter
-  Done: BooleanFilter
+  createdAt: DateFilter
+  updatedAt: DateFilter
+  text: StringFilter
+  done: BooleanFilter
 }
 `, BuiltIn: false},
 	{Name: "graphql/utils.graphql", Input: `"""
@@ -3035,34 +3035,34 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 
 	for k, v := range asMap {
 		switch k {
-		case "CreatedAt":
+		case "createdAt":
 			var err error
 
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("CreatedAt"))
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("createdAt"))
 			it.CreatedAt, err = ec.unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐDateFilter(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "UpdatedAt":
+		case "updatedAt":
 			var err error
 
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("UpdatedAt"))
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("updatedAt"))
 			it.UpdatedAt, err = ec.unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐDateFilter(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Text":
+		case "text":
 			var err error
 
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("Text"))
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("text"))
 			it.Text, err = ec.unmarshalOStringFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx, v)
 			if err != nil {
 				return it, err
 			}
-		case "Done":
+		case "done":
 			var err error
 
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("Done"))
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("done"))
 			it.Done, err = ec.unmarshalOBooleanFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx, v)
 			if err != nil {
 				return it, err
