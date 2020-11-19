@@ -36,8 +36,8 @@ input TodoSortOrder {
 }
 
 input TodoFilter {
-  CreatedAt: DateFilter
-  UpdatedAt: DateFilter
-  Text: StringFilter
-  Done: BooleanFilter
+  createdAt: DateFilter
+  updatedAt: DateFilter
+  text: StringFilter
+  done: BooleanFilter
 }
