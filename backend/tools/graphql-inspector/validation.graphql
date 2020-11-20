@@ -80,6 +80,8 @@ input TodoSortOrder {
 }
 
 input TodoFilter {
+  AND: [TodoFilter!]
+  OR: [TodoFilter!]
   createdAt: DateFilter
   updatedAt: DateFilter
   text: StringFilter
