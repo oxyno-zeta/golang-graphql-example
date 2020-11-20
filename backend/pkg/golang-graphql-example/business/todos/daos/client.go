@@ -15,7 +15,7 @@ type Dao interface {
 		projection *models.Projection,
 	) ([]*models.Todo, *pagination.PageOutput, error)
 	CreateOrUpdate(tt *models.Todo) (*models.Todo, error)
-	FindByID(id string, projection interface{}) (*models.Todo, error)
+	FindByID(id string, projection *models.Projection) (*models.Todo, error)
 }
 
 func NewDao(db database.DB) Dao {

@@ -23,7 +23,7 @@ func (s *service) MigrateDB(systemLogger log.Logger) error {
 	return s.dao.MigrateDB()
 }
 
-func (s *service) FindByID(ctx context.Context, id string, projection interface{}) (*models.Todo, error) {
+func (s *service) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	// Check authorization
 	err := s.authSvc.CheckAuthorized(
 		ctx,

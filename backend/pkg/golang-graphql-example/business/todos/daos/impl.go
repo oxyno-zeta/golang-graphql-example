@@ -23,7 +23,7 @@ func (d *dao) MigrateDB() error {
 	return err
 }
 
-func (d *dao) FindByID(id string, projection interface{}) (*models.Todo, error) {
+func (d *dao) FindByID(id string, projection *models.Projection) (*models.Todo, error) {
 	// Get gorm db
 	db := d.db.GetGormDB()
 	// result
