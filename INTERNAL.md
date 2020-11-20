@@ -3,5 +3,11 @@
 This section is
 
 ```sh
-git format-patch PREVIOUSTAG --stdout > patch_PREVIOUSTAG_to_NEWTAG.patch
+git branch tmpsquash PREVIOUSTAG
+git checkout tmpsquash
+git merge --squash NEWTAG
+git commit
+git format-patch master --stdout > patch_PREVIOUSTAG_to_NEWTAG.patch
+git checkout master
+git branch -D tmpsquash
 ```
