@@ -39,6 +39,10 @@ func (l *lock) Acquire() error {
 	return nil
 }
 
+func (l *lock) IsReleased() (bool, error) {
+	return l.pl.IsReleased(), nil
+}
+
 func (l *lock) Release() error {
 	return l.pl.Close()
 }

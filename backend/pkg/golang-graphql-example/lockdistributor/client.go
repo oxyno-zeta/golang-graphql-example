@@ -22,6 +22,8 @@ type Lock interface {
 	Release() error
 	// Check if a lock with this name is already taken
 	IsAlreadyTaken() (bool, error)
+	// Check if the lock is released or lost because of missing heartbeat
+	IsReleased() (bool, error)
 }
 
 func NewService(cfgManager config.Manager, db database.DB) Service {
