@@ -151,11 +151,13 @@ down/metrics-services:
 down/dev-services:
 	@echo "Down dev services"
 	docker rm -f pgadmin || true
+	docker rm -f maildev || true
 
 .PHONY: setup/dev-services
 setup/dev-services:
 	@echo "Setup dev services"
 	docker run --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4
+	docker run --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev --incoming-user fake --incoming-pass fakepassword
 
 .PHONY: setup/metrics-services
 setup/metrics-services:

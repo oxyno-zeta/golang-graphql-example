@@ -328,6 +328,29 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 		result = append(result, out.OIDCAuthentication.ClientSecret)
 	}
 
+	// SMTP configuration
+	if out.SMTP != nil {
+		// Load credential for SMTP username
+		if out.SMTP.Username != nil {
+			err := loadCredential(out.SMTP.Username)
+			if err != nil {
+				return nil, err
+			}
+			// Append result
+			result = append(result, out.SMTP.Username)
+		}
+
+		// Load credential for SMTP password
+		if out.SMTP.Password != nil {
+			err := loadCredential(out.SMTP.Password)
+			if err != nil {
+				return nil, err
+			}
+			// Append result
+			result = append(result, out.SMTP.Password)
+		}
+	}
+
 	// TODO Load credential configs here
 
 	return result, nil

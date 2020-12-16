@@ -8,6 +8,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
@@ -85,6 +86,21 @@ func main() {
 		}
 	})
 
+	// Create new mail service
+	mailSvc := email.NewService(cfgManager, logger)
+	// Try to connect
+	err = mailSvc.Initialize()
+	if err != nil {
+		logger.Fatal(err)
+	}
+	// Add configuration reload hook
+	cfgManager.AddOnChangeHook(func() {
+		err = mailSvc.Initialize()
+		if err != nil {
+			logger.WithError(err).Fatal(err)
+		}
+	})
+
 	// Create lock distributor service
 	ld := lockdistributor.NewService(cfgManager, db)
 	// Initialize lock distributor
@@ -119,11 +135,19 @@ func main() {
 	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices, authenticationSvc, authoSvc)
 	intSvr := server.NewInternalServer(logger, cfgManager, metricsCl)
 
-	// Add checker for internal server
+	// Add checker for database
 	intSvr.AddChecker(&server.CheckerInput{
 		Name:     "database",
 		CheckFn:  db.Ping,
 		Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
+	})
+	// Add checker for email service
+	intSvr.AddChecker(&server.CheckerInput{
+		Name:    "email",
+		CheckFn: mailSvc.Check,
+		// Interval is long because it takes a lot of time to connect SMTP server (can be 1 second).
+		// Moreover, connect 6 time per minute should be ok.
+		Interval: 10 * time.Second, //nolint:gomnd // Won't do a const for that
 	})
 
 	// Generate server

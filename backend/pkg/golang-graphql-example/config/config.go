@@ -37,6 +37,7 @@ type Config struct {
 	LockDistributor        *LockDistributorConfig  `mapstructure:"lockDistributor" validate:"required"`
 	OIDCAuthentication     *OIDCAuthConfig         `mapstructure:"oidcAuthentication"`
 	OPAServerAuthorization *OPAServerAuthorization `mapstructure:"opaServerAuthorization"`
+	SMTP                   *SMTPConfig             `mapstructure:"smtp" validate:"omitempty"`
 }
 
 // LockDistributorConfig Lock distributor configuration.
@@ -114,6 +115,20 @@ type DatabaseConfig struct {
 	SQLMaxIdleConnections            int               `mapstructure:"sqlMaxIdleConnections"`
 	SQLMaxOpenConnections            int               `mapstructure:"sqlMaxOpenConnections"`
 	SQLConnectionMaxLifetimeDuration string            `mapstructure:"sqlConnectionMaxLifetimeDuration"`
+}
+
+// SMTPConfig SMTP Configuration.
+type SMTPConfig struct {
+	Host               string            `mapstructure:"host" validation:"fqdn,required"`
+	Port               int               `mapstructure:"port" validation:"gt=0,required"`
+	Username           *CredentialConfig `mapstructure:"username"`
+	Password           *CredentialConfig `mapstructure:"password"`
+	Encryption         string            `mapstructure:"encryption" validation:"omitempty,oneof=NONE TLS SSL"`
+	AuthenticationType string            `mapstructure:"authenticationType" validation:"omitempty,oneof=PLAIN LOGIN CRAM-MD5"`
+	ConnectTimeout     string            `mapstructure:"connectTimeout"`
+	SendTimeout        string            `mapstructure:"sendTimeout"`
+	KeepAlive          bool              `mapstructure:"keepAlive"`
+	TLSSkipVerify      bool              `mapstructure:"tlsSkipVerify"`
 }
 
 // CredentialConfig Credential Configurations.
