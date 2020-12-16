@@ -1,6 +1,8 @@
 package lockdistributor
 
 import (
+	"errors"
+
 	"cirello.io/pglock"
 )
 
@@ -16,7 +18,7 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 	// Check error
 	if err != nil {
 		// Check if error is a not found error
-		if err == pglock.ErrLockNotFound {
+		if errors.Is(err, pglock.ErrLockNotFound) {
 			return false, nil
 		}
 

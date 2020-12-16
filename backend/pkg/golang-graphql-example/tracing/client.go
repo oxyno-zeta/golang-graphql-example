@@ -9,7 +9,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
-// Service Tracing service
+// Service Tracing service.
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Service
 type Service interface {
 	// Reload service
@@ -20,7 +20,7 @@ type Service interface {
 	Middleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
 }
 
-// Trace structure
+// Trace structure.
 //go:generate mockgen -destination=./mocks/mock_Trace.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Trace
 type Trace interface {
 	// Add tag to trace
