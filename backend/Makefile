@@ -154,17 +154,17 @@ down/dev-services:
 	docker rm -f maildev || true
 
 .PHONY: setup/dev-services
-setup/dev-services:
+setup/dev-services: down/dev-services
 	@echo "Setup dev services"
-	docker run --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4
-	docker run --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev --incoming-user fake --incoming-pass fakepassword
+	docker run --rm --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4
+	docker run --rm --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev:1.1.0 --incoming-user fake --incoming-pass fakepassword
 
 .PHONY: setup/metrics-services
-setup/metrics-services:
+setup/metrics-services: down/metrics-services
 	@echo "Setup metrics services"
 	docker run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
 	docker run --rm -d --name grafana --network=host grafana/grafana:7.0.3
-	docker run --name jaeger -d -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one:latest
+	docker run --rm --name jaeger -d -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one:latest
 
 .PHONY: setup/services
 setup/services: down/services
