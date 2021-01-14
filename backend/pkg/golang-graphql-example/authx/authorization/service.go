@@ -24,9 +24,9 @@ type generalInputOPA struct {
 }
 
 type generalInputDataOPA struct {
-	User    *models.OIDCUser  `json:"user"`
-	Tags    map[string]string `json:"tags"`
-	Request *generalDataOPA   `json:"data"`
+	User *models.OIDCUser  `json:"user"`
+	Tags map[string]string `json:"tags"`
+	Data *generalDataOPA   `json:"data"`
 }
 
 type generalDataOPA struct {
@@ -77,7 +77,7 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 		Input: &generalInputDataOPA{
 			User: user,
 			Tags: cfg.Tags,
-			Request: &generalDataOPA{
+			Data: &generalDataOPA{
 				Action:   action,
 				Resource: resource,
 			},
