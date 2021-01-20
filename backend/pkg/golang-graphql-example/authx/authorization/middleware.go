@@ -1,8 +1,6 @@
 package authorization
 
 import (
-	"bytes"
-	"context"
 	"encoding/json"
 	"net/http"
 	"strings"
@@ -12,9 +10,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
 
 type restInputOPA struct {
@@ -69,41 +65,6 @@ func (s *service) Middleware() gin.HandlerFunc {
 		logger.Infof("OIDC user %s authorized", ouser.GetIdentifier())
 		c.Next()
 	}
-}
-
-func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAuthorization, body []byte) (bool, error) {
-	// Get trace from context
-	trace := tracing.GetTraceFromContext(ctx)
-	// Generate child trace
-	childTrace := trace.GetChildTrace("opa-server.request")
-	defer childTrace.Finish()
-	// Add data
-	childTrace.SetTag("opa.uri", opaCfg.URL)
-
-	// Change NewRequest to NewRequestWithContext and pass context it
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, opaCfg.URL, bytes.NewBuffer(body))
-	if err != nil {
-		return false, err
-	}
-	// Add content type
-	req.Header.Add("Content-Type", "application/json")
-	// Making request to OPA server
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		return false, err
-	}
-	// Defer closing body
-	defer resp.Body.Close()
-
-	// Prepare answer
-	var answer opaAnswer
-	// Decode answer
-	err = json.NewDecoder(resp.Body).Decode(&answer)
-	if err != nil {
-		return false, err
-	}
-
-	return answer.Result, nil
 }
 
 func (s *service) isRequestAuthorized(req *http.Request, oidcUser *models.OIDCUser) (bool, error) {
