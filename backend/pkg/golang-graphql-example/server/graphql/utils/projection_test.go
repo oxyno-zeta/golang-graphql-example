@@ -49,6 +49,11 @@ func TestManageSimpleProjection(t *testing.T) {
 		Field2 bool `graphqlfield:"field2,field3"`
 		Field4 bool `graphqlfield:"field4,field5"`
 	}
+	type OutMultiple5 struct {
+		Field1 bool `graphqlfield:"field2"`
+		Field2 bool `graphqlfield:"field2,field3"`
+		Field4 bool `graphqlfield:"field4,field2"`
+	}
 	type args struct {
 		fctx          *graphql.FieldContext
 		projectionOut interface{}
@@ -356,6 +361,20 @@ func TestManageSimpleProjection(t *testing.T) {
 				},
 			},
 			want: &OutMultiple4{Field1: true, Field2: true, Field4: false},
+		},
+		{
+			name: "multiple field liked to 1 graphqlfield",
+			args: args{
+				projectionOut: &OutMultiple5{},
+				fctx: &graphql.FieldContext{
+					Field: graphql.CollectedField{
+						Selections: ast.SelectionSet{
+							&ast.Field{Name: "field2", Alias: "field2"},
+						},
+					},
+				},
+			},
+			want: &OutMultiple5{Field1: true, Field2: true, Field4: true},
 		},
 	}
 	for _, tt := range tests {
