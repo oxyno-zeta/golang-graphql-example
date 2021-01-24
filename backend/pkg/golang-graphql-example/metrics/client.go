@@ -4,20 +4,29 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
+
+// Avoid adding a big number because getting metrics get a lock on gorm.
+const defaultPrometheusGormRefreshMetricsSecond = 15
 
 // Client Client metrics interface.
 //go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics Client
 type Client interface {
-	// Instrument web server
+	// Instrument web server.
 	Instrument(serverName string) gin.HandlerFunc
-	// Get prometheus handler for http expose
+	// Get prometheus handler for http expose.
 	GetPrometheusHTTPHandler() http.Handler
+	// Get database middleware.
+	GetDatabaseMiddleware(connectionName string) gorm.Plugin
 }
 
 // NewMetricsClient will generate a new Client.
 func NewMetricsClient() Client {
-	ctx := &prometheusMetrics{}
+	ctx := &prometheusMetrics{
+		gormPrometheus: map[string]gorm.Plugin{},
+	}
+	// Register
 	ctx.register()
 
 	return ctx
