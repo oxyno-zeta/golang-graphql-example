@@ -11,6 +11,7 @@ import (
 	"gorm.io/gorm"
 
 	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	gormprometheus "gorm.io/plugin/prometheus"
 )
 
@@ -21,6 +22,10 @@ type prometheusMetrics struct {
 	reqSz          *prometheus.SummaryVec
 	up             prometheus.Gauge
 	gormPrometheus map[string]gorm.Plugin
+}
+
+func (ctx *prometheusMetrics) GetGraphqlMiddleware() gqlgraphql.HandlerExtension {
+	return gqlprometheus.Tracer{}
 }
 
 func (ctx *prometheusMetrics) GetPrometheusHTTPHandler() http.Handler {
