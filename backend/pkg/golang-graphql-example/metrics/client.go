@@ -17,11 +17,11 @@ type Client interface {
 	// Instrument web server.
 	Instrument(serverName string) gin.HandlerFunc
 	// Get prometheus handler for http expose.
-	GetPrometheusHTTPHandler() http.Handler
+	PrometheusHTTPHandler() http.Handler
 	// Get database middleware.
-	GetDatabaseMiddleware(connectionName string) gorm.Plugin
+	DatabaseMiddleware(connectionName string) gorm.Plugin
 	// Get graphql middleware.
-	GetGraphqlMiddleware() gqlgraphql.HandlerExtension
+	GraphqlMiddleware() gqlgraphql.HandlerExtension
 }
 
 // NewMetricsClient will generate a new Client.
