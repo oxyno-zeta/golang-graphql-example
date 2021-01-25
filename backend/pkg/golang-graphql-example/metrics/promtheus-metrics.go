@@ -24,18 +24,18 @@ type prometheusMetrics struct {
 	gormPrometheus map[string]gorm.Plugin
 }
 
-func (ctx *prometheusMetrics) GetGraphqlMiddleware() gqlgraphql.HandlerExtension {
+func (ctx *prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
 	return gqlprometheus.Tracer{}
 }
 
-func (ctx *prometheusMetrics) GetPrometheusHTTPHandler() http.Handler {
+func (ctx *prometheusMetrics) PrometheusHTTPHandler() http.Handler {
 	return promhttp.Handler()
 }
 
 // The gorm prometheus plugin cannot be instantiated twice because there is a loop inside that cannot be modified or stopped.
 // This loop get all data from database and the loop cannot be modified in terms of the duration.
 // Labels and all other options cannot be modified.
-func (ctx *prometheusMetrics) GetDatabaseMiddleware(connectionName string) gorm.Plugin {
+func (ctx *prometheusMetrics) DatabaseMiddleware(connectionName string) gorm.Plugin {
 	// Check if gorm prometheus doesn't already exist
 	if ctx.gormPrometheus[connectionName] == nil {
 		// Create middleware

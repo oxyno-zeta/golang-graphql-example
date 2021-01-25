@@ -71,7 +71,7 @@ func (ctx *postresdb) Connect() error {
 	}
 
 	// Get prometheus gorm middleware
-	md := ctx.metricsCl.GetDatabaseMiddleware(ctx.connectionName)
+	md := ctx.metricsCl.DatabaseMiddleware(ctx.connectionName)
 	// Apply middleware
 	err = dbResult.Use(md)
 	// Check if error exists

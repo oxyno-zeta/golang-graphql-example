@@ -195,7 +195,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	})
 	h.Use(apollotracing.Tracer{})
 	h.Use(svr.tracingSvc.GraphqlMiddleware())
-	h.Use(svr.metricsCl.GetGraphqlMiddleware())
+	h.Use(svr.metricsCl.GraphqlMiddleware())
 
 	return func(c *gin.Context) {
 		h.ServeHTTP(c.Writer, c.Request)
