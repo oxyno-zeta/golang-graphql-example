@@ -17,8 +17,8 @@ type Service interface {
 	Reload() error
 	// Get opentracing tracer
 	GetTracer() opentracing.Tracer
-	// Http Gin Middleware to add trace per request
-	Middleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
+	// Http Gin HttpMiddleware to add trace per request
+	HTTPMiddleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
 	// Graphql Middleware
 	GraphqlMiddleware() gqlgraphql.HandlerExtension
 }
