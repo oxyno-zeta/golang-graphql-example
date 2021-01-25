@@ -3,6 +3,7 @@ package tracing
 import (
 	"context"
 
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
@@ -18,6 +19,8 @@ type Service interface {
 	GetTracer() opentracing.Tracer
 	// Http Gin Middleware to add trace per request
 	Middleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
+	// Graphql Middleware
+	GraphqlMiddleware() gqlgraphql.HandlerExtension
 }
 
 // Trace structure.

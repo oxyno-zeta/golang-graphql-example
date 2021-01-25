@@ -7,7 +7,6 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/99designs/gqlgen-contrib/gqlopentracing"
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
@@ -195,7 +194,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 		return gqlgraphql.DefaultErrorPresenter(ctx, err)
 	})
 	h.Use(apollotracing.Tracer{})
-	h.Use(gqlopentracing.Tracer{})
+	h.Use(svr.tracingSvc.GraphqlMiddleware())
 	h.Use(svr.metricsCl.GetGraphqlMiddleware())
 
 	return func(c *gin.Context) {
