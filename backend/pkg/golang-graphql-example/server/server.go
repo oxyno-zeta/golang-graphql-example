@@ -105,7 +105,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
 	router.Use(gin.Recovery())
 	router.Use(middlewares.RequestID(svr.logger))
-	router.Use(svr.tracingSvc.Middleware(middlewares.GetRequestIDFromContext))
+	router.Use(svr.tracingSvc.HTTPMiddleware(middlewares.GetRequestIDFromContext))
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument("business"))
 	// Add helmet for security
