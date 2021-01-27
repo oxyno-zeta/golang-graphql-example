@@ -32,10 +32,10 @@ require (
 	github.com/uber/jaeger-lib v2.4.0+incompatible
 	github.com/vektah/gqlparser/v2 v2.1.0
 	github.com/xhit/go-simple-mail/v2 v2.7.0
-	golang.org/x/oauth2 v0.0.0-20210113205817-d3ed898aa8a3
+	golang.org/x/oauth2 v0.0.0-20210126194326-f9ce19ea3013
 	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
-	gorm.io/driver/postgres v1.0.6
-	gorm.io/gorm v1.20.11
+	gorm.io/driver/postgres v1.0.7
+	gorm.io/gorm v1.20.12
 	gorm.io/plugin/prometheus v0.0.0-20210112035011-ae3013937adc
 )
