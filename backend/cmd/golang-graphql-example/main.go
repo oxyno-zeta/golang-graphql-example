@@ -140,6 +140,7 @@ func main() {
 		Name:     "database",
 		CheckFn:  db.Ping,
 		Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
+		Timeout:  time.Second,
 	})
 	// Add checker for email service
 	intSvr.AddChecker(&server.CheckerInput{
@@ -148,6 +149,7 @@ func main() {
 		// Interval is long because it takes a lot of time to connect SMTP server (can be 1 second).
 		// Moreover, connect 6 time per minute should be ok.
 		Interval: 10 * time.Second, //nolint:gomnd // Won't do a const for that
+		Timeout:  3 * time.Second,  //nolint:gomnd // Won't do a const for that
 	})
 
 	// Generate server

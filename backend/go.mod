@@ -6,9 +6,9 @@ require (
 	cirello.io/pglock v1.8.0
 	github.com/99designs/gqlgen v0.13.0
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
+	github.com/AppsFlyer/go-sundheit v0.4.0
 	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/HdrHistogram/hdrhistogram-go v1.0.1 // indirect
-	github.com/InVisionApp/go-health/v2 v2.1.2
 	github.com/coreos/go-oidc v2.2.1+incompatible
 	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
 	github.com/fsnotify/fsnotify v1.4.9

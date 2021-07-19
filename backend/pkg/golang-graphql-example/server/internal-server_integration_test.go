@@ -30,7 +30,7 @@ func TestInternalServer_generateInternalRouter(t *testing.T) {
 			inputMethod:  "GET",
 			inputURL:     "http://localhost/health",
 			expectedCode: 200,
-			expectedBody: "{\"message\":\"Healthcheck spinning up\",\"status\":\"ok\"}",
+			expectedBody: "{}\n",
 		},
 		{
 			name:         "Should be ok to call /metrics",

@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/InVisionApp/go-health/v2"
-	"github.com/InVisionApp/go-health/v2/handlers"
+	gosundheit "github.com/AppsFlyer/go-sundheit"
+	healthhttp "github.com/AppsFlyer/go-sundheit/http"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
@@ -14,20 +14,27 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	"github.com/pkg/errors"
+)
+
+const (
+	DefaultHealthCheckTimeout = time.Second
 )
 
 type InternalServer struct {
 	logger     log.Logger
 	cfgManager config.Manager
 	metricsCl  metrics.Client
-	checkers   []*health.Config
+	checkers   []*CheckerInput
 	server     *http.Server
 }
 
 type CheckerInput struct {
-	Name     string
-	CheckFn  func() error
-	Interval time.Duration
+	Name         string
+	CheckFn      func() error
+	Interval     time.Duration
+	Timeout      time.Duration
+	InitialDelay time.Duration
 }
 
 func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client) *InternalServer {
@@ -35,38 +42,14 @@ func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl m
 		logger:     logger,
 		cfgManager: cfgManager,
 		metricsCl:  metricsCl,
-		checkers:   make([]*health.Config, 0),
+		checkers:   make([]*CheckerInput, 0),
 	}
 }
 
 // AddChecker allow to add a health checker.
 func (svr *InternalServer) AddChecker(chI *CheckerInput) {
-	// Create logger
-	logger := svr.logger.WithField("health-check-target", chI.Name)
-
 	// Append
-	svr.checkers = append(svr.checkers, &health.Config{
-		Name: chI.Name,
-		Checker: &customHealthChecker{
-			fn: func() error {
-				// Run check
-				err := chI.CheckFn()
-				// Check error
-				if err != nil {
-					// Log it and return
-					logger.Error(err)
-
-					return err
-				}
-
-				// Default
-				return nil
-			},
-		},
-		Fatal:    true,
-		Interval: chI.Interval,
-	})
-
+	svr.checkers = append(svr.checkers, chI)
 }
 
 func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
@@ -90,27 +73,49 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 		return nil, err
 	}
 
-	// Create a new health instance
-	h := health.New()
+	// create a new health instance
+	h2 := gosundheit.New()
 
-	// Disable logging
-	h.DisableLogging()
+	for _, it := range svr.checkers {
+		// Create logger
+		logger := svr.logger.WithField("health-check-target", it.Name)
 
-	// Add checkers
-	err = h.AddChecks(svr.checkers)
-	if err != nil {
-		return nil, err
-	}
+		// Initialize check options
+		options := make([]gosundheit.CheckOption, 0)
 
-	// Start health checker
-	err = h.Start()
-	if err != nil {
-		return nil, err
+		// Check if timeout is set, otherwise put a default value
+		if it.Timeout == 0 {
+			options = append(options, gosundheit.ExecutionTimeout(DefaultHealthCheckTimeout))
+		} else {
+			options = append(options, gosundheit.ExecutionTimeout(it.Timeout))
+		}
+
+		// Check if initial delay is set, otherwise ignore it
+		if it.InitialDelay != 0 {
+			options = append(options, gosundheit.InitialDelay(it.InitialDelay))
+		}
+
+		// Set interval
+		options = append(options, gosundheit.ExecutionPeriod(it.Interval))
+
+		// Register check
+		err = h2.RegisterCheck(
+			&customHealthChecker{
+				logger: logger,
+				name:   it.Name,
+				fn:     it.CheckFn,
+			},
+			options...,
+		)
+		// Check error
+		if err != nil {
+			return nil, errors.WithStack(err)
+		}
 	}
 
 	// Add metrics path
 	router.GET("/metrics", gin.WrapH(svr.metricsCl.PrometheusHTTPHandler()))
-	router.GET("/health", gin.WrapH(handlers.NewJSONHandlerFunc(h, nil)))
+	router.GET("/health", gin.WrapH(healthhttp.HandleHealthJSON(h2)))
 
 	return router, nil
 }

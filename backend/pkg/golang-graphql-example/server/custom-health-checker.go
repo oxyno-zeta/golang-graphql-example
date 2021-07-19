@@ -1,12 +1,32 @@
 package server
 
+import (
+	"context"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+)
+
 type customHealthChecker struct {
-	fn func() error
+	logger log.Logger
+	fn     func() error
+	name   string
 }
 
-func (chc *customHealthChecker) Status() (interface{}, error) {
-	// Run function
-	err := chc.fn()
+func (chc *customHealthChecker) Name() string {
+	return chc.name
+}
 
-	return nil, err
+func (chc *customHealthChecker) Execute(ctx context.Context) (interface{}, error) {
+	// Run check
+	err := chc.fn()
+	// Check error
+	if err != nil {
+		// Log it and return
+		chc.logger.Error(err)
+
+		return nil, err
+	}
+
+	// Default
+	return nil, nil
 }
