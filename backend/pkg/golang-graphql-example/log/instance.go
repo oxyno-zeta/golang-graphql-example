@@ -11,6 +11,8 @@ import (
 	gormlogger "gorm.io/gorm/logger"
 )
 
+const LogFileMode = 0666
+
 type loggerIns struct {
 	logrus.FieldLogger
 }
@@ -47,7 +49,7 @@ func (ll *loggerIns) Configure(level string, format string, filePath string) err
 	}
 
 	// Get logrus logger
-	lll := ll.FieldLogger.(*logrus.Logger)
+	lll, _ := ll.FieldLogger.(*logrus.Logger)
 
 	// Set log level
 	lll.SetLevel(lvl)
@@ -68,7 +70,7 @@ func (ll *loggerIns) Configure(level string, format string, filePath string) err
 		}
 
 		// Open file
-		f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666)
+		f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_APPEND|os.O_CREATE, LogFileMode)
 		// Check error
 		if err != nil {
 			return errors.WithStack(err)

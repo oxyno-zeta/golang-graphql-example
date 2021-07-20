@@ -60,7 +60,7 @@ func ManageProjection(projection interface{}, db *gorm.DB) (*gorm.DB, error) {
 		// Get value from field
 		val := fVal.Interface()
 		// Cast it to boolean
-		v := val.(bool)
+		v, _ := val.(bool)
 
 		// Manage projection if enabled
 		if v {

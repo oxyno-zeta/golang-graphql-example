@@ -51,7 +51,8 @@ func Paging(
 		options.PageInput.Limit = 10
 	}
 
-	var count int64 = 0
+	// Initialize
+	var count int64
 
 	// Create transaction to avoid situations where count and find are different
 	err := options.DB.Transaction(func(db *gorm.DB) error {

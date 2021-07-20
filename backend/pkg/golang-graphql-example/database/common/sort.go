@@ -62,7 +62,7 @@ func ManageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
 		// Get value from field
 		val := fVal.Interface()
 		// Cast value to Sort Order Enum
-		enu := val.(*SortOrderEnum)
+		enu, _ := val.(*SortOrderEnum)
 		// Apply order
 		res = res.Order(fmt.Sprintf("%s %s", tagVal, enu.String()))
 		// Store sort applied

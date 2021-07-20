@@ -27,7 +27,7 @@ func GetLoggerFromContext(ctx context.Context) Logger {
 
 func GetLoggerFromGin(c *gin.Context) Logger {
 	val, _ := c.Get(loggerGinCtxKey)
-	logger := val.(Logger)
+	logger, _ := val.(Logger)
 
 	return logger
 }

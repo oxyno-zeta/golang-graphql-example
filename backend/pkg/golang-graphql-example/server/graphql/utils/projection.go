@@ -39,7 +39,7 @@ func ManageConnectionNodeProjection(
 		return nil
 	}
 	// Cast field
-	fEdges := fEdgesInt.(graphql.CollectedField)
+	fEdges, _ := fEdgesInt.(graphql.CollectedField)
 
 	// Get graphql fields projection in edges
 	inFEdges := graphql.CollectFields(octx, fEdges.Selections, nil)
@@ -54,7 +54,7 @@ func ManageConnectionNodeProjection(
 		return nil
 	}
 	// Cast field
-	fNode := fNodeInt.(graphql.CollectedField)
+	fNode, _ := fNodeInt.(graphql.CollectedField)
 
 	// Start projection on this path
 	err = manageGraphqlProjection(

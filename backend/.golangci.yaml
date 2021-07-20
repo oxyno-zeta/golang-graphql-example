@@ -330,11 +330,9 @@ linters:
     - typecheck
     - bodyclose
     - noctx
-    - golint
     - rowserrcheck
     - stylecheck
     - gosec
-    - interfacer
     - unconvert
     - dupl
     - goconst
@@ -342,14 +340,12 @@ linters:
     - gofmt
     - goimports
     - goheader
-    - maligned
     - depguard
     - misspell
     - lll
     - unparam
     - dogsled
     - nakedret
-    - scopelint
     - gocritic
     - gochecknoinits
     - godox
@@ -364,6 +360,13 @@ linters:
     - sqlclosecheck
     - nlreturn
     - nolintlint
+    - forcetypeassert
+    - gomoddirectives
+    - importas
+    - nilerr
+    - promlinter
+    - revive
+    - wastedassign
   disable:
     - prealloc
     - gochecknoglobals
@@ -375,6 +378,7 @@ linters:
     - gci
     - goerr113 # Forbid dynamic errors
     - nestif
+    - scopelint
   disable-all: false
   presets:
     - bugs
@@ -389,8 +393,8 @@ issues:
     - linters:
         - lll
         - gocritic
+        - govet
         - dupl
-        - maligned
       path: \.resolvers\.go
 # issues:
 #   # List of regexps of issue texts to exclude, empty list by default.

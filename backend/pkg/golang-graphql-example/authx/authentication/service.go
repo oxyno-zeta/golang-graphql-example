@@ -48,7 +48,7 @@ func GetAuthenticatedUserFromContext(ctx context.Context) *models.OIDCUser {
 // GetAuthenticatedUser will get authenticated user in context.
 func GetAuthenticatedUserFromGin(c *gin.Context) *models.OIDCUser {
 	res, _ := c.Get(userContextKeyName)
-	res1 := res.(*models.OIDCUser)
+	res1, _ := res.(*models.OIDCUser)
 
 	return res1
 }
