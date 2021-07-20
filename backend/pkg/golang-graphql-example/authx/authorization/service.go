@@ -104,6 +104,12 @@ func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServer
 	}
 	// Add content type
 	req.Header.Add("Content-Type", "application/json")
+	// Forward trace on request
+	err = childTrace.InjectInHTTPHeader(req.Header)
+	// Check error
+	if err != nil {
+		return false, err
+	}
 	// Making request to OPA server
 	resp, err := http.DefaultClient.Do(req)
 	// Check error
