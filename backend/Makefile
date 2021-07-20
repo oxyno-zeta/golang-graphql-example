@@ -10,7 +10,7 @@ TAGS      :=
 TESTS     := .
 TESTFLAGS :=
 LDFLAGS   := -w -s
-GOFLAGS   := -i
+GOFLAGS   := -trimpath
 BINDIR    := $(CURDIR)/bin
 DISTDIR   := dist
 
