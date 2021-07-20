@@ -2,10 +2,11 @@ package server
 
 import (
 	"context"
-	"errors"
 	"net/http"
 	"regexp"
 	"strconv"
+
+	"github.com/pkg/errors"
 
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
@@ -19,6 +20,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	cerrors "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
@@ -99,7 +101,11 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router := gin.New()
 	// Manage no route
 	router.NoRoute(func(c *gin.Context) {
-		c.AbortWithStatusJSON(http.StatusNotFound, gin.H{"error": "404 not found"})
+		// Create not found error
+		err := cerrors.NewNotFoundError("404 not found")
+
+		// Answer
+		utils.AnswerWithError(c, err)
 	})
 	// Add middlewares
 	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
@@ -121,7 +127,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	apiReg, err := regexp.Compile("^/api")
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	// Add authentication middleware if configuration exists
@@ -130,7 +136,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		err := svr.authenticationSvc.OIDCEndpoints(router)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.WithStack(err)
 		}
 
 		// Add authentication middleware
@@ -161,8 +167,13 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 func (svr *Server) Listen() error {
 	svr.logger.Infof("Server listening on %s", svr.server.Addr)
 	err := svr.server.ListenAndServe()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
-	return err
+	// Default
+	return nil
 }
 
 // Defining the Graphql handler.
@@ -180,7 +191,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 		// Get generic error if available
 		if errors.As(err, &err2) {
 			// Log error
-			logger.WithError(err2).Error(err2)
+			logger.Error(err2)
 			// Return graphql error
 			return &gqlerror.Error{
 				Path:       gqlgraphql.GetPath(ctx),
@@ -189,7 +200,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 			}
 		}
 		// Log error
-		logger.WithError(err).Error(err)
+		logger.Error(err)
 		// Return
 		return gqlgraphql.DefaultErrorPresenter(ctx, err)
 	})

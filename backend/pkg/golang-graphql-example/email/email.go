@@ -3,6 +3,7 @@ package email
 import (
 	"time"
 
+	"github.com/pkg/errors"
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
@@ -98,35 +99,71 @@ func (e *email) SetPriority(priority Priority) {
 // AddAttachment is used to attach content from a byte array to the email.
 // Required parameters include a byte array and the desired filename for the attachment. The MIME-Type is optional.
 func (e *email) AddAttachment(data []byte, filename string, mimeType string) error {
+	// Add attachment
 	e.spemail.AddAttachmentData(data, filename, mimeType)
 
-	return e.spemail.GetError()
+	// Get error
+	err := e.spemail.GetError()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Default
+	return nil
 }
 
 // AddAttachmentFile is used to attach content to the email.
 // It attempts to open the file referenced by filename and, if successful, creates an Attachment.
 // This Attachment is then appended to the email.
 func (e *email) AddAttachmentFile(filePath string) error {
+	// Add attachment
 	e.spemail.AddAttachment(filePath)
 
-	return e.spemail.GetError()
+	// Get error
+	err := e.spemail.GetError()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Default
+	return nil
 }
 
 // AddInlineAttachmentFile is used to attach content to the email as HTML inline attachment.
 // It attempts to open the file referenced by filename and, if successful, creates an Attachment.
 // This Attachment is then appended to the email.
 func (e *email) AddInlineAttachmentFile(filePath string) error {
+	// Add attachment
 	e.spemail.AddInline(filePath)
 
-	return e.spemail.GetError()
+	// Get error
+	err := e.spemail.GetError()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Default
+	return nil
 }
 
 // AddInlineAttachment is used to attach content from a byte array to the email as HTML inline attachment.
 // Required parameters include a byte array and the desired filename for the attachment. The MIME-Type is optional.
 func (e *email) AddInlineAttachment(data []byte, filename string, mimeType string) error {
+	// Add attachment
 	e.spemail.AddInlineData(data, filename, mimeType)
 
-	return e.spemail.GetError()
+	// Get error
+	err := e.spemail.GetError()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Default
+	return nil
 }
 
 // GetEmail will get email object (used internally for sending).

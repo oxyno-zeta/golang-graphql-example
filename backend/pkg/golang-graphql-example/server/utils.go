@@ -6,6 +6,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
+	"github.com/pkg/errors"
 )
 
 func manageCORS(router gin.IRoutes, cfg *config.ServerConfig) error {
@@ -65,7 +66,7 @@ func generateCORSConfiguration(cfg *config.ServerCorsConfig) (*cors.Config, erro
 		maxAge, err := time.ParseDuration(cfg.MaxAgeDuration)
 		// Check error
 		if err != nil {
-			return nil, err
+			return nil, errors.WithStack(err)
 		}
 
 		ccfg.MaxAge = maxAge
@@ -105,7 +106,7 @@ func generateCORSConfiguration(cfg *config.ServerCorsConfig) (*cors.Config, erro
 	err := ccfg.Validate()
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return ccfg, nil

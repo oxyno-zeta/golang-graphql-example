@@ -9,6 +9,7 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
+	goerrors "github.com/pkg/errors"
 )
 
 const maxPageSize = 50
@@ -161,7 +162,7 @@ func parsePaginateCursor(cursorB64 string) (int, error) {
 	res, err := strconv.Atoi(val)
 	// Check error
 	if err != nil {
-		return 0, err
+		return 0, goerrors.WithStack(err)
 	}
 	// Check if cursor is positive
 	if res < 0 {

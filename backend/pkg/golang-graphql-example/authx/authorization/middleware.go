@@ -11,6 +11,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	goerrors "github.com/pkg/errors"
 )
 
 type restInputOPA struct {
@@ -103,7 +104,7 @@ func (s *service) isRequestAuthorized(req *http.Request, oidcUser *models.OIDCUs
 	// Json encode body
 	bb, err := json.Marshal(input)
 	if err != nil {
-		return false, err
+		return false, goerrors.WithStack(err)
 	}
 
 	return s.requestOPAServer(req.Context(), opaServerCfg, bb)

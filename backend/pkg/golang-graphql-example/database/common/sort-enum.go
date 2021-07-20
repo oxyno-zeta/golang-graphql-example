@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"strconv"
+
+	"github.com/pkg/errors"
 )
 
 // SortOrderEnum is used to sort data.
@@ -42,12 +44,12 @@ func (e SortOrderEnum) String() string {
 func (e *SortOrderEnum) UnmarshalGQL(v interface{}) error {
 	str, ok := v.(string)
 	if !ok {
-		return fmt.Errorf("enums must be strings")
+		return errors.New("enums must be strings")
 	}
 
 	*e = SortOrderEnum(str)
 	if !e.IsValid() {
-		return fmt.Errorf("%s is not a valid SortOrderEnum", str)
+		return errors.WithStack(fmt.Errorf("%s is not a valid SortOrderEnum", str))
 	}
 
 	return nil

@@ -12,6 +12,7 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/go-playground/validator/v10"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/pkg/errors"
 	"github.com/spf13/viper"
 	"github.com/thoas/go-funk"
 )
@@ -40,7 +41,7 @@ func (ctx *managercontext) Load() error {
 	// List files
 	files, err := ioutil.ReadDir(mainConfigFolderPath)
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Generate viper instances for static configs
@@ -87,7 +88,7 @@ func (ctx *managercontext) watchInternalFile(filePath string, forceStop chan boo
 	go func() {
 		watcher, err := fsnotify.NewWatcher()
 		if err != nil {
-			ctx.logger.Fatal(err)
+			ctx.logger.Fatal(errors.WithStack(err))
 		}
 		defer watcher.Close()
 
@@ -200,14 +201,18 @@ func (ctx *managercontext) loadConfiguration() error {
 
 	// Loop over configs
 	for _, vip := range ctx.configs {
+		// Read configuration
 		err := vip.ReadInConfig()
+		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 
+		// Merge all configurations
 		err = globalViper.MergeConfigMap(vip.AllSettings())
+		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 	}
 
@@ -215,8 +220,9 @@ func (ctx *managercontext) loadConfiguration() error {
 	var out Config
 	// Quick unmarshal.
 	err := globalViper.Unmarshal(&out)
+	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Load default values
@@ -227,8 +233,9 @@ func (ctx *managercontext) loadConfiguration() error {
 
 	// Configuration validation
 	err = validate.Struct(out)
+	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Load all credentials
@@ -360,8 +367,9 @@ func loadCredential(credCfg *CredentialConfig) error {
 	if credCfg.Path != "" {
 		// Secret file
 		databytes, err := ioutil.ReadFile(credCfg.Path)
+		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 		// Store value
 		credCfg.Value = string(databytes)
@@ -369,7 +377,7 @@ func loadCredential(credCfg *CredentialConfig) error {
 		// Environment variable
 		envValue := os.Getenv(credCfg.Env)
 		if envValue == "" {
-			return fmt.Errorf(TemplateErrLoadingEnvCredentialEmpty, credCfg.Env)
+			return errors.WithStack(fmt.Errorf(TemplateErrLoadingEnvCredentialEmpty, credCfg.Env))
 		}
 		// Store value
 		credCfg.Value = envValue

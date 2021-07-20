@@ -27,16 +27,18 @@ func main() {
 
 	// Load configuration
 	err := cfgManager.Load()
+	// Check error
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 
 	// Get configuration
 	cfg := cfgManager.GetConfig()
 	// Configure logger
 	err = logger.Configure(cfg.Log.Level, cfg.Log.Format, cfg.Log.FilePath)
+	// Check error
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 
 	// Watch change for logger (special case)
@@ -45,13 +47,15 @@ func main() {
 		cfg := cfgManager.GetConfig()
 		// Configure logger
 		err = logger.Configure(cfg.Log.Level, cfg.Log.Format, cfg.Log.FilePath)
+		// Check error
 		if err != nil {
-			logger.WithError(err).Error(err)
+			logger.Fatal(err)
 		}
 	})
 
 	// Getting version
 	v := version.GetVersion()
+
 	logger.Infof("Starting version: %s (git commit: %s) built on %s", v.Version, v.GitCommit, v.BuildDate)
 
 	// Create metrics client
@@ -61,13 +65,14 @@ func main() {
 	tracingSvc, err := tracing.New(cfgManager, logger)
 	// Check error
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 	// Prepare on reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err = tracingSvc.Reload()
+		// Check error
 		if err != nil {
-			logger.WithError(err).Fatal(err)
+			logger.Fatal(err)
 		}
 	})
 
@@ -75,14 +80,16 @@ func main() {
 	db := database.NewDatabase("main", cfgManager, logger, metricsCl)
 	// Connect to engine
 	err = db.Connect()
+	// Check error
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err = db.Reconnect()
+		// Check error
 		if err != nil {
-			logger.WithError(err).Fatal(err)
+			logger.Fatal(err)
 		}
 	})
 
@@ -90,14 +97,16 @@ func main() {
 	mailSvc := email.NewService(cfgManager, logger)
 	// Try to connect
 	err = mailSvc.Initialize()
+	// Check error
 	if err != nil {
 		logger.Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err = mailSvc.Initialize()
+		// Check error
 		if err != nil {
-			logger.WithError(err).Fatal(err)
+			logger.Fatal(err)
 		}
 	})
 
@@ -105,14 +114,16 @@ func main() {
 	ld := lockdistributor.NewService(cfgManager, db)
 	// Initialize lock distributor
 	err = ld.Initialize(logger)
+	// Check error
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err = ld.Initialize(logger)
+		// Check error
 		if err != nil {
-			logger.WithError(err).Fatal(err)
+			logger.Fatal(err)
 		}
 	})
 
@@ -125,7 +136,7 @@ func main() {
 	// Migrate database
 	err = busServices.MigrateDB()
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 
 	// Create authentication service
@@ -155,12 +166,12 @@ func main() {
 	// Generate server
 	err = svr.GenerateServer()
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 	// Generate internal server
 	err = intSvr.GenerateServer()
 	if err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 
 	var g errgroup.Group
@@ -169,6 +180,6 @@ func main() {
 	g.Go(intSvr.Listen)
 
 	if err := g.Wait(); err != nil {
-		logger.WithError(err).Fatal(err)
+		logger.Fatal(err)
 	}
 }

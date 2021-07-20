@@ -123,8 +123,13 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 func (svr *InternalServer) Listen() error {
 	svr.logger.Infof("Internal server listening on %s", svr.server.Addr)
 	err := svr.server.ListenAndServe()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
-	return err
+	// Default
+	return nil
 }
 
 func (svr *InternalServer) GenerateServer() error {
@@ -132,6 +137,7 @@ func (svr *InternalServer) GenerateServer() error {
 	cfg := svr.cfgManager.GetConfig()
 	// Generate internal router
 	r, err := svr.generateInternalRouter()
+	// Check error
 	if err != nil {
 		return err
 	}

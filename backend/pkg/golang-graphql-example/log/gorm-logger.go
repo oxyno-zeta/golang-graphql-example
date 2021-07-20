@@ -4,6 +4,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/pkg/errors"
 	gormlogger "gorm.io/gorm/logger"
 )
 
@@ -28,7 +29,7 @@ func (gl *gormLogger) Warn(ctx context.Context, v string, rest ...interface{}) {
 }
 
 func (gl *gormLogger) Error(ctx context.Context, v string, rest ...interface{}) {
-	val := []interface{}{v}
+	val := []interface{}{errors.New(v)}
 	val = append(val, rest...)
 	gl.logger.Error(val)
 }

@@ -38,11 +38,13 @@ func (ctx *postresdb) Connect() error {
 	var sqlConnectionMaxLifetimeDuration time.Duration
 	// Try to parse sql connection max lifetime duration
 	if cfg.Database.SQLConnectionMaxLifetimeDuration != "" {
+		// Initialize
 		var err error
+		// Parse time
 		sqlConnectionMaxLifetimeDuration, err = time.ParseDuration(cfg.Database.SQLConnectionMaxLifetimeDuration)
 		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 	}
 
@@ -130,7 +132,15 @@ func (ctx *postresdb) Close() error {
 		return errors.WithStack(err)
 	}
 
-	return sqlDB.Close()
+	// Close database connection
+	err = sqlDB.Close()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Default
+	return nil
 }
 
 // Ping will ping database engine in order to test connection to engine.
@@ -162,6 +172,7 @@ func (ctx *postresdb) Reconnect() error {
 	defer sqlDB.Close()
 	// Connect to new database
 	err = ctx.Connect()
+	// Check error
 	if err != nil {
 		return errors.WithStack(err)
 	}

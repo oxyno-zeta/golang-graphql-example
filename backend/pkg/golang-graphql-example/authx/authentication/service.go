@@ -74,7 +74,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	provider, err := oidc.NewProvider(ctx, cfg.OIDCAuthentication.IssuerURL)
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Create provider endpoints claims
@@ -83,13 +83,13 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	err = provider.Claims(pec)
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Parse logout endpoint
 	eseURL, err := url.Parse(pec.EndSessionEndpoint)
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Save url
 	pec.EndSessionEndpointURL = eseURL
@@ -97,13 +97,14 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	oidcConfig := &oidc.Config{
 		ClientID: cfg.OIDCAuthentication.ClientID,
 	}
+	// Create verifier
 	verifier := provider.Verifier(oidcConfig)
 
 	// Build redirect url
 	mainRedirectURLObject, err := url.Parse(cfg.OIDCAuthentication.RedirectURL)
 	// Check if error exists
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Continue to build redirect url
 	mainRedirectURLObject.Path = path.Join(mainRedirectURLObject.Path, callbackPath)
@@ -241,8 +242,10 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Try to open JWT token in order to verify that we can open it
 		err = idToken.Claims(&resp)
 		if err != nil {
-			logger.Error(err)
-			utils.AnswerWithError(c, err)
+			// Create error with stack trace
+			err2 := errors.WithStack(err)
+			logger.Error(err2)
+			utils.AnswerWithError(c, err2)
 
 			return
 		}
@@ -292,7 +295,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		}
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
-			logger.Error("No auth header or cookie detected, redirect to oidc login")
+			logger.Error(errors.New("No auth header or cookie detected, redirect to oidc login"))
 			redirectOrUnauthorized(c, unauthorizedPathRegexList)
 
 			return
@@ -305,7 +308,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		idToken, err := s.verifier.Verify(context.Background(), jwtContent)
 		// Check error
 		if err != nil {
-			logger.Error(err)
+			logger.Error(errors.WithStack(err))
 			// Flush potential cookie
 			flushAuthCookie(c, cfg)
 
@@ -317,7 +320,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		// Get claims
 		err = idToken.Claims(&ouser)
 		if err != nil {
-			logger.Error(err)
+			logger.Error(errors.WithStack(err))
 			// Flush potential cookie
 			flushAuthCookie(c, cfg)
 
@@ -407,7 +410,7 @@ func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string,
 		logger.Debug("Can't load auth cookie")
 
 		if !errors.Is(err, http.ErrNoCookie) {
-			return "", err
+			return "", errors.WithStack(err)
 		}
 	}
 	// Check if cookie value exists

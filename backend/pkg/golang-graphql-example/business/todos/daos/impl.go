@@ -1,12 +1,11 @@
 package daos
 
 import (
-	"errors"
-
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
+	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
 
@@ -19,8 +18,12 @@ func (d *dao) MigrateDB() error {
 	gdb := d.db.GetGormDB()
 	// Migrate
 	err := gdb.AutoMigrate(&models.Todo{})
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
-	return err
+	return nil
 }
 
 func (d *dao) FindByID(id string, projection *models.Projection) (*models.Todo, error) {
@@ -45,7 +48,7 @@ func (d *dao) FindByID(id string, projection *models.Projection) (*models.Todo, 
 			return nil, nil
 		}
 
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return res, nil
@@ -59,7 +62,7 @@ func (d *dao) CreateOrUpdate(tt *models.Todo) (*models.Todo, error) {
 	// Check error
 	err := dbres.Error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	// Return result

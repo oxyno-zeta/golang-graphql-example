@@ -2,6 +2,8 @@ package common
 
 import (
 	"time"
+
+	"github.com/pkg/errors"
 )
 
 // GenericFilter is a structure that will handle filters other than Date.
@@ -274,7 +276,7 @@ func parseTime(x string) (*time.Time, error) {
 	t, err := time.Parse(time.RFC3339, x)
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	// Force utc

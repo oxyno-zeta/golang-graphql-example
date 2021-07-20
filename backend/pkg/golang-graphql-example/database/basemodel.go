@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/gofrs/uuid"
+	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
 
@@ -19,7 +20,7 @@ type Base struct {
 func (base *Base) BeforeCreate(tx *gorm.DB) error {
 	uuid, err := uuid.NewV4()
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Save new id

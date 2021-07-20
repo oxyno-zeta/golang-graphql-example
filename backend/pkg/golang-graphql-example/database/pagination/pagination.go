@@ -2,6 +2,7 @@ package pagination
 
 import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
+	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
 
@@ -74,7 +75,7 @@ func Paging(
 		db = db.Model(result).Count(&count)
 		// Check error
 		if db.Error != nil {
-			return db.Error
+			return errors.WithStack(db.Error)
 		}
 
 		// Apply sort
@@ -95,7 +96,7 @@ func Paging(
 		db = db.Limit(options.PageInput.Limit).Offset(options.PageInput.Skip).Find(result)
 		// Check error
 		if db.Error != nil {
-			return db.Error
+			return errors.WithStack(db.Error)
 		}
 
 		return nil
@@ -103,7 +104,7 @@ func Paging(
 
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	return getPageOutput(options.PageInput, count), nil

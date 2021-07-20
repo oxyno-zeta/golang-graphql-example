@@ -1,7 +1,7 @@
 package lockdistributor
 
 import (
-	"errors"
+	"github.com/pkg/errors"
 
 	"cirello.io/pglock"
 )
@@ -22,7 +22,7 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 			return false, nil
 		}
 
-		return false, err
+		return false, errors.WithStack(err)
 	}
 
 	// Check if lock exists or not
@@ -33,7 +33,7 @@ func (l *lock) Acquire() error {
 	ll, err := l.s.cl.Acquire(l.name)
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Save lock
 	l.pl = ll
@@ -46,5 +46,12 @@ func (l *lock) IsReleased() (bool, error) {
 }
 
 func (l *lock) Release() error {
-	return l.pl.Close()
+	// Close
+	err := l.pl.Close()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+	// Default
+	return nil
 }

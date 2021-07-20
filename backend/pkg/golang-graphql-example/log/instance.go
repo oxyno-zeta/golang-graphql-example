@@ -41,8 +41,9 @@ func (ll *loggerIns) GetLockDistributorLogger() LockDistributorLogger {
 func (ll *loggerIns) Configure(level string, format string, filePath string) error {
 	// Parse log level
 	lvl, err := logrus.ParseLevel(level)
+	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Get logrus logger
@@ -61,14 +62,16 @@ func (ll *loggerIns) Configure(level string, format string, filePath string) err
 	if filePath != "" {
 		// Create directory if necessary
 		err2 := os.MkdirAll(filepath.Dir(filePath), os.ModePerm)
+		// Check error
 		if err2 != nil {
-			return err2
+			return errors.WithStack(err2)
 		}
 
 		// Open file
 		f, err := os.OpenFile(filePath, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666)
+		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 
 		// Set output file

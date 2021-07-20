@@ -8,6 +8,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/pkg/errors"
 )
 
 type service struct {
@@ -22,20 +23,22 @@ func (s *service) Initialize(logger log.Logger) error {
 
 	// Parse durations
 	ld, err := time.ParseDuration(cfg.LockDistributor.LeaseDuration)
+	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	hf, err := time.ParseDuration(cfg.LockDistributor.HeartbeatFrequency)
+	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Get sql database
 	sqlDB, err := s.db.GetSQLDB()
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Log
@@ -51,13 +54,14 @@ func (s *service) Initialize(logger log.Logger) error {
 	)
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Create lock table
 	err = c.CreateTable()
+	// Check error
 	if err != nil && !strings.Contains(err.Error(), "already exists") {
-		return err
+		return errors.WithStack(err)
 	}
 
 	// Save client

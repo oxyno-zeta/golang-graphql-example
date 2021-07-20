@@ -12,6 +12,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	goerrors "github.com/pkg/errors"
 )
 
 type service struct {
@@ -42,6 +43,7 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 	logger := log.GetLoggerFromContext(ctx)
 	// Get configuration to check that authorization can be calculated
 	cfg := s.cfgManager.GetConfig().OPAServerAuthorization
+	// Check if configuration is empty
 	if cfg == nil {
 		// Configuration doesn't exists, authorization is given
 		return true, nil
@@ -64,7 +66,7 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 	// Json encode body
 	bb, err := json.Marshal(input)
 	if err != nil {
-		return false, err
+		return false, goerrors.WithStack(err)
 	}
 
 	authorized, err := s.requestOPAServer(ctx, cfg, bb)
@@ -96,15 +98,17 @@ func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServer
 
 	// Change NewRequest to NewRequestWithContext and pass context it
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, opaCfg.URL, bytes.NewBuffer(body))
+	// Check error
 	if err != nil {
-		return false, err
+		return false, goerrors.WithStack(err)
 	}
 	// Add content type
 	req.Header.Add("Content-Type", "application/json")
 	// Making request to OPA server
 	resp, err := http.DefaultClient.Do(req)
+	// Check error
 	if err != nil {
-		return false, err
+		return false, goerrors.WithStack(err)
 	}
 	// Defer closing body
 	defer resp.Body.Close()
@@ -113,8 +117,9 @@ func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServer
 	var answer opaAnswer
 	// Decode answer
 	err = json.NewDecoder(resp.Body).Decode(&answer)
+	// Check error
 	if err != nil {
-		return false, err
+		return false, goerrors.WithStack(err)
 	}
 
 	return answer.Result, nil

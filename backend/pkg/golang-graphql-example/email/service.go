@@ -6,6 +6,7 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/pkg/errors"
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
@@ -92,7 +93,7 @@ func (s *service) Initialize() error {
 		connectTimeoutDur, err := time.ParseDuration(cfg.ConnectTimeout)
 		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 		// Timeout for connect to SMTP Server
 		server.ConnectTimeout = connectTimeoutDur
@@ -107,7 +108,7 @@ func (s *service) Initialize() error {
 		sendTimeoutDur, err := time.ParseDuration(cfg.SendTimeout)
 		// Check error
 		if err != nil {
-			return err
+			return errors.WithStack(err)
 		}
 		// Timeout for send the data and wait respond
 		server.SendTimeout = sendTimeoutDur
@@ -138,7 +139,7 @@ func (s *service) Check() error {
 	client, err := s.server.Connect()
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Defer close client
 	defer client.Close()
@@ -158,7 +159,7 @@ func (s *service) Send(em Email) error {
 	client, err := s.server.Connect()
 	// Check error
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
 	// Defer close client
 	defer client.Close()
@@ -166,5 +167,12 @@ func (s *service) Send(em Email) error {
 	// Get email object
 	e := em.GetEmail()
 	// Send email
-	return e.Send(client)
+	err = e.Send(client)
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Default
+	return nil
 }

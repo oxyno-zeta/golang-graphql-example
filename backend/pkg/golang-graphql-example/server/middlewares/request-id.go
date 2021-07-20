@@ -2,11 +2,12 @@ package middlewares
 
 import (
 	"context"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 	uuid "github.com/gofrs/uuid"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/pkg/errors"
 )
 
 type contextKey struct {
@@ -27,11 +28,14 @@ func RequestID(logger log.Logger) gin.HandlerFunc {
 		if requestID == "" {
 			// Generate uuid
 			uuid, err := uuid.NewV4()
+			// Check error
 			if err != nil {
+				// Add stack trace to error
+				err2 := errors.WithStack(err)
 				// Log error
-				logger.Errorln(err)
+				logger.Error(err2)
 				// Send response
-				c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+				utils.AnswerWithError(c, err2)
 
 				return
 			}
@@ -41,6 +45,7 @@ func RequestID(logger log.Logger) gin.HandlerFunc {
 
 		// Store it in context
 		c.Set(requestIDContextKey, requestID)
+		// Update request with new context
 		c.Request = c.Request.WithContext(context.WithValue(c.Request.Context(), reqCtxKey, requestID))
 
 		// Put it on header
