@@ -5,34 +5,35 @@
 package mocks
 
 import (
-	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
+
+	gomock "github.com/golang/mock/gomock"
 )
 
-// MockLock is a mock of Lock interface
+// MockLock is a mock of Lock interface.
 type MockLock struct {
 	ctrl     *gomock.Controller
 	recorder *MockLockMockRecorder
 }
 
-// MockLockMockRecorder is the mock recorder for MockLock
+// MockLockMockRecorder is the mock recorder for MockLock.
 type MockLockMockRecorder struct {
 	mock *MockLock
 }
 
-// NewMockLock creates a new mock instance
+// NewMockLock creates a new mock instance.
 func NewMockLock(ctrl *gomock.Controller) *MockLock {
 	mock := &MockLock{ctrl: ctrl}
 	mock.recorder = &MockLockMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockLock) EXPECT() *MockLockMockRecorder {
 	return m.recorder
 }
 
-// Acquire mocks base method
+// Acquire mocks base method.
 func (m *MockLock) Acquire() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Acquire")
@@ -40,13 +41,13 @@ func (m *MockLock) Acquire() error {
 	return ret0
 }
 
-// Acquire indicates an expected call of Acquire
+// Acquire indicates an expected call of Acquire.
 func (mr *MockLockMockRecorder) Acquire() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Acquire", reflect.TypeOf((*MockLock)(nil).Acquire))
 }
 
-// IsAlreadyTaken mocks base method
+// IsAlreadyTaken mocks base method.
 func (m *MockLock) IsAlreadyTaken() (bool, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "IsAlreadyTaken")
@@ -55,13 +56,13 @@ func (m *MockLock) IsAlreadyTaken() (bool, error) {
 	return ret0, ret1
 }
 
-// IsAlreadyTaken indicates an expected call of IsAlreadyTaken
+// IsAlreadyTaken indicates an expected call of IsAlreadyTaken.
 func (mr *MockLockMockRecorder) IsAlreadyTaken() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsAlreadyTaken", reflect.TypeOf((*MockLock)(nil).IsAlreadyTaken))
 }
 
-// IsReleased mocks base method
+// IsReleased mocks base method.
 func (m *MockLock) IsReleased() (bool, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "IsReleased")
@@ -70,13 +71,13 @@ func (m *MockLock) IsReleased() (bool, error) {
 	return ret0, ret1
 }
 
-// IsReleased indicates an expected call of IsReleased
+// IsReleased indicates an expected call of IsReleased.
 func (mr *MockLockMockRecorder) IsReleased() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsReleased", reflect.TypeOf((*MockLock)(nil).IsReleased))
 }
 
-// Release mocks base method
+// Release mocks base method.
 func (m *MockLock) Release() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Release")
@@ -84,7 +85,7 @@ func (m *MockLock) Release() error {
 	return ret0
 }
 
-// Release indicates an expected call of Release
+// Release indicates an expected call of Release.
 func (mr *MockLockMockRecorder) Release() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Release", reflect.TypeOf((*MockLock)(nil).Release))

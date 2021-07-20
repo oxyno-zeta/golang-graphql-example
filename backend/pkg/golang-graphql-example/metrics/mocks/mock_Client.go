@@ -5,50 +5,67 @@
 package mocks
 
 import (
-	gin "github.com/gin-gonic/gin"
-	gomock "github.com/golang/mock/gomock"
 	http "net/http"
 	reflect "reflect"
+
+	graphql "github.com/99designs/gqlgen/graphql"
+	gin "github.com/gin-gonic/gin"
+	gomock "github.com/golang/mock/gomock"
+	gorm "gorm.io/gorm"
 )
 
-// MockClient is a mock of Client interface
+// MockClient is a mock of Client interface.
 type MockClient struct {
 	ctrl     *gomock.Controller
 	recorder *MockClientMockRecorder
 }
 
-// MockClientMockRecorder is the mock recorder for MockClient
+// MockClientMockRecorder is the mock recorder for MockClient.
 type MockClientMockRecorder struct {
 	mock *MockClient
 }
 
-// NewMockClient creates a new mock instance
+// NewMockClient creates a new mock instance.
 func NewMockClient(ctrl *gomock.Controller) *MockClient {
 	mock := &MockClient{ctrl: ctrl}
 	mock.recorder = &MockClientMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockClient) EXPECT() *MockClientMockRecorder {
 	return m.recorder
 }
 
-// GetPrometheusHTTPHandler mocks base method
-func (m *MockClient) GetPrometheusHTTPHandler() http.Handler {
+// DatabaseMiddleware mocks base method.
+func (m *MockClient) DatabaseMiddleware(arg0 string) gorm.Plugin {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetPrometheusHTTPHandler")
-	ret0, _ := ret[0].(http.Handler)
+	ret := m.ctrl.Call(m, "DatabaseMiddleware", arg0)
+	ret0, _ := ret[0].(gorm.Plugin)
 	return ret0
 }
 
-// GetPrometheusHTTPHandler indicates an expected call of GetPrometheusHTTPHandler
-func (mr *MockClientMockRecorder) GetPrometheusHTTPHandler() *gomock.Call {
+// DatabaseMiddleware indicates an expected call of DatabaseMiddleware.
+func (mr *MockClientMockRecorder) DatabaseMiddleware(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrometheusHTTPHandler", reflect.TypeOf((*MockClient)(nil).GetPrometheusHTTPHandler))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockClient)(nil).DatabaseMiddleware), arg0)
 }
 
-// Instrument mocks base method
+// GraphqlMiddleware mocks base method.
+func (m *MockClient) GraphqlMiddleware() graphql.HandlerExtension {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GraphqlMiddleware")
+	ret0, _ := ret[0].(graphql.HandlerExtension)
+	return ret0
+}
+
+// GraphqlMiddleware indicates an expected call of GraphqlMiddleware.
+func (mr *MockClientMockRecorder) GraphqlMiddleware() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GraphqlMiddleware", reflect.TypeOf((*MockClient)(nil).GraphqlMiddleware))
+}
+
+// Instrument mocks base method.
 func (m *MockClient) Instrument(arg0 string) gin.HandlerFunc {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Instrument", arg0)
@@ -56,8 +73,22 @@ func (m *MockClient) Instrument(arg0 string) gin.HandlerFunc {
 	return ret0
 }
 
-// Instrument indicates an expected call of Instrument
+// Instrument indicates an expected call of Instrument.
 func (mr *MockClientMockRecorder) Instrument(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Instrument", reflect.TypeOf((*MockClient)(nil).Instrument), arg0)
+}
+
+// PrometheusHTTPHandler mocks base method.
+func (m *MockClient) PrometheusHTTPHandler() http.Handler {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PrometheusHTTPHandler")
+	ret0, _ := ret[0].(http.Handler)
+	return ret0
+}
+
+// PrometheusHTTPHandler indicates an expected call of PrometheusHTTPHandler.
+func (mr *MockClientMockRecorder) PrometheusHTTPHandler() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PrometheusHTTPHandler", reflect.TypeOf((*MockClient)(nil).PrometheusHTTPHandler))
 }

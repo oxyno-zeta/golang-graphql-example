@@ -14,7 +14,7 @@ const mainAuthorizationPrefix = "todo"
 
 type service struct {
 	dao     daos.Dao
-	authSvc authorizationService
+	authSvc AuthorizationService
 }
 
 func (s *service) MigrateDB(systemLogger log.Logger) error {

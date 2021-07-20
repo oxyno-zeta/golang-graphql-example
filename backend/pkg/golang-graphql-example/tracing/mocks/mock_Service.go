@@ -6,36 +6,38 @@ package mocks
 
 import (
 	context "context"
+	reflect "reflect"
+
+	graphql "github.com/99designs/gqlgen/graphql"
 	gin "github.com/gin-gonic/gin"
 	gomock "github.com/golang/mock/gomock"
 	opentracing "github.com/opentracing/opentracing-go"
-	reflect "reflect"
 )
 
-// MockService is a mock of Service interface
+// MockService is a mock of Service interface.
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
 }
 
-// MockServiceMockRecorder is the mock recorder for MockService
+// MockServiceMockRecorder is the mock recorder for MockService.
 type MockServiceMockRecorder struct {
 	mock *MockService
 }
 
-// NewMockService creates a new mock instance
+// NewMockService creates a new mock instance.
 func NewMockService(ctrl *gomock.Controller) *MockService {
 	mock := &MockService{ctrl: ctrl}
 	mock.recorder = &MockServiceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockService) EXPECT() *MockServiceMockRecorder {
 	return m.recorder
 }
 
-// GetTracer mocks base method
+// GetTracer mocks base method.
 func (m *MockService) GetTracer() opentracing.Tracer {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTracer")
@@ -43,27 +45,41 @@ func (m *MockService) GetTracer() opentracing.Tracer {
 	return ret0
 }
 
-// GetTracer indicates an expected call of GetTracer
+// GetTracer indicates an expected call of GetTracer.
 func (mr *MockServiceMockRecorder) GetTracer() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTracer", reflect.TypeOf((*MockService)(nil).GetTracer))
 }
 
-// Middleware mocks base method
-func (m *MockService) Middleware(arg0 func(context.Context) string) gin.HandlerFunc {
+// GraphqlMiddleware mocks base method.
+func (m *MockService) GraphqlMiddleware() graphql.HandlerExtension {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Middleware", arg0)
+	ret := m.ctrl.Call(m, "GraphqlMiddleware")
+	ret0, _ := ret[0].(graphql.HandlerExtension)
+	return ret0
+}
+
+// GraphqlMiddleware indicates an expected call of GraphqlMiddleware.
+func (mr *MockServiceMockRecorder) GraphqlMiddleware() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GraphqlMiddleware", reflect.TypeOf((*MockService)(nil).GraphqlMiddleware))
+}
+
+// HTTPMiddleware mocks base method.
+func (m *MockService) HTTPMiddleware(arg0 func(context.Context) string) gin.HandlerFunc {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "HTTPMiddleware", arg0)
 	ret0, _ := ret[0].(gin.HandlerFunc)
 	return ret0
 }
 
-// Middleware indicates an expected call of Middleware
-func (mr *MockServiceMockRecorder) Middleware(arg0 interface{}) *gomock.Call {
+// HTTPMiddleware indicates an expected call of HTTPMiddleware.
+func (mr *MockServiceMockRecorder) HTTPMiddleware(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Middleware", reflect.TypeOf((*MockService)(nil).Middleware), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HTTPMiddleware", reflect.TypeOf((*MockService)(nil).HTTPMiddleware), arg0)
 }
 
-// Reload mocks base method
+// Reload mocks base method.
 func (m *MockService) Reload() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Reload")
@@ -71,7 +87,7 @@ func (m *MockService) Reload() error {
 	return ret0
 }
 
-// Reload indicates an expected call of Reload
+// Reload indicates an expected call of Reload.
 func (mr *MockServiceMockRecorder) Reload() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reload", reflect.TypeOf((*MockService)(nil).Reload))

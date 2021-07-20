@@ -10,10 +10,12 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
-type authorizationService interface {
+//go:generate mockgen -destination=./mocks/mock_AuthorizationService.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos AuthorizationService
+type AuthorizationService interface {
 	CheckAuthorized(ctx context.Context, action, resource string) error
 }
 
+//go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos Service
 type Service interface {
 	MigrateDB(systemLogger log.Logger) error
 	GetAllPaginated(
@@ -38,7 +40,7 @@ type InputUpdateTodo struct {
 	Text string
 }
 
-func NewService(db database.DB, authSvc authorizationService) Service {
+func NewService(db database.DB, authSvc AuthorizationService) Service {
 	// Create dao
 	dao := daos.NewDao(db)
 

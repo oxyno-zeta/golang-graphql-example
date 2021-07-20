@@ -5,36 +5,37 @@
 package mocks
 
 import (
+	reflect "reflect"
+
 	gomock "github.com/golang/mock/gomock"
 	lockdistributor "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor"
 	log "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	reflect "reflect"
 )
 
-// MockService is a mock of Service interface
+// MockService is a mock of Service interface.
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
 }
 
-// MockServiceMockRecorder is the mock recorder for MockService
+// MockServiceMockRecorder is the mock recorder for MockService.
 type MockServiceMockRecorder struct {
 	mock *MockService
 }
 
-// NewMockService creates a new mock instance
+// NewMockService creates a new mock instance.
 func NewMockService(ctrl *gomock.Controller) *MockService {
 	mock := &MockService{ctrl: ctrl}
 	mock.recorder = &MockServiceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockService) EXPECT() *MockServiceMockRecorder {
 	return m.recorder
 }
 
-// GetLock mocks base method
+// GetLock mocks base method.
 func (m *MockService) GetLock(arg0 string) lockdistributor.Lock {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetLock", arg0)
@@ -42,13 +43,13 @@ func (m *MockService) GetLock(arg0 string) lockdistributor.Lock {
 	return ret0
 }
 
-// GetLock indicates an expected call of GetLock
+// GetLock indicates an expected call of GetLock.
 func (mr *MockServiceMockRecorder) GetLock(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLock", reflect.TypeOf((*MockService)(nil).GetLock), arg0)
 }
 
-// Initialize mocks base method
+// Initialize mocks base method.
 func (m *MockService) Initialize(arg0 log.Logger) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Initialize", arg0)
@@ -56,7 +57,7 @@ func (m *MockService) Initialize(arg0 log.Logger) error {
 	return ret0
 }
 
-// Initialize indicates an expected call of Initialize
+// Initialize indicates an expected call of Initialize.
 func (mr *MockServiceMockRecorder) Initialize(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Initialize", reflect.TypeOf((*MockService)(nil).Initialize), arg0)

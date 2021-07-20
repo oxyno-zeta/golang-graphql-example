@@ -6,35 +6,36 @@ package mocks
 
 import (
 	sql "database/sql"
+	reflect "reflect"
+
 	gomock "github.com/golang/mock/gomock"
 	gorm "gorm.io/gorm"
-	reflect "reflect"
 )
 
-// MockDB is a mock of DB interface
+// MockDB is a mock of DB interface.
 type MockDB struct {
 	ctrl     *gomock.Controller
 	recorder *MockDBMockRecorder
 }
 
-// MockDBMockRecorder is the mock recorder for MockDB
+// MockDBMockRecorder is the mock recorder for MockDB.
 type MockDBMockRecorder struct {
 	mock *MockDB
 }
 
-// NewMockDB creates a new mock instance
+// NewMockDB creates a new mock instance.
 func NewMockDB(ctrl *gomock.Controller) *MockDB {
 	mock := &MockDB{ctrl: ctrl}
 	mock.recorder = &MockDBMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockDB) EXPECT() *MockDBMockRecorder {
 	return m.recorder
 }
 
-// Close mocks base method
+// Close mocks base method.
 func (m *MockDB) Close() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Close")
@@ -42,13 +43,13 @@ func (m *MockDB) Close() error {
 	return ret0
 }
 
-// Close indicates an expected call of Close
+// Close indicates an expected call of Close.
 func (mr *MockDBMockRecorder) Close() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockDB)(nil).Close))
 }
 
-// Connect mocks base method
+// Connect mocks base method.
 func (m *MockDB) Connect() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Connect")
@@ -56,13 +57,13 @@ func (m *MockDB) Connect() error {
 	return ret0
 }
 
-// Connect indicates an expected call of Connect
+// Connect indicates an expected call of Connect.
 func (mr *MockDBMockRecorder) Connect() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Connect", reflect.TypeOf((*MockDB)(nil).Connect))
 }
 
-// GetGormDB mocks base method
+// GetGormDB mocks base method.
 func (m *MockDB) GetGormDB() *gorm.DB {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetGormDB")
@@ -70,13 +71,13 @@ func (m *MockDB) GetGormDB() *gorm.DB {
 	return ret0
 }
 
-// GetGormDB indicates an expected call of GetGormDB
+// GetGormDB indicates an expected call of GetGormDB.
 func (mr *MockDBMockRecorder) GetGormDB() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGormDB", reflect.TypeOf((*MockDB)(nil).GetGormDB))
 }
 
-// GetSQLDB mocks base method
+// GetSQLDB mocks base method.
 func (m *MockDB) GetSQLDB() (*sql.DB, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetSQLDB")
@@ -85,13 +86,13 @@ func (m *MockDB) GetSQLDB() (*sql.DB, error) {
 	return ret0, ret1
 }
 
-// GetSQLDB indicates an expected call of GetSQLDB
+// GetSQLDB indicates an expected call of GetSQLDB.
 func (mr *MockDBMockRecorder) GetSQLDB() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSQLDB", reflect.TypeOf((*MockDB)(nil).GetSQLDB))
 }
 
-// Ping mocks base method
+// Ping mocks base method.
 func (m *MockDB) Ping() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Ping")
@@ -99,13 +100,13 @@ func (m *MockDB) Ping() error {
 	return ret0
 }
 
-// Ping indicates an expected call of Ping
+// Ping indicates an expected call of Ping.
 func (mr *MockDBMockRecorder) Ping() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Ping", reflect.TypeOf((*MockDB)(nil).Ping))
 }
 
-// Reconnect mocks base method
+// Reconnect mocks base method.
 func (m *MockDB) Reconnect() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Reconnect")
@@ -113,7 +114,7 @@ func (m *MockDB) Reconnect() error {
 	return ret0
 }
 
-// Reconnect indicates an expected call of Reconnect
+// Reconnect indicates an expected call of Reconnect.
 func (mr *MockDBMockRecorder) Reconnect() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reconnect", reflect.TypeOf((*MockDB)(nil).Reconnect))

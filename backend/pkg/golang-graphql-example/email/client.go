@@ -8,6 +8,7 @@ import (
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
+//go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email Service
 type Service interface {
 	// Initialize service.
 	// If configuration isn't set, the setup will be skipped.
@@ -28,6 +29,7 @@ type Priority string
 const HighPriority Priority = "HIGH"
 const LowPriority Priority = "LOW"
 
+//go:generate mockgen -destination=./mocks/mock_Email.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email Email
 type Email interface {
 	// SetFrom sets the From address.
 	SetFrom(address string)
