@@ -19,6 +19,8 @@ type Service interface {
 	// If configuration isn't set, the send action will be skipped.
 	// NOTE: Connect SMTP server can take 1 second.
 	Send(em Email) error
+	// Create a new Email object.
+	NewEmail() Email
 }
 
 type Priority string
@@ -72,11 +74,4 @@ type Email interface {
 
 func NewService(cfgManager config.Manager, logger log.Logger) Service {
 	return &service{cfgManager: cfgManager, logger: logger}
-}
-
-func NewEmail() Email {
-	return &email{
-		firstBodySet: false,
-		spemail:      spmail.NewMSG(),
-	}
 }

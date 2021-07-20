@@ -24,6 +24,13 @@ type service struct {
 	server     *spmail.SMTPServer
 }
 
+func (s *service) NewEmail() Email {
+	return &email{
+		firstBodySet: false,
+		spemail:      spmail.NewMSG(),
+	}
+}
+
 func (s *service) Initialize() error {
 	// Get configuration
 	cfg := s.cfgManager.GetConfig().SMTP
