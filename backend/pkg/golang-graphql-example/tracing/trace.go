@@ -2,8 +2,10 @@ package tracing
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/opentracing/opentracing-go"
+	"github.com/pkg/errors"
 	"github.com/uber/jaeger-client-go"
 )
 
@@ -24,6 +26,14 @@ func (t *trace) GetChildTrace(operationName string) Trace {
 	)
 
 	return &trace{span: childSpan}
+}
+
+func (t *trace) InjectInHTTPHeader(header http.Header) error {
+	return errors.WithStack(opentracing.GlobalTracer().Inject(
+		t.span.Context(),
+		opentracing.HTTPHeaders,
+		opentracing.HTTPHeadersCarrier(header),
+	))
 }
 
 func (t *trace) Finish() {

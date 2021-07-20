@@ -2,6 +2,7 @@ package tracing
 
 import (
 	"context"
+	"net/http"
 
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
@@ -34,6 +35,8 @@ type Trace interface {
 	Finish()
 	// Get the trace ID
 	GetTraceID() string
+	// InjectInHTTPHeader will inject span in http header for forwarding.
+	InjectInHTTPHeader(header http.Header) error
 }
 
 func New(cfgManager config.Manager, logger log.Logger) (Service, error) {
