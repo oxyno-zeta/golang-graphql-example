@@ -13,6 +13,7 @@ import (
 )
 
 const maxPageSize = 50
+const defaultPageSize = 10
 const paginationIDPrefix = "paginate"
 const relayIDSplitSize = 2
 
@@ -144,9 +145,9 @@ func GetPageInput(after *string, before *string, first *int, last *int) (*pagina
 		return nil, errors.NewInvalidInputError(fmt.Sprintf("first or last is too big, maximum is %d", maxPageSize))
 	}
 
-	// Set default default limit
+	// Set default limit
 	if res.Limit == 0 {
-		res.Limit = 10
+		res.Limit = defaultPageSize
 	}
 
 	return &res, nil

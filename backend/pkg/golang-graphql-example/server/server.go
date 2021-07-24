@@ -11,6 +11,7 @@ import (
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
+	"github.com/99designs/gqlgen/graphql/handler/extension"
 	"github.com/99designs/gqlgen/graphql/playground"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/gzip"
@@ -19,6 +20,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	cerrors "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
@@ -26,10 +28,14 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
+	gutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/vektah/gqlparser/v2/gqlerror"
 )
+
+const GraphqlComplexityLimit = 2000
 
 type Server struct {
 	logger            log.Logger
@@ -182,6 +188,34 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	// Resolver is in the resolver.go file
 	h := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{
 		Resolvers: &graphql.Resolver{BusiServices: busiServices},
+		Complexity: generated.ComplexityRoot{
+			Mutation: struct {
+				CloseTodo  func(childComplexity int, todoID string) int
+				CreateTodo func(childComplexity int, input model.NewTodo) int
+				UpdateTodo func(childComplexity int, input *model.UpdateTodo) int
+			}{
+				CloseTodo: func(childComplexity int, todoID string) int {
+					return gutils.CalculateMutationComplexity(childComplexity)
+				},
+				CreateTodo: func(childComplexity int, input model.NewTodo) int {
+					return gutils.CalculateMutationComplexity(childComplexity)
+				},
+				UpdateTodo: func(childComplexity int, input *model.UpdateTodo) int {
+					return gutils.CalculateMutationComplexity(childComplexity)
+				},
+			},
+			Query: struct {
+				Todo  func(childComplexity int, id string) int
+				Todos func(childComplexity int, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) int
+			}{
+				Todo: func(childComplexity int, id string) int {
+					return gutils.CalculateQuerySimpleStructComplexity(childComplexity)
+				},
+				Todos: func(childComplexity int, after, before *string, first, last *int, sort *models.SortOrder, filter *models.Filter) int {
+					return gutils.CalculateQueryConnectionComplexity(childComplexity, after, before, first, last)
+				},
+			},
+		},
 	}))
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
 		// Get logger
@@ -207,6 +241,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	h.Use(apollotracing.Tracer{})
 	h.Use(svr.tracingSvc.GraphqlMiddleware())
 	h.Use(svr.metricsCl.GraphqlMiddleware())
+	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
 
 	return func(c *gin.Context) {
 		h.ServeHTTP(c.Writer, c.Request)
