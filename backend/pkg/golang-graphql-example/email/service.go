@@ -40,6 +40,10 @@ func (s *service) Initialize() error {
 	if cfg == nil {
 		s.logger.Info("SMTP configuration not present, server creation skipped")
 
+		// Force flush created service
+		// In case of reload done with previously created service
+		s.server = nil
+
 		return nil
 	}
 
