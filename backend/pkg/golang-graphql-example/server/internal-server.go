@@ -13,6 +13,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/pkg/errors"
 )
@@ -22,11 +23,12 @@ const (
 )
 
 type InternalServer struct {
-	logger     log.Logger
-	cfgManager config.Manager
-	metricsCl  metrics.Client
-	checkers   []*CheckerInput
-	server     *http.Server
+	logger           log.Logger
+	cfgManager       config.Manager
+	metricsCl        metrics.Client
+	checkers         []*CheckerInput
+	server           *http.Server
+	signalHandlerSvc signalhandler.Client
 }
 
 type CheckerInput struct {
@@ -37,12 +39,13 @@ type CheckerInput struct {
 	InitialDelay time.Duration
 }
 
-func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client) *InternalServer {
+func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client, signalHandlerSvc signalhandler.Client) *InternalServer {
 	return &InternalServer{
-		logger:     logger,
-		cfgManager: cfgManager,
-		metricsCl:  metricsCl,
-		checkers:   make([]*CheckerInput, 0),
+		logger:           logger,
+		cfgManager:       cfgManager,
+		metricsCl:        metricsCl,
+		signalHandlerSvc: signalHandlerSvc,
+		checkers:         make([]*CheckerInput, 0),
 	}
 }
 
@@ -116,6 +119,18 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	// Add metrics path
 	router.GET("/metrics", gin.WrapH(svr.metricsCl.PrometheusHTTPHandler()))
 	router.GET("/health", gin.WrapH(healthhttp.HandleHealthJSON(h2)))
+	router.GET("/ready", func(c *gin.Context) {
+		// Check if system is in shutdown
+		if svr.signalHandlerSvc.IsStoppingSystem() {
+			// Response with service unavailable flag
+			c.JSON(http.StatusServiceUnavailable, gin.H{"reason": "system stopping"})
+
+			return
+		}
+
+		// Otherwise, send health check result
+		gin.WrapH(healthhttp.HandleHealthJSON(h2))(c)
+	})
 
 	return router, nil
 }

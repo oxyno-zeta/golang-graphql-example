@@ -16,6 +16,14 @@ The project is linted by [GolangCI-Lint](https://golangci-lint.run/) and built b
 
 The project have a convention in the coding strategy. All the business code related to your application specifically is located in a specific folder. They will be called business unit.
 
+## Available features
+
+- Prometheus metrics available on `/metrics`
+- Health checks available on `/health`
+- Ready endpoint available on `/ready`
+  - This one will check if health checks are valid by default and only when a SIGTERM or a SIGINT is caught, the endpoint will be marked as Service Unavailable
+- The application will caught SIGTERM and SIGINT and will stop the application when no primary requests are in progress
+
 ## Structure
 
 The `cmd` folder contains all main packages.

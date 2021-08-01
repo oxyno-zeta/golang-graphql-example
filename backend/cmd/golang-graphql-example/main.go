@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+	"syscall"
 	"time"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
@@ -13,6 +15,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 	"golang.org/x/sync/errgroup"
@@ -127,6 +130,30 @@ func main() {
 		}
 	})
 
+	// Create signal handler service
+	signalHandlerSvc := signalhandler.NewClient(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
+	// Initialize service
+	err = signalHandlerSvc.Initialize()
+	// Check error
+	if err != nil {
+		logger.Fatal(err)
+	}
+	// Register closing database connections on system stop
+	signalHandlerSvc.OnSignal(syscall.SIGTERM, func() {
+		err = db.Close()
+		// Check error
+		if err != nil {
+			logger.Fatal(err)
+		}
+	})
+	signalHandlerSvc.OnSignal(syscall.SIGINT, func() {
+		err = db.Close()
+		// Check error
+		if err != nil {
+			logger.Fatal(err)
+		}
+	})
+
 	// Create authentication service
 	authoSvc := authorization.NewService(cfgManager)
 
@@ -143,8 +170,8 @@ func main() {
 	authenticationSvc := authentication.NewService(cfgManager)
 
 	// Create servers
-	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices, authenticationSvc, authoSvc)
-	intSvr := server.NewInternalServer(logger, cfgManager, metricsCl)
+	svr := server.NewServer(logger, cfgManager, metricsCl, tracingSvc, busServices, authenticationSvc, authoSvc, signalHandlerSvc)
+	intSvr := server.NewInternalServer(logger, cfgManager, metricsCl, signalHandlerSvc)
 
 	// Add checker for database
 	intSvr.AddChecker(&server.CheckerInput{

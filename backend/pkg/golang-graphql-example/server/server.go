@@ -31,6 +31,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	gutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/vektah/gqlparser/v2/gqlerror"
 )
@@ -45,6 +46,7 @@ type Server struct {
 	busiServices      *business.Services
 	authenticationSvc authentication.Client
 	authorizationSvc  authorization.Service
+	signalHandlerSvc  signalhandler.Client
 	server            *http.Server
 }
 
@@ -52,6 +54,7 @@ func NewServer(
 	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client,
 	tracingSvc tracing.Service, busiServices *business.Services,
 	authenticationSvc authentication.Client, authoSvc authorization.Service,
+	signalHandlerSvc signalhandler.Client,
 ) *Server {
 	return &Server{
 		logger:            logger,
@@ -61,6 +64,7 @@ func NewServer(
 		busiServices:      busiServices,
 		authenticationSvc: authenticationSvc,
 		authorizationSvc:  authoSvc,
+		signalHandlerSvc:  signalHandlerSvc,
 	}
 }
 
@@ -116,6 +120,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	// Add middlewares
 	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
 	router.Use(gin.Recovery())
+	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware())
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(svr.tracingSvc.HTTPMiddleware(middlewares.GetRequestIDFromContext))
 	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
