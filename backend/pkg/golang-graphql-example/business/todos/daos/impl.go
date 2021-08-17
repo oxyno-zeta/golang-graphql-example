@@ -1,6 +1,8 @@
 package daos
 
 import (
+	"context"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
@@ -26,9 +28,9 @@ func (d *dao) MigrateDB() error {
 	return nil
 }
 
-func (d *dao) FindByID(id string, projection *models.Projection) (*models.Todo, error) {
+func (d *dao) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	// Get gorm db
-	db := d.db.GetGormDB()
+	db := d.db.GetTransactionalOrDefaultGormDB(ctx)
 	// result
 	res := &models.Todo{}
 	// Apply projection
@@ -54,9 +56,9 @@ func (d *dao) FindByID(id string, projection *models.Projection) (*models.Todo, 
 	return res, nil
 }
 
-func (d *dao) CreateOrUpdate(tt *models.Todo) (*models.Todo, error) {
+func (d *dao) CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo, error) {
 	// Get gorm db
-	db := d.db.GetGormDB()
+	db := d.db.GetTransactionalOrDefaultGormDB(ctx)
 	dbres := db.Save(tt)
 
 	// Check error
@@ -70,13 +72,14 @@ func (d *dao) CreateOrUpdate(tt *models.Todo) (*models.Todo, error) {
 }
 
 func (d *dao) GetAllPaginated(
+	ctx context.Context,
 	page *pagination.PageInput,
 	sort *models.SortOrder,
 	filter *models.Filter,
 	projection *models.Projection,
 ) ([]*models.Todo, *pagination.PageOutput, error) {
 	// Get gorm db
-	db := d.db.GetGormDB()
+	db := d.db.GetTransactionalOrDefaultGormDB(ctx)
 	// result
 	res := make([]*models.Todo, 0)
 	// Find todos

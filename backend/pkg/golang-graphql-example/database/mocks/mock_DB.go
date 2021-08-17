@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	sql "database/sql"
 	reflect "reflect"
 
@@ -63,6 +64,20 @@ func (mr *MockDBMockRecorder) Connect() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Connect", reflect.TypeOf((*MockDB)(nil).Connect))
 }
 
+// ExecuteTransaction mocks base method.
+func (m *MockDB) ExecuteTransaction(arg0 context.Context, arg1 func(context.Context) error) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ExecuteTransaction", arg0, arg1)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// ExecuteTransaction indicates an expected call of ExecuteTransaction.
+func (mr *MockDBMockRecorder) ExecuteTransaction(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExecuteTransaction", reflect.TypeOf((*MockDB)(nil).ExecuteTransaction), arg0, arg1)
+}
+
 // GetGormDB mocks base method.
 func (m *MockDB) GetGormDB() *gorm.DB {
 	m.ctrl.T.Helper()
@@ -90,6 +105,20 @@ func (m *MockDB) GetSQLDB() (*sql.DB, error) {
 func (mr *MockDBMockRecorder) GetSQLDB() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSQLDB", reflect.TypeOf((*MockDB)(nil).GetSQLDB))
+}
+
+// GetTransactionalOrDefaultGormDB mocks base method.
+func (m *MockDB) GetTransactionalOrDefaultGormDB(arg0 context.Context) *gorm.DB {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetTransactionalOrDefaultGormDB", arg0)
+	ret0, _ := ret[0].(*gorm.DB)
+	return ret0
+}
+
+// GetTransactionalOrDefaultGormDB indicates an expected call of GetTransactionalOrDefaultGormDB.
+func (mr *MockDBMockRecorder) GetTransactionalOrDefaultGormDB(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransactionalOrDefaultGormDB", reflect.TypeOf((*MockDB)(nil).GetTransactionalOrDefaultGormDB), arg0)
 }
 
 // Ping mocks base method.

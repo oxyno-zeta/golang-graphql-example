@@ -1,6 +1,7 @@
 package database
 
 import (
+	"context"
 	"database/sql"
 	"time"
 
@@ -13,12 +14,62 @@ import (
 	"gorm.io/driver/postgres"
 )
 
+var (
+	transactionContextKey = &contextKey{name: "TRANSACTION"}
+)
+
 type postresdb struct {
 	logger         log.Logger
 	db             *gorm.DB
 	cfgManager     config.Manager
 	connectionName string
 	metricsCl      metrics.Client
+}
+
+func SetTransactionalGormDBToContext(cntx context.Context, db *gorm.DB) context.Context {
+	return context.WithValue(cntx, transactionContextKey, db)
+}
+
+func GetTransactionalGormDBFromContext(cntx context.Context) *gorm.DB {
+	// Get transactional db from context
+	resInt := cntx.Value(transactionContextKey)
+
+	// Check if exists
+	if resInt == nil {
+		return nil
+	}
+
+	// Cast it
+	res, _ := resInt.(*gorm.DB)
+
+	return res
+}
+
+func (ctx *postresdb) ExecuteTransaction(cntx context.Context, cb func(context.Context) error) error {
+	// Create transaction callback
+	txCb := func(tx *gorm.DB) error {
+		// Inject transactional db in context
+		newCtx := SetTransactionalGormDBToContext(cntx, tx)
+
+		// Callback
+		return cb(newCtx)
+	}
+
+	return ctx.db.Transaction(txCb)
+}
+
+func (ctx *postresdb) GetTransactionalOrDefaultGormDB(cntx context.Context) *gorm.DB {
+	// Get transactional gorm db in context
+	tx := GetTransactionalGormDBFromContext(cntx)
+
+	// Check if last exists
+	if tx != nil {
+		// Return transaction and add context to gorm
+		return tx.WithContext(cntx)
+	}
+
+	// Default
+	return ctx.GetGormDB().WithContext(cntx)
 }
 
 func (ctx *postresdb) GetSQLDB() (*sql.DB, error) {

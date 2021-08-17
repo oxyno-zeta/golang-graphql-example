@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
@@ -36,39 +37,39 @@ func (m *MockDao) EXPECT() *MockDaoMockRecorder {
 }
 
 // CreateOrUpdate mocks base method.
-func (m *MockDao) CreateOrUpdate(arg0 *models.Todo) (*models.Todo, error) {
+func (m *MockDao) CreateOrUpdate(arg0 context.Context, arg1 *models.Todo) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateOrUpdate", arg0)
+	ret := m.ctrl.Call(m, "CreateOrUpdate", arg0, arg1)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // CreateOrUpdate indicates an expected call of CreateOrUpdate.
-func (mr *MockDaoMockRecorder) CreateOrUpdate(arg0 interface{}) *gomock.Call {
+func (mr *MockDaoMockRecorder) CreateOrUpdate(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrUpdate", reflect.TypeOf((*MockDao)(nil).CreateOrUpdate), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrUpdate", reflect.TypeOf((*MockDao)(nil).CreateOrUpdate), arg0, arg1)
 }
 
 // FindByID mocks base method.
-func (m *MockDao) FindByID(arg0 string, arg1 *models.Projection) (*models.Todo, error) {
+func (m *MockDao) FindByID(arg0 context.Context, arg1 string, arg2 *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "FindByID", arg0, arg1)
+	ret := m.ctrl.Call(m, "FindByID", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // FindByID indicates an expected call of FindByID.
-func (mr *MockDaoMockRecorder) FindByID(arg0, arg1 interface{}) *gomock.Call {
+func (mr *MockDaoMockRecorder) FindByID(arg0, arg1, arg2 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByID", reflect.TypeOf((*MockDao)(nil).FindByID), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByID", reflect.TypeOf((*MockDao)(nil).FindByID), arg0, arg1, arg2)
 }
 
 // GetAllPaginated mocks base method.
-func (m *MockDao) GetAllPaginated(arg0 *pagination.PageInput, arg1 *models.SortOrder, arg2 *models.Filter, arg3 *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
+func (m *MockDao) GetAllPaginated(arg0 context.Context, arg1 *pagination.PageInput, arg2 *models.SortOrder, arg3 *models.Filter, arg4 *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAllPaginated", arg0, arg1, arg2, arg3)
+	ret := m.ctrl.Call(m, "GetAllPaginated", arg0, arg1, arg2, arg3, arg4)
 	ret0, _ := ret[0].([]*models.Todo)
 	ret1, _ := ret[1].(*pagination.PageOutput)
 	ret2, _ := ret[2].(error)
@@ -76,9 +77,9 @@ func (m *MockDao) GetAllPaginated(arg0 *pagination.PageInput, arg1 *models.SortO
 }
 
 // GetAllPaginated indicates an expected call of GetAllPaginated.
-func (mr *MockDaoMockRecorder) GetAllPaginated(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+func (mr *MockDaoMockRecorder) GetAllPaginated(arg0, arg1, arg2, arg3, arg4 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockDao)(nil).GetAllPaginated), arg0, arg1, arg2, arg3)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockDao)(nil).GetAllPaginated), arg0, arg1, arg2, arg3, arg4)
 }
 
 // MigrateDB mocks base method.
