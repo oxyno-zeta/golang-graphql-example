@@ -6,6 +6,7 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
@@ -15,6 +16,7 @@ const mainAuthorizationPrefix = "todo"
 type service struct {
 	dao     daos.Dao
 	authSvc AuthorizationService
+	dbSvc   database.DB
 }
 
 func (s *service) MigrateDB(systemLogger log.Logger) error {
@@ -36,7 +38,7 @@ func (s *service) FindByID(ctx context.Context, id string, projection *models.Pr
 	}
 
 	// Find by id
-	res, err := s.dao.FindByID(id, projection)
+	res, err := s.dao.FindByID(ctx, id, projection)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -63,7 +65,7 @@ func (s *service) GetAllPaginated(
 		return nil, nil, err
 	}
 
-	return s.dao.GetAllPaginated(page, sort, filter, projection)
+	return s.dao.GetAllPaginated(ctx, page, sort, filter, projection)
 }
 
 func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error) {
@@ -82,7 +84,7 @@ func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Tod
 		Text: inp.Text,
 	}
 
-	return s.dao.CreateOrUpdate(tt)
+	return s.dao.CreateOrUpdate(ctx, tt)
 }
 
 func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error) {
@@ -98,14 +100,14 @@ func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Tod
 	}
 
 	// Search by id first
-	tt, err := s.dao.FindByID(inp.ID, nil)
+	tt, err := s.dao.FindByID(ctx, inp.ID, nil)
 	if err != nil {
 		return nil, err
 	}
 	// Update text in existing result
 	tt.Text = inp.Text
 	// Save
-	return s.dao.CreateOrUpdate(tt)
+	return s.dao.CreateOrUpdate(ctx, tt)
 }
 
 func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
@@ -120,13 +122,28 @@ func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
 		return nil, err
 	}
 
-	// Search by id first
-	tt, err := s.dao.FindByID(id, nil)
+	// Prepare result
+	var res *models.Todo
+
+	// Create transaction
+	err = s.dbSvc.ExecuteTransaction(ctx, func(c context.Context) error {
+		// Search by id first
+		tt, err2 := s.dao.FindByID(ctx, id, nil)
+		// Check error
+		if err2 != nil {
+			return err2
+		}
+		// Update text in existing result
+		tt.Done = true
+		// Save
+		res, err2 = s.dao.CreateOrUpdate(ctx, tt)
+
+		return err2
+	})
+	// Check error
 	if err != nil {
 		return nil, err
 	}
-	// Update text in existing result
-	tt.Done = true
-	// Save
-	return s.dao.CreateOrUpdate(tt)
+
+	return res, nil
 }

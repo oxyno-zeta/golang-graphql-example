@@ -44,5 +44,5 @@ func NewService(db database.DB, authSvc AuthorizationService) Service {
 	// Create dao
 	dao := daos.NewDao(db)
 
-	return &service{dao: dao, authSvc: authSvc}
+	return &service{dao: dao, authSvc: authSvc, dbSvc: db}
 }
