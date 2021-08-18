@@ -38,5 +38,6 @@ require (
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gorm.io/driver/postgres v1.1.0
 	gorm.io/gorm v1.21.12
+	gorm.io/plugin/opentracing v0.0.0-20210706093620-707e98269c0e
 	gorm.io/plugin/prometheus v0.0.0-20210614014227-3996fd54c851
 )

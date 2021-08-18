@@ -10,6 +10,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
+	gormopentracing "gorm.io/plugin/opentracing"
 
 	"gorm.io/driver/postgres"
 )
@@ -127,6 +128,12 @@ func (ctx *postresdb) Connect() error {
 	md := ctx.metricsCl.DatabaseMiddleware(ctx.connectionName)
 	// Apply middleware
 	err = dbResult.Use(md)
+	// Check if error exists
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	err = dbResult.Use(gormopentracing.New())
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
