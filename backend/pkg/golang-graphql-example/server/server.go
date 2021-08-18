@@ -248,9 +248,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	h.Use(svr.metricsCl.GraphqlMiddleware())
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
 
-	return func(c *gin.Context) {
-		h.ServeHTTP(c.Writer, c.Request)
-	}
+	return gin.WrapH(h)
 }
 
 // Defining the Playground handler.
