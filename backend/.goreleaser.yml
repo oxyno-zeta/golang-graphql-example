@@ -8,7 +8,8 @@ before:
 builds:
   - main: ./cmd/golang-graphql-example
     binary: golang-graphql-example
-    # flags:
+    flags:
+      - -trimpath
     #   - -mod=vendor
     ldflags:
       - -extldflags "-static"
