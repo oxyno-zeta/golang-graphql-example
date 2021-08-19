@@ -41,3 +41,5 @@ require (
 	gorm.io/plugin/opentracing v0.0.0-20210706093620-707e98269c0e
 	gorm.io/plugin/prometheus v0.0.0-20210614014227-3996fd54c851
 )
+
+replace github.com/99designs/gqlgen-contrib => github.com/oxyno-zeta/gqlgen-contrib v0.1.1-0.20210819201914-d7cb117b28a0
