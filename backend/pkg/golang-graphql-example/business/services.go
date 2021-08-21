@@ -2,6 +2,7 @@ package business
 
 import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/migration"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor"
@@ -15,7 +16,10 @@ type Services struct {
 }
 
 func (s *Services) MigrateDB() error {
-	return s.TodoSvc.MigrateDB(s.systemLogger)
+	// Create migration service
+	migrationSvc := migration.New(s.db)
+
+	return migrationSvc.Migrate()
 }
 
 func NewServices(systemLogger log.Logger, db database.DB, authSvc authorization.Service, ld lockdistributor.Service) *Services {
