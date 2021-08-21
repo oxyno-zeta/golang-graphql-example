@@ -8,7 +8,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
 const mainAuthorizationPrefix = "todo"
@@ -17,12 +16,6 @@ type service struct {
 	dao     daos.Dao
 	authSvc AuthorizationService
 	dbSvc   database.DB
-}
-
-func (s *service) MigrateDB(systemLogger log.Logger) error {
-	systemLogger.Debug("Migrate database for Todos")
-
-	return s.dao.MigrateDB()
 }
 
 func (s *service) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {

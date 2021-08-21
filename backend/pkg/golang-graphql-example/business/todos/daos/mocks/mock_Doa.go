@@ -81,17 +81,3 @@ func (mr *MockDaoMockRecorder) GetAllPaginated(arg0, arg1, arg2, arg3, arg4 inte
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockDao)(nil).GetAllPaginated), arg0, arg1, arg2, arg3, arg4)
 }
-
-// MigrateDB mocks base method.
-func (m *MockDao) MigrateDB() error {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "MigrateDB")
-	ret0, _ := ret[0].(error)
-	return ret0
-}
-
-// MigrateDB indicates an expected call of MigrateDB.
-func (mr *MockDaoMockRecorder) MigrateDB() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "MigrateDB", reflect.TypeOf((*MockDao)(nil).MigrateDB))
-}

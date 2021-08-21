@@ -15,19 +15,6 @@ type dao struct {
 	db database.DB
 }
 
-func (d *dao) MigrateDB() error {
-	// Get gorm database
-	gdb := d.db.GetGormDB()
-	// Migrate
-	err := gdb.AutoMigrate(&models.Todo{})
-	// Check error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
-	return nil
-}
-
 func (d *dao) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	// Get gorm db
 	db := d.db.GetTransactionalOrDefaultGormDB(ctx)

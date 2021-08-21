@@ -7,7 +7,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
 //go:generate mockgen -destination=./mocks/mock_AuthorizationService.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos AuthorizationService
@@ -17,7 +16,6 @@ type AuthorizationService interface {
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos Service
 type Service interface {
-	MigrateDB(systemLogger log.Logger) error
 	GetAllPaginated(
 		ctx context.Context,
 		page *pagination.PageInput,
