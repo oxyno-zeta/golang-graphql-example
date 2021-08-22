@@ -43,4 +43,4 @@ require (
 	gorm.io/plugin/prometheus v0.0.0-20210614014227-3996fd54c851
 )
 
-replace github.com/99designs/gqlgen-contrib => github.com/oxyno-zeta/gqlgen-contrib v0.1.1-0.20210819201914-d7cb117b28a0
+replace github.com/99designs/gqlgen-contrib => github.com/oxyno-zeta/gqlgen-contrib v0.1.1-0.20210822164044-9b33d2c27fa1
