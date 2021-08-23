@@ -172,7 +172,7 @@ func TestPaging(t *testing.T) {
 			}
 
 			// Create expected query
-			countExpectedQuery := `SELECT count(1) FROM "people" ` + tt.countExpectedIntermediateQuery
+			countExpectedQuery := `SELECT count(*) FROM "people" ` + tt.countExpectedIntermediateQuery
 			// Create expected query
 			selectExpectedQuery := `SELECT ` + tt.selectExpectedProjectionQuery +
 				` FROM "people" ` + tt.selectExpectedIntermediateQuery

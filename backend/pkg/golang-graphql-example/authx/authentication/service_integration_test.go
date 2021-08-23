@@ -153,7 +153,6 @@ func Test_authentication(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			cfgManager := cmocks.NewMockManager(ctrl)
 			cfgManager.EXPECT().GetConfig().AnyTimes().Return(tt.inputCfg)
-			cfgManager.EXPECT().AddOnChangeHook(gomock.Any()).Do(func(h func()) {})
 			// Create service
 			s := &service{
 				cfgManager: cfgManager,

@@ -13,6 +13,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	cmocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config/mocks"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	smocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -100,6 +101,7 @@ func TestInternal_Server_Listen(t *testing.T) {
 	// Create go mock controller
 	ctrl := gomock.NewController(t)
 	cfgManagerMock := cmocks.NewMockManager(ctrl)
+	signalHandlerMock := smocks.NewMockClient(ctrl)
 
 	// Load configuration in manager
 	cfgManagerMock.EXPECT().GetConfig().AnyTimes().Return(&config.Config{
@@ -109,7 +111,7 @@ func TestInternal_Server_Listen(t *testing.T) {
 		},
 	})
 
-	svr := NewInternalServer(log.NewLogger(), cfgManagerMock, metricsCtx)
+	svr := NewInternalServer(log.NewLogger(), cfgManagerMock, metricsCtx, signalHandlerMock)
 	// Generate server
 	svr.GenerateServer()
 
