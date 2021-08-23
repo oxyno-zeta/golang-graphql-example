@@ -25,7 +25,7 @@ type service struct {
 }
 
 func (s *service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
-	return gqlopentracing.Tracer{DisableNonResolverBindingTrace: true}
+	return gqlopentracing.Tracer{}
 }
 
 func (s *service) GetTracer() opentracing.Tracer {
