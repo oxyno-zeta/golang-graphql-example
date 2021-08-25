@@ -31,7 +31,9 @@ func (s *service) Migrate() error {
 	// Create migration sequence
 	m := gormigrate.New(
 		db,
-		gormigrate.DefaultOptions,
+		// Due to #76, force transaction to have a rollback
+		// https://github.com/go-gormigrate/gormigrate/issues/76
+		&gormigrate.Options{UseTransaction: true},
 		sequences,
 	)
 
