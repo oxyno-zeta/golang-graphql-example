@@ -35,7 +35,6 @@ func NewClient(logger log.Logger, serverMode bool, signalListToNotify []os.Signa
 		serverMode:               serverMode,
 		signalListToNotify:       signalListToNotifyInternal,
 		hooksStorage:             map[os.Signal][]func(){},
-		signalChan:               make(chan os.Signal),
 		activeRequestCounter:     0,
 		activeRequestCounterChan: make(chan int64),
 	}

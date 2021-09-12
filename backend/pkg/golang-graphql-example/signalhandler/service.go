@@ -17,7 +17,6 @@ type service struct {
 	logger                   log.Logger
 	serverMode               bool
 	signalListToNotify       []os.Signal
-	signalChan               chan os.Signal
 	hooksStorage             map[os.Signal][]func()
 	activeRequestCounter     int64
 	activeRequestCounterChan chan int64
