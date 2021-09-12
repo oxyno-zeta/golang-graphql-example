@@ -7,6 +7,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"gorm.io/gorm"
 )
 
@@ -36,11 +37,13 @@ func NewDatabase(
 	cfgManager config.Manager,
 	logger log.Logger,
 	metricsCl metrics.Client,
+	tracingSvc tracing.Service,
 ) DB {
 	return &postresdb{
 		logger:         logger,
 		cfgManager:     cfgManager,
 		metricsCl:      metricsCl,
+		tracingSvc:     tracingSvc,
 		connectionName: connectionName,
 	}
 }

@@ -9,6 +9,7 @@ import (
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"gorm.io/gorm"
 )
 
 // Service Tracing service.
@@ -22,6 +23,8 @@ type Service interface {
 	HTTPMiddleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
 	// Graphql Middleware
 	GraphqlMiddleware() gqlgraphql.HandlerExtension
+	// Get database middleware.
+	DatabaseMiddleware() gorm.Plugin
 }
 
 // Trace structure.

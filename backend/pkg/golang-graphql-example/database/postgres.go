@@ -8,11 +8,10 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/pkg/errors"
-	"gorm.io/gorm"
-	gormopentracing "gorm.io/plugin/opentracing"
-
 	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var (
@@ -25,6 +24,7 @@ type postresdb struct {
 	cfgManager     config.Manager
 	connectionName string
 	metricsCl      metrics.Client
+	tracingSvc     tracing.Service
 }
 
 func SetTransactionalGormDBToContext(cntx context.Context, db *gorm.DB) context.Context {
@@ -133,7 +133,8 @@ func (ctx *postresdb) Connect() error {
 		return errors.WithStack(err)
 	}
 
-	err = dbResult.Use(gormopentracing.New())
+	// Apply tracing middleware
+	err = dbResult.Use(ctx.tracingSvc.DatabaseMiddleware())
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)

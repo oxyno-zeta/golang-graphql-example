@@ -80,7 +80,7 @@ func main() {
 	})
 
 	// Create database service
-	db := database.NewDatabase("main", cfgManager, logger, metricsCl)
+	db := database.NewDatabase("main", cfgManager, logger, metricsCl, tracingSvc)
 	// Connect to engine
 	err = db.Connect()
 	// Check error

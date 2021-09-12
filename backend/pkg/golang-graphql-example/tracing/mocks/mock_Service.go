@@ -12,6 +12,7 @@ import (
 	gin "github.com/gin-gonic/gin"
 	gomock "github.com/golang/mock/gomock"
 	opentracing "github.com/opentracing/opentracing-go"
+	gorm "gorm.io/gorm"
 )
 
 // MockService is a mock of Service interface.
@@ -35,6 +36,20 @@ func NewMockService(ctrl *gomock.Controller) *MockService {
 // EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockService) EXPECT() *MockServiceMockRecorder {
 	return m.recorder
+}
+
+// DatabaseMiddleware mocks base method.
+func (m *MockService) DatabaseMiddleware() gorm.Plugin {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DatabaseMiddleware")
+	ret0, _ := ret[0].(gorm.Plugin)
+	return ret0
+}
+
+// DatabaseMiddleware indicates an expected call of DatabaseMiddleware.
+func (mr *MockServiceMockRecorder) DatabaseMiddleware() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockService)(nil).DatabaseMiddleware))
 }
 
 // GetTracer mocks base method.

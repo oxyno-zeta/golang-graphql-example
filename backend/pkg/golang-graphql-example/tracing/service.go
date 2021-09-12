@@ -10,10 +10,11 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/pkg/errors"
-
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
 	jaegerprom "github.com/uber/jaeger-lib/metrics/prometheus"
+	"gorm.io/gorm"
+	gormopentracing "gorm.io/plugin/opentracing"
 )
 
 type service struct {
@@ -22,6 +23,10 @@ type service struct {
 	cfgManager     config.Manager
 	logger         log.Logger
 	metricsFactory *jaegerprom.Factory
+}
+
+func (s *service) DatabaseMiddleware() gorm.Plugin {
+	return gormopentracing.New()
 }
 
 func (s *service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
