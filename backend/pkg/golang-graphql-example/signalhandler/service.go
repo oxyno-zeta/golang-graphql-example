@@ -18,6 +18,7 @@ type service struct {
 	serverMode               bool
 	signalListToNotify       []os.Signal
 	hooksStorage             map[os.Signal][]func()
+	onExitHookStorage        []func()
 	activeRequestCounter     int64
 	activeRequestCounterChan chan int64
 	stoppingSysInProgress    bool
@@ -66,6 +67,10 @@ func (s *service) Initialize() error {
 	return nil
 }
 
+func (s *service) OnExit(hook func()) {
+	s.onExitHookStorage = append(s.onExitHookStorage, hook)
+}
+
 func (s *service) OnSignal(signal os.Signal, hook func()) {
 	// Check if array exist
 	if s.hooksStorage[signal] != nil {
@@ -97,6 +102,11 @@ func (s *service) stoppingAppHook() {
 			if s.activeRequestCounter == 0 {
 				// Log
 				s.logger.Info("Stopping application")
+				// Run on exit all hooks
+				for _, h := range s.onExitHookStorage {
+					// Start hook
+					h()
+				}
 				// Stopping application
 				os.Exit(0)
 			}

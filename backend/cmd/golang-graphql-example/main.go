@@ -139,14 +139,7 @@ func main() {
 		logger.Fatal(err)
 	}
 	// Register closing database connections on system stop
-	signalHandlerSvc.OnSignal(syscall.SIGTERM, func() {
-		err = db.Close()
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
-	})
-	signalHandlerSvc.OnSignal(syscall.SIGINT, func() {
+	signalHandlerSvc.OnExit(func() {
 		err = db.Close()
 		// Check error
 		if err != nil {
