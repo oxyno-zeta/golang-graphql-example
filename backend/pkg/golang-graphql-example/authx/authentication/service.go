@@ -254,7 +254,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 
 		// Build cookie
 		cookie := &http.Cookie{
-			Expires:  oauth2Token.Expiry,
+			Expires:  idToken.Expiry,
 			Name:     cfg.OIDCAuthentication.CookieName,
 			Value:    rawIDToken,
 			HttpOnly: true,
