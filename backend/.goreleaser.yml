@@ -24,9 +24,6 @@ builds:
       - amd64
       - arm
       - arm64
-      - 386
-      - ppc64le
-      - s390x
     goarm:
       - 6
       - 7
@@ -37,6 +34,8 @@ builds:
     ignore:
       - goos: darwin
         goarch: 386
+      - goos: windows
+        goarch: arm64
 archives:
   - format_overrides:
       - goos: windows
@@ -59,68 +58,89 @@ changelog:
 dockers:
   - goos: linux
     goarch: amd64
-    binaries:
+    ids:
       - golang-graphql-example
     image_templates:
-      - "oxynozeta/golang-graphql-example:latest"
-      - "oxynozeta/golang-graphql-example:{{ .Version }}"
-      - "oxynozeta/golang-graphql-example:{{ .Major }}"
-      - "oxynozeta/golang-graphql-example:{{ .Major }}.{{ .Minor }}"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-amd64"
     skip_push: false
+    use: buildx
     dockerfile: Dockerfile
     build_flag_templates:
+      - "--platform=linux/amd64"
       - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
       - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
     extra_files:
       - templates/
-  # Disabled because can't build arm on release laptop
-  # - goos: linux
-  #   goarch: arm
-  #   goarm: 6
-  #   binaries:
-  #     - golang-graphql-example
-  #   image_templates:
-  #     - "oxynozeta/golang-graphql-example:latest-armv6"
-  #     - "oxynozeta/golang-graphql-example:{{ .Version }}-armv6"
-  #     - "oxynozeta/golang-graphql-example:{{ .Major }}-armv6"
-  #     - "oxynozeta/golang-graphql-example:{{ .Major }}.{{ .Minor }}-armv6"
-  #   skip_push: false
-  #   dockerfile: Dockerfile.armv6
-  #   build_flag_templates:
-  #     - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
-  #     - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
-  #   extra_files:
-  #     - templates/
-  # - goos: linux
-  #   goarch: arm
-  #   goarm: 7
-  #   binaries:
-  #     - golang-graphql-example
-  #   image_templates:
-  #     - "oxynozeta/golang-graphql-example:latest-armv7"
-  #     - "oxynozeta/golang-graphql-example:{{ .Version }}-armv7"
-  #     - "oxynozeta/golang-graphql-example:{{ .Major }}-armv7"
-  #     - "oxynozeta/golang-graphql-example:{{ .Major }}.{{ .Minor }}-armv7"
-  #   skip_push: false
-  #   dockerfile: Dockerfile.armv7
-  #   build_flag_templates:
-  #     - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
-  #     - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
-  #   extra_files:
-  #     - templates/
-  # - goos: linux
-  #   goarch: arm64
-  #   binaries:
-  #     - golang-graphql-example
-  #   image_templates:
-  #     - "oxynozeta/golang-graphql-example:latest-arm64"
-  #     - "oxynozeta/golang-graphql-example:{{ .Version }}-arm64"
-  #     - "oxynozeta/golang-graphql-example:{{ .Major }}-arm64"
-  #     - "oxynozeta/golang-graphql-example:{{ .Major }}.{{ .Minor }}-arm64"
-  #   skip_push: false
-  #   dockerfile: Dockerfile.arm64
-  #   build_flag_templates:
-  #     - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
-  #     - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
-  #   extra_files:
-  #     - templates/
+  - goos: linux
+    goarch: arm
+    goarm: 6
+    ids:
+      - golang-graphql-example
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv6"
+    skip_push: false
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm/v6"
+      - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
+      - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
+    extra_files:
+      - templates/
+  - goos: linux
+    goarch: arm
+    goarm: 7
+    ids:
+      - golang-graphql-example
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv7"
+    skip_push: false
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm/v7"
+      - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
+      - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
+    extra_files:
+      - templates/
+  - goos: linux
+    goarch: arm64
+    ids:
+      - golang-graphql-example
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-arm64"
+    skip_push: false
+    use: buildx
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--platform=linux/arm64/v8"
+      - "--label=oxyno-zeta.golang-graphql-example.version={{ .Version }}"
+      - "--label=oxyno-zeta.golang-graphql-example.name={{ .ProjectName }}"
+    extra_files:
+      - templates/
+
+docker_manifests:
+  - name_template: oxynozeta/golang-graphql-example:latest
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-amd64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-arm64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv6"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv7"
+  - name_template: "oxynozeta/golang-graphql-example:{{ .Version }}"
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-amd64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-arm64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv6"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv7"
+  - name_template: "oxynozeta/golang-graphql-example:{{ .Major }}"
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-amd64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-arm64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv6"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv7"
+  - name_template: "oxynozeta/golang-graphql-example:{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-amd64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-arm64"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv6"
+      - "oxynozeta/golang-graphql-example:{{ .Version }}-armv7"
