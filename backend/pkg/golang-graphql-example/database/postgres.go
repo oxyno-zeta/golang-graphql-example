@@ -18,7 +18,7 @@ var (
 	transactionContextKey = &contextKey{name: "TRANSACTION"}
 )
 
-type postresdb struct {
+type sqldb struct {
 	logger         log.Logger
 	db             *gorm.DB
 	cfgManager     config.Manager
@@ -46,7 +46,7 @@ func GetTransactionalGormDBFromContext(ctx context.Context) *gorm.DB {
 	return res
 }
 
-func (pdb *postresdb) ExecuteTransaction(ctx context.Context, cb func(context.Context) error) error {
+func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Context) error) error {
 	// Create transaction callback
 	txCb := func(tx *gorm.DB) error {
 		// Inject transactional db in context
@@ -56,10 +56,10 @@ func (pdb *postresdb) ExecuteTransaction(ctx context.Context, cb func(context.Co
 		return cb(newCtx)
 	}
 
-	return pdb.db.Transaction(txCb)
+	return sdb.db.Transaction(txCb)
 }
 
-func (pdb *postresdb) GetTransactionalOrDefaultGormDB(ctx context.Context) *gorm.DB {
+func (sdb *sqldb) GetTransactionalOrDefaultGormDB(ctx context.Context) *gorm.DB {
 	// Get transactional gorm db in context
 	tx := GetTransactionalGormDBFromContext(ctx)
 
@@ -70,22 +70,22 @@ func (pdb *postresdb) GetTransactionalOrDefaultGormDB(ctx context.Context) *gorm
 	}
 
 	// Default
-	return pdb.GetGormDB().WithContext(ctx)
+	return sdb.GetGormDB().WithContext(ctx)
 }
 
-func (pdb *postresdb) GetSQLDB() (*sql.DB, error) {
-	return pdb.db.DB()
+func (sdb *sqldb) GetSQLDB() (*sql.DB, error) {
+	return sdb.db.DB()
 }
 
 // GetGormDB will return a gorm database object.
-func (pdb *postresdb) GetGormDB() *gorm.DB {
-	return pdb.db
+func (sdb *sqldb) GetGormDB() *gorm.DB {
+	return sdb.db
 }
 
 // Connect will connect to database engine.
-func (pdb *postresdb) Connect() error {
+func (sdb *sqldb) Connect() error {
 	// Get configuration
-	cfg := pdb.cfgManager.GetConfig()
+	cfg := sdb.cfgManager.GetConfig()
 
 	var sqlConnectionMaxLifetimeDuration time.Duration
 	// Try to parse sql connection max lifetime duration
@@ -107,7 +107,7 @@ func (pdb *postresdb) Connect() error {
 			return time.Now().UTC()
 		},
 		// Add logger
-		Logger: pdb.logger.GetGormLogger(),
+		Logger: sdb.logger.GetGormLogger(),
 		// Disable foreign key constraint when migrating
 		DisableForeignKeyConstraintWhenMigrating: cfg.Database.DisableForeignKeyWhenMigrating,
 		// Allow global update
@@ -116,7 +116,7 @@ func (pdb *postresdb) Connect() error {
 		PrepareStmt: cfg.Database.PrepareStatement,
 	}
 
-	pdb.logger.Debug("Trying to connect to database engine of type PostgreSQL")
+	sdb.logger.Debug("Trying to connect to database engine of type PostgreSQL")
 	// Connect to database
 	dbResult, err := gorm.Open(postgres.Open(cfg.Database.ConnectionURL.Value), gcfg)
 	// Check if error exists
@@ -125,7 +125,7 @@ func (pdb *postresdb) Connect() error {
 	}
 
 	// Get prometheus gorm middleware
-	md := pdb.metricsCl.DatabaseMiddleware(pdb.connectionName)
+	md := sdb.metricsCl.DatabaseMiddleware(sdb.connectionName)
 	// Apply middleware
 	err = dbResult.Use(md)
 	// Check if error exists
@@ -134,7 +134,7 @@ func (pdb *postresdb) Connect() error {
 	}
 
 	// Apply tracing middleware
-	err = dbResult.Use(pdb.tracingSvc.DatabaseMiddleware())
+	err = dbResult.Use(sdb.tracingSvc.DatabaseMiddleware())
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
@@ -173,19 +173,19 @@ func (pdb *postresdb) Connect() error {
 	}
 
 	// Save gorm db object
-	pdb.db = dbResult
+	sdb.db = dbResult
 
-	pdb.logger.Info("Successfully connected to database engine of type PostgreSQL")
+	sdb.logger.Info("Successfully connected to database engine of type PostgreSQL")
 
 	// Return
 	return nil
 }
 
 // Close will close connection to database.
-func (pdb *postresdb) Close() error {
-	pdb.logger.Info("Closing database connection")
+func (sdb *sqldb) Close() error {
+	sdb.logger.Info("Closing database connection")
 	// Get sql database
-	sqlDB, err := pdb.db.DB()
+	sqlDB, err := sdb.db.DB()
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
@@ -203,9 +203,9 @@ func (pdb *postresdb) Close() error {
 }
 
 // Ping will ping database engine in order to test connection to engine.
-func (pdb *postresdb) Ping() error {
+func (sdb *sqldb) Ping() error {
 	// Get sql database
-	sqlDB, err := pdb.db.DB()
+	sqlDB, err := sdb.db.DB()
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
@@ -220,9 +220,9 @@ func (pdb *postresdb) Ping() error {
 	return nil
 }
 
-func (pdb *postresdb) Reconnect() error {
+func (sdb *sqldb) Reconnect() error {
 	// Get old sql db object
-	sqlDB, err := pdb.db.DB()
+	sqlDB, err := sdb.db.DB()
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
@@ -230,7 +230,7 @@ func (pdb *postresdb) Reconnect() error {
 	// Defer closing old database connection
 	defer sqlDB.Close()
 	// Connect to new database
-	err = pdb.Connect()
+	err = sdb.Connect()
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)

@@ -39,7 +39,7 @@ func NewDatabase(
 	metricsCl metrics.Client,
 	tracingSvc tracing.Service,
 ) DB {
-	return &postresdb{
+	return &sqldb{
 		logger:         logger,
 		cfgManager:     cfgManager,
 		metricsCl:      metricsCl,
