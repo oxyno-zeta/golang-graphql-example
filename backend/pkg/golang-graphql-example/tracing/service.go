@@ -37,6 +37,14 @@ func (s *service) GetTracer() opentracing.Tracer {
 	return s.tracer
 }
 
+func (s *service) StartTrace(operationName string) Trace {
+	// Start a new span from tracer
+	sp := s.tracer.StartSpan(operationName)
+
+	// Return trace object with span
+	return &trace{span: sp}
+}
+
 func (s *service) Reload() error {
 	// Save closer
 	cl := s.closer

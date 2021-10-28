@@ -12,6 +12,7 @@ import (
 	gin "github.com/gin-gonic/gin"
 	gomock "github.com/golang/mock/gomock"
 	opentracing "github.com/opentracing/opentracing-go"
+	tracing "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	gorm "gorm.io/gorm"
 )
 
@@ -106,4 +107,18 @@ func (m *MockService) Reload() error {
 func (mr *MockServiceMockRecorder) Reload() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reload", reflect.TypeOf((*MockService)(nil).Reload))
+}
+
+// StartTrace mocks base method.
+func (m *MockService) StartTrace(arg0 string) tracing.Trace {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "StartTrace", arg0)
+	ret0, _ := ret[0].(tracing.Trace)
+	return ret0
+}
+
+// StartTrace indicates an expected call of StartTrace.
+func (mr *MockServiceMockRecorder) StartTrace(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), arg0)
 }

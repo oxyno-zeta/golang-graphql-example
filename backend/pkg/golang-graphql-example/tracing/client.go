@@ -15,16 +15,18 @@ import (
 // Service Tracing service.
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Service
 type Service interface {
-	// Reload service
+	// Reload service.
 	Reload() error
-	// Get opentracing tracer
+	// Get opentracing tracer.
 	GetTracer() opentracing.Tracer
-	// Http Gin HttpMiddleware to add trace per request
+	// Http Gin HttpMiddleware to add trace per request.
 	HTTPMiddleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
-	// Graphql Middleware
+	// Graphql Middleware.
 	GraphqlMiddleware() gqlgraphql.HandlerExtension
 	// Get database middleware.
 	DatabaseMiddleware() gorm.Plugin
+	// StartSpan will return a new trace created from scratch.
+	StartTrace(operationName string) Trace
 }
 
 // Trace structure.
