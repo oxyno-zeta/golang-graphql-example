@@ -11,6 +11,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/pkg/errors"
 	"gorm.io/driver/postgres"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -116,9 +117,16 @@ func (sdb *sqldb) Connect() error {
 		PrepareStmt: cfg.Database.PrepareStatement,
 	}
 
-	sdb.logger.Debug("Trying to connect to database engine of type PostgreSQL")
+	// Select postgres driver
+	openFunction := postgres.Open
+	// Check if sqlite driver is selected
+	if cfg.Database.Driver == SqliteDriverSelector {
+		openFunction = sqlite.Open
+	}
+
+	sdb.logger.Debugf("Trying to connect to database engine of type %s", cfg.Database.Driver)
 	// Connect to database
-	dbResult, err := gorm.Open(postgres.Open(cfg.Database.ConnectionURL.Value), gcfg)
+	dbResult, err := gorm.Open(openFunction(cfg.Database.ConnectionURL.Value), gcfg)
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
@@ -175,7 +183,7 @@ func (sdb *sqldb) Connect() error {
 	// Save gorm db object
 	sdb.db = dbResult
 
-	sdb.logger.Info("Successfully connected to database engine of type PostgreSQL")
+	sdb.logger.Infof("Successfully connected to database engine of type %s", cfg.Database.Driver)
 
 	// Return
 	return nil

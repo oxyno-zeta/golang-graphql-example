@@ -27,6 +27,9 @@ var DefaultOIDCScopes = []string{"openid", "email", "profile"}
 // Default cookie name.
 const DefaultCookieName = "oidc"
 
+// Default Database driver.
+const DefaultDatabaseDriver = "POSTGRES"
+
 // Config Configuration object.
 type Config struct {
 	Log                    *LogConfig              `mapstructure:"log"`
@@ -109,6 +112,7 @@ type ServerCorsConfig struct {
 
 // DatabaseConfig Database configuration.
 type DatabaseConfig struct {
+	Driver                           string            `mapstructure:"driver" validate:"required,oneof=POSTGRES SQLITE"`
 	ConnectionURL                    *CredentialConfig `mapstructure:"connectionUrl" validate:"required"`
 	DisableForeignKeyWhenMigrating   bool              `mapstructure:"disableForeignKeyWhenMigrating"`
 	AllowGlobalUpdate                bool              `mapstructure:"allowGlobalUpdate"`

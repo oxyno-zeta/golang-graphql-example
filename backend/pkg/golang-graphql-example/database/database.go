@@ -11,6 +11,11 @@ import (
 	"gorm.io/gorm"
 )
 
+const (
+	PostgresDriverSelector = "POSTGRES"
+	SqliteDriverSelector   = "SQLITE"
+)
+
 //go:generate mockgen -destination=./mocks/mock_DB.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database DB
 type DB interface {
 	// ExecuteTransaction will execute a transaction.
