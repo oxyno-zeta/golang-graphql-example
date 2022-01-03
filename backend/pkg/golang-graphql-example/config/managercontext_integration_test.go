@@ -66,6 +66,7 @@ database:
 				},
 				Tracing: &TracingConfig{Enabled: false},
 				Database: &DatabaseConfig{
+					Driver:        "POSTGRES",
 					ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 				},
 				Server:         &ServerConfig{Port: 8080},
@@ -215,7 +216,7 @@ tracing:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-
+			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -258,7 +259,7 @@ log:
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-
+				Driver:        "POSTGRES",
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -358,7 +359,7 @@ oidcAuthentication:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-
+			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -412,7 +413,7 @@ oidcAuthentication:
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-
+				Driver:        "POSTGRES",
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -515,7 +516,7 @@ tracing:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-
+			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -559,7 +560,7 @@ configuration with error
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-
+				Driver:        "POSTGRES",
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -656,7 +657,7 @@ opaServerAuthorization:
 		},
 		Tracing: &TracingConfig{Enabled: true},
 		Database: &DatabaseConfig{
-
+			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
@@ -706,7 +707,7 @@ opaServerAuthorization:
 			},
 			Tracing: &TracingConfig{Enabled: true},
 			Database: &DatabaseConfig{
-
+				Driver:        "POSTGRES",
 				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 			},
 			LockDistributor: &LockDistributorConfig{
@@ -813,7 +814,7 @@ database:
 		},
 		Tracing: &TracingConfig{Enabled: false},
 		Database: &DatabaseConfig{
-
+			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
 		},
 		LockDistributor: &LockDistributorConfig{
