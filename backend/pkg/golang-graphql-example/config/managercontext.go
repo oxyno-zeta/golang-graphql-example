@@ -21,7 +21,7 @@ import (
 var mainConfigFolderPath = "conf/"
 
 // TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials.
-var TemplateErrLoadingEnvCredentialEmpty = "error loading credentials, environment variable %s is empty"
+var TemplateErrLoadingEnvCredentialEmpty = "error loading credentials, environment variable %s is empty" // nolint: gosec // False positive
 
 var validate = validator.New()
 

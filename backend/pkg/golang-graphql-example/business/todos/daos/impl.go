@@ -34,7 +34,7 @@ func (d *dao) FindByID(ctx context.Context, id string, projection *models.Projec
 	if err != nil {
 		// Check if it is a not found error
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return nil, nil
+			return nil, nil // nolint: nilnil // not needed here
 		}
 
 		return nil, errors.WithStack(err)

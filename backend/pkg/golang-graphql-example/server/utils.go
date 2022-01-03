@@ -28,7 +28,7 @@ func manageCORS(router gin.IRoutes, cfg *config.ServerConfig) error {
 func generateCORSConfiguration(cfg *config.ServerCorsConfig) (*cors.Config, error) {
 	// Check if cors configuration exists
 	if cfg == nil {
-		return nil, nil
+		return nil, nil // nolint: nilnil // not needed here
 	}
 
 	// Prepare configuration

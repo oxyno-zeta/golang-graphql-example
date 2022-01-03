@@ -28,5 +28,5 @@ func (chc *customHealthChecker) Execute(ctx context.Context) (interface{}, error
 	}
 
 	// Default
-	return nil, nil
+	return nil, nil // nolint: nilnil // not needed here
 }
