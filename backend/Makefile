@@ -188,14 +188,14 @@ ifndef HAS_GIT
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
-	$(GO) get -u github.com/golang/mock/mockgen@v1.6.0
+	$(GO) install github.com/golang/mock/mockgen@v1.6.0
 endif
 # Uncomment to use gox instead of goreleaser
 # ifndef HAS_GOX
 # 	@echo "=> Installing gox"
-# 	$(GO) get -u github.com/mitchellh/gox
+# 	$(GO) install github.com/mitchellh/gox
 # endif
-	$(GO) mod download
+	$(GO) mod download all
 
 .PHONY: setup/dep/tidy
 setup/dep/tidy:
@@ -203,7 +203,7 @@ setup/dep/tidy:
 
 .PHONY: setup/dep/update
 setup/dep/update:
-	$(GO) get -u ./...
+	$(GO) get ./...
 
 .PHONY: setup/dep/vendor
 setup/dep/vendor:
