@@ -12,7 +12,6 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
-	"github.com/99designs/gqlgen/graphql/playground"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/static"
@@ -156,7 +155,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 
 	// Add graphql endpoints
 	router.POST("/api/graphql", svr.graphqlHandler(svr.busiServices))
-	router.GET("/api/graphql", playgroundHandler())
+	router.GET("/api/graphql", gin.WrapH(graphiqlHandler("GraphQL", "/api/graphql")))
 
 	// Add gin html files for answer
 	router.LoadHTMLGlob("static/*.html")
@@ -249,13 +248,4 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
 
 	return gin.WrapH(h)
-}
-
-// Defining the Playground handler.
-func playgroundHandler() gin.HandlerFunc {
-	h := playground.Handler("GraphQL", "/api/graphql")
-
-	return func(c *gin.Context) {
-		h.ServeHTTP(c.Writer, c.Request)
-	}
 }
