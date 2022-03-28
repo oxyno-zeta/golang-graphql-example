@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
@@ -45,6 +46,20 @@ func (m *MockLock) Acquire() error {
 func (mr *MockLockMockRecorder) Acquire() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Acquire", reflect.TypeOf((*MockLock)(nil).Acquire))
+}
+
+// AcquireWithContext mocks base method.
+func (m *MockLock) AcquireWithContext(arg0 context.Context) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "AcquireWithContext", arg0)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// AcquireWithContext indicates an expected call of AcquireWithContext.
+func (mr *MockLockMockRecorder) AcquireWithContext(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AcquireWithContext", reflect.TypeOf((*MockLock)(nil).AcquireWithContext), arg0)
 }
 
 // IsAlreadyTaken mocks base method.

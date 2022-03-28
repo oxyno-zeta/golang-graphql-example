@@ -1,6 +1,8 @@
 package lockdistributor
 
 import (
+	"context"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
@@ -18,6 +20,8 @@ type Service interface {
 type Lock interface {
 	// Acquire lock
 	Acquire() error
+	// Acquire lock with context
+	AcquireWithContext(ctx context.Context) error
 	// Release lock
 	Release() error
 	// Check if a lock with this name is already taken

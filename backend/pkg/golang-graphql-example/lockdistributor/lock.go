@@ -1,6 +1,8 @@
 package lockdistributor
 
 import (
+	"context"
+
 	"github.com/pkg/errors"
 
 	"cirello.io/pglock"
@@ -27,6 +29,18 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 
 	// Check if lock exists or not
 	return lo != nil, nil
+}
+
+func (l *lock) AcquireWithContext(ctx context.Context) error {
+	ll, err := l.s.cl.AcquireContext(ctx, l.name)
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+	// Save lock
+	l.pl = ll
+
+	return nil
 }
 
 func (l *lock) Acquire() error {
