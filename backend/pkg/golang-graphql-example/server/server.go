@@ -224,12 +224,12 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
 		// Get logger
 		logger := log.GetLoggerFromContext(ctx)
+		// Log error
+		logger.Error(err)
 		// Initialize potential generic error
 		var err2 *cerrors.GenericError
 		// Get generic error if available
 		if errors.As(err, &err2) {
-			// Log error
-			logger.Error(err2)
 			// Return graphql error
 			return &gqlerror.Error{
 				Path:       gqlgraphql.GetPath(ctx),
@@ -237,8 +237,6 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 				Message:    err2.Error(),
 			}
 		}
-		// Log error
-		logger.Error(err)
 		// Return
 		return gqlgraphql.DefaultErrorPresenter(ctx, err)
 	})
