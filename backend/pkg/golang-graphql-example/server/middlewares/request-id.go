@@ -60,7 +60,7 @@ func GetRequestIDFromGin(c *gin.Context) string {
 	requestIDObj, requestIDExists := c.Get(requestIDContextKey)
 	if requestIDExists {
 		// return request id
-		return requestIDObj.(string)
+		return requestIDObj.(string) // nolint: forcetypeassert // Ignored
 	}
 
 	return ""
@@ -69,7 +69,7 @@ func GetRequestIDFromGin(c *gin.Context) string {
 func GetRequestIDFromContext(ctx context.Context) string {
 	requestIDObj := ctx.Value(reqCtxKey)
 	if requestIDObj != nil {
-		return requestIDObj.(string)
+		return requestIDObj.(string) // nolint: forcetypeassert // Ignored
 	}
 
 	return ""
