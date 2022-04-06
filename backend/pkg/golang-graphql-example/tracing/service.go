@@ -26,7 +26,14 @@ type service struct {
 }
 
 func (s *service) DatabaseMiddleware() gorm.Plugin {
-	return gormopentracing.New()
+	return gormopentracing.New(
+		gormopentracing.WithCreateOpName("sql:create"),
+		gormopentracing.WithUpdateOpName("sql:update"),
+		gormopentracing.WithQueryOpName("sql:query"),
+		gormopentracing.WithDeleteOpName("sql:delete"),
+		gormopentracing.WithRowOpName("sql:row"),
+		gormopentracing.WithRawOpName("sql:raw"),
+	)
 }
 
 func (s *service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
