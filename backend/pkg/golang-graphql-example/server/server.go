@@ -122,7 +122,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware())
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(svr.tracingSvc.HTTPMiddleware(middlewares.GetRequestIDFromContext))
-	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetSpanIDFromContext))
+	router.Use(log.Middleware(svr.logger, middlewares.GetRequestIDFromGin, tracing.GetTraceIDFromContext))
 	router.Use(svr.metricsCl.Instrument("business"))
 	// Add helmet for security
 	router.Use(helmet.Default())

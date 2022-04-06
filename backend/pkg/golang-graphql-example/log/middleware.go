@@ -40,7 +40,7 @@ func SetLoggerToGin(c *gin.Context, logger Logger) {
 	c.Set(loggerGinCtxKey, logger)
 }
 
-func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpanID func(ctx context.Context) string) gin.HandlerFunc {
+func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getTraceID func(ctx context.Context) string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		t1 := time.Now()
 		// Get request
@@ -68,10 +68,10 @@ func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getSpan
 		// Log request id
 		logFields["request_id"] = getRequestID(c)
 
-		// Get span id
-		spanID := getSpanID(c.Request.Context())
-		if spanID != "" {
-			logFields["span_id"] = spanID
+		// Get trace id
+		traceID := getTraceID(c.Request.Context())
+		if traceID != "" {
+			logFields["trace_id"] = traceID
 		}
 
 		requestLogger := logger.WithFields(logFields)

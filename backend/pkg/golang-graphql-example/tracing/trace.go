@@ -65,7 +65,12 @@ func GetTraceFromContext(ctx context.Context) Trace {
 	}
 }
 
+// @deprecated.
 func GetSpanIDFromContext(ctx context.Context) string {
+	return GetTraceIDFromContext(ctx)
+}
+
+func GetTraceIDFromContext(ctx context.Context) string {
 	tr := GetTraceFromContext(ctx)
 	if tr != nil {
 		return tr.GetTraceID()
