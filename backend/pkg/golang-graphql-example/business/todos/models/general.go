@@ -12,6 +12,7 @@ type SortOrder struct {
 type Filter struct {
 	AND       []*Filter
 	OR        []*Filter
+	ID        *common.GenericFilter `dbfield:"id"`
 	CreatedAt *common.DateFilter    `dbfield:"created_at"`
 	UpdatedAt *common.DateFilter    `dbfield:"updated_at"`
 	Text      *common.GenericFilter `dbfield:"text"`

@@ -1,6 +1,6 @@
 module github.com/oxyno-zeta/golang-graphql-example
 
-go 1.17
+go 1.18
 
 require (
 	cirello.io/pglock v1.8.1-0.20211117154543-39de3558537f
@@ -19,6 +19,7 @@ require (
 	github.com/go-playground/validator/v10 v10.10.1
 	github.com/gofrs/uuid v4.2.0+incompatible
 	github.com/golang/mock v1.6.0
+	github.com/graph-gophers/dataloader/v6 v6.0.0
 	github.com/opentracing-contrib/go-gin v0.0.0-20201220185307-1dd2273433a4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.9.1

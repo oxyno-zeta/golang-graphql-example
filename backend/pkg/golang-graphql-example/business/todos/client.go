@@ -16,6 +16,12 @@ type AuthorizationService interface {
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos Service
 type Service interface {
+	Find(
+		ctx context.Context,
+		sort *models.SortOrder,
+		filter *models.Filter,
+		projection *models.Projection,
+	) ([]*models.Todo, error)
 	GetAllPaginated(
 		ctx context.Context,
 		page *pagination.PageInput,

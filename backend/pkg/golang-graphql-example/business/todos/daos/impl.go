@@ -85,3 +85,44 @@ func (d *dao) GetAllPaginated(
 
 	return res, pageOut, nil
 }
+
+func (d *dao) Find(
+	ctx context.Context,
+	sort *models.SortOrder,
+	filter *models.Filter,
+	projection *models.Projection,
+) ([]*models.Todo, error) {
+	// Get gorm db
+	db := d.db.GetTransactionalOrDefaultGormDB(ctx)
+	// result
+	res := make([]*models.Todo, 0)
+	// Apply filter
+	db, err := common.ManageFilter(filter, db)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Apply sort
+	db, err = common.ManageSortOrder(sort, db)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Apply projection
+	db, err = common.ManageProjection(projection, db)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Request to database with limit and offset
+	db = db.Find(res)
+	// Check error
+	if db.Error != nil {
+		return nil, errors.WithStack(db.Error)
+	}
+
+	return res, nil
+}

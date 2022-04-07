@@ -26,6 +26,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	gutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
@@ -153,6 +154,8 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		router.Use(svr.authenticationSvc.Middleware([]*regexp.Regexp{apiReg}))
 	}
 
+	// Integrate graphql dataloaders
+	router.Use(dataloaders.Middleware(svr.busiServices))
 	// Add graphql endpoints
 	router.POST("/api/graphql", svr.graphqlHandler(svr.busiServices))
 	router.GET("/api/graphql", gin.WrapH(graphiqlHandler("GraphQL", "/api/graphql")))

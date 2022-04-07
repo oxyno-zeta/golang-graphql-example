@@ -40,6 +40,15 @@ func (s *service) FindByID(ctx context.Context, id string, projection *models.Pr
 	return res, nil
 }
 
+func (s *service) Find(
+	ctx context.Context,
+	sort *models.SortOrder,
+	filter *models.Filter,
+	projection *models.Projection,
+) ([]*models.Todo, error) {
+	return s.dao.Find(ctx, sort, filter, projection)
+}
+
 func (s *service) GetAllPaginated(
 	ctx context.Context,
 	page *pagination.PageInput,

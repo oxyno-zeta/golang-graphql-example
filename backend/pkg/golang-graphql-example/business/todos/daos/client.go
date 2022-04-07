@@ -10,6 +10,12 @@ import (
 
 //go:generate mockgen -destination=./mocks/mock_Doa.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/daos Dao
 type Dao interface {
+	Find(
+		ctx context.Context,
+		sort *models.SortOrder,
+		filter *models.Filter,
+		projection *models.Projection,
+	) ([]*models.Todo, error)
 	GetAllPaginated(
 		ctx context.Context,
 		page *pagination.PageInput,
