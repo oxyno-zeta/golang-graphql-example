@@ -70,3 +70,13 @@ repos:
           - "make code/graphql/no-break-check"
         require_serial: true
         language: script
+      - id: frontend-lint
+        stages: [commit]
+        files: \.(tsx|ts|js|jsx)$
+        name: Frontend lint
+        entry: ./run-sub-folder-task.sh
+        args:
+          - frontend
+          - "yarn lint"
+        require_serial: true
+        language: script

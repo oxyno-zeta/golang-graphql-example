@@ -1,0 +1,92 @@
+{
+  "common": {
+    "mainTitle": "Todo List",
+    "cancelAction": "Cancel",
+    "closeAction": "Close",
+    "openAction": "Open",
+    "clearAction": "Clear",
+    "okAction": "Ok",
+    "applyAction": "Apply",
+    "resetAction": "Reset",
+    "loadAction": "Load",
+    "nextPageAction": "Next page",
+    "previousPageAction": "Previous page",
+    "errors": "Errors",
+    "gridViewTooltip": "Grid view",
+    "tableViewTooltip": "List view",
+    "noData": "No data",
+    "actions": "Actions",
+    "date": {
+      "nextMonthAction": "Next month",
+      "previousMonthAction": "Previous month",
+      "todayAction": "Today",
+      "dateTimePickerToolbarTitle": "Select date & time"
+    },
+    "fields": {
+      "createdAt": "Created at",
+      "updatedAt": "Updated at"
+    },
+    "boolean": {
+      "true": "True",
+      "false": "False"
+    },
+    "fieldValidationError": {
+      "required": "Required",
+      "mustBeAString": "Must be a string",
+      "mustBeANumber": "Must be a number"
+    },
+    "filter": {
+      "dialogTitle": "Filter",
+      "buttonTooltip": "Advanced filter",
+      "field": "Field",
+      "operation": "Operation",
+      "value": "Value",
+      "addOption": "Add \"{{ option }}\"",
+      "noOptions": "No options",
+      "selectPredefinedFilter": "Predefined filter",
+      "addNewField": "Add new field",
+      "addNewGroupField": "Add new field group",
+      "deleteGroupField": "Remove group",
+      "deleteField": "Remove field"
+    },
+    "operations": {
+      "and": "AND",
+      "or": "OR",
+      "eq": "Equal",
+      "notEq": "Not equal",
+      "contains": "Contains",
+      "notContains": "Not contains",
+      "startsWith": "Starts with",
+      "notStartsWith": "Not starts with",
+      "endsWith": "Ends with",
+      "notEndsWith": "Not ends with",
+      "in": "In",
+      "notIn": "Not in",
+      "isNull": "Is null",
+      "isNotNull": "Is not null",
+      "gte": "Greater and equal to",
+      "notGte": "Not greater and equal to",
+      "lte": "Less and equal to",
+      "notLte": "Not less and equal to",
+      "gt": "Greater to",
+      "notGt": "Not greater to",
+      "lt": "Less to",
+      "notLt": "Not less to"
+    },
+    "sort": {
+      "dialogTitle": "Sort",
+      "buttonTooltip": "Sort",
+      "asc": "Ascendent",
+      "desc": "Descendent",
+      "undefined": "None"
+    },
+    "configLoadError": "An error have been detected in the web site initialization. Please contact your administrator.",
+    "configEmptyError": "An error have been detected in the web site configuration. Please contact your administrator."
+  },
+  "todos": {
+    "fields": {
+      "text": "Text",
+      "done": "Done"
+    }
+  }
+}
