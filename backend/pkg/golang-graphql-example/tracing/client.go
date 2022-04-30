@@ -34,6 +34,8 @@ type Service interface {
 type Trace interface {
 	// Add tag to trace
 	SetTag(key string, value interface{})
+	// Add tags to trace
+	SetTags(tags map[string]interface{})
 	// Get a child trace
 	GetChildTrace(operationName string) Trace
 	// End the trace
