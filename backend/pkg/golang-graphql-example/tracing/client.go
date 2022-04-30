@@ -43,6 +43,8 @@ type Trace interface {
 	SetTag(key string, value interface{})
 	// Add tags to trace
 	SetTags(tags map[string]interface{})
+	// MarkAsError will mark trace as in error.
+	MarkAsError()
 	// Get a child trace
 	GetChildTrace(operationName string) Trace
 	// End the trace

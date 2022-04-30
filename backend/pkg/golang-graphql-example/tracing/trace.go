@@ -13,6 +13,10 @@ type trace struct {
 	span opentracing.Span
 }
 
+func (t *trace) MarkAsError() {
+	t.SetTag("error", true)
+}
+
 func (t *trace) SetTag(key string, value interface{}) {
 	t.span.SetTag(key, value)
 }
