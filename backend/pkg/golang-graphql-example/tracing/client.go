@@ -30,6 +30,10 @@ type Service interface {
 	// StartChildTraceOrTraceFromContext will return a child trace if a trace is found inside
 	// the context or a new trace with the operation name.
 	StartChildTraceOrTraceFromContext(ctx context.Context, operationName string) Trace
+	// ExtractFromTextMapAndStartSpan will extract trace from textmap and start a new one from this one.
+	ExtractFromTextMapAndStartSpan(txtMap map[string]string, operationName string) (Trace, error)
+	// ExtractFromTextMapAndStartSpan will extract trace from http headers and start a new one from this one.
+	ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operationName string) (Trace, error)
 }
 
 // Trace structure.
@@ -47,6 +51,8 @@ type Trace interface {
 	GetTraceID() string
 	// InjectInHTTPHeader will inject span in http header for forwarding.
 	InjectInHTTPHeader(header http.Header) error
+	// InjectInTextMap will inject span in text map for forwarding.
+	InjectInTextMap(textMap map[string]string) error
 }
 
 func New(cfgManager config.Manager, logger log.Logger) (Service, error) {

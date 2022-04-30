@@ -42,6 +42,14 @@ func (t *trace) InjectInHTTPHeader(header http.Header) error {
 	))
 }
 
+func (t *trace) InjectInTextMap(textMap map[string]string) error {
+	return errors.WithStack(opentracing.GlobalTracer().Inject(
+		t.span.Context(),
+		opentracing.TextMap,
+		opentracing.TextMapCarrier(textMap),
+	))
+}
+
 func (t *trace) Finish() {
 	t.span.Finish()
 }

@@ -3,6 +3,7 @@ package tracing
 import (
 	"context"
 	"io"
+	"net/http"
 	"time"
 
 	"github.com/99designs/gqlgen-contrib/gqlopentracing"
@@ -63,6 +64,40 @@ func (s *service) StartChildTraceOrTraceFromContext(ctx context.Context, operati
 
 	// Create new trace
 	return s.StartTrace(operationName)
+}
+
+func (s *service) ExtractFromTextMapAndStartSpan(txtMap map[string]string, operationName string) (Trace, error) {
+	// Get carrier
+	carrier := opentracing.TextMapCarrier(txtMap)
+
+	// Extract
+	sctx, err := s.tracer.Extract(opentracing.TextMap, carrier)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Start span
+	sp := s.tracer.StartSpan(operationName, opentracing.ChildOf(sctx))
+
+	return &trace{span: sp}, nil
+}
+
+func (s *service) ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operationName string) (Trace, error) {
+	// Get carrier
+	carrier := opentracing.HTTPHeadersCarrier(headers)
+
+	// Extract
+	sctx, err := s.tracer.Extract(opentracing.HTTPHeaders, carrier)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Start span
+	sp := s.tracer.StartSpan(operationName, opentracing.ChildOf(sctx))
+
+	return &trace{span: sp}, nil
 }
 
 func (s *service) Reload() error {
