@@ -27,6 +27,9 @@ type Service interface {
 	DatabaseMiddleware() gorm.Plugin
 	// StartSpan will return a new trace created from scratch.
 	StartTrace(operationName string) Trace
+	// StartChildTraceOrTraceFromContext will return a child trace if a trace is found inside
+	// the context or a new trace with the operation name.
+	StartChildTraceOrTraceFromContext(ctx context.Context, operationName string) Trace
 }
 
 // Trace structure.

@@ -1,6 +1,7 @@
 package tracing
 
 import (
+	"context"
 	"io"
 	"time"
 
@@ -50,6 +51,18 @@ func (s *service) StartTrace(operationName string) Trace {
 
 	// Return trace object with span
 	return &trace{span: sp}
+}
+
+func (s *service) StartChildTraceOrTraceFromContext(ctx context.Context, operationName string) Trace {
+	// Get trace from context
+	tr := GetTraceFromContext(ctx)
+	// Check if it exists
+	if tr != nil {
+		return tr.GetChildTrace(operationName)
+	}
+
+	// Create new trace
+	return s.StartTrace(operationName)
 }
 
 func (s *service) Reload() error {
