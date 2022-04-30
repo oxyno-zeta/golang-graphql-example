@@ -39,17 +39,17 @@ type Service interface {
 // Trace structure.
 //go:generate mockgen -destination=./mocks/mock_Trace.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Trace
 type Trace interface {
-	// Add tag to trace
+	// Add tag to trace.
 	SetTag(key string, value interface{})
-	// Add tags to trace
+	// Add tags to trace.
 	SetTags(tags map[string]interface{})
 	// MarkAsError will mark trace as in error.
 	MarkAsError()
-	// Get a child trace
+	// Get a child trace.
 	GetChildTrace(operationName string) Trace
-	// End the trace
+	// End the trace.
 	Finish()
-	// Get the trace ID
+	// Get the trace ID.
 	GetTraceID() string
 	// InjectInHTTPHeader will inject span in http header for forwarding.
 	InjectInHTTPHeader(header http.Header) error
