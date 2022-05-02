@@ -18,7 +18,7 @@ func ManageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	return manageFilter(filter, db, db, false)
 }
 
-func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) { //nolint:unparam // Because seems to be bugged...
+func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
 	// Create result
 	res := db
 	// Get reflect value of filter object
