@@ -24,6 +24,14 @@ type service struct {
 	stoppingSysInProgress    bool
 }
 
+func (s *service) IncreaseActiveRequestCounter() {
+	s.activeRequestCounterChan <- 1
+}
+
+func (s *service) DecreaseActiveRequestCounter() {
+	s.activeRequestCounterChan <- -1
+}
+
 func (s *service) IsStoppingSystem() bool {
 	return s.stoppingSysInProgress
 }

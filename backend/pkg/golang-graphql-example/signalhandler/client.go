@@ -24,6 +24,10 @@ type Client interface {
 	ActiveRequestCounterMiddleware() gin.HandlerFunc
 	// Is stopping system will return true if the application is stopping.
 	IsStoppingSystem() bool
+	// IncreaseActiveRequestCounter will increase active request counter by one.
+	IncreaseActiveRequestCounter()
+	// DecreaseActiveRequestCounter will decrease active request counter by one.
+	DecreaseActiveRequestCounter()
 }
 
 func NewClient(logger log.Logger, serverMode bool, signalListToNotify []os.Signal) Client {

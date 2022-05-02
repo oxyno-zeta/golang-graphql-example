@@ -49,6 +49,30 @@ func (mr *MockClientMockRecorder) ActiveRequestCounterMiddleware() *gomock.Call 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ActiveRequestCounterMiddleware", reflect.TypeOf((*MockClient)(nil).ActiveRequestCounterMiddleware))
 }
 
+// DecreaseActiveRequestCounter mocks base method.
+func (m *MockClient) DecreaseActiveRequestCounter() {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "DecreaseActiveRequestCounter")
+}
+
+// DecreaseActiveRequestCounter indicates an expected call of DecreaseActiveRequestCounter.
+func (mr *MockClientMockRecorder) DecreaseActiveRequestCounter() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DecreaseActiveRequestCounter", reflect.TypeOf((*MockClient)(nil).DecreaseActiveRequestCounter))
+}
+
+// IncreaseActiveRequestCounter mocks base method.
+func (m *MockClient) IncreaseActiveRequestCounter() {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "IncreaseActiveRequestCounter")
+}
+
+// IncreaseActiveRequestCounter indicates an expected call of IncreaseActiveRequestCounter.
+func (mr *MockClientMockRecorder) IncreaseActiveRequestCounter() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseActiveRequestCounter", reflect.TypeOf((*MockClient)(nil).IncreaseActiveRequestCounter))
+}
+
 // Initialize mocks base method.
 func (m *MockClient) Initialize() error {
 	m.ctrl.T.Helper()
