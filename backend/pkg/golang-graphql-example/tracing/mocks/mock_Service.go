@@ -6,6 +6,7 @@ package mocks
 
 import (
 	context "context"
+	http "net/http"
 	reflect "reflect"
 
 	graphql "github.com/99designs/gqlgen/graphql"
@@ -51,6 +52,36 @@ func (m *MockService) DatabaseMiddleware() gorm.Plugin {
 func (mr *MockServiceMockRecorder) DatabaseMiddleware() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockService)(nil).DatabaseMiddleware))
+}
+
+// ExtractFromHTTPHeaderAndStartSpan mocks base method.
+func (m *MockService) ExtractFromHTTPHeaderAndStartSpan(arg0 http.Header, arg1 string) (tracing.Trace, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ExtractFromHTTPHeaderAndStartSpan", arg0, arg1)
+	ret0, _ := ret[0].(tracing.Trace)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ExtractFromHTTPHeaderAndStartSpan indicates an expected call of ExtractFromHTTPHeaderAndStartSpan.
+func (mr *MockServiceMockRecorder) ExtractFromHTTPHeaderAndStartSpan(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtractFromHTTPHeaderAndStartSpan", reflect.TypeOf((*MockService)(nil).ExtractFromHTTPHeaderAndStartSpan), arg0, arg1)
+}
+
+// ExtractFromTextMapAndStartSpan mocks base method.
+func (m *MockService) ExtractFromTextMapAndStartSpan(arg0 map[string]string, arg1 string) (tracing.Trace, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ExtractFromTextMapAndStartSpan", arg0, arg1)
+	ret0, _ := ret[0].(tracing.Trace)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ExtractFromTextMapAndStartSpan indicates an expected call of ExtractFromTextMapAndStartSpan.
+func (mr *MockServiceMockRecorder) ExtractFromTextMapAndStartSpan(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtractFromTextMapAndStartSpan", reflect.TypeOf((*MockService)(nil).ExtractFromTextMapAndStartSpan), arg0, arg1)
 }
 
 // GetTracer mocks base method.
@@ -107,6 +138,20 @@ func (m *MockService) Reload() error {
 func (mr *MockServiceMockRecorder) Reload() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reload", reflect.TypeOf((*MockService)(nil).Reload))
+}
+
+// StartChildTraceOrTraceFromContext mocks base method.
+func (m *MockService) StartChildTraceOrTraceFromContext(arg0 context.Context, arg1 string) tracing.Trace {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "StartChildTraceOrTraceFromContext", arg0, arg1)
+	ret0, _ := ret[0].(tracing.Trace)
+	return ret0
+}
+
+// StartChildTraceOrTraceFromContext indicates an expected call of StartChildTraceOrTraceFromContext.
+func (mr *MockServiceMockRecorder) StartChildTraceOrTraceFromContext(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartChildTraceOrTraceFromContext", reflect.TypeOf((*MockService)(nil).StartChildTraceOrTraceFromContext), arg0, arg1)
 }
 
 // StartTrace mocks base method.

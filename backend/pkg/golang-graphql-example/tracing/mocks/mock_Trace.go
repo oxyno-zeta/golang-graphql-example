@@ -89,6 +89,32 @@ func (mr *MockTraceMockRecorder) InjectInHTTPHeader(arg0 interface{}) *gomock.Ca
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InjectInHTTPHeader", reflect.TypeOf((*MockTrace)(nil).InjectInHTTPHeader), arg0)
 }
 
+// InjectInTextMap mocks base method.
+func (m *MockTrace) InjectInTextMap(arg0 map[string]string) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "InjectInTextMap", arg0)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// InjectInTextMap indicates an expected call of InjectInTextMap.
+func (mr *MockTraceMockRecorder) InjectInTextMap(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InjectInTextMap", reflect.TypeOf((*MockTrace)(nil).InjectInTextMap), arg0)
+}
+
+// MarkAsError mocks base method.
+func (m *MockTrace) MarkAsError() {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "MarkAsError")
+}
+
+// MarkAsError indicates an expected call of MarkAsError.
+func (mr *MockTraceMockRecorder) MarkAsError() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "MarkAsError", reflect.TypeOf((*MockTrace)(nil).MarkAsError))
+}
+
 // SetTag mocks base method.
 func (m *MockTrace) SetTag(arg0 string, arg1 interface{}) {
 	m.ctrl.T.Helper()
@@ -99,4 +125,16 @@ func (m *MockTrace) SetTag(arg0 string, arg1 interface{}) {
 func (mr *MockTraceMockRecorder) SetTag(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTag", reflect.TypeOf((*MockTrace)(nil).SetTag), arg0, arg1)
+}
+
+// SetTags mocks base method.
+func (m *MockTrace) SetTags(arg0 map[string]interface{}) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "SetTags", arg0)
+}
+
+// SetTags indicates an expected call of SetTags.
+func (mr *MockTraceMockRecorder) SetTags(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTags", reflect.TypeOf((*MockTrace)(nil).SetTags), arg0)
 }
