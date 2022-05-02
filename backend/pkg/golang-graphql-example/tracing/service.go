@@ -74,7 +74,7 @@ func (s *service) ExtractFromTextMapAndStartSpan(txtMap map[string]string, opera
 	sctx, err := s.tracer.Extract(opentracing.TextMap, carrier)
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	// Start span
@@ -91,7 +91,7 @@ func (s *service) ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operati
 	sctx, err := s.tracer.Extract(opentracing.HTTPHeaders, carrier)
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	// Start span
