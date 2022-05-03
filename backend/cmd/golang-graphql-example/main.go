@@ -13,6 +13,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	amqpbusmessage "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/messagebus/amqp"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
@@ -47,9 +48,9 @@ func main() {
 	// Watch change for logger (special case)
 	cfgManager.AddOnChangeHook(func() {
 		// Get configuration
-		cfg := cfgManager.GetConfig()
+		newCfg := cfgManager.GetConfig()
 		// Configure logger
-		err = logger.Configure(cfg.Log.Level, cfg.Log.Format, cfg.Log.FilePath)
+		err = logger.Configure(newCfg.Log.Level, newCfg.Log.Format, newCfg.Log.FilePath)
 		// Check error
 		if err != nil {
 			logger.Fatal(err)
@@ -147,6 +148,36 @@ func main() {
 		}
 	})
 
+	// Initialize
+	var amqpSvc amqpbusmessage.Client
+	// Check if amqp have configuration set
+	if cfg.AMQP != nil {
+		// Create amqp bus message service
+		amqpSvc = amqpbusmessage.New(logger, cfgManager, tracingSvc, signalHandlerSvc, metricsCl)
+		// Connect
+		err = amqpSvc.Connect()
+		// Check error
+		if err != nil {
+			logger.Fatal(err)
+		}
+		// Add configuration reload hook
+		cfgManager.AddOnChangeHook(func() {
+			err = amqpSvc.Reconnect()
+			// Check error
+			if err != nil {
+				logger.Fatal(err)
+			}
+		})
+		// Register closing connections on system stop
+		signalHandlerSvc.OnExit(func() {
+			err2 := amqpSvc.Close()
+			// Check error
+			if err2 != nil {
+				logger.Fatal(err2)
+			}
+		})
+	}
+
 	// Create authentication service
 	authoSvc := authorization.NewService(cfgManager)
 
@@ -182,6 +213,16 @@ func main() {
 		Interval: 10 * time.Second, //nolint:gomnd // Won't do a const for that
 		Timeout:  3 * time.Second,  //nolint:gomnd // Won't do a const for that
 	})
+	// Check if amqp service exists
+	if amqpSvc != nil {
+		// Add checker for amqp service
+		intSvr.AddChecker(&server.CheckerInput{
+			Name:     "amqp",
+			CheckFn:  amqpSvc.Ping,
+			Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
+			Timeout:  time.Second,
+		})
+	}
 
 	// Generate server
 	err = svr.GenerateServer()

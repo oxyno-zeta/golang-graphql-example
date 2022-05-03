@@ -71,7 +71,7 @@ func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getTrac
 		// Get trace id
 		traceID := getTraceID(c.Request.Context())
 		if traceID != "" {
-			logFields["trace_id"] = traceID
+			logFields[LogTraceIDField] = traceID
 		}
 
 		requestLogger := logger.WithFields(logFields)

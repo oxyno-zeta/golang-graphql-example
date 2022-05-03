@@ -41,6 +41,62 @@ type Config struct {
 	OIDCAuthentication     *OIDCAuthConfig         `mapstructure:"oidcAuthentication"`
 	OPAServerAuthorization *OPAServerAuthorization `mapstructure:"opaServerAuthorization"`
 	SMTP                   *SMTPConfig             `mapstructure:"smtp" validate:"omitempty"`
+	AMQP                   *AMQPConfig             `mapstructure:"amqp" validate:"omitempty,dive"`
+}
+
+// AMQPConfig AMQP Message Bus configuration.
+type AMQPConfig struct {
+	Connection *AMQPConnectionConfig  `mapstructure:"connection" validate:"required"`
+	Exchanges  []*AMQPExchangeConfig  `mapstructure:"exchanges" validate:"required,dive,required"`
+	Queues     []*AMQPQueueConfig     `mapstructure:"queues" validate:"omitempty,dive"`
+	QueueBinds []*AMQPQueueBindConfig `mapstructure:"queueBinds" validate:"omitempty,dive"`
+	ChannelQos *AMQPChannelQosConfig  `mapstructure:"channelQos" validate:"omitempty,dive"`
+}
+
+// AMQPChannelQosConfig AMQP Channel Qos Configuration.
+type AMQPChannelQosConfig struct {
+	PrefetchCount int  `mapstructure:"prefetchCount"`
+	PrefetchSize  int  `mapstructure:"prefetchSize"`
+	Global        bool `mapstructure:"global"`
+}
+
+// AMQPConnectionConfig AMQP Connection Configuration.
+type AMQPConnectionConfig struct {
+	URL               *CredentialConfig      `mapstructure:"url" validate:"required"`
+	ExtraArgs         map[string]interface{} `mapstructure:"extraArgs"`
+	ChannelMax        int                    `mapstructure:"channelMax"`
+	FrameSize         int                    `mapstructure:"frameSize"`
+	HeartbeatDuration string                 `mapstructure:"heartbeatDuration"`
+}
+
+// AMQPQueueBindConfig AMQP Message Bus QueueBind Configuration.
+type AMQPQueueBindConfig struct {
+	Name      string                 `mapstructure:"name" validate:"required"`
+	Key       string                 `mapstructure:"key" validate:"required"`
+	Exchange  string                 `mapstructure:"exchange" validate:"required"`
+	NoWait    bool                   `mapstructure:"noWait"`
+	ExtraArgs map[string]interface{} `mapstructure:"extraArgs"`
+}
+
+// AMQPQueueConfig AMQP Message Bus Queue configuration.
+type AMQPQueueConfig struct {
+	Name       string                 `mapstructure:"name" validate:"required"`
+	Durable    bool                   `mapstructure:"durable"`
+	AutoDelete bool                   `mapstructure:"autoDelete"`
+	Exclusive  bool                   `mapstructure:"exclusive"`
+	NoWait     bool                   `mapstructure:"noWait"`
+	ExtraArgs  map[string]interface{} `mapstructure:"extraArgs"`
+}
+
+// AMQPExchangeConfig AMQP Message Bus Exchange configuration.
+type AMQPExchangeConfig struct {
+	Name       string                 `mapstructure:"name" validate:"required"`
+	Type       string                 `mapstructure:"type" validate:"required"`
+	Durable    bool                   `mapstructure:"durable"`
+	AutoDelete bool                   `mapstructure:"autoDelete"`
+	Internal   bool                   `mapstructure:"internal"`
+	NoWait     bool                   `mapstructure:"noWait"`
+	ExtraArgs  map[string]interface{} `mapstructure:"extraArgs"`
 }
 
 // LockDistributorConfig Lock distributor configuration.

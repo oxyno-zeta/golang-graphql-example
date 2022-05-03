@@ -39,6 +39,7 @@ In this folder, there is:
 - `pkg/../database`: This folder contains the package managing the SQL database connection and access.
 - `pkg/../lockdistributor`: This contains a package that allow to acquire a distributed semaphore based on PostgreSQL.
 - `pkg/../log`: This contains a package to have a logger.
+- `pkg/../messagebus/amqp`: This contains a package to have a client to consume and publish to AMQP broker. This is supporting to be disconnected and handle the reconnect. Note: This service can be created only at startup if configuration on amqp part is set. Otherwise, it won't be created.
 - `pkg/../metrics`: This contains a package for metrics (Prometheus in this case).
 - `pkg/../server`: This package contains servers code, GraphQL code and utils.
 - `pkg/../tracing`: This package allow to have trace in the application using OpenTracing (implementation done with Jaeger).

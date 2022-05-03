@@ -1,0 +1,15 @@
+amqp:
+  connection:
+    url:
+      value: amqp://guest:guest@localhost:5672/
+  exchanges:
+    - name: golang-example
+      type: direct
+      durable: true
+  queues:
+    - name: test
+      durable: true
+  queueBinds:
+    - name: test
+      key: unknown
+      exchange: golang-example

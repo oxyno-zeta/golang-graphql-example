@@ -139,6 +139,7 @@ down/services:
 	docker rm -f postgres || true
 	docker rm -f opa || true
 	docker rm -f keycloak || true
+	docker rm -f rabbitmq || true
 
 .PHONY: down/metrics-services
 down/metrics-services:
@@ -173,6 +174,8 @@ setup/services: down/services
 	tar czvf .local-resources/opa/bundle.tar.gz --directory=.local-resources/opa/bundle example/
 	docker run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:0.25.2 run --server --log-level debug --log-format text --bundle /bundle.tar.gz
 	docker run -d --rm --name keycloak -p 8088:8080 -e KEYCLOAK_IMPORT=/tmp/realm-export.json -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/tmp/realm-export.json -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.3
+	# User: guest / Password: guest
+	docker run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 .PHONY: setup/dep/install
 setup/dep/install:

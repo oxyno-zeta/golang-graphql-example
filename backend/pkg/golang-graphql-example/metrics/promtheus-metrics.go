@@ -16,12 +16,14 @@ import (
 )
 
 type prometheusMetrics struct {
-	reqCnt         *prometheus.CounterVec
-	resSz          *prometheus.SummaryVec
-	reqDur         *prometheus.SummaryVec
-	reqSz          *prometheus.SummaryVec
-	up             prometheus.Gauge
-	gormPrometheus map[string]gorm.Plugin
+	reqCnt                *prometheus.CounterVec
+	resSz                 *prometheus.SummaryVec
+	reqDur                *prometheus.SummaryVec
+	reqSz                 *prometheus.SummaryVec
+	up                    prometheus.Gauge
+	gormPrometheus        map[string]gorm.Plugin
+	amqpConsumedMessages  *prometheus.CounterVec
+	amqpPublishedMessages *prometheus.CounterVec
 }
 
 func (ctx *prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
@@ -30,6 +32,22 @@ func (ctx *prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
 
 func (ctx *prometheusMetrics) PrometheusHTTPHandler() http.Handler {
 	return promhttp.Handler()
+}
+
+func (ctx *prometheusMetrics) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string) {
+	ctx.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "success").Inc()
+}
+
+func (ctx *prometheusMetrics) IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey string) {
+	ctx.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "error").Inc()
+}
+
+func (ctx *prometheusMetrics) IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string) {
+	ctx.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "success").Inc()
+}
+
+func (ctx *prometheusMetrics) IncreaseFailedAMQPPublishedMessage(exchange, routingKey string) {
+	ctx.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "error").Inc()
 }
 
 // The gorm prometheus plugin cannot be instantiated twice because there is a loop inside that cannot be modified or stopped.
@@ -146,6 +164,24 @@ func (ctx *prometheusMetrics) register() {
 	)
 	ctx.up.Set(1)
 	prometheus.MustRegister(ctx.up)
+
+	ctx.amqpConsumedMessages = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "amqp_consumed_messages_total",
+			Help: "How many AMQP messages have been consumed by queue, consumer tag, routing key and status",
+		},
+		[]string{"queue", "consumer_tag", "routing_key", "status"},
+	)
+	prometheus.MustRegister(ctx.amqpConsumedMessages)
+
+	ctx.amqpPublishedMessages = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "amqp_published_messages_total",
+			Help: "How many AMQP messages have been published by exchange, routing key and status",
+		},
+		[]string{"exchange", "routing_key", "status"},
+	)
+	prometheus.MustRegister(ctx.amqpPublishedMessages)
 
 	// Register gqlgen graphql prometheus metrics
 	gqlprometheus.Register()

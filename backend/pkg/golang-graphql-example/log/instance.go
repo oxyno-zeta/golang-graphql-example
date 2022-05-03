@@ -12,6 +12,7 @@ import (
 )
 
 const LogFileMode = 0666
+const LogTraceIDField = "trace_id"
 
 type loggerIns struct {
 	logrus.FieldLogger

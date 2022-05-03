@@ -22,6 +22,14 @@ type Client interface {
 	DatabaseMiddleware(connectionName string) gorm.Plugin
 	// Get graphql middleware.
 	GraphqlMiddleware() gqlgraphql.HandlerExtension
+	// IncreaseSuccessfullyAMQPConsumedMessage will increase counter of successfully AMQP consumed message.
+	IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string)
+	// IncreaseFailedAMQPConsumedMessage will increase counter of failed AMQP consumed message.
+	IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey string)
+	// IncreaseSuccessfullyAMQPPublishedMessage will increase counter of successfully AMQP published message.
+	IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string)
+	// IncreaseFailedAMQPPublishedMessage will increase counter of failed AMQP published message.
+	IncreaseFailedAMQPPublishedMessage(exchange, routingKey string)
 }
 
 // NewMetricsClient will generate a new Client.

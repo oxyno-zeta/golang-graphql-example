@@ -65,6 +65,54 @@ func (mr *MockClientMockRecorder) GraphqlMiddleware() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GraphqlMiddleware", reflect.TypeOf((*MockClient)(nil).GraphqlMiddleware))
 }
 
+// IncreaseFailedAMQPConsumedMessage mocks base method.
+func (m *MockClient) IncreaseFailedAMQPConsumedMessage(arg0, arg1, arg2 string) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "IncreaseFailedAMQPConsumedMessage", arg0, arg1, arg2)
+}
+
+// IncreaseFailedAMQPConsumedMessage indicates an expected call of IncreaseFailedAMQPConsumedMessage.
+func (mr *MockClientMockRecorder) IncreaseFailedAMQPConsumedMessage(arg0, arg1, arg2 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseFailedAMQPConsumedMessage", reflect.TypeOf((*MockClient)(nil).IncreaseFailedAMQPConsumedMessage), arg0, arg1, arg2)
+}
+
+// IncreaseFailedAMQPPublishedMessage mocks base method.
+func (m *MockClient) IncreaseFailedAMQPPublishedMessage(arg0, arg1 string) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "IncreaseFailedAMQPPublishedMessage", arg0, arg1)
+}
+
+// IncreaseFailedAMQPPublishedMessage indicates an expected call of IncreaseFailedAMQPPublishedMessage.
+func (mr *MockClientMockRecorder) IncreaseFailedAMQPPublishedMessage(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseFailedAMQPPublishedMessage", reflect.TypeOf((*MockClient)(nil).IncreaseFailedAMQPPublishedMessage), arg0, arg1)
+}
+
+// IncreaseSuccessfullyAMQPConsumedMessage mocks base method.
+func (m *MockClient) IncreaseSuccessfullyAMQPConsumedMessage(arg0, arg1, arg2 string) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "IncreaseSuccessfullyAMQPConsumedMessage", arg0, arg1, arg2)
+}
+
+// IncreaseSuccessfullyAMQPConsumedMessage indicates an expected call of IncreaseSuccessfullyAMQPConsumedMessage.
+func (mr *MockClientMockRecorder) IncreaseSuccessfullyAMQPConsumedMessage(arg0, arg1, arg2 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseSuccessfullyAMQPConsumedMessage", reflect.TypeOf((*MockClient)(nil).IncreaseSuccessfullyAMQPConsumedMessage), arg0, arg1, arg2)
+}
+
+// IncreaseSuccessfullyAMQPPublishedMessage mocks base method.
+func (m *MockClient) IncreaseSuccessfullyAMQPPublishedMessage(arg0, arg1 string) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "IncreaseSuccessfullyAMQPPublishedMessage", arg0, arg1)
+}
+
+// IncreaseSuccessfullyAMQPPublishedMessage indicates an expected call of IncreaseSuccessfullyAMQPPublishedMessage.
+func (mr *MockClientMockRecorder) IncreaseSuccessfullyAMQPPublishedMessage(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseSuccessfullyAMQPPublishedMessage", reflect.TypeOf((*MockClient)(nil).IncreaseSuccessfullyAMQPPublishedMessage), arg0, arg1)
+}
+
 // Instrument mocks base method.
 func (m *MockClient) Instrument(arg0 string) gin.HandlerFunc {
 	m.ctrl.T.Helper()
