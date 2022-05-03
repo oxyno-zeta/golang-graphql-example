@@ -51,6 +51,21 @@ func (mr *MockDaoMockRecorder) CreateOrUpdate(arg0, arg1 interface{}) *gomock.Ca
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrUpdate", reflect.TypeOf((*MockDao)(nil).CreateOrUpdate), arg0, arg1)
 }
 
+// Find mocks base method.
+func (m *MockDao) Find(arg0 context.Context, arg1 *models.SortOrder, arg2 *models.Filter, arg3 *models.Projection) ([]*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Find", arg0, arg1, arg2, arg3)
+	ret0, _ := ret[0].([]*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Find indicates an expected call of Find.
+func (mr *MockDaoMockRecorder) Find(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Find", reflect.TypeOf((*MockDao)(nil).Find), arg0, arg1, arg2, arg3)
+}
+
 // FindByID mocks base method.
 func (m *MockDao) FindByID(arg0 context.Context, arg1 string, arg2 *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()

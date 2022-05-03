@@ -67,6 +67,21 @@ func (mr *MockServiceMockRecorder) Create(arg0, arg1 interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockService)(nil).Create), arg0, arg1)
 }
 
+// Find mocks base method.
+func (m *MockService) Find(arg0 context.Context, arg1 *models.SortOrder, arg2 *models.Filter, arg3 *models.Projection) ([]*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Find", arg0, arg1, arg2, arg3)
+	ret0, _ := ret[0].([]*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Find indicates an expected call of Find.
+func (mr *MockServiceMockRecorder) Find(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Find", reflect.TypeOf((*MockService)(nil).Find), arg0, arg1, arg2, arg3)
+}
+
 // FindByID mocks base method.
 func (m *MockService) FindByID(arg0 context.Context, arg1 string, arg2 *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
