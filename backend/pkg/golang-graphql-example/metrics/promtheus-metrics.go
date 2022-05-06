@@ -72,7 +72,7 @@ func (ctx *prometheusMetrics) DatabaseMiddleware(connectionName string) gorm.Plu
 }
 
 // Instrument will instrument gin routes.
-func (ctx *prometheusMetrics) Instrument(serverName string) gin.HandlerFunc {
+func (ctx *prometheusMetrics) Instrument(serverName string, routerPath bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		start := time.Now()
 
@@ -84,8 +84,13 @@ func (ctx *prometheusMetrics) Instrument(serverName string) gin.HandlerFunc {
 		elapsed := float64(time.Since(start)) / float64(time.Second)
 		resSz := float64(c.Writer.Size())
 
+		path := c.Request.URL.Path
+		if routerPath {
+			path = c.FullPath()
+		}
+
 		ctx.reqDur.WithLabelValues(serverName).Observe(elapsed)
-		ctx.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, c.Request.URL.Path).Inc()
+		ctx.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, path).Inc()
 		ctx.reqSz.WithLabelValues(serverName).Observe(float64(reqSz))
 		ctx.resSz.WithLabelValues(serverName).Observe(resSz)
 	}

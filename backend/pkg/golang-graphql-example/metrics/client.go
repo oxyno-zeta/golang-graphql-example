@@ -15,7 +15,7 @@ const defaultPrometheusGormRefreshMetricsSecond = 15
 //go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics Client
 type Client interface {
 	// Instrument web server.
-	Instrument(serverName string) gin.HandlerFunc
+	Instrument(serverName string, routerPath bool) gin.HandlerFunc
 	// Get prometheus handler for http expose.
 	PrometheusHTTPHandler() http.Handler
 	// Get database middleware.
