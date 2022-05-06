@@ -73,7 +73,7 @@ func (s *service) ExtractFromTextMapAndStartSpan(txtMap map[string]string, opera
 	// Extract
 	sctx, err := s.tracer.Extract(opentracing.TextMap, carrier)
 	// Check error
-	if err != nil {
+	if err != nil && !errors.Is(err, opentracing.ErrSpanContextNotFound) {
 		return nil, errors.WithStack(err)
 	}
 
@@ -90,7 +90,7 @@ func (s *service) ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operati
 	// Extract
 	sctx, err := s.tracer.Extract(opentracing.HTTPHeaders, carrier)
 	// Check error
-	if err != nil {
+	if err != nil && !errors.Is(err, opentracing.ErrSpanContextNotFound) {
 		return nil, errors.WithStack(err)
 	}
 
