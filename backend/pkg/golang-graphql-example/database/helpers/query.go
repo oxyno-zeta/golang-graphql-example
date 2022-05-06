@@ -101,7 +101,7 @@ func FindByID[T any](
 	err = dbres.Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return *new(T), nil // nolint: nilnil // not needed here
+			return *new(T), nil
 		}
 
 		return *new(T), errors.WithStack(err)
@@ -140,7 +140,7 @@ func FindByOne[T any](
 	err = dbres.Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return *new(T), nil // nolint: nilnil // not needed here
+			return *new(T), nil
 		}
 
 		return *new(T), errors.WithStack(err)
