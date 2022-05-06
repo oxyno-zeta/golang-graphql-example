@@ -19,7 +19,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
-	"golang.org/x/sync/errgroup"
 )
 
 func main() {
@@ -235,12 +234,19 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	var g errgroup.Group
+	// Start server in routine
+	go func() {
+		err2 := svr.Listen()
+		// Check error
+		if err2 != nil {
+			logger.Fatal(err2)
+		}
+	}()
 
-	g.Go(svr.Listen)
-	g.Go(intSvr.Listen)
-
-	if err := g.Wait(); err != nil {
+	// Start internal server
+	err = intSvr.Listen()
+	// Check error
+	if err != nil {
 		logger.Fatal(err)
 	}
 }
