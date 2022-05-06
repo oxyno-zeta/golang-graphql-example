@@ -36,7 +36,7 @@ require (
 	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
 	gorm.io/driver/postgres v1.3.1
 	gorm.io/driver/sqlite v1.3.1
-	gorm.io/gorm v1.23.3
+	gorm.io/gorm v1.23.5
 	gorm.io/plugin/opentracing v0.0.0-20211220013347-7d2b2af23560
 	gorm.io/plugin/prometheus v0.0.0-20220223061010-d8bdd50fdfc7
 )
