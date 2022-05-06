@@ -2,9 +2,9 @@ package amqpbusmessage
 
 import (
 	"context"
-	"errors"
 	"time"
 
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
@@ -20,7 +20,10 @@ var tracingPublishOperation = "amqp:publish"
 var tracingConsumeOperation = "amqp:consume"
 
 // ErrPublishTimeoutReached is the error thrown when the publish timeout is over.
-var ErrPublishTimeoutReached = errors.New("timeout reached")
+var ErrPublishTimeoutReached = errors.NewInternalServerError("timeout reached")
+
+// ErrMessageNotJSON is the error thrown when the message utils parse function is called on a non "application/json" message.
+var ErrMessageNotJSON = errors.NewInvalidInputError("input haven't the json content type")
 
 // PublishConfigInput represents the publish configuration input.
 type PublishConfigInput struct {
@@ -67,7 +70,7 @@ type ConsumeConfigInput struct {
 	// RequeueOnNackFn is a function that is called to have the requeue flag on a
 	// nack response when the message consume is in error.
 	// The default value is true is no function is set.
-	RequeueOnNackFn func(d *amqp091.Delivery) bool
+	RequeueOnNackFn func(d *amqp091.Delivery, err error) bool
 }
 
 // Client represents the AMQP client.
@@ -86,9 +89,11 @@ type Client interface {
 		publishCfg *PublishConfigInput,
 	) error
 	// Consume will allow to consumer messages.
+	// GetConsumeConfig is a function to allow the support of hot reloading the configuration.
+	// Cb is a function that is called each time a message is handled.
 	Consume(
 		ctx context.Context,
-		consumeCfg *ConsumeConfigInput,
+		getConsumeCfg func() *ConsumeConfigInput,
 		cb func(ctx context.Context, delivery *amqp091.Delivery) error,
 	) error
 	// Ping will check connections statuses.
