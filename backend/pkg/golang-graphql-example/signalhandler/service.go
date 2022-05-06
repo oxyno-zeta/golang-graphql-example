@@ -117,6 +117,8 @@ func (s *service) stoppingAppHook() {
 				}
 				// Stopping application
 				os.Exit(0)
+			} else {
+				s.logger.Infof("Cannot stop application yet, still detecting %d requests", s.activeRequestCounter)
 			}
 		}
 	}()
