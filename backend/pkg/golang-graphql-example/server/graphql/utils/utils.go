@@ -12,8 +12,8 @@ import (
 	goerrors "github.com/pkg/errors"
 )
 
-const maxPageSize = 50
-const defaultPageSize = 10
+const defaultMaxPageSize = 50
+const defaultDefaultPageSize = 10
 const paginationIDPrefix = "paginate"
 const relayIDSplitSize = 2
 
@@ -74,6 +74,10 @@ func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *PageI
 }
 
 func GetPageInput(after *string, before *string, first *int, last *int) (*pagination.PageInput, error) {
+	return GetPageInputCustomized(after, before, first, last, defaultMaxPageSize, defaultDefaultPageSize)
+}
+
+func GetPageInputCustomized(after *string, before *string, first *int, last *int, maxPageSize, defaultPageSize int) (*pagination.PageInput, error) {
 	// Check if all cursors are present together
 	if after != nil && before != nil {
 		return nil, errors.NewInvalidInputError("after and before can't be present together at the same time")
@@ -142,7 +146,7 @@ func GetPageInput(after *string, before *string, first *int, last *int) (*pagina
 
 	// Check limit
 	if res.Limit > maxPageSize {
-		return nil, errors.NewInvalidInputError(fmt.Sprintf("first or last is too big, maximum is %d", maxPageSize))
+		return nil, errors.NewInvalidInputError(fmt.Sprintf("first or last is too big, maximum is %d", defaultMaxPageSize))
 	}
 
 	// Set default limit

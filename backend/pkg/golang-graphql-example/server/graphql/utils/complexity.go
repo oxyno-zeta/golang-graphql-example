@@ -43,7 +43,7 @@ func CalculateQueryConnectionComplexity(
 
 	// Check if size is size is empty
 	if size == 0 {
-		size = defaultPageSize
+		size = defaultDefaultPageSize
 	}
 
 	// Result
