@@ -18,13 +18,19 @@ type Base struct {
 
 // BeforeCreate will set a UUID rather than numeric ID.
 func (base *Base) BeforeCreate(tx *gorm.DB) error {
-	uuid, err := uuid.NewV4()
-	if err != nil {
-		return errors.WithStack(err)
-	}
+	// Check if ID is set to avoid erasing it.
+	// This is useful when it is asked to save object for the first
+	// time with a fixed id.
+	if base.ID == "" {
+		// Generate new id
+		uuid, err := uuid.NewV4()
+		if err != nil {
+			return errors.WithStack(err)
+		}
 
-	// Save new id
-	base.ID = uuid.String()
+		// Save new id
+		base.ID = uuid.String()
+	}
 
 	return nil
 }
