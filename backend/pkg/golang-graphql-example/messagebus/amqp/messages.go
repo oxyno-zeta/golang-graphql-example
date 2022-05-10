@@ -210,17 +210,17 @@ func (as *amqpService) Consume(
 			"queue": consumeCfg.QueueName,
 		})
 
+		// Check if system isn't closing
+		if as.signalHandlerSvc.IsStoppingSystem() {
+			// Closing in progress
+			// Just stop consume
+			logger.Info("consume stopped, system is stopping")
+
+			return nil
+		}
+
 		// Check if channel isn't opened or present
 		if as.consumerChannel == nil || as.consumerChannel.IsClosed() {
-			// Check if system isn't closing
-			if as.signalHandlerSvc.IsStoppingSystem() {
-				// Closing in progress
-				// Just stop consume
-				logger.Info("consume stopped, system is stopping")
-
-				return nil
-			}
-
 			// Create error
 			err := errors.New("error detected when tried to consumer: consumer channel not present or closed, retrying after delay")
 			// Log
@@ -239,6 +239,9 @@ func (as *amqpService) Consume(
 		}
 		// Build consumer tag
 		consumerTag := fmt.Sprintf("%s-%s", consumeCfg.ConsumerPrefix, hostname)
+
+		// Append to consumer tags list if not present
+		as.appendToConsumerTags(consumerTag)
 
 		// Consume
 		deliveries, cErr := as.consumerChannel.Consume(

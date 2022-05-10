@@ -175,6 +175,21 @@ func main() {
 				logger.Fatal(err2)
 			}
 		})
+		// Register canceling consumers on SIGTERM or SIGINT
+		signalHandlerSvc.OnSignal(syscall.SIGTERM, func() {
+			err2 := amqpSvc.CancelAllConsumers()
+			// Check error
+			if err2 != nil {
+				logger.Fatal(err2)
+			}
+		})
+		signalHandlerSvc.OnSignal(syscall.SIGINT, func() {
+			err2 := amqpSvc.CancelAllConsumers()
+			// Check error
+			if err2 != nil {
+				logger.Fatal(err2)
+			}
+		})
 	}
 
 	// Create authentication service

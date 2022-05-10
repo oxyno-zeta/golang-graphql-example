@@ -36,6 +36,20 @@ func (m *MockClient) EXPECT() *MockClientMockRecorder {
 	return m.recorder
 }
 
+// CancelAllConsumers mocks base method.
+func (m *MockClient) CancelAllConsumers() error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "CancelAllConsumers")
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// CancelAllConsumers indicates an expected call of CancelAllConsumers.
+func (mr *MockClientMockRecorder) CancelAllConsumers() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CancelAllConsumers", reflect.TypeOf((*MockClient)(nil).CancelAllConsumers))
+}
+
 // Close mocks base method.
 func (m *MockClient) Close() error {
 	m.ctrl.T.Helper()
@@ -65,7 +79,7 @@ func (mr *MockClientMockRecorder) Connect() *gomock.Call {
 }
 
 // Consume mocks base method.
-func (m *MockClient) Consume(arg0 context.Context, arg1 *amqpbusmessage.ConsumeConfigInput, arg2 func(context.Context, *amqp091.Delivery) error) error {
+func (m *MockClient) Consume(arg0 context.Context, arg1 func() *amqpbusmessage.ConsumeConfigInput, arg2 func(context.Context, *amqp091.Delivery) error) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Consume", arg0, arg1, arg2)
 	ret0, _ := ret[0].(error)

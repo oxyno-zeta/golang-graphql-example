@@ -82,6 +82,9 @@ type Client interface {
 	Close() error
 	// Reconnect will handle the close and connect sequence.
 	Reconnect() error
+	// CancelAllConsumers will cancel all consumers.
+	// This must be used in stop management.
+	CancelAllConsumers() error
 	// Publish will allow to publish a message.
 	Publish(
 		ctx context.Context,
@@ -113,5 +116,6 @@ func New(
 		tracingSvc:       tracingSvc,
 		signalHandlerSvc: signalHandlerSvc,
 		metricsSvc:       metricsSvc,
+		consumerTags:     []string{},
 	}
 }

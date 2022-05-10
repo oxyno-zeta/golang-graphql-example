@@ -12,6 +12,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/rabbitmq/amqp091-go"
 	amqp "github.com/rabbitmq/amqp091-go"
+	"github.com/thoas/go-funk"
 )
 
 type amqpService struct {
@@ -24,6 +25,7 @@ type amqpService struct {
 	publisherChannel    *amqp.Channel
 	consumerConnection  *amqp.Connection
 	consumerChannel     *amqp.Channel
+	consumerTags        []string
 }
 
 func (as *amqpService) Reconnect() error {
@@ -299,6 +301,23 @@ func (as *amqpService) createConfiguredChannel(conn *amqp.Connection, channelQos
 	return chann, nil
 }
 
+func (as *amqpService) CancelAllConsumers() error {
+	// Loop over all consumer tags
+	for _, ct := range as.consumerTags {
+		// Cancel consumer
+		// Note: There isn't any error when there is a cancel on a tag that
+		// doesn't exists.
+		err := as.consumerChannel.Cancel(ct, false)
+		// Check error
+		if err != nil {
+			return err
+		}
+	}
+
+	// Default
+	return nil
+}
+
 func (as *amqpService) Ping() error {
 	// Check if in progress or disconnected management in progress
 	if as.publisherConnection == nil || as.consumerConnection == nil {
@@ -316,4 +335,11 @@ func (as *amqpService) Ping() error {
 
 	// Default case
 	return nil
+}
+
+func (as *amqpService) appendToConsumerTags(newConsumerTag string) {
+	// Add it only if array isn't containing data
+	if !funk.ContainsString(as.consumerTags, newConsumerTag) {
+		as.consumerTags = append(as.consumerTags, newConsumerTag)
+	}
 }
