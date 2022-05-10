@@ -114,17 +114,17 @@ func (mr *MockClientMockRecorder) IncreaseSuccessfullyAMQPPublishedMessage(arg0,
 }
 
 // Instrument mocks base method.
-func (m *MockClient) Instrument(arg0 string) gin.HandlerFunc {
+func (m *MockClient) Instrument(arg0 string, arg1 bool) gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Instrument", arg0)
+	ret := m.ctrl.Call(m, "Instrument", arg0, arg1)
 	ret0, _ := ret[0].(gin.HandlerFunc)
 	return ret0
 }
 
 // Instrument indicates an expected call of Instrument.
-func (mr *MockClientMockRecorder) Instrument(arg0 interface{}) *gomock.Call {
+func (mr *MockClientMockRecorder) Instrument(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Instrument", reflect.TypeOf((*MockClient)(nil).Instrument), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Instrument", reflect.TypeOf((*MockClient)(nil).Instrument), arg0, arg1)
 }
 
 // PrometheusHTTPHandler mocks base method.
