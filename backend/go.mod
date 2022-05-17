@@ -23,7 +23,7 @@ require (
 	github.com/opentracing-contrib/go-gin v0.0.0-20201220185307-1dd2273433a4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.9.1
-	github.com/prometheus/client_golang v1.12.1
+	github.com/prometheus/client_golang v1.12.2
 	github.com/rabbitmq/amqp091-go v1.3.4
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/viper v1.10.1
@@ -36,9 +36,9 @@ require (
 	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
 	gorm.io/driver/postgres v1.3.1
 	gorm.io/driver/sqlite v1.3.1
-	gorm.io/gorm v1.23.3
+	gorm.io/gorm v1.23.4
 	gorm.io/plugin/opentracing v0.0.0-20211220013347-7d2b2af23560
-	gorm.io/plugin/prometheus v0.0.0-20220223061010-d8bdd50fdfc7
+	gorm.io/plugin/prometheus v0.0.0-20220517015831-ca6bfaf20bf4
 )
 
 require (
