@@ -104,7 +104,7 @@ func TestAnswerWithError(t *testing.T) {
 			args: args{
 				err: gerrors.New("fake"),
 			},
-			expectedBody:       "{\"error\":\"fake\"}",
+			expectedBody:       "{\"error\":\"internal server error\"}",
 			expectedStatusCode: 500,
 		},
 		{
@@ -112,7 +112,7 @@ func TestAnswerWithError(t *testing.T) {
 			args: args{
 				err: errors2.New("fake"),
 			},
-			expectedBody:       "{\"error\":\"fake\"}",
+			expectedBody:       "{\"error\":\"internal server error\"}",
 			expectedStatusCode: 500,
 		},
 		{
@@ -120,7 +120,15 @@ func TestAnswerWithError(t *testing.T) {
 			args: args{
 				err: errors.NewConflictError("fake"),
 			},
-			expectedBody:       "{\"error\":\"fake\",\"extensions\":{\"code\":\"CONFLICT\"}}",
+			expectedBody:       "{\"error\":\"conflict\",\"extensions\":{\"code\":\"CONFLICT\"}}",
+			expectedStatusCode: 409,
+		},
+		{
+			name: "common conflict error",
+			args: args{
+				err: errors.NewConflictErrorWithPublicMessage("fake", "fake public message"),
+			},
+			expectedBody:       "{\"error\":\"fake public message\",\"extensions\":{\"code\":\"CONFLICT\"}}",
 			expectedStatusCode: 409,
 		},
 	}

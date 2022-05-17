@@ -73,7 +73,7 @@ func AnswerWithError(c *gin.Context, err error) {
 	// Check if cast was a success
 	if ok {
 		c.AbortWithStatusJSON(err2.StatusCode(), gin.H{
-			"error":      err2.Error(),
+			"error":      err2.PublicMessage(),
 			"extensions": err2.Extensions(),
 		})
 
@@ -81,5 +81,5 @@ func AnswerWithError(c *gin.Context, err error) {
 	}
 
 	// Manage non common error
-	c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 }

@@ -237,11 +237,11 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 			return &gqlerror.Error{
 				Path:       gqlgraphql.GetPath(ctx),
 				Extensions: err2.Extensions(),
-				Message:    err2.Error(),
+				Message:    err2.PublicMessage(),
 			}
 		}
 		// Return
-		return gqlgraphql.DefaultErrorPresenter(ctx, err)
+		return gqlgraphql.DefaultErrorPresenter(ctx, cerrors.NewInternalServerError("internal server error"))
 	})
 	h.Use(apollotracing.Tracer{})
 	h.Use(svr.tracingSvc.GraphqlMiddleware())

@@ -3,9 +3,10 @@ package errors
 import "github.com/pkg/errors"
 
 type GenericError struct {
-	err        error
-	ext        map[string]interface{}
-	statusCode int
+	err         error
+	ext         map[string]interface{}
+	statusCode  int
+	publicError error
 }
 
 func (e *GenericError) Error() string {
@@ -28,4 +29,12 @@ func (e *GenericError) Extensions() map[string]interface{} {
 
 func (e *GenericError) StatusCode() int {
 	return e.statusCode
+}
+
+func (e *GenericError) PublicMessage() string {
+	return e.publicError.Error()
+}
+
+func (e *GenericError) PublicError() error {
+	return e.publicError
 }
