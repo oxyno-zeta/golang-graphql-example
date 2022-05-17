@@ -358,6 +358,16 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 		}
 	}
 
+	// Load credential for AMQP configuration
+	if out.AMQP != nil && out.AMQP.Connection != nil && out.AMQP.Connection.URL != nil {
+		err := loadCredential(out.AMQP.Connection.URL)
+		if err != nil {
+			return nil, err
+		}
+		// Append result
+		result = append(result, out.AMQP.Connection.URL)
+	}
+
 	// TODO Load credential configs here
 
 	return result, nil
