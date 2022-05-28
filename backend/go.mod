@@ -34,9 +34,9 @@ require (
 	github.com/vektah/gqlparser/v2 v2.4.1
 	github.com/xhit/go-simple-mail/v2 v2.11.0
 	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
-	gorm.io/driver/postgres v1.3.1
+	gorm.io/driver/postgres v1.3.7
 	gorm.io/driver/sqlite v1.3.1
-	gorm.io/gorm v1.23.3
+	gorm.io/gorm v1.23.4
 	gorm.io/plugin/opentracing v0.0.0-20211220013347-7d2b2af23560
 	gorm.io/plugin/prometheus v0.0.0-20220223061010-d8bdd50fdfc7
 )
@@ -56,13 +56,13 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
-	github.com/jackc/pgconn v1.11.0 // indirect
+	github.com/jackc/pgconn v1.12.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
-	github.com/jackc/pgproto3/v2 v2.2.0 // indirect
+	github.com/jackc/pgproto3/v2 v2.3.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
-	github.com/jackc/pgtype v1.10.0 // indirect
-	github.com/jackc/pgx/v4 v4.15.0 // indirect
+	github.com/jackc/pgtype v1.11.0 // indirect
+	github.com/jackc/pgx/v4 v4.16.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
