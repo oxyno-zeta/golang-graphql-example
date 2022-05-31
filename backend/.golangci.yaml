@@ -383,6 +383,8 @@ linters:
     - errchkjson
     - decorder
     - grouper
+    - execinquery
+    - nosprintfhostport
   disable:
     - prealloc
     - gochecknoglobals
@@ -398,6 +400,8 @@ linters:
     - ireturn
     - varnamelen
     - maintidx
+    - exhaustruct
+    - nonamedreturns
   disable-all: false
   presets:
     - bugs

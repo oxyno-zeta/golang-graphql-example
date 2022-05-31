@@ -11,7 +11,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/pkg/errors"
 	"github.com/rabbitmq/amqp091-go"
-	amqp "github.com/rabbitmq/amqp091-go"
 	"github.com/thoas/go-funk"
 )
 
@@ -21,10 +20,10 @@ type amqpService struct {
 	tracingSvc          tracing.Service
 	signalHandlerSvc    signalhandler.Client
 	metricsSvc          metrics.Client
-	publisherConnection *amqp.Connection
-	publisherChannel    *amqp.Channel
-	consumerConnection  *amqp.Connection
-	consumerChannel     *amqp.Channel
+	publisherConnection *amqp091.Connection
+	publisherChannel    *amqp091.Channel
+	consumerConnection  *amqp091.Connection
+	consumerChannel     *amqp091.Channel
 	consumerTags        []string
 }
 
@@ -103,8 +102,8 @@ func (as *amqpService) Connect() error {
 	}
 
 	// Start reconnect as routine
-	go as.reconnect(func() *amqp.Connection { return as.publisherConnection }, as.connectPublisher)
-	go as.reconnect(func() *amqp.Connection { return as.consumerConnection }, as.connectConsumer)
+	go as.reconnect(func() *amqp091.Connection { return as.publisherConnection }, as.connectPublisher)
+	go as.reconnect(func() *amqp091.Connection { return as.consumerConnection }, as.connectConsumer)
 
 	as.logger.Info("Successfully connected to AMQP broker")
 
@@ -115,11 +114,11 @@ func (as *amqpService) Connect() error {
 // Reconnect only the connection.
 // Channels cannot die if not closed by application itself.
 // Don't manage this case in this client.
-func (as *amqpService) reconnect(getConnection func() *amqp.Connection, connect func() error) {
+func (as *amqpService) reconnect(getConnection func() *amqp091.Connection, connect func() error) {
 	// Infinite loop
 	for {
 		// Listen for closed events
-		errReason := <-getConnection().NotifyClose(make(chan *amqp.Error))
+		errReason := <-getConnection().NotifyClose(make(chan *amqp091.Error))
 
 		// Check if reason is set, if not set, it is because the close is coming from application side
 		if errReason == nil {
@@ -187,7 +186,7 @@ func (as *amqpService) connectConsumer() error {
 	return nil
 }
 
-func (as *amqpService) connect() (*amqp.Connection, *amqp.Channel, error) {
+func (as *amqpService) connect() (*amqp091.Connection, *amqp091.Channel, error) {
 	// Get configuration
 	cfg := as.cfgManager.GetConfig()
 
@@ -229,7 +228,7 @@ func (as *amqpService) connect() (*amqp.Connection, *amqp.Channel, error) {
 	}
 
 	// Create AMQP connection configuration
-	connACfg := amqp.Config{
+	connACfg := amqp091.Config{
 		FrameSize:  amqpCfg.Connection.FrameSize,
 		ChannelMax: amqpCfg.Connection.ChannelMax,
 		Heartbeat:  heartbeat,
@@ -250,7 +249,7 @@ func (as *amqpService) connect() (*amqp.Connection, *amqp.Channel, error) {
 
 	as.logger.Debugf("Trying to establish connection to AMQP bus")
 	// Connect
-	conn, err := amqp.DialConfig(amqpCfg.Connection.URL.Value, connACfg)
+	conn, err := amqp091.DialConfig(amqpCfg.Connection.URL.Value, connACfg)
 	// Check error
 	if err != nil {
 		return nil, nil, errors.WithStack(err)
@@ -274,7 +273,7 @@ func (as *amqpService) connect() (*amqp.Connection, *amqp.Channel, error) {
 	return conn, chann, nil
 }
 
-func (as *amqpService) createConfiguredChannel(conn *amqp.Connection, channelQosCfg *config.AMQPChannelQosConfig) (*amqp.Channel, error) {
+func (as *amqpService) createConfiguredChannel(conn *amqp091.Connection, channelQosCfg *config.AMQPChannelQosConfig) (*amqp091.Channel, error) {
 	// Create channel
 	chann, err := conn.Channel()
 	// Check error
