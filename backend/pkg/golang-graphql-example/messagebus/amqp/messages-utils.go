@@ -14,7 +14,7 @@ func CreateJSONPublishingMessage(data interface{}) (*amqp091.Publishing, error) 
 	b, err := json.Marshal(data)
 	// Check error
 	if err != nil {
-		return nil, err
+		return nil, errors.WithStack(err)
 	}
 
 	// Create message
