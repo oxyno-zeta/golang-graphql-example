@@ -110,7 +110,7 @@ func FindByID[T any](
 	return res, nil
 }
 
-func FindByOne[T any](
+func FindOne[T any](
 	ctx context.Context,
 	res T,
 	db database.DB,
