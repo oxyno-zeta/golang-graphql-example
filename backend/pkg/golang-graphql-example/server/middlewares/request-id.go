@@ -44,9 +44,9 @@ func RequestID(logger log.Logger) gin.HandlerFunc {
 		}
 
 		// Store it in context
-		c.Set(requestIDContextKey, requestID)
+		SetRequestIDInGin(c, requestID)
 		// Update request with new context
-		c.Request = c.Request.WithContext(context.WithValue(c.Request.Context(), reqCtxKey, requestID))
+		c.Request = c.Request.WithContext(SetRequestIDInContext(c.Request.Context(), requestID))
 
 		// Put it on header
 		c.Writer.Header().Set(requestIDHeader, requestID)
@@ -73,4 +73,12 @@ func GetRequestIDFromContext(ctx context.Context) string {
 	}
 
 	return ""
+}
+
+func SetRequestIDInContext(ctx context.Context, requestID string) context.Context {
+	return context.WithValue(ctx, reqCtxKey, requestID)
+}
+
+func SetRequestIDInGin(c *gin.Context, requestID string) {
+	c.Set(requestIDContextKey, requestID)
 }
