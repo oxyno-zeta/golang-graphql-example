@@ -25,10 +25,22 @@ type service struct {
 }
 
 func (s *service) IncreaseActiveRequestCounter() {
+	// Check if server mode isn't enabled
+	// In this case, ignore the call
+	if !s.serverMode {
+		return
+	}
+
 	s.activeRequestCounterChan <- 1
 }
 
 func (s *service) DecreaseActiveRequestCounter() {
+	// Check if server mode isn't enabled
+	// In this case, ignore the call
+	if !s.serverMode {
+		return
+	}
+
 	s.activeRequestCounterChan <- -1
 }
 
