@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const InternalServerErrorCode = "INTERNAL_SERVER_ERROR"
+
 func NewInternalServerError(msg string) Error {
 	return NewInternalServerErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewInternalServerErrorWithExtensionsPublicErrorAndError(err, publicError er
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "INTERNAL_SERVER_ERROR"
+	customExtensions["code"] = InternalServerErrorCode
 
 	pubErr := errors.New("internal server error")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewInternalServerErrorWithExtensionsPublicErrorAndError(err, publicError er
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusInternalServerError,
+		code:        InternalServerErrorCode,
 	}
 }

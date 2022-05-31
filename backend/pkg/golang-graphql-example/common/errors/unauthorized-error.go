@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const UnauthorizedErrorCode = "UNAUTHORIZED"
+
 func NewUnauthorizedError(msg string) Error {
 	return NewUnauthorizedErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewUnauthorizedErrorWithExtensionsPublicErrorAndError(err, publicError erro
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "UNAUTHORIZED"
+	customExtensions["code"] = UnauthorizedErrorCode
 
 	pubErr := errors.New("unauthorized")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewUnauthorizedErrorWithExtensionsPublicErrorAndError(err, publicError erro
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusUnauthorized,
+		code:        UnauthorizedErrorCode,
 	}
 }

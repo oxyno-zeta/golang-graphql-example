@@ -7,6 +7,7 @@ type GenericError struct {
 	ext         map[string]interface{}
 	statusCode  int
 	publicError error
+	code        string
 }
 
 func (e *GenericError) Error() string {
@@ -37,4 +38,8 @@ func (e *GenericError) PublicMessage() string {
 
 func (e *GenericError) PublicError() error {
 	return e.publicError
+}
+
+func (e *GenericError) Code() string {
+	return e.code
 }

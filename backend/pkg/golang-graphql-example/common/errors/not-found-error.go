@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const NotFoundErrorCode = "NOT_FOUND"
+
 func NewNotFoundError(msg string) Error {
 	return NewNotFoundErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewNotFoundErrorWithExtensionsPublicErrorAndError(err, publicError error, c
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "NOT_FOUND"
+	customExtensions["code"] = NotFoundErrorCode
 
 	pubErr := errors.New("not found")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewNotFoundErrorWithExtensionsPublicErrorAndError(err, publicError error, c
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusNotFound,
+		code:        NotFoundErrorCode,
 	}
 }

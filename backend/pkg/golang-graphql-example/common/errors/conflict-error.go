@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const ConflictErrorCode = "CONFLICT"
+
 func NewConflictError(msg string) Error {
 	return NewConflictErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewConflictErrorWithExtensionsPublicErrorAndError(err, publicError error, c
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "CONFLICT"
+	customExtensions["code"] = ConflictErrorCode
 
 	pubErr := errors.New("conflict")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewConflictErrorWithExtensionsPublicErrorAndError(err, publicError error, c
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusConflict,
+		code:        ConflictErrorCode,
 	}
 }

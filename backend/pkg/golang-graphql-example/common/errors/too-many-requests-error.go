@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const TooManyRequestsErrorCode = "TOO_MANY_REQUESTS"
+
 func NewTooManyRequestsError(msg string) Error {
 	return NewTooManyRequestsErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewTooManyRequestsErrorWithExtensionsPublicErrorAndError(err, publicError e
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "TOO_MANY_REQUESTS"
+	customExtensions["code"] = TooManyRequestsErrorCode
 
 	pubErr := errors.New("too many requests")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewTooManyRequestsErrorWithExtensionsPublicErrorAndError(err, publicError e
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusTooManyRequests,
+		code:        TooManyRequestsErrorCode,
 	}
 }

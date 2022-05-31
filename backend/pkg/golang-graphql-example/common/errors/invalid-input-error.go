@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const InvalidInputErrorCode = "INVALID_INPUT"
+
 func NewInvalidInputError(msg string) Error {
 	return NewInvalidInputErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, publicError erro
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "INVALID_INPUT"
+	customExtensions["code"] = InvalidInputErrorCode
 
 	pubErr := errors.New("invalid input")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, publicError erro
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusBadRequest,
+		code:        InvalidInputErrorCode,
 	}
 }

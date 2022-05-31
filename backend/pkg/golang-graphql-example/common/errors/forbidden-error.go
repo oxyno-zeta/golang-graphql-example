@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const ForbiddenErrorCode = "FORBIDDEN"
+
 func NewForbiddenError(msg string) Error {
 	return NewForbiddenErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewForbiddenErrorWithExtensionsPublicErrorAndError(err, publicError error, 
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "FORBIDDEN"
+	customExtensions["code"] = ForbiddenErrorCode
 
 	pubErr := errors.New("forbidden")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewForbiddenErrorWithExtensionsPublicErrorAndError(err, publicError error, 
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusForbidden,
+		code:        ForbiddenErrorCode,
 	}
 }

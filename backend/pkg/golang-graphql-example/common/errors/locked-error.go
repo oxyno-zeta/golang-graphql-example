@@ -6,6 +6,8 @@ import (
 	"github.com/pkg/errors"
 )
 
+const LockedErrorCode = "LOCKED"
+
 func NewLockedError(msg string) Error {
 	return NewLockedErrorWithExtensions(msg, nil)
 }
@@ -36,7 +38,7 @@ func NewLockedErrorWithExtensionsPublicErrorAndError(err, publicError error, cus
 		customExtensions = map[string]interface{}{}
 	}
 	// Add code in custom extensions
-	customExtensions["code"] = "LOCKED"
+	customExtensions["code"] = LockedErrorCode
 
 	pubErr := errors.New("locked")
 	// Check if public error is set
@@ -50,5 +52,6 @@ func NewLockedErrorWithExtensionsPublicErrorAndError(err, publicError error, cus
 		ext:         customExtensions,
 		publicError: pubErr,
 		statusCode:  http.StatusLocked,
+		code:        LockedErrorCode,
 	}
 }
