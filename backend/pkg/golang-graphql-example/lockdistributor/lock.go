@@ -99,7 +99,7 @@ func (l *lock) Release() error {
 	// Close
 	err := l.pl.Close()
 	// Check error
-	if err != nil {
+	if err != nil && !errors.Is(err, pglock.ErrLockAlreadyReleased) {
 		return errors.WithStack(err)
 	}
 	// Default
