@@ -2,11 +2,14 @@ package lockdistributor
 
 import (
 	"context"
+	"strings"
 
 	"github.com/pkg/errors"
 
 	"cirello.io/pglock"
 )
+
+const transactionSerializeErrorMaxRetry = 1000
 
 type lock struct {
 	name string
@@ -32,27 +35,60 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 }
 
 func (l *lock) AcquireWithContext(ctx context.Context) error {
-	ll, err := l.s.cl.AcquireContext(ctx, l.name)
+	err := l.internalAcquireWithRetry(func() (*pglock.Lock, error) { return l.s.cl.AcquireContext(ctx, l.name) })
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	// Save lock
-	l.pl = ll
 
 	return nil
 }
 
 func (l *lock) Acquire() error {
-	ll, err := l.s.cl.Acquire(l.name)
+	err := l.internalAcquireWithRetry(func() (*pglock.Lock, error) { return l.s.cl.Acquire(l.name) })
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	// Save lock
-	l.pl = ll
 
 	return nil
+}
+
+func (l *lock) internalAcquireWithRetry(acquire func() (*pglock.Lock, error)) error {
+	var lastSerializeError error
+	// Initialize counter
+	counter := 0
+
+	// Loop until the max retry is reached
+	for counter < transactionSerializeErrorMaxRetry {
+		// Acquire lock
+		ll, err := acquire()
+		// Check error
+		if err != nil {
+			// Check if it is a transaction serialize error
+			if strings.Contains(err.Error(), "could not serialize access due to") {
+				// Yes, so increment and retry
+				counter++
+
+				lastSerializeError = err
+
+				continue
+			}
+
+			// No, abort here
+			return errors.WithStack(err)
+		}
+
+		// Save lock
+		l.pl = ll
+
+		// Return lock
+		return nil
+	}
+
+	// By default in this case, returning the transaction serialize error
+	// with last error message
+	return errors.Wrap(ErrAcquireTransactionSerialize, lastSerializeError.Error())
 }
 
 func (l *lock) IsReleased() (bool, error) {

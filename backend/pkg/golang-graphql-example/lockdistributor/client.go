@@ -3,10 +3,16 @@ package lockdistributor
 import (
 	"context"
 
+	"github.com/pkg/errors"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
+
+// ErrAcquireTransactionSerialize will be thrown when a transaction serialize is caught
+// and retry number have been reached.
+var ErrAcquireTransactionSerialize = errors.New("transaction error during lock acquire")
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor Service
 type Service interface {
