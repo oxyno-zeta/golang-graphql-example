@@ -35,7 +35,8 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 }
 
 func (l *lock) AcquireWithContext(ctx context.Context) error {
-	err := l.internalAcquireWithRetry(func() (*pglock.Lock, error) { return l.s.cl.AcquireContext(ctx, l.name) })
+	// Acquire lock
+	err := l.internalRetry(func() (*pglock.Lock, error) { return l.s.cl.AcquireContext(ctx, l.name) })
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
@@ -45,7 +46,7 @@ func (l *lock) AcquireWithContext(ctx context.Context) error {
 }
 
 func (l *lock) Acquire() error {
-	err := l.internalAcquireWithRetry(func() (*pglock.Lock, error) { return l.s.cl.Acquire(l.name) })
+	err := l.internalRetry(func() (*pglock.Lock, error) { return l.s.cl.Acquire(l.name) })
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
@@ -54,15 +55,15 @@ func (l *lock) Acquire() error {
 	return nil
 }
 
-func (l *lock) internalAcquireWithRetry(acquire func() (*pglock.Lock, error)) error {
+func (l *lock) internalRetry(run func() (*pglock.Lock, error)) error {
 	var lastSerializeError error
 	// Initialize counter
 	counter := 0
 
 	// Loop until the max retry is reached
 	for counter < transactionSerializeErrorMaxRetry {
-		// Acquire lock
-		ll, err := acquire()
+		// Run
+		ll, err := run()
 		// Check error
 		if err != nil {
 			// Check if it is a transaction serialize error
@@ -79,8 +80,12 @@ func (l *lock) internalAcquireWithRetry(acquire func() (*pglock.Lock, error)) er
 			return errors.WithStack(err)
 		}
 
-		// Save lock
-		l.pl = ll
+		// Check if lock exists
+		// In release case, nothing is returned
+		if ll != nil {
+			// Save lock
+			l.pl = ll
+		}
 
 		// Return lock
 		return nil
@@ -97,7 +102,11 @@ func (l *lock) IsReleased() (bool, error) {
 
 func (l *lock) Release() error {
 	// Close
-	err := l.pl.Close()
+	err := l.internalRetry(func() (*pglock.Lock, error) {
+		err := l.pl.Close()
+
+		return nil, err
+	})
 	// Check error
 	if err != nil && !errors.Is(err, pglock.ErrLockAlreadyReleased) {
 		return errors.WithStack(err)
