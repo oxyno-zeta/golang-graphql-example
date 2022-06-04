@@ -10,7 +10,6 @@ import (
 
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
-	"github.com/99designs/gqlgen/graphql/handler/apollotracing"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/gzip"
@@ -243,7 +242,6 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 		// Return
 		return gqlgraphql.DefaultErrorPresenter(ctx, cerrors.NewInternalServerError("internal server error"))
 	})
-	h.Use(apollotracing.Tracer{})
 	h.Use(svr.tracingSvc.GraphqlMiddleware())
 	h.Use(svr.metricsCl.GraphqlMiddleware())
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
