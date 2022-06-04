@@ -78,7 +78,6 @@ export type DateFilterModel = {
 export type FilterDefinitionFieldObjectMetadataModel<T> = {
   display: string;
   description?: string;
-  default?: boolean;
   operations: FilterDefinitionOperationsModel<T>;
 };
 

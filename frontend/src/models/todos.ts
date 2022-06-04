@@ -52,16 +52,13 @@ export const todoFilterDefinitionObject: FilterDefinitionFieldsModel = {
     display: 'common.fields.createdAt',
     description: 'longgggggggggggggggggggg description',
     operations: dateOperations,
-    default: false,
   },
   text: {
     display: 'todos.fields.text',
-    default: true,
     operations: stringOperations,
   },
   done: {
     display: 'todos.fields.done',
-    default: false,
     operations: booleanOperations,
   },
 };

@@ -9,6 +9,8 @@
     "applyAction": "Apply",
     "resetAction": "Reset",
     "loadAction": "Load",
+    "editAction": "Edit",
+    "deleteAction": "Delete",
     "nextPageAction": "Next page",
     "previousPageAction": "Previous page",
     "errors": "Errors",
@@ -23,8 +25,8 @@
       "dateTimePickerToolbarTitle": "Select date & time"
     },
     "fields": {
-      "createdAt": "Created at",
-      "updatedAt": "Updated at"
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
     },
     "boolean": {
       "true": "True",
