@@ -3,7 +3,7 @@ module github.com/oxyno-zeta/golang-graphql-example
 go 1.18
 
 require (
-	cirello.io/pglock v1.8.1-0.20211117154543-39de3558537f
+	cirello.io/pglock v1.9.0
 	github.com/99designs/gqlgen v0.17.2
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/AppsFlyer/go-sundheit v0.5.0
