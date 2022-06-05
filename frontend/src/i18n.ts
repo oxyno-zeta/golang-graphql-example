@@ -27,4 +27,5 @@ i18n
       loadPath: '/i18n-{{lng}}.json',
     },
   });
+
 export default i18n;

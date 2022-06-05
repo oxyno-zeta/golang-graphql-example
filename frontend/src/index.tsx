@@ -5,15 +5,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+// import i18n
+import './i18n';
+import './yup-i18n';
+
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 import MainPageCenterLoading from './components/MainPageCenterLoading';
 import ConfigProvider from './components/ConfigProvider';
 import TopBar from './components/TopBar';
 import Footer from './components/Footer';
-import reportWebVitals from './reportWebVitals';
-
-// import i18n
-import './i18n';
 import ClientProvider from './components/ClientProvider';
 
 // Extend dayjs
