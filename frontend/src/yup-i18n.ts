@@ -45,15 +45,3 @@ yup.setLocale({
     moreThan: ({ more }) => ({ key: 'common.fieldValidationError.number.moreThan', values: { more } }),
   },
 });
-
-// now use Yup schemas AFTER you defined your custom dictionary
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  name2: yup.string().required(),
-  d: yup.bool().isTrue(),
-});
-
-schema.validate({ name: 'jimmy', age: 11 }).catch((err) => {
-  console.log(err);
-  console.log(err.message.key);
-});
