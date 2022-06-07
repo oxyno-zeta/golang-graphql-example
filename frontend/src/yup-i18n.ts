@@ -29,7 +29,7 @@ yup.setLocale({
     max: ({ max }) => ({ key: 'common.fieldValidationError.string.max', values: { max } }),
     min: ({ min }) => ({ key: 'common.fieldValidationError.string.min', values: { min } }),
     lowercase: () => ({ key: 'common.fieldValidationError.string.lowercase' }),
-    uppercase: () => ({ key: 'common.fieldValidationError.string.lowercase' }),
+    uppercase: () => ({ key: 'common.fieldValidationError.string.uppercase' }),
     matches: ({ regex }) => ({ key: 'common.fieldValidationError.string.matches', values: { regex } }),
     trim: () => ({ key: 'common.fieldValidationError.string.trim' }),
     uuid: () => ({ key: 'common.fieldValidationError.string.uuid' }),
