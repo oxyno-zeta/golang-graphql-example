@@ -29,11 +29,19 @@ function GraphqlErrors({ error, noMargin }: Props) {
           </li>
         )}
         {error.graphQLErrors &&
-          error.graphQLErrors.map(({ message }, i) => (
-            <li key={`graphQLErrors-${i}`}>
-              <Typography color="error">{message}</Typography>
-            </li>
-          ))}
+          error.graphQLErrors.map(({ message, extensions }, i) => {
+            let mess = message;
+            // Check if there is a code in extensions
+            if (extensions.code) {
+              mess = t(`common.errorCode.${extensions.code}`);
+            }
+
+            return (
+              <li key={`graphQLErrors-${i}`}>
+                <Typography color="error">{mess}</Typography>
+              </li>
+            );
+          })}
         {error.networkError &&
           (error.networkError as ServerError).result &&
           (error.networkError as ServerError).result.errors &&

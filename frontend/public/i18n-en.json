@@ -120,6 +120,16 @@
       "desc": "Descendent",
       "undefined": "None"
     },
+    "errorCode": {
+      "CONFLICT": "Conflict",
+      "FORBIDDEN": "Forbidden",
+      "INTERNAL_SERVER_ERROR": "Internal Server Error",
+      "INVALID_INPUT": "Invalid Input",
+      "LOCKED": "Locked Error",
+      "NOT_FOUND": "Not found Error",
+      "TOO_MANY_REQUESTS": "Too Many Requests",
+      "UNAUTHORIZED": "Unauthorized"
+    },
     "configLoadError": "An error have been detected in the web site initialization. Please contact your administrator.",
     "configEmptyError": "An error have been detected in the web site configuration. Please contact your administrator."
   },
