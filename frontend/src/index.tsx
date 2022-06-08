@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import * as dayjs from 'dayjs';
@@ -24,7 +24,7 @@ const container = document.getElementById('root');
 const root = createRoot(container!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <CssBaseline />
       <Suspense fallback={<MainPageCenterLoading />}>
         <ConfigProvider loadingComponent={<MainPageCenterLoading />}>
@@ -37,7 +37,7 @@ root.render(
           </ClientProvider>
         </ConfigProvider>
       </Suspense>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
 );
 

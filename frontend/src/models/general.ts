@@ -105,3 +105,9 @@ export type FilterOperationMetadataModel<T> = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type FilterDefinitionFieldsModel = Record<string, FilterDefinitionFieldObjectMetadataModel<any>>;
+
+export type YupTranslateErrorModel = {
+  key: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  values?: any;
+};

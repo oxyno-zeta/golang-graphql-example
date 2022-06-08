@@ -10,7 +10,7 @@ function TopBar() {
   const { t } = useTranslation();
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar variant="dense">
         <Avatar src="/logo.png" />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: '10px' }}>

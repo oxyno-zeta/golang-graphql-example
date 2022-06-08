@@ -1,13 +1,16 @@
 {
   "common": {
     "mainTitle": "Todo List",
+    "routeNotFound": "The page you are looking for can't be found.",
     "cancelAction": "Cancel",
     "closeAction": "Close",
     "openAction": "Open",
     "clearAction": "Clear",
     "okAction": "Ok",
+    "saveAction": "Save",
     "applyAction": "Apply",
     "resetAction": "Reset",
+    "addAction": "Add",
     "loadAction": "Load",
     "editAction": "Edit",
     "deleteAction": "Delete",
