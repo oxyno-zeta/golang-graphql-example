@@ -114,6 +114,7 @@ func (as *amqpService) Connect() error {
 // Reconnect only the connection.
 // Channels cannot die if not closed by application itself.
 // Don't manage this case in this client.
+// Side note: This shouldn't arrive but sometimes... it arrives... So ping is checking channel statuses.
 func (as *amqpService) reconnect(getConnection func() *amqp091.Connection, connect func() error) {
 	// Infinite loop
 	for {
@@ -324,12 +325,21 @@ func (as *amqpService) Ping() error {
 	}
 
 	// Get publisher connection status
-	isPublisherClosed := as.publisherConnection.IsClosed()
+	isPublisherConnClosed := as.publisherConnection.IsClosed()
 	// Get consumer connection status
-	isConsumerClosed := as.consumerConnection.IsClosed()
+	isConsumerConnClosed := as.consumerConnection.IsClosed()
 	// Check status
-	if isPublisherClosed || isConsumerClosed {
+	if isPublisherConnClosed || isConsumerConnClosed {
 		return errors.New("connection to AMQP broker is closed")
+	}
+
+	// Get publisher channel status
+	isPublisherChannClosed := as.publisherChannel.IsClosed()
+	// Get consumer channel status
+	isConsumerChannClosed := as.consumerChannel.IsClosed()
+	// Check status
+	if isPublisherChannClosed || isConsumerChannClosed {
+		return errors.New("channel in connect to AMQP broker is closed")
 	}
 
 	// Default case
