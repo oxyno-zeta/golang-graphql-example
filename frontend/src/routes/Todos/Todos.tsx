@@ -4,15 +4,15 @@ import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';
 import {
-  TodoConnectionModel,
   TodoSortOrderModel,
   TodoFilterModel,
   todoFilterDefinitionObject,
   todoSortFields,
+  TodoModel,
 } from '../../models/todos';
 import PageHeader from '../../components/PageHeader';
 import FilterSearchBar from '../../components/filters/FilterSearchBar';
-import { PaginationInputModel, StringFilterModel } from '../../models/general';
+import { ConnectionModel, PaginationInputModel, StringFilterModel } from '../../models/general';
 import GraphqlErrors from '../../components/GraphqlErrors';
 import SortButton from '../../components/sorts/SortButton';
 import GridView from './components/GridView';
@@ -44,7 +44,7 @@ const GET_TODOS_QUERY = gql`
 `;
 
 interface QueryResult {
-  todos: TodoConnectionModel;
+  todos: ConnectionModel<TodoModel>;
 }
 
 interface QueryVariables {

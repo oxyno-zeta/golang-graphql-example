@@ -5,6 +5,16 @@ export type PageInfoModel = {
   endCursor?: string;
 };
 
+export type EdgeModel<T> = {
+  cursor: string;
+  node: T;
+};
+
+export type ConnectionModel<T> = {
+  edges?: EdgeModel<T>[];
+  pageInfo: PageInfoModel;
+};
+
 export type PaginationInputModel = {
   first?: number;
   last?: number;

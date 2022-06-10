@@ -5,10 +5,11 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import dayjs from 'dayjs';
-import { TodoConnectionModel, TodoModel } from '../../../../models/todos';
+import { TodoModel } from '../../../../models/todos';
+import { ConnectionModel } from '../../../../models/general';
 
 interface Props {
-  data: TodoConnectionModel | undefined;
+  data: ConnectionModel<TodoModel> | undefined;
   loading: boolean;
 }
 
@@ -32,8 +33,11 @@ function TableView({ data, loading }: Props) {
         '& .MuiDataGrid-cell:focus': { outline: 'none' },
         '& .MuiDataGrid-cell:focus-within': { outline: 'none' },
         '& .MuiDataGrid-cell:focus-visible': { outline: 'none' },
+        '& .MuiDataGrid-columnHeader:focus': { outline: 'none' },
+        '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
+        '& .MuiDataGrid-columnHeader:focus-visible': { outline: 'none' },
         '& .MuiDataGrid-columnHeaders': {
-          backgroundColor: (theme) => theme.palette.grey['200'],
+          backgroundColor: (theme) => (theme.palette.mode === 'light' ? theme.palette.grey['200'] : 'inherit'),
         },
       }}
       localeText={{

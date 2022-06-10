@@ -1,5 +1,4 @@
 import {
-  PageInfoModel,
   SortOrderModel,
   DateFilterModel,
   StringFilterModel,
@@ -15,15 +14,6 @@ export type TodoModel = {
   updatedAt: string;
   text: string;
   done: boolean;
-};
-
-export type TodoConnectionModel = {
-  edges?: TodoEdgeModel[];
-  pageInfo: PageInfoModel;
-};
-
-export type TodoEdgeModel = {
-  node: TodoModel;
 };
 
 export type TodoSortOrderModel = {

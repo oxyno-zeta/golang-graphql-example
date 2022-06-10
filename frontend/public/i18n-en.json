@@ -16,6 +16,8 @@
     "deleteAction": "Delete",
     "nextPageAction": "Next page",
     "previousPageAction": "Previous page",
+    "darkThemeTooltip": "Enable Dark theme",
+    "lightThemeTooltip": "Enable Light theme",
     "errors": "Errors",
     "gridViewTooltip": "Grid view",
     "tableViewTooltip": "List view",
