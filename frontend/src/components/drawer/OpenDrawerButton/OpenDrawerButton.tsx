@@ -15,7 +15,7 @@ function OpenDrawerButton({ handleDrawerToggle }: Props) {
   return (
     <Tooltip title={<>{t('common.openAction')}</>}>
       <span>
-        <IconButton color="inherit" onClick={handleDrawerToggle} sx={{ display: { sm: 'none' } }}>
+        <IconButton color="inherit" onClick={handleDrawerToggle} sx={{ display: { lg: 'none' } }}>
           <MenuIcon />
         </IconButton>
       </span>
