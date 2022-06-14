@@ -1,10 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridRowParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import dayjs from 'dayjs';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { TodoModel } from '../../../../models/todos';
 import { ConnectionModel } from '../../../../models/general';
 
@@ -16,11 +18,20 @@ interface Props {
 function TableView({ data, loading }: Props) {
   // Setup translate
   const { t } = useTranslation();
+  // Get if window have size matching request
+  const theme = useTheme();
+  const sizeMatching = useMediaQuery(theme.breakpoints.up('lg'));
 
   let items: TodoModel[] = [];
   if (data && data.edges) {
     items = data.edges.map((it) => it.node);
   }
+
+  const handleClick = (params: GridRowParams<TodoModel>) => {
+    const { row } = params;
+
+    console.log(row);
+  };
 
   return (
     <DataGrid
@@ -37,7 +48,7 @@ function TableView({ data, loading }: Props) {
         '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
         '& .MuiDataGrid-columnHeader:focus-visible': { outline: 'none' },
         '& .MuiDataGrid-columnHeaders': {
-          backgroundColor: (theme) => (theme.palette.mode === 'light' ? theme.palette.grey['200'] : 'inherit'),
+          backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey['200'] : 'inherit',
         },
       }}
       localeText={{
@@ -94,6 +105,8 @@ function TableView({ data, loading }: Props) {
         },
       ]}
       isRowSelectable={() => false}
+      onRowDoubleClick={sizeMatching ? handleClick : undefined}
+      onRowClick={!sizeMatching ? handleClick : undefined}
       rows={items}
     />
   );

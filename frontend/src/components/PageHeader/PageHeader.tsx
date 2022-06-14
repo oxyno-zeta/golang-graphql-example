@@ -19,7 +19,7 @@ const defaultProps = {
 
 function PageHeader({ leftElement, title, titleElement, rightElement }: Props) {
   return (
-    <Toolbar>
+    <Toolbar style={{ paddingLeft: '0px' }}>
       <Box>{leftElement}</Box>
       <Box>
         {title && (
