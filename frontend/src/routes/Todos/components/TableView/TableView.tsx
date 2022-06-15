@@ -9,6 +9,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { TodoModel } from '../../../../models/todos';
 import { ConnectionModel } from '../../../../models/general';
+import getDataGridCommonProps from '../../../../utils/dataGridCommon';
 
 interface Props {
   data: ConnectionModel<TodoModel> | undefined;
@@ -35,25 +36,7 @@ function TableView({ data, loading }: Props) {
 
   return (
     <DataGrid
-      hideFooterPagination
-      hideFooter
-      autoHeight
-      sx={{
-        border: '0px',
-        borderRadius: '0px',
-        '& .MuiDataGrid-cell:focus': { outline: 'none' },
-        '& .MuiDataGrid-cell:focus-within': { outline: 'none' },
-        '& .MuiDataGrid-cell:focus-visible': { outline: 'none' },
-        '& .MuiDataGrid-columnHeader:focus': { outline: 'none' },
-        '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
-        '& .MuiDataGrid-columnHeader:focus-visible': { outline: 'none' },
-        '& .MuiDataGrid-columnHeaders': {
-          backgroundColor: theme.palette.mode === 'light' ? theme.palette.grey['200'] : 'inherit',
-        },
-      }}
-      localeText={{
-        noRowsLabel: t('common.noData'),
-      }}
+      {...getDataGridCommonProps(t)}
       loading={loading}
       columns={[
         {
@@ -104,7 +87,6 @@ function TableView({ data, loading }: Props) {
           ),
         },
       ]}
-      isRowSelectable={() => false}
       onRowDoubleClick={sizeMatching ? handleClick : undefined}
       onRowClick={!sizeMatching ? handleClick : undefined}
       rows={items}
