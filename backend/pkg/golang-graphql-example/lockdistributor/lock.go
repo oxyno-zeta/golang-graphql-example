@@ -32,10 +32,19 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 }
 
 func (l *lock) AcquireWithContext(ctx context.Context) error {
+	// Create timeout
+	timeoutCtx, cancel := context.WithTimeout(ctx, acquireTimeoutDuration)
+	// Defer the cancel in case it is finishing earlier
+	defer cancel()
 	// Acquire lock
-	ll, err := l.s.cl.AcquireContext(ctx, l.name)
+	ll, err := l.s.cl.AcquireContext(timeoutCtx, l.name)
 	// Check error
 	if err != nil {
+		// Check if it is a not acquired error to wrap it
+		if errors.Is(err, pglock.ErrNotAcquired) {
+			return ErrLockNotAcquired
+		}
+
 		return errors.WithStack(err)
 	}
 	// Save lock
@@ -45,15 +54,7 @@ func (l *lock) AcquireWithContext(ctx context.Context) error {
 }
 
 func (l *lock) Acquire() error {
-	ll, err := l.s.cl.Acquire(l.name)
-	// Check error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-	// Save lock
-	l.pl = ll
-
-	return nil
+	return l.AcquireWithContext(context.TODO())
 }
 
 func (l *lock) IsReleased() (bool, error) {

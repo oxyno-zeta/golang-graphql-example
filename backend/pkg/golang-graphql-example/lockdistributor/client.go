@@ -2,11 +2,19 @@ package lockdistributor
 
 import (
 	"context"
+	"time"
+
+	"github.com/pkg/errors"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
+
+const acquireTimeoutDuration = 30 * time.Second
+
+// ErrLockNotAcquired is returned when a lock cannot be acquired.
+var ErrLockNotAcquired = errors.New("lock not acquired")
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor Service
 type Service interface {
