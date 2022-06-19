@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
 
 interface Props {
   leftElement?: ReactNode;
@@ -20,16 +19,15 @@ const defaultProps = {
 function PageHeader({ leftElement, title, titleElement, rightElement }: Props) {
   return (
     <Toolbar style={{ paddingLeft: '0px' }}>
-      <Box>{leftElement}</Box>
-      <Box>
-        {title && (
-          <Typography variant="h5" color="inherit" style={{ fontWeight: 'bold' }}>
-            {title}
-          </Typography>
-        )}
-        {titleElement}
-      </Box>
-      <Box sx={{ marginLeft: 'auto' }}>{rightElement}</Box>
+      {leftElement}
+      {title && (
+        <Typography variant="h5" color="inherit" style={{ fontWeight: 'bold' }}>
+          {title}
+        </Typography>
+      )}
+      {titleElement}
+      <div style={{ flexGrow: 1 }} />
+      {rightElement}
     </Toolbar>
   );
 }

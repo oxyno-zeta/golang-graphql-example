@@ -17,7 +17,7 @@ type Props<T extends FilterValueObject> = {
   filterDefinitionModel: FilterDefinitionFieldsModel;
   predefinedFilterObjects?: PredefinedFilter[];
   initialFilter?: undefined | null | T;
-  anchorElement: HTMLFormElement | null;
+  anchorElement: HTMLFormElement | HTMLButtonElement | null;
 };
 
 function FilterPopper<T extends FilterValueObject>({

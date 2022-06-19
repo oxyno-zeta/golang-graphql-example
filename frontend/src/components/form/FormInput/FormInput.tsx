@@ -5,8 +5,6 @@ import { Control, useController, Path } from 'react-hook-form';
 import { YupTranslateErrorModel } from '../../../models/general';
 
 type Props<T> = {
-  // fieldState: ControllerFieldState;
-  // field: ControllerRenderProps<any, any>;
   control: Control<T>;
   name: Path<T>;
   textFieldProps?: TextFieldProps;

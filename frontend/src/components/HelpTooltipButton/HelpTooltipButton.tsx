@@ -31,9 +31,11 @@ function HelpTooltipButton({ tooltipTitle }: Props) {
           open={open}
           title={<>{tooltipTitle}</>}
         >
-          <IconButton onClick={handleTooltipOpen}>
-            <HelpIcon />
-          </IconButton>
+          <span>
+            <IconButton onClick={handleTooltipOpen}>
+              <HelpIcon />
+            </IconButton>
+          </span>
         </Tooltip>
       </div>
     </ClickAwayListener>

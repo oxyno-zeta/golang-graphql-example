@@ -1,7 +1,8 @@
 import { Theme } from '@mui/material/styles';
 import { TFunction } from 'react-i18next';
 
-export default function getDataGridCommonProps(t: TFunction) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function getDataGridCommonProps(t: TFunction, sx: any = {}) {
   return {
     hideFooterPagination: true,
     hideFooter: true,
@@ -18,6 +19,7 @@ export default function getDataGridCommonProps(t: TFunction) {
       '& .MuiDataGrid-columnHeaders': {
         backgroundColor: (theme: Theme) => (theme.palette.mode === 'light' ? theme.palette.grey['200'] : 'inherit'),
       },
+      ...sx,
     },
     localeText: {
       noRowsLabel: t('common.noData'),
