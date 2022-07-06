@@ -35,7 +35,7 @@ require (
 	github.com/xhit/go-simple-mail/v2 v2.11.0
 	golang.org/x/oauth2 v0.0.0-20220524215830-622c5d57e401
 	gorm.io/driver/postgres v1.3.7
-	gorm.io/driver/sqlite v1.3.2
+	gorm.io/driver/sqlite v1.3.6
 	gorm.io/gorm v1.23.5
 	gorm.io/plugin/opentracing v0.0.0-20211220013347-7d2b2af23560
 	gorm.io/plugin/prometheus v0.0.0-20220517015831-ca6bfaf20bf4
