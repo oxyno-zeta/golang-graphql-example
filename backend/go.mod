@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	cirello.io/pglock v1.9.0
-	github.com/99designs/gqlgen v0.17.2
+	github.com/99designs/gqlgen v0.17.13
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/AppsFlyer/go-sundheit v0.5.0
 	github.com/DATA-DOG/go-sqlmock v1.5.0
@@ -31,7 +31,7 @@ require (
 	github.com/thoas/go-funk v0.9.2
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible
-	github.com/vektah/gqlparser/v2 v2.4.4
+	github.com/vektah/gqlparser/v2 v2.4.6
 	github.com/xhit/go-simple-mail/v2 v2.11.0
 	golang.org/x/oauth2 v0.0.0-20220524215830-622c5d57e401
 	gorm.io/driver/postgres v1.3.7
