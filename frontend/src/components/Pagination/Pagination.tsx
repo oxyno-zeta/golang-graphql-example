@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useHref, useLocation, createSearchParams, useSearchParams } from 'react-router-dom';
-import ChevronRight from '@mui/icons-material/ChevronRight';
-import ChevronLeft from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
@@ -26,6 +27,20 @@ function Pagination({ maxPaginationSize, pageInfo }: Props) {
   return (
     <Toolbar variant="dense">
       <div style={{ marginLeft: 'auto' }}>
+        <Tooltip title={<>{t('common.firstPageAction')}</>}>
+          <span>
+            <IconButton
+              component={Link}
+              disabled={!pageInfo.hasPreviousPage}
+              to={useHref({
+                pathname: location.pathname,
+                search: createSearchParams(getAllSearchParams(cleanPaginationSearchParams(searchParams))).toString(),
+              })}
+            >
+              <KeyboardDoubleArrowLeftIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
         <Tooltip title={<>{t('common.previousPageAction')}</>}>
           <span>
             <IconButton
@@ -40,7 +55,7 @@ function Pagination({ maxPaginationSize, pageInfo }: Props) {
                 }).toString(),
               })}
             >
-              <ChevronLeft />
+              <ChevronLeftIcon />
             </IconButton>
           </span>
         </Tooltip>
@@ -58,7 +73,7 @@ function Pagination({ maxPaginationSize, pageInfo }: Props) {
                 }).toString(),
               })}
             >
-              <ChevronRight />
+              <ChevronRightIcon />
             </IconButton>
           </span>
         </Tooltip>
