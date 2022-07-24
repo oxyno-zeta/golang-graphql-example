@@ -110,7 +110,6 @@ function Todos() {
                 // Flush pagination
                 // When a pagination is set, like you are on second page and
                 // a new filter is applied, you want to start from start again.
-                // Note: UseEffect usage create 2 requests instead of just one with this system.
                 cleanAndSetCleanedPagination(searchParams, setSearchParams);
                 // Set filter
                 setFilter(f);
@@ -121,7 +120,6 @@ function Todos() {
                 // Flush pagination
                 // When a pagination is set, like you are on second page and
                 // a new filter is applied, you want to start from start again.
-                // Note: UseEffect usage create 2 requests instead of just one with this system.
                 cleanAndSetCleanedPagination(searchParams, setSearchParams);
                 // Call on main search change
                 onMainSearchChange(newValue, oldValue, (f: (input: TodoFilterModel) => TodoFilterModel) => {
