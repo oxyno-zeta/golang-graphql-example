@@ -17,7 +17,10 @@ export default function getDataGridCommonProps(t: TFunction, sx: any = {}) {
       '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
       '& .MuiDataGrid-columnHeader:focus-visible': { outline: 'none' },
       '& .MuiDataGrid-columnHeaders': {
-        backgroundColor: (theme: Theme) => (theme.palette.mode === 'light' ? theme.palette.grey['200'] : 'inherit'),
+        backgroundColor: (theme: Theme) =>
+          theme.palette.mode === 'light' ? theme.palette.grey['200'] : theme.palette.grey['800'],
+        borderTopLeftRadius: '0px',
+        borderTopRightRadius: '0px',
       },
       ...sx,
     },
