@@ -3,6 +3,7 @@ import { gql, useQuery } from '@apollo/client';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';
+import { useSearchParams } from 'react-router-dom';
 import {
   TodoSortOrderModel,
   TodoFilterModel,
@@ -12,14 +13,16 @@ import {
 } from '../../models/todos';
 import PageHeader from '../../components/PageHeader';
 import FilterSearchBar from '../../components/filters/FilterSearchBar';
-import { ConnectionModel, PaginationInputModel, StringFilterModel } from '../../models/general';
+import { ConnectionModel, StringFilterModel } from '../../models/general';
 import GraphqlErrors from '../../components/GraphqlErrors';
 import SortButton from '../../components/sorts/SortButton';
 import GridView from './components/GridView';
 import TableView from './components/TableView';
 import Pagination from '../../components/Pagination';
 import { onMainSearchChange } from './utils';
+import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '../../utils/pagination';
 import GridTableViewSwitcher from '../../components/GridTableViewSwitcher';
+import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '../../utils/urlSearchParams';
 
 const GET_TODOS_QUERY = gql`
   query getTodos($first: Int, $last: Int, $before: String, $after: String, $filter: TodoFilter, $sort: TodoSortOrder) {
@@ -57,14 +60,25 @@ interface QueryVariables {
 }
 
 const maxPagination = 20;
+const initialPagination = { first: maxPagination };
 
 function Todos() {
-  const initialPagination = { first: maxPagination };
+  // Get search params
+  const [searchParams, setSearchParams] = useSearchParams();
+  // Filter, pagination and sort values
+  const filter = getJSONObjectFromSearchParam<TodoFilterModel>('filter', {}, searchParams);
+  const sort = getJSONObjectFromSearchParam<TodoSortOrderModel>('sort', { createdAt: 'DESC' }, searchParams);
+  const pagination = getPaginationFromSearchParams(initialPagination, maxPagination, searchParams, setSearchParams);
+
+  // Setter
+  const setSort = (data: TodoSortOrderModel) => {
+    setJSONObjectSearchParam('sort', data, searchParams, setSearchParams);
+  };
+  const setFilter = (data: TodoFilterModel) => {
+    setJSONObjectSearchParam('filter', data, searchParams, setSearchParams);
+  };
 
   // States
-  const [filter, setFilter] = useState<TodoFilterModel>({});
-  const [sort, setSort] = useState<TodoSortOrderModel>({ createdAt: 'DESC' });
-  const [pagination, setPagination] = useState<PaginationInputModel>(initialPagination);
   const [gridView, setGridView] = useState(false);
   // Call graphql
   const { data, loading, error } = useQuery<QueryResult, QueryVariables>(GET_TODOS_QUERY, {
@@ -97,7 +111,7 @@ function Todos() {
                 // When a pagination is set, like you are on second page and
                 // a new filter is applied, you want to start from start again.
                 // Note: UseEffect usage create 2 requests instead of just one with this system.
-                setPagination(initialPagination);
+                cleanAndSetCleanedPagination(searchParams, setSearchParams);
                 // Set filter
                 setFilter(f);
               }}
@@ -108,9 +122,15 @@ function Todos() {
                 // When a pagination is set, like you are on second page and
                 // a new filter is applied, you want to start from start again.
                 // Note: UseEffect usage create 2 requests instead of just one with this system.
-                setPagination(initialPagination);
+                cleanAndSetCleanedPagination(searchParams, setSearchParams);
                 // Call on main search change
-                onMainSearchChange(newValue, oldValue, setFilter);
+                onMainSearchChange(newValue, oldValue, (f: (input: TodoFilterModel) => TodoFilterModel) => {
+                  // Execute filter generator
+                  const nF = f(filter);
+
+                  // Save new filter
+                  setFilter(nF);
+                });
               }}
               filterDefinitionModel={todoFilterDefinitionObject}
               predefinedFilterObjects={[
@@ -156,11 +176,7 @@ function Todos() {
             {data && data.todos && (
               <>
                 <Divider />
-                <Pagination
-                  pageInfo={data.todos.pageInfo}
-                  maxPaginationSize={maxPagination}
-                  setPaginationInput={setPagination}
-                />
+                <Pagination pageInfo={data.todos.pageInfo} maxPaginationSize={maxPagination} />
               </>
             )}
           </div>
