@@ -4,6 +4,8 @@ import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';
 import { useSearchParams } from 'react-router-dom';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import {
   TodoSortOrderModel,
   TodoFilterModel,
@@ -63,6 +65,10 @@ const maxPagination = 20;
 const initialPagination = { first: maxPagination };
 
 function Todos() {
+  // Theming
+  const theme = useTheme();
+  const sizeMatching = useMediaQuery(theme.breakpoints.down('lg'));
+
   // Get search params
   const [searchParams, setSearchParams] = useSearchParams();
   // Filter, pagination and sort values
@@ -79,7 +85,7 @@ function Todos() {
   };
 
   // States
-  const [gridView, setGridView] = useState(false);
+  const [gridView, setGridView] = useState(sizeMatching);
   // Call graphql
   const { data, loading, error } = useQuery<QueryResult, QueryVariables>(GET_TODOS_QUERY, {
     variables: { ...pagination, sort, filter },
