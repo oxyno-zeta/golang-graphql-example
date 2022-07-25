@@ -75,8 +75,8 @@ export function getPaginationFromSearchParams(
     try {
       // Parsed first
       let first = parseInt(firstStr as string, 10);
-      // Check if value is greater than max pagination
-      if (first > maxPagination) {
+      // Check if value is greater than max pagination or lower than 0
+      if (first > maxPagination || first <= 0) {
         first = maxPagination;
       }
 
@@ -99,8 +99,8 @@ export function getPaginationFromSearchParams(
     try {
       // Parsed last
       let last = parseInt(lastStr as string, 10);
-      // Check if value is greater than max pagination
-      if (last > maxPagination) {
+      // Check if value is greater than max pagination or lower than 0
+      if (last > maxPagination || last <= 0) {
         last = maxPagination;
       }
 
