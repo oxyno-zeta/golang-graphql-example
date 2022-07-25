@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import ConfigContext from '../../contexts/ConfigContext';
-import { ConfigModel } from '../../models/config';
+import { ConfigModel, defaultConfig } from '../../models/config';
 
 interface Props {
   children: ReactNode;
@@ -34,7 +34,7 @@ function ConfigProvider({ children, loadingComponent, skipConfigLoader }: Props)
       .get('/config/config.json')
       .then(({ data: cfg }) => {
         setLoading(false);
-        setConfig(cfg);
+        setConfig({ ...defaultConfig, ...cfg });
       })
       .catch((err) => {
         setLoading(false);

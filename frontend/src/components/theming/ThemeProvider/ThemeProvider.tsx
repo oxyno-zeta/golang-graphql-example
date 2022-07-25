@@ -1,8 +1,10 @@
-import React, { ReactNode, useState, useMemo } from 'react';
+import React, { ReactNode, useState, useMemo, useContext } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ThemeProvider as MuiThemeProvider, createTheme, ThemeOptions } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import Cookies from 'universal-cookie';
 import ColorModeContext from '../../../contexts/ColorModeContext';
+import ConfigContext from '../../../contexts/ConfigContext';
 
 interface Props {
   children: ReactNode;
@@ -10,10 +12,14 @@ interface Props {
 }
 
 function ThemeProvider({ children, themeOptions }: Props) {
+  // Get config from context
+  const cfg = useContext(ConfigContext);
+  // Get cookies object
+  const cookies = new Cookies();
   // Check prefer color scheme from system
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // Get stored theme mode
-  const storedThemeMode = localStorage.getItem('paletteMode');
+  const storedThemeMode = cookies.get('palette-mode');
   // Compute initial value
   let initVal = storedThemeMode;
   if (initVal === null || (initVal !== 'dark' && initVal !== 'light')) {
@@ -31,7 +37,11 @@ function ThemeProvider({ children, themeOptions }: Props) {
           // Compute new value
           const newVal = prevMode === 'light' ? 'dark' : 'light';
           // Save in storage
-          localStorage.setItem('paletteMode', newVal);
+          cookies.set('palette-mode', newVal, {
+            path: '/',
+            maxAge: 31536000, // 1 year
+            domain: cfg.configCookieDomain,
+          });
 
           return newVal;
         });
