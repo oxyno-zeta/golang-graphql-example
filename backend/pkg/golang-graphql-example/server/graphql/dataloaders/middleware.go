@@ -27,5 +27,5 @@ func Middleware(busiSvr *business.Services) gin.HandlerFunc {
 }
 
 func GetDataloadersFromContext(ctx context.Context) *Dataloaders {
-	return ctx.Value(reqCtxKey).(*Dataloaders) // nolint: forcetypeassert // Ignored
+	return ctx.Value(reqCtxKey).(*Dataloaders) //nolint: forcetypeassert // Ignored
 }

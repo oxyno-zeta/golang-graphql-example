@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"regexp"
 	"strconv"
+	"time"
 
 	"github.com/pkg/errors"
 
@@ -81,6 +82,9 @@ func (svr *Server) GenerateServer() error {
 	server := &http.Server{
 		Addr:    addr,
 		Handler: r,
+		// Timeout to 10 second to limit the time to read the request headers
+		// This is done to patch server against Slowloris Attack
+		ReadHeaderTimeout: 10 * time.Second, //nolint: gomnd // Ignored to see it clearly
 	}
 
 	// Prepare for configuration onChange

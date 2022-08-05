@@ -21,14 +21,14 @@ import (
 
 func setupExtraServices(targets []string, sv *services) {}
 
-func setupBusinessServices(targets []string, sv *services) {
+func setupBusinessServices(targets []string, sv *services) { //nolint: unparam // Ignored
 	// Create business services
 	busServices := business.NewServices(sv.logger, sv.db, sv.authorizationSvc, sv.ldSvc)
 	// Save
 	sv.busServices = busServices
 }
 
-func setupBasicsServices(targets []string, sv *services) {
+func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // Ignored
 	// Create variables for mandatory services
 	logger := sv.logger
 	cfgManager := sv.cfgManager

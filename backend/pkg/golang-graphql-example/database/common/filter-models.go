@@ -10,11 +10,13 @@ import (
 // This must be used as a pointer in other structures to be used automatically in filters.
 // Moreover, a tag containing the database field must be declared.
 // Example:
-// type Filter struct {
-//  AND []*Filter
-//  OR []*Filter
-// 	Field1 *GenericFilter `dbfield:"field_1"`
-// }
+//
+//	type Filter struct {
+//	 AND []*Filter
+//	 OR []*Filter
+//		Field1 *GenericFilter `dbfield:"field_1"`
+//	}
+//
 // .
 type GenericFilter struct {
 	// Allow to test equality to
@@ -69,11 +71,13 @@ type GenericFilter struct {
 // This must be used as a pointer in other structures to be used automatically in filters.
 // Moreover, a tag containing the database field must be declared.
 // Example:
-// type Filter struct {
-//  AND []*Filter
-//  OR []*Filter
-// 	Field1 *DateFilter `dbfield:"field_1"`
-// }
+//
+//	type Filter struct {
+//	 AND []*Filter
+//	 OR []*Filter
+//		Field1 *DateFilter `dbfield:"field_1"`
+//	}
+//
 // .
 type DateFilter struct {
 	// Allow to test equality to

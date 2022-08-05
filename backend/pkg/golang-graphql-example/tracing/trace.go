@@ -92,5 +92,5 @@ func GetTraceIDFromContext(ctx context.Context) string {
 }
 
 func SetTraceToContext(ctx context.Context, t Trace) context.Context {
-	return opentracing.ContextWithSpan(ctx, t.(*trace).span) // nolint: forcetypeassert // Ignored
+	return opentracing.ContextWithSpan(ctx, t.(*trace).span) //nolint: forcetypeassert // Ignored
 }

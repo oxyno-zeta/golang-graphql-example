@@ -161,6 +161,9 @@ func (svr *InternalServer) GenerateServer() error {
 	server := &http.Server{
 		Addr:    addr,
 		Handler: r,
+		// Timeout to 10 second to limit the time to read the request headers
+		// This is done to patch server against Slowloris Attack
+		ReadHeaderTimeout: 10 * time.Second, //nolint: gomnd // Ignored to see it clearly
 	}
 	// Store server
 	svr.server = server

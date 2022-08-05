@@ -13,6 +13,7 @@ import (
 )
 
 // Service Tracing service.
+//
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Service
 type Service interface {
 	// Reload service.
@@ -37,6 +38,7 @@ type Service interface {
 }
 
 // Trace structure.
+//
 //go:generate mockgen -destination=./mocks/mock_Trace.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Trace
 type Trace interface {
 	// Add tag to trace.

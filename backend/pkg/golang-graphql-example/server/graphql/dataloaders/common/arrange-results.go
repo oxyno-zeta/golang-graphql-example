@@ -16,7 +16,7 @@ func RearrangeResults[T any](input []T, ids []string) []*dataloader.Result {
 	res := make([]*dataloader.Result, len(ids))
 
 	// Create intermediate map
-	inMap := funk.ToMap(input, "ID").(map[string]T) // nolint: forcetypeassert // Ignored
+	inMap := funk.ToMap(input, "ID").(map[string]T) //nolint: forcetypeassert // Ignored
 
 	// Rearrange results
 	for i, id := range ids {

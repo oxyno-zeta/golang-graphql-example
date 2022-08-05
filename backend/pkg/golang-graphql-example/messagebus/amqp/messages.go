@@ -426,7 +426,7 @@ func (as *amqpService) consumeDeliveryHandler(
 	defer func() {
 		// Try to recover if any
 		if err2 := recover(); err2 != nil {
-			err = errors.New(fmt.Sprintf("%v", err2)) // nolint: revive // Ignored because it doesn't know about stack trace
+			err = errors.New(fmt.Sprintf("%v", err2))
 		}
 		// Check if error is set
 		if err != nil {
@@ -455,7 +455,7 @@ func (as *amqpService) extractTraceFromHeaders(h amqp091.Table) (tracing.Trace, 
 	// Loop over input headers
 	for k, v := range h {
 		// Check if value is a string
-		switch v := v.(type) { // nolint: gocritic // Ignore because can't do this in if
+		switch v := v.(type) { //nolint: gocritic // Ignore because can't do this in if
 		case string:
 			headers[k] = v
 		}

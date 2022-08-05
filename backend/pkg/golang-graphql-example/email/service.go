@@ -129,7 +129,7 @@ func (s *service) Initialize() error {
 	if cfg.TLSSkipVerify {
 		// Set TLSConfig to provide custom TLS configuration. For example,
 		// to skip TLS verification (useful for testing):
-		server.TLSConfig = &tls.Config{InsecureSkipVerify: true} // nolint: gosec // TLS Skip wanted
+		server.TLSConfig = &tls.Config{InsecureSkipVerify: true} //nolint: gosec // TLS Skip wanted
 	}
 
 	// Save SMTP server

@@ -19,19 +19,19 @@ func (gl *gormLogger) LogMode(gormlogger.LogLevel) gormlogger.Interface {
 func (gl *gormLogger) Info(ctx context.Context, v string, rest ...interface{}) {
 	val := []interface{}{v}
 	val = append(val, rest...)
-	gl.logger.Info(val)
+	gl.logger.Info(val...)
 }
 
 func (gl *gormLogger) Warn(ctx context.Context, v string, rest ...interface{}) {
 	val := []interface{}{v}
 	val = append(val, rest...)
-	gl.logger.Warn(val)
+	gl.logger.Warn(val...)
 }
 
 func (gl *gormLogger) Error(ctx context.Context, v string, rest ...interface{}) {
 	val := []interface{}{errors.New(v)}
 	val = append(val, rest...)
-	gl.logger.Error(val)
+	gl.logger.Error(val...)
 }
 
 func (gl *gormLogger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {

@@ -74,6 +74,7 @@ type ConsumeConfigInput struct {
 }
 
 // Client represents the AMQP client.
+//
 //go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/messagebus/amqp Client
 type Client interface {
 	// Connect will connect and create channels.
