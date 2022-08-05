@@ -34,6 +34,7 @@ HAS_GIT := $(shell command -v git;)
 HAS_GOLANGCI_LINT := $(shell command -v golangci-lint;)
 HAS_CURL:=$(shell command -v curl;)
 HAS_MOCKGEN:=$(shell command -v mockgen;)
+HAS_GQLGEN:=$(shell command -v gqlgen;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
 
@@ -188,6 +189,10 @@ endif
 endif
 ifndef HAS_GIT
 	$(error You must install Git)
+endif
+ifndef HAS_GQLGEN
+	@echo "=> Installing gqlgen tool"
+	$(GO) install github.com/99designs/gqlgen@v0.17.13
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
