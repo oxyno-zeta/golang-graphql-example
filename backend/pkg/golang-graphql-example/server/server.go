@@ -19,7 +19,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	cerrors "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
@@ -212,17 +211,6 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 				},
 				UpdateTodo: func(childComplexity int, input *model.UpdateTodo) int {
 					return gutils.CalculateMutationComplexity(childComplexity)
-				},
-			},
-			Query: struct {
-				Todo  func(childComplexity int, id string) int
-				Todos func(childComplexity int, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) int
-			}{
-				Todo: func(childComplexity int, id string) int {
-					return gutils.CalculateQuerySimpleStructComplexity(childComplexity)
-				},
-				Todos: func(childComplexity int, after, before *string, first, last *int, sort *models.SortOrder, filter *models.Filter) int {
-					return gutils.CalculateQueryConnectionComplexity(childComplexity, after, before, first, last)
 				},
 			},
 		},

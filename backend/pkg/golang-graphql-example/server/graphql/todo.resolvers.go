@@ -12,14 +12,17 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
+// ID is the resolver for the id field.
 func (r *todoResolver) ID(ctx context.Context, obj *models.Todo) (string, error) {
 	return utils.ToIDRelay(mappers.TodoIDPrefix, obj.ID), nil
 }
 
+// CreatedAt is the resolver for the createdAt field.
 func (r *todoResolver) CreatedAt(ctx context.Context, obj *models.Todo) (string, error) {
 	return utils.FormatTime(obj.CreatedAt), nil
 }
 
+// UpdatedAt is the resolver for the updatedAt field.
 func (r *todoResolver) UpdatedAt(ctx context.Context, obj *models.Todo) (string, error) {
 	return utils.FormatTime(obj.UpdatedAt), nil
 }

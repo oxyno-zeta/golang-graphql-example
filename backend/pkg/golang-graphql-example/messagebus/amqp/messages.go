@@ -134,7 +134,8 @@ func (as *amqpService) Publish(
 			errChan <- errors.New("publisher channel not present or closed")
 		} else {
 			// Publish
-			confirmation, pErr := as.publisherChannel.PublishWithDeferredConfirm(
+			confirmation, pErr := as.publisherChannel.PublishWithDeferredConfirmWithContext(
+				ctx,
 				publishCfg.Exchange,
 				publishCfg.RoutingKey,
 				publishCfg.Mandatory,

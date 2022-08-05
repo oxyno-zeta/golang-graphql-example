@@ -14,6 +14,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
+// CreateTodo is the resolver for the createTodo field.
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*models.Todo, error) {
 	inp := &todos.InputCreateTodo{Text: input.Text}
 	tt, err := r.BusiServices.TodoSvc.Create(ctx, inp)
@@ -25,6 +26,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 	return tt, nil
 }
 
+// CloseTodo is the resolver for the closeTodo field.
 func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*models.Todo, error) {
 	// Manage relay id
 	bid, err := utils.FromIDRelay(todoID, mappers.TodoIDPrefix)
@@ -41,6 +43,7 @@ func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model
 	return res, nil
 }
 
+// UpdateTodo is the resolver for the updateTodo field.
 func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error) {
 	// Manage relay id
 	bid, err := utils.FromIDRelay(input.ID, mappers.TodoIDPrefix)
@@ -59,6 +62,7 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTo
 	return tt, nil
 }
 
+// Todos is the resolver for the todos field.
 func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) (*model.TodoConnection, error) {
 	// Create pagination input
 	pageInput, err := utils.GetPageInput(after, before, first, last)
@@ -92,6 +96,7 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 	return &res, nil
 }
 
+// Todo is the resolver for the todo field.
 func (r *queryResolver) Todo(ctx context.Context, id string) (*models.Todo, error) {
 	// Get projection
 	proj := &models.Projection{}
