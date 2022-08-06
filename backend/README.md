@@ -23,6 +23,7 @@ The project have a convention in the coding strategy. All the business code rela
 - Ready endpoint available on `/ready`
   - This one will check if health checks are valid by default and only when a SIGTERM or a SIGINT is caught, the endpoint will be marked as Service Unavailable
 - The application will caught SIGTERM and SIGINT and will stop the application when no primary requests are in progress
+- The application can be started using different targets (using --target argument and this is a list) like "all", "migrate-db", "server" and others can be added. That allow to reuse the code and avoid creating multiple "main".
 
 ## Structure
 
