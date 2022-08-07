@@ -10,9 +10,6 @@ type targetDefinition struct {
 	Primary bool
 	// Should be considered in "all" target ?
 	InAllTarget bool
-	// That flag will declare that this target will need that main must block the end
-	// Example case: server listening.
-	BlockMain bool
 }
 
 type arrayFlags []string
