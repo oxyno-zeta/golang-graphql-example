@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -121,7 +122,27 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	})
 	// Add middlewares
 	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
-	router.Use(gin.Recovery())
+	// Recover any panic in router
+	// Force the first parameter to nil to avoid any log
+	router.Use(gin.CustomRecoveryWithWriter(nil, func(c *gin.Context, errI any) {
+		// Get logger
+		logger := log.GetLoggerFromGin(c)
+
+		var err error
+		// Cast err as error
+		err, ok := errI.(error)
+		// Check if cast was ok to wrap it in basic error
+		// If not, stringify it
+		if ok {
+			err = cerrors.NewInternalServerErrorWithError(err)
+		} else {
+			err = cerrors.NewInternalServerError(fmt.Sprintf("%+v", errI))
+		}
+		// Log
+		logger.Error(err)
+		// Answer
+		utils.AnswerWithError(c, err)
+	}))
 	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware())
 	router.Use(middlewares.RequestID(svr.logger))
 	router.Use(svr.tracingSvc.HTTPMiddleware(middlewares.GetRequestIDFromContext))
