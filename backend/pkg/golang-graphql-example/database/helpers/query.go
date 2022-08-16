@@ -51,6 +51,126 @@ func Find[T any](
 	return res, nil
 }
 
+func FindWithPagination[T any](
+	ctx context.Context,
+	res []T,
+	db database.DB,
+	page *pagination.PageInput,
+	sort interface{},
+	filter interface{},
+	projection interface{},
+) ([]T, error) {
+	// Manage default limit
+	if page.Limit == 0 {
+		page.Limit = 10
+	}
+
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Apply sort
+	gdb, err = common.ManageSortOrder(sort, gdb)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Apply projection
+	gdb, err = common.ManageProjection(projection, gdb)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Request to database with limit and offset
+	gdb = gdb.Limit(page.Limit).Offset(page.Skip).Find(&res)
+	// Check error
+	if gdb.Error != nil {
+		return nil, errors.WithStack(gdb.Error)
+	}
+
+	return res, nil
+}
+
+func CountPaginated[T any](
+	ctx context.Context,
+	db database.DB,
+	input T,
+	page *pagination.PageInput,
+	sort interface{},
+	filter interface{},
+) (int64, error) {
+	// Initialize count
+	var res int64
+
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return 0, err
+	}
+
+	// Apply sort
+	gdb, err = common.ManageSortOrder(sort, gdb)
+	// Check error
+	if err != nil {
+		return 0, err
+	}
+
+	// Request to database with limit and offset
+	gdb = gdb.Model(input).Limit(page.Limit).Offset(page.Skip).Count(&res)
+	// Check error
+	if gdb.Error != nil {
+		return 0, errors.WithStack(gdb.Error)
+	}
+
+	return res, nil
+}
+
+func Count[T any](
+	ctx context.Context,
+	db database.DB,
+	input T,
+	sort interface{},
+	filter interface{},
+) (int64, error) {
+	// Initialize count
+	var res int64
+
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return 0, err
+	}
+
+	// Apply sort
+	gdb, err = common.ManageSortOrder(sort, gdb)
+	// Check error
+	if err != nil {
+		return 0, err
+	}
+
+	// Request to database with limit and offset
+	gdb = gdb.Model(input).Count(&res)
+	// Check error
+	if gdb.Error != nil {
+		return 0, errors.WithStack(gdb.Error)
+	}
+
+	return res, nil
+}
+
 func GetAllPaginated[T any](
 	ctx context.Context,
 	res []T,
