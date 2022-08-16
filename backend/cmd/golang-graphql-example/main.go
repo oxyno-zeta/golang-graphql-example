@@ -75,6 +75,27 @@ func main() {
 	// Setup mandatory services
 	setupMandatoryServices(sv)
 
+	// Catch any panic
+	defer func() {
+		// Catch panic
+		if errI := recover(); errI != nil {
+			// Panic caught => Log and exit
+			// Try to cast error
+			err, ok := errI.(error)
+			// Check if cast wasn't ok
+			if !ok {
+				// Transform it
+				err = errors.New(fmt.Sprintf("%+v", errI))
+			} else {
+				// Map introduce stack trace
+				err = errors.WithStack(err)
+			}
+
+			// Log
+			sv.logger.Fatal(err)
+		}
+	}()
+
 	sv.logger.Infof("Application version: %s (git commit: %s) built on %s", sv.version.Version, sv.version.GitCommit, sv.version.BuildDate)
 
 	// Check if list is empty
