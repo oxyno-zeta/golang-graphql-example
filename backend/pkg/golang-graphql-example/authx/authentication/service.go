@@ -12,7 +12,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/coreos/go-oidc"
+	"github.com/coreos/go-oidc/v3/oidc"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
 	cerrors "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"

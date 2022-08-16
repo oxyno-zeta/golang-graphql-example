@@ -8,7 +8,7 @@ require (
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/AppsFlyer/go-sundheit v0.5.0
 	github.com/DATA-DOG/go-sqlmock v1.5.0
-	github.com/coreos/go-oidc v2.2.1+incompatible
+	github.com/coreos/go-oidc/v3 v3.2.0
 	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
 	github.com/fsnotify/fsnotify v1.5.4
 	github.com/gin-contrib/cors v1.4.0
@@ -79,7 +79,6 @@ require (
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.3 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/pquerna/cachecontrol v0.1.0 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
