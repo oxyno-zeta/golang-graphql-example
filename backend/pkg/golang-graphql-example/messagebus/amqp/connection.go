@@ -111,10 +111,58 @@ func (as *amqpService) Connect() error {
 	return nil
 }
 
+// Reconnect channel if disconnected when timeout on consume have been reached for example.
+func (as *amqpService) reconnectChannel(getChannel func() *amqp091.Channel, getConnection func() *amqp091.Connection, connect func() error) {
+	// Infinite loop
+	for {
+		// Listen for closed events
+		errReason := <-getChannel().NotifyClose(make(chan *amqp091.Error))
+
+		// Check if reason is set, if not set, it is because the close is coming from application side
+		// Due to a reconnect on connection for example
+		if errReason == nil {
+			as.logger.Debug("Reconnection channel handler have detected an application closing channel event => skip channel reconnection")
+
+			break
+		}
+		// Check if connection is alive
+		if getConnection().IsClosed() {
+			// Stop
+			as.logger.Info("Reconnection channel handler have detected that channel connection is closed => skip channel reconnection")
+
+			break
+		}
+
+		as.logger.Error(errors.Wrap(errReason, "Attempting to reconnect to AMQP channel because channel was closed due to error"))
+
+		// Loop for reconnect
+		for {
+			// Check if connection is alive (again)
+			if getConnection().IsClosed() {
+				// Stop
+				as.logger.Info("Reconnection channel handler have detected that channel connection is closed => skip channel reconnection")
+
+				break
+			}
+			// Wait a bit
+			time.Sleep(defaultReconnectWaitingDuration)
+			// Call connect
+			err := connect()
+			// Check if error is empty, meaning that connection is done
+			if err == nil {
+				// Reconnect is done
+				as.logger.Info("Reconnection to AMQP channel successful")
+
+				break
+			}
+
+			as.logger.Error(errors.Wrap(err, "Reconnection to AMQP channel failed"))
+		}
+	}
+}
+
 // Reconnect only the connection.
-// Channels cannot die if not closed by application itself.
-// Don't manage this case in this client.
-// Side note: This shouldn't arrive but sometimes... it arrives... So ping is checking channel statuses.
+// Channels cannot die if not closed by application itself or when timeout is reached on consume for example.
 func (as *amqpService) reconnect(getConnection func() *amqp091.Connection, connect func() error) {
 	// Infinite loop
 	for {
@@ -151,30 +199,54 @@ func (as *amqpService) reconnect(getConnection func() *amqp091.Connection, conne
 
 func (as *amqpService) connectPublisher() error {
 	// Call internal connect
-	conn, chann, err := as.connect()
+	conn, err := as.connect()
 	// Check error
 	if err != nil {
 		return err
 	}
 
-	// Configure channel to be in confirm publish messages mode
-	// This will allow the notify channel to work
-	err = chann.Confirm(false)
+	// Call internal connect channel
+	chann, err := as.connectChannelPublisher(conn)
 	// Check error
 	if err != nil {
-		return errors.WithStack(err)
+		return err
 	}
 
 	// Save result
 	as.publisherConnection = conn
 	as.publisherChannel = chann
 
+	// Run a goroutine to reconnect channel if disconnected
+	go as.reconnectChannel(
+		func() *amqp091.Channel { return as.publisherChannel },
+		func() *amqp091.Connection { return as.publisherConnection },
+		func() error {
+			// Call internal connect channel
+			chann, err := as.connectChannelPublisher(as.publisherConnection)
+			// Check error
+			if err != nil {
+				return err
+			}
+			// Save channel
+			as.publisherChannel = chann
+			// Default result
+			return nil
+		},
+	)
+
 	return nil
 }
 
 func (as *amqpService) connectConsumer() error {
 	// Call internal connect
-	conn, chann, err := as.connect()
+	conn, err := as.connect()
+	// Check error
+	if err != nil {
+		return err
+	}
+
+	// Call internal connect channel
+	chann, err := as.connectChannelDefault(conn)
 	// Check error
 	if err != nil {
 		return err
@@ -184,10 +256,72 @@ func (as *amqpService) connectConsumer() error {
 	as.consumerConnection = conn
 	as.consumerChannel = chann
 
+	// Run a goroutine to reconnect channel if disconnected
+	go as.reconnectChannel(
+		func() *amqp091.Channel { return as.consumerChannel },
+		func() *amqp091.Connection { return as.consumerConnection },
+		func() error {
+			// Call internal connect channel
+			chann, err := as.connectChannelDefault(as.consumerConnection)
+			// Check error
+			if err != nil {
+				return err
+			}
+			// Save channel
+			as.consumerChannel = chann
+			// Default result
+			return nil
+		},
+	)
+
 	return nil
 }
 
-func (as *amqpService) connect() (*amqp091.Connection, *amqp091.Channel, error) {
+func (as *amqpService) connectChannelPublisher(conn *amqp091.Connection) (*amqp091.Channel, error) {
+	// Call internal connect
+	chann, err := as.connectChannelDefault(conn)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Configure channel to be in confirm publish messages mode
+	// This will allow the notify channel to work
+	err = chann.Confirm(false)
+	// Check error
+	if err != nil {
+		return nil, errors.WithStack(err)
+	}
+
+	return chann, nil
+}
+
+func (as *amqpService) connectChannelDefault(conn *amqp091.Connection) (*amqp091.Channel, error) {
+	// Get configuration
+	cfg := as.cfgManager.GetConfig()
+
+	// Get AMQP message bus config
+	amqpCfg := cfg.AMQP
+
+	as.logger.Debugf("Trying to create a channel on connection to AMQP bus")
+	// Create channel with configuration
+	chann, err := as.createConfiguredChannel(conn, amqpCfg.ChannelQos)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	// Apply setup
+	err = as.setup(amqpCfg, chann)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	return chann, nil
+}
+
+func (as *amqpService) connect() (*amqp091.Connection, error) {
 	// Get configuration
 	cfg := as.cfgManager.GetConfig()
 
@@ -202,7 +336,7 @@ func (as *amqpService) connect() (*amqp091.Connection, *amqp091.Channel, error) 
 		heartbeatP, err := time.ParseDuration(amqpCfg.Connection.HeartbeatDuration)
 		// Check error
 		if err != nil {
-			return nil, nil, errors.WithStack(err)
+			return nil, errors.WithStack(err)
 		}
 
 		// Save
@@ -222,7 +356,7 @@ func (as *amqpService) connect() (*amqp091.Connection, *amqp091.Channel, error) 
 		hostname, err := os.Hostname()
 		// Check error
 		if err != nil {
-			return nil, nil, errors.WithStack(err)
+			return nil, errors.WithStack(err)
 		}
 
 		extraArgs["connection_name"] = hostname
@@ -241,7 +375,7 @@ func (as *amqpService) connect() (*amqp091.Connection, *amqp091.Channel, error) 
 		dur, err := time.ParseDuration(amqpCfg.Connection.HeartbeatDuration)
 		// Check error
 		if err != nil {
-			return nil, nil, errors.WithStack(err)
+			return nil, errors.WithStack(err)
 		}
 
 		// Save
@@ -253,25 +387,10 @@ func (as *amqpService) connect() (*amqp091.Connection, *amqp091.Channel, error) 
 	conn, err := amqp091.DialConfig(amqpCfg.Connection.URL.Value, connACfg)
 	// Check error
 	if err != nil {
-		return nil, nil, errors.WithStack(err)
+		return nil, errors.WithStack(err)
 	}
 
-	as.logger.Debugf("Trying to create a channel on connection to AMQP bus")
-	// Create channel with configuration
-	chann, err := as.createConfiguredChannel(conn, amqpCfg.ChannelQos)
-	// Check error
-	if err != nil {
-		return nil, nil, err
-	}
-
-	// Apply setup
-	err = as.setup(amqpCfg, chann)
-	// Check error
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return conn, chann, nil
+	return conn, nil
 }
 
 func (as *amqpService) createConfiguredChannel(conn *amqp091.Connection, channelQosCfg *config.AMQPChannelQosConfig) (*amqp091.Channel, error) {
