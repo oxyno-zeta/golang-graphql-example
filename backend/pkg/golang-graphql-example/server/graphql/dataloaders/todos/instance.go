@@ -29,7 +29,7 @@ func New(busiServices *business.Services) *TodosDataloaders {
 func todosDataloaderGen(busiServices *business.Services) func(context.Context, dataloader.Keys) []*dataloader.Result {
 	return func(ctx context.Context, k dataloader.Keys) []*dataloader.Result {
 		// Get keys
-		keys := k.Keys()
+		keys := dataloaderscommon.GetIDsFromKeys(k)
 		// Create result
 		res := make([]*dataloader.Result, len(keys))
 
@@ -38,7 +38,7 @@ func todosDataloaderGen(busiServices *business.Services) func(context.Context, d
 		// Get projection from context
 		// This is context is one of the requesting context
 		// They are all coming from the entities request so projection will be the same as
-		// dataloaders are created per request.
+		// dataloaders are created per request and each key is unique per projection with IDProjectionKey object.
 		err := utils.ManageSimpleProjection(ctx, &projection)
 		// Check error
 		if err != nil {
