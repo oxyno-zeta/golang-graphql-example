@@ -3,7 +3,7 @@ package lockdistributor
 import (
 	"context"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 
 	"cirello.io/pglock"
 )

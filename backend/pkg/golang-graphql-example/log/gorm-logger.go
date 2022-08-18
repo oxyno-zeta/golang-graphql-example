@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 	gormlogger "gorm.io/gorm/logger"
 )
 

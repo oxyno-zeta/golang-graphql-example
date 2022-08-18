@@ -3,11 +3,11 @@ package middlewares
 import (
 	"context"
 
+	"emperror.dev/errors"
 	"github.com/gin-gonic/gin"
 	uuid "github.com/gofrs/uuid"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/pkg/errors"
 )
 
 type contextKey struct {

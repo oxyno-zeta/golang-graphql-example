@@ -5,10 +5,10 @@ import (
 	"time"
 
 	"cirello.io/pglock"
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/pkg/errors"
 )
 
 type service struct {

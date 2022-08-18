@@ -3,10 +3,10 @@ package databasehelpers
 import (
 	"context"
 
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
 

@@ -1,8 +1,8 @@
 package pagination
 
 import (
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
-	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
 

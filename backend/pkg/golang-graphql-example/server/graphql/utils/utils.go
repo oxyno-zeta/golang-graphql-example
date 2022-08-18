@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
+	goerrors "emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	goerrors "github.com/pkg/errors"
 )
 
 const defaultMaxPageSize = 50

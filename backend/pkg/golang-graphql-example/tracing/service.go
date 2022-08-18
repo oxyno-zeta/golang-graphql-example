@@ -6,12 +6,12 @@ import (
 	"net/http"
 	"time"
 
+	"emperror.dev/errors"
 	"github.com/99designs/gqlgen-contrib/gqlopentracing"
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/pkg/errors"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
 	jaegerprom "github.com/uber/jaeger-lib/metrics/prometheus"

@@ -5,7 +5,7 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 )
 
 // SortOrderEnum is used to sort data.

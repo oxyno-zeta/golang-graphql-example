@@ -4,12 +4,12 @@ import (
 	"os"
 	"time"
 
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/pkg/errors"
 	"github.com/rabbitmq/amqp091-go"
 	"github.com/thoas/go-funk"
 )

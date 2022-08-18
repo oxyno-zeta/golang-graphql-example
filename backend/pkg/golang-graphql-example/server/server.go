@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"

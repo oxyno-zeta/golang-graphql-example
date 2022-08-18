@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 )
 
 func TestNewNotFoundError(t *testing.T) {

@@ -6,6 +6,7 @@ import (
 	"strings"
 	"sync"
 
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
@@ -19,7 +20,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
-	"github.com/pkg/errors"
 	"github.com/thoas/go-funk"
 )
 

@@ -4,9 +4,9 @@ import (
 	"crypto/tls"
 	"time"
 
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/pkg/errors"
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 

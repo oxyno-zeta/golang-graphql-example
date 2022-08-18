@@ -3,8 +3,8 @@ package database
 import (
 	"time"
 
+	"emperror.dev/errors"
 	"github.com/gofrs/uuid"
-	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
 

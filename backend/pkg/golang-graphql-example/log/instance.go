@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 	logrus "github.com/sirupsen/logrus"
 	gormlogger "gorm.io/gorm/logger"
 )

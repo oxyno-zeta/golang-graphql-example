@@ -1,6 +1,6 @@
 package errors
 
-import "github.com/pkg/errors"
+import "emperror.dev/errors"
 
 type stackTracerError interface {
 	StackTrace() errors.StackTrace

@@ -3,10 +3,10 @@ package server
 import (
 	"time"
 
+	"emperror.dev/errors"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/pkg/errors"
 )
 
 func manageCORS(router gin.IRoutes, cfg *config.ServerConfig) error {

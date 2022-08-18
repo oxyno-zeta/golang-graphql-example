@@ -1,8 +1,8 @@
 package amqpbusmessage
 
 import (
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/pkg/errors"
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 

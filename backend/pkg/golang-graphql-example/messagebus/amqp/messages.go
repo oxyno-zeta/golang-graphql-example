@@ -6,11 +6,11 @@ import (
 	"os"
 	"time"
 
+	"emperror.dev/errors"
 	"github.com/gofrs/uuid"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/pkg/errors"
 	"github.com/rabbitmq/amqp091-go"
 )
 

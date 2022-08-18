@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"time"
 
+	"emperror.dev/errors"
 	gosundheit "github.com/AppsFlyer/go-sundheit"
 	healthhttp "github.com/AppsFlyer/go-sundheit/http"
 	helmet "github.com/danielkov/gin-helmet"
@@ -15,7 +16,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/pkg/errors"
 )
 
 const (

@@ -6,13 +6,13 @@ import (
 	"encoding/json"
 	"net/http"
 
+	goerrors "emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	goerrors "github.com/pkg/errors"
 )
 
 type service struct {

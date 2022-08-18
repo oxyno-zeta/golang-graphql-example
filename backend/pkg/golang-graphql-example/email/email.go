@@ -3,7 +3,7 @@ package email
 import (
 	"time"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 

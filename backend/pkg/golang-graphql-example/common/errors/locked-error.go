@@ -3,7 +3,7 @@ package errors
 import (
 	"net/http"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 )
 
 const LockedErrorCode = "LOCKED"

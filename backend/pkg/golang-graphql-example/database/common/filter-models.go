@@ -3,7 +3,7 @@ package common
 import (
 	"time"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 )
 
 // GenericFilter is a structure that will handle filters other than Date.

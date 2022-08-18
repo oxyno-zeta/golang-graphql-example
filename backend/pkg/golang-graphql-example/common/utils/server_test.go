@@ -9,7 +9,7 @@ import (
 
 	gerrors "errors"
 
-	errors2 "github.com/pkg/errors"
+	errors2 "emperror.dev/errors"
 
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"

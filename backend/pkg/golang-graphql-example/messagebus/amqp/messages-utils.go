@@ -3,7 +3,7 @@ package amqpbusmessage
 import (
 	"encoding/json"
 
-	"github.com/pkg/errors"
+	"emperror.dev/errors"
 	"github.com/rabbitmq/amqp091-go"
 )
 
