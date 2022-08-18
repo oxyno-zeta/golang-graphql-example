@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
+	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
@@ -20,10 +20,10 @@ var tracingPublishOperation = "amqp:publish"
 var tracingConsumeOperation = "amqp:consume"
 
 // ErrPublishTimeoutReached is the error thrown when the publish timeout is over.
-var ErrPublishTimeoutReached = errors.NewInternalServerError("timeout reached")
+var ErrPublishTimeoutReached = errors.New("timeout reached")
 
 // ErrMessageNotJSON is the error thrown when the message utils parse function is called on a non "application/json" message.
-var ErrMessageNotJSON = errors.NewInvalidInputError("input haven't the json content type")
+var ErrMessageNotJSON = errors.New("input haven't the json content type")
 
 // PublishConfigInput represents the publish configuration input.
 type PublishConfigInput struct {

@@ -165,7 +165,7 @@ func (as *amqpService) Publish(
 		select {
 		// Timeout case
 		case <-timeoutCtx.Done():
-			return ErrPublishTimeoutReached
+			return errors.WithStack(ErrPublishTimeoutReached)
 		// Error management
 		case err := <-errChan:
 			logger.Error(errors.Wrap(err, "error detected when tried to publish, retrying after delay"))
