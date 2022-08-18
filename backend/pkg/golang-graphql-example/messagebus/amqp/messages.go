@@ -175,15 +175,15 @@ func (as *amqpService) Publish(
 			// Check if ack is ok
 			if ack {
 				// Finish
-				logger.Debug("message successfully published")
+				logger.Info("message successfully published")
 
 				return nil
 			}
 
-			logger.Debug("message published but not ack, retrying after delay")
+			logger.Warn("message published but not ack, retrying after delay")
 		// Retry
 		case <-time.After(sendDelayDur):
-			logger.Debug("publish retry delay reached, retrying")
+			logger.Warn("publish retry delay reached, retrying")
 		}
 	}
 }
