@@ -68,6 +68,7 @@ func Test_generateCORSConfiguration(t *testing.T) {
 					"PATCH",
 					"DELETE",
 					"HEAD",
+					"OPTIONS",
 				},
 				AllowHeaders: []string{
 					"Origin",
