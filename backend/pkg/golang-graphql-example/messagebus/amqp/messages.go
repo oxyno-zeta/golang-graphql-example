@@ -153,7 +153,7 @@ func (as *amqpService) Publish(
 					// Error here must happened when configuration is incorrect or something else in broker
 					return errors.WithStack(pErr)
 				}
-			} else {
+			} else if confirmation != nil {
 				// Start a routine for wait response
 				go func() {
 					d := confirmation.Wait()
