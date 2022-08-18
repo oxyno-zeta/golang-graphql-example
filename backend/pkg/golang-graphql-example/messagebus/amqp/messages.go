@@ -181,6 +181,7 @@ func (as *amqpService) Publish(
 			}
 
 			logger.Warn("message published but not ack, retrying after delay")
+			time.Sleep(sendDelayDur)
 		// Retry
 		case <-time.After(sendDelayDur):
 			logger.Warn("publish retry delay reached, retrying")
