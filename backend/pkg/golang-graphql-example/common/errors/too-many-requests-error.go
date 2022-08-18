@@ -9,7 +9,7 @@ import (
 const TooManyRequestsErrorCode = "TOO_MANY_REQUESTS"
 
 func NewTooManyRequestsError(msg string) Error {
-	return NewTooManyRequestsErrorWithExtensions(msg, nil)
+	return NewTooManyRequestsErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewTooManyRequestsErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewTooManyRequestsErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewTooManyRequestsErrorWithError(err error) Error {
-	return NewTooManyRequestsErrorWithExtensionsAndError(err, nil)
+	return NewTooManyRequestsErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewTooManyRequestsErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewTooManyRequestsErrorWithErrorAndPublicMessage(err error, pubMsg string) 
 }
 
 func NewTooManyRequestsErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewTooManyRequestsErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewTooManyRequestsErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewTooManyRequestsErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

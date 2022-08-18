@@ -9,7 +9,7 @@ import (
 const UnauthorizedErrorCode = "UNAUTHORIZED"
 
 func NewUnauthorizedError(msg string) Error {
-	return NewUnauthorizedErrorWithExtensions(msg, nil)
+	return NewUnauthorizedErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewUnauthorizedErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewUnauthorizedErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewUnauthorizedErrorWithError(err error) Error {
-	return NewUnauthorizedErrorWithExtensionsAndError(err, nil)
+	return NewUnauthorizedErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewUnauthorizedErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewUnauthorizedErrorWithErrorAndPublicMessage(err error, pubMsg string) Err
 }
 
 func NewUnauthorizedErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewUnauthorizedErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewUnauthorizedErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewUnauthorizedErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

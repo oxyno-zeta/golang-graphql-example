@@ -9,7 +9,7 @@ import (
 const InternalServerErrorCode = "INTERNAL_SERVER_ERROR"
 
 func NewInternalServerError(msg string) Error {
-	return NewInternalServerErrorWithExtensions(msg, nil)
+	return NewInternalServerErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewInternalServerErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewInternalServerErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewInternalServerErrorWithError(err error) Error {
-	return NewInternalServerErrorWithExtensionsAndError(err, nil)
+	return NewInternalServerErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewInternalServerErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewInternalServerErrorWithErrorAndPublicMessage(err error, pubMsg string) E
 }
 
 func NewInternalServerErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewInternalServerErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewInternalServerErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewInternalServerErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

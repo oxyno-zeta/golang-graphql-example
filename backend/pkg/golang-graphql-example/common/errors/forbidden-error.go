@@ -9,7 +9,7 @@ import (
 const ForbiddenErrorCode = "FORBIDDEN"
 
 func NewForbiddenError(msg string) Error {
-	return NewForbiddenErrorWithExtensions(msg, nil)
+	return NewForbiddenErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewForbiddenErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewForbiddenErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewForbiddenErrorWithError(err error) Error {
-	return NewForbiddenErrorWithExtensionsAndError(err, nil)
+	return NewForbiddenErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewForbiddenErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewForbiddenErrorWithErrorAndPublicMessage(err error, pubMsg string) Error 
 }
 
 func NewForbiddenErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewForbiddenErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewForbiddenErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewForbiddenErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

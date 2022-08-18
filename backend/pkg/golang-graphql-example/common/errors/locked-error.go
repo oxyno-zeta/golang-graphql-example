@@ -9,7 +9,7 @@ import (
 const LockedErrorCode = "LOCKED"
 
 func NewLockedError(msg string) Error {
-	return NewLockedErrorWithExtensions(msg, nil)
+	return NewLockedErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewLockedErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewLockedErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewLockedErrorWithError(err error) Error {
-	return NewLockedErrorWithExtensionsAndError(err, nil)
+	return NewLockedErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewLockedErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewLockedErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
 }
 
 func NewLockedErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewLockedErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewLockedErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewLockedErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

@@ -9,7 +9,7 @@ import (
 const ConflictErrorCode = "CONFLICT"
 
 func NewConflictError(msg string) Error {
-	return NewConflictErrorWithExtensions(msg, nil)
+	return NewConflictErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewConflictErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewConflictErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewConflictErrorWithError(err error) Error {
-	return NewConflictErrorWithExtensionsAndError(err, nil)
+	return NewConflictErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewConflictErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewConflictErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
 }
 
 func NewConflictErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewConflictErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewConflictErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewConflictErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

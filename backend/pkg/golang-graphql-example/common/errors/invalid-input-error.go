@@ -9,7 +9,7 @@ import (
 const InvalidInputErrorCode = "INVALID_INPUT"
 
 func NewInvalidInputError(msg string) Error {
-	return NewInvalidInputErrorWithExtensions(msg, nil)
+	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewInvalidInputErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewInvalidInputErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewInvalidInputErrorWithError(err error) Error {
-	return NewInvalidInputErrorWithExtensionsAndError(err, nil)
+	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewInvalidInputErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewInvalidInputErrorWithErrorAndPublicMessage(err error, pubMsg string) Err
 }
 
 func NewInvalidInputErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewInvalidInputErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewInvalidInputErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {

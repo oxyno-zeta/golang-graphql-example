@@ -9,7 +9,7 @@ import (
 const NotFoundErrorCode = "NOT_FOUND"
 
 func NewNotFoundError(msg string) Error {
-	return NewNotFoundErrorWithExtensions(msg, nil)
+	return NewNotFoundErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
 }
 
 func NewNotFoundErrorWithPublicMessage(msg, pubMsg string) Error {
@@ -17,7 +17,7 @@ func NewNotFoundErrorWithPublicMessage(msg, pubMsg string) Error {
 }
 
 func NewNotFoundErrorWithError(err error) Error {
-	return NewNotFoundErrorWithExtensionsAndError(err, nil)
+	return NewNotFoundErrorWithExtensionsPublicErrorAndError(err, nil, nil)
 }
 
 func NewNotFoundErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
@@ -25,7 +25,7 @@ func NewNotFoundErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
 }
 
 func NewNotFoundErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewNotFoundErrorWithExtensionsAndError(errors.New(msg), customExtensions)
+	return NewNotFoundErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
 }
 
 func NewNotFoundErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {
