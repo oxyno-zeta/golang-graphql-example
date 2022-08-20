@@ -30,25 +30,39 @@ function ThemeProvider({ children, themeOptions }: Props) {
   const [mode, setMode] = useState<PaletteMode>(initVal as PaletteMode);
 
   // Create color mode context
-  const colorMode = useMemo(
-    () => ({
+  const colorMode = useMemo(() => {
+    // Set cookie
+    const setCookie = (input: PaletteMode) => {
+      cookies.set('palette-mode', input, {
+        path: '/',
+        maxAge: 31536000, // 1 year
+        domain: cfg.configCookieDomain,
+      });
+    };
+
+    return {
       toggleColorMode: () => {
         setMode((prevMode) => {
           // Compute new value
           const newVal = prevMode === 'light' ? 'dark' : 'light';
           // Save in storage
-          cookies.set('palette-mode', newVal, {
-            path: '/',
-            maxAge: 31536000, // 1 year
-            domain: cfg.configCookieDomain,
-          });
+          setCookie(newVal);
 
           return newVal;
         });
       },
-    }),
-    [],
-  );
+      setColorMode: (input: PaletteMode | null) => {
+        setMode((prevMode: PaletteMode) => {
+          // Compute new value
+          const newVal = input || prevMode;
+          // Save in storage
+          setCookie(newVal);
+
+          return newVal;
+        });
+      },
+    };
+  }, []);
 
   const theme = useMemo(() => {
     // Initialize working copy

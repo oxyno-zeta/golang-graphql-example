@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/material/styles';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
 function IconToggleColorMode() {
@@ -13,13 +13,13 @@ function IconToggleColorMode() {
   // Get theme
   const theme = useTheme();
   // Get color mode context
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = useContext(ColorModeContext);
 
   return (
     <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common.lightThemeTooltip' : 'common.darkThemeTooltip')}</>}>
       <span>
         <IconButton onClick={colorMode.toggleColorMode} color="inherit">
-          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
       </span>
     </Tooltip>

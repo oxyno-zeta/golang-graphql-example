@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import { useTranslation } from 'react-i18next';
-import IconToggleColorMode from '../theming/IconToggleColorMode';
+import TopBarUserMenu from './TopBarUserMenu';
 
 function TopBar() {
   // Setup translate
@@ -24,7 +24,7 @@ function TopBar() {
           {t('common.mainTitle')}
         </Typography>
         <div style={{ flexGrow: 1 }} />
-        <IconToggleColorMode />
+        <TopBarUserMenu />
       </Toolbar>
     </AppBar>
   );
