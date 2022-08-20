@@ -209,6 +209,15 @@ func (as *amqpService) connectPublisher() error {
 	chann, err := as.connectChannelPublisher(conn)
 	// Check error
 	if err != nil {
+		// Defer the connection close to avoid having ghost connections
+		defer func() {
+			err2 := conn.Close()
+			// Check error
+			if err2 != nil {
+				as.logger.Error(errors.Wrap(err2, "connection close error created by channel creation error"))
+			}
+		}()
+
 		return err
 	}
 
@@ -249,6 +258,15 @@ func (as *amqpService) connectConsumer() error {
 	chann, err := as.connectChannelDefault(conn)
 	// Check error
 	if err != nil {
+		// Defer the connection close to avoid having ghost connections
+		defer func() {
+			err2 := conn.Close()
+			// Check error
+			if err2 != nil {
+				as.logger.Error(errors.Wrap(err2, "connection close error created by channel creation error"))
+			}
+		}()
+
 		return err
 	}
 
