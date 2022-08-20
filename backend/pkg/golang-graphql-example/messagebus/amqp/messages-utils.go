@@ -28,7 +28,7 @@ func CreateJSONPublishingMessage(data interface{}) (*amqp091.Publishing, error) 
 func ParseJSONMessage(res interface{}, input *amqp091.Delivery) error {
 	// Check content type
 	if input.ContentType != "application/json" {
-		return ErrMessageNotJSON
+		return errors.WithStack(ErrMessageNotJSON)
 	}
 
 	// Try to unmarshal
