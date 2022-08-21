@@ -23,6 +23,8 @@ export type PaginationInputModel = {
 };
 
 export type SortOrderModel = 'ASC' | 'DESC' | undefined;
+export const SortOrderAsc = 'ASC';
+export const SortOrderDesc = 'DESC';
 
 export type SortOrderFieldModel = {
   field: string;

@@ -176,7 +176,7 @@ function Todos() {
           <Divider />
           <div style={{ width: '100%' }}>
             {gridView && <GridView loading={loading} data={data?.todos} />}
-            {!gridView && <TableView data={data?.todos} loading={loading} />}
+            {!gridView && <TableView data={data?.todos} loading={loading} sort={sort} setSort={setSort} />}
             {data && data.todos && (
               <>
                 <Divider />
