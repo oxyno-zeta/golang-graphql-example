@@ -25,11 +25,14 @@ export type PaginationInputModel = {
 export type SortOrderModel = 'ASC' | 'DESC' | undefined;
 export const SortOrderAsc = 'ASC';
 export const SortOrderDesc = 'DESC';
+export const SortQueryParamName = 'sort';
 
 export type SortOrderFieldModel = {
   field: string;
   display: string;
 };
+
+export const FilterQueryParamName = 'filter';
 
 export type StringFilterModel = {
   eq?: string;

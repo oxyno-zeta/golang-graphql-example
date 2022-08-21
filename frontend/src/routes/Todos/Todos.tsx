@@ -15,7 +15,7 @@ import {
 } from '../../models/todos';
 import PageHeader from '../../components/PageHeader';
 import FilterSearchBar from '../../components/filters/FilterSearchBar';
-import { ConnectionModel, StringFilterModel } from '../../models/general';
+import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '../../models/general';
 import GraphqlErrors from '../../components/GraphqlErrors';
 import SortButton from '../../components/sorts/SortButton';
 import GridView from './components/GridView';
@@ -72,16 +72,20 @@ function Todos() {
   // Get search params
   const [searchParams, setSearchParams] = useSearchParams();
   // Filter, pagination and sort values
-  const filter = getJSONObjectFromSearchParam<TodoFilterModel>('filter', {}, searchParams);
-  const sort = getJSONObjectFromSearchParam<TodoSortOrderModel>('sort', { createdAt: 'DESC' }, searchParams);
+  const filter = getJSONObjectFromSearchParam<TodoFilterModel>(FilterQueryParamName, {}, searchParams);
+  const sort = getJSONObjectFromSearchParam<TodoSortOrderModel>(
+    SortQueryParamName,
+    { createdAt: 'DESC' },
+    searchParams,
+  );
   const pagination = getPaginationFromSearchParams(initialPagination, maxPagination, searchParams, setSearchParams);
 
   // Setter
   const setSort = (data: TodoSortOrderModel) => {
-    setJSONObjectSearchParam('sort', data, searchParams, setSearchParams);
+    setJSONObjectSearchParam(SortQueryParamName, data, searchParams, setSearchParams);
   };
   const setFilter = (data: TodoFilterModel) => {
-    setJSONObjectSearchParam('filter', data, searchParams, setSearchParams);
+    setJSONObjectSearchParam(FilterQueryParamName, data, searchParams, setSearchParams);
   };
 
   // States
