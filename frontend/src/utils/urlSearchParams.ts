@@ -58,6 +58,12 @@ export function getJSONObjectFromSearchParam<T>(
     // Parse
     const obj = JSON.parse(objStr || '');
 
+    // Check if it is an empty object
+    if (Object.keys(obj).length === 0) {
+      // Return init
+      return init;
+    }
+
     // Return
     return obj;
   } catch (e) {
