@@ -38,6 +38,8 @@ import (
 
 const GraphqlComplexityLimit = 2000
 
+var StaticFiles = "static/*.html"
+
 type Server struct {
 	logger            log.Logger
 	cfgManager        config.Manager
@@ -184,7 +186,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.GET("/api/graphql", gin.WrapH(graphiqlHandler("GraphQL", "/api/graphql")))
 
 	// Add gin html files for answer
-	router.LoadHTMLGlob("static/*.html")
+	router.LoadHTMLGlob(StaticFiles)
 	// Add static files
 	router.Use(static.Serve("/", static.LocalFile("static/", true)))
 	// Add specialized support for SPA based UI
