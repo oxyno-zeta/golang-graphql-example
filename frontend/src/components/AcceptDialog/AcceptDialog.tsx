@@ -15,14 +15,16 @@ interface Props {
   contentElement?: ReactNode;
   handleClose: () => void;
   handleOk: () => Promise<void>;
+  okDisabled?: boolean;
 }
 
 const defaultProps = {
   content: '',
   contentElement: null,
+  okDisabled: false,
 };
 
-function AcceptDialog({ open, title, content, contentElement, handleClose, handleOk }: Props) {
+function AcceptDialog({ open, title, content, contentElement, handleClose, handleOk, okDisabled }: Props) {
   const { t } = useTranslation();
   // Manage loading
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -48,7 +50,7 @@ function AcceptDialog({ open, title, content, contentElement, handleClose, handl
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>{t('common.cancelAction')}</Button>
-        <LoadingButton loading={isLoading} variant="contained" onClick={okOnClick} autoFocus>
+        <LoadingButton loading={isLoading} variant="contained" onClick={okOnClick} disabled={okDisabled} autoFocus>
           {t('common.okAction')}
         </LoadingButton>
       </DialogActions>
