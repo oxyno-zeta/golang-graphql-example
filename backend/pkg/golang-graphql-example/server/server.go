@@ -261,5 +261,25 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 	h.Use(svr.metricsCl.GraphqlMiddleware())
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
 
+	h.SetRecoverFunc(func(ctx context.Context, errI interface{}) (userMessage error) {
+		// Get logger
+		logger := log.GetLoggerFromContext(ctx)
+
+		var err error
+		// Cast err as error
+		err, ok := errI.(error)
+		// Check if cast was ok to wrap it in basic error
+		// If not, stringify it
+		if ok {
+			err = cerrors.NewInternalServerErrorWithError(err)
+		} else {
+			err = cerrors.NewInternalServerError(fmt.Sprintf("%+v", errI))
+		}
+		// Log
+		logger.Error(err)
+
+		return err
+	})
+
 	return gin.WrapH(h)
 }
