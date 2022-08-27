@@ -13,6 +13,7 @@ import (
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
+	gqlplayground "github.com/99designs/gqlgen/graphql/playground"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/static"
@@ -183,7 +184,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.Use(dataloaders.Middleware(svr.busiServices))
 	// Add graphql endpoints
 	router.POST("/api/graphql", svr.graphqlHandler(svr.busiServices))
-	router.GET("/api/graphql", gin.WrapH(graphiqlHandler("GraphQL", "/api/graphql")))
+	router.GET("/api/graphql", gin.WrapH(gqlplayground.Handler("GraphQL", "/api/graphql")))
 
 	// Add gin html files for answer
 	router.LoadHTMLGlob(StaticFiles)
