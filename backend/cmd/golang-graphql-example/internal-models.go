@@ -5,7 +5,7 @@ import "strings"
 type targetDefinition struct {
 	// Run target function
 	// This function must crash the app if necessary
-	Run func(sv *services)
+	Run func(targets []string, sv *services)
 	// Is it a primary target to perform before any other not primary ?
 	Primary bool
 	// Should be considered in "all" target ?

@@ -167,7 +167,7 @@ func main() {
 	// Start all primary targets
 	for _, tDef := range primaryList {
 		// Run
-		tDef.Run(sv)
+		tDef.Run(targets, sv)
 	}
 
 	// Add count of other targets for waiting group
@@ -181,7 +181,7 @@ func main() {
 			defer wg.Done()
 
 			// Run target
-			tDef.Run(sv)
+			tDef.Run(targets, sv)
 		}(tDef)
 	}
 

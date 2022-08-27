@@ -6,7 +6,7 @@ var migrateDBTarget = &targetDefinition{
 	InAllTarget: true,
 }
 
-func migrateDBTargetRun(sv *services) {
+func migrateDBTargetRun(targets []string, sv *services) {
 	sv.logger.Info("Starting database migration")
 	// Migrate database
 	err := sv.busServices.MigrateDB()
