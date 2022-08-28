@@ -38,6 +38,11 @@ repos:
     hooks:
       - id: shellcheck
         stages: [commit]
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.11.2
+    hooks:
+      - id: gitleaks
+        stages: [commit]
   - repo: local
     hooks:
       - id: backend-lint
