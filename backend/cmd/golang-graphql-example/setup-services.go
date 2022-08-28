@@ -191,7 +191,7 @@ func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // 
 	sv.authenticationSvc = authenticationSvc
 }
 
-func setupMandatoryServices(sv *services) {
+func setupMandatoryServices(sv *services, configFolderPath string) {
 	// Create new logger
 	logger := log.NewLogger()
 	// Save
@@ -201,7 +201,7 @@ func setupMandatoryServices(sv *services) {
 	cfgManager := config.NewManager(logger)
 
 	// Load configuration
-	err := cfgManager.Load()
+	err := cfgManager.Load(configFolderPath)
 	// Check error
 	if err != nil {
 		logger.Fatal(err)

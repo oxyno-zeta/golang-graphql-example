@@ -119,15 +119,12 @@ database:
 				defer os.Remove(k)
 			}
 
-			// Change var for main configuration file
-			mainConfigFolderPath = dir
-
 			ctx := &managercontext{
 				logger: log.NewLogger(),
 			}
 
 			// Load config
-			err = ctx.Load()
+			err = ctx.Load(dir)
 
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Load() error = %v, wantErr %v", err, tt.wantErr)
@@ -186,9 +183,6 @@ tracing:
 		defer os.Remove(k)
 	}
 
-	// Change var for main configuration file
-	mainConfigFolderPath = dir
-
 	ctx := &managercontext{
 		logger: log.NewLogger(),
 	}
@@ -198,7 +192,7 @@ tracing:
 	})
 
 	// Load config
-	err = ctx.Load()
+	err = ctx.Load(dir)
 	assert.NoError(t, err)
 	// Get configuration
 	res := ctx.GetConfig()
@@ -329,9 +323,6 @@ oidcAuthentication:
 		defer os.Remove(k)
 	}
 
-	// Change var for main configuration file
-	mainConfigFolderPath = dir
-
 	ctx := &managercontext{
 		logger: log.NewLogger(),
 	}
@@ -341,7 +332,7 @@ oidcAuthentication:
 	})
 
 	// Load config
-	err = ctx.Load()
+	err = ctx.Load(dir)
 	assert.NoError(t, err)
 	// Get configuration
 	res := ctx.GetConfig()
@@ -486,9 +477,6 @@ tracing:
 		defer os.Remove(k)
 	}
 
-	// Change var for main configuration file
-	mainConfigFolderPath = dir
-
 	ctx := &managercontext{
 		logger: log.NewLogger(),
 	}
@@ -498,7 +486,7 @@ tracing:
 	})
 
 	// Load config
-	err = ctx.Load()
+	err = ctx.Load(dir)
 	assert.NoError(t, err)
 	// Get configuration
 	res := ctx.GetConfig()
@@ -627,9 +615,6 @@ opaServerAuthorization:
 		defer os.Remove(k)
 	}
 
-	// Change var for main configuration file
-	mainConfigFolderPath = dir
-
 	ctx := &managercontext{
 		logger: log.NewLogger(),
 	}
@@ -639,7 +624,7 @@ opaServerAuthorization:
 	})
 
 	// Load config
-	err = ctx.Load()
+	err = ctx.Load(dir)
 	assert.NoError(t, err)
 	// Get configuration
 	res := ctx.GetConfig()
@@ -784,9 +769,6 @@ database:
 		defer os.Remove(k)
 	}
 
-	// Change var for main configuration file
-	mainConfigFolderPath = dir
-
 	ctx := &managercontext{
 		logger: log.NewLogger(),
 	}
@@ -796,7 +778,7 @@ database:
 	})
 
 	// Load config
-	err = ctx.Load()
+	err = ctx.Load(dir)
 	assert.NoError(t, err)
 	// Get configuration
 	res := ctx.GetConfig()

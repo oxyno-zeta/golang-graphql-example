@@ -61,12 +61,20 @@ func main() {
 
 	// Init flags
 	var targets arrayFlags
+	// Init config folder path flag
+	var configFolderPath string
 
 	// Create target flag
 	flag.Var(
 		&targets,
 		"target",
 		"Represents the application target to be launched (possible values:"+strings.Join(possibleTargetValues, ",")+")",
+	)
+	flag.StringVar(
+		&configFolderPath,
+		"config-folder-path",
+		config.DefaultMainConfigFolderPath,
+		"Represents the configuration folder path",
 	)
 	// Parse flags
 	flag.Parse()
@@ -75,7 +83,7 @@ func main() {
 	sv := &services{}
 
 	// Setup mandatory services
-	setupMandatoryServices(sv)
+	setupMandatoryServices(sv, configFolderPath)
 
 	// Catch any panic
 	defer func() {

@@ -17,9 +17,6 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-// Main configuration folder path.
-var mainConfigFolderPath = "conf/"
-
 // TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials.
 var TemplateErrLoadingEnvCredentialEmpty = "error loading credentials, environment variable %s is empty" //nolint: gosec // False positive
 
@@ -37,15 +34,22 @@ func (ctx *managercontext) AddOnChangeHook(hook func()) {
 	ctx.onChangeHooks = append(ctx.onChangeHooks, hook)
 }
 
-func (ctx *managercontext) Load() error {
+func (ctx *managercontext) Load(inputConfigFilePath string) error {
+	// Initialize config file folder path
+	configFolderPath := DefaultMainConfigFolderPath
+	// Check if input is set to change for this one
+	if inputConfigFilePath != "" {
+		configFolderPath = inputConfigFilePath
+	}
+
 	// List files
-	files, err := ioutil.ReadDir(mainConfigFolderPath)
+	files, err := ioutil.ReadDir(configFolderPath)
 	if err != nil {
 		return errors.WithStack(err)
 	}
 
 	// Generate viper instances for static configs
-	ctx.configs = generateViperInstances(files)
+	ctx.configs = generateViperInstances(files, configFolderPath)
 
 	// Load configuration
 	err = ctx.loadConfiguration()
@@ -163,7 +167,7 @@ func (ctx *managercontext) loadDefaultConfigurationValues(vip *viper.Viper) {
 	vip.SetDefault("lockDistributor.heartbeatFrequency", DefaultLockDistributionHeartbeatFrequency)
 }
 
-func generateViperInstances(files []os.FileInfo) []*viper.Viper {
+func generateViperInstances(files []os.FileInfo, configFolderPath string) []*viper.Viper {
 	list := make([]*viper.Viper, 0)
 	// Loop over static files to create viper instance for them
 	funk.ForEach(files, func(file os.FileInfo) {
@@ -177,7 +181,7 @@ func generateViperInstances(files []os.FileInfo) []*viper.Viper {
 			// Set config name
 			vip.SetConfigName(cfgFileName)
 			// Add configuration path
-			vip.AddConfigPath(mainConfigFolderPath)
+			vip.AddConfigPath(configFolderPath)
 			// Append it
 			list = append(list, vip)
 		}
