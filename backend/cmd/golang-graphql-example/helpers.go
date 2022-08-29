@@ -25,16 +25,6 @@ func GenerateInternalServer(sv *services) (*server.InternalServer, error) {
 		Interval: 10 * time.Second, //nolint:gomnd // Won't do a const for that
 		Timeout:  3 * time.Second,  //nolint:gomnd // Won't do a const for that
 	})
-	// Check if amqp service exists
-	if sv.amqpSvc != nil {
-		// Add checker for amqp service
-		intSvr.AddChecker(&server.CheckerInput{
-			Name:     "amqp",
-			CheckFn:  sv.amqpSvc.Ping,
-			Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
-			Timeout:  time.Second,
-		})
-	}
 
 	// Check if amqp service exists
 	if sv.amqpSvc != nil {
