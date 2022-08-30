@@ -3,7 +3,7 @@ package common
 import (
 	"time"
 
-	"emperror.dev/errors"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
 // GenericFilter is a structure that will handle filters other than Date.
@@ -280,7 +280,9 @@ func parseTime(x string) (*time.Time, error) {
 	t, err := time.Parse(time.RFC3339, x)
 	// Check error
 	if err != nil {
-		return nil, errors.WithStack(err)
+		// In this particular case, display error in public message in order to help api user to detect the error
+		// and consider that error as an invalid input error.
+		return nil, errors.NewInvalidInputErrorWithErrorAndPublicMessage(err, err.Error())
 	}
 
 	// Force utc
