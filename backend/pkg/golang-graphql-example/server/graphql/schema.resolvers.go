@@ -106,8 +106,14 @@ func (r *queryResolver) Todo(ctx context.Context, id string) (*models.Todo, erro
 		return nil, err
 	}
 
+	uuid, err := utils.FromIDRelay(id, mappers.TodoIDPrefix)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
 	// Call business
-	res, err := r.BusiServices.TodoSvc.FindByID(ctx, id, proj)
+	res, err := r.BusiServices.TodoSvc.FindByID(ctx, uuid, proj)
 
 	return res, err
 }
