@@ -1,24 +1,31 @@
-import { TodoFilterModel } from '../../models/todos';
+import { StringFilterModel } from '../../../models/general';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line import/prefer-default-export
-export function onMainSearchChange(
+export function onMainSearchChangeDefault<T>(
+  filterKey: keyof Omit<T, 'AND' | 'OR'>,
   newValue: string,
   oldValue: string,
-  setFilter: (f: (input: TodoFilterModel) => TodoFilterModel) => void,
+  setFilter: (f: (input: T) => T) => void,
 ) {
   // Call set filter
-  setFilter((initialFilter) => {
+  setFilter((initialFilter: T) => {
     // Create a deep copy in order to force a reload of graphql query.
     // Otherwise, it is ignored
-    const filterCopy: TodoFilterModel = JSON.parse(JSON.stringify(initialFilter));
-    // Check if text contains is at root level
-    if (filterCopy && filterCopy.text && filterCopy.text.contains && filterCopy.text.contains === oldValue) {
+    const filterCopy = JSON.parse(JSON.stringify(initialFilter));
+    // Check if [filterKey] contains is at root level
+    if (
+      filterCopy &&
+      filterCopy[filterKey] &&
+      filterCopy[filterKey].contains &&
+      filterCopy[filterKey].contains === oldValue
+    ) {
       // Flush filter
-      delete filterCopy.text;
+      delete filterCopy[filterKey];
       // Check if it isn't a flush case
       if (newValue !== '') {
         // Set filter
-        filterCopy.text = { contains: newValue };
+        filterCopy[filterKey] = { contains: newValue } as StringFilterModel;
       }
 
       // Save
@@ -30,7 +37,9 @@ export function onMainSearchChange(
       // Check if it is a clean case
       if (newValue === '') {
         // Filter on all elements and keep only elements that aren't equal to the main search
-        const newAnd = filterCopy.AND.filter((it) => !(it.text && it.text.contains && it.text.contains === oldValue));
+        const newAnd = filterCopy.AND.filter(
+          (it: any) => !(it[filterKey] && it[filterKey].contains && it[filterKey].contains === oldValue),
+        );
 
         // Check if and arrays are different
         if (newAnd.length !== filterCopy.AND.length) {
@@ -41,8 +50,8 @@ export function onMainSearchChange(
         }
       } else {
         // Search if filter have been provided
-        const item = filterCopy.AND.find((it) => {
-          if (it.text && it.text.contains && it.text.contains === oldValue) {
+        const item = filterCopy.AND.find((it: any) => {
+          if (it[filterKey] && it[filterKey].contains && it[filterKey].contains === oldValue) {
             return it;
           }
 
@@ -51,11 +60,11 @@ export function onMainSearchChange(
 
         // Check if item exists
         if (item) {
-          item.text = { contains: newValue };
+          item[filterKey] = { contains: newValue };
           return { ...filterCopy };
         }
 
-        filterCopy.AND.push({ text: { contains: newValue } });
+        filterCopy.AND.push({ [filterKey]: { contains: newValue } });
         return { ...filterCopy };
       }
     }
@@ -64,14 +73,14 @@ export function onMainSearchChange(
     if (newValue === '') {
       // Stop here as we haven't found anything before
       // Return the initial filter as nothing changed
-      return initialFilter;
+      return filterCopy;
     }
 
     if (filterCopy && Object.keys(filterCopy).length >= 1) {
-      filterCopy.AND = [{ text: { contains: newValue } }];
+      filterCopy.AND = [{ [filterKey]: { contains: newValue } }];
       return { ...filterCopy };
     }
 
-    return { text: { contains: newValue } };
+    return { [filterKey]: { contains: newValue } };
   });
 }

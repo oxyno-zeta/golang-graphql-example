@@ -25,6 +25,7 @@ import { onMainSearchChange } from './utils';
 import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '../../utils/pagination';
 import GridTableViewSwitcher from '../../components/GridTableViewSwitcher';
 import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '../../utils/urlSearchParams';
+import { onMainSearchChangeDefault } from '../../components/filters/utils/mainSearch';
 
 const GET_TODOS_QUERY = gql`
   query getTodos($first: Int, $last: Int, $before: String, $after: String, $filter: TodoFilter, $sort: TodoSortOrder) {
@@ -132,13 +133,18 @@ function Todos() {
                 // a new filter is applied, you want to start from start again.
                 cleanAndSetCleanedPagination(searchParams, setSearchParams);
                 // Call on main search change
-                onMainSearchChange(newValue, oldValue, (f: (input: TodoFilterModel) => TodoFilterModel) => {
-                  // Execute filter generator
-                  const nF = f(filter);
+                onMainSearchChangeDefault<TodoFilterModel>(
+                  'text',
+                  newValue,
+                  oldValue,
+                  (f: (input: TodoFilterModel) => TodoFilterModel) => {
+                    // Execute filter generator
+                    const nF = f(filter);
 
-                  // Save new filter
-                  setFilter(nF);
-                });
+                    // Save new filter
+                    setFilter(nF);
+                  },
+                );
               }}
               filterDefinitionModel={todoFilterDefinitionObject}
               predefinedFilterObjects={[
