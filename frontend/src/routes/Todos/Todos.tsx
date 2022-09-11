@@ -13,7 +13,7 @@ import {
   todoSortFields,
   TodoModel,
 } from '../../models/todos';
-import PageHeader from '../../components/PageHeader';
+import Title from '../../components/Title';
 import FilterSearchBar from '../../components/filters/FilterSearchBar';
 import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '../../models/general';
 import GraphqlErrors from '../../components/GraphqlErrors';
@@ -109,7 +109,7 @@ function Todos() {
 
   return (
     <>
-      <PageHeader title="Todos" />
+      <Title title="Todos" />
       {error && <GraphqlErrors error={error} />}
       {!error && (
         <Paper variant="outlined">
