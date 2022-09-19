@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -391,7 +390,7 @@ func loadCredential(credCfg *CredentialConfig) error {
 		// Environment variable
 		envValue := os.Getenv(credCfg.Env)
 		if envValue == "" {
-			return errors.WithStack(fmt.Errorf(TemplateErrLoadingEnvCredentialEmpty, credCfg.Env))
+			return errors.Errorf(TemplateErrLoadingEnvCredentialEmpty, credCfg.Env)
 		}
 		// Store value
 		credCfg.Value = envValue

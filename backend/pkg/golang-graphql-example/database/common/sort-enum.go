@@ -51,7 +51,7 @@ func (e *SortOrderEnum) UnmarshalGQL(v interface{}) error {
 
 	*e = SortOrderEnum(str)
 	if !e.IsValid() {
-		return errors.WithStack(fmt.Errorf("%s is not a valid SortOrderEnum", str))
+		return errors.Errorf("%s is not a valid SortOrderEnum", str)
 	}
 
 	return nil

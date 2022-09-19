@@ -167,7 +167,7 @@ func (ll *loggerIns) Fatal(args ...interface{}) {
 
 func (ll *loggerIns) Errorf(format string, args ...interface{}) {
 	// Create error
-	err := fmt.Errorf(format, args...)
+	err := errors.Errorf(format, args...)
 
 	// Log error
 	ll.Error(err)
@@ -175,7 +175,7 @@ func (ll *loggerIns) Errorf(format string, args ...interface{}) {
 
 func (ll *loggerIns) Fatalf(format string, args ...interface{}) {
 	// Create error
-	err := fmt.Errorf(format, args...)
+	err := errors.Errorf(format, args...)
 
 	// Log fatal
 	ll.Fatal(err)
