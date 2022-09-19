@@ -426,9 +426,18 @@ func (as *amqpService) consumeDeliveryHandler(
 ) (err error) {
 	// Defer close and status
 	defer func() {
-		// Try to recover if any
-		if err2 := recover(); err2 != nil {
-			err = errors.New(fmt.Sprintf("%v", err2))
+		// Catch panic
+		if errI := recover(); errI != nil {
+			// Try to cast error
+			err2, ok := errI.(error)
+			// Check if cast wasn't ok
+			if !ok {
+				// Transform it
+				err = errors.Errorf("%+v", errI)
+			} else {
+				// Map introduce stack trace
+				err = errors.WithStack(err2)
+			}
 		}
 		// Check if error is set
 		if err != nil {
