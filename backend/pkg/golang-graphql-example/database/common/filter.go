@@ -15,12 +15,10 @@ const andFieldName = "AND"
 const orFieldName = "OR"
 
 func ManageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
-	return manageFilter(filter, db, db, false)
+	return manageFilter(filter, db, false)
 }
 
-func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) { //nolint: unparam,lll // originalDB is clearly not unused
-	// Create result
-	res := db
+func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) { //nolint: unparam,lll // originalDB is clearly not unused
 	// Get reflect value of filter object
 	rVal := reflect.ValueOf(filter)
 	// Get kind of filter
@@ -28,20 +26,22 @@ func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObjec
 	// Check if filter isn't nil
 	if rKind == reflect.Invalid || (rKind == reflect.Ptr && rVal.IsNil()) {
 		// Stop here
-		return res, nil
+		return originalDB, nil
 	}
 	// Check if kind is supported
 	if rKind != reflect.Struct && rKind != reflect.Ptr {
 		// Check if skip input not an object is enabled
 		// This is used in recursive calls in order to avoid errors when OR or AND cases aren't an object supported
 		if skipInputNotObject {
-			return db, nil
+			return originalDB, nil
 		}
 
 		// No skip => Error
 		return nil, errors.NewInvalidInputError("filter must be an object")
 	}
 
+	// Build result
+	res := originalDB
 	// Indirect value
 	indirect := reflect.Indirect(rVal)
 	// Get indirect data
@@ -49,6 +49,10 @@ func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObjec
 	// Get type of indirect value
 	typeOfIndi := reflect.TypeOf(indData)
 
+	// Create a temporary db object
+	// This is made to ensure groups with ()
+	// Without this, there is a high risk of not having them well placed
+	var tmpDB *gorm.DB
 	// Loop over all num fields
 	for i := 0; i < indirect.NumField(); i++ {
 		// Get field type
@@ -92,13 +96,29 @@ func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObjec
 			return nil, err
 		}
 		// Manage filter request
-		res2, err := manageFilterRequest(tagVal, v, res)
+		// Call manage filter request WITH the original db in order to create a pure subquery
+		// See here: https://gorm.io/docs/advanced_query.html#Group-Conditions
+		res2, err := manageFilterRequest(tagVal, v, originalDB)
 		// Check error
 		if err != nil {
 			return nil, err
 		}
 
-		res = res2
+		// Manage result
+		// Check if it is the first time
+		if tmpDB == nil {
+			// Init with result
+			tmpDB = res2
+		} else {
+			// Simply add the value with the where to the previous one
+			tmpDB = tmpDB.Where(res2)
+		}
+	}
+
+	// Check if it is set
+	if tmpDB != nil {
+		// Init the result with this
+		res = tmpDB
 	}
 
 	// Manage AND cases
@@ -111,20 +131,36 @@ func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObjec
 		andRVal := indirect.FieldByName(andFieldName)
 		// Check that type is a slice
 		if andRVal.Kind() == reflect.Slice {
+			// Create a temporary db object
+			// This is made to ensure groups with ()
+			// Without this, there is a high risk of not having them well placed
+			var tmpDB *gorm.DB
 			// Loop over items in array
 			for i := 0; i < andRVal.Len(); i++ {
 				// Get element at index
 				andElementRVal := andRVal.Index(i)
 				// Get value behind
 				andElement := andElementRVal.Interface()
-				// Call manage filter
-				res2, err := manageFilter(andElement, originalDB, originalDB, true)
+				// Call manage filter WITH the original db in order to create a pure subquery
+				// See here: https://gorm.io/docs/advanced_query.html#Group-Conditions
+				res2, err := manageFilter(andElement, originalDB, true)
 				// Check error
 				if err != nil {
 					return nil, err
 				}
-				// Save result
-				res = res.Where(res2)
+				// Manage result
+				// Check if it is the first time
+				if tmpDB == nil {
+					// Init with result
+					tmpDB = res2
+				} else {
+					// Simply add the value with the where to the previous one
+					tmpDB = tmpDB.Where(res2)
+				}
+			}
+			// Add result to existing filter if it exists
+			if tmpDB != nil {
+				res = res.Where(tmpDB)
 			}
 		}
 	}
@@ -144,6 +180,12 @@ func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObjec
 			lgt := orRVal.Len()
 			// Check length in order to ignore it it is 0
 			if lgt != 0 {
+				// Create a temporary db object
+				// This is made to ensure OR filters are grouped together in request
+				// Otherwise, we can have the situation of XX AND YY OR ZZ
+				// instead of XX AND (YY OR ZZ) or (XX AND YY) OR ZZ
+				// In fact, we ensure groups with () with this solution
+				var tmpDB *gorm.DB
 				// Array is populated
 				// Loop over elements
 				for i := 0; i < lgt; i++ {
@@ -153,20 +195,25 @@ func manageFilter(filter interface{}, db, originalDB *gorm.DB, skipInputNotObjec
 					elem := elemRVal.Interface()
 					// Call manage filter WITH the original db in order to create a pure subquery
 					// See here: https://gorm.io/docs/advanced_query.html#Group-Conditions
-					res2, err := manageFilter(elem, originalDB, originalDB, true)
+					res2, err := manageFilter(elem, originalDB, true)
 					// Check error
 					if err != nil {
 						return nil, err
 					}
 					// Manage result
-					// Check if it is the first element
-					if i == 0 {
-						// First element must be managed as a where
-						res = res.Where(res2)
+					// Check if it is the first time
+					if tmpDB == nil {
+						// Init with result but as it it is a OR case, add to a clean db object to ensure no perturbation
+						tmpDB = originalDB.Or(res2)
 					} else {
-						// This is the other cases
-						res = res.Or(res2)
+						// Simply add the value with the or to the previous one
+						tmpDB = tmpDB.Or(res2)
 					}
+				}
+
+				// Add result to existing filter if it exists
+				if tmpDB != nil {
+					res = res.Where(tmpDB)
 				}
 			}
 		}
