@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"strings"
 	"sync"
 
@@ -95,7 +94,7 @@ func main() {
 			// Check if cast wasn't ok
 			if !ok {
 				// Transform it
-				err = errors.New(fmt.Sprintf("%+v", errI))
+				err = errors.Errorf("%+v", errI)
 			} else {
 				// Map introduce stack trace
 				err = errors.WithStack(err)

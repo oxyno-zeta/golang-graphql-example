@@ -22,7 +22,12 @@ func New(busiServices *business.Services) *TodosDataloaders {
 		GenericLoader: dataloader.NewBatchedLoader(
 			dataloaderscommon.GenericLoader(
 				func(ctx context.Context, ids []string, projection interface{}) ([]*models.Todo, error) {
-					return busiServices.TodoSvc.Find(ctx, nil, &models.Filter{ID: &common.GenericFilter{In: ids}}, projection.(*models.Projection))
+					return busiServices.TodoSvc.Find(
+						ctx,
+						nil,
+						&models.Filter{ID: &common.GenericFilter{In: ids}},
+						projection.(*models.Projection), //nolint:forcetypeassert // We know that it is that
+					)
 				},
 			),
 			dataloader.WithTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](&dataloadertracing.Tracer[*dataloaderscommon.IDProjectionKey, *models.Todo]{}),
@@ -52,7 +57,12 @@ func New(busiServices *business.Services) *TodosDataloaders {
 					return &projection, nil
 				},
 				func(ctx context.Context, ids []string, projection interface{}) ([]*models.Todo, error) {
-					return busiServices.TodoSvc.Find(ctx, nil, &models.Filter{ID: &common.GenericFilter{In: ids}}, projection.(*models.Projection))
+					return busiServices.TodoSvc.Find(
+						ctx,
+						nil,
+						&models.Filter{ID: &common.GenericFilter{In: ids}},
+						projection.(*models.Projection), //nolint:forcetypeassert // We know that it is that
+					)
 				},
 			),
 			dataloader.WithTracer[string, *models.Todo](&dataloadertracing.Tracer[string, *models.Todo]{}),

@@ -1,7 +1,6 @@
 package config
 
 import (
-	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
@@ -42,7 +41,7 @@ func (ctx *managercontext) Load(inputConfigFilePath string) error {
 	}
 
 	// List files
-	files, err := ioutil.ReadDir(configFolderPath)
+	files, err := os.ReadDir(configFolderPath)
 	if err != nil {
 		return errors.WithStack(err)
 	}
@@ -166,10 +165,10 @@ func (ctx *managercontext) loadDefaultConfigurationValues(vip *viper.Viper) {
 	vip.SetDefault("lockDistributor.heartbeatFrequency", DefaultLockDistributionHeartbeatFrequency)
 }
 
-func generateViperInstances(files []os.FileInfo, configFolderPath string) []*viper.Viper {
+func generateViperInstances(files []os.DirEntry, configFolderPath string) []*viper.Viper {
 	list := make([]*viper.Viper, 0)
 	// Loop over static files to create viper instance for them
-	funk.ForEach(files, func(file os.FileInfo) {
+	funk.ForEach(files, func(file os.DirEntry) {
 		filename := file.Name()
 		// Create config file name
 		cfgFileName := strings.TrimSuffix(filename, path.Ext(filename))
@@ -379,7 +378,7 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 func loadCredential(credCfg *CredentialConfig) error {
 	if credCfg.Path != "" {
 		// Secret file
-		databytes, err := ioutil.ReadFile(credCfg.Path)
+		databytes, err := os.ReadFile(credCfg.Path)
 		// Check error
 		if err != nil {
 			return errors.WithStack(err)

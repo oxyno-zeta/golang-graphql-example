@@ -18,7 +18,7 @@ func ManageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	return manageFilter(filter, db, false)
 }
 
-func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) { //nolint: unparam,lll // originalDB is clearly not unused
+func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
 	// Get reflect value of filter object
 	rVal := reflect.ValueOf(filter)
 	// Get kind of filter
