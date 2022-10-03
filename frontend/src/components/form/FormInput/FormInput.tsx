@@ -1,16 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
-import { Control, useController, Path } from 'react-hook-form';
+import { Control, useController, Path, FieldValues } from 'react-hook-form';
 import { YupTranslateErrorModel } from '../../../models/general';
 
-type Props<T> = {
+type Props<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
   textFieldProps?: TextFieldProps;
 };
 
-function FormInput<T>({ control, name, textFieldProps }: Props<T>) {
+function FormInput<T extends FieldValues>({ control, name, textFieldProps }: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
   // Use controller

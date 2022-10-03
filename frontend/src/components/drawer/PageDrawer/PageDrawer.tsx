@@ -1,15 +1,35 @@
 import React, { ReactNode, useState } from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+import Drawer, { DrawerProps } from '@mui/material/Drawer';
+import type { SxProps } from '@mui/material';
 import MainContentWrapper from '../../MainContentWrapper';
 
 interface Props {
   drawerWidth: number | string;
   drawerContentElement: ReactNode;
   renderContent: (handleDrawerToggle: () => void) => ReactNode;
+  mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
+  drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
+  drawerContainerBoxSx?: SxProps;
+  mainContainerBoxSx?: SxProps;
 }
 
-function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props) {
+const defaultProps = {
+  mobileDrawerProps: {},
+  drawerProps: {},
+  drawerContainerBoxSx: {},
+  mainContainerBoxSx: {},
+};
+
+function PageDrawer({
+  drawerContentElement,
+  drawerWidth,
+  renderContent,
+  mobileDrawerProps,
+  drawerProps,
+  drawerContainerBoxSx,
+  mainContainerBoxSx,
+}: Props) {
   // States
   const [isMobileOpen, setMobileOpen] = useState(false);
 
@@ -19,7 +39,7 @@ function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props)
 
   return (
     <div style={{ display: 'flex' }}>
-      <Box component="nav" sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}>
+      <Box component="nav" sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 }, ...drawerContainerBoxSx }}>
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           variant="temporary"
@@ -35,6 +55,7 @@ function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props)
               width: drawerWidth,
             },
           }}
+          {...mobileDrawerProps}
         >
           {drawerContentElement}
         </Drawer>
@@ -48,6 +69,7 @@ function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props)
             },
           }}
           open
+          {...drawerProps}
         >
           {drawerContentElement}
         </Drawer>
@@ -59,6 +81,7 @@ function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props)
           flexGrow: 1,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           overflowY: 'auto',
+          ...mainContainerBoxSx,
         }}
       >
         <MainContentWrapper>
@@ -69,5 +92,7 @@ function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props)
     </div>
   );
 }
+
+PageDrawer.defaultProps = defaultProps;
 
 export default PageDrawer;

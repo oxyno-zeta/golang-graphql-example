@@ -1,12 +1,26 @@
 import React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
+import type { SxProps } from '@mui/material';
 
-function CenterLoading() {
+interface Props {
+  containerBoxSx?: SxProps;
+  circularProgressProps?: Partial<CircularProgressProps>;
+}
+
+const defaultProps = {
+  containerBoxSx: {},
+  circularProgressProps: {},
+};
+
+function CenterLoading({ containerBoxSx, circularProgressProps }: Props) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
-      <CircularProgress />
-    </div>
+    <Box sx={{ display: 'flex', justifyContent: 'center', margin: '10px 0', ...containerBoxSx }}>
+      <CircularProgress {...circularProgressProps} />
+    </Box>
   );
 }
+
+CenterLoading.defaultProps = defaultProps;
 
 export default CenterLoading;

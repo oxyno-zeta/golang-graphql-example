@@ -20,6 +20,11 @@ type Props<T extends FilterValueObject> = {
   initialFilter?: undefined | null | T;
 };
 
+const defaultProps = {
+  predefinedFilterObjects: undefined,
+  initialFilter: undefined,
+};
+
 function FilterDialog<T extends FilterValueObject>({
   filterDefinitionModel,
   predefinedFilterObjects,
@@ -93,9 +98,6 @@ function FilterDialog<T extends FilterValueObject>({
   );
 }
 
-FilterDialog.defaultProps = {
-  predefinedFilterObjects: undefined,
-  initialFilter: undefined,
-};
+FilterDialog.defaultProps = defaultProps;
 
 export default FilterDialog;

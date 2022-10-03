@@ -4,8 +4,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import Toolbar from '@mui/material/Toolbar';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
 import { useTranslation } from 'react-i18next';
 import { PageInfoModel } from '../../models/general';
 import { getAllSearchParams } from '../../utils/urlSearchParams';
@@ -17,12 +17,20 @@ interface Props {
   handleFirstPage?: () => void | undefined;
   handlePreviousPage?: () => void | undefined;
   handleNextPage?: () => void | undefined;
+  toolbarProps?: ToolbarProps;
+  firstIconButtonProps?: IconButtonProps;
+  previousIconButtonProps?: IconButtonProps;
+  nextIconButtonProps?: IconButtonProps;
 }
 
 const defaultProps = {
   handleFirstPage: undefined,
   handlePreviousPage: undefined,
   handleNextPage: undefined,
+  toolbarProps: {},
+  firstIconButtonProps: {},
+  previousIconButtonProps: {},
+  nextIconButtonProps: {},
 };
 
 type IconButtonInternalProps = {
@@ -31,7 +39,17 @@ type IconButtonInternalProps = {
   onClick?: () => void;
 };
 
-function Pagination({ maxPaginationSize, pageInfo, handleFirstPage, handlePreviousPage, handleNextPage }: Props) {
+function Pagination({
+  maxPaginationSize,
+  pageInfo,
+  handleFirstPage,
+  handlePreviousPage,
+  handleNextPage,
+  toolbarProps,
+  firstIconButtonProps,
+  nextIconButtonProps,
+  previousIconButtonProps,
+}: Props) {
   // Setup translate
   const { t } = useTranslation();
   // Get search params
@@ -93,25 +111,25 @@ function Pagination({ maxPaginationSize, pageInfo, handleFirstPage, handlePrevio
   }
 
   return (
-    <Toolbar variant="dense">
+    <Toolbar variant="dense" {...toolbarProps}>
       <div style={{ marginLeft: 'auto' }}>
         <Tooltip title={<>{t('common.firstPageAction')}</>}>
           <span>
-            <IconButton disabled={!pageInfo.hasPreviousPage} {...firstPageProps}>
+            <IconButton disabled={!pageInfo.hasPreviousPage} {...firstPageProps} {...firstIconButtonProps}>
               <KeyboardDoubleArrowLeftIcon />
             </IconButton>
           </span>
         </Tooltip>
         <Tooltip title={<>{t('common.previousPageAction')}</>}>
           <span>
-            <IconButton disabled={!pageInfo.hasPreviousPage} {...previousPageProps}>
+            <IconButton disabled={!pageInfo.hasPreviousPage} {...previousPageProps} {...nextIconButtonProps}>
               <ChevronLeftIcon />
             </IconButton>
           </span>
         </Tooltip>
         <Tooltip title={<>{t('common.nextPageAction')}</>}>
           <span>
-            <IconButton disabled={!pageInfo.hasNextPage} {...nextPageProps}>
+            <IconButton disabled={!pageInfo.hasNextPage} {...nextPageProps} {...previousIconButtonProps}>
               <ChevronRightIcon />
             </IconButton>
           </span>

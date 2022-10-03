@@ -7,12 +7,12 @@ import Box from '@mui/material/Box';
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import { Control, useController, Path } from 'react-hook-form';
+import { Control, useController, Path, FieldValues } from 'react-hook-form';
 import { YupTranslateErrorModel } from '../../../models/general';
 
 type ValueModel = { display: string; value: string };
 
-type Props<T> = {
+type Props<T extends FieldValues> = {
   control: Control<T>;
   name: Path<T>;
   values: ValueModel[];
@@ -21,7 +21,13 @@ type Props<T> = {
 };
 
 /* eslint-disable react/no-array-index-key */
-function FormAutocomplete<T>({ control, name, values, autocompleteProps, textFieldProps }: Props<T>) {
+function FormAutocomplete<T extends FieldValues>({
+  control,
+  name,
+  values,
+  autocompleteProps,
+  textFieldProps,
+}: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
   // Use controller

@@ -5,16 +5,19 @@ import Typography from '@mui/material/Typography';
 import { TopBarSpacer } from '../../TopBar';
 
 interface Props {
-  titleText: string;
+  titleText?: string;
+  titleElement?: string;
   subtitleElement?: ReactNode;
   listItemsElement: ReactNode;
 }
 
 const defaultProps = {
+  titleText: '',
+  titleElement: undefined,
   subtitleElement: undefined,
 };
 
-function DrawerContent({ titleText, subtitleElement, listItemsElement }: Props) {
+function DrawerContent({ titleText, titleElement, subtitleElement, listItemsElement }: Props) {
   return (
     <div style={{ paddingTop: '10px' }}>
       <TopBarSpacer />
@@ -22,28 +25,31 @@ function DrawerContent({ titleText, subtitleElement, listItemsElement }: Props) 
         <div
           style={{
             display: 'flex',
-            marginBottom: '5px',
             alignItems: 'center',
             textAlign: 'center',
             justifyContent: 'center',
           }}
         >
-          <Typography
-            style={{
-              fontWeight: 'bold',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-              width: '100%',
-              overflow: 'hidden',
-            }}
-          >
-            {titleText}
-          </Typography>
+          {titleText && (
+            <Typography
+              style={{
+                fontWeight: 'bold',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                width: '100%',
+                overflow: 'hidden',
+              }}
+            >
+              {titleText}
+            </Typography>
+          )}
+          {titleElement}
         </div>
 
         {subtitleElement && (
           <div
             style={{
+              marginTop: '5px',
               display: 'flex',
               alignItems: 'center',
               textAlign: 'center',

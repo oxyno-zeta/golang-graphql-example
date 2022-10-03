@@ -1,22 +1,46 @@
 import React, { ReactNode } from 'react';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+import Drawer, { DrawerProps } from '@mui/material/Drawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import type { SxProps } from '@mui/material';
 
 interface Props {
   drawerWidth: number | string;
   drawerElement: ReactNode;
   handleMobileDrawerToggle: () => void;
+  mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
+  drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
+  drawerContainerBoxSx?: SxProps;
 }
 
-function ContentDisplayDrawer({ drawerElement, drawerWidth, handleMobileDrawerToggle }: Props) {
+const defaultProps = {
+  mobileDrawerProps: {},
+  drawerProps: {},
+  drawerContainerBoxSx: {},
+};
+
+function ContentDisplayDrawer({
+  drawerElement,
+  drawerWidth,
+  handleMobileDrawerToggle,
+  mobileDrawerProps,
+  drawerProps,
+  drawerContainerBoxSx,
+}: Props) {
   const open = Boolean(drawerElement);
   const theme = useTheme();
   const sizeMatching = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
-    <Box sx={{ display: open ? 'block' : 'none', width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}>
+    <Box
+      sx={{
+        display: open ? 'block' : 'none',
+        width: { lg: drawerWidth },
+        flexShrink: { lg: 0 },
+        ...drawerContainerBoxSx,
+      }}
+    >
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
       {open && !sizeMatching && (
         <Drawer
@@ -31,6 +55,7 @@ function ContentDisplayDrawer({ drawerElement, drawerWidth, handleMobileDrawerTo
               width: drawerWidth,
             },
           }}
+          {...mobileDrawerProps}
         >
           {drawerElement}
         </Drawer>
@@ -46,11 +71,14 @@ function ContentDisplayDrawer({ drawerElement, drawerWidth, handleMobileDrawerTo
         }}
         anchor="right"
         open={open}
+        {...drawerProps}
       >
         {drawerElement}
       </Drawer>
     </Box>
   );
 }
+
+ContentDisplayDrawer.defaultProps = defaultProps;
 
 export default ContentDisplayDrawer;

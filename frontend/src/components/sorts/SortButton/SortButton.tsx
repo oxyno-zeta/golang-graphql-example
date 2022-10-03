@@ -14,6 +14,8 @@ type Props<T extends Record<string, SortOrderModel>> = {
   isPopperEnabled?: boolean;
 };
 
+const defaultProps = { isPopperEnabled: false };
+
 function SortButton<T extends Record<string, SortOrderModel>>({
   sort,
   setSort,
@@ -34,7 +36,7 @@ function SortButton<T extends Record<string, SortOrderModel>>({
     setOpen(false);
   };
 
-  const defaultProps = {
+  const sortDefaultProps = {
     initialSort: sort,
     open,
     sortFields,
@@ -66,11 +68,15 @@ function SortButton<T extends Record<string, SortOrderModel>>({
           <SortIcon color="inherit" />
         </Button>
       </Tooltip>
-      {isPopperEnabled ? <SortPopper anchorElement={anchorEl} {...defaultProps} /> : <SortDialog {...defaultProps} />}
+      {isPopperEnabled ? (
+        <SortPopper anchorElement={anchorEl} {...sortDefaultProps} />
+      ) : (
+        <SortDialog {...sortDefaultProps} />
+      )}
     </>
   );
 }
 
-SortButton.defaultProps = { isPopperEnabled: false };
+SortButton.defaultProps = defaultProps;
 
 export default SortButton;

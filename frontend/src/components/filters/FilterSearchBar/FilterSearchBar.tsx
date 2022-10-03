@@ -22,6 +22,11 @@ type Props<T extends FilterValueObject> = {
   mainSearchDisplay: string;
 };
 
+const defaultProps = {
+  predefinedFilterObjects: undefined,
+  isAdvancedFilterPopperEnabled: false,
+};
+
 function FilterSearchBar<T extends FilterValueObject>({
   filter,
   setFilter,
@@ -122,9 +127,6 @@ function FilterSearchBar<T extends FilterValueObject>({
   );
 }
 
-FilterSearchBar.defaultProps = {
-  predefinedFilterObjects: undefined,
-  isAdvancedFilterPopperEnabled: false,
-};
+FilterSearchBar.defaultProps = defaultProps;
 
 export default memo(FilterSearchBar);

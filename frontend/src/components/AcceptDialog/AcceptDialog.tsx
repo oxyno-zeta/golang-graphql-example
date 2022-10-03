@@ -1,11 +1,11 @@
 import React, { ReactNode, useState } from 'react';
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
-import LoadingButton from '@mui/lab/LoadingButton';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import LoadingButton, { LoadingButtonProps } from '@mui/lab/LoadingButton';
+import DialogActions, { DialogActionsProps } from '@mui/material/DialogActions';
+import DialogContent, { DialogContentProps } from '@mui/material/DialogContent';
+import DialogContentText, { DialogContentTextProps } from '@mui/material/DialogContentText';
+import DialogTitle, { DialogTitleProps } from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
@@ -16,7 +16,13 @@ interface Props {
   handleClose: () => void;
   handleOk: () => Promise<void>;
   okDisabled?: boolean;
-  dialogProps?: Partial<DialogProps>;
+  dialogProps?: Partial<Omit<DialogProps, 'open' | 'onClose'>>;
+  dialogTitleProps?: Partial<DialogTitleProps>;
+  dialogContentProps?: Partial<DialogContentProps>;
+  dialogContentTextProps?: Partial<DialogContentTextProps>;
+  dialogActionsProps?: Partial<DialogActionsProps>;
+  cancelButtonProps?: Partial<Omit<ButtonProps, 'onClick'>>;
+  okButtonProps?: Partial<Omit<LoadingButtonProps, 'loading' | 'onClick' | 'disabled'>>;
 }
 
 const defaultProps = {
@@ -24,9 +30,30 @@ const defaultProps = {
   contentElement: null,
   okDisabled: false,
   dialogProps: {},
+  dialogTitleProps: {},
+  dialogContentProps: {},
+  dialogContentTextProps: {},
+  dialogActionsProps: {},
+  cancelButtonProps: {},
+  okButtonProps: {},
 };
 
-function AcceptDialog({ open, title, content, contentElement, handleClose, handleOk, okDisabled, dialogProps }: Props) {
+function AcceptDialog({
+  open,
+  title,
+  content,
+  contentElement,
+  handleClose,
+  handleOk,
+  okDisabled,
+  dialogProps,
+  dialogTitleProps,
+  dialogContentProps,
+  dialogContentTextProps,
+  dialogActionsProps,
+  cancelButtonProps,
+  okButtonProps,
+}: Props) {
   const { t } = useTranslation();
   // Manage loading
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -46,14 +73,25 @@ function AcceptDialog({ open, title, content, contentElement, handleClose, handl
       aria-describedby="alert-dialog-description"
       {...dialogProps}
     >
-      <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-      <DialogContent id="alert-dialog-description">
-        {content && <DialogContentText>{content}</DialogContentText>}
+      <DialogTitle id="alert-dialog-title" {...dialogTitleProps}>
+        {title}
+      </DialogTitle>
+      <DialogContent id="alert-dialog-description" {...dialogContentProps}>
+        {content && <DialogContentText {...dialogContentTextProps}>{content}</DialogContentText>}
         {contentElement}
       </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>{t('common.cancelAction')}</Button>
-        <LoadingButton loading={isLoading} variant="contained" onClick={okOnClick} disabled={okDisabled} autoFocus>
+      <DialogActions {...dialogActionsProps}>
+        <Button onClick={handleClose} {...cancelButtonProps}>
+          {t('common.cancelAction')}
+        </Button>
+        <LoadingButton
+          loading={isLoading}
+          variant="contained"
+          onClick={okOnClick}
+          disabled={okDisabled}
+          autoFocus
+          {...okButtonProps}
+        >
           {t('common.okAction')}
         </LoadingButton>
       </DialogActions>

@@ -1,13 +1,19 @@
 import React, { Fragment } from 'react';
-import Typography from '@mui/material/Typography';
+import Typography, { TypographyProps } from '@mui/material/Typography';
 import Box from '@mui/material//Box';
 import { ApolloError, ServerError } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
+import type { SxProps } from '@mui/material';
 
 interface Props {
   error?: ApolloError;
   errors?: ApolloError[];
   noMargin?: boolean;
+  containerBoxSx?: SxProps;
+  errorTitleTypographyProps?: TypographyProps;
+  errorElementTypographyProps?: TypographyProps;
+  ulSx?: SxProps;
+  liSx?: SxProps;
 }
 
 interface CustomNetworkError {
@@ -19,10 +25,24 @@ const defaultProps = {
   error: null,
   errors: [],
   noMargin: false,
+  containerBoxSx: {},
+  errorTitleTypographyProps: {},
+  errorElementTypographyProps: {},
+  ulSx: {},
+  liSx: {},
 };
 
 /* eslint-disable react/no-array-index-key */
-function GraphqlErrors({ error, errors, noMargin }: Props) {
+function GraphqlErrors({
+  error,
+  errors,
+  noMargin,
+  containerBoxSx,
+  errorTitleTypographyProps,
+  errorElementTypographyProps,
+  ulSx,
+  liSx,
+}: Props) {
   // Initialize translate
   const { t } = useTranslation();
 
@@ -41,15 +61,19 @@ function GraphqlErrors({ error, errors, noMargin }: Props) {
   }
 
   return (
-    <Box sx={{ color: 'error', margin: noMargin ? 0 : 8 }}>
-      <Typography color="error">{t('common.errors')}:</Typography>
-      <ul>
+    <Box sx={{ color: 'error', margin: noMargin ? 0 : 8, ...containerBoxSx }}>
+      <Typography color="error" {...errorTitleTypographyProps}>
+        {t('common.errors')}:
+      </Typography>
+      <Box component="ul" sx={ulSx}>
         {errorList?.map((err, mainIndex) => (
           <Fragment key={mainIndex}>
             {err.networkError && (!(err.networkError as ServerError).result || !err.graphQLErrors) && (
-              <li key={mainIndex}>
-                <Typography color="error">{err.networkError.message}</Typography>
-              </li>
+              <Box component="li" key={mainIndex} sx={liSx}>
+                <Typography color="error" {...errorElementTypographyProps}>
+                  {err.networkError.message}
+                </Typography>
+              </Box>
             )}
             {err.graphQLErrors &&
               err.graphQLErrors.map(({ message, extensions }, i) => {
@@ -60,24 +84,26 @@ function GraphqlErrors({ error, errors, noMargin }: Props) {
                 }
 
                 return (
-                  <li key={`${mainIndex}-graphQLErrors-${i}`}>
-                    <Typography color="error">{mess}</Typography>
-                  </li>
+                  <Box component="li" key={`${mainIndex}-graphQLErrors-${i}`} sx={liSx}>
+                    <Typography color="error" {...errorElementTypographyProps}>
+                      {mess}
+                    </Typography>
+                  </Box>
                 );
               })}
             {err.networkError &&
               (err.networkError as ServerError).result &&
               (err.networkError as ServerError).result.errors &&
               ((err.networkError as ServerError).result.errors as [CustomNetworkError]).map(({ message, path }, i) => (
-                <li key={`${mainIndex}-networkError-${i}`}>
-                  <Typography color="error">
+                <Box component="li" key={`${mainIndex}-networkError-${i}`} sx={liSx}>
+                  <Typography color="error" {...errorElementTypographyProps}>
                     {path?.join('.')} {message}
                   </Typography>
-                </li>
+                </Box>
               ))}
           </Fragment>
         ))}
-      </ul>
+      </Box>
     </Box>
   );
 }

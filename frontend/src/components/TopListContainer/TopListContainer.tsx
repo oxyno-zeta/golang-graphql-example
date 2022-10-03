@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import Box from '@mui/material/Box';
-import { SxProps } from '@mui/material';
+import type { SxProps } from '@mui/material';
 
 interface Props {
   sx?: SxProps;

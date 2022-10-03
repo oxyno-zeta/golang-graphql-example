@@ -1,13 +1,21 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import IconButton from '@mui/material/IconButton';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/material/styles';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
-function IconToggleColorMode() {
+interface Props {
+  iconButtonProps?: IconButtonProps;
+}
+
+const defaultProps = {
+  iconButtonProps: {},
+};
+
+function IconToggleColorMode({ iconButtonProps }: Props) {
   // Setup translate
   const { t } = useTranslation();
   // Get theme
@@ -18,12 +26,14 @@ function IconToggleColorMode() {
   return (
     <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common.lightThemeTooltip' : 'common.darkThemeTooltip')}</>}>
       <span>
-        <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+        <IconButton onClick={colorMode.toggleColorMode} color="inherit" {...iconButtonProps}>
           {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
       </span>
     </Tooltip>
   );
 }
+
+IconToggleColorMode.defaultProps = defaultProps;
 
 export default IconToggleColorMode;

@@ -16,6 +16,11 @@ type Props<T extends FilterValueObject> = {
   isAdvancedFilterPopperEnabled?: boolean;
 };
 
+const defaultProps = {
+  predefinedFilterObjects: undefined,
+  isAdvancedFilterPopperEnabled: false,
+};
+
 function FilterButton<T extends FilterValueObject>({
   filter,
   setFilter,
@@ -79,9 +84,6 @@ function FilterButton<T extends FilterValueObject>({
   );
 }
 
-FilterButton.defaultProps = {
-  predefinedFilterObjects: undefined,
-  isAdvancedFilterPopperEnabled: false,
-};
+FilterButton.defaultProps = defaultProps;
 
 export default memo(FilterButton);

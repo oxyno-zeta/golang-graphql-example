@@ -1,14 +1,21 @@
 import React, { ReactNode, useState } from 'react';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
 import HelpIcon from '@mui/icons-material/Help';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 interface Props {
   tooltipTitle: ReactNode;
+  tooltipProps?: Omit<TooltipProps, 'onClose' | 'onOpen' | 'open' | 'title'>;
+  iconButtonProps?: Omit<IconButtonProps, 'onClick'>;
 }
 
-function HelpTooltipButton({ tooltipTitle }: Props) {
+const defaultProps = {
+  tooltipProps: {},
+  iconButtonProps: {},
+};
+
+function HelpTooltipButton({ tooltipTitle, tooltipProps, iconButtonProps }: Props) {
   const [open, setOpen] = useState(false);
 
   const handleTooltipClose = () => {
@@ -30,9 +37,10 @@ function HelpTooltipButton({ tooltipTitle }: Props) {
           onOpen={handleTooltipOpen}
           open={open}
           title={<>{tooltipTitle}</>}
+          {...tooltipProps}
         >
           <span>
-            <IconButton onClick={handleTooltipOpen}>
+            <IconButton onClick={handleTooltipOpen} {...iconButtonProps}>
               <HelpIcon />
             </IconButton>
           </span>
@@ -41,5 +49,7 @@ function HelpTooltipButton({ tooltipTitle }: Props) {
     </ClickAwayListener>
   );
 }
+
+HelpTooltipButton.defaultProps = defaultProps;
 
 export default HelpTooltipButton;
