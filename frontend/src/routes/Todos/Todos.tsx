@@ -21,11 +21,11 @@ import SortButton from '../../components/sorts/SortButton';
 import GridView from './components/GridView';
 import TableView from './components/TableView';
 import Pagination from '../../components/Pagination';
-import { onMainSearchChange } from './utils';
 import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '../../utils/pagination';
 import GridTableViewSwitcher from '../../components/GridTableViewSwitcher';
 import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '../../utils/urlSearchParams';
-import { onMainSearchChangeDefault } from '../../components/filters/utils/mainSearch';
+import { onMainSearchChangeContains } from '../../components/filters/utils/mainSearch';
+import TopListContainer from '../../components/TopListContainer';
 
 const GET_TODOS_QUERY = gql`
   query getTodos($first: Int, $last: Int, $before: String, $after: String, $filter: TodoFilter, $sort: TodoSortOrder) {
@@ -114,7 +114,7 @@ function Todos() {
       {error && <GraphqlErrors error={error} />}
       {!error && (
         <Paper variant="outlined">
-          <div style={{ display: 'flex', margin: '10px' }}>
+          <TopListContainer>
             <FilterSearchBar
               filter={filter}
               setFilter={(f) => {
@@ -133,7 +133,7 @@ function Todos() {
                 // a new filter is applied, you want to start from start again.
                 cleanAndSetCleanedPagination(searchParams, setSearchParams);
                 // Call on main search change
-                onMainSearchChangeDefault<TodoFilterModel>(
+                onMainSearchChangeContains<TodoFilterModel>(
                   'text',
                   newValue,
                   oldValue,
@@ -172,7 +172,6 @@ function Todos() {
                 },
               ]}
             />
-            <div style={{ width: '10px' }} />
             <SortButton
               sort={sort}
               setSort={(nSort) => {
@@ -180,9 +179,8 @@ function Todos() {
               }}
               sortFields={todoSortFields}
             />
-            <div style={{ width: '10px' }} />
             <GridTableViewSwitcher setGridView={setGridView} gridView={gridView} />
-          </div>
+          </TopListContainer>
           <Divider />
           <div style={{ width: '100%' }}>
             {gridView && <GridView loading={loading} data={data?.todos} />}

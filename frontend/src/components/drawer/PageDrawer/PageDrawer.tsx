@@ -57,7 +57,6 @@ function PageDrawer({ drawerContentElement, drawerWidth, renderContent }: Props)
         component="main"
         sx={{
           flexGrow: 1,
-          padding: '0 20px 20px 20px',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           overflowY: 'auto',
         }}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DataGrid, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColumns, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -37,7 +37,7 @@ function TableView({ data, loading, sort, setSort }: Props) {
     console.log(row);
   };
 
-  const columns = [
+  const columns: GridColumns<TodoModel> = [
     {
       field: 'text',
       headerName: t('todos.fields.text'),
@@ -55,8 +55,7 @@ function TableView({ data, loading, sort, setSort }: Props) {
       filterable: false,
       sortable: true,
       disableColumnMenu: true,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      valueGetter: (params: GridValueGetterParams<any, TodoModel>) => dayjs(params.value).format('LLLL'),
+      valueGetter: (params: GridValueGetterParams<string, TodoModel>) => dayjs(params.value).format('LLLL'),
     },
     {
       field: 'done',
@@ -69,22 +68,17 @@ function TableView({ data, loading, sort, setSort }: Props) {
     },
     {
       field: 'actions',
+      type: 'actions',
       headerName: t('common.actions'),
-      flex: 0.1,
-      editable: false,
-      filterable: false,
-      sortable: false,
-      disableColumnMenu: true,
-      renderCell: () => (
-        <>
-          <IconButton>
-            <EditIcon />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </>
-      ),
+      width: 90,
+      getActions: () => [
+        <IconButton size="small">
+          <EditIcon style={{ fontSize: '1.25rem' }} />
+        </IconButton>,
+        <IconButton size="small">
+          <DeleteIcon style={{ fontSize: '1.25rem' }} />
+        </IconButton>,
+      ],
     },
   ];
 

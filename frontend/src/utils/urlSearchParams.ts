@@ -1,7 +1,6 @@
-import { URLSearchParams } from 'url';
-import { URLSearchParamsInit } from 'react-router-dom';
+import type { URLSearchParams } from 'url';
+import type { URLSearchParamsInit } from 'react-router-dom';
 
-// eslint-disable-next-line import/prefer-default-export
 export function getAllSearchParams(searchParams: URLSearchParams): Record<string, string> {
   // Initial params
   const params: Record<string, string> = {};
@@ -12,6 +11,20 @@ export function getAllSearchParams(searchParams: URLSearchParams): Record<string
   });
 
   return params;
+}
+
+export function addJSONObjectSearchParam(
+  key: string,
+  data: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  searchParams: URLSearchParams,
+) {
+  // Stringify data
+  const objStr = JSON.stringify(data);
+
+  // Save data
+  searchParams.set(key, objStr);
+
+  return searchParams;
 }
 
 export function setJSONObjectSearchParam(
@@ -35,7 +48,7 @@ export function setJSONObjectSearchParam(
   searchParams.set(key, objStr);
 
   // Save search params
-  setSearchParams(getAllSearchParams(searchParams));
+  setSearchParams(searchParams);
 }
 
 export function getJSONObjectFromSearchParam<T>(
@@ -102,5 +115,5 @@ export function deleteAndSetSearchParams(
   });
 
   // Clean all
-  setSearchParams(getAllSearchParams(searchParams));
+  setSearchParams(searchParams);
 }

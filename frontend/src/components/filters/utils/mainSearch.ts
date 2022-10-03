@@ -1,9 +1,46 @@
 import { StringFilterModel } from '../../../models/general';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line import/prefer-default-export
-export function onMainSearchChangeDefault<T>(
+export function onMainSearchChangeContains<T>(
   filterKey: keyof Omit<T, 'AND' | 'OR'>,
+  newValue: string,
+  oldValue: string,
+  setFilter: (f: (input: T) => T) => void,
+) {
+  return onMainSearchChangeGeneric<T>(filterKey, 'contains', newValue, oldValue, setFilter);
+}
+
+export function getMainSearchInitialValueContains<T>(filterKey: keyof Omit<T, 'AND' | 'OR'>, filter: T) {
+  return getMainSearchInitialValueGeneric<T, string>(filterKey, 'contains', '', filter);
+}
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function getMainSearchInitialValueGeneric<T, R>(
+  filterKey: keyof Omit<T, 'AND' | 'OR'>,
+  filterOperation: string,
+  defaultValue: R,
+  filter: any,
+) {
+  // Check if it is at root level
+  if (filter && filter[filterKey] && (filter[filterKey] as any)[filterOperation]) {
+    return (filter[filterKey] as any)[filterOperation] as R;
+  }
+
+  // Check if the AND case exists
+  if (filter && filter.AND) {
+    const v = filter.AND.find((it: any) => it[filterKey] && it[filterKey][filterOperation]);
+    // Check if v exists
+    if (v) {
+      return (v[filterKey] as any)[filterOperation] as R;
+    }
+  }
+
+  // Default
+  return defaultValue;
+}
+
+export function onMainSearchChangeGeneric<T>(
+  filterKey: keyof Omit<T, 'AND' | 'OR'>,
+  filterOperation: string,
   newValue: string,
   oldValue: string,
   setFilter: (f: (input: T) => T) => void,
@@ -13,19 +50,19 @@ export function onMainSearchChangeDefault<T>(
     // Create a deep copy in order to force a reload of graphql query.
     // Otherwise, it is ignored
     const filterCopy = JSON.parse(JSON.stringify(initialFilter));
-    // Check if [filterKey] contains is at root level
+    // Check if [filterKey] [filterOperation] is at root level
     if (
       filterCopy &&
       filterCopy[filterKey] &&
-      filterCopy[filterKey].contains &&
-      filterCopy[filterKey].contains === oldValue
+      filterCopy[filterKey][filterOperation] &&
+      filterCopy[filterKey][filterOperation] === oldValue
     ) {
       // Flush filter
       delete filterCopy[filterKey];
       // Check if it isn't a flush case
       if (newValue !== '') {
         // Set filter
-        filterCopy[filterKey] = { contains: newValue } as StringFilterModel;
+        filterCopy[filterKey] = { [filterOperation]: newValue } as StringFilterModel;
       }
 
       // Save
@@ -38,7 +75,8 @@ export function onMainSearchChangeDefault<T>(
       if (newValue === '') {
         // Filter on all elements and keep only elements that aren't equal to the main search
         const newAnd = filterCopy.AND.filter(
-          (it: any) => !(it[filterKey] && it[filterKey].contains && it[filterKey].contains === oldValue),
+          (it: any) =>
+            !(it[filterKey] && it[filterKey][filterOperation] && it[filterKey][filterOperation] === oldValue),
         );
 
         // Check if and arrays are different
@@ -51,7 +89,7 @@ export function onMainSearchChangeDefault<T>(
       } else {
         // Search if filter have been provided
         const item = filterCopy.AND.find((it: any) => {
-          if (it[filterKey] && it[filterKey].contains && it[filterKey].contains === oldValue) {
+          if (it[filterKey] && it[filterKey][filterOperation] && it[filterKey][filterOperation] === oldValue) {
             return it;
           }
 
@@ -60,11 +98,11 @@ export function onMainSearchChangeDefault<T>(
 
         // Check if item exists
         if (item) {
-          item[filterKey] = { contains: newValue };
+          item[filterKey] = { [filterOperation]: newValue };
           return { ...filterCopy };
         }
 
-        filterCopy.AND.push({ [filterKey]: { contains: newValue } });
+        filterCopy.AND.push({ [filterKey]: { [filterOperation]: newValue } });
         return { ...filterCopy };
       }
     }
@@ -77,10 +115,10 @@ export function onMainSearchChangeDefault<T>(
     }
 
     if (filterCopy && Object.keys(filterCopy).length >= 1) {
-      filterCopy.AND = [{ [filterKey]: { contains: newValue } }];
+      filterCopy.AND = [{ [filterKey]: { [filterOperation]: newValue } }];
       return { ...filterCopy };
     }
 
-    return { [filterKey]: { contains: newValue } };
+    return { [filterKey]: { [filterOperation]: newValue } };
   });
 }

@@ -90,9 +90,9 @@ function FilterSearchBar<T extends FilterValueObject>({
       }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
-        placeholder={mainSearchDisplay}
         fullWidth
+        sx={{ ml: 1, flex: 1, minWidth: '200px' }}
+        placeholder={mainSearchDisplay}
         disabled={open}
         value={value}
         onChange={(event) => {
@@ -107,7 +107,7 @@ function FilterSearchBar<T extends FilterValueObject>({
       <Tooltip title={<>{t('common.filter.buttonTooltip')}</>}>
         <Button
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
-          sx={{ padding: '5px 10px', minWidth: '46px', height: 38 }}
+          sx={{ padding: '5px 10px', minWidth: '46px', height: 38, borderRadius: '0px 2px 2px 0px' }}
           onClick={handleClick}
         >
           <TuneIcon />

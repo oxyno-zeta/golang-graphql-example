@@ -1,5 +1,5 @@
 import React, { useContext, ReactNode } from 'react';
-import { ApolloClient, InMemoryCache, createHttpLink, ServerError, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, createHttpLink, ServerError, ApolloProvider, ApolloLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { ConfigModel } from '../../models/config';
 import ConfigContext from '../../contexts/ConfigContext';
@@ -9,6 +9,20 @@ interface Props {
 }
 
 function generateClient(cfg: ConfigModel) {
+  // Create apollo link to force header injection
+  // That force is done to ensure a 401 Unauthorized error when backend is protected by Oauth2-Proxy
+  // Documentation: https://oauth2-proxy.github.io/oauth2-proxy/docs/behaviour/
+  const forceHeaders = new ApolloLink((operation, forward) => {
+    operation.setContext(({ headers = {} }) => ({
+      headers: {
+        ...headers,
+        Accept: 'application/json',
+      },
+    }));
+
+    return forward(operation);
+  });
+
   // Create apollo link
   // This is needed to create a valid forwarder of cookies (for authentication)
   // Documentation: https://www.apollographql.com/docs/react/networking/authentication/#cookie
@@ -30,7 +44,7 @@ function generateClient(cfg: ConfigModel) {
   });
   // Create apollo client
   const client = new ApolloClient({
-    link: errorLink.concat(apolloLink),
+    link: errorLink.concat(forceHeaders).concat(apolloLink),
     // Add memory cache
     cache: new InMemoryCache(),
     // Connect to dev tools only on dev

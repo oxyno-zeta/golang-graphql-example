@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
+import Dialog, { DialogProps } from '@mui/material/Dialog';
 import LoadingButton from '@mui/lab/LoadingButton';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -16,15 +16,17 @@ interface Props {
   handleClose: () => void;
   handleOk: () => Promise<void>;
   okDisabled?: boolean;
+  dialogProps?: Partial<DialogProps>;
 }
 
 const defaultProps = {
   content: '',
   contentElement: null,
   okDisabled: false,
+  dialogProps: {},
 };
 
-function AcceptDialog({ open, title, content, contentElement, handleClose, handleOk, okDisabled }: Props) {
+function AcceptDialog({ open, title, content, contentElement, handleClose, handleOk, okDisabled, dialogProps }: Props) {
   const { t } = useTranslation();
   // Manage loading
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -42,6 +44,7 @@ function AcceptDialog({ open, title, content, contentElement, handleClose, handl
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      {...dialogProps}
     >
       <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
       <DialogContent id="alert-dialog-description">
