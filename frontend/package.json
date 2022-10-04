@@ -82,7 +82,6 @@
     ]
   },
   "devDependencies": {
-    "@welldone-software/why-did-you-render": "^7.0.1",
-    "jest-mock-random": "^1.1.1"
+    "@welldone-software/why-did-you-render": "^7.0.1"
   }
 }

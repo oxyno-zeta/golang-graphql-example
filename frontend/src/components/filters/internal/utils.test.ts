@@ -1,12 +1,7 @@
-import { mockRandomForEach } from 'jest-mock-random';
 import { buildFieldInitialValue, buildFilterBuilderInitialItems } from './utils';
 import { BuilderInitialValueObject } from './types';
 
 describe('buildFilterBuilderInitialItems', () => {
-  // Random mock
-  mockRandomForEach([0.1]);
-  const key = '3llllllllm';
-
   test('should return an empty result when input is undefined', () => {
     const res = buildFilterBuilderInitialItems(undefined);
     const expected: BuilderInitialValueObject = {
