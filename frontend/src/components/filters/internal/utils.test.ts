@@ -13,7 +13,7 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedroot',
           type: 'line',
           initialValue: { field: '', operation: '', value: undefined },
         },
@@ -27,7 +27,7 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedroot',
           type: 'line',
           initialValue: { field: '', operation: '', value: undefined },
         },
@@ -57,7 +57,7 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedroot',
           type: 'line',
           initialValue: { field: '', operation: '', value: undefined },
         },
@@ -73,7 +73,7 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedAND0f100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
@@ -89,7 +89,7 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'OR',
       items: [
         {
-          key,
+          key: 'undefinedOR0f100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
@@ -105,12 +105,12 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedAND0f100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedAND1f200',
           type: 'line',
           initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
         },
@@ -126,12 +126,12 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'OR',
       items: [
         {
-          key,
+          key: 'undefinedOR0f100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedOR1f200',
           type: 'line',
           initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
         },
@@ -148,18 +148,18 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedOR0',
           type: 'group',
           initialValue: {
             group: 'OR',
             items: [
               {
-                key,
+                key: 'undefinedOR0OR0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedOR0OR1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -167,7 +167,7 @@ describe('buildFilterBuilderInitialItems', () => {
           },
         },
         {
-          key,
+          key: 'undefinedf310',
           type: 'line',
           initialValue: { field: 'f3', operation: 'notEq2', value: 'val2' },
         },
@@ -183,12 +183,12 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedAND0AND0f100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedAND0AND1f200',
           type: 'line',
           initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
         },
@@ -204,12 +204,12 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'OR',
       items: [
         {
-          key,
+          key: 'undefinedAND0OR0f100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedAND0OR1f200',
           type: 'line',
           initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
         },
@@ -228,18 +228,18 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedAND0',
           type: 'group',
           initialValue: {
             group: 'OR',
             items: [
               {
-                key,
+                key: 'undefinedAND0OR0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedAND0OR1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -247,18 +247,18 @@ describe('buildFilterBuilderInitialItems', () => {
           },
         },
         {
-          key,
+          key: 'undefinedAND1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
               {
-                key,
+                key: 'undefinedAND1AND0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedAND1AND1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -282,18 +282,18 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedAND0OR0',
           type: 'group',
           initialValue: {
             group: 'OR',
             items: [
               {
-                key,
+                key: 'undefinedAND0OR0OR0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedAND0OR0OR1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -301,18 +301,18 @@ describe('buildFilterBuilderInitialItems', () => {
           },
         },
         {
-          key,
+          key: 'undefinedAND0AND1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
               {
-                key,
+                key: 'undefinedAND0AND1AND0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedAND0AND1AND1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -336,18 +336,18 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedOR0OR0',
           type: 'group',
           initialValue: {
             group: 'OR',
             items: [
               {
-                key,
+                key: 'undefinedOR0OR0OR0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedOR0OR0OR1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -355,18 +355,18 @@ describe('buildFilterBuilderInitialItems', () => {
           },
         },
         {
-          key,
+          key: 'undefinedOR0AND1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
               {
-                key,
+                key: 'undefinedOR0AND1AND0f100',
                 type: 'line',
                 initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
               },
               {
-                key,
+                key: 'undefinedOR0AND1AND1f200',
                 type: 'line',
                 initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
               },
@@ -396,24 +396,24 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedOR0',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
               {
-                key,
+                key: 'undefinedOR0OR0OR0',
                 type: 'group',
                 initialValue: {
                   group: 'OR',
                   items: [
                     {
-                      key,
+                      key: 'undefinedOR0OR0OR0OR0f100',
                       type: 'line',
                       initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
                     },
                     {
-                      key,
+                      key: 'undefinedOR0OR0OR0OR1f200',
                       type: 'line',
                       initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
                     },
@@ -421,18 +421,18 @@ describe('buildFilterBuilderInitialItems', () => {
                 },
               },
               {
-                key,
+                key: 'undefinedOR0OR0AND1',
                 type: 'group',
                 initialValue: {
                   group: 'AND',
                   items: [
                     {
-                      key,
+                      key: 'undefinedOR0OR0AND1AND0f100',
                       type: 'line',
                       initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
                     },
                     {
-                      key,
+                      key: 'undefinedOR0OR0AND1AND1f200',
                       type: 'line',
                       initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
                     },
@@ -443,24 +443,24 @@ describe('buildFilterBuilderInitialItems', () => {
           },
         },
         {
-          key,
+          key: 'undefinedAND1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
               {
-                key,
+                key: 'undefinedAND1AND0OR0',
                 type: 'group',
                 initialValue: {
                   group: 'OR',
                   items: [
                     {
-                      key,
+                      key: 'undefinedAND1AND0OR0OR0f100',
                       type: 'line',
                       initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
                     },
                     {
-                      key,
+                      key: 'undefinedAND1AND0OR0OR1f200',
                       type: 'line',
                       initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
                     },
@@ -468,18 +468,18 @@ describe('buildFilterBuilderInitialItems', () => {
                 },
               },
               {
-                key,
+                key: 'undefinedAND1AND0AND1',
                 type: 'group',
                 initialValue: {
                   group: 'AND',
                   items: [
                     {
-                      key,
+                      key: 'undefinedAND1AND0AND1AND0f100',
                       type: 'line',
                       initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
                     },
                     {
-                      key,
+                      key: 'undefinedAND1AND0AND1AND1f200',
                       type: 'line',
                       initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
                     },
@@ -501,7 +501,7 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedf100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
@@ -518,12 +518,12 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedf100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedf210',
           type: 'line',
           initialValue: { field: 'f2', operation: 'eq', value: 'val2' },
         },
@@ -539,12 +539,12 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedf100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedf101',
           type: 'line',
           initialValue: { field: 'f1', operation: 'notEq', value: 'val2' },
         },
@@ -561,22 +561,22 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedf100',
           type: 'line',
           initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
         },
         {
-          key,
+          key: 'undefinedf101',
           type: 'line',
           initialValue: { field: 'f1', operation: 'notEq', value: 'val2' },
         },
         {
-          key,
+          key: 'undefinedf210',
           type: 'line',
           initialValue: { field: 'f2', operation: 'eq2', value: 'val12' },
         },
         {
-          key,
+          key: 'undefinedf211',
           type: 'line',
           initialValue: { field: 'f2', operation: 'notEq2', value: 'val22' },
         },
@@ -592,25 +592,41 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'OR',
       items: [
         {
-          key,
+          key: 'undefinedOR0',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
-              { key, type: 'line', initialValue: { field: 'f1', operation: 'eq', value: 'val1' } },
-              { key, type: 'line', initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' } },
+              { key: 'undefinedOR0f100', type: 'line', initialValue: { field: 'f1', operation: 'eq', value: 'val1' } },
+              {
+                key: 'undefinedOR0f101',
+                type: 'line',
+                initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' },
+              },
             ],
           },
         },
         {
-          key,
+          key: 'undefinedOR1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
-              { key, type: 'line', initialValue: { field: 'f2', operation: 'notEq', value: 'val1' } },
-              { key, type: 'line', initialValue: { field: 'f3', operation: 'isNull', value: true } },
-              { key, type: 'line', initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' } },
+              {
+                key: 'undefinedOR1f200',
+                type: 'line',
+                initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
+              },
+              {
+                key: 'undefinedOR1f310',
+                type: 'line',
+                initialValue: { field: 'f3', operation: 'isNull', value: true },
+              },
+              {
+                key: 'undefinedOR1f311',
+                type: 'line',
+                initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' },
+              },
             ],
           },
         },
@@ -629,25 +645,41 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedAND0',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
-              { key, type: 'line', initialValue: { field: 'f1', operation: 'eq', value: 'val1' } },
-              { key, type: 'line', initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' } },
+              { key: 'undefinedAND0f100', type: 'line', initialValue: { field: 'f1', operation: 'eq', value: 'val1' } },
+              {
+                key: 'undefinedAND0f101',
+                type: 'line',
+                initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' },
+              },
             ],
           },
         },
         {
-          key,
+          key: 'undefinedAND1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
-              { key, type: 'line', initialValue: { field: 'f2', operation: 'notEq', value: 'val1' } },
-              { key, type: 'line', initialValue: { field: 'f3', operation: 'isNull', value: true } },
-              { key, type: 'line', initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' } },
+              {
+                key: 'undefinedAND1f200',
+                type: 'line',
+                initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
+              },
+              {
+                key: 'undefinedAND1f310',
+                type: 'line',
+                initialValue: { field: 'f3', operation: 'isNull', value: true },
+              },
+              {
+                key: 'undefinedAND1f311',
+                type: 'line',
+                initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' },
+              },
             ],
           },
         },
@@ -667,31 +699,51 @@ describe('buildFilterBuilderInitialItems', () => {
       group: 'AND',
       items: [
         {
-          key,
+          key: 'undefinedOR0',
           type: 'group',
           initialValue: {
             group: 'OR',
             items: [
               {
-                key,
+                key: 'undefinedOR0OR0',
                 type: 'group',
                 initialValue: {
                   group: 'AND',
                   items: [
-                    { key, type: 'line', initialValue: { field: 'f1', operation: 'eq', value: 'val1' } },
-                    { key, type: 'line', initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' } },
+                    {
+                      key: 'undefinedOR0OR0f100',
+                      type: 'line',
+                      initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
+                    },
+                    {
+                      key: 'undefinedOR0OR0f101',
+                      type: 'line',
+                      initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' },
+                    },
                   ],
                 },
               },
               {
-                key,
+                key: 'undefinedOR0OR1',
                 type: 'group',
                 initialValue: {
                   group: 'AND',
                   items: [
-                    { key, type: 'line', initialValue: { field: 'f2', operation: 'notEq', value: 'val1' } },
-                    { key, type: 'line', initialValue: { field: 'f3', operation: 'isNull', value: true } },
-                    { key, type: 'line', initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' } },
+                    {
+                      key: 'undefinedOR0OR1f200',
+                      type: 'line',
+                      initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
+                    },
+                    {
+                      key: 'undefinedOR0OR1f310',
+                      type: 'line',
+                      initialValue: { field: 'f3', operation: 'isNull', value: true },
+                    },
+                    {
+                      key: 'undefinedOR0OR1f311',
+                      type: 'line',
+                      initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' },
+                    },
                   ],
                 },
               },
@@ -699,31 +751,51 @@ describe('buildFilterBuilderInitialItems', () => {
           },
         },
         {
-          key,
+          key: 'undefinedAND1',
           type: 'group',
           initialValue: {
             group: 'AND',
             items: [
               {
-                key,
+                key: 'undefinedAND1AND0',
                 type: 'group',
                 initialValue: {
                   group: 'AND',
                   items: [
-                    { key, type: 'line', initialValue: { field: 'f1', operation: 'eq', value: 'val1' } },
-                    { key, type: 'line', initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' } },
+                    {
+                      key: 'undefinedAND1AND0f100',
+                      type: 'line',
+                      initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
+                    },
+                    {
+                      key: 'undefinedAND1AND0f101',
+                      type: 'line',
+                      initialValue: { field: 'f1', operation: 'notEq2', value: 'valnotEq2' },
+                    },
                   ],
                 },
               },
               {
-                key,
+                key: 'undefinedAND1AND1',
                 type: 'group',
                 initialValue: {
                   group: 'AND',
                   items: [
-                    { key, type: 'line', initialValue: { field: 'f2', operation: 'notEq', value: 'val1' } },
-                    { key, type: 'line', initialValue: { field: 'f3', operation: 'isNull', value: true } },
-                    { key, type: 'line', initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' } },
+                    {
+                      key: 'undefinedAND1AND1f200',
+                      type: 'line',
+                      initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
+                    },
+                    {
+                      key: 'undefinedAND1AND1f310',
+                      type: 'line',
+                      initialValue: { field: 'f3', operation: 'isNull', value: true },
+                    },
+                    {
+                      key: 'undefinedAND1AND1f311',
+                      type: 'line',
+                      initialValue: { field: 'f3', operation: 'eq', value: 'valEqf3' },
+                    },
                   ],
                 },
               },
