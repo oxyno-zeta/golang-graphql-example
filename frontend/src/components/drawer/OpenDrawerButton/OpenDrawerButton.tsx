@@ -1,6 +1,7 @@
 import React from 'react';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import { mdiMenu } from '@mdi/js';
+import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +22,9 @@ function OpenDrawerButton({ handleDrawerToggle, iconButtonProps }: Props) {
     <Tooltip title={<>{t('common.openAction')}</>}>
       <span>
         <IconButton color="inherit" onClick={handleDrawerToggle} sx={{ display: { lg: 'none' } }} {...iconButtonProps}>
-          <MenuIcon />
+          <SvgIcon>
+            <path d={mdiMenu} />
+          </SvgIcon>
         </IconButton>
       </span>
     </Tooltip>

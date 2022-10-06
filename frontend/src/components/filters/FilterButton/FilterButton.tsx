@@ -1,6 +1,7 @@
 import React, { useState, memo } from 'react';
 import Button from '@mui/material/Button';
-import TuneIcon from '@mui/icons-material/Tune';
+import { mdiTune } from '@mdi/js';
+import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
 import FilterPopper from '../FilterPopper';
@@ -72,7 +73,9 @@ function FilterButton<T extends FilterValueObject>({
             }
           }}
         >
-          <TuneIcon />
+          <SvgIcon>
+            <path d={mdiTune} />
+          </SvgIcon>
         </Button>
       </Tooltip>
       {isAdvancedFilterPopperEnabled ? (

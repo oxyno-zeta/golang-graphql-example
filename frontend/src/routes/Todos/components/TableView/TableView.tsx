@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataGrid, GridColumns, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiPencil, mdiDelete } from '@mdi/js';
 import dayjs from 'dayjs';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -73,10 +73,14 @@ function TableView({ data, loading, sort, setSort }: Props) {
       width: 90,
       getActions: () => [
         <IconButton size="small">
-          <EditIcon style={{ fontSize: '1.25rem' }} />
+          <SvgIcon style={{ fontSize: '1.25rem' }}>
+            <path d={mdiPencil} />
+          </SvgIcon>
         </IconButton>,
         <IconButton size="small">
-          <DeleteIcon style={{ fontSize: '1.25rem' }} />
+          <SvgIcon style={{ fontSize: '1.25rem' }}>
+            <path d={mdiDelete} />
+          </SvgIcon>
         </IconButton>,
       ],
     },

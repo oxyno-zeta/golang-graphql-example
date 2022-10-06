@@ -4,9 +4,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Delete';
-import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import { mdiPlus, mdiDelete, mdiPlusBoxMultiple } from '@mdi/js';
+import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
 import { FilterDefinitionFieldsModel } from '../../../../../models/general';
@@ -190,18 +189,24 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
           </ButtonGroup>
           <Tooltip title={<>{t('common.filter.addNewField')}</>}>
             <IconButton onClick={addLineHandler} sx={{ margin: '0 5px' }}>
-              <AddIcon />
+              <SvgIcon>
+                <path d={mdiPlus} />
+              </SvgIcon>
             </IconButton>
           </Tooltip>
           <Tooltip title={<>{t('common.filter.addNewGroupField')}</>}>
             <IconButton onClick={addGroupHandler} sx={{ margin: '0 5px' }}>
-              <AddToPhotosIcon />
+              <SvgIcon>
+                <path d={mdiPlusBoxMultiple} />
+              </SvgIcon>
             </IconButton>
           </Tooltip>
           {onRemove && (
             <Tooltip title={<>{t('common.filter.deleteGroupField')}</>}>
               <IconButton onClick={onRemove}>
-                <RemoveIcon />
+                <SvgIcon>
+                  <path d={mdiDelete} />
+                </SvgIcon>
               </IconButton>
             </Tooltip>
           )}
@@ -214,7 +219,9 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
                 <Box sx={{ display: 'flex', alignItems: 'center', margin: '-20px 5px 0 0' }}>
                   <Tooltip title={<>{t('common.filter.deleteField')}</>}>
                     <IconButton onClick={localRemoveHandler(it.key)}>
-                      <RemoveIcon />
+                      <SvgIcon>
+                        <path d={mdiDelete} />
+                      </SvgIcon>
                     </IconButton>
                   </Tooltip>
                 </Box>

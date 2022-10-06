@@ -3,7 +3,8 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiDotsVertical } from '@mdi/js';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import dayjs from 'dayjs';
@@ -26,7 +27,9 @@ function GridViewItem({ item }: Props) {
                 setAnchorEl(event.currentTarget);
               }}
             >
-              <MoreVertIcon />
+              <SvgIcon>
+                <path d={mdiDotsVertical} />
+              </SvgIcon>
             </IconButton>
           }
           title={item.text}

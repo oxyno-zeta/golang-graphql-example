@@ -1,8 +1,7 @@
 import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { Link, useHref, useLocation, createSearchParams, useSearchParams, LinkProps } from 'react-router-dom';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import { mdiChevronLeft, mdiChevronRight, mdiChevronDoubleLeft } from '@mdi/js';
+import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
@@ -116,21 +115,27 @@ function Pagination({
         <Tooltip title={<>{t('common.firstPageAction')}</>}>
           <span>
             <IconButton disabled={!pageInfo.hasPreviousPage} {...firstPageProps} {...firstIconButtonProps}>
-              <KeyboardDoubleArrowLeftIcon />
+              <SvgIcon>
+                <path d={mdiChevronDoubleLeft} />
+              </SvgIcon>
             </IconButton>
           </span>
         </Tooltip>
         <Tooltip title={<>{t('common.previousPageAction')}</>}>
           <span>
             <IconButton disabled={!pageInfo.hasPreviousPage} {...previousPageProps} {...nextIconButtonProps}>
-              <ChevronLeftIcon />
+              <SvgIcon>
+                <path d={mdiChevronLeft} />
+              </SvgIcon>
             </IconButton>
           </span>
         </Tooltip>
         <Tooltip title={<>{t('common.nextPageAction')}</>}>
           <span>
             <IconButton disabled={!pageInfo.hasNextPage} {...nextPageProps} {...previousIconButtonProps}>
-              <ChevronRightIcon />
+              <SvgIcon>
+                <path d={mdiChevronRight} />
+              </SvgIcon>
             </IconButton>
           </span>
         </Tooltip>

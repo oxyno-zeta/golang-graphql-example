@@ -6,7 +6,8 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiAccountCircle } from '@mdi/js';
 import ConfigContext from '../../contexts/ConfigContext';
 import ToggleColorModeMenuItem from '../theming/ToggleColorModeMenuItem';
 
@@ -59,7 +60,9 @@ function TopBarUserMenu() {
       <Tooltip title={t('common.accountMenu')}>
         <span>
           <IconButton onClick={handleOpenUserMenu}>
-            <AccountCircle />
+            <SvgIcon>
+              <path d={mdiAccountCircle} />
+            </SvgIcon>
           </IconButton>
         </span>
       </Tooltip>

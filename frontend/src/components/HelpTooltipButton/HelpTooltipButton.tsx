@@ -1,7 +1,8 @@
 import React, { ReactNode, useState } from 'react';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Tooltip, { TooltipProps } from '@mui/material/Tooltip';
-import HelpIcon from '@mui/icons-material/Help';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiHelpCircle } from '@mdi/js';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 interface Props {
@@ -41,7 +42,9 @@ function HelpTooltipButton({ tooltipTitle, tooltipProps, iconButtonProps }: Prop
         >
           <span>
             <IconButton onClick={handleTooltipOpen} {...iconButtonProps}>
-              <HelpIcon />
+              <SvgIcon>
+                <path d={mdiHelpCircle} />
+              </SvgIcon>
             </IconButton>
           </span>
         </Tooltip>

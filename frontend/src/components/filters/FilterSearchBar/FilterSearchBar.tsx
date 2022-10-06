@@ -2,7 +2,8 @@ import React, { useState, memo, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import TuneIcon from '@mui/icons-material/Tune';
+import { mdiTune } from '@mdi/js';
+import SvgIcon from '@mui/material/SvgIcon';
 import InputBase from '@mui/material/InputBase';
 import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
@@ -115,7 +116,9 @@ function FilterSearchBar<T extends FilterValueObject>({
           sx={{ padding: '5px 10px', minWidth: '46px', height: 38, borderRadius: '0px 2px 2px 0px' }}
           onClick={handleClick}
         >
-          <TuneIcon />
+          <SvgIcon>
+            <path d={mdiTune} />
+          </SvgIcon>
         </Button>
       </Tooltip>
       {isAdvancedFilterPopperEnabled ? (

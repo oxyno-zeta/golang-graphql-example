@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import SortIcon from '@mui/icons-material/Sort';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiSortVariant } from '@mdi/js';
 import { useTranslation } from 'react-i18next';
 import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
 import SortPopper from '../SortPopper';
@@ -65,7 +66,9 @@ function SortButton<T extends Record<string, SortOrderModel>>({
           }}
           onClick={handleClick}
         >
-          <SortIcon color="inherit" />
+          <SvgIcon color="inherit">
+            <path d={mdiSortVariant} />
+          </SvgIcon>
         </Button>
       </Tooltip>
       {isPopperEnabled ? (

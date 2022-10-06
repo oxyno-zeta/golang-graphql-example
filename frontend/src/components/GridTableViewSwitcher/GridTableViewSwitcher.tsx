@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import Button, { ButtonProps } from '@mui/material/Button';
 import ButtonGroup, { ButtonGroupProps } from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
-import GridViewIcon from '@mui/icons-material/GridView';
-import TableRowsIcon from '@mui/icons-material/TableRows';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiViewGridOutline, mdiViewSequential } from '@mdi/js';
 
 interface Props {
   setGridView: (input: boolean) => void;
@@ -43,7 +43,9 @@ function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableB
           }}
           {...tableButtonProps}
         >
-          <TableRowsIcon color={gridView ? 'inherit' : 'primary'} />
+          <SvgIcon color={gridView ? 'inherit' : 'primary'}>
+            <path d={mdiViewSequential} />
+          </SvgIcon>
         </Button>
       </Tooltip>
       <Tooltip title={<>{t('common.gridViewTooltip')}</>}>
@@ -55,7 +57,9 @@ function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableB
           }}
           {...gridButtonProps}
         >
-          <GridViewIcon color={gridView ? 'primary' : 'inherit'} />
+          <SvgIcon color={gridView ? 'primary' : 'inherit'}>
+            <path d={mdiViewGridOutline} />
+          </SvgIcon>
         </Button>
       </Tooltip>
     </ButtonGroup>

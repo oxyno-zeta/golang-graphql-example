@@ -4,8 +4,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiBrightness4, mdiBrightness7 } from '@mdi/js';
 import { PaletteMode } from '@mui/material';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
@@ -38,10 +38,16 @@ function ToggleColorModeMenuItem({ titleStyle }: Props) {
         }}
       >
         <ToggleButton value="dark">
-          <DarkModeIcon /> {t('common.darkThemeSelector')}
+          <SvgIcon sx={{ marginRight: '5px' }}>
+            <path d={mdiBrightness4} />
+          </SvgIcon>{' '}
+          {t('common.darkThemeSelector')}
         </ToggleButton>
         <ToggleButton value="light">
-          <LightModeIcon /> {t('common.lightThemeSelector')}
+          <SvgIcon sx={{ marginRight: '5px' }}>
+            <path d={mdiBrightness7} />
+          </SvgIcon>{' '}
+          {t('common.lightThemeSelector')}
         </ToggleButton>
       </ToggleButtonGroup>
     </>

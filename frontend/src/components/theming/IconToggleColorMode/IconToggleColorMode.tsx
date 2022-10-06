@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/material/styles';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiBrightness4, mdiBrightness7 } from '@mdi/js';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
 interface Props {
@@ -27,7 +27,15 @@ function IconToggleColorMode({ iconButtonProps }: Props) {
     <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common.lightThemeTooltip' : 'common.darkThemeTooltip')}</>}>
       <span>
         <IconButton onClick={colorMode.toggleColorMode} color="inherit" {...iconButtonProps}>
-          {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
+          {theme.palette.mode === 'dark' ? (
+            <SvgIcon>
+              <path d={mdiBrightness4} />
+            </SvgIcon>
+          ) : (
+            <SvgIcon>
+              <path d={mdiBrightness7} />
+            </SvgIcon>
+          )}
         </IconButton>
       </span>
     </Tooltip>

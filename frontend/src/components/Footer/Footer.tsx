@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography, { TypographyProps } from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import SvgIcon from '@mui/material/SvgIcon';
+import { mdiHeart } from '@mdi/js';
 import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material';
 
@@ -27,7 +28,11 @@ function Footer({ containerBoxSx, typographyProps }: Props) {
       }}
     >
       <Typography sx={{ display: 'flex' }} {...typographyProps}>
-        Todo list application / With <FavoriteIcon color="error" /> by Oxyno-zeta
+        Todo list application / With{' '}
+        <SvgIcon color="error">
+          <path d={mdiHeart} />
+        </SvgIcon>{' '}
+        by Oxyno-zeta
       </Typography>
     </Box>
   );
