@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import SvgIcon from '@mui/material/SvgIcon';
-import { mdiBrightness4, mdiBrightness7 } from '@mdi/js';
+import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
 import { PaletteMode } from '@mui/material';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
@@ -39,7 +39,7 @@ function ToggleColorModeMenuItem({ titleStyle }: Props) {
       >
         <ToggleButton value="dark">
           <SvgIcon sx={{ marginRight: '5px' }}>
-            <path d={mdiBrightness4} />
+            <path d={mdiBrightness2} />
           </SvgIcon>{' '}
           {t('common.darkThemeSelector')}
         </ToggleButton>

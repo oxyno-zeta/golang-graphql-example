@@ -4,7 +4,7 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme } from '@mui/material/styles';
 import SvgIcon from '@mui/material/SvgIcon';
-import { mdiBrightness4, mdiBrightness7 } from '@mdi/js';
+import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
 interface Props {
@@ -29,7 +29,7 @@ function IconToggleColorMode({ iconButtonProps }: Props) {
         <IconButton onClick={colorMode.toggleColorMode} color="inherit" {...iconButtonProps}>
           {theme.palette.mode === 'dark' ? (
             <SvgIcon>
-              <path d={mdiBrightness4} />
+              <path d={mdiBrightness2} />
             </SvgIcon>
           ) : (
             <SvgIcon>
