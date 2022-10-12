@@ -12,6 +12,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"testing"
 
@@ -20,6 +21,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	cmocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config/mocks"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
@@ -28,6 +30,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/stretchr/testify/suite"
+	"gorm.io/gorm/schema"
 )
 
 var integrationTestsCfg *config.Config = &config.Config{
@@ -52,7 +55,7 @@ var integrationTestsCfg *config.Config = &config.Config{
 	Database: &config.DatabaseConfig{
 		Driver: config.DefaultDatabaseDriver,
 		ConnectionURL: &config.CredentialConfig{
-			Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable",
+			Value: "host=localhost port=5432 user=postgres dbname=postgres-integration password=postgres sslmode=disable",
 		},
 	},
 }
@@ -179,6 +182,30 @@ func (suite *GraphQLTestSuite) TearDownSuite() {
 	// Close server if it exists
 	if suite.testServer != nil {
 		suite.testServer.Close()
+	}
+}
+
+func (suite *GraphQLTestSuite) AfterTest(suiteName, testName string) {
+	suite.cleanDB()
+}
+
+func (suite *GraphQLTestSuite) cleanDB() {
+	modelList := []interface{}{
+		&models.Todo{},
+	}
+
+	for _, item := range modelList {
+		sch, err := schema.Parse(item, &sync.Map{}, suite.db.GetGormDB().NamingStrategy)
+		suite.NoError(err)
+
+		gdb := suite.db.GetGormDB().Exec(fmt.Sprintf("TRUNCATE %s;", sch.Table))
+		suite.NoError(gdb.Error)
+	}
+}
+
+func (suite *GraphQLTestSuite) setupGenericDataset(dataset []interface{}) {
+	for _, it := range dataset {
+		suite.NoError(suite.db.GetGormDB().Save(it).Error)
 	}
 }
 

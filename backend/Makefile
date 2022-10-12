@@ -178,6 +178,10 @@ setup/services: down/services
 	# User: guest / Password: guest
 	docker run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
+.PHONY: setup/test/integration
+setup/test/integration:
+	docker run --rm --link postgres:postgres --name postgres-integration-setup -e PGHOST=postgres -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:12 psql -c 'CREATE DATABASE "postgres-integration"' || true
+
 .PHONY: setup/dep/install
 setup/dep/install:
 ifndef HAS_GOLANGCI_LINT
