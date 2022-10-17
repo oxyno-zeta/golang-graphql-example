@@ -2,11 +2,12 @@ import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import SvgIcon from '@mui/material/SvgIcon';
+import MenuList from '@mui/material/MenuList';
+import Popover from '@mui/material/Popover';
 import { mdiAccountCircle } from '@mdi/js';
 import ConfigContext from '../../contexts/ConfigContext';
 import ToggleColorModeMenuItem from '../theming/ToggleColorModeMenuItem';
@@ -67,14 +68,13 @@ function TopBarUserMenu() {
           </IconButton>
         </span>
       </Tooltip>
-      <Menu
+      <Popover
         sx={{ marginTop: '28px' }}
         anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}
-        keepMounted
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -82,20 +82,19 @@ function TopBarUserMenu() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        <div style={{ display: 'flex', alignItems: 'center', margin: '0 10px' }}>
-          <div style={{ margin: '5px' }}>
-            <div style={{ width: 'calc(100% - 20px)' }}>
-              <Typography style={{ fontSize: 14 }} gutterBottom>
-                Fake User
-              </Typography>
-              <Typography style={{ fontSize: 11 }} color="text.secondary" gutterBottom>
-                fake@fake.com
-              </Typography>
-            </div>
+        <div style={{ margin: '10px 16px 10px 16px' }}>
+          <div style={{ width: 'calc(100% - 20px)' }}>
+            <Typography style={{ fontSize: 14 }} gutterBottom>
+              Fake User
+            </Typography>
+            <Typography style={{ fontSize: 11 }} color="text.secondary" gutterBottom>
+              fake@fake.com
+            </Typography>
+          </div>
 
-            <div style={{ margin: '0 10px' }}>
-              <Divider />
-            </div>
+          <div style={{ margin: '0 9px' }}>
+            <Divider />
+          </div>
 
           <div style={{ margin: '5px 0' }}>
             <ToggleColorModeMenuItem />
@@ -111,16 +110,18 @@ function TopBarUserMenu() {
           </div>
         )}
 
-        {config.oidcSignOutURL && (
-          <MenuItem
-            component="a"
-            href={buildLogoutURL(config.oidcSignOutURL, config.oidcClientID || '')}
-            rel="noopener noreferrer"
-          >
-            {t('common.signOutAction')}
-          </MenuItem>
-        )}
-      </Menu>
+        <MenuList>
+          {config.oidcSignOutURL && (
+            <MenuItem
+              component="a"
+              href={buildLogoutURL(config.oidcSignOutURL, config.oidcClientID || '')}
+              rel="noopener noreferrer"
+            >
+              {t('common.signOutAction')}
+            </MenuItem>
+          )}
+        </MenuList>
+      </Popover>
     </>
   );
 }
