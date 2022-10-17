@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
@@ -12,6 +11,7 @@ import { mdiAccountCircle } from '@mdi/js';
 import ConfigContext from '../../contexts/ConfigContext';
 import ToggleColorModeMenuItem from '../theming/ToggleColorModeMenuItem';
 import TimezoneSelector from '../timezone/TimezoneSelector';
+import UserInfo from './components/UserInfo';
 
 //
 // Build logout URL
@@ -84,12 +84,7 @@ function TopBarUserMenu() {
       >
         <div style={{ margin: '10px 16px 10px 16px' }}>
           <div style={{ width: 'calc(100% - 20px)' }}>
-            <Typography style={{ fontSize: 14 }} gutterBottom>
-              Fake User
-            </Typography>
-            <Typography style={{ fontSize: 11 }} color="text.secondary" gutterBottom>
-              fake@fake.com
-            </Typography>
+            <UserInfo />
           </div>
 
           <div style={{ margin: '0 9px' }}>
