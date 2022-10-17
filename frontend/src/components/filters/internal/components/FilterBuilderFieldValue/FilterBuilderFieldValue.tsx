@@ -4,15 +4,15 @@ import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Autocomplete from '@mui/material/Autocomplete';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import dayjs from 'dayjs';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import dayjs from 'dayjs';
 import { FilterOperationMetadataModel, FilterDefinitionEnumObjectModel } from '../../../../../models/general';
+import { AdapterDayjsTZ } from './AdapterDayjsTZ';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
@@ -265,7 +265,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
     // Check if type is a date to include a date picker
     if (operation.inputType === 'date') {
       return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjsTZ} dateLibInstance={dayjs}>
           <MobileDateTimePicker
             label={t('common.filter.value')}
             value={value}
@@ -279,7 +279,8 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
               }
 
               // Save formatted to ISO8601 value and it is compatible with RFC3339 due to removal of ns
-              setValue(parsedDate.format());
+              // !! Note: This is using the default timezone
+              setValue(parsedDate.tz().format());
             }}
             renderInput={(props) => (
               <TextField {...props} error={!!errorMsg} helperText={errorMsg && t(errorMsg)} fullWidth size="small" />

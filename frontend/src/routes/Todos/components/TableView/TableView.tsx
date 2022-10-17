@@ -4,13 +4,13 @@ import { DataGrid, GridColumns, GridRowParams, GridValueGetterParams } from '@mu
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiPencil, mdiDelete } from '@mdi/js';
-import dayjs from 'dayjs';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { TodoModel, TodoSortOrderModel } from '../../../../models/todos';
 import { ConnectionModel } from '../../../../models/general';
 import getDataGridCommonProps from '../../../../utils/dataGridCommon';
 import { buildMUIXSort, setMUIXSortBuilder } from '../../../../components/sorts/utils';
+import useDayjsTz from '../../../../components/timezone/useDayjsTz';
 
 interface Props {
   data: ConnectionModel<TodoModel> | undefined;
@@ -55,7 +55,7 @@ function TableView({ data, loading, sort, setSort }: Props) {
       filterable: false,
       sortable: true,
       disableColumnMenu: true,
-      valueGetter: (params: GridValueGetterParams<string, TodoModel>) => dayjs(params.value).format('LLLL'),
+      valueGetter: (params: GridValueGetterParams<string, TodoModel>) => useDayjsTz(params.value).format('LLLL'),
     },
     {
       field: 'done',

@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 // import i18n
 import './i18n';
 import './yup-i18n';
@@ -16,9 +18,12 @@ import TopBar from './components/TopBar';
 import Footer from './components/Footer';
 import ClientProvider from './components/ClientProvider';
 import ThemeProvider from './components/theming/ThemeProvider';
+import TimezoneProvider from './components/timezone/TimezoneProvider';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const container = document.getElementById('root');
 const root = createRoot(container!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
@@ -29,10 +34,12 @@ root.render(
         <ConfigProvider loadingComponent={<MainPageCenterLoading />}>
           <ClientProvider>
             <ThemeProvider themeOptions={{}}>
-              <CssBaseline />
-              <TopBar />
-              <App />
-              <Footer />
+              <TimezoneProvider>
+                <CssBaseline />
+                <TopBar />
+                <App />
+                <Footer />
+              </TimezoneProvider>
             </ThemeProvider>
           </ClientProvider>
         </ConfigProvider>

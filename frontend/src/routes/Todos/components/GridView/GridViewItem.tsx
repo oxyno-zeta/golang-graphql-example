@@ -7,8 +7,8 @@ import SvgIcon from '@mui/material/SvgIcon';
 import { mdiDotsVertical } from '@mdi/js';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import dayjs from 'dayjs';
 import { TodoModel } from '../../../../models/todos';
+import useDayjsTz from '../../../../components/timezone/useDayjsTz';
 
 interface Props {
   item: TodoModel;
@@ -33,7 +33,7 @@ function GridViewItem({ item }: Props) {
             </IconButton>
           }
           title={item.text}
-          subheader={dayjs(item.createdAt).format('LLLL')}
+          subheader={useDayjsTz(item.createdAt).format('LLLL')}
         />
       </Card>
       <Menu

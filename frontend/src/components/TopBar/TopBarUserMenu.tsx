@@ -10,6 +10,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import { mdiAccountCircle } from '@mdi/js';
 import ConfigContext from '../../contexts/ConfigContext';
 import ToggleColorModeMenuItem from '../theming/ToggleColorModeMenuItem';
+import TimezoneSelector from '../timezone/TimezoneSelector';
 
 //
 // Build logout URL
@@ -96,9 +97,11 @@ function TopBarUserMenu() {
               <Divider />
             </div>
 
-            <div style={{ margin: '5px 0' }}>
-              <ToggleColorModeMenuItem />
-            </div>
+          <div style={{ margin: '5px 0' }}>
+            <ToggleColorModeMenuItem />
+          </div>
+          <div style={{ margin: '15px 0 5px 0' }}>
+            <TimezoneSelector />
           </div>
         </div>
 
