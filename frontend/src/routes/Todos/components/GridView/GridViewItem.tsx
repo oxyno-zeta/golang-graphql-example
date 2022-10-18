@@ -8,7 +8,8 @@ import { mdiDotsVertical } from '@mdi/js';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { TodoModel } from '../../../../models/todos';
-import useDayjsTz from '../../../../components/timezone/useDayjsTz';
+import { getDayjsTz } from '../../../../components/timezone/utils';
+import useTimezone from '../../../../components/timezone/useTimezone';
 
 interface Props {
   item: TodoModel;
@@ -16,6 +17,7 @@ interface Props {
 
 function GridViewItem({ item }: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const timezone = useTimezone();
 
   return (
     <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
@@ -33,7 +35,7 @@ function GridViewItem({ item }: Props) {
             </IconButton>
           }
           title={item.text}
-          subheader={useDayjsTz(item.createdAt).format('LLLL')}
+          subheader={getDayjsTz(item.createdAt, timezone).format('LLLL')}
         />
       </Card>
       <Menu

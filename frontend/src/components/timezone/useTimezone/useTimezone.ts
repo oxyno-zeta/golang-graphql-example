@@ -1,12 +1,11 @@
 import { useContext } from 'react';
-import dayjs, { ConfigType } from 'dayjs';
 import TimezoneContext from '../../../contexts/TimezoneContext';
 
-function useDayjsTz(input: ConfigType) {
+function useTimezone() {
   // Get timezone context
   const timezoneCtx = useContext(TimezoneContext);
 
-  return dayjs(input).tz(timezoneCtx.getTimezone());
+  return timezoneCtx.getTimezone();
 }
 
-export default useDayjsTz;
+export default useTimezone;

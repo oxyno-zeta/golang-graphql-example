@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs, { ConfigType } from 'dayjs';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 // Hack because not supported by Typescript....
@@ -34,4 +34,8 @@ export function getTimeZone(tz: string) {
   const offsetMinutes = (offset % 60).toString().padStart(2, '0');
 
   return `UTC${offsetOperator}${offsetHours}:${offsetMinutes}`;
+}
+
+export function getDayjsTz(input: ConfigType, timezone: string) {
+  return dayjs(input).tz(timezone);
 }

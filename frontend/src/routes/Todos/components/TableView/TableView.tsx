@@ -10,7 +10,8 @@ import { TodoModel, TodoSortOrderModel } from '../../../../models/todos';
 import { ConnectionModel } from '../../../../models/general';
 import getDataGridCommonProps from '../../../../utils/dataGridCommon';
 import { buildMUIXSort, setMUIXSortBuilder } from '../../../../components/sorts/utils';
-import useDayjsTz from '../../../../components/timezone/useDayjsTz';
+import useTimezone from '../../../../components/timezone/useTimezone';
+import { getDayjsTz } from '../../../../components/timezone/utils';
 
 interface Props {
   data: ConnectionModel<TodoModel> | undefined;
@@ -25,6 +26,7 @@ function TableView({ data, loading, sort, setSort }: Props) {
   // Get if window have size matching request
   const theme = useTheme();
   const sizeMatching = useMediaQuery(theme.breakpoints.up('lg'));
+  const timezone = useTimezone();
 
   let items: TodoModel[] = [];
   if (data && data.edges) {
@@ -55,7 +57,8 @@ function TableView({ data, loading, sort, setSort }: Props) {
       filterable: false,
       sortable: true,
       disableColumnMenu: true,
-      valueGetter: (params: GridValueGetterParams<string, TodoModel>) => useDayjsTz(params.value).format('LLLL'),
+      valueGetter: (params: GridValueGetterParams<string, TodoModel>) =>
+        getDayjsTz(params.value, timezone).format('LLLL'),
     },
     {
       field: 'done',
