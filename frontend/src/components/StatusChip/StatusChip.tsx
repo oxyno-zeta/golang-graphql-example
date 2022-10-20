@@ -10,6 +10,7 @@ function StatusChip({ label, color, sx = {}, ...rest }: Props) {
       color={color}
       variant="outlined"
       size="small"
+      clickable={false}
       sx={{
         ...sx,
         borderRadius: '5px',
