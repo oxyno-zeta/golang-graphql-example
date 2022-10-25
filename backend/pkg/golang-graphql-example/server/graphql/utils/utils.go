@@ -44,7 +44,7 @@ func FromIDRelay(relayID, prefix string) (string, error) {
 }
 
 func FormatTime(ti time.Time) string {
-	return ti.Format(time.RFC3339)
+	return ti.UTC().Format(time.RFC3339)
 }
 
 func GetPaginateCursor(tableIndex, skip int) string {
