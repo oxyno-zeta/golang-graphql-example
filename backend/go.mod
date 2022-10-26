@@ -28,7 +28,7 @@ require (
 	github.com/rabbitmq/amqp091-go v1.4.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.12.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 	github.com/thoas/go-funk v0.9.2
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible
