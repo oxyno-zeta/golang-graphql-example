@@ -40,7 +40,7 @@ func SetLoggerToGin(c *gin.Context, logger Logger) {
 	c.Set(loggerGinCtxKey, logger)
 }
 
-func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getTraceID func(ctx context.Context) string) gin.HandlerFunc {
+func Middleware(logger Logger, getCorrelationID func(c *gin.Context) string, getTraceID func(ctx context.Context) string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		t1 := time.Now()
 		// Get request
@@ -65,8 +65,8 @@ func Middleware(logger Logger, getRequestID func(c *gin.Context) string, getTrac
 
 		logFields["uri"] = utils.GetRequestURL(c.Request)
 
-		// Log request id
-		logFields["request_id"] = getRequestID(c)
+		// Log correlation id
+		logFields["correlation_id"] = getCorrelationID(c)
 
 		// Get trace id
 		traceID := getTraceID(c.Request.Context())
