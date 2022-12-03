@@ -48,5 +48,6 @@ func (gl *gormLogger) Error(ctx context.Context, v string, rest ...interface{}) 
 
 func (gl *gormLogger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {
 	sql, rows := fc()
-	gl.getCtxLoggerOrDefault(ctx).WithField("rows", rows).WithError(err).Debug(sql)
+	elapsed := time.Since(begin)
+	gl.getCtxLoggerOrDefault(ctx).WithField("sql_duration_ms", elapsed.Milliseconds()).WithField("rows", rows).WithError(err).Debug(sql)
 }
