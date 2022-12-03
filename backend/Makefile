@@ -126,7 +126,7 @@ test/integration: setup/dep/install
 
 .PHONY: test/coverage
 test/coverage:
-	cat c.out.tmp | grep -v "mock_" > c.out
+	cat c.out.tmp | grep -v "mock_" | grep -v "generated" > c.out
 	$(GO) tool cover -html=c.out -o coverage.html
 	$(GO) tool cover -func c.out
 
