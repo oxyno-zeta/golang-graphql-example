@@ -8,14 +8,21 @@ import (
 )
 
 const requestIDHeader = "X-Request-Id"
+const correlationIDHeader = "X-Correlation-Id"
 const correlationIDContextKey = "correlationID"
 
 func CorrelationID(logger log.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// Get request id from request
-		correlationID := c.Request.Header.Get(requestIDHeader)
+		// Get correlation id from request
+		correlationID := c.Request.Header.Get(correlationIDHeader)
 
-		// Check if request id exists
+		// Check if correlation id header have been set
+		if correlationID == "" {
+			// Get request id header
+			correlationID = c.Request.Header.Get(requestIDHeader)
+		}
+
+		// Check if correlation id exists
 		if correlationID == "" {
 			// Generate uuid
 			uuid, err := correlationid.Generate()
