@@ -7,9 +7,8 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-	"github.com/gofrs/uuid"
+	correlationid "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/correlation-id"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/rabbitmq/amqp091-go"
 )
@@ -43,18 +42,18 @@ func (as *amqpService) Publish(
 
 	// Add correlation id in message if not set
 	if message.CorrelationId == "" {
-		// Get request id
-		reqID := middlewares.GetRequestIDFromContext(ctx)
-		// Check if request id is set
+		// Get correlation id
+		reqID := correlationid.GetFromContext(ctx)
+		// Check if correlation id is set
 		if reqID != "" {
 			// Use it
 			message.CorrelationId = reqID
 		} else {
 			// Generate new id
-			id, err2 := generateCorrelationID()
+			id, err2 := correlationid.Generate()
 			// Check error
 			if err2 != nil {
-				return errors.WithStack(err2)
+				return err2
 			}
 
 			// Save it
@@ -304,10 +303,10 @@ func (as *amqpService) Consume(
 				// Otherwise, create it
 				if d.CorrelationId == "" {
 					// Generate new id
-					id, err2 := generateCorrelationID()
+					id, err2 := correlationid.Generate()
 					// Check error
 					if err2 != nil {
-						return errors.WithStack(err2)
+						return err2
 					}
 
 					// Save it
@@ -493,15 +492,4 @@ func (as *amqpService) injectTracedHeaders(trace tracing.Trace, headers amqp091.
 
 	// Return
 	return nil
-}
-
-func generateCorrelationID() (string, error) {
-	// Get uuid
-	uid, err := uuid.NewV4()
-	// Check error
-	if err != nil {
-		return "", errors.WithStack(err)
-	}
-
-	return uid.String(), nil
 }
