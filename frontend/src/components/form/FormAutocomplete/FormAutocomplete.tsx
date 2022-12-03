@@ -8,7 +8,7 @@ import TextField, { TextFieldProps } from '@mui/material/TextField';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { Control, useController, Path, FieldValues } from 'react-hook-form';
-import { YupTranslateErrorModel } from '../../../models/general';
+import type { YupTranslateErrorModel } from '../../../models/general';
 
 type ValueModel = { display: string; value: string };
 
@@ -44,7 +44,7 @@ function FormAutocomplete<T extends FieldValues>({
       const mess = fieldState.error.message as YupTranslateErrorModel;
 
       // Add helper text
-      errorProps.helperText = t(mess.key, mess.values);
+      errorProps.helperText = <>{t(mess.key, mess.values)}</>;
     } else if (typeof fieldState.error.message === 'string') {
       // Add helper text
       errorProps.helperText = t(fieldState.error.message);

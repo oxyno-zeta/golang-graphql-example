@@ -1,8 +1,7 @@
-import { Theme } from '@mui/material/styles';
-import { TFunction } from 'react-i18next';
+import type { Theme } from '@mui/material/styles';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function getDataGridCommonProps(t: TFunction, sx: any = {}) {
+export default function getDataGridCommonProps(t: (d: string) => string | undefined, sx: any = {}) {
   return {
     hideFooterPagination: true,
     hideFooter: true,
