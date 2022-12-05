@@ -346,6 +346,8 @@ func (as *amqpService) Consume(
 				cbCtx := log.SetLoggerToContext(ctx, logger)
 				// Set trace in context
 				cbCtx = tracing.SetTraceToContext(cbCtx, trace)
+				// Set correlation id in context
+				cbCtx = correlationid.SetInContext(cbCtx, d.CorrelationId)
 
 				// Log
 				logger.Debug("start consuming message")
