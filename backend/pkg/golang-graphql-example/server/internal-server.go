@@ -10,10 +10,10 @@ import (
 	healthhttp "github.com/AppsFlyer/go-sundheit/http"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-gonic/gin"
+	correlationid "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/correlation-id"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
@@ -66,8 +66,8 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	// Add middlewares
 	router.Use(gin.Recovery())
 	router.Use(helmet.Default())
-	router.Use(middlewares.CorrelationID(svr.logger))
-	router.Use(log.Middleware(svr.logger, middlewares.GetCorrelationIDFromGin, tracing.GetSpanIDFromContext))
+	router.Use(correlationid.HTTPMiddleware(svr.logger))
+	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument("internal", true))
 	// Add cors if configured
 	err := manageCORS(router, cfg.InternalServer)

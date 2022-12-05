@@ -1,17 +1,14 @@
-package middlewares
+package correlationid
 
 import (
 	"github.com/gin-gonic/gin"
-	correlationid "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/correlation-id"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
-const requestIDHeader = "X-Request-Id"
-const correlationIDHeader = "X-Correlation-Id"
 const correlationIDContextKey = "correlationID"
 
-func CorrelationID(logger log.Logger) gin.HandlerFunc {
+func HTTPMiddleware(logger log.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Get correlation id from request
 		correlationID := c.Request.Header.Get(correlationIDHeader)
@@ -25,7 +22,7 @@ func CorrelationID(logger log.Logger) gin.HandlerFunc {
 		// Check if correlation id exists
 		if correlationID == "" {
 			// Generate uuid
-			uuid, err := correlationid.Generate()
+			uuid, err := Generate()
 			// Check error
 			if err != nil {
 				// Log error
@@ -40,10 +37,10 @@ func CorrelationID(logger log.Logger) gin.HandlerFunc {
 		}
 
 		// Store it in context
-		SetCorrelationIDInGin(c, correlationID)
+		SetInGin(c, correlationID)
 		// Update request with new context
 		c.Request = c.Request.WithContext(
-			correlationid.SetInContext(c.Request.Context(), correlationID),
+			SetInContext(c.Request.Context(), correlationID),
 		)
 
 		// Put it on header
@@ -54,7 +51,7 @@ func CorrelationID(logger log.Logger) gin.HandlerFunc {
 	}
 }
 
-func GetCorrelationIDFromGin(c *gin.Context) string {
+func GetFromGin(c *gin.Context) string {
 	correlationIDObj, correlationIDExists := c.Get(correlationIDContextKey)
 	if correlationIDExists {
 		// return request id
@@ -64,6 +61,6 @@ func GetCorrelationIDFromGin(c *gin.Context) string {
 	return ""
 }
 
-func SetCorrelationIDInGin(c *gin.Context, correlationID string) {
+func SetInGin(c *gin.Context, correlationID string) {
 	c.Set(correlationIDContextKey, correlationID)
 }

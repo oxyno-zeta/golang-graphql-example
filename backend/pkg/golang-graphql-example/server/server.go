@@ -32,7 +32,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	gutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/middlewares"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/vektah/gqlparser/v2/gqlerror"
@@ -148,9 +147,9 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		utils.AnswerWithError(c, err)
 	}))
 	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware())
-	router.Use(middlewares.CorrelationID(svr.logger))
+	router.Use(correlationid.HTTPMiddleware(svr.logger))
 	router.Use(svr.tracingSvc.HTTPMiddleware(correlationid.GetFromContext))
-	router.Use(log.Middleware(svr.logger, middlewares.GetCorrelationIDFromGin, tracing.GetTraceIDFromContext))
+	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetSpanIDFromContext))
 	router.Use(svr.metricsCl.Instrument("business", true))
 	// Add helmet for security
 	router.Use(helmet.Default())
