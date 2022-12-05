@@ -45,6 +45,7 @@ func HTTPMiddleware(logger log.Logger) gin.HandlerFunc {
 
 		// Put it on header
 		c.Writer.Header().Set(requestIDHeader, correlationID)
+		c.Writer.Header().Set(correlationIDHeader, correlationID)
 
 		// Next
 		c.Next()
