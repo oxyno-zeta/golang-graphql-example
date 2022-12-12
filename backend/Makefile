@@ -114,7 +114,7 @@ endif
 
 .PHONY: test/all
 test/all: setup/dep/install
-	$(GO) test $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
+	$(GO) test -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/unit
 test/unit: setup/dep/install
@@ -122,7 +122,7 @@ test/unit: setup/dep/install
 
 .PHONY: test/integration
 test/integration: setup/dep/install
-	$(GO) test $(GO_VENDOR) --tags=integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
+	$(GO) test -p 1 $(GO_VENDOR) --tags=integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/coverage
 test/coverage:
