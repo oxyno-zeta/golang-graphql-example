@@ -356,7 +356,8 @@ func (as *amqpService) Consume(
 				err = as.consumeDeliveryHandler(cbCtx, trace, &d, cb)
 				// Check error
 				if err != nil {
-					logger.Error(errors.Wrap(err, "message consumed failed with error"))
+					logger.Error("message consumed failed with error")
+					logger.Error(err)
 
 					// Calculate Requeue option
 					// Initialize
@@ -371,7 +372,8 @@ func (as *amqpService) Consume(
 					// Check error
 					// This may arrive when worker is disconnected
 					if err != nil {
-						logger.Error(errors.Wrap(err, "cannot nack consumed message"))
+						logger.Error("cannot nack consumed message")
+						logger.Error(err)
 						// Stop
 						return nil
 					}
@@ -388,7 +390,8 @@ func (as *amqpService) Consume(
 					// Check error
 					// This may arrive when worker is disconnected
 					if err != nil {
-						logger.Error(errors.Wrap(err, "cannot ack consumed message"))
+						logger.Error("cannot ack consumed message")
+						logger.Error(err)
 						// Stop
 						return nil
 					}
