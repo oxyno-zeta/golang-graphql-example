@@ -193,6 +193,37 @@ func (as *amqpService) Consume(
 	getConsumeCfg func() *ConsumeConfigInput,
 	cb func(ctx context.Context, delivery *amqp091.Delivery) error,
 ) error {
+	// Init consumer tag
+	consumerTag := ""
+	// Init ctx error
+	var ctxError error
+	// Listen for context done
+	go func() {
+		// Waiting for Done context
+		<-ctx.Done()
+
+		// Save context error
+		ctxError = errors.WithStack(ctx.Err())
+
+		// Check if consumer tag is defined
+		if consumerTag != "" && !as.consumerChannel.IsClosed() {
+			// Get logger
+			logger := log.GetLoggerFromContext(ctx)
+			// Get configuration
+			// This is function to allow the support of hot reloading the configuration.
+			consumeCfg := getConsumeCfg()
+
+			logger.Infof("canceling consume for queue '%s'", consumeCfg.QueueName)
+			// Cancel
+			err := as.consumerChannel.Cancel(consumerTag, false)
+			// Check error
+			if err != nil {
+				// Log error
+				logger.Error(errors.WithStack(err))
+			}
+		}
+	}()
+
 	// Loop
 	for {
 		// Get configuration
@@ -210,6 +241,14 @@ func (as *amqpService) Consume(
 		logger := log.GetLoggerFromContext(ctx).WithFields(map[string]interface{}{
 			"queue": consumeCfg.QueueName,
 		})
+
+		// Check if context is in error
+		if ctxError != nil {
+			logger.Error("consume stopped, context is in error")
+			logger.Error(ctxError)
+
+			return ctxError
+		}
 
 		// Check if system isn't closing
 		if as.signalHandlerSvc.IsStoppingSystem() {
@@ -239,10 +278,7 @@ func (as *amqpService) Consume(
 			return errors.WithStack(err)
 		}
 		// Build consumer tag
-		consumerTag := fmt.Sprintf("%s-%s", consumeCfg.ConsumerPrefix, hostname)
-
-		// Append to consumer tags list if not present
-		as.appendToConsumerTags(consumerTag)
+		consumerTag = fmt.Sprintf("%s-%s", consumeCfg.ConsumerPrefix, hostname)
 
 		// Consume
 		deliveries, cErr := as.consumerChannel.Consume(
@@ -273,6 +309,9 @@ func (as *amqpService) Consume(
 			// Error here must happened when configuration is incorrect or something else in broker
 			return errors.WithStack(cErr)
 		}
+
+		// Append to consumer tags list if not present
+		as.appendToConsumerTags(consumerTag)
 
 		logger.Debug("Waiting for consumer message")
 
@@ -351,6 +390,21 @@ func (as *amqpService) Consume(
 
 				// Log
 				logger.Debug("start consuming message")
+
+				// Check if context is in error
+				if ctxError != nil {
+					logger.Error("message handled but context is in error, nack and requeue")
+					logger.Error(ctxError)
+					// Stop and requeue
+					err2 := d.Nack(false, true)
+					// Check error
+					if err2 != nil {
+						return errors.WithStack(err2)
+					}
+
+					// Default to context error
+					return ctxError
+				}
 
 				// Call handler
 				err = as.consumeDeliveryHandler(cbCtx, trace, &d, cb)
