@@ -317,6 +317,12 @@ func (as *amqpService) Consume(
 
 		// Loop over deliveries
 		for d := range deliveries {
+			// Check if context is in error
+			// If yes, break the loop and return that error
+			if ctxError != nil {
+				return ctxError
+			}
+
 			// Increase active request counter
 			as.signalHandlerSvc.IncreaseActiveRequestCounter()
 
@@ -390,21 +396,6 @@ func (as *amqpService) Consume(
 
 				// Log
 				logger.Debug("start consuming message")
-
-				// Check if context is in error
-				if ctxError != nil {
-					logger.Error("message handled but context is in error, nack and requeue")
-					logger.Error(ctxError)
-					// Stop and requeue
-					err2 := d.Nack(false, true)
-					// Check error
-					if err2 != nil {
-						return errors.WithStack(err2)
-					}
-
-					// Default to context error
-					return ctxError
-				}
 
 				// Call handler
 				err = as.consumeDeliveryHandler(cbCtx, trace, &d, cb)
