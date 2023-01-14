@@ -29,6 +29,9 @@ function TimezoneProvider({ children }: Props) {
   // State for timezone
   const [selectedTimezone, setSelectedTimezone] = useState<string>(initVal);
 
+  // Expand
+  const { configCookieDomain } = cfg;
+
   // Create color mode context
   const contextValue = useMemo(() => {
     // Set cookie
@@ -36,7 +39,7 @@ function TimezoneProvider({ children }: Props) {
       cookies.set(cookieName, input, {
         path: '/',
         maxAge: 31536000, // 1 year
-        domain: cfg.configCookieDomain,
+        domain: configCookieDomain,
       });
     };
 

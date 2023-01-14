@@ -23,10 +23,13 @@ function IconToggleColorMode({ iconButtonProps }: Props) {
   // Get color mode context
   const colorMode = useContext(ColorModeContext);
 
+  // Expand
+  const { toggleColorMode } = colorMode;
+
   return (
     <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common.lightThemeTooltip' : 'common.darkThemeTooltip')}</>}>
       <span>
-        <IconButton onClick={colorMode.toggleColorMode} color="inherit" {...iconButtonProps}>
+        <IconButton onClick={toggleColorMode} color="inherit" {...iconButtonProps}>
           {theme.palette.mode === 'dark' ? (
             <SvgIcon>
               <path d={mdiBrightness2} />

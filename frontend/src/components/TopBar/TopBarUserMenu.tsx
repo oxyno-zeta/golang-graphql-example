@@ -49,6 +49,9 @@ function TopBarUserMenu() {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const config = useContext(ConfigContext);
 
+  // Expand
+  const { oidcSignOutURL, oidcClientID } = config;
+
   // Hooks
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget.parentElement);
@@ -99,19 +102,15 @@ function TopBarUserMenu() {
           </div>
         </div>
 
-        {config.oidcSignOutURL && (
+        {oidcSignOutURL && (
           <div style={{ margin: '0 25px' }}>
             <Divider />
           </div>
         )}
 
         <MenuList>
-          {config.oidcSignOutURL && (
-            <MenuItem
-              component="a"
-              href={buildLogoutURL(config.oidcSignOutURL, config.oidcClientID || '')}
-              rel="noopener noreferrer"
-            >
+          {oidcSignOutURL && (
+            <MenuItem component="a" href={buildLogoutURL(oidcSignOutURL, oidcClientID || '')} rel="noopener noreferrer">
               {t('common.signOutAction')}
             </MenuItem>
           )}

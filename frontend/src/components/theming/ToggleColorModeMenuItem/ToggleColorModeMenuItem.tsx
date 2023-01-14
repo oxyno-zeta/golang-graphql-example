@@ -25,6 +25,9 @@ function ToggleColorModeMenuItem({ titleStyle }: Props) {
   // Get color mode context
   const colorMode = useContext(ColorModeContext);
 
+  // Expand
+  const { setColorMode } = colorMode;
+
   return (
     <>
       <Typography style={titleStyle}>{t('common.themeTitle')}</Typography>
@@ -34,7 +37,7 @@ function ToggleColorModeMenuItem({ titleStyle }: Props) {
         value={theme.palette.mode}
         exclusive
         onChange={(event, value) => {
-          colorMode.setColorMode(value as PaletteMode);
+          setColorMode(value as PaletteMode);
         }}
       >
         <ToggleButton value="dark">

@@ -152,16 +152,19 @@ function TimezoneSelector({ autocompleteProps }: Props) {
   // Setup translate
   const { t } = useTranslation();
 
+  // Expand
+  const { getTimezone, setTimezone } = timezoneCtx;
+
   return (
     <Autocomplete
-      value={timezoneCtx.getTimezone()}
+      value={getTimezone()}
       options={availableTimezones}
       groupBy={(option) => option.split('/')[0]}
       renderInput={(params) => <TextField {...params} label={t('common.timezone')} />}
       onChange={(event, input) => {
         // Check if input exists
         if (input) {
-          timezoneCtx.setTimezone(input);
+          setTimezone(input);
         }
       }}
       renderOption={(props, option, state) => {

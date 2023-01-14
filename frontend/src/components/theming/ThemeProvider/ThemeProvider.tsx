@@ -29,6 +29,9 @@ function ThemeProvider({ children, themeOptions }: Props) {
   // State for mode
   const [mode, setMode] = useState<PaletteMode>(initVal as PaletteMode);
 
+  // Expand
+  const { configCookieDomain } = cfg;
+
   // Create color mode context
   const colorMode = useMemo(() => {
     // Set cookie
@@ -36,7 +39,7 @@ function ThemeProvider({ children, themeOptions }: Props) {
       cookies.set('palette-mode', input, {
         path: '/',
         maxAge: 31536000, // 1 year
-        domain: cfg.configCookieDomain,
+        domain: configCookieDomain,
       });
     };
 
