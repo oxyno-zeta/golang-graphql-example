@@ -1,4 +1,4 @@
-package lockdistributor
+package sqllockdistributor
 
 import (
 	"context"
