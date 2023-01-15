@@ -107,7 +107,6 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 
 func parseValues(out *Config) error {
 	// TODO make any parsing here
-
 	// Default
 	return nil
 }
