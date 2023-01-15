@@ -126,18 +126,18 @@ func (mr *MockServiceMockRecorder) HTTPMiddleware(arg0 interface{}) *gomock.Call
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HTTPMiddleware", reflect.TypeOf((*MockService)(nil).HTTPMiddleware), arg0)
 }
 
-// Reload mocks base method.
-func (m *MockService) Reload() error {
+// InitializeAndReload mocks base method.
+func (m *MockService) InitializeAndReload() error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Reload")
+	ret := m.ctrl.Call(m, "InitializeAndReload")
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Reload indicates an expected call of Reload.
-func (mr *MockServiceMockRecorder) Reload() *gomock.Call {
+// InitializeAndReload indicates an expected call of InitializeAndReload.
+func (mr *MockServiceMockRecorder) InitializeAndReload() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Reload", reflect.TypeOf((*MockService)(nil).Reload))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeAndReload", reflect.TypeOf((*MockService)(nil).InitializeAndReload))
 }
 
 // StartChildTraceOrTraceFromContext mocks base method.

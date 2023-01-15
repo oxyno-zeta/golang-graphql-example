@@ -46,7 +46,7 @@ func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // 
 	}
 	// Prepare on reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err = tracingSvc.Reload()
+		err = tracingSvc.InitializeAndReload()
 		// Check error
 		if err != nil {
 			logger.Fatal(err)
@@ -77,14 +77,14 @@ func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // 
 	// Create new mail service
 	mailSvc := email.NewService(cfgManager, logger)
 	// Try to connect
-	err = mailSvc.Initialize()
+	err = mailSvc.InitializeAndReload()
 	// Check error
 	if err != nil {
 		logger.Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err = mailSvc.Initialize()
+		err = mailSvc.InitializeAndReload()
 		// Check error
 		if err != nil {
 			logger.Fatal(err)
@@ -96,14 +96,14 @@ func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // 
 	// Create lock distributor service
 	ld := lockdistributor.NewService(cfgManager, db)
 	// Initialize lock distributor
-	err = ld.Initialize(logger)
+	err = ld.InitializeAndReload(logger)
 	// Check error
 	if err != nil {
 		logger.Fatal(err)
 	}
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
-		err = ld.Initialize(logger)
+		err = ld.InitializeAndReload(logger)
 		// Check error
 		if err != nil {
 			logger.Fatal(err)
@@ -115,7 +115,7 @@ func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // 
 	// Create signal handler service
 	signalHandlerSvc := signalhandler.NewClient(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
 	// Initialize service
-	err = signalHandlerSvc.Initialize()
+	err = signalHandlerSvc.InitializeOnce()
 	// Check error
 	if err != nil {
 		logger.Fatal(err)

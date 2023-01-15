@@ -100,7 +100,7 @@ func (s *service) ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operati
 	return &trace{span: sp}, nil
 }
 
-func (s *service) Reload() error {
+func (s *service) InitializeAndReload() error {
 	// Save closer
 	cl := s.closer
 

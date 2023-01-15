@@ -73,18 +73,18 @@ func (mr *MockClientMockRecorder) IncreaseActiveRequestCounter() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseActiveRequestCounter", reflect.TypeOf((*MockClient)(nil).IncreaseActiveRequestCounter))
 }
 
-// Initialize mocks base method.
-func (m *MockClient) Initialize() error {
+// InitializeOnce mocks base method.
+func (m *MockClient) InitializeOnce() error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Initialize")
+	ret := m.ctrl.Call(m, "InitializeOnce")
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Initialize indicates an expected call of Initialize.
-func (mr *MockClientMockRecorder) Initialize() *gomock.Call {
+// InitializeOnce indicates an expected call of InitializeOnce.
+func (mr *MockClientMockRecorder) InitializeOnce() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Initialize", reflect.TypeOf((*MockClient)(nil).Initialize))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeOnce", reflect.TypeOf((*MockClient)(nil).InitializeOnce))
 }
 
 // IsStoppingSystem mocks base method.

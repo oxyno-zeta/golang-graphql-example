@@ -10,9 +10,9 @@ import (
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email Service
 type Service interface {
-	// Initialize service.
+	// InitializeAndReload service.
 	// If configuration isn't set, the setup will be skipped.
-	Initialize() error
+	InitializeAndReload() error
 	// Check service health.
 	// If configuration isn't set, the check will be skipped.
 	Check() error

@@ -17,7 +17,7 @@ type service struct {
 	cl         *pglock.Client
 }
 
-func (s *service) Initialize(logger log.Logger) error {
+func (s *service) InitializeAndReload(logger log.Logger) error {
 	// Get configuration
 	cfg := s.cfgManager.GetConfig()
 

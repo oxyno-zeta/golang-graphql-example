@@ -48,18 +48,18 @@ func (mr *MockServiceMockRecorder) Check() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Check", reflect.TypeOf((*MockService)(nil).Check))
 }
 
-// Initialize mocks base method.
-func (m *MockService) Initialize() error {
+// InitializeAndReload mocks base method.
+func (m *MockService) InitializeAndReload() error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Initialize")
+	ret := m.ctrl.Call(m, "InitializeAndReload")
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Initialize indicates an expected call of Initialize.
-func (mr *MockServiceMockRecorder) Initialize() *gomock.Call {
+// InitializeAndReload indicates an expected call of InitializeAndReload.
+func (mr *MockServiceMockRecorder) InitializeAndReload() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Initialize", reflect.TypeOf((*MockService)(nil).Initialize))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeAndReload", reflect.TypeOf((*MockService)(nil).InitializeAndReload))
 }
 
 // NewEmail mocks base method.

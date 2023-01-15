@@ -11,9 +11,9 @@ import (
 
 //go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler Client
 type Client interface {
-	// Initialize will initialize service.
+	// InitializeOnce will initialize service.
 	// Important note: this must be called only once.
-	Initialize() error
+	InitializeOnce() error
 	// OnSignal will add a hook on specific signal.
 	// Hooks for SIGINT and SIGTERM are called here before checking that all requests are finished and calling onExit hooks.
 	OnSignal(signal os.Signal, hook func())

@@ -48,7 +48,7 @@ func (s *service) IsStoppingSystem() bool {
 	return s.stoppingSysInProgress
 }
 
-func (s *service) Initialize() error {
+func (s *service) InitializeOnce() error {
 	// Create signal channel
 	signalChan := make(chan os.Signal, 1)
 

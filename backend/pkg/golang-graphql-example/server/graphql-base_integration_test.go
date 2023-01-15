@@ -96,7 +96,7 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 	suite.NoError(err)
 	// Create lockdistributor
 	ld := lockdistributor.NewService(cfgManagerMock, db)
-	err = ld.Initialize(logger)
+	err = ld.InitializeAndReload(logger)
 	suite.NoError(err)
 	// Create authentication service
 	authCl := authentication.NewService(cfgManagerMock)

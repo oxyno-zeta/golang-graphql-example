@@ -16,8 +16,8 @@ import (
 //
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Service
 type Service interface {
-	// Reload service.
-	Reload() error
+	// InitializeAndReload service.
+	InitializeAndReload() error
 	// Get opentracing tracer.
 	GetTracer() opentracing.Tracer
 	// Http Gin HttpMiddleware to add trace per request.

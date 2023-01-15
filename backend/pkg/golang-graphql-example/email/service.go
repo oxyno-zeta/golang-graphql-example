@@ -31,7 +31,7 @@ func (s *service) NewEmail() Email {
 	}
 }
 
-func (s *service) Initialize() error {
+func (s *service) InitializeAndReload() error {
 	// Get configuration
 	cfg := s.cfgManager.GetConfig().SMTP
 

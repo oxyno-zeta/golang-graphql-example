@@ -49,16 +49,16 @@ func (mr *MockServiceMockRecorder) GetLock(arg0 interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLock", reflect.TypeOf((*MockService)(nil).GetLock), arg0)
 }
 
-// Initialize mocks base method.
-func (m *MockService) Initialize(arg0 log.Logger) error {
+// InitializeAndReload mocks base method.
+func (m *MockService) InitializeAndReload(arg0 log.Logger) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Initialize", arg0)
+	ret := m.ctrl.Call(m, "InitializeAndReload", arg0)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Initialize indicates an expected call of Initialize.
-func (mr *MockServiceMockRecorder) Initialize(arg0 interface{}) *gomock.Call {
+// InitializeAndReload indicates an expected call of InitializeAndReload.
+func (mr *MockServiceMockRecorder) InitializeAndReload(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Initialize", reflect.TypeOf((*MockService)(nil).Initialize), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeAndReload", reflect.TypeOf((*MockService)(nil).InitializeAndReload), arg0)
 }
