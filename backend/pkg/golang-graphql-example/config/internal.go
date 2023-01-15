@@ -20,7 +20,7 @@ var TemplateErrLoadingEnvCredentialEmpty = "error loading credentials, environme
 
 var validate = validator.New()
 
-type managercontext struct {
+type managerimpl struct {
 	cfg                       *Config
 	configs                   []*viper.Viper
 	onChangeHooks             []func()
@@ -28,11 +28,11 @@ type managercontext struct {
 	internalFileWatchChannels []chan bool
 }
 
-func (ctx *managercontext) AddOnChangeHook(hook func()) {
+func (ctx *managerimpl) AddOnChangeHook(hook func()) {
 	ctx.onChangeHooks = append(ctx.onChangeHooks, hook)
 }
 
-func (ctx *managercontext) Load(inputConfigFilePath string) error {
+func (ctx *managerimpl) Load(inputConfigFilePath string) error {
 	// Initialize config file folder path
 	configFolderPath := DefaultMainConfigFolderPath
 	// Check if input is set to change for this one
@@ -80,7 +80,7 @@ func (ctx *managercontext) Load(inputConfigFilePath string) error {
 }
 
 // Imported and modified from viper v1.7.0.
-func (ctx *managercontext) watchInternalFile(filePath string, forceStop chan bool, onChange func()) {
+func (ctx *managerimpl) watchInternalFile(filePath string, forceStop chan bool, onChange func()) {
 	initWG := sync.WaitGroup{}
 	initWG.Add(1)
 
@@ -150,18 +150,6 @@ func (ctx *managercontext) watchInternalFile(filePath string, forceStop chan boo
 	initWG.Wait() // make sure that the go routine above fully ended before returning
 }
 
-func (ctx *managercontext) loadDefaultConfigurationValues(vip *viper.Viper) {
-	// Load default configuration
-	vip.SetDefault("log.level", DefaultLogLevel)
-	vip.SetDefault("log.format", DefaultLogFormat)
-	vip.SetDefault("server.port", DefaultPort)
-	vip.SetDefault("internalServer.port", DefaultInternalPort)
-	vip.SetDefault("database.driver", DefaultDatabaseDriver)
-	vip.SetDefault("lockDistributor.tableName", DefaultLockDistributorTableName)
-	vip.SetDefault("lockDistributor.leaseDuration", DefaultLockDistributorLeaseDuration)
-	vip.SetDefault("lockDistributor.heartbeatFrequency", DefaultLockDistributionHeartbeatFrequency)
-}
-
 func generateViperInstances(files []os.DirEntry, configFolderPath string) []*viper.Viper {
 	list := make([]*viper.Viper, 0)
 	// Loop over static files to create viper instance for them
@@ -185,7 +173,7 @@ func generateViperInstances(files []os.DirEntry, configFolderPath string) []*vip
 	return list
 }
 
-func (ctx *managercontext) loadConfiguration() error {
+func (ctx *managerimpl) loadConfiguration() error {
 	// Load must start by flushing all existing watcher on internal files
 	for i := 0; i < len(ctx.internalFileWatchChannels); i++ {
 		ch := ctx.internalFileWatchChannels[i]
@@ -238,6 +226,13 @@ func (ctx *managercontext) loadConfiguration() error {
 		return errors.WithStack(err)
 	}
 
+	// Parse time, duration, regex, ...
+	err = parseValues(&out)
+	// Check error
+	if err != nil {
+		return err
+	}
+
 	// Load all credentials
 	credentials, err := loadAllCredentials(&out)
 	if err != nil {
@@ -283,95 +278,6 @@ func (ctx *managercontext) loadConfiguration() error {
 	return nil
 }
 
-// Load default values based on business rules.
-func loadBusinessDefaultValues(out *Config) error {
-	// Load default oidc configurations
-	if out.OIDCAuthentication != nil {
-		// Add default scopes
-		if out.OIDCAuthentication.Scopes == nil {
-			out.OIDCAuthentication.Scopes = DefaultOIDCScopes
-		}
-		// Add default cookie name
-		if out.OIDCAuthentication.CookieName == "" {
-			out.OIDCAuthentication.CookieName = DefaultCookieName
-		}
-	}
-
-	// Load default tags for opa authorization
-	if out.OPAServerAuthorization != nil && out.OPAServerAuthorization.Tags == nil {
-		out.OPAServerAuthorization.Tags = map[string]string{}
-	}
-
-	// Load default tracing configuration
-	if out.Tracing == nil {
-		out.Tracing = &TracingConfig{Enabled: false}
-	}
-
-	// TODO Load default values based on business rules
-	return nil
-}
-
-// Load credential configs here.
-func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
-	// Initialize answer
-	result := make([]*CredentialConfig, 0)
-
-	// Load database credential
-	err := loadCredential(out.Database.ConnectionURL)
-	if err != nil {
-		return nil, err
-	}
-	// Append result
-	result = append(result, out.Database.ConnectionURL)
-
-	// Load credential for OIDC configuration
-	if out.OIDCAuthentication != nil && out.OIDCAuthentication.ClientSecret != nil {
-		err := loadCredential(out.OIDCAuthentication.ClientSecret)
-		if err != nil {
-			return nil, err
-		}
-		// Append result
-		result = append(result, out.OIDCAuthentication.ClientSecret)
-	}
-
-	// SMTP configuration
-	if out.SMTP != nil {
-		// Load credential for SMTP username
-		if out.SMTP.Username != nil {
-			err := loadCredential(out.SMTP.Username)
-			if err != nil {
-				return nil, err
-			}
-			// Append result
-			result = append(result, out.SMTP.Username)
-		}
-
-		// Load credential for SMTP password
-		if out.SMTP.Password != nil {
-			err := loadCredential(out.SMTP.Password)
-			if err != nil {
-				return nil, err
-			}
-			// Append result
-			result = append(result, out.SMTP.Password)
-		}
-	}
-
-	// Load credential for AMQP configuration
-	if out.AMQP != nil && out.AMQP.Connection != nil && out.AMQP.Connection.URL != nil {
-		err := loadCredential(out.AMQP.Connection.URL)
-		if err != nil {
-			return nil, err
-		}
-		// Append result
-		result = append(result, out.AMQP.Connection.URL)
-	}
-
-	// TODO Load credential configs here
-
-	return result, nil
-}
-
 func loadCredential(credCfg *CredentialConfig) error {
 	if credCfg.Path != "" {
 		// Secret file
@@ -396,6 +302,6 @@ func loadCredential(credCfg *CredentialConfig) error {
 }
 
 // GetConfig allow to get configuration object.
-func (ctx *managercontext) GetConfig() *Config {
+func (ctx *managerimpl) GetConfig() *Config {
 	return ctx.cfg
 }

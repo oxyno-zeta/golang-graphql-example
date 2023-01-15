@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_managercontext_Load(t *testing.T) {
+func Test_managerimpl_Load(t *testing.T) {
 	tests := []struct {
 		name           string
 		configs        map[string]string
@@ -119,7 +119,7 @@ database:
 				defer os.Remove(k)
 			}
 
-			ctx := &managercontext{
+			ctx := &managerimpl{
 				logger: log.NewLogger(),
 			}
 
@@ -183,7 +183,7 @@ tracing:
 		defer os.Remove(k)
 	}
 
-	ctx := &managercontext{
+	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
 
@@ -323,7 +323,7 @@ oidcAuthentication:
 		defer os.Remove(k)
 	}
 
-	ctx := &managercontext{
+	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
 
@@ -477,7 +477,7 @@ tracing:
 		defer os.Remove(k)
 	}
 
-	ctx := &managercontext{
+	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
 
@@ -615,7 +615,7 @@ opaServerAuthorization:
 		defer os.Remove(k)
 	}
 
-	ctx := &managercontext{
+	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
 
@@ -769,7 +769,7 @@ database:
 		defer os.Remove(k)
 	}
 
-	ctx := &managercontext{
+	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
 

@@ -18,5 +18,5 @@ type Manager interface {
 }
 
 func NewManager(logger log.Logger) Manager {
-	return &managercontext{logger: logger}
+	return &managerimpl{logger: logger}
 }
