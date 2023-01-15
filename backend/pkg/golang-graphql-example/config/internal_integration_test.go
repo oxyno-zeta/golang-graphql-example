@@ -14,6 +14,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const reloadEventuallyWait = 10 * time.Second
+const reloadEventuallyTick = 500 * time.Millisecond
+
 func Test_managerimpl_Load(t *testing.T) {
 	tests := []struct {
 		name           string
@@ -140,9 +143,6 @@ database:
 }
 
 func Test_Load_reload_config(t *testing.T) {
-	// Channel for wait watch
-	waitCh := make(chan bool)
-
 	dir, err := ioutil.TempDir("", "config-reload")
 	assert.NoError(t, err)
 
@@ -187,8 +187,9 @@ tracing:
 		logger: log.NewLogger(),
 	}
 
+	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
-		waitCh <- true
+		reloadHookCalled = true
 	})
 
 	// Load config
@@ -235,43 +236,44 @@ log:
 		assert.NoError(t, err)
 	}
 
-	select {
-	case <-waitCh:
-		// Get configuration
-		res = ctx.GetConfig()
+	assert.Eventually(
+		t,
+		func() bool {
+			return reloadHookCalled
+		},
+		reloadEventuallyWait,
+		reloadEventuallyTick,
+	)
 
-		assert.Equal(t, &Config{
-			Log: &LogConfig{
-				Level:  "debug",
-				Format: "text",
-			},
-			Server: &ServerConfig{
-				Port: 8080,
-			},
-			InternalServer: &ServerConfig{
-				Port: 9090,
-			},
-			Tracing: &TracingConfig{Enabled: true},
-			Database: &DatabaseConfig{
-				Driver:        "POSTGRES",
-				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
-			},
-			LockDistributor: &LockDistributorConfig{
-				HeartbeatFrequency: "1s",
-				LeaseDuration:      "3s",
-				TableName:          "locks",
-			},
-		}, res)
-		return
-	case <-time.After(5 * time.Second):
-		assert.FailNow(t, "shouldn't call this")
-	}
+	// Get configuration
+	res = ctx.GetConfig()
+
+	assert.Equal(t, &Config{
+		Log: &LogConfig{
+			Level:  "debug",
+			Format: "text",
+		},
+		Server: &ServerConfig{
+			Port: 8080,
+		},
+		InternalServer: &ServerConfig{
+			Port: 9090,
+		},
+		Tracing: &TracingConfig{Enabled: true},
+		Database: &DatabaseConfig{
+			Driver:        "POSTGRES",
+			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
+		},
+		LockDistributor: &LockDistributorConfig{
+			HeartbeatFrequency: "1s",
+			LeaseDuration:      "3s",
+			TableName:          "locks",
+		},
+	}, res)
+	assert.True(t, reloadHookCalled)
 }
 
 func Test_Load_reload_secret(t *testing.T) {
-	// Channel for wait watch
-	waitCh := make(chan bool)
-
 	dir, err := ioutil.TempDir("", "config-reload-secret")
 	assert.NoError(t, err)
 
@@ -327,8 +329,9 @@ oidcAuthentication:
 		logger: log.NewLogger(),
 	}
 
+	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
-		waitCh <- true
+		reloadHookCalled = true
 	})
 
 	// Load config
@@ -386,56 +389,57 @@ oidcAuthentication:
 		defer os.Remove(k)
 	}
 
-	select {
-	case <-waitCh:
-		// Get configuration
-		res = ctx.GetConfig()
+	assert.Eventually(
+		t,
+		func() bool {
+			return reloadHookCalled
+		},
+		reloadEventuallyWait,
+		reloadEventuallyTick,
+	)
 
-		assert.Equal(t, &Config{
-			Log: &LogConfig{
-				Level:  "error",
-				Format: "text",
+	// Get configuration
+	res = ctx.GetConfig()
+
+	assert.Equal(t, &Config{
+		Log: &LogConfig{
+			Level:  "error",
+			Format: "text",
+		},
+		Server: &ServerConfig{
+			Port: 8080,
+		},
+		InternalServer: &ServerConfig{
+			Port: 9090,
+		},
+		Tracing: &TracingConfig{Enabled: true},
+		Database: &DatabaseConfig{
+			Driver:        "POSTGRES",
+			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
+		},
+		LockDistributor: &LockDistributorConfig{
+			HeartbeatFrequency: "1s",
+			LeaseDuration:      "3s",
+			TableName:          "locks",
+		},
+		OIDCAuthentication: &OIDCAuthConfig{
+			ClientID: "client-with-secret",
+			ClientSecret: &CredentialConfig{
+				Path:  os.TempDir() + "/secret1",
+				Value: "SECRET1",
 			},
-			Server: &ServerConfig{
-				Port: 8080,
-			},
-			InternalServer: &ServerConfig{
-				Port: 9090,
-			},
-			Tracing: &TracingConfig{Enabled: true},
-			Database: &DatabaseConfig{
-				Driver:        "POSTGRES",
-				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
-			},
-			LockDistributor: &LockDistributorConfig{
-				HeartbeatFrequency: "1s",
-				LeaseDuration:      "3s",
-				TableName:          "locks",
-			},
-			OIDCAuthentication: &OIDCAuthConfig{
-				ClientID: "client-with-secret",
-				ClientSecret: &CredentialConfig{
-					Path:  os.TempDir() + "/secret1",
-					Value: "SECRET1",
-				},
-				CookieName:    "oidc",
-				State:         "my-secret-state-key",
-				IssuerURL:     "http://localhost:8088/auth/realms/integration",
-				RedirectURL:   "http://localhost:8080/",
-				EmailVerified: true,
-				Scopes:        []string{"openid", "email", "profile"},
-			},
-		}, res)
-		return
-	case <-time.After(15 * time.Second):
-		assert.FailNow(t, "shouldn't call this")
-	}
+			CookieName:    "oidc",
+			State:         "my-secret-state-key",
+			IssuerURL:     "http://localhost:8088/auth/realms/integration",
+			RedirectURL:   "http://localhost:8080/",
+			EmailVerified: true,
+			Scopes:        []string{"openid", "email", "profile"},
+		},
+	}, res)
+	assert.True(t, reloadHookCalled)
 }
 
 func Test_Load_reload_config_with_wrong_config(t *testing.T) {
-	// Channel for wait watch
-	waitCh := make(chan bool)
-
 	dir, err := ioutil.TempDir("", "config-reload-wrong-config")
 	assert.NoError(t, err)
 
@@ -481,8 +485,9 @@ tracing:
 		logger: log.NewLogger(),
 	}
 
+	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
-		waitCh <- true
+		reloadHookCalled = true
 	})
 
 	// Load config
@@ -527,43 +532,37 @@ configuration with error
 		assert.NoError(t, err)
 	}
 
-	select {
-	case <-waitCh:
-		assert.FailNow(t, "shouldn't call this")
-		return
-	case <-time.After(5 * time.Second):
-		// Get configuration
-		res = ctx.GetConfig()
+	time.Sleep(5 * time.Second)
 
-		assert.Equal(t, &Config{
-			Log: &LogConfig{
-				Level:  "error",
-				Format: "text",
-			},
-			Server: &ServerConfig{
-				Port: 8080,
-			},
-			InternalServer: &ServerConfig{
-				Port: 9090,
-			},
-			Tracing: &TracingConfig{Enabled: true},
-			Database: &DatabaseConfig{
-				Driver:        "POSTGRES",
-				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
-			},
-			LockDistributor: &LockDistributorConfig{
-				HeartbeatFrequency: "1s",
-				LeaseDuration:      "3s",
-				TableName:          "locks",
-			},
-		}, res)
-	}
+	// Get configuration
+	res = ctx.GetConfig()
+
+	assert.Equal(t, &Config{
+		Log: &LogConfig{
+			Level:  "error",
+			Format: "text",
+		},
+		Server: &ServerConfig{
+			Port: 8080,
+		},
+		InternalServer: &ServerConfig{
+			Port: 9090,
+		},
+		Tracing: &TracingConfig{Enabled: true},
+		Database: &DatabaseConfig{
+			Driver:        "POSTGRES",
+			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
+		},
+		LockDistributor: &LockDistributorConfig{
+			HeartbeatFrequency: "1s",
+			LeaseDuration:      "3s",
+			TableName:          "locks",
+		},
+	}, res)
+	assert.False(t, reloadHookCalled)
 }
 
 func Test_Load_reload_config_map_structure(t *testing.T) {
-	// Channel for wait watch
-	waitCh := make(chan bool)
-
 	dir, err := ioutil.TempDir("", "config-reload-map-structure")
 	assert.NoError(t, err)
 
@@ -619,8 +618,9 @@ opaServerAuthorization:
 		logger: log.NewLogger(),
 	}
 
+	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
-		waitCh <- true
+		reloadHookCalled = true
 	})
 
 	// Load config
@@ -674,50 +674,51 @@ opaServerAuthorization:
 		assert.NoError(t, err)
 	}
 
-	select {
-	case <-waitCh:
-		// Get configuration
-		res = ctx.GetConfig()
+	assert.Eventually(
+		t,
+		func() bool {
+			return reloadHookCalled
+		},
+		reloadEventuallyWait,
+		reloadEventuallyTick,
+	)
 
-		assert.Equal(t, &Config{
-			Log: &LogConfig{
-				Level:  "error",
-				Format: "json",
+	// Get configuration
+	res = ctx.GetConfig()
+
+	assert.Equal(t, &Config{
+		Log: &LogConfig{
+			Level:  "error",
+			Format: "json",
+		},
+		Server: &ServerConfig{
+			Port: 8080,
+		},
+		InternalServer: &ServerConfig{
+			Port: 9090,
+		},
+		Tracing: &TracingConfig{Enabled: true},
+		Database: &DatabaseConfig{
+			Driver:        "POSTGRES",
+			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
+		},
+		LockDistributor: &LockDistributorConfig{
+			HeartbeatFrequency: "1s",
+			LeaseDuration:      "3s",
+			TableName:          "locks",
+		},
+		OPAServerAuthorization: &OPAServerAuthorization{
+			URL: "http://fake.com",
+			Tags: map[string]string{
+				"t1": "v1",
+				"t3": "v3",
 			},
-			Server: &ServerConfig{
-				Port: 8080,
-			},
-			InternalServer: &ServerConfig{
-				Port: 9090,
-			},
-			Tracing: &TracingConfig{Enabled: true},
-			Database: &DatabaseConfig{
-				Driver:        "POSTGRES",
-				ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
-			},
-			LockDistributor: &LockDistributorConfig{
-				HeartbeatFrequency: "1s",
-				LeaseDuration:      "3s",
-				TableName:          "locks",
-			},
-			OPAServerAuthorization: &OPAServerAuthorization{
-				URL: "http://fake.com",
-				Tags: map[string]string{
-					"t1": "v1",
-					"t3": "v3",
-				},
-			},
-		}, res)
-		return
-	case <-time.After(5 * time.Second):
-		assert.FailNow(t, "shouldn't call this")
-	}
+		},
+	}, res)
+	assert.True(t, reloadHookCalled)
 }
 
 func Test_Load_reload_config_ignore_hidden_file_and_directory(t *testing.T) {
-	// Channel for wait watch
-	waitCh := make(chan bool)
-
 	dir, err := ioutil.TempDir("", "config-reload-ignore")
 	assert.NoError(t, err)
 	err = os.MkdirAll(path.Join(dir, "dir1"), os.ModePerm)
@@ -772,10 +773,6 @@ database:
 	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
-
-	ctx.AddOnChangeHook(func() {
-		waitCh <- true
-	})
 
 	// Load config
 	err = ctx.Load(dir)
