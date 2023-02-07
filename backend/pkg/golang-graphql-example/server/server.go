@@ -126,7 +126,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	// Add middlewares
 
 	// Check if compress if enabled
-	if cfg.Server.Compress.Enabled {
+	if cfg.Server.Compress != nil && cfg.Server.Compress.Enabled {
 		router.Use(gzip.Gzip(gzip.DefaultCompression))
 	}
 	// Recover any panic in router
