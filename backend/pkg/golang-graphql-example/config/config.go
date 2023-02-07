@@ -145,9 +145,15 @@ type LogConfig struct {
 
 // ServerConfig Server configuration.
 type ServerConfig struct {
-	ListenAddr string            `mapstructure:"listenAddr"`
-	Port       int               `mapstructure:"port" validate:"required"`
-	CORS       *ServerCorsConfig `mapstructure:"cors" validate:"omitempty"`
+	ListenAddr string                `mapstructure:"listenAddr"`
+	Port       int                   `mapstructure:"port" validate:"required"`
+	CORS       *ServerCorsConfig     `mapstructure:"cors" validate:"omitempty"`
+	Compress   *ServerCompressConfig `mapstructure:"compress"`
+}
+
+// ServerCompressConfig Server compress configuration.
+type ServerCompressConfig struct {
+	Enabled bool `mapstructure:"enabled"`
 }
 
 // ServerCorsConfig Server CORS configuration.

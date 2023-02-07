@@ -124,7 +124,11 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		utils.AnswerWithError(c, err)
 	})
 	// Add middlewares
-	router.Use(gzip.Gzip(gzip.DefaultCompression, gzip.WithDecompressFn(gzip.DefaultDecompressHandle)))
+
+	// Check if compress if enabled
+	if cfg.Server.Compress.Enabled {
+		router.Use(gzip.Gzip(gzip.DefaultCompression))
+	}
 	// Recover any panic in router
 	// Force the first parameter to nil to avoid any log
 	router.Use(gin.CustomRecoveryWithWriter(nil, func(c *gin.Context, errI any) {
