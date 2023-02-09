@@ -25,7 +25,7 @@ require (
 	github.com/opentracing-contrib/go-gin v0.0.0-20201220185307-1dd2273433a4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.14.0
-	github.com/rabbitmq/amqp091-go v1.6.1
+	github.com/rabbitmq/amqp091-go v1.7.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.1
