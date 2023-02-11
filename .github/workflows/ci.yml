@@ -138,9 +138,9 @@ jobs:
       - changes
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 19.x
+          node-version: 19
       - run: cd frontend && yarn install --frozen-lockfile
       - run: cd frontend && yarn lint
   frontend-build:
@@ -153,9 +153,9 @@ jobs:
       - frontend-lint
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: 19.x
+          node-version: 19
       - run: cd frontend && yarn install --frozen-lockfile
       - run: cd frontend && yarn build
       - run: cd frontend && docker build -t frontend .
