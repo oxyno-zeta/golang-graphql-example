@@ -3,8 +3,8 @@ This represents a Todo object
 """
 type Todo {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt(format: DateFormat): String!
+  updatedAt(format: DateFormat): String!
   text: String!
   done: Boolean!
 }

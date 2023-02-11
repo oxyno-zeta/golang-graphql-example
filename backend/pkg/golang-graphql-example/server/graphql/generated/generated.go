@@ -70,11 +70,11 @@ type ComplexityRoot struct {
 	}
 
 	Todo struct {
-		CreatedAt func(childComplexity int) int
+		CreatedAt func(childComplexity int, format *utils.DateFormat) int
 		Done      func(childComplexity int) int
 		ID        func(childComplexity int) int
 		Text      func(childComplexity int) int
-		UpdatedAt func(childComplexity int) int
+		UpdatedAt func(childComplexity int, format *utils.DateFormat) int
 	}
 
 	TodoConnection struct {
@@ -99,8 +99,8 @@ type QueryResolver interface {
 }
 type TodoResolver interface {
 	ID(ctx context.Context, obj *models.Todo) (string, error)
-	CreatedAt(ctx context.Context, obj *models.Todo) (string, error)
-	UpdatedAt(ctx context.Context, obj *models.Todo) (string, error)
+	CreatedAt(ctx context.Context, obj *models.Todo, format *utils.DateFormat) (string, error)
+	UpdatedAt(ctx context.Context, obj *models.Todo, format *utils.DateFormat) (string, error)
 }
 
 type BooleanFilterResolver interface {
@@ -242,7 +242,12 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			break
 		}
 
-		return e.complexity.Todo.CreatedAt(childComplexity), true
+		args, err := ec.field_Todo_createdAt_args(context.TODO(), rawArgs)
+		if err != nil {
+			return 0, false
+		}
+
+		return e.complexity.Todo.CreatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
 
 	case "Todo.done":
 		if e.complexity.Todo.Done == nil {
@@ -270,7 +275,12 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			break
 		}
 
-		return e.complexity.Todo.UpdatedAt(childComplexity), true
+		args, err := ec.field_Todo_updatedAt_args(context.TODO(), rawArgs)
+		if err != nil {
+			return 0, false
+		}
+
+		return e.complexity.Todo.UpdatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
 
 	case "TodoConnection.edges":
 		if e.complexity.TodoConnection.Edges == nil {
@@ -426,8 +436,8 @@ This represents a Todo object
 """
 type Todo {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt(format: DateFormat): String!
+  updatedAt(format: DateFormat): String!
   text: String!
   done: Boolean!
 }
@@ -688,6 +698,20 @@ input DateFilter {
   """
   isNotNull: Boolean
 }
+
+"""
+Date Format enumeration
+"""
+enum DateFormat {
+  """
+  RFC3339 format
+  """
+  RFC3339
+  """
+  RFC3339 with nanoseconds format
+  """
+  RFC3339Nano
+}
 `, BuiltIn: false},
 }
 var parsedSchema = gqlparser.MustLoadSchema(sources...)
@@ -831,6 +855,36 @@ func (ec *executionContext) field_Query_todos_args(ctx context.Context, rawArgs 
 	return args, nil
 }
 
+func (ec *executionContext) field_Todo_createdAt_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
+	var err error
+	args := map[string]interface{}{}
+	var arg0 *utils.DateFormat
+	if tmp, ok := rawArgs["format"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("format"))
+		arg0, err = ec.unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["format"] = arg0
+	return args, nil
+}
+
+func (ec *executionContext) field_Todo_updatedAt_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
+	var err error
+	args := map[string]interface{}{}
+	var arg0 *utils.DateFormat
+	if tmp, ok := rawArgs["format"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("format"))
+		arg0, err = ec.unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["format"] = arg0
+	return args, nil
+}
+
 func (ec *executionContext) field___Type_enumValues_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
@@ -887,7 +941,6 @@ func (ec *executionContext) _Mutation_createTodo(ctx context.Context, field grap
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		if !graphql.HasFieldError(ctx, fc) {
@@ -954,7 +1007,6 @@ func (ec *executionContext) _Mutation_closeTodo(ctx context.Context, field graph
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		if !graphql.HasFieldError(ctx, fc) {
@@ -1021,7 +1073,6 @@ func (ec *executionContext) _Mutation_updateTodo(ctx context.Context, field grap
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		if !graphql.HasFieldError(ctx, fc) {
@@ -1258,7 +1309,6 @@ func (ec *executionContext) _Query_todos(ctx context.Context, field graphql.Coll
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		return graphql.Null
@@ -1316,7 +1366,6 @@ func (ec *executionContext) _Query_todo(ctx context.Context, field graphql.Colle
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		return graphql.Null
@@ -1380,7 +1429,6 @@ func (ec *executionContext) _Query___type(ctx context.Context, field graphql.Col
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		return graphql.Null
@@ -1454,7 +1502,6 @@ func (ec *executionContext) _Query___schema(ctx context.Context, field graphql.C
 	})
 	if err != nil {
 		ec.Error(ctx, err)
-		return graphql.Null
 	}
 	if resTmp == nil {
 		return graphql.Null
@@ -1549,7 +1596,7 @@ func (ec *executionContext) _Todo_createdAt(ctx context.Context, field graphql.C
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Todo().CreatedAt(rctx, obj)
+		return ec.resolvers.Todo().CreatedAt(rctx, obj, fc.Args["format"].(*utils.DateFormat))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -1576,6 +1623,17 @@ func (ec *executionContext) fieldContext_Todo_createdAt(ctx context.Context, fie
 			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
+	defer func() {
+		if r := recover(); r != nil {
+			err = ec.Recover(ctx, r)
+			ec.Error(ctx, err)
+		}
+	}()
+	ctx = graphql.WithFieldContext(ctx, fc)
+	if fc.Args, err = ec.field_Todo_createdAt_args(ctx, field.ArgumentMap(ec.Variables)); err != nil {
+		ec.Error(ctx, err)
+		return
+	}
 	return fc, nil
 }
 
@@ -1593,7 +1651,7 @@ func (ec *executionContext) _Todo_updatedAt(ctx context.Context, field graphql.C
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Todo().UpdatedAt(rctx, obj)
+		return ec.resolvers.Todo().UpdatedAt(rctx, obj, fc.Args["format"].(*utils.DateFormat))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -1619,6 +1677,17 @@ func (ec *executionContext) fieldContext_Todo_updatedAt(ctx context.Context, fie
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
 			return nil, errors.New("field of type String does not have child fields")
 		},
+	}
+	defer func() {
+		if r := recover(); r != nil {
+			err = ec.Recover(ctx, r)
+			ec.Error(ctx, err)
+		}
+	}()
+	ctx = graphql.WithFieldContext(ctx, fc)
+	if fc.Args, err = ec.field_Todo_updatedAt_args(ctx, field.ArgumentMap(ec.Variables)); err != nil {
+		ec.Error(ctx, err)
+		return
 	}
 	return fc, nil
 }
@@ -4371,7 +4440,6 @@ func (ec *executionContext) _Mutation(ctx context.Context, sel ast.SelectionSet)
 	})
 
 	out := graphql.NewFieldSet(fields)
-	var invalids uint32
 	for i, field := range fields {
 		innerCtx := graphql.WithRootFieldContext(ctx, &graphql.RootFieldContext{
 			Object: field.Name,
@@ -4387,35 +4455,23 @@ func (ec *executionContext) _Mutation(ctx context.Context, sel ast.SelectionSet)
 				return ec._Mutation_createTodo(ctx, field)
 			})
 
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		case "closeTodo":
 
 			out.Values[i] = ec.OperationContext.RootResolverMiddleware(innerCtx, func(ctx context.Context) (res graphql.Marshaler) {
 				return ec._Mutation_closeTodo(ctx, field)
 			})
 
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		case "updateTodo":
 
 			out.Values[i] = ec.OperationContext.RootResolverMiddleware(innerCtx, func(ctx context.Context) (res graphql.Marshaler) {
 				return ec._Mutation_updateTodo(ctx, field)
 			})
 
-			if out.Values[i] == graphql.Null {
-				invalids++
-			}
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))
 		}
 	}
 	out.Dispatch()
-	if invalids > 0 {
-		return graphql.Null
-	}
 	return out
 }
 
@@ -4471,7 +4527,6 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 	})
 
 	out := graphql.NewFieldSet(fields)
-	var invalids uint32
 	for i, field := range fields {
 		innerCtx := graphql.WithRootFieldContext(ctx, &graphql.RootFieldContext{
 			Object: field.Name,
@@ -4538,9 +4593,6 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 		}
 	}
 	out.Dispatch()
-	if invalids > 0 {
-		return graphql.Null
-	}
 	return out
 }
 
@@ -5393,6 +5445,22 @@ func (ec *executionContext) unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzeta�
 	}
 	res, err := ec.unmarshalInputDateFilter(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx context.Context, v interface{}) (*utils.DateFormat, error) {
+	if v == nil {
+		return nil, nil
+	}
+	var res = new(utils.DateFormat)
+	err := res.UnmarshalGQL(v)
+	return res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) marshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx context.Context, sel ast.SelectionSet, v *utils.DateFormat) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	return v
 }
 
 func (ec *executionContext) unmarshalOInt2ᚕᚖint(ctx context.Context, v interface{}) ([]*int, error) {

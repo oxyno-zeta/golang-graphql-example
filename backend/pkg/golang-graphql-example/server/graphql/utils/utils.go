@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"time"
 
 	goerrors "emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
@@ -41,10 +40,6 @@ func FromIDRelay(relayID, prefix string) (string, error) {
 	}
 
 	return sp[1], nil
-}
-
-func FormatTime(ti time.Time) string {
-	return ti.UTC().Format(time.RFC3339)
 }
 
 func GetPaginateCursor(tableIndex, skip int) string {

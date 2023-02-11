@@ -47,8 +47,8 @@ This represents a Todo object
 """
 type Todo {
   id: ID!
-  createdAt: String!
-  updatedAt: String!
+  createdAt(format: DateFormat): String!
+  updatedAt(format: DateFormat): String!
   text: String!
   done: Boolean!
 }
@@ -307,4 +307,18 @@ input DateFilter {
   Allow to test if value is not null
   """
   isNotNull: Boolean
+}
+
+"""
+Date Format enumeration
+"""
+enum DateFormat {
+  """
+  RFC3339 format
+  """
+  RFC3339
+  """
+  RFC3339 with nanoseconds format
+  """
+  RFC3339Nano
 }
