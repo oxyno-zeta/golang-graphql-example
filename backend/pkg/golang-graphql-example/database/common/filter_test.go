@@ -16,7 +16,7 @@ import (
 func Test_ManageFilter(t *testing.T) {
 	starInterface := func(s interface{}) *interface{} { return &s }
 	dateStr := "2020-09-19T23:10:35+02:00"
-	date, err := time.Parse(time.RFC3339, dateStr)
+	date, err := time.Parse(time.RFC3339Nano, dateStr)
 	if err != nil {
 		t.Error(err)
 		return

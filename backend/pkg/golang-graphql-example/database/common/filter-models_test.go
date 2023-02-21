@@ -16,8 +16,15 @@ func TestDateFilter_GetGenericFilter(t *testing.T) {
 		t.Error(err)
 		return
 	}
+	dateStr2 := "2020-09-19T23:10:35.999+02:00"
+	date2, err := time.Parse(time.RFC3339Nano, dateStr2)
+	if err != nil {
+		t.Error(err)
+		return
+	}
 
 	date = date.UTC()
+	date2 = date2.UTC()
 
 	type fields struct {
 		Eq        *string
@@ -45,6 +52,11 @@ func TestDateFilter_GetGenericFilter(t *testing.T) {
 			name:   "Eq case",
 			fields: fields{Eq: &dateStr},
 			want:   &GenericFilter{Eq: &date},
+		},
+		{
+			name:   "Eq case (nano case)",
+			fields: fields{Eq: &dateStr2},
+			want:   &GenericFilter{Eq: &date2},
 		},
 		{
 			name:    "Eq not a date",

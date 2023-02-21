@@ -277,7 +277,7 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 
 func parseTime(x string) (*time.Time, error) {
 	// Parse date
-	t, err := time.Parse(time.RFC3339, x)
+	t, err := time.Parse(time.RFC3339Nano, x)
 	// Check error
 	if err != nil {
 		// In this particular case, display error in public message in order to help api user to detect the error
