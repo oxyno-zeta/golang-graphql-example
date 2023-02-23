@@ -165,7 +165,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	}
 
 	// Create api prefix path regexp
-	apiReg, err := regexp.Compile("^/api")
+	apiReg := regexp.MustCompile("^/api")
 	// Check error
 	if err != nil {
 		return nil, errors.WithStack(err)
