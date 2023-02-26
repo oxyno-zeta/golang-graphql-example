@@ -1,6 +1,7 @@
 package common
 
 import (
+	"reflect"
 	"time"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
@@ -81,29 +82,29 @@ type GenericFilter struct {
 // .
 type DateFilter struct {
 	// Allow to test equality to
-	Eq *string
+	Eq interface{}
 	// Allow to test non equality to
-	NotEq *string
+	NotEq interface{}
 	// Allow to test greater or equal than
-	Gte *string
+	Gte interface{}
 	// Allow to test not greater or equal than
-	NotGte *string
+	NotGte interface{}
 	// Allow to test greater than
-	Gt *string
+	Gt interface{}
 	// Allow to test not greater than
-	NotGt *string
+	NotGt interface{}
 	// Allow to test less or equal than
-	Lte *string
+	Lte interface{}
 	// Allow to test not less or equal than
-	NotLte *string
+	NotLte interface{}
 	// Allow to test less than
-	Lt *string
+	Lt interface{}
 	// Allow to test not less than
-	NotLt *string
+	NotLt interface{}
 	// Allow to test if value is in array
-	In []string
+	In interface{}
 	// Allow to test if value isn't in array
-	NotIn []string
+	NotIn interface{}
 	// Allow to test if value is null
 	IsNull bool
 	// Allow to test if value is not null
@@ -124,9 +125,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	res := &GenericFilter{}
 
 	// Eq case
-	if d.Eq != nil {
+	if reflect.ValueOf(d.Eq).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.Eq)
+		t, err := parseOrGetTime(d.Eq)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -136,9 +137,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Not Eq case
-	if d.NotEq != nil {
+	if reflect.ValueOf(d.NotEq).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.NotEq)
+		t, err := parseOrGetTime(d.NotEq)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -148,9 +149,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Gte case
-	if d.Gte != nil {
+	if reflect.ValueOf(d.Gte).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.Gte)
+		t, err := parseOrGetTime(d.Gte)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -160,9 +161,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Not Gte case
-	if d.NotGte != nil {
+	if reflect.ValueOf(d.NotGte).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.NotGte)
+		t, err := parseOrGetTime(d.NotGte)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -172,9 +173,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Gt case
-	if d.Gt != nil {
+	if reflect.ValueOf(d.Gt).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.Gt)
+		t, err := parseOrGetTime(d.Gt)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -184,9 +185,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Not Gt case
-	if d.NotGt != nil {
+	if reflect.ValueOf(d.NotGt).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.NotGt)
+		t, err := parseOrGetTime(d.NotGt)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -196,9 +197,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Lte case
-	if d.Lte != nil {
+	if reflect.ValueOf(d.Lte).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.Lte)
+		t, err := parseOrGetTime(d.Lte)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -208,9 +209,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Not Lte case
-	if d.NotLte != nil {
+	if reflect.ValueOf(d.NotLte).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.NotLte)
+		t, err := parseOrGetTime(d.NotLte)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -220,9 +221,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Lt case
-	if d.Lt != nil {
+	if reflect.ValueOf(d.Lt).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.Lt)
+		t, err := parseOrGetTime(d.Lt)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -232,9 +233,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Not Lt case
-	if d.NotLt != nil {
+	if reflect.ValueOf(d.NotLt).IsValid() {
 		// Parse time
-		t, err := parseTime(*d.NotLt)
+		t, err := parseOrGetTime(d.NotLt)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -244,9 +245,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// In case
-	if d.In != nil {
+	if reflect.ValueOf(d.In).IsValid() {
 		// Parse time
-		t, err := parseTimes(d.In)
+		t, err := parseOrGetTimes(d.In)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -256,9 +257,9 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	}
 
 	// Not In case
-	if d.NotIn != nil {
+	if reflect.ValueOf(d.NotIn).IsValid() {
 		// Parse time
-		t, err := parseTimes(d.NotIn)
+		t, err := parseOrGetTimes(d.NotIn)
 		// Check error
 		if err != nil {
 			return nil, err
@@ -275,30 +276,57 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	return res, nil
 }
 
-func parseTime(x string) (*time.Time, error) {
-	// Parse date
-	t, err := time.Parse(time.RFC3339Nano, x)
-	// Check error
-	if err != nil {
-		// In this particular case, display error in public message in order to help api user to detect the error
-		// and consider that error as an invalid input error.
-		return nil, errors.NewInvalidInputErrorWithErrorAndPublicMessage(err, err.Error())
+func parseOrGetTime(x interface{}) (*time.Time, error) {
+	// Get value in reflect mode
+	val := reflect.Indirect(reflect.ValueOf(x))
+	// Get interface value
+	valInt := val.Interface()
+
+	// Switch on type
+	switch v := valInt.(type) {
+	case string:
+		// Parse date
+		t, err := time.Parse(time.RFC3339Nano, v)
+		// Check error
+		if err != nil {
+			// In this particular case, display error in public message in order to help api user to detect the error
+			// and consider that error as an invalid input error.
+			return nil, errors.NewInvalidInputErrorWithErrorAndPublicMessage(err, err.Error())
+		}
+
+		// Force utc
+		t = t.UTC()
+
+		return &t, nil
+	case time.Time:
+		t := v
+		// Force utc
+		t = t.UTC()
+
+		return &t, nil
+	default:
+		return nil, errors.NewInternalServerError("date filter value not supported")
 	}
-
-	// Force utc
-	t = t.UTC()
-
-	return &t, nil
 }
 
-func parseTimes(x []string) ([]*time.Time, error) {
+func parseOrGetTimes(x interface{}) ([]*time.Time, error) {
 	// Prepare result
 	res := make([]*time.Time, 0)
 
+	// Get value in reflect mode
+	val := reflect.Indirect(reflect.ValueOf(x))
+
+	// Check that value is an array
+	if val.Kind() != reflect.Slice {
+		return nil, errors.NewInternalServerError("date filter input must be a slice")
+	}
+
 	// Loop over all values
-	for _, v := range x {
+	for i := 0; i < val.Len(); i++ {
+		// Get value
+		v := val.Index(i).Interface()
 		// Parse time
-		t, err := parseTime(v)
+		t, err := parseOrGetTime(v)
 		// Check error
 		if err != nil {
 			return nil, err
