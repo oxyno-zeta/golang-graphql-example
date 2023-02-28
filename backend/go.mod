@@ -21,7 +21,7 @@ require (
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/golang/mock v1.6.0
 	github.com/graph-gophers/dataloader/v7 v7.1.0
-	github.com/hasura/go-graphql-client v0.8.1
+	github.com/hasura/go-graphql-client v0.9.1
 	github.com/opentracing-contrib/go-gin v0.0.0-20201220185307-1dd2273433a4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.14.0
