@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { FilterOperationMetadataModel, FilterDefinitionEnumObjectModel } from '../../../../../models/general';
 import { AdapterDayjsTZ } from './AdapterDayjsTZ';
 
@@ -264,31 +264,36 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
   if (operation.input) {
     // Check if type is a date to include a date picker
     if (operation.inputType === 'date') {
+      let val: Dayjs | null = null;
+      // Parse if date exists
+      if (value !== null && value !== '') {
+        val = dayjs(value).tz();
+      }
+
       return (
         <LocalizationProvider dateAdapter={AdapterDayjsTZ} dateLibInstance={dayjs}>
           <MobileDateTimePicker
             label={t('common.filter.value')}
-            value={value}
+            value={val}
             onChange={(newValue) => {
-              // Parse date
-              const parsedDate = dayjs(newValue);
-              // Check if date is valid
-              if (!parsedDate.isValid()) {
+              // Check if date is null
+              if (newValue === null) {
                 setValue(null);
                 return;
               }
 
               // Save formatted to ISO8601 value and it is compatible with RFC3339 due to removal of ns
               // !! Note: This is using the default timezone
-              setValue(parsedDate.tz().format());
+              setValue(newValue.tz().format());
             }}
-            renderInput={(props) => (
-              <TextField {...props} error={!!errorMsg} helperText={errorMsg && t(errorMsg)} fullWidth size="small" />
-            )}
-            leftArrowButtonText={t('common.date.previousMonthAction')}
-            rightArrowButtonText={t('common.date.nextMonthAction')}
-            toolbarTitle={t('common.date.dateTimePickerToolbarTitle')}
-            showToolbar
+            localeText={{
+              openPreviousView: t('common.date.previousMonthAction'),
+              previousMonth: t('common.date.previousMonthAction'),
+              openNextView: t('common.date.nextMonthAction'),
+              nextMonth: t('common.date.nextMonthAction'),
+              toolbarTitle: t('common.date.dateTimePickerToolbarTitle'),
+            }}
+            slotProps={{ textField: { size: 'small', fullWidth: true } }}
           />
         </LocalizationProvider>
       );

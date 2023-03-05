@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DataGrid, GridColumns, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiPencil, mdiDelete } from '@mdi/js';
@@ -39,7 +39,7 @@ function TableView({ data, loading, sort, setSort }: Props) {
     console.log(row);
   };
 
-  const columns: GridColumns<TodoModel> = [
+  const columns: GridColDef<TodoModel>[] = [
     {
       field: 'text',
       headerName: t('todos.fields.text'),
@@ -57,7 +57,7 @@ function TableView({ data, loading, sort, setSort }: Props) {
       filterable: false,
       sortable: true,
       disableColumnMenu: true,
-      valueGetter: (params: GridValueGetterParams<string, TodoModel>) =>
+      valueGetter: (params: GridValueGetterParams<TodoModel, string>) =>
         getDayjsTz(params.value, timezone).format('LLLL'),
     },
     {
