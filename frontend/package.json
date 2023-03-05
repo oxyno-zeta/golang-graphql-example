@@ -10,7 +10,7 @@
     "@mdi/js": "^7.1.96",
     "@mui/lab": "^5.0.0-alpha.115",
     "@mui/material": "^5.11.4",
-    "@mui/x-data-grid": "^5.17.18",
+    "@mui/x-data-grid": "^6.0.0",
     "@mui/x-date-pickers": "^5.0.13",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
