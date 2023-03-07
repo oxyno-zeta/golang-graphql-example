@@ -67,7 +67,7 @@ type ComplexityRoot struct {
 
 	Query struct {
 		Todo  func(childComplexity int, id string) int
-		Todos func(childComplexity int, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) int
+		Todos func(childComplexity int, after *string, before *string, first *int, last *int, sort *models.SortOrder, sorts []*models.SortOrder, filter *models.Filter) int
 	}
 
 	Todo struct {
@@ -95,7 +95,7 @@ type MutationResolver interface {
 	UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error)
 }
 type QueryResolver interface {
-	Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) (*model.TodoConnection, error)
+	Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, sorts []*models.SortOrder, filter *models.Filter) (*model.TodoConnection, error)
 	Todo(ctx context.Context, id string) (*models.Todo, error)
 }
 type TodoResolver interface {
@@ -250,7 +250,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Todos(childComplexity, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int), args["sort"].(*models.SortOrder), args["filter"].(*models.Filter)), true
+		return e.complexity.Query.Todos(childComplexity, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int), args["sort"].(*models.SortOrder), args["sorts"].([]*models.SortOrder), args["filter"].(*models.Filter)), true
 
 	case "Todo.createdAt":
 		if e.complexity.Todo.CreatedAt == nil {
@@ -434,7 +434,14 @@ type Query {
     """
     Sort
     """
-    sort: TodoSortOrder
+    sort: TodoSortOrder @deprecated(reason: "Use sort list instead")
+    """
+    Sort list
+    """
+    sorts: [TodoSortOrder]
+    """
+    Filter
+    """
     filter: TodoFilter
   ): TodoConnection
   todo(id: String!): Todo
@@ -858,15 +865,24 @@ func (ec *executionContext) field_Query_todos_args(ctx context.Context, rawArgs 
 		}
 	}
 	args["sort"] = arg4
-	var arg5 *models.Filter
-	if tmp, ok := rawArgs["filter"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("filter"))
-		arg5, err = ec.unmarshalOTodoFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐFilter(ctx, tmp)
+	var arg5 []*models.SortOrder
+	if tmp, ok := rawArgs["sorts"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("sorts"))
+		arg5, err = ec.unmarshalOTodoSortOrder2ᚕᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐSortOrder(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
 	}
-	args["filter"] = arg5
+	args["sorts"] = arg5
+	var arg6 *models.Filter
+	if tmp, ok := rawArgs["filter"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("filter"))
+		arg6, err = ec.unmarshalOTodoFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐFilter(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["filter"] = arg6
 	return args, nil
 }
 
@@ -1320,7 +1336,7 @@ func (ec *executionContext) _Query_todos(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Todos(rctx, fc.Args["after"].(*string), fc.Args["before"].(*string), fc.Args["first"].(*int), fc.Args["last"].(*int), fc.Args["sort"].(*models.SortOrder), fc.Args["filter"].(*models.Filter))
+		return ec.resolvers.Query().Todos(rctx, fc.Args["after"].(*string), fc.Args["before"].(*string), fc.Args["first"].(*int), fc.Args["last"].(*int), fc.Args["sort"].(*models.SortOrder), fc.Args["sorts"].([]*models.SortOrder), fc.Args["filter"].(*models.Filter))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -5722,6 +5738,26 @@ func (ec *executionContext) unmarshalOTodoFilter2ᚖgithubᚗcomᚋoxynoᚑzeta�
 	}
 	res, err := ec.unmarshalInputTodoFilter(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) unmarshalOTodoSortOrder2ᚕᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐSortOrder(ctx context.Context, v interface{}) ([]*models.SortOrder, error) {
+	if v == nil {
+		return nil, nil
+	}
+	var vSlice []interface{}
+	if v != nil {
+		vSlice = graphql.CoerceList(v)
+	}
+	var err error
+	res := make([]*models.SortOrder, len(vSlice))
+	for i := range vSlice {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
+		res[i], err = ec.unmarshalOTodoSortOrder2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐSortOrder(ctx, vSlice[i])
+		if err != nil {
+			return nil, err
+		}
+	}
+	return res, nil
 }
 
 func (ec *executionContext) unmarshalOTodoSortOrder2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐSortOrder(ctx context.Context, v interface{}) (*models.SortOrder, error) {

@@ -31,7 +31,14 @@ type Query {
     """
     Sort
     """
-    sort: TodoSortOrder
+    sort: TodoSortOrder @deprecated(reason: "Use sort list instead")
+    """
+    Sort list
+    """
+    sorts: [TodoSortOrder]
+    """
+    Filter
+    """
     filter: TodoFilter
   ): TodoConnection
   todo(id: String!): Todo

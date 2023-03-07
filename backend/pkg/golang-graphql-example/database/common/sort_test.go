@@ -119,6 +119,101 @@ func Test_ManageSortOrder(t *testing.T) {
 			wantErr:     true,
 			errorString: "field Fake1 with sort tag must be a *SortOrderEnum",
 		},
+		{
+			name: "list of objects (order 1)",
+			args: args{
+				sort: []Sort1{
+					{Fake2: &SortOrderEnumDesc},
+					{Fake1: &SortOrderEnumAsc},
+				},
+			},
+			expectedSortQuery: `ORDER BY fake_2 DESC,fake_1 ASC,"people"."name"`,
+		},
+		{
+			name: "list of objects (order 2)",
+			args: args{
+				sort: []Sort1{
+					{Fake1: &SortOrderEnumAsc},
+					{Fake2: &SortOrderEnumDesc},
+				},
+			},
+			expectedSortQuery: `ORDER BY fake_1 ASC,fake_2 DESC,"people"."name"`,
+		},
+		{
+			name: "list of pointer objects (order 1)",
+			args: args{
+				sort: []*Sort1{
+					{Fake2: &SortOrderEnumDesc},
+					{Fake1: &SortOrderEnumAsc},
+				},
+			},
+			expectedSortQuery: `ORDER BY fake_2 DESC,fake_1 ASC,"people"."name"`,
+		},
+		{
+			name: "list of pointer objects (order 2)",
+			args: args{
+				sort: []*Sort1{
+					{Fake1: &SortOrderEnumAsc},
+					{Fake2: &SortOrderEnumDesc},
+				},
+			},
+			expectedSortQuery: `ORDER BY fake_1 ASC,fake_2 DESC,"people"."name"`,
+		},
+		{
+			name: "list with 1 filled object and 1 empty object that must be ignored",
+			args: args{
+				sort: []*Sort1{
+					{Fake1: &SortOrderEnumAsc},
+					{},
+				},
+			},
+			expectedSortQuery: `ORDER BY fake_1 ASC,"people"."name"`,
+		},
+		{
+			name: "list of objects with multiple values into one object",
+			args: args{
+				sort: []Sort1{
+					{Fake1: &SortOrderEnumAsc},
+					{Fake2: &SortOrderEnumDesc, Fake1: &SortOrderEnumAsc},
+				},
+			},
+			wantErr:     true,
+			errorString: "sort list objects mustn't have multiple fields with sort values into the same object",
+		},
+		{
+			name: "list with 1 empty object must be ignored",
+			args: args{
+				sort: []*Sort1{
+					{},
+				},
+			},
+			expectedSortQuery: `ORDER BY created_at DESC,"people"."name"`,
+		},
+		{
+			name: "list empty must have the default sort",
+			args: args{
+				sort: []*Sort1{},
+			},
+			expectedSortQuery: `ORDER BY created_at DESC,"people"."name"`,
+		},
+		{
+			name: "list 1 marked ignored field must have the default sort",
+			args: args{
+				sort: []*Sort2{
+					{Fake2: &SortOrderEnumAsc},
+				},
+			},
+			expectedSortQuery: `ORDER BY created_at DESC,"people"."name"`,
+		},
+		{
+			name: "list 1 ignored field (without tag) must have the default sort",
+			args: args{
+				sort: []*Sort3{
+					{Fake2: &SortOrderEnumAsc},
+				},
+			},
+			expectedSortQuery: `ORDER BY created_at DESC,"people"."name"`,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

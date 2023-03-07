@@ -68,7 +68,7 @@ func (mr *MockServiceMockRecorder) Create(arg0, arg1 interface{}) *gomock.Call {
 }
 
 // Find mocks base method.
-func (m *MockService) Find(arg0 context.Context, arg1 *models.SortOrder, arg2 *models.Filter, arg3 *models.Projection) ([]*models.Todo, error) {
+func (m *MockService) Find(arg0 context.Context, arg1 []*models.SortOrder, arg2 *models.Filter, arg3 *models.Projection) ([]*models.Todo, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Find", arg0, arg1, arg2, arg3)
 	ret0, _ := ret[0].([]*models.Todo)
@@ -98,7 +98,7 @@ func (mr *MockServiceMockRecorder) FindByID(arg0, arg1, arg2 interface{}) *gomoc
 }
 
 // GetAllPaginated mocks base method.
-func (m *MockService) GetAllPaginated(arg0 context.Context, arg1 *pagination.PageInput, arg2 *models.SortOrder, arg3 *models.Filter, arg4 *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
+func (m *MockService) GetAllPaginated(arg0 context.Context, arg1 *pagination.PageInput, arg2 []*models.SortOrder, arg3 *models.Filter, arg4 *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetAllPaginated", arg0, arg1, arg2, arg3, arg4)
 	ret0, _ := ret[0].([]*models.Todo)

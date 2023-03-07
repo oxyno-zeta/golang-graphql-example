@@ -18,14 +18,14 @@ type AuthorizationService interface {
 type Service interface {
 	Find(
 		ctx context.Context,
-		sort *models.SortOrder,
+		sort []*models.SortOrder,
 		filter *models.Filter,
 		projection *models.Projection,
 	) ([]*models.Todo, error)
 	GetAllPaginated(
 		ctx context.Context,
 		page *pagination.PageInput,
-		sort *models.SortOrder,
+		sort []*models.SortOrder,
 		filter *models.Filter,
 		projection *models.Projection,
 	) ([]*models.Todo, *pagination.PageOutput, error)

@@ -64,7 +64,7 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTo
 }
 
 // Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, filter *models.Filter) (*model.TodoConnection, error) {
+func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, sorts []*models.SortOrder, filter *models.Filter) (*model.TodoConnection, error) {
 	// Create pagination input
 	pageInput, err := utils.GetPageInput(after, before, first, last)
 	// Check error
@@ -80,8 +80,13 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 		return nil, err
 	}
 
+	// Manage deprecated sort
+	if len(sorts) == 0 && sort != nil {
+		sorts = []*models.SortOrder{sort}
+	}
+
 	// Call business
-	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, sort, filter, projection)
+	allTodos, pageOut, err := r.BusiServices.TodoSvc.GetAllPaginated(ctx, pageInput, sorts, filter, projection)
 	// Check error
 	if err != nil {
 		return nil, err

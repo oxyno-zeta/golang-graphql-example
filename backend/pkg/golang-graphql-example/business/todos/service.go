@@ -42,7 +42,7 @@ func (s *service) FindByID(ctx context.Context, id string, projection *models.Pr
 
 func (s *service) Find(
 	ctx context.Context,
-	sort *models.SortOrder,
+	sort []*models.SortOrder,
 	filter *models.Filter,
 	projection *models.Projection,
 ) ([]*models.Todo, error) {
@@ -52,7 +52,7 @@ func (s *service) Find(
 func (s *service) GetAllPaginated(
 	ctx context.Context,
 	page *pagination.PageInput,
-	sort *models.SortOrder,
+	sort []*models.SortOrder,
 	filter *models.Filter,
 	projection *models.Projection,
 ) ([]*models.Todo, *pagination.PageOutput, error) {

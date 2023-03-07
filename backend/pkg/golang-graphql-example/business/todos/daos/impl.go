@@ -34,7 +34,7 @@ func (d *dao) CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo
 func (d *dao) GetAllPaginated(
 	ctx context.Context,
 	page *pagination.PageInput,
-	sort *models.SortOrder,
+	sort []*models.SortOrder,
 	filter *models.Filter,
 	projection *models.Projection,
 ) ([]*models.Todo, *pagination.PageOutput, error) {
@@ -51,7 +51,7 @@ func (d *dao) GetAllPaginated(
 
 func (d *dao) Find(
 	ctx context.Context,
-	sort *models.SortOrder,
+	sort []*models.SortOrder,
 	filter *models.Filter,
 	projection *models.Projection,
 ) ([]*models.Todo, error) {
