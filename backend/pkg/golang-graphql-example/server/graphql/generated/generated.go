@@ -43,6 +43,7 @@ type ResolverRoot interface {
 	Query() QueryResolver
 	Todo() TodoResolver
 	BooleanFilter() BooleanFilterResolver
+	DateFilter() DateFilterResolver
 	IntFilter() IntFilterResolver
 	StringFilter() StringFilterResolver
 }
@@ -106,6 +107,20 @@ type TodoResolver interface {
 type BooleanFilterResolver interface {
 	Eq(ctx context.Context, obj *common.GenericFilter, data *bool) error
 	NotEq(ctx context.Context, obj *common.GenericFilter, data *bool) error
+}
+type DateFilterResolver interface {
+	Eq(ctx context.Context, obj *common.DateFilter, data *string) error
+	NotEq(ctx context.Context, obj *common.DateFilter, data *string) error
+	Gte(ctx context.Context, obj *common.DateFilter, data *string) error
+	NotGte(ctx context.Context, obj *common.DateFilter, data *string) error
+	Gt(ctx context.Context, obj *common.DateFilter, data *string) error
+	NotGt(ctx context.Context, obj *common.DateFilter, data *string) error
+	Lte(ctx context.Context, obj *common.DateFilter, data *string) error
+	NotLte(ctx context.Context, obj *common.DateFilter, data *string) error
+	Lt(ctx context.Context, obj *common.DateFilter, data *string) error
+	NotLt(ctx context.Context, obj *common.DateFilter, data *string) error
+	In(ctx context.Context, obj *common.DateFilter, data []*string) error
+	NotIn(ctx context.Context, obj *common.DateFilter, data []*string) error
 }
 type IntFilterResolver interface {
 	Eq(ctx context.Context, obj *common.GenericFilter, data *int) error
@@ -3811,96 +3826,132 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("eq"))
-			it.Eq, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().Eq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notEq":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notEq"))
-			it.NotEq, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().NotEq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "gte":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("gte"))
-			it.Gte, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().Gte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notGte":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notGte"))
-			it.NotGte, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().NotGte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "gt":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("gt"))
-			it.Gt, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().Gt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notGt":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notGt"))
-			it.NotGt, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().NotGt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "lte":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("lte"))
-			it.Lte, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().Lte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notLte":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notLte"))
-			it.NotLte, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().NotLte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "lt":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("lt"))
-			it.Lt, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().Lt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notLt":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notLt"))
-			it.NotLt, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().NotLt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "in":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("in"))
-			it.In, err = ec.unmarshalOString2ᚕstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().In(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notIn":
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notIn"))
-			it.NotIn, err = ec.unmarshalOString2ᚕstring(ctx, v)
+			data, err := ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
+				return it, err
+			}
+			if err = ec.resolvers.DateFilter().NotIn(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "isNull":
@@ -5525,48 +5576,6 @@ func (ec *executionContext) marshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzeta
 		return graphql.Null
 	}
 	return v
-}
-
-func (ec *executionContext) unmarshalOString2string(ctx context.Context, v interface{}) (string, error) {
-	res, err := graphql.UnmarshalString(v)
-	return res, graphql.ErrorOnPath(ctx, err)
-}
-
-func (ec *executionContext) marshalOString2string(ctx context.Context, sel ast.SelectionSet, v string) graphql.Marshaler {
-	res := graphql.MarshalString(v)
-	return res
-}
-
-func (ec *executionContext) unmarshalOString2ᚕstring(ctx context.Context, v interface{}) ([]string, error) {
-	if v == nil {
-		return nil, nil
-	}
-	var vSlice []interface{}
-	if v != nil {
-		vSlice = graphql.CoerceList(v)
-	}
-	var err error
-	res := make([]string, len(vSlice))
-	for i := range vSlice {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalOString2string(ctx, vSlice[i])
-		if err != nil {
-			return nil, err
-		}
-	}
-	return res, nil
-}
-
-func (ec *executionContext) marshalOString2ᚕstring(ctx context.Context, sel ast.SelectionSet, v []string) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	ret := make(graphql.Array, len(v))
-	for i := range v {
-		ret[i] = ec.marshalOString2string(ctx, sel, v[i])
-	}
-
-	return ret
 }
 
 func (ec *executionContext) unmarshalOString2ᚕᚖstring(ctx context.Context, v interface{}) ([]*string, error) {
