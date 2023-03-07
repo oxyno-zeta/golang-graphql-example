@@ -16,11 +16,11 @@ import { getDayjsTz } from '../../../../components/timezone/utils';
 interface Props {
   data: ConnectionModel<TodoModel> | undefined;
   loading: boolean;
-  sort: TodoSortOrderModel;
-  setSort: (data: TodoSortOrderModel) => void;
+  sorts: TodoSortOrderModel[];
+  setSorts: (data: TodoSortOrderModel[]) => void;
 }
 
-function TableView({ data, loading, sort, setSort }: Props) {
+function TableView({ data, loading, sorts, setSorts }: Props) {
   // Setup translate
   const { t } = useTranslation();
   // Get if window have size matching request
@@ -95,8 +95,8 @@ function TableView({ data, loading, sort, setSort }: Props) {
       loading={loading}
       columns={columns}
       sortingMode="server"
-      sortModel={buildMUIXSort(sort, columns)}
-      onSortModelChange={setMUIXSortBuilder(setSort)}
+      sortModel={buildMUIXSort(sorts, columns)}
+      onSortModelChange={setMUIXSortBuilder(setSorts)}
       onRowDoubleClick={sizeMatching ? handleClick : undefined}
       onRowClick={!sizeMatching ? handleClick : undefined}
       rows={items}

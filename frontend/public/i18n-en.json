@@ -149,7 +149,8 @@
       "buttonTooltip": "Sort",
       "asc": "Ascendent",
       "desc": "Descendent",
-      "undefined": "None"
+      "addNewField": "Add new field",
+      "deleteField": "Remove field"
     },
     "errorCode": {
       "CONFLICT": "Conflict",

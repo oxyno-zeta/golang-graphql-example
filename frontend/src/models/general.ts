@@ -25,7 +25,7 @@ export type PaginationInputModel = {
 export type SortOrderModel = 'ASC' | 'DESC' | undefined;
 export const SortOrderAsc = 'ASC';
 export const SortOrderDesc = 'DESC';
-export const SortQueryParamName = 'sort';
+export const SortQueryParamName = 'sorts';
 
 export type SortOrderFieldModel = {
   field: string;

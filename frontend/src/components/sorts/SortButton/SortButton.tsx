@@ -9,8 +9,8 @@ import SortPopper from '../SortPopper';
 import SortDialog from '../SortDialog';
 
 type Props<T extends Record<string, SortOrderModel>> = {
-  sort: null | undefined | T;
-  setSort: React.Dispatch<T>;
+  sorts: null | undefined | T[];
+  setSorts: React.Dispatch<T[]>;
   sortFields: SortOrderFieldModel[];
   isPopperEnabled?: boolean;
 };
@@ -18,8 +18,8 @@ type Props<T extends Record<string, SortOrderModel>> = {
 const defaultProps = { isPopperEnabled: false };
 
 function SortButton<T extends Record<string, SortOrderModel>>({
-  sort,
-  setSort,
+  sorts,
+  setSorts,
   sortFields,
   isPopperEnabled,
 }: Props<T>) {
@@ -38,15 +38,15 @@ function SortButton<T extends Record<string, SortOrderModel>>({
   };
 
   const sortDefaultProps = {
-    initialSort: sort,
+    initialSorts: sorts,
     open,
     sortFields,
-    onSubmit: (args: T) => {
-      setSort(args);
+    onSubmit: (args: T[]) => {
+      setSorts(args);
       handleClose();
     },
     onReset: () => {
-      setSort({} as T);
+      setSorts([]);
       handleClose();
     },
     onClose: handleClose,

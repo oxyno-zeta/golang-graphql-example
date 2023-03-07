@@ -28,8 +28,15 @@ import { onMainSearchChangeContains } from '../../components/filters/utils/mainS
 import TopListContainer from '../../components/TopListContainer';
 
 const GET_TODOS_QUERY = gql`
-  query getTodos($first: Int, $last: Int, $before: String, $after: String, $filter: TodoFilter, $sort: TodoSortOrder) {
-    todos(first: $first, last: $last, before: $before, after: $after, filter: $filter, sort: $sort) {
+  query getTodos(
+    $first: Int
+    $last: Int
+    $before: String
+    $after: String
+    $filter: TodoFilter
+    $sorts: [TodoSortOrder]
+  ) {
+    todos(first: $first, last: $last, before: $before, after: $after, filter: $filter, sorts: $sorts) {
       edges {
         node {
           id
@@ -58,7 +65,7 @@ interface QueryVariables {
   last?: number;
   before?: string;
   after?: string;
-  sort?: TodoSortOrderModel;
+  sorts?: TodoSortOrderModel[];
   filter?: TodoFilterModel | null;
 }
 
@@ -74,15 +81,15 @@ function Todos() {
   const [searchParams, setSearchParams] = useSearchParams();
   // Filter, pagination and sort values
   const filter = getJSONObjectFromSearchParam<TodoFilterModel>(FilterQueryParamName, {}, searchParams);
-  const sort = getJSONObjectFromSearchParam<TodoSortOrderModel>(
+  const sorts = getJSONObjectFromSearchParam<TodoSortOrderModel[]>(
     SortQueryParamName,
-    { createdAt: 'DESC' },
+    [{ createdAt: 'DESC' }],
     searchParams,
   );
   const pagination = getPaginationFromSearchParams(initialPagination, maxPagination, searchParams, setSearchParams);
 
   // Setter
-  const setSort = (data: TodoSortOrderModel) => {
+  const setSorts = (data: TodoSortOrderModel[]) => {
     setJSONObjectSearchParam(SortQueryParamName, data, searchParams, setSearchParams);
   };
   const setFilter = (data: TodoFilterModel) => {
@@ -93,7 +100,7 @@ function Todos() {
   const [gridView, setGridView] = useState(sizeMatching);
   // Call graphql
   const { data, loading, error } = useQuery<QueryResult, QueryVariables>(GET_TODOS_QUERY, {
-    variables: { ...pagination, sort, filter },
+    variables: { ...pagination, sorts, filter },
     fetchPolicy: 'network-only',
   });
 
@@ -173,9 +180,9 @@ function Todos() {
               ]}
             />
             <SortButton
-              sort={sort}
-              setSort={(nSort) => {
-                setSort({ ...nSort });
+              sorts={sorts}
+              setSorts={(nSort) => {
+                setSorts(nSort);
               }}
               sortFields={todoSortFields}
             />
@@ -184,7 +191,7 @@ function Todos() {
           <Divider />
           <div style={{ width: '100%' }}>
             {gridView && <GridView loading={loading} data={data?.todos} />}
-            {!gridView && <TableView data={data?.todos} loading={loading} sort={sort} setSort={setSort} />}
+            {!gridView && <TableView data={data?.todos} loading={loading} sorts={sorts} setSorts={setSorts} />}
             {data && data.todos && (
               <>
                 <Divider />
