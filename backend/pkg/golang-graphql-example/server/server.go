@@ -11,6 +11,7 @@ import (
 	"emperror.dev/errors"
 
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
+	gqlerrorcode "github.com/99designs/gqlgen/graphql/errcode"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
 	gqlplayground "github.com/99designs/gqlgen/graphql/playground"
@@ -243,29 +244,50 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 			},
 		},
 	}))
+	h.Use(svr.tracingSvc.GraphqlMiddleware())
+	h.Use(svr.metricsCl.GraphqlMiddleware())
+	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
+
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
 		// Get logger
 		logger := log.GetLoggerFromContext(ctx)
-		// Log error
-		logger.Error(err)
 		// Initialize potential generic error
 		var err2 *cerrors.GenericError
+		// Initialize gqlparser error
+		var err3 *gqlerror.Error
 		// Get generic error if available
-		if errors.As(err, &err2) {
+		if errors.As(err, &err2) { //nolint:gocritic // Switch case for errors.as isn't working
+			// Log error generic error
+			logger.Error(err2)
 			// Return graphql error
 			return &gqlerror.Error{
 				Path:       gqlgraphql.GetPath(ctx),
 				Extensions: err2.Extensions(),
 				Message:    err2.PublicMessage(),
 			}
-		}
-		// Return
-		return gqlgraphql.DefaultErrorPresenter(ctx, cerrors.NewInternalServerError("internal server error"))
-	})
-	h.Use(svr.tracingSvc.GraphqlMiddleware())
-	h.Use(svr.metricsCl.GraphqlMiddleware())
-	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
+		} else if errors.As(err, &err3) && err3.Extensions != nil && err3.Extensions["code"] == gqlerrorcode.ValidationFailed {
+			// This case is for GraphQL validation failed.
+			// This can arrive when a user send a request with a unknown field or if types are wrong.
 
+			// Log error generic error
+			logger.WithError(errors.WithStack(err3)).Warn(err3)
+			// Return graphql error
+			return err3
+		} else { // Not a managed error. Manage it as internal server error
+			// Wrap it as an internal server error
+			err4 := cerrors.NewInternalServerErrorWithError(err)
+			// Log
+			logger.Error(errors.WithStack(err4))
+			// Return new built error
+			return &gqlerror.Error{
+				Path:       gqlgraphql.GetPath(ctx),
+				Extensions: err4.Extensions(),
+				Message:    err4.PublicMessage(),
+				Locations:  err3.Locations,
+				Rule:       err3.Rule,
+			}
+		}
+	})
 	h.SetRecoverFunc(func(ctx context.Context, errI interface{}) (userMessage error) {
 		// Get logger
 		logger := log.GetLoggerFromContext(ctx)
