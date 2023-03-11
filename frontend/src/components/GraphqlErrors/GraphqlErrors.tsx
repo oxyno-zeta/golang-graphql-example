@@ -79,7 +79,7 @@ function GraphqlErrors({
               err.graphQLErrors.map(({ message, extensions }, i) => {
                 let mess = message;
                 // Check if there is a code in extensions
-                if (extensions.code) {
+                if (extensions && extensions.code) {
                   mess = t(`common.errorCode.${extensions.code}`);
                 }
 
