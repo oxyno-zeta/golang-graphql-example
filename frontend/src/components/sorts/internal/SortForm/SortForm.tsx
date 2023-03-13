@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
-import { mdiPlus, mdiDelete } from '@mdi/js';
+import { mdiPlus, mdiDelete, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import DialogActions from '@mui/material/DialogActions';
 import Grid from '@mui/material/Grid';
@@ -11,6 +12,7 @@ import DialogContent from '@mui/material/DialogContent';
 import { useTranslation } from 'react-i18next';
 import SortField from '../SortField';
 import { SortOrderModel, SortOrderFieldModel, SortOrderAsc } from '../../../../models/general';
+import { arrayMoveItem } from '../../../../utils/array';
 
 interface Props<T extends Record<string, SortOrderModel>> {
   onSubmit: (sort: T[]) => void;
@@ -62,6 +64,46 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
           <div key={`${index}-${Object.keys(item)[0]}`} style={{ marginBottom: '15px' }}>
             <Box sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '5px' }}>
+                {result.length > 1 && (
+                  <ButtonGroup orientation="vertical">
+                    {index !== 0 && (
+                      <Tooltip title={<>{t('common.upAction')}</>}>
+                        <IconButton
+                          size="small"
+                          sx={{ height: '24px', width: '24px' }}
+                          onClick={() => {
+                            // Move
+                            arrayMoveItem(result, index, index - 1);
+                            // Save
+                            setResult([...result]);
+                          }}
+                        >
+                          <SvgIcon sx={{ height: '16px', width: '16px' }}>
+                            <path d={mdiChevronUp} />
+                          </SvgIcon>
+                        </IconButton>
+                      </Tooltip>
+                    )}
+                    {index !== result.length - 1 && (
+                      <Tooltip title={<>{t('common.downAction')}</>}>
+                        <IconButton
+                          size="small"
+                          sx={{ height: '24px', width: '24px' }}
+                          onClick={() => {
+                            // Move
+                            arrayMoveItem(result, index, index + 1);
+                            // Save
+                            setResult([...result]);
+                          }}
+                        >
+                          <SvgIcon sx={{ height: '16px', width: '16px' }}>
+                            <path d={mdiChevronDown} />
+                          </SvgIcon>
+                        </IconButton>
+                      </Tooltip>
+                    )}
+                  </ButtonGroup>
+                )}
                 <Tooltip title={<>{t('common.sort.deleteField')}</>}>
                   <IconButton
                     onClick={() => {

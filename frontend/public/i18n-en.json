@@ -20,6 +20,8 @@
     "removeAction": "Remove",
     "archiveAction": "Archive",
     "unarchiveAction": "Unarchive",
+    "upAction": "Up",
+    "downAction": "Down",
     "impossibleDeletion": "Deletion impossible due to",
     "advanced": "Advanced",
     "nextPageAction": "Next page",
