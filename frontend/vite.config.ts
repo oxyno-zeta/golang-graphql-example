@@ -14,7 +14,16 @@ export default defineConfig({
   ],
   build: {
     target: 'es2018',
-    rollupOptions: {},
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          muibase: ['@mui/material', '@emotion/react', '@emotion/styled'],
+          muiheavy: ['@mui/lab', '@mui/x-data-grid', '@mui/x-date-pickers'],
+          connectivity: ['axios', '@apollo/client', 'graphql'],
+          translate: ['i18next', 'i18next-browser-languagedetector', 'i18next-http-backend', 'react-i18next'],
+        },
+      },
+    },
     sourcemap: true,
   },
   cacheDir: './.vite-cache',
