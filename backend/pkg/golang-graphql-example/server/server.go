@@ -167,10 +167,6 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 
 	// Create api prefix path regexp
 	apiReg := regexp.MustCompile("^/api")
-	// Check error
-	if err != nil {
-		return nil, errors.WithStack(err)
-	}
 
 	// Add authentication middleware if configuration exists
 	if cfg.OIDCAuthentication != nil {
