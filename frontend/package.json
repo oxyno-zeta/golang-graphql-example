@@ -69,6 +69,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "preview": "vite preview",
     "test": "jest",
     "lint": "tsc && eslint --fix --max-warnings=0 --ignore-pattern \"vite-env.d.ts\" --color src/**/*.{j,t}s*"
   },
