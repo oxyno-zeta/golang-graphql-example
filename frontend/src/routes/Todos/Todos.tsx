@@ -6,6 +6,8 @@ import dayjs from 'dayjs';
 import { useSearchParams } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Title from '~components/Title';
+import FilterSearchBar from '~components/filters/FilterSearchBar';
 import {
   TodoSortOrderModel,
   TodoFilterModel,
@@ -13,8 +15,6 @@ import {
   todoSortFields,
   TodoModel,
 } from '../../models/todos';
-import Title from '../../components/Title';
-import FilterSearchBar from '../../components/filters/FilterSearchBar';
 import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '../../models/general';
 import GraphqlErrors from '../../components/GraphqlErrors';
 import SortButton from '../../components/sorts/SortButton';
