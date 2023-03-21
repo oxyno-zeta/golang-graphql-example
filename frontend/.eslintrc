@@ -22,7 +22,12 @@
     },
     "project": "./tsconfig.json"
   },
-  "plugins": ["eslint-plugin-react-hooks", "@typescript-eslint/eslint-plugin"],
+  "plugins": ["import", "eslint-plugin-react-hooks", "@typescript-eslint/eslint-plugin"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+    }
+  },
   "rules": {
     "import/no-unresolved": "error",
     "react/jsx-props-no-spreading": [0],
