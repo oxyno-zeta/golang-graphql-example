@@ -6,10 +6,12 @@ import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
+import { ErrorBoundary } from 'react-error-boundary';
 // import i18n
 import './i18n';
 import './yup-i18n';
 
+import FallbackErrorBoundary from '~components/FallbackErrorBoundary';
 import App from './App';
 import MainPageCenterLoading from './components/MainPageCenterLoading';
 import ConfigProvider from './components/ConfigProvider';
@@ -31,16 +33,18 @@ root.render(
     <BrowserRouter>
       <Suspense fallback={<MainPageCenterLoading />}>
         <ConfigProvider loadingComponent={<MainPageCenterLoading />}>
-          <ClientProvider>
-            <ThemeProvider themeOptions={{}}>
-              <TimezoneProvider>
-                <CssBaseline />
-                <TopBar />
-                <App />
-                <Footer />
-              </TimezoneProvider>
-            </ThemeProvider>
-          </ClientProvider>
+          <ErrorBoundary FallbackComponent={FallbackErrorBoundary}>
+            <ClientProvider>
+              <ThemeProvider themeOptions={{}}>
+                <TimezoneProvider>
+                  <CssBaseline />
+                  <TopBar />
+                  <App />
+                  <Footer />
+                </TimezoneProvider>
+              </ThemeProvider>
+            </ClientProvider>
+          </ErrorBoundary>
         </ConfigProvider>
       </Suspense>
     </BrowserRouter>
