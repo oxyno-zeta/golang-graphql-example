@@ -8,24 +8,24 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Title from '~components/Title';
 import FilterSearchBar from '~components/filters/FilterSearchBar';
+import GraphqlErrors from '~components/GraphqlErrors';
+import SortButton from '~components/sorts/SortButton';
+import Pagination from '~components/Pagination';
+import GridTableViewSwitcher from '~components/GridTableViewSwitcher';
+import { onMainSearchChangeContains } from '~components/filters/utils/mainSearch';
+import TopListContainer from '~components/TopListContainer';
 import {
   TodoSortOrderModel,
   TodoFilterModel,
   todoFilterDefinitionObject,
   todoSortFields,
   TodoModel,
-} from '../../models/todos';
-import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '../../models/general';
-import GraphqlErrors from '../../components/GraphqlErrors';
-import SortButton from '../../components/sorts/SortButton';
+} from '~models/todos';
+import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '~models/general';
+import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '~utils/pagination';
+import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '~utils/urlSearchParams';
 import GridView from './components/GridView';
 import TableView from './components/TableView';
-import Pagination from '../../components/Pagination';
-import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '../../utils/pagination';
-import GridTableViewSwitcher from '../../components/GridTableViewSwitcher';
-import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '../../utils/urlSearchParams';
-import { onMainSearchChangeContains } from '../../components/filters/utils/mainSearch';
-import TopListContainer from '../../components/TopListContainer';
 
 const GET_TODOS_QUERY = gql`
   query getTodos(

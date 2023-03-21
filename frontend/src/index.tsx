@@ -12,14 +12,14 @@ import './i18n';
 import './yup-i18n';
 
 import FallbackErrorBoundary from '~components/FallbackErrorBoundary';
+import MainPageCenterLoading from '~components/MainPageCenterLoading';
+import ConfigProvider from '~components/ConfigProvider';
+import TopBar from '~components/TopBar';
+import Footer from '~components/Footer';
+import ClientProvider from '~components/ClientProvider';
+import ThemeProvider from '~components/theming/ThemeProvider';
+import TimezoneProvider from '~components/timezone/TimezoneProvider';
 import App from './App';
-import MainPageCenterLoading from './components/MainPageCenterLoading';
-import ConfigProvider from './components/ConfigProvider';
-import TopBar from './components/TopBar';
-import Footer from './components/Footer';
-import ClientProvider from './components/ClientProvider';
-import ThemeProvider from './components/theming/ThemeProvider';
-import TimezoneProvider from './components/timezone/TimezoneProvider';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);

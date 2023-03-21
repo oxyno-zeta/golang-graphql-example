@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Todos from './routes/Todos';
-import NotFoundRoute from './components/NotFoundRoute';
-import MainContentWrapper from './components/MainContentWrapper';
+import NotFoundRoute from '~components/NotFoundRoute';
+import MainContentWrapper from '~components/MainContentWrapper';
+import Todos from '~routes/Todos';
 
 function App() {
   return (
