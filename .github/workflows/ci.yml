@@ -96,7 +96,7 @@ jobs:
         with:
           go-version: "^1.19.0"
       - run: cd backend && make code/build-cross
-  test:
+  backend-test:
     if: |
       (needs.changes.outputs.ci == 'true') ||
       (needs.changes.outputs.backend == 'true')
@@ -159,3 +159,18 @@ jobs:
       - run: cd frontend && yarn install --frozen-lockfile
       - run: cd frontend && yarn build
       - run: cd frontend && docker build -t frontend .
+  frontend-test:
+    if: |
+      (needs.changes.outputs.ci == 'true') ||
+      (needs.changes.outputs.frontend == 'true')
+    runs-on: ubuntu-latest
+    needs:
+      - changes
+      - frontend-lint
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - run: cd frontend && yarn install --frozen-lockfile
+      - run: cd frontend && yarn test
