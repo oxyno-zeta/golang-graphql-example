@@ -41,9 +41,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-webpack-plugin": "^4.0.0",
     "graphql": "^16.6.0",
-    "http-proxy-middleware": "^2.0.6",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
@@ -71,7 +69,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
-    "lint": "tsc && eslint --fix --max-warnings=0 --ignore-pattern \"vite-env.d.ts\" --color src/**/*.{j,t}s*"
+    "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s*"
   },
   "browserslist": {
     "production": [

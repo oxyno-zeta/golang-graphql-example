@@ -28,7 +28,7 @@
       "~utils/*": ["src/utils/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "jest.config.ts", "vite.config.ts"],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
