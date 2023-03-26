@@ -49,13 +49,16 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 	// Initialize answer
 	result := make([]*CredentialConfig, 0)
 
-	// Load database credential
-	err := loadCredential(out.Database.ConnectionURL)
-	if err != nil {
-		return nil, err
+	// Check if database object is set
+	if out.Database != nil && out.Database.ConnectionURL != nil {
+		// Load database credential
+		err := loadCredential(out.Database.ConnectionURL)
+		if err != nil {
+			return nil, err
+		}
+		// Append result
+		result = append(result, out.Database.ConnectionURL)
 	}
-	// Append result
-	result = append(result, out.Database.ConnectionURL)
 
 	// Load credential for OIDC configuration
 	if out.OIDCAuthentication != nil && out.OIDCAuthentication.ClientSecret != nil {

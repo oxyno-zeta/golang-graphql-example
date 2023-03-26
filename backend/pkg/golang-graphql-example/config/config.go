@@ -202,5 +202,5 @@ type SMTPConfig struct {
 type CredentialConfig struct {
 	Path  string `mapstructure:"path" validate:"required_without_all=Env Value"`
 	Env   string `mapstructure:"env" validate:"required_without_all=Path Value"`
-	Value string `mapstructure:"value" validate:"required_without_all=Path Env"`
+	Value string `mapstructure:"value" validate:"required"`
 }

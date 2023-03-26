@@ -219,13 +219,6 @@ func (ctx *managerimpl) loadConfiguration() error {
 		return err
 	}
 
-	// Configuration validation
-	err = validate.Struct(out)
-	// Check error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
 	// Parse time, duration, regex, ...
 	err = parseValues(&out)
 	// Check error
@@ -267,6 +260,13 @@ func (ctx *managerimpl) loadConfiguration() error {
 			ctx.internalFileWatchChannels = append(ctx.internalFileWatchChannels, ch)
 		}
 	})
+
+	// Configuration validation
+	err = validate.Struct(out)
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
 	err = validateBusinessConfig(&out)
 	if err != nil {
