@@ -2,6 +2,7 @@ package amqpbusmessage
 
 import (
 	"os"
+	"strings"
 	"time"
 
 	"emperror.dev/errors"
@@ -400,9 +401,12 @@ func (as *amqpService) connect() (*amqp091.Connection, error) {
 		connACfg.Heartbeat = dur
 	}
 
+	// Trim url
+	bURL := strings.TrimSpace(amqpCfg.Connection.URL.Value)
+
 	as.logger.Debugf("Trying to establish connection to AMQP bus")
 	// Connect
-	conn, err := amqp091.DialConfig(amqpCfg.Connection.URL.Value, connACfg)
+	conn, err := amqp091.DialConfig(bURL, connACfg)
 	// Check error
 	if err != nil {
 		return nil, errors.WithStack(err)
