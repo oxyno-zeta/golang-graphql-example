@@ -124,9 +124,12 @@ func (sdb *sqldb) Connect() error {
 		openFunction = sqlite.Open
 	}
 
+	// Trim url
+	sURL := cfg.Database.ConnectionURL.Value
+
 	sdb.logger.Debugf("Trying to connect to database engine of type %s", cfg.Database.Driver)
 	// Connect to database
-	dbResult, err := gorm.Open(openFunction(cfg.Database.ConnectionURL.Value), gcfg)
+	dbResult, err := gorm.Open(openFunction(sURL), gcfg)
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
