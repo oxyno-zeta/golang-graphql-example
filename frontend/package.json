@@ -41,6 +41,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.11",
     "graphql": "^16.6.0",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
@@ -69,7 +70,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
-    "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s*"
+    "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s*",
+    "storybook": "start-storybook -p 6006 --no-open",
+    "build-storybook": "build-storybook"
   },
   "browserslist": {
     "production": [
@@ -84,6 +87,19 @@
     ]
   },
   "devDependencies": {
+    "@fontsource/material-icons": "^4.5.4",
+    "@fontsource/roboto": "^4.5.8",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-queryparams": "^6.2.9",
+    "@storybook/builder-vite": "^0.4.2",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "react-docgen-typescript": "^2.2.2",
+    "storybook-addon-apollo-client": "^4.1.4",
+    "storybook-react-context": "^0.6.0",
     "@welldone-software/why-did-you-render": "^7.0.1"
   }
 }
