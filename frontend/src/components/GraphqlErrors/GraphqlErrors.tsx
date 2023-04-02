@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Key, ReactNode } from 'react';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Box from '@mui/material//Box';
 import { ApolloError, ServerError } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
 
-interface Props {
+export interface Props {
   error?: ApolloError;
   errors?: ApolloError[];
   noMargin?: boolean;
@@ -16,7 +16,7 @@ interface Props {
   liSx?: SxProps;
 }
 
-interface CustomNetworkError {
+export interface CustomNetworkError {
   message: string;
   path: null | undefined | ReadonlyArray<string | number>;
 }
@@ -60,49 +60,69 @@ function GraphqlErrors({
     errorList = [error];
   }
 
+  const elements: ReactNode[] = [];
+
+  // Loop over errors
+  errorList?.forEach((err, mainIndex) => {
+    const contents: { content: string; key: Key }[] = [];
+    if (
+      err.networkError &&
+      (!(err.networkError as ServerError).result ||
+        Object.keys((err.networkError as ServerError).result).length === 0 ||
+        !err.graphQLErrors)
+    ) {
+      contents.push({ content: err.networkError.message, key: mainIndex });
+    }
+
+    if (err.graphQLErrors) {
+      contents.push(
+        ...err.graphQLErrors.map(({ message, extensions }, i) => {
+          let mess = message;
+          // Check if there is a code in extensions
+          if (extensions && extensions.code) {
+            mess = t(`common.errorCode.${extensions.code}`);
+          }
+
+          return { content: mess, key: `${mainIndex}-graphQLErrors-${i}` };
+        }),
+      );
+    }
+
+    if (
+      err.networkError &&
+      (err.networkError as ServerError).result &&
+      (err.networkError as ServerError).result.errors
+    ) {
+      contents.push(
+        ...((err.networkError as ServerError).result.errors as [CustomNetworkError]).map(({ message, path }, i) => ({
+          content: `${path?.join('.')} ${message}`,
+          key: `${mainIndex}-networkError-${i}`,
+        })),
+      );
+    }
+
+    // Check if a content have been detected
+    if (contents) {
+      // Save element
+      elements.push(
+        ...contents.map(({ content, key }) => (
+          <Box component="li" key={key} sx={liSx}>
+            <Typography color="error" {...errorElementTypographyProps}>
+              {content}
+            </Typography>
+          </Box>
+        )),
+      );
+    }
+  });
+
   return (
     <Box sx={{ color: 'error', margin: noMargin ? 0 : 8, ...containerBoxSx }}>
       <Typography color="error" {...errorTitleTypographyProps}>
         {t('common.errors')}:
       </Typography>
       <Box component="ul" sx={ulSx}>
-        {errorList?.map((err, mainIndex) => (
-          <Fragment key={mainIndex}>
-            {err.networkError && (!(err.networkError as ServerError).result || !err.graphQLErrors) && (
-              <Box component="li" key={mainIndex} sx={liSx}>
-                <Typography color="error" {...errorElementTypographyProps}>
-                  {err.networkError.message}
-                </Typography>
-              </Box>
-            )}
-            {err.graphQLErrors &&
-              err.graphQLErrors.map(({ message, extensions }, i) => {
-                let mess = message;
-                // Check if there is a code in extensions
-                if (extensions && extensions.code) {
-                  mess = t(`common.errorCode.${extensions.code}`);
-                }
-
-                return (
-                  <Box component="li" key={`${mainIndex}-graphQLErrors-${i}`} sx={liSx}>
-                    <Typography color="error" {...errorElementTypographyProps}>
-                      {mess}
-                    </Typography>
-                  </Box>
-                );
-              })}
-            {err.networkError &&
-              (err.networkError as ServerError).result &&
-              (err.networkError as ServerError).result.errors &&
-              ((err.networkError as ServerError).result.errors as [CustomNetworkError]).map(({ message, path }, i) => (
-                <Box component="li" key={`${mainIndex}-networkError-${i}`} sx={liSx}>
-                  <Typography color="error" {...errorElementTypographyProps}>
-                    {path?.join('.')} {message}
-                  </Typography>
-                </Box>
-              ))}
-          </Fragment>
-        ))}
+        {elements}
       </Box>
     </Box>
   );

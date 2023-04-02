@@ -8,7 +8,7 @@ import DialogContentText, { DialogContentTextProps } from '@mui/material/DialogC
 import DialogTitle, { DialogTitleProps } from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
 
-interface Props {
+export interface Props {
   open: boolean;
   title: string;
   content?: string;

@@ -7,6 +7,7 @@ module.exports = {
     'storybook-addon-apollo-client',
     '@storybook/addon-queryparams',
     'storybook-react-context',
+    'storybook-react-i18next',
   ],
   framework: '@storybook/react',
   core: {

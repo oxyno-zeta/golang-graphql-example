@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 import type { SxProps } from '@mui/material';
 
-export interface CenterLoadingProps {
+export interface Props {
   /**
    * Container Box sx.
    * Following this documentation: https://mui.com/system/getting-started/the-sx-prop/ .
@@ -21,7 +21,7 @@ const defaultProps = {
   circularProgressProps: {},
 };
 
-function CenterLoading({ containerBoxSx, circularProgressProps }: CenterLoadingProps) {
+function CenterLoading({ containerBoxSx, circularProgressProps }: Props) {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', margin: '10px 0', ...containerBoxSx }}>
       <CircularProgress {...circularProgressProps} />

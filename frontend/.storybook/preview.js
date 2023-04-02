@@ -1,6 +1,9 @@
 import * as jest from 'jest-mock';
 import { MockedProvider } from '@apollo/client/testing';
 import { withMuiTheme } from './with-mui-theme.decorator';
+import i18n from './i18next.js';
+
+// Inject jest correctly
 window.jest = jest;
 
 // Load Roboto fonts
@@ -11,6 +14,11 @@ import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
 
 export const parameters = {
+  i18n,
+  locale: 'en',
+  locales: {
+    en: { title: 'English', right: 'US' },
+  },
   apolloClient: {
     MockedProvider,
     // any props you want to pass to MockedProvider on every story
