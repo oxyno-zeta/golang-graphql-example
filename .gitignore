@@ -257,3 +257,4 @@ coverage.html
 .run/
 frontend/build/
 frontend/.vite-cache/
+frontend/storybook-static/
