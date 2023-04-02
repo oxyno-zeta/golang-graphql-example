@@ -173,4 +173,4 @@ jobs:
         with:
           node-version: 19
       - run: cd frontend && yarn install --frozen-lockfile
-      - run: cd frontend && yarn test
+      - run: cd frontend && yarn test:coverage
