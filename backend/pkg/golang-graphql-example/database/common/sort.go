@@ -63,7 +63,7 @@ func manageListSortOrder(rVal *reflect.Value, db *gorm.DB) (*gorm.DB, error) {
 		// Get value
 		rElem := rVal.Index(i)
 		// Initialize sort applied result
-		sortAppliedRes := false
+		sortAppliedRes := false //nolint:wastedassign // False positive
 		// Manage object
 		res, sortAppliedRes, err = manageObjectSortOrder(rElem.Kind(), &rElem, true, res)
 		// Check error

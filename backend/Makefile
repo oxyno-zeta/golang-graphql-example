@@ -206,7 +206,7 @@ ifndef HAS_GIT
 endif
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.25
+	$(GO) install github.com/99designs/gqlgen@v0.17.27
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
