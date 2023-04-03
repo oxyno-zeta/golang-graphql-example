@@ -144,14 +144,14 @@ func (as *amqpService) Publish(
 			// Check error
 			if pErr != nil {
 				// Check if channel is closed, if yes, put it in retry
-				if as.publisherChannel.IsClosed() {
-					errChan <- pErr
-				} else {
+				if !as.publisherChannel.IsClosed() {
 					// In this case, return error
 					// As check that channel is opened before, this case have a lower rank
 					// Error here must happened when configuration is incorrect or something else in broker
 					return errors.WithStack(pErr)
 				}
+
+				errChan <- pErr
 			} else if confirmation != nil {
 				// Start a routine for wait response
 				go func() {
@@ -467,7 +467,7 @@ func (as *amqpService) Consume(
 	}
 }
 
-func (as *amqpService) consumeDeliveryHandler(
+func (*amqpService) consumeDeliveryHandler(
 	ctx context.Context,
 	trace tracing.Trace,
 	d *amqp091.Delivery,
@@ -515,7 +515,7 @@ func (as *amqpService) extractTraceFromHeaders(h amqp091.Table) (tracing.Trace, 
 	// Loop over input headers
 	for k, v := range h {
 		// Check if value is a string
-		switch v := v.(type) { //nolint: gocritic // Ignore because can't do this in if
+		switch v := v.(type) { //nolint: gocritic,revive // Ignore because can't do this in if
 		case string:
 			headers[k] = v
 		}
@@ -525,7 +525,7 @@ func (as *amqpService) extractTraceFromHeaders(h amqp091.Table) (tracing.Trace, 
 	return as.tracingSvc.ExtractFromTextMapAndStartSpan(headers, tracingConsumeOperation)
 }
 
-func (as *amqpService) injectTracedHeaders(trace tracing.Trace, headers amqp091.Table) error {
+func (*amqpService) injectTracedHeaders(trace tracing.Trace, headers amqp091.Table) error {
 	// Create headers
 	h := map[string]string{}
 	// Use inject in headers

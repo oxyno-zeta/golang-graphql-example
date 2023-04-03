@@ -23,7 +23,7 @@ func CalculateQuerySimpleStructComplexity(childComplexity int) int {
 // CalculateQueryConnectionComplexity will calculate a query connection complexity.
 func CalculateQueryConnectionComplexity(
 	childComplexity int,
-	after *string,
+	_ *string,
 	before *string,
 	first *int,
 	last *int,

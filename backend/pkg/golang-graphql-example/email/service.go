@@ -24,7 +24,7 @@ type service struct {
 	server     *spmail.SMTPServer
 }
 
-func (s *service) NewEmail() Email {
+func (*service) NewEmail() Email {
 	return &email{
 		firstBodySet: false,
 		spemail:      spmail.NewMSG(),

@@ -103,7 +103,7 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 	// Create authorization service
 	authoCl := authorization.NewService(cfgManagerMock)
 	// Create services
-	bSvc := business.NewServices(logger, db, authoCl, ld)
+	bSvc := business.NewServices(logger, db, authoCl)
 	// Migrate
 	err = bSvc.MigrateDB()
 	suite.NoError(err)

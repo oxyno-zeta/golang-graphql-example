@@ -21,11 +21,11 @@ func (s *service) Migrate() error {
 		sequences.Seq202108List,
 	}
 
-	// Create sequences
-	sequences := []*gormigrate.Migration{}
+	// Create migrationSequences
+	migrationSequences := []*gormigrate.Migration{}
 	// Loot of list
 	for _, k := range sequencesList {
-		sequences = append(sequences, k...)
+		migrationSequences = append(migrationSequences, k...)
 	}
 
 	// Create migration sequence
@@ -34,7 +34,7 @@ func (s *service) Migrate() error {
 		// Due to #76, force transaction to have a rollback
 		// https://github.com/go-gormigrate/gormigrate/issues/76
 		&gormigrate.Options{UseTransaction: true},
-		sequences,
+		migrationSequences,
 	)
 
 	// Start migration

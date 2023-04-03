@@ -14,15 +14,15 @@ type contextKey struct {
 var correlationIDCtxKey = &contextKey{name: "correlation-id"}
 
 func Generate() (string, error) {
-	// Generate uuid
-	uuid, err := uuid.NewV4()
+	// Generate uuidGenerated
+	uuidGenerated, err := uuid.NewV4()
 	// Check error
 	if err != nil {
 		return "", errors.WithStack(err)
 	}
 
 	// Default
-	return uuid.String(), nil
+	return uuidGenerated.String(), nil
 }
 
 func GetFromContext(ctx context.Context) string {

@@ -9,7 +9,7 @@ type Dataloaders struct {
 	Todos *todosdataloaders.TodosDataloaders
 }
 
-func new(busiSvr *business.Services) *Dataloaders {
+func newDataloaders(busiSvr *business.Services) *Dataloaders {
 	return &Dataloaders{
 		Todos: todosdataloaders.New(busiSvr),
 	}

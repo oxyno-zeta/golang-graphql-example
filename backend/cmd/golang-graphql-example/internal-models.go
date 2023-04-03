@@ -14,7 +14,7 @@ type targetDefinition struct {
 
 type arrayFlags []string
 
-func (i *arrayFlags) String() string {
+func (*arrayFlags) String() string {
 	return "string list representation"
 }
 

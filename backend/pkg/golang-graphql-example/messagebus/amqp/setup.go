@@ -6,7 +6,7 @@ import (
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
-func (as *amqpService) setup(cfg *config.AMQPConfig, chann *amqp.Channel) error {
+func (*amqpService) setup(cfg *config.AMQPConfig, chann *amqp.Channel) error {
 	// Declare exchanges
 	// Loop over exchange configurations
 	for _, it := range cfg.Exchanges {

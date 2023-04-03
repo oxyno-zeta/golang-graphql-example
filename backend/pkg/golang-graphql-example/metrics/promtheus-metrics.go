@@ -26,11 +26,11 @@ type prometheusMetrics struct {
 	amqpPublishedMessages *prometheus.CounterVec
 }
 
-func (ctx *prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
+func (*prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
 	return gqlprometheus.Tracer{}
 }
 
-func (ctx *prometheusMetrics) PrometheusHTTPHandler() http.Handler {
+func (*prometheusMetrics) PrometheusHTTPHandler() http.Handler {
 	return promhttp.Handler()
 }
 

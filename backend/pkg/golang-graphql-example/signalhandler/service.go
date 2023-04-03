@@ -91,15 +91,15 @@ func (s *service) OnExit(hook func()) {
 	s.onExitHookStorage = append(s.onExitHookStorage, hook)
 }
 
-func (s *service) OnSignal(signal os.Signal, hook func()) {
+func (s *service) OnSignal(sig os.Signal, hook func()) {
 	// Check if array exist
-	if s.hooksStorage[signal] != nil {
+	if s.hooksStorage[sig] != nil {
 		// Create list
-		s.hooksStorage[signal] = make([]func(), 0)
+		s.hooksStorage[sig] = make([]func(), 0)
 	}
 
 	// Add item
-	s.hooksStorage[signal] = append(s.hooksStorage[signal], hook)
+	s.hooksStorage[sig] = append(s.hooksStorage[sig], hook)
 }
 
 func (s *service) stoppingAppHook() {
@@ -128,10 +128,12 @@ func (s *service) stoppingAppHook() {
 					h()
 				}
 				// Stopping application
-				os.Exit(0)
-			} else {
-				s.logger.Infof("Cannot stop application yet, still detecting %d requests", s.activeRequestCounter)
+				os.Exit(0) //nolint: revive // Ignore this as this is wanted
+
+				return
 			}
+			// Log
+			s.logger.Infof("Cannot stop application yet, still detecting %d requests", s.activeRequestCounter)
 		}
 	}()
 

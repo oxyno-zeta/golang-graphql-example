@@ -16,7 +16,7 @@ var reqCtxKey = &contextKey{name: "graphql-dataloaders"}
 func Middleware(busiSvr *business.Services) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Create dataloaders
-		dl := new(busiSvr)
+		dl := newDataloaders(busiSvr)
 
 		// Update request with new context
 		c.Request = c.Request.WithContext(context.WithValue(c.Request.Context(), reqCtxKey, dl))

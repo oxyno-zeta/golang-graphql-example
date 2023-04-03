@@ -4,7 +4,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func (ctx *managerimpl) loadDefaultConfigurationValues(vip *viper.Viper) {
+func (*managerimpl) loadDefaultConfigurationValues(vip *viper.Viper) {
 	// Load default configuration
 	vip.SetDefault("log.level", DefaultLogLevel)
 	vip.SetDefault("log.format", DefaultLogFormat)
@@ -108,7 +108,7 @@ func loadAllCredentials(out *Config) ([]*CredentialConfig, error) {
 	return result, nil
 }
 
-func parseValues(out *Config) error {
+func parseValues(_ *Config) error {
 	// TODO make any parsing here
 	// Default
 	return nil

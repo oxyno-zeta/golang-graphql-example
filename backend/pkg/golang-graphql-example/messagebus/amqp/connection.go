@@ -415,7 +415,7 @@ func (as *amqpService) connect() (*amqp091.Connection, error) {
 	return conn, nil
 }
 
-func (as *amqpService) createConfiguredChannel(conn *amqp091.Connection, channelQosCfg *config.AMQPChannelQosConfig) (*amqp091.Channel, error) {
+func (*amqpService) createConfiguredChannel(conn *amqp091.Connection, channelQosCfg *config.AMQPChannelQosConfig) (*amqp091.Channel, error) {
 	// Create channel
 	chann, err := conn.Channel()
 	// Check error

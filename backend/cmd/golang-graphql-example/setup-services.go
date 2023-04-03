@@ -19,16 +19,16 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 )
 
-func setupExtraServices(targets []string, sv *services) {}
+func setupExtraServices(_ []string, _ *services) {}
 
-func setupBusinessServices(targets []string, sv *services) { //nolint: unparam // Ignored
+func setupBusinessServices(_ []string, sv *services) {
 	// Create business services
-	busServices := business.NewServices(sv.logger, sv.db, sv.authorizationSvc, sv.ldSvc)
+	busServices := business.NewServices(sv.logger, sv.db, sv.authorizationSvc)
 	// Save
 	sv.busServices = busServices
 }
 
-func setupBasicsServices(targets []string, sv *services) { //nolint: unparam // Ignored
+func setupBasicsServices(_ []string, sv *services) {
 	// Create variables for mandatory services
 	logger := sv.logger
 	cfgManager := sv.cfgManager

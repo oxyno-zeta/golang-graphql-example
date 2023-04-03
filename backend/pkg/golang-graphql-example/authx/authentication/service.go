@@ -111,14 +111,14 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 	mainRedirectURLStr := mainRedirectURLObject.String()
 
 	// Create OIDC configuration
-	config := oauth2.Config{
+	oauthConfig := oauth2.Config{
 		ClientID:    cfg.OIDCAuthentication.ClientID,
 		Endpoint:    provider.Endpoint(),
 		Scopes:      cfg.OIDCAuthentication.Scopes,
 		RedirectURL: mainRedirectURLStr,
 	}
 	if cfg.OIDCAuthentication.ClientSecret != nil {
-		config.ClientSecret = cfg.OIDCAuthentication.ClientSecret.Value
+		oauthConfig.ClientSecret = cfg.OIDCAuthentication.ClientSecret.Value
 	}
 
 	// Store state
@@ -135,7 +135,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Same solution as here: https://github.com/oauth2-proxy/oauth2-proxy/blob/3fa42edb7350219d317c4bd47faf5da6192dc70f/oauthproxy.go#L751
 		newState := state + stateRedirectSeparator + rdVal
 
-		c.Redirect(http.StatusFound, config.AuthCodeURL(newState))
+		c.Redirect(http.StatusFound, oauthConfig.AuthCodeURL(newState))
 		c.Abort()
 	})
 
@@ -210,7 +210,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			return
 		}
 
-		oauth2Token, err := config.Exchange(ctx, c.Query("code"))
+		oauth2Token, err := oauthConfig.Exchange(ctx, c.Query("code"))
 		if err != nil {
 			err = cerrors.NewInternalServerError("failed to exchange token: " + err.Error())
 			logger.Error(err)

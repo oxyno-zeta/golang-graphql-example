@@ -27,7 +27,7 @@ type service struct {
 	metricsFactory *jaegerprom.Factory
 }
 
-func (s *service) DatabaseMiddleware() gorm.Plugin {
+func (*service) DatabaseMiddleware() gorm.Plugin {
 	return gormopentracing.New(
 		gormopentracing.WithCreateOpName("sql:create"),
 		gormopentracing.WithUpdateOpName("sql:update"),
@@ -38,7 +38,7 @@ func (s *service) DatabaseMiddleware() gorm.Plugin {
 	)
 }
 
-func (s *service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
+func (*service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
 	return gqlopentracing.Tracer{}
 }
 

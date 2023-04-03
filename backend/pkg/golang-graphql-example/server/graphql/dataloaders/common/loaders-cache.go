@@ -78,7 +78,7 @@ func (c *InMemoryCache[K, V]) Clear() {
 }
 
 // keyString Return the key string representation.
-func (c *InMemoryCache[K, V]) keyString(key K) string {
+func (*InMemoryCache[K, V]) keyString(key K) string {
 	// Test if it can be casted to KeyString interface
 	k, ok := any(key).(KeyString)
 	// Check if it can be casted

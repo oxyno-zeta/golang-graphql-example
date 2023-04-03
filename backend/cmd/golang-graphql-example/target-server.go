@@ -10,7 +10,7 @@ var serverTarget = &targetDefinition{
 	InAllTarget: true,
 }
 
-func serverTargetRun(targets []string, sv *services) {
+func serverTargetRun(_ []string, sv *services) {
 	// Create servers
 	svr := server.NewServer(
 		sv.logger,

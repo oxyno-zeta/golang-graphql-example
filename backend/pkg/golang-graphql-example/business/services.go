@@ -5,7 +5,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/migration"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
-	lockdistributor "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor/sql"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
@@ -22,7 +21,7 @@ func (s *Services) MigrateDB() error {
 	return migrationSvc.Migrate()
 }
 
-func NewServices(systemLogger log.Logger, db database.DB, authSvc authorization.Service, ld lockdistributor.Service) *Services {
+func NewServices(systemLogger log.Logger, db database.DB, authSvc authorization.Service) *Services {
 	// Create todos service
 	todoSvc := todos.NewService(db, authSvc)
 

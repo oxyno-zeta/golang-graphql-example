@@ -87,7 +87,7 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 	return true, nil
 }
 
-func (s *service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAuthorization, body []byte) (bool, error) {
+func (*service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAuthorization, body []byte) (bool, error) {
 	// Get trace from context
 	trace := tracing.GetTraceFromContext(ctx)
 	// Generate child trace
