@@ -2,13 +2,12 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ApolloError } from '@apollo/client';
 import GraphqlErrors, { Props } from './GraphqlErrors';
-
 import {
   forbiddenNetworkError,
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorGraphqlError,
-} from './GraphqlErrors.test';
+} from './GraphqlErrors.storage.test';
 
 export default {
   title: 'Components/GraphqlErrors',
