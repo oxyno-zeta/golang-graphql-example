@@ -25,3 +25,7 @@ export const Colors: ComponentStory<typeof CenterLoading> = function C() {
     </Stack>
   );
 };
+
+export const Subtitle: ComponentStory<typeof CenterLoading> = function C() {
+  return <CenterLoading subtitle="Loading..." />;
+};
