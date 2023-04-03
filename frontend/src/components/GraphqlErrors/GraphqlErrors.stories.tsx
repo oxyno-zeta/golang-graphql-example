@@ -7,7 +7,7 @@ import {
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorGraphqlError,
-} from './GraphqlErrors.storage.test';
+} from './GraphqlErrors.storage-test';
 
 export default {
   title: 'Components/GraphqlErrors',

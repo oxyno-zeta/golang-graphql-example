@@ -8,7 +8,7 @@ import {
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorGraphqlError,
-} from './GraphqlErrors.storage.test';
+} from './GraphqlErrors.storage-test';
 
 import GraphqlErrors from './GraphqlErrors';
 
