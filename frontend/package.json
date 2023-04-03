@@ -50,7 +50,7 @@
     "preview": "vite preview",
     "test": "jest -u",
     "test:coverage": "jest -u --coverage --coverageDirectory=coverage",
-    "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s*",
+    "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s{x,}",
     "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook"
   },

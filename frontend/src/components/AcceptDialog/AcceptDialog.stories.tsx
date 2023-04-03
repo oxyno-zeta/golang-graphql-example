@@ -7,9 +7,11 @@ const storybookProps = {
   title: 'Title',
   content: 'Main content !',
   handleClose: () => {
+    // eslint-disable-next-line no-alert
     alert('closed !');
   },
   handleOk: () => {
+    // eslint-disable-next-line no-alert
     alert('ok !');
     return Promise.resolve();
   },
