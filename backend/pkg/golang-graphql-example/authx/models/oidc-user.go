@@ -8,8 +8,8 @@ type OIDCUser struct {
 	GivenName         string `json:"given_name"`
 	FamilyName        string `json:"family_name"`
 	Email             string `json:"email"`
-	EmailVerified     bool   `json:"email_verified"`
 	OriginalToken     string `json:"-"`
+	EmailVerified     bool   `json:"email_verified"`
 }
 
 func (u *OIDCUser) GetAuthorizationHeader() string {

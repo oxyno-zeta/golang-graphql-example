@@ -15,12 +15,12 @@ const (
 
 type service struct {
 	logger                   log.Logger
-	serverMode               bool
-	signalListToNotify       []os.Signal
 	hooksStorage             map[os.Signal][]func()
+	activeRequestCounterChan chan int64
+	signalListToNotify       []os.Signal
 	onExitHookStorage        []func()
 	activeRequestCounter     int64
-	activeRequestCounterChan chan int64
+	serverMode               bool
 	stoppingSysInProgress    bool
 }
 

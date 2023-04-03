@@ -17,8 +17,8 @@ type Client interface {
 }
 
 type providerEndpointsClaims struct {
-	EndSessionEndpoint    string `json:"end_session_endpoint"`
 	EndSessionEndpointURL *url.URL
+	EndSessionEndpoint    string `json:"end_session_endpoint"`
 }
 
 func NewService(cfgManager config.Manager) Client {

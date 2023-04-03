@@ -9,9 +9,9 @@ import (
 )
 
 type lock struct {
-	name string
 	pl   *pglock.Lock
 	s    *service
+	name string
 }
 
 func (l *lock) IsAlreadyTaken() (bool, error) {

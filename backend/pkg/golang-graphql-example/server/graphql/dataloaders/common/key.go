@@ -5,8 +5,8 @@ import (
 )
 
 type IDProjectionKey struct {
-	ID         string
 	Projection interface{}
+	ID         string
 }
 
 func (k *IDProjectionKey) String() string {
@@ -18,6 +18,6 @@ func (k *IDProjectionKey) Raw() interface{} {
 }
 
 type idsProjectionGroup struct {
-	IDs        []string
 	Projection interface{}
+	IDs        []string
 }

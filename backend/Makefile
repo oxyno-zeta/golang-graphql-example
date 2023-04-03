@@ -36,6 +36,7 @@ HAS_CURL:=$(shell command -v curl;)
 HAS_MOCKGEN:=$(shell command -v mockgen;)
 HAS_GQLGEN:=$(shell command -v gqlgen;)
 HAS_GOTESTFMT:=$(shell command -v gotestfmt;)
+HAS_FIELDALIGNMENT:=$(shell command -v fieldalignment;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
 
@@ -48,6 +49,10 @@ HAS_GOTESTFMT:=$(shell command -v gotestfmt;)
 .PHONY: code/lint
 code/lint: setup/dep/install
 	golangci-lint run ./...
+
+.PHONY: code/fieldalignment
+code/fieldalignment: setup/dep/install
+	fieldalignment -fix -test=false ./...
 
 .PHONY: code/graphql/concat
 code/graphql/concat:
@@ -209,7 +214,11 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_GOTESTFMT
 	@echo "=> Installing gotestfmt tool"
-	go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@v2.4.1
+	$(GO) install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@v2.4.1
+endif
+ifndef HAS_FIELDALIGNMENT
+	@echo "=> Installing fieldalignment tool"
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@latest
 endif
 # Uncomment to use gox instead of goreleaser
 # ifndef HAS_GOX

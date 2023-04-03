@@ -5,9 +5,9 @@ import "emperror.dev/errors"
 type GenericError struct {
 	err         error
 	ext         map[string]interface{}
-	statusCode  int
 	publicError error
 	code        string
+	statusCode  int
 }
 
 func (e *GenericError) Error() string {

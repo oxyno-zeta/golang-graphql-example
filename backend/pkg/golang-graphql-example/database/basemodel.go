@@ -10,10 +10,10 @@ import (
 
 // Base contains common columns for all tables.
 type Base struct {
-	ID        string `gorm:"primary_key"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt *time.Time `sql:"index"`
+	ID        string     `gorm:"primary_key"`
 }
 
 // BeforeCreate will set a UUID rather than numeric ID.

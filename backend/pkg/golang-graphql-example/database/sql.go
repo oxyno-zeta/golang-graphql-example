@@ -21,11 +21,11 @@ var (
 
 type sqldb struct {
 	logger         log.Logger
-	db             *gorm.DB
 	cfgManager     config.Manager
-	connectionName string
 	metricsCl      metrics.Client
 	tracingSvc     tracing.Service
+	db             *gorm.DB
+	connectionName string
 }
 
 func SetTransactionalGormDBToContext(ctx context.Context, db *gorm.DB) context.Context {

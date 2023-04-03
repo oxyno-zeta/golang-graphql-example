@@ -12,13 +12,13 @@ type NewTodo struct {
 }
 
 type TodoConnection struct {
-	Edges    []*TodoEdge     `json:"edges"`
 	PageInfo *utils.PageInfo `json:"pageInfo"`
+	Edges    []*TodoEdge     `json:"edges"`
 }
 
 type TodoEdge struct {
-	Cursor string       `json:"cursor"`
 	Node   *models.Todo `json:"node"`
+	Cursor string       `json:"cursor"`
 }
 
 type UpdateTodo struct {

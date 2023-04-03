@@ -25,14 +25,14 @@ type restInputDataOPA struct {
 }
 
 type httpRequestDataOPA struct {
+	Headers    map[string]string `json:"headers"`
 	Method     string            `json:"method"`
 	Protocol   string            `json:"protocol"`
-	Headers    map[string]string `json:"headers"`
 	RemoteAddr string            `json:"remoteAddr"`
 	Scheme     string            `json:"scheme"`
 	Host       string            `json:"host"`
-	ParsedPath []string          `json:"parsed_path"`
 	Path       string            `json:"path"`
+	ParsedPath []string          `json:"parsed_path"`
 }
 
 func (s *service) Middleware() gin.HandlerFunc {

@@ -26,14 +26,14 @@ type InternalServer struct {
 	logger           log.Logger
 	cfgManager       config.Manager
 	metricsCl        metrics.Client
-	checkers         []*CheckerInput
-	server           *http.Server
 	signalHandlerSvc signalhandler.Client
+	server           *http.Server
+	checkers         []*CheckerInput
 }
 
 type CheckerInput struct {
-	Name         string
 	CheckFn      func() error
+	Name         string
 	Interval     time.Duration
 	Timeout      time.Duration
 	InitialDelay time.Duration

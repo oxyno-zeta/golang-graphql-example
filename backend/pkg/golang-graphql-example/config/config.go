@@ -47,10 +47,10 @@ type Config struct {
 // AMQPConfig AMQP Message Bus configuration.
 type AMQPConfig struct {
 	Connection *AMQPConnectionConfig  `mapstructure:"connection" validate:"required"`
+	ChannelQos *AMQPChannelQosConfig  `mapstructure:"channelQos" validate:"omitempty,dive"`
 	Exchanges  []*AMQPExchangeConfig  `mapstructure:"exchanges" validate:"required,dive,required"`
 	Queues     []*AMQPQueueConfig     `mapstructure:"queues" validate:"omitempty,dive"`
 	QueueBinds []*AMQPQueueBindConfig `mapstructure:"queueBinds" validate:"omitempty,dive"`
-	ChannelQos *AMQPChannelQosConfig  `mapstructure:"channelQos" validate:"omitempty,dive"`
 }
 
 // AMQPChannelQosConfig AMQP Channel Qos Configuration.
@@ -64,39 +64,39 @@ type AMQPChannelQosConfig struct {
 type AMQPConnectionConfig struct {
 	URL               *CredentialConfig      `mapstructure:"url" validate:"required"`
 	ExtraArgs         map[string]interface{} `mapstructure:"extraArgs"`
+	HeartbeatDuration string                 `mapstructure:"heartbeatDuration"`
 	ChannelMax        int                    `mapstructure:"channelMax"`
 	FrameSize         int                    `mapstructure:"frameSize"`
-	HeartbeatDuration string                 `mapstructure:"heartbeatDuration"`
 }
 
 // AMQPQueueBindConfig AMQP Message Bus QueueBind Configuration.
 type AMQPQueueBindConfig struct {
+	ExtraArgs map[string]interface{} `mapstructure:"extraArgs"`
 	Name      string                 `mapstructure:"name" validate:"required"`
 	Key       string                 `mapstructure:"key" validate:"required"`
 	Exchange  string                 `mapstructure:"exchange" validate:"required"`
 	NoWait    bool                   `mapstructure:"noWait"`
-	ExtraArgs map[string]interface{} `mapstructure:"extraArgs"`
 }
 
 // AMQPQueueConfig AMQP Message Bus Queue configuration.
 type AMQPQueueConfig struct {
+	ExtraArgs  map[string]interface{} `mapstructure:"extraArgs"`
 	Name       string                 `mapstructure:"name" validate:"required"`
 	Durable    bool                   `mapstructure:"durable"`
 	AutoDelete bool                   `mapstructure:"autoDelete"`
 	Exclusive  bool                   `mapstructure:"exclusive"`
 	NoWait     bool                   `mapstructure:"noWait"`
-	ExtraArgs  map[string]interface{} `mapstructure:"extraArgs"`
 }
 
 // AMQPExchangeConfig AMQP Message Bus Exchange configuration.
 type AMQPExchangeConfig struct {
+	ExtraArgs  map[string]interface{} `mapstructure:"extraArgs"`
 	Name       string                 `mapstructure:"name" validate:"required"`
 	Type       string                 `mapstructure:"type" validate:"required"`
 	Durable    bool                   `mapstructure:"durable"`
 	AutoDelete bool                   `mapstructure:"autoDelete"`
 	Internal   bool                   `mapstructure:"internal"`
 	NoWait     bool                   `mapstructure:"noWait"`
-	ExtraArgs  map[string]interface{} `mapstructure:"extraArgs"`
 }
 
 // LockDistributorConfig Lock distributor configuration.
@@ -108,32 +108,32 @@ type LockDistributorConfig struct {
 
 // OIDCAuthConfig OpenID Connect authentication configurations.
 type OIDCAuthConfig struct {
-	ClientID          string            `mapstructure:"clientId" validate:"required"`
 	ClientSecret      *CredentialConfig `mapstructure:"clientSecret" validate:"omitempty,dive"`
+	ClientID          string            `mapstructure:"clientId" validate:"required"`
 	IssuerURL         string            `mapstructure:"issuerUrl" validate:"required,url"`
 	RedirectURL       string            `mapstructure:"redirectUrl" validate:"required,url"`
 	LogoutRedirectURL string            `mapstructure:"logoutRedirectUrl" validate:"omitempty,url"`
-	Scopes            []string          `mapstructure:"scopes"`
 	State             string            `mapstructure:"state" validate:"required"`
 	CookieName        string            `mapstructure:"cookieName"`
+	Scopes            []string          `mapstructure:"scopes"`
 	EmailVerified     bool              `mapstructure:"emailVerified"`
 	CookieSecure      bool              `mapstructure:"cookieSecure"`
 }
 
 // OPAServerAuthorization OPA Server authorization.
 type OPAServerAuthorization struct {
-	URL  string            `mapstructure:"url" validate:"required,url"`
 	Tags map[string]string `mapstructure:"tags"`
+	URL  string            `mapstructure:"url" validate:"required,url"`
 }
 
 // TracingConfig represents the Tracing configuration structure.
 type TracingConfig struct {
-	Enabled       bool                   `mapstructure:"enabled"`
-	LogSpan       bool                   `mapstructure:"logSpan"`
+	FixedTags     map[string]interface{} `mapstructure:"fixedTags"`
 	FlushInterval string                 `mapstructure:"flushInterval"`
 	UDPHost       string                 `mapstructure:"udpHost"`
 	QueueSize     int                    `mapstructure:"queueSize"`
-	FixedTags     map[string]interface{} `mapstructure:"fixedTags"`
+	Enabled       bool                   `mapstructure:"enabled"`
+	LogSpan       bool                   `mapstructure:"logSpan"`
 }
 
 // LogConfig Log configuration.
@@ -145,10 +145,10 @@ type LogConfig struct {
 
 // ServerConfig Server configuration.
 type ServerConfig struct {
-	ListenAddr string                `mapstructure:"listenAddr"`
-	Port       int                   `mapstructure:"port" validate:"required"`
 	CORS       *ServerCorsConfig     `mapstructure:"cors" validate:"omitempty"`
 	Compress   *ServerCompressConfig `mapstructure:"compress"`
+	ListenAddr string                `mapstructure:"listenAddr"`
+	Port       int                   `mapstructure:"port" validate:"required"`
 }
 
 // ServerCompressConfig Server compress configuration.
@@ -158,42 +158,42 @@ type ServerCompressConfig struct {
 
 // ServerCorsConfig Server CORS configuration.
 type ServerCorsConfig struct {
-	AllowOrigins            []string `mapstructure:"allowOrigins"`
-	AllowMethods            []string `mapstructure:"allowMethods"`
-	AllowHeaders            []string `mapstructure:"allowHeaders"`
-	ExposeHeaders           []string `mapstructure:"exposeHeaders"`
-	MaxAgeDuration          string   `mapstructure:"maxAgeDuration"`
 	AllowCredentials        *bool    `mapstructure:"allowCredentials"`
 	AllowWildcard           *bool    `mapstructure:"allowWildcard"`
 	AllowBrowserExtensions  *bool    `mapstructure:"allowBrowserExtensions"`
 	AllowWebSockets         *bool    `mapstructure:"allowWebSockets"`
 	AllowFiles              *bool    `mapstructure:"allowFiles"`
 	AllowAllOrigins         *bool    `mapstructure:"allowAllOrigins"`
+	MaxAgeDuration          string   `mapstructure:"maxAgeDuration"`
+	AllowOrigins            []string `mapstructure:"allowOrigins"`
+	AllowMethods            []string `mapstructure:"allowMethods"`
+	AllowHeaders            []string `mapstructure:"allowHeaders"`
+	ExposeHeaders           []string `mapstructure:"exposeHeaders"`
 	UseDefaultConfiguration bool     `mapstructure:"useDefaultConfiguration"`
 }
 
 // DatabaseConfig Database configuration.
 type DatabaseConfig struct {
-	Driver                           string            `mapstructure:"driver" validate:"required,oneof=POSTGRES SQLITE"`
 	ConnectionURL                    *CredentialConfig `mapstructure:"connectionUrl" validate:"required"`
+	Driver                           string            `mapstructure:"driver" validate:"required,oneof=POSTGRES SQLITE"`
+	SQLConnectionMaxLifetimeDuration string            `mapstructure:"sqlConnectionMaxLifetimeDuration"`
+	SQLMaxIdleConnections            int               `mapstructure:"sqlMaxIdleConnections"`
+	SQLMaxOpenConnections            int               `mapstructure:"sqlMaxOpenConnections"`
 	DisableForeignKeyWhenMigrating   bool              `mapstructure:"disableForeignKeyWhenMigrating"`
 	AllowGlobalUpdate                bool              `mapstructure:"allowGlobalUpdate"`
 	PrepareStatement                 bool              `mapstructure:"prepareStatement"`
-	SQLMaxIdleConnections            int               `mapstructure:"sqlMaxIdleConnections"`
-	SQLMaxOpenConnections            int               `mapstructure:"sqlMaxOpenConnections"`
-	SQLConnectionMaxLifetimeDuration string            `mapstructure:"sqlConnectionMaxLifetimeDuration"`
 }
 
 // SMTPConfig SMTP Configuration.
 type SMTPConfig struct {
-	Host               string            `mapstructure:"host" validation:"fqdn,required"`
-	Port               int               `mapstructure:"port" validation:"gt=0,required"`
 	Username           *CredentialConfig `mapstructure:"username"`
 	Password           *CredentialConfig `mapstructure:"password"`
+	Host               string            `mapstructure:"host" validation:"fqdn,required"`
 	Encryption         string            `mapstructure:"encryption" validation:"omitempty,oneof=NONE TLS SSL"`
 	AuthenticationType string            `mapstructure:"authenticationType" validation:"omitempty,oneof=PLAIN LOGIN CRAM-MD5"`
 	ConnectTimeout     string            `mapstructure:"connectTimeout"`
 	SendTimeout        string            `mapstructure:"sendTimeout"`
+	Port               int               `mapstructure:"port" validation:"gt=0,required"`
 	KeepAlive          bool              `mapstructure:"keepAlive"`
 	TLSSkipVerify      bool              `mapstructure:"tlsSkipVerify"`
 }

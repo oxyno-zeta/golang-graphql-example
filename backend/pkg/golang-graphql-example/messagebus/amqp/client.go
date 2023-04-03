@@ -49,11 +49,20 @@ type PublishConfigInput struct {
 
 // ConsumeConfigInput represents the consume configuration input.
 type ConsumeConfigInput struct {
+	// Args
+	Args amqp091.Table
+	// RequeueOnNackFn is a function that is called to have the requeue flag on a
+	// nack response when the message consume is in error.
+	// The default value is true is no function is set.
+	RequeueOnNackFn func(d *amqp091.Delivery, err error) bool
 	// QueueName is the queue name for consume.
 	QueueName string
 	// ConsumerPrefix is the prefix used for the consumer tag in AMQP consumer.
 	// The suffix is the hostname.
 	ConsumerPrefix string
+	// RetryDelay is the delay between two consume try.
+	// This take actions when the channel is disconnected for example.
+	RetryDelay time.Duration
 	// AutoAck
 	AutoAck bool
 	// Exclusive
@@ -62,15 +71,6 @@ type ConsumeConfigInput struct {
 	NoLocal bool
 	// NoWait
 	NoWait bool
-	// Args
-	Args amqp091.Table
-	// RetryDelay is the delay between two consume try.
-	// This take actions when the channel is disconnected for example.
-	RetryDelay time.Duration
-	// RequeueOnNackFn is a function that is called to have the requeue flag on a
-	// nack response when the message consume is in error.
-	// The default value is true is no function is set.
-	RequeueOnNackFn func(d *amqp091.Delivery, err error) bool
 }
 
 // Client represents the AMQP client.
