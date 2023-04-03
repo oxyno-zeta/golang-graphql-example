@@ -5,7 +5,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-addon-apollo-client',
-    '@storybook/addon-queryparams',
+    'storybook-addon-react-router-v6',
     'storybook-react-context',
     'storybook-react-i18next',
   ],
