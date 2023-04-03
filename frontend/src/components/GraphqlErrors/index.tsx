@@ -1,3 +1,4 @@
-import GraphqlErrors from './GraphqlErrors';
+import GraphqlErrors, { Props } from './GraphqlErrors';
 
 export default GraphqlErrors;
+export type { Props };
