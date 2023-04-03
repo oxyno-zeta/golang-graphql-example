@@ -20,6 +20,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 	"github.com/thoas/go-funk"
+	_ "go.uber.org/automaxprocs"
 )
 
 type services struct {

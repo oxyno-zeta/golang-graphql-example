@@ -34,6 +34,7 @@ require (
 	github.com/uber/jaeger-lib v2.4.1+incompatible
 	github.com/vektah/gqlparser/v2 v2.5.1
 	github.com/xhit/go-simple-mail/v2 v2.13.0
+	go.uber.org/automaxprocs v1.5.2
 	golang.org/x/oauth2 v0.6.0
 	gorm.io/driver/postgres v1.4.8
 	gorm.io/driver/sqlite v1.4.4
