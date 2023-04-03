@@ -53,6 +53,9 @@ output:
   path-prefix: ""
 # all available settings of specific linters
 linters-settings:
+  tagalign:
+    align: true
+    sort: true
   godox:
     # report any comments starting with keywords, this is useful for TODO or FIXME comments that
     # might be left in the code accidentally and should be resolved before merging
@@ -389,6 +392,7 @@ linters:
     - execinquery
     - reassign
     - usestdlibvars
+    # - tagalign # Added in 1.53.0
   disable:
     - deadcode
     - varcheck
