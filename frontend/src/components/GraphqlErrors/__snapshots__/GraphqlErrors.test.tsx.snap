@@ -1,521 +1,347 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GraphqlErrors should display a graphql error with extension when error is present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a graphql error with extension when errors are present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a graphql error without extension when error is present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           simple graphql error
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a graphql error without extension when errors are present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           simple graphql error
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a network error when error is present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           Forbidden
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a network error when errors are present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           Forbidden
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a network error with 1 error when error is present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           fake.path fake message
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display a network error with multiple errors when error is present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           fake.path fake message
         </p>
       </li>
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           fake.path2 fake message 2
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display two graphql error with extension when error is present 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display two graphql error with extension when errors are present (1 item with 2) 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`GraphqlErrors should display two graphql error with extension when errors are present (2 items) 1`] = `
-[
-  <style
-    dangerouslySetInnerHTML={
-      {
-        "__html": ".css-z0zjqa{margin:64px;}.css-z0zjqa color{main:#d32f2f;light:#ef5350;dark:#c62828;contrast-text:#fff;}",
-      }
-    }
-    data-emotion="css z0zjqa"
-  />,
+<div>
   <div
-    className="MuiBox-root css-z0zjqa"
+    class="MuiBox-root css-z0zjqa"
   >
-    <style
-      dangerouslySetInnerHTML={
-        {
-          "__html": ".css-1nkhxq8-MuiTypography-root{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;color:#d32f2f;}",
-        }
-      }
-      data-emotion="css 1nkhxq8-MuiTypography-root"
-    />
     <p
-      className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
     >
       common.errors
       :
     </p>
     <ul
-      className="MuiBox-root css-0"
+      class="MuiBox-root css-0"
     >
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
       <li
-        className="MuiBox-root css-0"
+        class="MuiBox-root css-0"
       >
         <p
-          className="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>
-  </div>,
-]
+  </div>
+</div>
 `;
+
+exports[`GraphqlErrors should return null when no error or errors are present 1`] = `<div />`;

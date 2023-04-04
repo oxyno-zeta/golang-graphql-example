@@ -12,9 +12,6 @@
     "@mui/material": "^5.11.11",
     "@mui/x-data-grid": "^6.0.0",
     "@mui/x-date-pickers": "^6.0.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
     "@types/autosuggest-highlight": "^3.2.0",
     "@types/capitalize": "^2.0.0",
     "@types/jest": "^29.5.0",
@@ -77,6 +74,9 @@
     "@storybook/builder-vite": "^0.4.2",
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react-test-renderer": "^18.0.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@welldone-software/why-did-you-render": "^7.0.1",
@@ -93,8 +93,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.11",
+    "jest-environment-jsdom": "^29.5.0",
     "react-docgen-typescript": "^2.2.2",
-    "react-test-renderer": "^18.2.0",
     "storybook-addon-apollo-client": "^4.1.4",
     "storybook-addon-react-router-v6": "^0.3.5",
     "storybook-react-context": "^0.6.0",
@@ -105,6 +105,7 @@
     "vite": "^4.2.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^2.4.0",
-    "vite-tsconfig-paths": "^4.0.7"
+    "vite-tsconfig-paths": "^4.0.7",
+    "whatwg-fetch": "^3.6.2"
   }
 }
