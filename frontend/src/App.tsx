@@ -49,6 +49,7 @@ function App() {
                 buildNavigateTo={(params) =>
                   params?.todos?.edges && params?.todos?.edges[0] && `/fake/${params?.todos?.edges[0].node.id}`
                 }
+                buildQueryVariables={(params) => ({ name: params.name as string })}
               />
             </MainContentWrapper>
           }

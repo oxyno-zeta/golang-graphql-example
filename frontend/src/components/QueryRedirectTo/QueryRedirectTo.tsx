@@ -13,10 +13,10 @@ interface Props<T, P extends OperationVariables> {
   // If path result is empty or undefined, then "no data" is displayed.
   // If you don't want any "no data" displayed, manage the redirect path
   buildNavigateTo: (params: T | undefined) => string | undefined | null;
+  // Build query variables function will return a query variable object.
+  buildQueryVariables: (params: Params<string>) => P;
   // Disable center loading subtitle.
   disableCenterLoadingSubtitle?: boolean;
-  // Build query variables function will return a query variable object.
-  buildQueryVariables?: (params: Params<string>) => P;
   // Query hook options.
   queryHookOptions?: Omit<QueryHookOptions<T, P>, 'variables'>;
   // No data Typography props.
@@ -30,7 +30,6 @@ interface Props<T, P extends OperationVariables> {
 }
 
 const defaultProps = {
-  buildQueryVariables: (params: Params<string>) => params as OperationVariables,
   queryHookOptions: {},
   noDataTypographyProps: {},
   centerLoadingProps: {},
@@ -56,9 +55,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
   const params = useParams();
 
   // Build query variables
-  const queryVariables: P = buildQueryVariables
-    ? buildQueryVariables(params)
-    : (defaultProps.buildQueryVariables(params) as P);
+  const queryVariables: P = buildQueryVariables(params);
 
   // Query
   const { data, loading, error } = useQuery<T, P>(query, {
