@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1rt4buw"
+  >
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 css-mmopz6-MuiTypography-root"
+    >
+      common.loadingText
+    </h6>
+  </div>
+</div>
+`;
+
+exports[`QueryRedirectTo should display a loading without subtitle when query is pending 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1rt4buw"
+  >
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`QueryRedirectTo should display an error when an error is raised on query 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1rt4buw"
+  >
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 css-mmopz6-MuiTypography-root"
+    >
+      common.loadingText
+    </h6>
+  </div>
+</div>
+`;
+
+exports[`QueryRedirectTo should display an error when an error is raised on query 2`] = `
+<div>
+  <div
+    class="MuiBox-root css-z0zjqa"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root css-0"
+    >
+      <li
+        class="MuiBox-root css-0"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+        >
+          common.errorCode.FORBIDDEN
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`QueryRedirectTo should display no data when no data is returned from query 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1rt4buw"
+  >
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 css-mmopz6-MuiTypography-root"
+    >
+      common.loadingText
+    </h6>
+  </div>
+</div>
+`;
+
+exports[`QueryRedirectTo should display no data when no data is returned from query 2`] = `
+<div>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-1xmhd5p-MuiTypography-root"
+  >
+    common.noData
+  </p>
+</div>
+`;
+
+exports[`QueryRedirectTo should redirect to new path on success 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-1rt4buw"
+  >
+    <span
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+      role="progressbar"
+      style="width: 40px; height: 40px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </span>
+    <h6
+      class="MuiTypography-root MuiTypography-subtitle2 css-mmopz6-MuiTypography-root"
+    >
+      common.loadingText
+    </h6>
+  </div>
+</div>
+`;
+
+exports[`QueryRedirectTo should redirect to new path on success 2`] = `
+<div>
+  <div>
+    Fake
+  </div>
+</div>
+`;
