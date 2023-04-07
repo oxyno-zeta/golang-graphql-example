@@ -4,7 +4,7 @@ import { useQuery, DocumentNode, QueryHookOptions, OperationVariables } from '@a
 import { useParams, Params, Navigate, NavigateProps } from 'react-router-dom';
 import CenterLoading, { Props as CenterLoadingProps } from '~components/CenterLoading';
 import GraphqlErrors, { Props as GraphqlErrorsProps } from '~components/GraphqlErrors';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import NoData, { Props as NoDataTypographyProps } from '~components/NoData';
 
 export interface Props<T, P extends OperationVariables> {
   // Query document to execute.
@@ -20,7 +20,7 @@ export interface Props<T, P extends OperationVariables> {
   // Query hook options.
   queryHookOptions?: Omit<QueryHookOptions<T, P>, 'variables'>;
   // No data Typography props.
-  noDataTypographyProps?: TypographyProps;
+  noDataTypographyProps?: NoDataTypographyProps;
   // Center loading props.
   centerLoadingProps?: CenterLoadingProps;
   // Graphql Errors props.
@@ -85,11 +85,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
 
   // Check if to isn't present
   if (!to) {
-    return (
-      <Typography sx={{ display: 'flex', justifyContent: 'center', margin: '15px 0' }} {...noDataTypographyProps}>
-        {t('common.noData')}
-      </Typography>
-    );
+    return <NoData {...noDataTypographyProps} />;
   }
 
   return <Navigate to={to} {...navigateProps} />;

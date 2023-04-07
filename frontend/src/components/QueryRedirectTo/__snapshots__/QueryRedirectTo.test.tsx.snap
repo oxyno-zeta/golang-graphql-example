@@ -158,7 +158,7 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
 exports[`QueryRedirectTo should display no data when no data is returned from query 2`] = `
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-1xmhd5p-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 css-wdvp0u-MuiTypography-root"
   >
     common.noData
   </p>
