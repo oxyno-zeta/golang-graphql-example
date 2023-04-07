@@ -5,7 +5,7 @@ import { mdiHeart } from '@mdi/js';
 import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material';
 
-interface Props {
+export interface Props {
   containerBoxSx?: SxProps;
   typographyProps?: TypographyProps;
 }
