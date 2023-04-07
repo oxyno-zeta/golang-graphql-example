@@ -10,7 +10,7 @@ import { PageInfoModel } from '../../models/general';
 import { getAllSearchParams } from '../../utils/urlSearchParams';
 import { cleanPaginationSearchParams } from '../../utils/pagination';
 
-interface Props {
+export interface Props {
   pageInfo: PageInfoModel;
   maxPaginationSize: number;
   handleFirstPage?: () => void | undefined;
