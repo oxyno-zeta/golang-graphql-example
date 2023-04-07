@@ -6,7 +6,7 @@ import CenterLoading, { Props as CenterLoadingProps } from '~components/CenterLo
 import GraphqlErrors, { Props as GraphqlErrorsProps } from '~components/GraphqlErrors';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
-interface Props<T, P extends OperationVariables> {
+export interface Props<T, P extends OperationVariables> {
   // Query document to execute.
   query: DocumentNode;
   // Build navigate to function will return a path.
