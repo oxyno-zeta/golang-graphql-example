@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
-interface Props {
-  typographyProps?: TypographyProps;
+export interface Props {
+  typographyProps?: Omit<TypographyProps, 'children'>;
 }
 
 const defaultProps = {

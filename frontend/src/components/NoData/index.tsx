@@ -1,3 +1,4 @@
-import NoData from './NoData';
+import NoData, { Props } from './NoData';
 
 export default NoData;
+export type { Props };
