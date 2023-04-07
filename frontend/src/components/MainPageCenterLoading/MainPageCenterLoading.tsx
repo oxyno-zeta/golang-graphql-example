@@ -3,7 +3,7 @@ import { Theme } from '@mui/material/styles';
 import Backdrop, { BackdropProps } from '@mui/material/Backdrop';
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 
-interface Props {
+export interface Props {
   backdropProps?: BackdropProps;
   circularProgressProps?: CircularProgressProps;
 }
