@@ -1,4 +1,4 @@
-import Pagination, { Props } from './Pagination';
+import Pagination, { Props as PaginationProps } from './Pagination';
 
 export default Pagination;
-export type { Props };
+export type { PaginationProps };

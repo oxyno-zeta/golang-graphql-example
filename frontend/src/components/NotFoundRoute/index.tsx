@@ -1,4 +1,4 @@
-import NotFoundRoute, { Props } from './NotFoundRoute';
+import NotFoundRoute, { Props as NotFoundRouteProps } from './NotFoundRoute';
 
 export default NotFoundRoute;
-export type { Props };
+export type { NotFoundRouteProps };

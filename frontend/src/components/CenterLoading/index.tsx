@@ -1,4 +1,4 @@
-import CenterLoading, { Props } from './CenterLoading';
+import CenterLoading, { Props as CenterLoadingProps } from './CenterLoading';
 
 export default CenterLoading;
-export type { Props };
+export type { CenterLoadingProps };

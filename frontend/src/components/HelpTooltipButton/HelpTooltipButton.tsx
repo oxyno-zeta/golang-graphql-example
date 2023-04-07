@@ -4,7 +4,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import { mdiHelpCircle } from '@mdi/js';
 import ForcedTooltip, { ForcedTooltipProps } from '../ForcedTooltip';
 
-interface Props {
+export interface Props {
   tooltipTitle: ReactNode;
   tooltipProps?: Omit<ForcedTooltipProps, 'title'>;
   iconButtonProps?: Omit<IconButtonProps, 'onClick'>;

@@ -2,9 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery, DocumentNode, QueryHookOptions, OperationVariables } from '@apollo/client';
 import { useParams, Params, Navigate, NavigateProps } from 'react-router-dom';
-import CenterLoading, { Props as CenterLoadingProps } from '~components/CenterLoading';
-import GraphqlErrors, { Props as GraphqlErrorsProps } from '~components/GraphqlErrors';
-import NoData, { Props as NoDataTypographyProps } from '~components/NoData';
+import CenterLoading, { CenterLoadingProps } from '~components/CenterLoading';
+import GraphqlErrors, { GraphqlErrorsProps } from '~components/GraphqlErrors';
+import NoData, { NoDataTypographyProps } from '~components/NoData';
 
 export interface Props<T, P extends OperationVariables> {
   // Query document to execute.
