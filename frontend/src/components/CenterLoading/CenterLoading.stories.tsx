@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Stack from '@mui/material/Stack';
+import { useTranslation } from 'react-i18next';
 import CenterLoading, { Props } from './CenterLoading';
 
 export default {
@@ -26,6 +27,12 @@ export const Colors: ComponentStory<typeof CenterLoading> = function C() {
   );
 };
 
-export const Subtitle: ComponentStory<typeof CenterLoading> = function C() {
-  return <CenterLoading subtitle="Loading..." />;
+export const Subtitles: ComponentStory<typeof CenterLoading> = function C() {
+  const { t } = useTranslation();
+  return (
+    <Stack spacing={2} maxWidth={300}>
+      <CenterLoading subtitle={t('common.loadingText')} />
+      <CenterLoading circularProgressProps={{ color: 'error' }} subtitle={t('common.errors')} />
+    </Stack>
+  );
 };
