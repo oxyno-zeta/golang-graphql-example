@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoData should display no data 1`] = `
+<div>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-wdvp0u-MuiTypography-root"
+  >
+    common.noData
+  </p>
+</div>
+`;
+
+exports[`NoData should display no data with specific variant 1`] = `
+<div>
+  <p
+    class="MuiTypography-root MuiTypography-body2 css-1ngmjzi-MuiTypography-root"
+  >
+    common.noData
+  </p>
+</div>
+`;
