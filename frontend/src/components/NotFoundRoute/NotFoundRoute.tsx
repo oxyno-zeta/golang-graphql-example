@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
-interface Props {
+export interface Props {
   typographyProps?: TypographyProps;
 }
 
