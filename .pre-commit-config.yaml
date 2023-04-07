@@ -18,6 +18,7 @@ repos:
         stages: [commit]
       - id: trailing-whitespace
         stages: [commit]
+        exclude: \.test\.tsx\.snap$
       - id: end-of-file-fixer
         stages: [commit]
       - id: check-yaml
