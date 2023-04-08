@@ -26,7 +26,11 @@ Playground.args = {
   }),
 };
 
-export const NetworkError: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const ClassicError: ComponentStory<typeof ErrorsDisplay> = function C() {
+  return <ErrorsDisplay error={new Error('fake error !')} />;
+};
+
+export const GraphQLNetworkError: ComponentStory<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       error={
