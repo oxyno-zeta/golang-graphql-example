@@ -8,7 +8,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Title from '~components/Title';
 import FilterSearchBar from '~components/filters/FilterSearchBar';
-import GraphqlErrors from '~components/GraphqlErrors';
+import ErrorsDisplay from '~components/ErrorsDisplay';
 import SortButton from '~components/sorts/SortButton';
 import Pagination from '~components/Pagination';
 import GridTableViewSwitcher from '~components/GridTableViewSwitcher';
@@ -118,7 +118,7 @@ function Todos() {
   return (
     <>
       <Title title="Todos" />
-      {error && <GraphqlErrors error={error} />}
+      {error && <ErrorsDisplay error={error} />}
       {!error && (
         <Paper variant="outlined">
           <TopListContainer>

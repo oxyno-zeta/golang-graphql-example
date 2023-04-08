@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useQuery, DocumentNode, QueryHookOptions, OperationVariables } from '@apollo/client';
 import { useParams, Params, Navigate, NavigateProps } from 'react-router-dom';
 import CenterLoading, { CenterLoadingProps } from '~components/CenterLoading';
-import GraphqlErrors, { GraphqlErrorsProps } from '~components/GraphqlErrors';
+import ErrorsDisplay, { ErrorsDisplayProps } from '~components/ErrorsDisplay';
 import NoData, { NoDataTypographyProps } from '~components/NoData';
 
 export interface Props<T, P extends OperationVariables> {
@@ -24,7 +24,7 @@ export interface Props<T, P extends OperationVariables> {
   // Center loading props.
   centerLoadingProps?: CenterLoadingProps;
   // Graphql Errors props.
-  graphqlErrorsProps?: Omit<GraphqlErrorsProps, 'error|errors'>;
+  graphqlErrorsProps?: Omit<ErrorsDisplayProps, 'error|errors'>;
   // Navigate props.
   navigateProps?: Omit<NavigateProps, 'to'>;
 }
@@ -77,7 +77,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
 
   // Check error
   if (error) {
-    return <GraphqlErrors error={error} {...graphqlErrorsProps} />;
+    return <ErrorsDisplay error={error} {...graphqlErrorsProps} />;
   }
 
   // Build navigate to

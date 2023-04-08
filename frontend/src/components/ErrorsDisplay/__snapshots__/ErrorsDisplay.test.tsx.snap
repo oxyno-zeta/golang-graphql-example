@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GraphqlErrors should display a graphql error with extension when error is present 1`] = `
+exports[`ErrorsDisplay should display a graphql error with extension when error is present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -28,7 +28,7 @@ exports[`GraphqlErrors should display a graphql error with extension when error 
 </div>
 `;
 
-exports[`GraphqlErrors should display a graphql error with extension when errors are present 1`] = `
+exports[`ErrorsDisplay should display a graphql error with extension when errors are present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -56,7 +56,7 @@ exports[`GraphqlErrors should display a graphql error with extension when errors
 </div>
 `;
 
-exports[`GraphqlErrors should display a graphql error without extension when error is present 1`] = `
+exports[`ErrorsDisplay should display a graphql error without extension when error is present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -84,7 +84,7 @@ exports[`GraphqlErrors should display a graphql error without extension when err
 </div>
 `;
 
-exports[`GraphqlErrors should display a graphql error without extension when errors are present 1`] = `
+exports[`ErrorsDisplay should display a graphql error without extension when errors are present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -112,7 +112,7 @@ exports[`GraphqlErrors should display a graphql error without extension when err
 </div>
 `;
 
-exports[`GraphqlErrors should display a network error when error is present 1`] = `
+exports[`ErrorsDisplay should display a network error when error is present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -140,7 +140,7 @@ exports[`GraphqlErrors should display a network error when error is present 1`] 
 </div>
 `;
 
-exports[`GraphqlErrors should display a network error when errors are present 1`] = `
+exports[`ErrorsDisplay should display a network error when errors are present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -168,7 +168,7 @@ exports[`GraphqlErrors should display a network error when errors are present 1`
 </div>
 `;
 
-exports[`GraphqlErrors should display a network error with 1 error when error is present 1`] = `
+exports[`ErrorsDisplay should display a network error with 1 error when error is present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -196,7 +196,7 @@ exports[`GraphqlErrors should display a network error with 1 error when error is
 </div>
 `;
 
-exports[`GraphqlErrors should display a network error with multiple errors when error is present 1`] = `
+exports[`ErrorsDisplay should display a network error with multiple errors when error is present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -233,7 +233,100 @@ exports[`GraphqlErrors should display a network error with multiple errors when 
 </div>
 `;
 
-exports[`GraphqlErrors should display two graphql error with extension when error is present 1`] = `
+exports[`ErrorsDisplay should display classic error when error is present 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-z0zjqa"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root css-0"
+    >
+      <li
+        class="MuiBox-root css-0"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+        >
+          error1
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display classic error when errors are present (1 item) 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-z0zjqa"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root css-0"
+    >
+      <li
+        class="MuiBox-root css-0"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+        >
+          error1
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display classic error when errors are present (2 items) 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-z0zjqa"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root css-0"
+    >
+      <li
+        class="MuiBox-root css-0"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+        >
+          error1
+        </p>
+      </li>
+      <li
+        class="MuiBox-root css-0"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+        >
+          error2
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display two graphql error with extension when error is present 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -270,7 +363,7 @@ exports[`GraphqlErrors should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`GraphqlErrors should display two graphql error with extension when errors are present (1 item with 2) 1`] = `
+exports[`ErrorsDisplay should display two graphql error with extension when errors are present (1 item with 2) 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -307,7 +400,7 @@ exports[`GraphqlErrors should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`GraphqlErrors should display two graphql error with extension when errors are present (2 items) 1`] = `
+exports[`ErrorsDisplay should display two graphql error with extension when errors are present (2 items) 1`] = `
 <div>
   <div
     class="MuiBox-root css-z0zjqa"
@@ -344,4 +437,4 @@ exports[`GraphqlErrors should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`GraphqlErrors should return null when no error or errors are present 1`] = `<div />`;
+exports[`ErrorsDisplay should return null when no error or errors are present 1`] = `<div />`;

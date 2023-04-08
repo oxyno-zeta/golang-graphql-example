@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
 
 export interface Props {
-  error?: ApolloError;
-  errors?: ApolloError[];
+  error?: ApolloError | Error;
+  errors?: (ApolloError | Error)[];
   noMargin?: boolean;
   containerBoxSx?: SxProps;
   errorTitleTypographyProps?: TypographyProps;
@@ -33,7 +33,7 @@ const defaultProps = {
 };
 
 /* eslint-disable react/no-array-index-key */
-function GraphqlErrors({
+function ErrorsDisplay({
   error,
   errors,
   noMargin,
@@ -65,44 +65,54 @@ function GraphqlErrors({
   // Loop over errors
   errorList?.forEach((err, mainIndex) => {
     const contents: { content: string; key: Key }[] = [];
-    if (
-      err.networkError &&
-      (!(err.networkError as ServerError).result ||
-        Object.keys((err.networkError as ServerError).result).length === 0 ||
-        !err.graphQLErrors)
-    ) {
-      contents.push({ content: err.networkError.message, key: mainIndex });
+    if ((err as ApolloError).networkError || (err as ApolloError).graphQLErrors) {
+      // Create intermediate variable just for typescript.............
+      const workingErr: ApolloError = err as ApolloError;
+
+      if (
+        workingErr.networkError &&
+        (!(workingErr.networkError as ServerError).result ||
+          Object.keys((workingErr.networkError as ServerError).result).length === 0 ||
+          !workingErr.graphQLErrors)
+      ) {
+        contents.push({ content: workingErr.networkError.message, key: mainIndex });
+      }
+
+      if (workingErr.graphQLErrors) {
+        contents.push(
+          ...workingErr.graphQLErrors.map(({ message, extensions }, i) => {
+            let mess = message;
+            // Check if there is a code in extensions
+            if (extensions && extensions.code) {
+              mess = t(`common.errorCode.${extensions.code}`);
+            }
+
+            return { content: mess, key: `${mainIndex}-graphQLErrors-${i}` };
+          }),
+        );
+      }
+
+      if (
+        workingErr.networkError &&
+        (workingErr.networkError as ServerError).result &&
+        (workingErr.networkError as ServerError).result.errors
+      ) {
+        contents.push(
+          ...((workingErr.networkError as ServerError).result.errors as [CustomNetworkError]).map(
+            ({ message, path }, i) => ({
+              content: `${path?.join('.')} ${message}`,
+              key: `${mainIndex}-networkError-${i}`,
+            }),
+          ),
+        );
+      }
+    } else {
+      // Isn't an apollo error
+      contents.push({ content: err.message, key: mainIndex });
     }
 
-    if (err.graphQLErrors) {
-      contents.push(
-        ...err.graphQLErrors.map(({ message, extensions }, i) => {
-          let mess = message;
-          // Check if there is a code in extensions
-          if (extensions && extensions.code) {
-            mess = t(`common.errorCode.${extensions.code}`);
-          }
-
-          return { content: mess, key: `${mainIndex}-graphQLErrors-${i}` };
-        }),
-      );
-    }
-
-    if (
-      err.networkError &&
-      (err.networkError as ServerError).result &&
-      (err.networkError as ServerError).result.errors
-    ) {
-      contents.push(
-        ...((err.networkError as ServerError).result.errors as [CustomNetworkError]).map(({ message, path }, i) => ({
-          content: `${path?.join('.')} ${message}`,
-          key: `${mainIndex}-networkError-${i}`,
-        })),
-      );
-    }
-
-    // Check if a content have been detected
     if (contents) {
+      // Check if a content have been detected
       // Save element
       elements.push(
         ...contents.map(({ content, key }) => (
@@ -129,6 +139,6 @@ function GraphqlErrors({
 }
 /* eslint-enable */
 
-GraphqlErrors.defaultProps = defaultProps;
+ErrorsDisplay.defaultProps = defaultProps;
 
-export default GraphqlErrors;
+export default ErrorsDisplay;

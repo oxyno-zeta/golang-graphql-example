@@ -13,24 +13,24 @@ import {
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorGraphqlError,
-} from './GraphqlErrors.storage-test';
+} from './ErrorsDisplay.storage-test';
 
-import GraphqlErrors from './GraphqlErrors';
+import ErrorsDisplay from './ErrorsDisplay';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-describe('GraphqlErrors', () => {
+describe('ErrorsDisplay', () => {
   it('should return null when no error or errors are present', () => {
-    const { container } = render(<GraphqlErrors />);
+    const { container } = render(<ErrorsDisplay />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should display a network error when error is present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         error={
           new ApolloError({
             errorMessage: 'network apollo error',
@@ -45,8 +45,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'Forbidden'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -54,7 +54,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a network error with 1 error when error is present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         error={
           new ApolloError({
             errorMessage: 'network apollo error',
@@ -69,8 +69,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'fake.path fake message'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -78,7 +78,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a network error with multiple errors when error is present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         error={
           new ApolloError({
             errorMessage: 'network apollo error',
@@ -93,8 +93,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'fake.path fake message', 'fake.path2 fake message 2'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -102,7 +102,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a network error when errors are present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         errors={[
           new ApolloError({
             errorMessage: 'network apollo error',
@@ -117,8 +117,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'Forbidden'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -126,7 +126,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a graphql error without extension when error is present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         error={
           new ApolloError({
             errorMessage: 'one graphql apollo error',
@@ -141,8 +141,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'simple graphql error'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -150,7 +150,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a graphql error without extension when errors are present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         errors={[
           new ApolloError({
             errorMessage: 'one graphql apollo error',
@@ -165,8 +165,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'simple graphql error'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -174,7 +174,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a graphql error with extension when error is present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         error={
           new ApolloError({
             errorMessage: 'one graphql apollo error',
@@ -189,8 +189,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'common.errorCode.FORBIDDEN'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -198,7 +198,7 @@ describe('GraphqlErrors', () => {
 
   it('should display a graphql error with extension when errors are present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         errors={[
           new ApolloError({
             errorMessage: 'one graphql apollo error',
@@ -213,8 +213,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'common.errorCode.FORBIDDEN'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -222,7 +222,7 @@ describe('GraphqlErrors', () => {
 
   it('should display two graphql error with extension when error is present', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         error={
           new ApolloError({
             errorMessage: 'two graphql apollo error',
@@ -237,8 +237,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -246,7 +246,7 @@ describe('GraphqlErrors', () => {
 
   it('should display two graphql error with extension when errors are present (1 item with 2)', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         errors={[
           new ApolloError({
             errorMessage: 'two graphql apollo error',
@@ -261,8 +261,8 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
@@ -270,7 +270,7 @@ describe('GraphqlErrors', () => {
 
   it('should display two graphql error with extension when errors are present (2 items)', () => {
     const { container } = render(
-      <GraphqlErrors
+      <ErrorsDisplay
         errors={[
           new ApolloError({
             errorMessage: 'two graphql apollo error',
@@ -289,8 +289,53 @@ describe('GraphqlErrors', () => {
 
     // Prepare values
     const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
-    allP.forEach((item, index) => {
-      expect(item.innerHTML).toEqual(values[index]);
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display classic error when error is present', () => {
+    const { container } = render(<ErrorsDisplay error={new Error('error1')} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(2);
+
+    // Prepare values
+    const values = ['common.errors:', 'error1'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display classic error when errors are present (1 item)', () => {
+    const { container } = render(<ErrorsDisplay errors={[new Error('error1')]} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(2);
+
+    // Prepare values
+    const values = ['common.errors:', 'error1'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display classic error when errors are present (2 items)', () => {
+    const { container } = render(<ErrorsDisplay errors={[new Error('error1'), new Error('error2')]} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(3);
+
+    // Prepare values
+    const values = ['common.errors:', 'error1', 'error2'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
     });
 
     expect(container).toMatchSnapshot();
