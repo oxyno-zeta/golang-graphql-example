@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
 
-interface Props {
+export interface Props {
   leftElement?: ReactNode;
   titleElement?: ReactNode;
   rightElement?: ReactNode;
@@ -22,7 +22,7 @@ const defaultProps = {
     style: { fontWeight: 'bold' },
   },
   toolbarProps: {
-    style: { paddingLeft: '0px' },
+    style: { paddingLeft: '0px', paddingRight: '0px' },
   },
 };
 

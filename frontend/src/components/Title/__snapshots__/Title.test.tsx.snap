@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title should display title only 1`] = `
+<div>
+  <div
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+    style="padding-left: 0px; padding-right: 0px;"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-mlfmu-MuiTypography-root"
+      style="font-weight: bold;"
+    >
+      Fake title
+    </h5>
+    <div
+      style="flex-grow: 1;"
+    />
+  </div>
+</div>
+`;
+
+exports[`Title should display title with left element only 1`] = `
+<div>
+  <div
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+    style="padding-left: 0px; padding-right: 0px;"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-mlfmu-MuiTypography-root"
+      style="font-weight: bold;"
+    >
+      Fake title
+    </h5>
+    <div
+      style="flex-grow: 1;"
+    />
+  </div>
+</div>
+`;
+
+exports[`Title should display title with right and left element 1`] = `
+<div>
+  <div
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+    style="padding-left: 0px; padding-right: 0px;"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-mlfmu-MuiTypography-root"
+      style="font-weight: bold;"
+    >
+      Fake title
+    </h5>
+    <div
+      style="flex-grow: 1;"
+    />
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M10 7V9H9V15H10V17H6V15H7V9H6V7H10M16 7C17.11 7 18 7.9 18 9V15C18 16.11 17.11 17 16 17H12V7M16 9H14V15H16V9Z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Title should display title with right element only 1`] = `
+<div>
+  <div
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+    style="padding-left: 0px; padding-right: 0px;"
+  >
+    <h5
+      class="MuiTypography-root MuiTypography-h5 css-mlfmu-MuiTypography-root"
+      style="font-weight: bold;"
+    >
+      Fake title
+    </h5>
+    <div
+      style="flex-grow: 1;"
+    />
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"
+        />
+      </svg>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
