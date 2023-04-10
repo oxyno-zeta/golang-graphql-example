@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { mdiMenu } from '@mdi/js';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
@@ -8,18 +8,20 @@ import Title, { Props } from './Title';
 export default {
   title: 'Components/Title',
   component: Title,
-} as ComponentMeta<typeof Title>;
+} as Meta<typeof Title>;
 
-const Template: ComponentStory<typeof Title> = function C(args: Props) {
+const Template: StoryFn<typeof Title> = function C(args: Props) {
   return <Title {...args} />;
 };
 
-export const Playground = Template.bind({});
-Playground.args = {
-  title: 'Fake',
+export const Playground = {
+  render: Template,
+  args: {
+    title: 'Fake',
+  },
 };
 
-export const LeftElement: ComponentStory<typeof Title> = function C() {
+export const LeftElement: StoryFn<typeof Title> = function C() {
   return (
     <Title
       leftElement={
@@ -34,7 +36,7 @@ export const LeftElement: ComponentStory<typeof Title> = function C() {
   );
 };
 
-export const RightElement: ComponentStory<typeof Title> = function C() {
+export const RightElement: StoryFn<typeof Title> = function C() {
   return (
     <Title
       rightElement={
@@ -49,7 +51,7 @@ export const RightElement: ComponentStory<typeof Title> = function C() {
   );
 };
 
-export const RightAndLeftElement: ComponentStory<typeof Title> = function C() {
+export const RightAndLeftElement: StoryFn<typeof Title> = function C() {
   return (
     <Title
       leftElement={

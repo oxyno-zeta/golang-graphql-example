@@ -10,7 +10,13 @@ export default defineConfig({
       exclude: /\.stories\.(t|j)sx?$/,
     }),
     tsconfigPaths(),
-    eslint({ emitWarning: true }),
+    eslint({
+      emitWarning: true,
+      // See issue: https://github.com/storybookjs/builder-vite/issues/367
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      exclude: [/virtual:/, /node_modules/],
+    }),
   ],
   build: {
     target: 'es2018',

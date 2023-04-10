@@ -1,15 +1,17 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import NotFoundRoute, { Props } from './NotFoundRoute';
 
 export default {
   title: 'Components/NotFoundRoute',
   component: NotFoundRoute,
-} as ComponentMeta<typeof NotFoundRoute>;
+} as Meta<typeof NotFoundRoute>;
 
-const Template: ComponentStory<typeof NotFoundRoute> = function C(args: Props) {
+const Template: StoryFn<typeof NotFoundRoute> = function C(args: Props) {
   return <NotFoundRoute {...args} />;
 };
 
-export const Playground = Template.bind({});
-Playground.args = {};
+export const Playground = {
+  render: Template,
+  args: {},
+};

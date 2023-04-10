@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
 
 export interface Props {
-  error?: ApolloError | Error;
+  error?: ApolloError | Error | null;
   errors?: (ApolloError | Error)[];
   noMargin?: boolean;
   containerBoxSx?: SxProps;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { ApolloError } from '@apollo/client';
 import ErrorsDisplay, { Props } from './ErrorsDisplay';
 import {
@@ -12,25 +12,27 @@ import {
 export default {
   title: 'Components/ErrorsDisplay',
   component: ErrorsDisplay,
-} as ComponentMeta<typeof ErrorsDisplay>;
+} as Meta<typeof ErrorsDisplay>;
 
-const Template: ComponentStory<typeof ErrorsDisplay> = function C(args: Props) {
+const Template: StoryFn<typeof ErrorsDisplay> = function C(args: Props) {
   return <ErrorsDisplay {...args} />;
 };
 
-export const Playground = Template.bind({});
-Playground.args = {
-  error: new ApolloError({
-    errorMessage: 'network apollo error',
-    networkError: forbiddenNetworkError,
-  }),
+export const Playground = {
+  render: Template,
+  args: {
+    error: new ApolloError({
+      errorMessage: 'network apollo error',
+      networkError: forbiddenNetworkError,
+    }),
+  },
 };
 
-export const ClassicError: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const ClassicError: StoryFn<typeof ErrorsDisplay> = function C() {
   return <ErrorsDisplay error={new Error('fake error !')} />;
 };
 
-export const GraphQLNetworkError: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const GraphQLNetworkError: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       error={
@@ -43,7 +45,7 @@ export const GraphQLNetworkError: ComponentStory<typeof ErrorsDisplay> = functio
   );
 };
 
-export const OneGraphQLErrorWithoutExtension: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const OneGraphQLErrorWithoutExtension: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       error={
@@ -56,7 +58,7 @@ export const OneGraphQLErrorWithoutExtension: ComponentStory<typeof ErrorsDispla
   );
 };
 
-export const OneGraphQLErrorWithExtension: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const OneGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       error={
@@ -69,7 +71,7 @@ export const OneGraphQLErrorWithExtension: ComponentStory<typeof ErrorsDisplay> 
   );
 };
 
-export const TwoGraphQLErrorWithExtension: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const TwoGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       error={
@@ -82,7 +84,7 @@ export const TwoGraphQLErrorWithExtension: ComponentStory<typeof ErrorsDisplay> 
   );
 };
 
-export const OneGraphQLErrorWithoutMargin: ComponentStory<typeof ErrorsDisplay> = function C() {
+export const OneGraphQLErrorWithoutMargin: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       noMargin

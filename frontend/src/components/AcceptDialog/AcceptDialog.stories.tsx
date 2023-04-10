@@ -1,37 +1,38 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import AcceptDialog, { Props } from './AcceptDialog';
 
 const storybookProps = {
   open: true,
   title: 'Title',
   content: 'Main content !',
-  handleClose: () => {
-    // eslint-disable-next-line no-alert
-    alert('closed !');
-  },
-  handleOk: () => {
-    // eslint-disable-next-line no-alert
-    alert('ok !');
-    return Promise.resolve();
-  },
   dialogProps: { disablePortal: true },
 };
 
 export default {
   title: 'Components/AcceptDialog',
   component: AcceptDialog,
-} as ComponentMeta<typeof AcceptDialog>;
+} as Meta<typeof AcceptDialog>;
 
-const Template: ComponentStory<typeof AcceptDialog> = function C(args: Props) {
-  return <AcceptDialog {...args} />;
+const Template: StoryFn<typeof AcceptDialog> = function C({ handleOk, ...args }: Props) {
+  return (
+    <AcceptDialog
+      {...args}
+      handleOk={() => {
+        handleOk();
+        return Promise.resolve();
+      }}
+    />
+  );
 };
 
-export const Playground = Template.bind({});
-Playground.args = {
-  ...storybookProps,
+export const Playground = {
+  render: Template,
+  args: {
+    ...storybookProps,
+  },
 };
 
-export const OkDisabled: ComponentStory<typeof AcceptDialog> = function C() {
-  return <AcceptDialog okDisabled {...storybookProps} />;
+export const OkDisabled: StoryFn<typeof AcceptDialog> = function C(args: Props) {
+  return <AcceptDialog okDisabled {...storybookProps} {...args} />;
 };
