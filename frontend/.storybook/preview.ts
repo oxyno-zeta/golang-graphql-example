@@ -29,7 +29,7 @@ const preview: Preview = {
       MockedProvider,
       // any props you want to pass to MockedProvider on every story
     },
-    actions: { argTypesRegex: '^(on|handle).*' },
+    actions: { argTypesRegex: '^(on|handle)[A-Z].*' },
     controls: {
       expanded: true,
       hideNoControlsWarning: true,

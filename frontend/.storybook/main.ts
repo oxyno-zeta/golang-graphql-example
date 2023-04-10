@@ -1,4 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from 'vite';
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -9,10 +11,20 @@ const config: StorybookConfig = {
     'storybook-addon-react-router-v6',
     'storybook-react-context',
     'storybook-react-i18next',
+    'storybook-dark-mode',
   ],
   framework: {
     name: '@storybook/react-vite',
     options: {},
+  },
+  async viteFinal(config) {
+    // Merge custom configuration into the default config
+    return mergeConfig(config, {
+      // Add storybook-specific dependencies to pre-optimization
+      optimizeDeps: {
+        include: ['storybook-addon-designs'],
+      },
+    });
   },
   core: {
     disableTelemetry: true,
@@ -22,9 +34,7 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       skipChildrenPropWithoutDoc: false,
-      // speeds up storybook build time
       shouldExtractLiteralValuesFromEnum: true,
-      // makes union prop types like variant and size appear as select controls
       shouldRemoveUndefinedFromOptional: true, // makes string and boolean types that can be undefined appear as inputs and switches
     },
   },
@@ -32,4 +42,5 @@ const config: StorybookConfig = {
     autodocs: true,
   },
 };
+
 export default config;
