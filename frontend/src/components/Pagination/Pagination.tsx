@@ -13,8 +13,11 @@ import { cleanPaginationSearchParams } from '../../utils/pagination';
 export interface Props {
   pageInfo: PageInfoModel;
   maxPaginationSize: number;
+  // Using handleFirstPage will disable search param management
   handleFirstPage?: () => void | undefined;
+  // Using handlePreviousPage will disable search param management
   handlePreviousPage?: () => void | undefined;
+  // Using handleNextPage will disable search param management
   handleNextPage?: () => void | undefined;
   toolbarProps?: ToolbarProps;
   firstIconButtonProps?: IconButtonProps;
@@ -123,7 +126,7 @@ function Pagination({
         </Tooltip>
         <Tooltip title={<>{t('common.previousPageAction')}</>}>
           <span>
-            <IconButton disabled={!pageInfo.hasPreviousPage} {...previousPageProps} {...nextIconButtonProps}>
+            <IconButton disabled={!pageInfo.hasPreviousPage} {...previousPageProps} {...previousIconButtonProps}>
               <SvgIcon>
                 <path d={mdiChevronLeft} />
               </SvgIcon>
@@ -132,7 +135,7 @@ function Pagination({
         </Tooltip>
         <Tooltip title={<>{t('common.nextPageAction')}</>}>
           <span>
-            <IconButton disabled={!pageInfo.hasNextPage} {...nextPageProps} {...previousIconButtonProps}>
+            <IconButton disabled={!pageInfo.hasNextPage} {...nextPageProps} {...nextIconButtonProps}>
               <SvgIcon>
                 <path d={mdiChevronRight} />
               </SvgIcon>
