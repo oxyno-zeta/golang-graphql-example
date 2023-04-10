@@ -30,6 +30,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/stretchr/testify/suite"
+	"go.uber.org/goleak"
 	"gorm.io/gorm/schema"
 )
 
@@ -210,5 +211,13 @@ func (suite *GraphQLTestSuite) setupGenericDataset(dataset []interface{}) {
 }
 
 func TestGraphQLTestSuite(t *testing.T) {
+	// Verify there isn't any go routine leak
+	defer goleak.VerifyNone(
+		t,
+		// Ignore database specific
+		goleak.IgnoreTopFunction("database/sql.(*DB).connectionOpener"),
+		// Ignore gorm prometheus plugin because it creates an infinite go routine
+		goleak.IgnoreTopFunction("gorm.io/plugin/prometheus.(*Prometheus).Initialize.func1.1"),
+	)
 	suite.Run(t, new(GraphQLTestSuite))
 }
