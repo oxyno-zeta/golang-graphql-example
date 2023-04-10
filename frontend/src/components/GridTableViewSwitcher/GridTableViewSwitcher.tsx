@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiViewGridOutline, mdiViewSequential } from '@mdi/js';
 
-interface Props {
+export interface Props {
   setGridView: (input: boolean) => void;
   gridView: boolean;
   buttonGroupProps?: ButtonGroupProps;
@@ -39,7 +39,10 @@ function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableB
             minWidth: '46px',
           }}
           onClick={() => {
-            setGridView(false);
+            // Optimization
+            if (gridView) {
+              setGridView(false);
+            }
           }}
           {...tableButtonProps}
         >
@@ -53,7 +56,10 @@ function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableB
           color="inherit"
           sx={{ border: 'none', padding: '5px 10px', minWidth: '46px' }}
           onClick={() => {
-            setGridView(true);
+            // Optimization
+            if (!gridView) {
+              setGridView(true);
+            }
           }}
           {...gridButtonProps}
         >
