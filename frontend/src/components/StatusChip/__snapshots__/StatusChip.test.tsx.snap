@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusChip should display label with default color (no value) 1`] = `
+<div>
+  <div
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault css-1a1j1t6-MuiChip-root"
+  >
+    <span
+      class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+    >
+      fake-label
+    </span>
+  </div>
+</div>
+`;
+
+exports[`StatusChip should display label with default color 1`] = `
+<div>
+  <div
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault css-1a1j1t6-MuiChip-root"
+  >
+    <span
+      class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+    >
+      fake-label
+    </span>
+  </div>
+</div>
+`;
+
+exports[`StatusChip should display label with error color 1`] = `
+<div>
+  <div
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorError MuiChip-outlinedError css-kg4ko1-MuiChip-root"
+  >
+    <span
+      class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+    >
+      fake-label
+    </span>
+  </div>
+</div>
+`;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Chip, { ChipProps } from '@mui/material/Chip';
 
-type Props = ChipProps;
+export type Props = ChipProps;
 
 function StatusChip({ label, color, sx = {}, ...rest }: Props) {
   return (
