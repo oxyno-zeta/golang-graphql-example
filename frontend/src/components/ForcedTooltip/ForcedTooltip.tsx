@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react';
 import MuiTooltip, { TooltipProps } from '@mui/material/Tooltip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
-type Props = Omit<TooltipProps, 'onClose' | 'onOpen' | 'open' | 'children'> & {
+export type Props = Omit<TooltipProps, 'onClose' | 'onOpen' | 'open' | 'children'> & {
   render?: (handleTooltipOpen: () => void, handleTooltipClose: () => void) => ReactElement;
   children?: ReactElement;
 };
@@ -45,4 +45,3 @@ function ForcedTooltip({ render, children, ...props }: Props) {
 ForcedTooltip.defaultProps = defaultProps;
 
 export default ForcedTooltip;
-export type { Props };
