@@ -1,4 +1,4 @@
-import HelpTooltipButton, { Props } from './HelpTooltipButton';
+import HelpTooltipButton, { Props as HelpTooltipButtonProps } from './HelpTooltipButton';
 
 export default HelpTooltipButton;
-export type { Props };
+export type { HelpTooltipButtonProps };
