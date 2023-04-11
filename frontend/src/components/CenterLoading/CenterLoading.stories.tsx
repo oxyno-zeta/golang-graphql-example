@@ -20,7 +20,7 @@ export const Playground = {
 
 export const Colors: StoryFn<typeof CenterLoading> = function C() {
   return (
-    <Stack spacing={2} maxWidth={300}>
+    <Stack spacing={2}>
       <CenterLoading />
       <CenterLoading circularProgressProps={{ color: 'secondary' }} />
       <CenterLoading circularProgressProps={{ color: 'success' }} />
@@ -32,7 +32,7 @@ export const Colors: StoryFn<typeof CenterLoading> = function C() {
 export const Subtitles: StoryFn<typeof CenterLoading> = function C() {
   const { t } = useTranslation();
   return (
-    <Stack spacing={2} maxWidth={300}>
+    <Stack spacing={2}>
       <CenterLoading subtitle={t('common.loadingText')} />
       <CenterLoading circularProgressProps={{ color: 'error' }} subtitle={t('common.errors')} />
     </Stack>
