@@ -1,0 +1,802 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 1`] = `
+<div>
+  <div
+    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon css-qxqgdt-MuiAutocomplete-root"
+  >
+    <div
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+        data-shrink="true"
+        for=":r2:"
+        id=":r2:-label"
+      >
+        common.timezone
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
+      >
+        <input
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input"
+          id=":r2:"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+          value="UTC"
+        />
+        <div
+          class="MuiAutocomplete-endAdornment css-1q60rmi-MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="common.clearAction"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="common.clearAction"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-ptiqhd-MuiSvgIcon-root"
+              data-testid="CloseIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="common.openAction"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="common.openAction"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="css-14lo706"
+          >
+            <span>
+              common.timezone
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 2`] = `
+<div>
+  <div
+    id="result"
+  >
+    UTC
+  </div>
+</div>
+`;
+
+exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 3`] = `
+<div>
+  <div
+    aria-owns=":r4:-listbox"
+    class="MuiAutocomplete-root Mui-expanded Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon css-qxqgdt-MuiAutocomplete-root"
+  >
+    <div
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+        data-shrink="true"
+        for=":r4:"
+        id=":r4:-label"
+      >
+        common.timezone
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
+      >
+        <input
+          aria-autocomplete="list"
+          aria-controls=":r4:-listbox"
+          aria-expanded="true"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input"
+          id=":r4:"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+          value="UTC"
+        />
+        <div
+          class="MuiAutocomplete-endAdornment css-1q60rmi-MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="common.clearAction"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="common.clearAction"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-ptiqhd-MuiSvgIcon-root"
+              data-testid="CloseIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="common.closeAction"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen css-113ntv0-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="common.closeAction"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="css-14lo706"
+          >
+            <span>
+              common.timezone
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 4`] = `
+<div
+  class="MuiAutocomplete-popper css-1s5lphu-MuiPopper-root-MuiAutocomplete-popper MuiPopper-root"
+  data-popper-escaped=""
+  data-popper-placement="bottom"
+  data-popper-reference-hidden=""
+  role="presentation"
+  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
+>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper"
+  >
+    <div>
+      <div
+        aria-labelledby=":r4:-label"
+        class="MuiAutocomplete-listbox css-gdh49b-MuiAutocomplete-listbox"
+        id=":r4:-listbox"
+        role="listbox"
+        style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
+      >
+        <ul
+          style="height: 21964px; width: 100%;"
+        >
+          <div
+            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+            style="position: absolute; left: 0px; top: 0px; height: 48px; width: 100%;"
+          >
+            Africa
+          </div>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="0"
+            id=":r4:-option-0"
+            role="option"
+            style="position: absolute; left: 0px; top: 48px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Abidjan
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="1"
+            id=":r4:-option-1"
+            role="option"
+            style="position: absolute; left: 0px; top: 100px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Accra
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="2"
+            id=":r4:-option-2"
+            role="option"
+            style="position: absolute; left: 0px; top: 152px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Addis_Ababa
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+03:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="3"
+            id=":r4:-option-3"
+            role="option"
+            style="position: absolute; left: 0px; top: 204px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Algiers
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+01:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="4"
+            id=":r4:-option-4"
+            role="option"
+            style="position: absolute; left: 0px; top: 256px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Asmera
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+03:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="5"
+            id=":r4:-option-5"
+            role="option"
+            style="position: absolute; left: 0px; top: 308px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Bamako
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="6"
+            id=":r4:-option-6"
+            role="option"
+            style="position: absolute; left: 0px; top: 360px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Bangui
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+01:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="7"
+            id=":r4:-option-7"
+            role="option"
+            style="position: absolute; left: 0px; top: 412px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Banjul
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 5`] = `
+<div
+  class="MuiAutocomplete-popper css-1s5lphu-MuiPopper-root-MuiAutocomplete-popper MuiPopper-root"
+  role="presentation"
+  style="width: 0px;"
+>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper css-9e5uuu-MuiPaper-root-MuiAutocomplete-paper"
+  >
+    <div>
+      <div
+        aria-labelledby=":r4:-label"
+        class="MuiAutocomplete-listbox css-gdh49b-MuiAutocomplete-listbox"
+        id=":r4:-listbox"
+        role="listbox"
+        style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
+      >
+        <ul
+          style="height: 21964px; width: 100%;"
+        >
+          <div
+            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky css-uob957-MuiListSubheader-root"
+            style="position: absolute; left: 0px; top: 0px; height: 48px; width: 100%;"
+          >
+            Africa
+          </div>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="0"
+            id=":r4:-option-0"
+            role="option"
+            style="position: absolute; left: 0px; top: 48px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Abidjan
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="1"
+            id=":r4:-option-1"
+            role="option"
+            style="position: absolute; left: 0px; top: 100px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Accra
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="2"
+            id=":r4:-option-2"
+            role="option"
+            style="position: absolute; left: 0px; top: 152px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Addis_Ababa
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+03:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="3"
+            id=":r4:-option-3"
+            role="option"
+            style="position: absolute; left: 0px; top: 204px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Algiers
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+01:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="4"
+            id=":r4:-option-4"
+            role="option"
+            style="position: absolute; left: 0px; top: 256px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Asmera
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+03:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="5"
+            id=":r4:-option-5"
+            role="option"
+            style="position: absolute; left: 0px; top: 308px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Bamako
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="6"
+            id=":r4:-option-6"
+            role="option"
+            style="position: absolute; left: 0px; top: 360px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Bangui
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC+01:00
+            </p>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="7"
+            id=":r4:-option-7"
+            role="option"
+            style="position: absolute; left: 0px; top: 412px; height: 52px; width: 100%; display: block;"
+            tabindex="-1"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-fvtpii-MuiTypography-root"
+            >
+              <span
+                style="font-weight: 400;"
+              >
+                Africa/Banjul
+              </span>
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+              style="font-size: 12px;"
+            >
+              UTC
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 6`] = `
+<div>
+  <div
+    id="result"
+  >
+    Africa/Abidjan
+  </div>
+</div>
+`;
+
+exports[`timezone/TimezoneSelector should display an autocomplete with default value 1`] = `
+<div>
+  <div
+    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon css-qxqgdt-MuiAutocomplete-root"
+  >
+    <div
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+        data-shrink="true"
+        for=":r0:"
+        id=":r0:-label"
+      >
+        common.timezone
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root"
+      >
+        <input
+          aria-autocomplete="list"
+          aria-expanded="false"
+          aria-invalid="false"
+          autocapitalize="none"
+          autocomplete="off"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-19qh8xo-MuiInputBase-input-MuiOutlinedInput-input"
+          id=":r0:"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+          value="UTC"
+        />
+        <div
+          class="MuiAutocomplete-endAdornment css-1q60rmi-MuiAutocomplete-endAdornment"
+        >
+          <button
+            aria-label="common.clearAction"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator css-1glvl0p-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-clearIndicator"
+            tabindex="-1"
+            title="common.clearAction"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-ptiqhd-MuiSvgIcon-root"
+              data-testid="CloseIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            aria-label="common.openAction"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator"
+            tabindex="-1"
+            title="common.openAction"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <fieldset
+          aria-hidden="true"
+          class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="css-14lo706"
+          >
+            <span>
+              common.timezone
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+`;

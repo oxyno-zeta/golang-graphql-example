@@ -134,7 +134,7 @@ const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
   );
 });
 
-interface Props {
+export interface Props {
   autocompleteProps?: Partial<AutocompleteProps<string, false, true, false>>;
 }
 
