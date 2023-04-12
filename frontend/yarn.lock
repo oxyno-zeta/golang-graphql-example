@@ -9591,9 +9591,9 @@ vite-plugin-svgr@^2.4.0:
     "@svgr/core" "^6.5.1"
 
 vite-tsconfig-paths@^4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-4.0.9.tgz#a9b3a4db47989052329c7d4bdcc56a7b8c008cd1"
-  integrity sha512-qtjwLELs7AEtvZGWbv5aXNda0vyaU8MDjvohMS05sePdUNqBZbBk670Rpfoe0GguF4R1G/DT7yBTPSHdF4h9kA==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-4.2.0.tgz#bd2647d3eadafb65a10fc98a2ca565211f2eaf63"
+  integrity sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==
   dependencies:
     debug "^4.1.1"
     globrex "^0.1.2"
