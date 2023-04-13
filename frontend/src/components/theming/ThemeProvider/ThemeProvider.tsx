@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 import ConfigContext from '../../../contexts/ConfigContext';
 
-interface Props {
+export interface Props {
   children: ReactNode;
   themeOptions: ThemeOptions;
 }
