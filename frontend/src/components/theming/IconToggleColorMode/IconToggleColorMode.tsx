@@ -7,7 +7,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
-interface Props {
+export interface Props {
   iconButtonProps?: IconButtonProps;
 }
 
