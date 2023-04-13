@@ -9,7 +9,7 @@ import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
 import { PaletteMode } from '@mui/material';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
-interface Props {
+export interface Props {
   titleStyle?: React.CSSProperties;
 }
 
