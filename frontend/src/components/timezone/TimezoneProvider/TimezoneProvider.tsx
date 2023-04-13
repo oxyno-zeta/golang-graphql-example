@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import TimezoneContext from '../../../contexts/TimezoneContext';
 import ConfigContext from '../../../contexts/ConfigContext';
 
-interface Props {
+export interface Props {
   children: ReactNode;
 }
 
