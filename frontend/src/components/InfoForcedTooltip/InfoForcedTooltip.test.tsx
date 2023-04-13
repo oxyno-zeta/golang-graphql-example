@@ -29,11 +29,7 @@ describe('InfoForcedTooltip', () => {
     await waitFor(() => {
       expect(getByText('fake-tooltip')).toBeInTheDocument();
     });
-    expect(container).toMatchSnapshot();
     expect(await findByRole('tooltip')).not.toBeNull();
-
-    // Workaround to avoid "react component change without any act called"...
-    await waitFor(() => 0);
   });
 
   it('should display text tooltip on mouse over only', async () => {

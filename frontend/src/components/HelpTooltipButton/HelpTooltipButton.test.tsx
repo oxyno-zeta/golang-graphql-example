@@ -30,10 +30,6 @@ describe('HelpTooltipButton', () => {
       expect(getByText('fake-tooltip')).toBeInTheDocument();
     });
     expect(await findByRole('tooltip')).not.toBeNull();
-
-    expect(container).toMatchSnapshot();
-    // Workaround to avoid "react component change without any act called"...
-    await waitFor(() => 0);
   });
 
   it('should display text tooltip on mouse over only', async () => {

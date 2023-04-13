@@ -16,7 +16,7 @@ jest.mock('react-i18next', () => ({
 
 let matchMedia: (q: string) => MediaQueryList;
 
-describe('IconToggleColorMode', () => {
+describe('theming/IconToggleColorMode', () => {
   beforeAll(() => {
     matchMedia = window.matchMedia;
   });

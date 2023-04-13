@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IconToggleColorMode should display a dark theme icon with dark theme and switch to light 1`] = `
+exports[`theming/IconToggleColorMode should display a dark theme icon with dark theme and switch to light 1`] = `
 <div>
   <span
     class=""
@@ -29,7 +29,7 @@ exports[`IconToggleColorMode should display a dark theme icon with dark theme an
 </div>
 `;
 
-exports[`IconToggleColorMode should display a dark theme icon with dark theme and switch to light 2`] = `
+exports[`theming/IconToggleColorMode should display a dark theme icon with dark theme and switch to light 2`] = `
 <div>
   <span
     class=""
@@ -58,7 +58,7 @@ exports[`IconToggleColorMode should display a dark theme icon with dark theme an
 </div>
 `;
 
-exports[`IconToggleColorMode should display a light theme icon with light theme and switch to dark 1`] = `
+exports[`theming/IconToggleColorMode should display a light theme icon with light theme and switch to dark 1`] = `
 <div>
   <span
     class=""
@@ -87,7 +87,7 @@ exports[`IconToggleColorMode should display a light theme icon with light theme 
 </div>
 `;
 
-exports[`IconToggleColorMode should display a light theme icon with light theme and switch to dark 2`] = `
+exports[`theming/IconToggleColorMode should display a light theme icon with light theme and switch to dark 2`] = `
 <div>
   <span
     class=""
