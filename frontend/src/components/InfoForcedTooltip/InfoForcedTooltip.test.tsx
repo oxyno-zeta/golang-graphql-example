@@ -29,9 +29,9 @@ describe('InfoForcedTooltip', () => {
     await waitFor(() => {
       expect(getByText('fake-tooltip')).toBeInTheDocument();
     });
-    expect(findByRole('tooltip')).not.toBeNull();
-
     expect(container).toMatchSnapshot();
+    expect(await findByRole('tooltip')).not.toBeNull();
+
     // Workaround to avoid "react component change without any act called"...
     await waitFor(() => 0);
   });
@@ -50,7 +50,7 @@ describe('InfoForcedTooltip', () => {
     await waitFor(() => {
       expect(getByText('fake-tooltip')).toBeInTheDocument();
     });
-    expect(findByRole('tooltip')).not.toBeNull();
+    expect(await findByRole('tooltip')).not.toBeNull();
 
     expect(container).toMatchSnapshot();
 
@@ -78,7 +78,7 @@ describe('InfoForcedTooltip', () => {
     await waitFor(() => {
       expect(getByText('fake-tooltip')).toBeInTheDocument();
     });
-    expect(findByRole('tooltip')).not.toBeNull();
+    expect(await findByRole('tooltip')).not.toBeNull();
 
     expect(container).toMatchSnapshot();
 
@@ -108,7 +108,7 @@ describe('InfoForcedTooltip', () => {
     await waitFor(() => {
       expect(getByText('fake-tooltip')).toBeInTheDocument();
     });
-    expect(findByRole('tooltip')).not.toBeNull();
+    expect(await findByRole('tooltip')).not.toBeNull();
 
     expect(container).toMatchSnapshot();
     // Workaround to avoid "react component change without any act called"...

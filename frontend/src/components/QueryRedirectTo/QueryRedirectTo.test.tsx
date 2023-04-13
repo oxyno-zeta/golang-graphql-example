@@ -190,6 +190,9 @@ describe('QueryRedirectTo', () => {
     // Find progressbar
     expect(await findByRole('progressbar')).not.toBeNull();
 
+    // Workaround to avoid "react component change without any act called"...
+    await waitFor(() => 0);
+
     // Now find errors
     expect(container).toHaveTextContent('Fake');
     expect(container).toMatchSnapshot();
