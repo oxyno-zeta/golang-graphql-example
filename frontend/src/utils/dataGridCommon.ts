@@ -1,7 +1,7 @@
 import type { Theme } from '@mui/material/styles';
+import type { SxProps } from '@mui/material';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function getDataGridCommonProps(t: (d: string) => string | undefined, sx: any = {}) {
+export default function getDataGridCommonProps(t: (d: string) => string | undefined, sx: SxProps = {}) {
   return {
     hideFooterPagination: true,
     hideFooter: true,
