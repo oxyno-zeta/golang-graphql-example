@@ -13,7 +13,7 @@ import {
   setJSONObjectSearchParam,
 } from './urlSearchParams';
 
-describe('urlSearchParams', () => {
+describe('utils/urlSearchParams', () => {
   describe('deleteAndSetSearchParam', () => {
     it('should be ok to delete one not found key', () => {
       const input = new URLSearchParams();
