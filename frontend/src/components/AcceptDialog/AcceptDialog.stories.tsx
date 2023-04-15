@@ -12,9 +12,10 @@ const storybookProps = {
 export default {
   title: 'Components/AcceptDialog',
   component: AcceptDialog,
+  args: storybookProps,
 } as Meta<typeof AcceptDialog>;
 
-const Template: StoryFn<typeof AcceptDialog> = function C({ handleOk, ...args }: Props) {
+export const Playground: StoryFn<typeof AcceptDialog> = function C({ handleOk, ...args }: Props) {
   return (
     <AcceptDialog
       {...args}
@@ -26,13 +27,6 @@ const Template: StoryFn<typeof AcceptDialog> = function C({ handleOk, ...args }:
   );
 };
 
-export const Playground = {
-  render: Template,
-  args: {
-    ...storybookProps,
-  },
-};
-
 export const OkDisabled: StoryFn<typeof AcceptDialog> = function C(args: Props) {
-  return <AcceptDialog okDisabled {...storybookProps} {...args} />;
+  return <AcceptDialog okDisabled {...args} />;
 };

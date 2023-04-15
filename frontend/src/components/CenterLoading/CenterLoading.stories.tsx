@@ -9,13 +9,8 @@ export default {
   component: CenterLoading,
 } as Meta<typeof CenterLoading>;
 
-const Template: StoryFn<typeof CenterLoading> = function C(args: Props) {
+export const Playground: StoryFn<typeof CenterLoading> = function C(args: Props) {
   return <CenterLoading {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: {},
 };
 
 export const Colors: StoryFn<typeof CenterLoading> = function C() {

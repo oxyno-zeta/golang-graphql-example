@@ -5,13 +5,9 @@ import HelpTooltipButton, { Props } from './HelpTooltipButton';
 export default {
   title: 'Components/HelpTooltipButton',
   component: HelpTooltipButton,
+  args: { tooltipTitle: 'Fake tooltip !' },
 } as Meta<typeof HelpTooltipButton>;
 
-const Template: StoryFn<typeof HelpTooltipButton> = function C(args: Props) {
+export const Playground: StoryFn<typeof HelpTooltipButton> = function C(args: Props) {
   return <HelpTooltipButton {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: { tooltipTitle: 'Fake tooltip !' },
 };

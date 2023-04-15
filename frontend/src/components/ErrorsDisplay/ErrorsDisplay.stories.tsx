@@ -12,20 +12,16 @@ import {
 export default {
   title: 'Components/ErrorsDisplay',
   component: ErrorsDisplay,
-} as Meta<typeof ErrorsDisplay>;
-
-const Template: StoryFn<typeof ErrorsDisplay> = function C(args: Props) {
-  return <ErrorsDisplay {...args} />;
-};
-
-export const Playground = {
-  render: Template,
   args: {
     error: new ApolloError({
       errorMessage: 'network apollo error',
       networkError: forbiddenNetworkError,
     }),
   },
+} as Meta<typeof ErrorsDisplay>;
+
+export const Playground: StoryFn<typeof ErrorsDisplay> = function C(args: Props) {
+  return <ErrorsDisplay {...args} />;
 };
 
 export const ClassicError: StoryFn<typeof ErrorsDisplay> = function C() {

@@ -7,11 +7,6 @@ export default {
   component: NoData,
 } as Meta<typeof NoData>;
 
-const Template: StoryFn<typeof NoData> = function C(args: Props) {
+export const Playground: StoryFn<typeof NoData> = function C(args: Props) {
   return <NoData {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: {},
 };

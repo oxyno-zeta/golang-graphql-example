@@ -5,13 +5,9 @@ import HelpForcedTooltip, { Props } from './HelpForcedTooltip';
 export default {
   title: 'Components/HelpForcedTooltip',
   component: HelpForcedTooltip,
+  args: { tooltipTitle: 'Fake tooltip !' },
 } as Meta<typeof HelpForcedTooltip>;
 
-const Template: StoryFn<typeof HelpForcedTooltip> = function C(args: Props) {
+export const Playground: StoryFn<typeof HelpForcedTooltip> = function C(args: Props) {
   return <HelpForcedTooltip {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: { tooltipTitle: 'Fake tooltip !' },
 };

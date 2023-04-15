@@ -7,11 +7,6 @@ export default {
   component: MainPageCenterLoading,
 } as Meta<typeof MainPageCenterLoading>;
 
-const Template: StoryFn<typeof MainPageCenterLoading> = function C(args: Props) {
+export const Playground: StoryFn<typeof MainPageCenterLoading> = function C(args: Props) {
   return <MainPageCenterLoading {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: {},
 };

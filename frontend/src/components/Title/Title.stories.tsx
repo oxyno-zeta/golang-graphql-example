@@ -8,17 +8,13 @@ import Title, { Props } from './Title';
 export default {
   title: 'Components/Title',
   component: Title,
-} as Meta<typeof Title>;
-
-const Template: StoryFn<typeof Title> = function C(args: Props) {
-  return <Title {...args} />;
-};
-
-export const Playground = {
-  render: Template,
   args: {
     title: 'Fake',
   },
+} as Meta<typeof Title>;
+
+export const Playground: StoryFn<typeof Title> = function C(args: Props) {
+  return <Title {...args} />;
 };
 
 export const LeftElement: StoryFn<typeof Title> = function C() {

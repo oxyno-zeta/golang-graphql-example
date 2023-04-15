@@ -7,11 +7,6 @@ export default {
   component: Footer,
 } as Meta<typeof Footer>;
 
-const Template: StoryFn<typeof Footer> = function C(args: Props) {
+export const Playground: StoryFn<typeof Footer> = function C(args: Props) {
   return <Footer {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: {},
 };

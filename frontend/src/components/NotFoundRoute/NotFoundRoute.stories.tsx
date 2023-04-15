@@ -7,11 +7,6 @@ export default {
   component: NotFoundRoute,
 } as Meta<typeof NotFoundRoute>;
 
-const Template: StoryFn<typeof NotFoundRoute> = function C(args: Props) {
+export const Playground: StoryFn<typeof NotFoundRoute> = function C(args: Props) {
   return <NotFoundRoute {...args} />;
-};
-
-export const Playground = {
-  render: Template,
-  args: {},
 };
