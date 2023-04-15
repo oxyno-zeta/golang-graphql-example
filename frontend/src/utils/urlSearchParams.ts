@@ -61,7 +61,7 @@ export function getJSONObjectFromSearchParam<T>(
   const objStr = searchParams.get(key);
 
   // Check if object string is null or empty string
-  if (objStr === null && objStr === '') {
+  if (objStr === null || objStr === '') {
     // Return init
     return init;
   }
