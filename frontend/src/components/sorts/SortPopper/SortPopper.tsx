@@ -5,7 +5,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
 import SortForm from '../internal/SortForm';
 
-type Props<T extends Record<string, SortOrderModel>> = {
+export type Props<T extends Record<string, SortOrderModel>> = {
   onSubmit: (sort: T[]) => void;
   onReset: () => void;
   onClose: () => void;

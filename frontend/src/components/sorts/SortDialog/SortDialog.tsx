@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
 import SortForm from '../internal/SortForm';
 
-type Props<T extends Record<string, SortOrderModel>> = {
+export type Props<T extends Record<string, SortOrderModel>> = {
   onSubmit: (sort: T[]) => void;
   onReset: () => void;
   onClose: () => void;

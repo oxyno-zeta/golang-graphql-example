@@ -8,7 +8,7 @@ import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
 import SortPopper from '../SortPopper';
 import SortDialog from '../SortDialog';
 
-type Props<T extends Record<string, SortOrderModel>> = {
+export type Props<T extends Record<string, SortOrderModel>> = {
   sorts: null | undefined | T[];
   setSorts: React.Dispatch<T[]>;
   sortFields: SortOrderFieldModel[];

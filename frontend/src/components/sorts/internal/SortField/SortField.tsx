@@ -15,7 +15,7 @@ const valueOptions: { value: SortOrderModel; display: string }[] = [
 ];
 
 /* eslint-disable react/no-array-index-key */
-interface Props {
+export interface Props {
   value: Record<string, SortOrderModel>;
   sortFields: SortOrderFieldModel[];
   availableFields: SortOrderFieldModel[];

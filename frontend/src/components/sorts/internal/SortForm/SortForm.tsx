@@ -14,7 +14,7 @@ import SortField from '../SortField';
 import { SortOrderModel, SortOrderFieldModel, SortOrderAsc } from '../../../../models/general';
 import { arrayMoveItem } from '../../../../utils/array';
 
-interface Props<T extends Record<string, SortOrderModel>> {
+export interface Props<T extends Record<string, SortOrderModel>> {
   onSubmit: (sort: T[]) => void;
   onReset: () => void;
   initialSorts: null | undefined | T[];
@@ -60,9 +60,12 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
   return (
     <>
       <DialogContent>
-        {result.map((item, index) => (
-          <div key={`${index}-${Object.keys(item)[0]}`} style={{ marginBottom: '15px' }}>
-            <Box sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
+        {result.map((item, index) => {
+          // Build id
+          const id = `sort-${index}-${Object.keys(item)[0]}`;
+
+          return (
+            <Box key={id} data-testid={id} sx={{ display: 'flex', margin: '10px 0 20px 0' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '5px' }}>
                 {result.length > 1 && (
                   <ButtonGroup orientation="vertical">
@@ -137,8 +140,8 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
                 />
               </Grid>
             </Box>
-          </div>
-        ))}
+          );
+        })}
         {availableFields.length !== 0 && (
           <Tooltip title={<>{t('common.sort.addNewField')}</>}>
             <IconButton onClick={addLineHandler} sx={{ margin: '0 5px' }}>

@@ -1,3 +1,4 @@
-import SortButton from './SortButton';
+import SortButton, { Props as SortButtonProps } from './SortButton';
 
 export default SortButton;
+export type { SortButtonProps };
