@@ -49,9 +49,6 @@ func New(busiServices *business.Services) *TodosDataloaders {
 					if err != nil {
 						return nil, err
 					}
-					// Force id fetch in projection
-					// ID is used to rearrange items after
-					projection.ID = true
 
 					// Return default
 					return &projection, nil

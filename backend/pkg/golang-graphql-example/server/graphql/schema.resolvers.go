@@ -9,6 +9,8 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
@@ -118,8 +120,12 @@ func (r *queryResolver) Todo(ctx context.Context, id string) (*models.Todo, erro
 		return nil, err
 	}
 
-	// Call business
-	res, err := r.BusiServices.TodoSvc.FindByID(ctx, uuid, proj)
+	// Example of dataloader query
+	dl := dataloaders.GetDataloadersFromContext(ctx)
+	res, err := dl.Todos.GenericLoader.Load(ctx, &common.IDProjectionKey{ID: uuid, Projection: proj})()
+
+	// Call business (example)
+	// res, err := r.BusiServices.TodoSvc.FindByID(ctx, uuid, proj)
 
 	return res, err
 }
