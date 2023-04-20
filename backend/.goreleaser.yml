@@ -28,14 +28,11 @@ builds:
       - 6
       - 7
     goos:
-      - windows
       - darwin
       - linux
     ignore:
       - goos: darwin
         goarch: 386
-      - goos: windows
-        goarch: arm64
 archives:
   - format_overrides:
       - goos: windows
