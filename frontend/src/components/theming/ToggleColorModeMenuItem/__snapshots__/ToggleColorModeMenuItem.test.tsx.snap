@@ -1,27 +1,186 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`theming/ToggleColorModeMenuItem should display the dark theme as selected and switch to light 1`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  width: 100%;
+}
+
+.emotion-2::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-2.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-2 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-2.Mui-disabled {
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (hover: none) {
+  .emotion-2:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-2.Mui-selected {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.emotion-2.Mui-selected:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+@media (hover: none) {
+  .emotion-2.Mui-selected:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.emotion-3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.emotion-4 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth css-mgs850-MuiToggleButtonGroup-root"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-rxexe-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -32,19 +191,19 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
        
       common.darkThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-rxexe-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -55,7 +214,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
        
       common.lightThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
   </div>
@@ -63,27 +222,186 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
 `;
 
 exports[`theming/ToggleColorModeMenuItem should display the dark theme as selected and switch to light 2`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.54);
+  width: 100%;
+}
+
+.emotion-2::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-2.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-2 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-2.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: none) {
+  .emotion-2:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-2.Mui-selected {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.emotion-2.Mui-selected:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+@media (hover: none) {
+  .emotion-2.Mui-selected:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.emotion-3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.emotion-4 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth css-mgs850-MuiToggleButtonGroup-root"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1xgjc5y-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -94,19 +412,19 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
        
       common.darkThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1xgjc5y-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -117,7 +435,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
        
       common.lightThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
   </div>
@@ -125,27 +443,186 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
 `;
 
 exports[`theming/ToggleColorModeMenuItem should display the light theme as selected and switch to dark 1`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.54);
+  width: 100%;
+}
+
+.emotion-2::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-2.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-2 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-2.Mui-disabled {
+  color: rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: none) {
+  .emotion-2:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-2.Mui-selected {
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.emotion-2.Mui-selected:hover {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+@media (hover: none) {
+  .emotion-2.Mui-selected:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.emotion-3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.emotion-4 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth css-mgs850-MuiToggleButtonGroup-root"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1xgjc5y-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -156,19 +633,19 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
        
       common.darkThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-1xgjc5y-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -179,7 +656,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
        
       common.lightThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
   </div>
@@ -187,27 +664,186 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
 `;
 
 exports[`theming/ToggleColorModeMenuItem should display the light theme as selected and switch to dark 2`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+.emotion-1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  width: 100%;
+}
+
+.emotion-2::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-2.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-2 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-2.Mui-disabled {
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (hover: none) {
+  .emotion-2:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-2.Mui-selected {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.emotion-2.Mui-selected:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+@media (hover: none) {
+  .emotion-2.Mui-selected:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+  }
+}
+
+.emotion-3 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.emotion-4 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth css-mgs850-MuiToggleButtonGroup-root"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-rxexe-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -218,19 +854,19 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
        
       common.darkThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal css-rxexe-MuiButtonBase-root-MuiToggleButton-root"
+      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-gsx9sh-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -241,7 +877,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
        
       common.lightThemeSelector
       <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        class="MuiTouchRipple-root emotion-4"
       />
     </button>
   </div>

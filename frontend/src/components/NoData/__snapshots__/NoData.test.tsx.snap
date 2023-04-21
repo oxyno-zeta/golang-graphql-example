@@ -1,9 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NoData should display no data 1`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+  margin: 10px 0;
+}
+
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 css-wdvp0u-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
   >
     common.noData
   </p>
@@ -11,9 +30,28 @@ exports[`NoData should display no data 1`] = `
 `;
 
 exports[`NoData should display no data with specific variant 1`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+  margin: 10px 0;
+}
+
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body2 css-1ngmjzi-MuiTypography-root"
+    class="MuiTypography-root MuiTypography-body2 emotion-0"
   >
     common.noData
   </p>

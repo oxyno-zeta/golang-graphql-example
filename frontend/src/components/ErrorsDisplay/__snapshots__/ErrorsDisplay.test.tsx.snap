@@ -1,24 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorsDisplay should display a graphql error with extension when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -29,24 +50,45 @@ exports[`ErrorsDisplay should display a graphql error with extension when error 
 `;
 
 exports[`ErrorsDisplay should display a graphql error with extension when errors are present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -57,24 +99,45 @@ exports[`ErrorsDisplay should display a graphql error with extension when errors
 `;
 
 exports[`ErrorsDisplay should display a graphql error without extension when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           simple graphql error
         </p>
@@ -85,24 +148,45 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
 `;
 
 exports[`ErrorsDisplay should display a graphql error without extension when errors are present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           simple graphql error
         </p>
@@ -113,24 +197,45 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
 `;
 
 exports[`ErrorsDisplay should display a network error when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           Forbidden
         </p>
@@ -141,24 +246,45 @@ exports[`ErrorsDisplay should display a network error when error is present 1`] 
 `;
 
 exports[`ErrorsDisplay should display a network error when errors are present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           Forbidden
         </p>
@@ -169,24 +295,45 @@ exports[`ErrorsDisplay should display a network error when errors are present 1`
 `;
 
 exports[`ErrorsDisplay should display a network error with 1 error when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           fake.path fake message
         </p>
@@ -197,33 +344,54 @@ exports[`ErrorsDisplay should display a network error with 1 error when error is
 `;
 
 exports[`ErrorsDisplay should display a network error with multiple errors when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           fake.path fake message
         </p>
       </li>
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           fake.path2 fake message 2
         </p>
@@ -234,24 +402,45 @@ exports[`ErrorsDisplay should display a network error with multiple errors when 
 `;
 
 exports[`ErrorsDisplay should display classic error when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           error1
         </p>
@@ -262,24 +451,45 @@ exports[`ErrorsDisplay should display classic error when error is present 1`] = 
 `;
 
 exports[`ErrorsDisplay should display classic error when errors are present (1 item) 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           error1
         </p>
@@ -290,33 +500,54 @@ exports[`ErrorsDisplay should display classic error when errors are present (1 i
 `;
 
 exports[`ErrorsDisplay should display classic error when errors are present (2 items) 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           error1
         </p>
       </li>
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           error2
         </p>
@@ -327,33 +558,54 @@ exports[`ErrorsDisplay should display classic error when errors are present (2 i
 `;
 
 exports[`ErrorsDisplay should display two graphql error with extension when error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
@@ -364,33 +616,54 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 `;
 
 exports[`ErrorsDisplay should display two graphql error with extension when errors are present (1 item with 2) 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
@@ -401,33 +674,54 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 `;
 
 exports[`ErrorsDisplay should display two graphql error with extension when errors are present (2 items) 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
 <div>
   <div
-    class="MuiBox-root css-z0zjqa"
+    class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
     </p>
     <ul
-      class="MuiBox-root css-0"
+      class="MuiBox-root emotion-2"
     >
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
       </li>
       <li
-        class="MuiBox-root css-0"
+        class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 css-1nkhxq8-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
