@@ -31,8 +31,8 @@ func GenericEntitiesLoader[V any](
 			return res
 		}
 
-		// Check if projection exists and id key exists
-		if projection != nil && opts.IDKey != "" {
+		// Check if projection exists
+		if projection != nil {
 			// Force set id in projection
 			err = funk.Set(projection, true, opts.IDKey)
 			// Check error
@@ -55,7 +55,7 @@ func GenericEntitiesLoader[V any](
 		}
 
 		// Default
-		return RearrangeResults(data, ids)
+		return rearrangeResults(data, ids, opts.IDKey)
 	}
 }
 
@@ -129,6 +129,6 @@ func GenericLoader[V any](
 		}
 
 		// Default
-		return RearrangeResults(data, ids)
+		return rearrangeResults(data, ids, opts.IDKey)
 	}
 }
