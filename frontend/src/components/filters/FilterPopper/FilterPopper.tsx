@@ -9,7 +9,7 @@ import FilterForm from '../internal/components/FilterForm';
 import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
-type Props<T extends FilterValueObject> = {
+export type Props<T extends FilterValueObject> = {
   onSubmit: (filter: T) => void;
   onReset: () => void;
   onClose: () => void;

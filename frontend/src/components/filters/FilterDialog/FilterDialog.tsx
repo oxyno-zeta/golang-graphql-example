@@ -10,7 +10,7 @@ import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type Props<T extends FilterValueObject> = {
+export type Props<T extends FilterValueObject> = {
   onSubmit: (filter: T) => void;
   onReset: () => void;
   onClose: () => void;

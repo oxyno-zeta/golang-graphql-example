@@ -16,14 +16,15 @@ import { AdapterDayjsTZ } from './AdapterDayjsTZ';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
-interface Props {
+export interface Props {
+  id: string;
   value: any;
   setValue: (v: any) => void;
   operation: FilterOperationMetadataModel<any>;
   errorMsg: string | null | undefined;
 }
 
-function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props) {
+function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: Props) {
   // Setup translate
   const { t } = useTranslation();
 
@@ -51,6 +52,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
         fullWidth
         value={vEnum}
         size="small"
+        id={id}
         onChange={(event, newValue) => {
           // Reformat data
           const res = newValue.map((it) => it.value);
@@ -127,6 +129,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
         clearText={t('common.clearAction')}
         closeText={t('common.closeAction')}
         size="small"
+        id={id}
         value={vEnum}
         options={operation.enumValues}
         getOptionLabel={(option: FilterDefinitionEnumObjectModel<any> | string) => {
@@ -197,6 +200,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
         fullWidth
         value={value}
         size="small"
+        id={id}
         onChange={(event, newValue) => {
           // Reformat data
           const res = newValue.map((it) => {
@@ -303,6 +307,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg }: Props
       <TextField
         fullWidth
         size="small"
+        id={id}
         type={operation.inputType}
         label={t('common.filter.value')}
         placeholder={t('common.filter.value')}

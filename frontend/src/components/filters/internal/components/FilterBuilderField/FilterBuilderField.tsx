@@ -19,13 +19,14 @@ import { FieldInitialValueObject, FilterValueObject } from '../../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
-interface Props {
+export interface Props {
+  id: string;
   filterDefinitionModel: FilterDefinitionFieldsModel;
   initialValue: FieldInitialValueObject;
   onChange: (fo: null | FilterValueObject) => void;
 }
 
-function FilterBuilderField({ filterDefinitionModel, onChange, initialValue }: Props) {
+function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id }: Props) {
   // Setup translate
   const { t } = useTranslation();
   // States
@@ -79,6 +80,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue }: P
           clearText={t('common.clearAction')}
           closeText={t('common.closeAction')}
           size="small"
+          id={`${id}-field`}
           value={t(filterDefinitionModel[selectedField]?.display)}
           options={fieldKeys}
           renderInput={(params) => (
@@ -154,6 +156,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue }: P
             clearText={t('common.clearAction')}
             closeText={t('common.closeAction')}
             size="small"
+            id={`${id}-operation`}
             value={t(selectedFieldData.operations[selectedOperation]?.display)}
             options={operations}
             getOptionLabel={(option: string) => t(option)}
@@ -231,6 +234,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue }: P
         {operationData && (
           <FilterBuilderFieldValue
             value={value}
+            id={`${id}-value`}
             setValue={setValue}
             operation={operationData as FilterOperationMetadataModel<any>}
             errorMsg={valueErrorMsg}

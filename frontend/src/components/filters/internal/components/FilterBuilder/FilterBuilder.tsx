@@ -15,7 +15,7 @@ import { LineOrGroup, BuilderInitialValueObject, FieldInitialValueObject, Filter
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-interface Props {
+export interface Props {
   filterDefinitionModel: FilterDefinitionFieldsModel;
   initialValue: BuilderInitialValueObject;
   acceptEmptyLines?: boolean;
@@ -87,7 +87,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
   const addGroupHandler = useCallback(() => {
     setItems((v) => {
       // Generate key
-      const key = generateKey();
+      const key = generateKey('group');
 
       // Create new items list
       const newItems = [
@@ -111,7 +111,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
   const addLineHandler = useCallback(() => {
     setItems((v) => {
       // Generate key
-      const key = generateKey();
+      const key = generateKey('line');
 
       // Create new items list
       const newItems = [...v, { type: 'line', key, initialValue: buildFieldInitialValue(undefined)[0] }];
@@ -164,58 +164,56 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
         }}
       />
       <Box sx={{ display: 'block', width: '100%' }}>
-        <Box>
-          <ButtonGroup size="small" color={items.length === 0 && !acceptEmptyLines ? 'error' : 'primary'}>
-            <Button
-              onClick={() => {
-                setGroupKey('AND');
-                // Save management
-                localSaveManagementHandler('AND');
-              }}
-              variant={groupKey === 'AND' ? 'contained' : undefined}
-            >
-              {t('common.operations.and')}
-            </Button>
-            <Button
-              onClick={() => {
-                setGroupKey('OR');
-                // Save management
-                localSaveManagementHandler('OR');
-              }}
-              variant={groupKey === 'OR' ? 'contained' : undefined}
-            >
-              {t('common.operations.or')}
-            </Button>
-          </ButtonGroup>
-          <Tooltip title={<>{t('common.filter.addNewField')}</>}>
-            <IconButton onClick={addLineHandler} sx={{ margin: '0 5px' }}>
+        <ButtonGroup size="small" color={items.length === 0 && !acceptEmptyLines ? 'error' : 'primary'}>
+          <Button
+            onClick={() => {
+              setGroupKey('AND');
+              // Save management
+              localSaveManagementHandler('AND');
+            }}
+            variant={groupKey === 'AND' ? 'contained' : undefined}
+          >
+            {t('common.operations.and')}
+          </Button>
+          <Button
+            onClick={() => {
+              setGroupKey('OR');
+              // Save management
+              localSaveManagementHandler('OR');
+            }}
+            variant={groupKey === 'OR' ? 'contained' : undefined}
+          >
+            {t('common.operations.or')}
+          </Button>
+        </ButtonGroup>
+        <Tooltip title={<>{t('common.filter.addNewField')}</>}>
+          <IconButton onClick={addLineHandler} sx={{ margin: '0 5px' }}>
+            <SvgIcon>
+              <path d={mdiPlus} />
+            </SvgIcon>
+          </IconButton>
+        </Tooltip>
+        <Tooltip title={<>{t('common.filter.addNewGroupField')}</>}>
+          <IconButton onClick={addGroupHandler} sx={{ margin: '0 5px' }}>
+            <SvgIcon>
+              <path d={mdiPlusBoxMultiple} />
+            </SvgIcon>
+          </IconButton>
+        </Tooltip>
+        {onRemove && (
+          <Tooltip title={<>{t('common.filter.deleteGroupField')}</>}>
+            <IconButton onClick={onRemove}>
               <SvgIcon>
-                <path d={mdiPlus} />
+                <path d={mdiDelete} />
               </SvgIcon>
             </IconButton>
           </Tooltip>
-          <Tooltip title={<>{t('common.filter.addNewGroupField')}</>}>
-            <IconButton onClick={addGroupHandler} sx={{ margin: '0 5px' }}>
-              <SvgIcon>
-                <path d={mdiPlusBoxMultiple} />
-              </SvgIcon>
-            </IconButton>
-          </Tooltip>
-          {onRemove && (
-            <Tooltip title={<>{t('common.filter.deleteGroupField')}</>}>
-              <IconButton onClick={onRemove}>
-                <SvgIcon>
-                  <path d={mdiDelete} />
-                </SvgIcon>
-              </IconButton>
-            </Tooltip>
-          )}
-        </Box>
+        )}
 
         {items.map((it, index) => {
           if (it.type === 'line') {
             return (
-              <Box key={it.key} sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
+              <Box key={it.key} data-testid={it.key} sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', margin: '-20px 5px 0 0' }}>
                   <Tooltip title={<>{t('common.filter.deleteField')}</>}>
                     <IconButton onClick={localRemoveHandler(it.key)}>
@@ -234,6 +232,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
                   }}
                 >
                   <FilterBuilderField
+                    id={it.key}
                     filterDefinitionModel={filterDefinitionModel}
                     initialValue={it.initialValue as FieldInitialValueObject}
                     onChange={saveHandlers[index]}

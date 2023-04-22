@@ -12,7 +12,7 @@ import FilterDialog from '../FilterDialog';
 import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
-type Props<T extends FilterValueObject> = {
+export type Props<T extends FilterValueObject> = {
   filter: undefined | null | T;
   setFilter: React.Dispatch<T>;
   filterDefinitionModel: FilterDefinitionFieldsModel;

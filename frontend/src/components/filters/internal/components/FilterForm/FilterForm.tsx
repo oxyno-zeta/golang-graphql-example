@@ -15,7 +15,7 @@ import { BuilderInitialValueObject, FilterValueObject, PredefinedFilter } from '
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
-interface Props {
+export interface Props {
   filterDefinitionModel: FilterDefinitionFieldsModel;
   onChange: (filter: FilterValueObject | null) => void;
   predefinedFilterObjects?: PredefinedFilter[];
@@ -42,12 +42,13 @@ function FilterForm({ filterDefinitionModel, predefinedFilterObjects, initialFil
   }, [initialFilter]);
 
   return (
-    <Box>
+    <>
       {predefinedFilterObjects && (
         <Box sx={{ display: 'flex', margin: '7px 0' }}>
           <Autocomplete
             fullWidth
             freeSolo
+            id="predefined-filters"
             sx={{ maxWidth: 300 }}
             noOptionsText={t('common.filter.noOptions')}
             openText={t('common.openAction')}
@@ -129,7 +130,7 @@ function FilterForm({ filterDefinitionModel, predefinedFilterObjects, initialFil
         initialValue={init}
         acceptEmptyLines
       />
-    </Box>
+    </>
   );
 }
 /* eslint-enable react/no-array-index-key */
