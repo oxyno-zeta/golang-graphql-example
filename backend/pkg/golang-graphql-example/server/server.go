@@ -45,20 +45,20 @@ var StaticFiles = "static/*.html"
 type Server struct {
 	logger            log.Logger
 	cfgManager        config.Manager
-	metricsCl         metrics.Client
+	metricsCl         metrics.Service
 	tracingSvc        tracing.Service
 	busiServices      *business.Services
-	authenticationSvc authentication.Client
+	authenticationSvc authentication.Service
 	authorizationSvc  authorization.Service
-	signalHandlerSvc  signalhandler.Client
+	signalHandlerSvc  signalhandler.Service
 	server            *http.Server
 }
 
 func NewServer(
-	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client,
+	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Service,
 	tracingSvc tracing.Service, busiServices *business.Services,
-	authenticationSvc authentication.Client, authoSvc authorization.Service,
-	signalHandlerSvc signalhandler.Client,
+	authenticationSvc authentication.Service, authoSvc authorization.Service,
+	signalHandlerSvc signalhandler.Service,
 ) *Server {
 	return &Server{
 		logger:            logger,

@@ -25,8 +25,8 @@ const (
 type InternalServer struct {
 	logger           log.Logger
 	cfgManager       config.Manager
-	metricsCl        metrics.Client
-	signalHandlerSvc signalhandler.Client
+	metricsCl        metrics.Service
+	signalHandlerSvc signalhandler.Service
 	server           *http.Server
 	checkers         []*CheckerInput
 }
@@ -39,7 +39,7 @@ type CheckerInput struct {
 	InitialDelay time.Duration
 }
 
-func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Client, signalHandlerSvc signalhandler.Client) *InternalServer {
+func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Service, signalHandlerSvc signalhandler.Service) *InternalServer {
 	return &InternalServer{
 		logger:           logger,
 		cfgManager:       cfgManager,

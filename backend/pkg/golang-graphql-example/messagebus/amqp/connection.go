@@ -19,8 +19,8 @@ type amqpService struct {
 	logger              log.Logger
 	cfgManager          config.Manager
 	tracingSvc          tracing.Service
-	signalHandlerSvc    signalhandler.Client
-	metricsSvc          metrics.Client
+	signalHandlerSvc    signalhandler.Service
+	metricsSvc          metrics.Service
 	publisherConnection *amqp091.Connection
 	publisherChannel    *amqp091.Channel
 	consumerConnection  *amqp091.Connection

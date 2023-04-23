@@ -73,10 +73,10 @@ type ConsumeConfigInput struct {
 	NoWait bool
 }
 
-// Client represents the AMQP client.
+// Service represents the AMQP client.
 //
-//go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/messagebus/amqp Client
-type Client interface {
+//go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/messagebus/amqp Service
+type Service interface {
 	// Connect will connect and create channels.
 	Connect() error
 	// Close will close all channels and connections.
@@ -108,9 +108,9 @@ func New(
 	logger log.Logger,
 	cfgManager config.Manager,
 	tracingSvc tracing.Service,
-	signalHandlerSvc signalhandler.Client,
-	metricsSvc metrics.Client,
-) Client {
+	signalHandlerSvc signalhandler.Service,
+	metricsSvc metrics.Service,
+) Service {
 	return &amqpService{
 		logger:           logger,
 		cfgManager:       cfgManager,

@@ -134,7 +134,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Get config
 	cfg := cfgManager.GetConfig()
 	// Initialize
-	var amqpSvc amqpbusmessage.Client
+	var amqpSvc amqpbusmessage.Service
 	// Check if amqp have configuration set
 	if cfg.AMQP != nil {
 		// Create amqp bus message service

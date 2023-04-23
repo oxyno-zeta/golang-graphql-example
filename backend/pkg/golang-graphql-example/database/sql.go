@@ -22,7 +22,7 @@ var (
 type sqldb struct {
 	logger         log.Logger
 	cfgManager     config.Manager
-	metricsCl      metrics.Client
+	metricsCl      metrics.Service
 	tracingSvc     tracing.Service
 	db             *gorm.DB
 	connectionName string

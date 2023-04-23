@@ -29,15 +29,15 @@ type services struct {
 	cfgManager config.Manager
 	version    *version.AppVersion
 	// Basics
-	metricsCl         metrics.Client
+	metricsCl         metrics.Service
 	tracingSvc        tracing.Service
 	db                database.DB
 	mailSvc           email.Service
 	ldSvc             lockdistributor.Service
-	signalHandlerSvc  signalhandler.Client
-	amqpSvc           amqpbusmessage.Client
+	signalHandlerSvc  signalhandler.Service
+	amqpSvc           amqpbusmessage.Service
 	authorizationSvc  authorization.Service
-	authenticationSvc authentication.Client
+	authenticationSvc authentication.Service
 	// Extra
 	// Business
 	busServices *business.Services

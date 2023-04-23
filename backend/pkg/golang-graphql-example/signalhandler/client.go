@@ -9,8 +9,8 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-//go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler Client
-type Client interface {
+//go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler Service
+type Service interface {
 	// InitializeOnce will initialize service.
 	// Important note: this must be called only once.
 	InitializeOnce() error
@@ -30,7 +30,7 @@ type Client interface {
 	DecreaseActiveRequestCounter()
 }
 
-func NewClient(logger log.Logger, serverMode bool, signalListToNotify []os.Signal) Client {
+func NewClient(logger log.Logger, serverMode bool, signalListToNotify []os.Signal) Service {
 	// Create signal list to notify
 	signalListToNotifyInternal := []os.Signal{syscall.SIGTERM, syscall.SIGINT}
 	// Append all items from input inside

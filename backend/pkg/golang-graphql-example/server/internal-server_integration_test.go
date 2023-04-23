@@ -101,7 +101,7 @@ func TestInternal_Server_Listen(t *testing.T) {
 	// Create go mock controller
 	ctrl := gomock.NewController(t)
 	cfgManagerMock := cmocks.NewMockManager(ctrl)
-	signalHandlerMock := smocks.NewMockClient(ctrl)
+	signalHandlerMock := smocks.NewMockService(ctrl)
 
 	// Load configuration in manager
 	cfgManagerMock.EXPECT().GetConfig().AnyTimes().Return(&config.Config{

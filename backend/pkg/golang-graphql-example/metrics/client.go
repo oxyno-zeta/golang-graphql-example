@@ -11,10 +11,10 @@ import (
 // Avoid adding a big number because getting metrics get a lock on gorm.
 const defaultPrometheusGormRefreshMetricsSecond = 15
 
-// Client Client metrics interface.
+// Service Service metrics interface.
 //
-//go:generate mockgen -destination=./mocks/mock_Client.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics Client
-type Client interface {
+//go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics Service
+type Service interface {
 	// Instrument web server.
 	Instrument(serverName string, routerPath bool) gin.HandlerFunc
 	// Get prometheus handler for http expose.
@@ -34,7 +34,7 @@ type Client interface {
 }
 
 // NewMetricsClient will generate a new Client.
-func NewMetricsClient() Client {
+func NewMetricsClient() Service {
 	ctx := &prometheusMetrics{
 		gormPrometheus: map[string]gorm.Plugin{},
 	}

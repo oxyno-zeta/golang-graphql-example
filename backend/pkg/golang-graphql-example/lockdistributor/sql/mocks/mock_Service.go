@@ -8,7 +8,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	lockdistributor "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor/sql"
+	sqllockdistributor "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor/sql"
 	log "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
@@ -36,10 +36,10 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // GetLock mocks base method.
-func (m *MockService) GetLock(arg0 string) lockdistributor.Lock {
+func (m *MockService) GetLock(arg0 string) sqllockdistributor.Lock {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetLock", arg0)
-	ret0, _ := ret[0].(lockdistributor.Lock)
+	ret0, _ := ret[0].(sqllockdistributor.Lock)
 	return ret0
 }
 
