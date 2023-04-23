@@ -45,9 +45,9 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest",
-    "test:update": "jest -u",
-    "test:coverage": "jest --coverage --coverageDirectory=coverage",
+    "test": "jest --runInBand",
+    "test:update": "jest -u --runInBand",
+    "test:coverage": "jest --runInBand --coverage --coverageDirectory=coverage",
     "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s{x,}",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
