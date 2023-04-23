@@ -67,7 +67,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 .emotion-0 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-0 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -81,7 +81,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 .emotion-0 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-0 .MuiFilledInput-root {
@@ -804,7 +804,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 .emotion-0 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-0 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -818,7 +818,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 .emotion-0 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-0 .MuiFilledInput-root {
@@ -2302,7 +2302,7 @@ exports[`timezone/TimezoneSelector should display an autocomplete with default v
 }
 
 .emotion-0 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-0 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -2316,7 +2316,7 @@ exports[`timezone/TimezoneSelector should display an autocomplete with default v
 }
 
 .emotion-0 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-0 .MuiFilledInput-root {

@@ -483,7 +483,7 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -497,7 +497,7 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -2120,7 +2120,7 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -2134,7 +2134,7 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -3875,7 +3875,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -3889,7 +3889,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -5630,7 +5630,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -5644,7 +5644,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -7385,7 +7385,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -7399,7 +7399,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -9140,7 +9140,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -9154,7 +9154,7 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -10764,7 +10764,7 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
 }
 
 .emotion-8 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-8 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -10778,7 +10778,7 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
 }
 
 .emotion-8 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-8 .MuiFilledInput-root {
@@ -12180,7 +12180,7 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -12194,7 +12194,7 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -13817,7 +13817,7 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-12 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -13831,7 +13831,7 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
 }
 
 .emotion-12 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-12 .MuiFilledInput-root {
@@ -15929,7 +15929,7 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
 }
 
 .emotion-8 .MuiOutlinedInput-root .MuiAutocomplete-input {
-  padding: 7.5px 4px 7.5px 6px;
+  padding: 7.5px 4px 7.5px 5px;
 }
 
 .emotion-8 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
@@ -15943,7 +15943,7 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
 }
 
 .emotion-8 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
-  padding: 2.5px 4px 2.5px 6px;
+  padding: 2.5px 4px 2.5px 8px;
 }
 
 .emotion-8 .MuiFilledInput-root {
