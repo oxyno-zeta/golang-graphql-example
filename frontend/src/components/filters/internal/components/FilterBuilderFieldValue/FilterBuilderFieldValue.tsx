@@ -19,12 +19,12 @@ import { AdapterDayjsTZ } from './AdapterDayjsTZ';
 export interface Props {
   id: string;
   value: any;
-  setValue: (v: any) => void;
+  onChange: (v: any) => void;
   operation: FilterOperationMetadataModel<any>;
   errorMsg: string | null | undefined;
 }
 
-function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: Props) {
+function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: Props) {
   // Setup translate
   const { t } = useTranslation();
 
@@ -57,7 +57,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: P
           // Reformat data
           const res = newValue.map((it) => it.value);
           // Save values
-          setValue(res);
+          onChange(res);
         }}
         options={operation.enumValues}
         getOptionLabel={(option) => t(option.display)}
@@ -153,11 +153,11 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: P
         onChange={(input, newValue) => {
           // Check if new value is a string
           if (newValue === null) {
-            setValue(null);
+            onChange(null);
             return;
           }
 
-          setValue((newValue as FilterDefinitionEnumObjectModel<any>).value);
+          onChange((newValue as FilterDefinitionEnumObjectModel<any>).value);
         }}
         renderOption={(props, data: FilterDefinitionEnumObjectModel<any>, { inputValue }) => {
           const displayedOption = t(data.display);
@@ -214,7 +214,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: P
             return it;
           });
           // Save values
-          setValue(res);
+          onChange(res);
         }}
         filterOptions={(options, params) => {
           // Open params
@@ -282,13 +282,13 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: P
             onChange={(newValue) => {
               // Check if date is null
               if (newValue === null) {
-                setValue(null);
+                onChange(null);
                 return;
               }
 
               // Save formatted to ISO8601 value and it is compatible with RFC3339 due to removal of ns
               // !! Note: This is using the default timezone
-              setValue(newValue.tz().format());
+              onChange(newValue.tz().format());
             }}
             localeText={{
               openPreviousView: t('common.date.previousMonthAction'),
@@ -315,7 +315,7 @@ function FilterBuilderFieldValue({ value, setValue, operation, errorMsg, id }: P
         helperText={errorMsg && t(errorMsg)}
         value={value}
         onChange={(event) => {
-          setValue(event.target.value);
+          onChange(event.target.value);
         }}
       />
     );

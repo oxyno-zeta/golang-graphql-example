@@ -235,7 +235,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           <FilterBuilderFieldValue
             value={value}
             id={`${id}-value`}
-            setValue={setValue}
+            onChange={setValue}
             operation={operationData as FilterOperationMetadataModel<any>}
             errorMsg={valueErrorMsg}
           />

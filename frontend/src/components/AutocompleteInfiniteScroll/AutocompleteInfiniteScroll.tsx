@@ -36,7 +36,7 @@ function AutocompleteInfiniteScroll<
     // it will only work when the position or node changes
   }, [position, listboxNode, rest.options]);
 
-  const handleScroll: UIEventHandler<HTMLUListElement> = (event) => {
+  const onScroll: UIEventHandler<HTMLUListElement> = (event) => {
     // const ListboxNode = event.currentTarget;
     // replaced by this
     setListboxNode(event.currentTarget);
@@ -63,7 +63,7 @@ function AutocompleteInfiniteScroll<
     <MuiAutocomplete<T, Multiple, DisableClearable, FreeSolo>
       {...rest}
       ListboxProps={{
-        onScroll: handleScroll,
+        onScroll,
       }}
     />
   );

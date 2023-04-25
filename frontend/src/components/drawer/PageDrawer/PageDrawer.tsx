@@ -7,7 +7,7 @@ import MainContentWrapper from '../../MainContentWrapper';
 interface Props {
   drawerWidth: number | string;
   drawerContentElement: ReactNode;
-  renderContent: (handleDrawerToggle: () => void) => ReactNode;
+  renderContent: (onDrawerToggle: () => void) => ReactNode;
   mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
   drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
   drawerContainerBoxSx?: SxProps;
@@ -33,7 +33,7 @@ function PageDrawer({
   // States
   const [isMobileOpen, setMobileOpen] = useState(false);
 
-  const handleMobileDrawerToggle = () => {
+  const onMobileDrawerToggle = () => {
     setMobileOpen((v) => !v);
   };
 
@@ -44,7 +44,7 @@ function PageDrawer({
         <Drawer
           variant="temporary"
           open={isMobileOpen}
-          onClose={handleMobileDrawerToggle}
+          onClose={onMobileDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
@@ -86,7 +86,7 @@ function PageDrawer({
       >
         <MainContentWrapper>
           <div style={{ height: '20px' }} />
-          {renderContent(handleMobileDrawerToggle)}
+          {renderContent(onMobileDrawerToggle)}
         </MainContentWrapper>
       </Box>
     </div>

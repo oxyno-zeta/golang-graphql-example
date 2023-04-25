@@ -10,7 +10,7 @@ import SortDialog from '../SortDialog';
 
 export type Props<T extends Record<string, SortOrderModel>> = {
   sorts: null | undefined | T[];
-  setSorts: React.Dispatch<T[]>;
+  onSubmit: (s: T[]) => void;
   sortFields: SortOrderFieldModel[];
   isPopperEnabled?: boolean;
 };
@@ -19,7 +19,7 @@ const defaultProps = { isPopperEnabled: false };
 
 function SortButton<T extends Record<string, SortOrderModel>>({
   sorts,
-  setSorts,
+  onSubmit,
   sortFields,
   isPopperEnabled,
 }: Props<T>) {
@@ -29,11 +29,11 @@ function SortButton<T extends Record<string, SortOrderModel>>({
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-  const handleClick = () => {
+  const onClick = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const onClose = () => {
     setOpen(false);
   };
 
@@ -42,14 +42,14 @@ function SortButton<T extends Record<string, SortOrderModel>>({
     open,
     sortFields,
     onSubmit: (args: T[]) => {
-      setSorts(args);
-      handleClose();
+      onSubmit(args);
+      onClose();
     },
     onReset: () => {
-      setSorts([]);
-      handleClose();
+      onSubmit([]);
+      onClose();
     },
-    onClose: handleClose,
+    onClose,
   };
 
   return (
@@ -64,7 +64,7 @@ function SortButton<T extends Record<string, SortOrderModel>>({
               setAnchorEl(d);
             }
           }}
-          onClick={handleClick}
+          onClick={onClick}
         >
           <SvgIcon color="inherit">
             <path d={mdiSortVariant} />

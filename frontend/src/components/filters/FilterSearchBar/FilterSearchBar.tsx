@@ -14,7 +14,7 @@ import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
 export type Props<T extends FilterValueObject> = {
   filter: undefined | null | T;
-  setFilter: React.Dispatch<T>;
+  onSubmit: (f: T) => void;
   filterDefinitionModel: FilterDefinitionFieldsModel;
   predefinedFilterObjects?: PredefinedFilter[];
   isAdvancedFilterPopperEnabled?: boolean;
@@ -30,7 +30,7 @@ const defaultProps = {
 
 function FilterSearchBar<T extends FilterValueObject>({
   filter,
-  setFilter,
+  onSubmit,
   filterDefinitionModel,
   predefinedFilterObjects,
   isAdvancedFilterPopperEnabled,
@@ -45,11 +45,11 @@ function FilterSearchBar<T extends FilterValueObject>({
   const [anchorEl, setAnchorEl] = useState<HTMLFormElement | null>(null);
   const [value, setValue] = useState(mainSearchInitialValue);
 
-  const handleClick = () => {
+  const onClick = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const onClose = () => {
     setOpen(false);
   };
 
@@ -64,14 +64,14 @@ function FilterSearchBar<T extends FilterValueObject>({
     open,
     predefinedFilterObjects,
     onSubmit: (args: T) => {
-      setFilter(args);
-      handleClose();
+      onSubmit(args);
+      onClose();
     },
     onReset: () => {
-      setFilter({} as T);
-      handleClose();
+      onSubmit({} as T);
+      onClose();
     },
-    onClose: handleClose,
+    onClose,
   };
 
   return (
@@ -114,7 +114,7 @@ function FilterSearchBar<T extends FilterValueObject>({
         <Button
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
           sx={{ padding: '5px 10px', minWidth: '46px', height: 38, borderRadius: '0px 2px 2px 0px' }}
-          onClick={handleClick}
+          onClick={onClick}
         >
           <SvgIcon>
             <path d={mdiTune} />

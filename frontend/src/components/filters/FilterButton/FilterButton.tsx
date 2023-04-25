@@ -11,7 +11,7 @@ import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
 export type Props<T extends FilterValueObject> = {
   filter: undefined | null | T;
-  setFilter: React.Dispatch<T>;
+  onSubmit: (f: T) => void;
   filterDefinitionModel: FilterDefinitionFieldsModel;
   predefinedFilterObjects?: PredefinedFilter[];
   isAdvancedFilterPopperEnabled?: boolean;
@@ -24,7 +24,7 @@ const defaultProps = {
 
 function FilterButton<T extends FilterValueObject>({
   filter,
-  setFilter,
+  onSubmit,
   filterDefinitionModel,
   predefinedFilterObjects,
   isAdvancedFilterPopperEnabled,
@@ -35,11 +35,11 @@ function FilterButton<T extends FilterValueObject>({
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-  const handleClick = () => {
+  const onClick = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const onClose = () => {
     setOpen(false);
   };
 
@@ -49,14 +49,14 @@ function FilterButton<T extends FilterValueObject>({
     open,
     predefinedFilterObjects,
     onSubmit: (args: T) => {
-      setFilter(args);
-      handleClose();
+      onSubmit(args);
+      onClose();
     },
     onReset: () => {
-      setFilter({} as T);
-      handleClose();
+      onSubmit({} as T);
+      onClose();
     },
-    onClose: handleClose,
+    onClose,
   };
 
   return (
@@ -66,7 +66,7 @@ function FilterButton<T extends FilterValueObject>({
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
           variant="outlined"
           sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
-          onClick={handleClick}
+          onClick={onClick}
           ref={(d: HTMLButtonElement) => {
             if (d && d !== anchorEl) {
               setAnchorEl(d);

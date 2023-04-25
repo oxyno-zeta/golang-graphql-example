@@ -13,12 +13,12 @@ import { cleanPaginationSearchParams } from '../../utils/pagination';
 export interface Props {
   pageInfo: PageInfoModel;
   maxPaginationSize: number;
-  // Using handleFirstPage will disable search param management
-  handleFirstPage?: () => void | undefined;
-  // Using handlePreviousPage will disable search param management
-  handlePreviousPage?: () => void | undefined;
-  // Using handleNextPage will disable search param management
-  handleNextPage?: () => void | undefined;
+  // Using onFirstPage will disable search param management
+  onFirstPage?: () => void | undefined;
+  // Using onPreviousPage will disable search param management
+  onPreviousPage?: () => void | undefined;
+  // Using onNextPage will disable search param management
+  onNextPage?: () => void | undefined;
   toolbarProps?: ToolbarProps;
   firstIconButtonProps?: IconButtonProps;
   previousIconButtonProps?: IconButtonProps;
@@ -26,9 +26,9 @@ export interface Props {
 }
 
 const defaultProps = {
-  handleFirstPage: undefined,
-  handlePreviousPage: undefined,
-  handleNextPage: undefined,
+  onFirstPage: undefined,
+  onPreviousPage: undefined,
+  onNextPage: undefined,
   toolbarProps: {},
   firstIconButtonProps: {},
   previousIconButtonProps: {},
@@ -44,9 +44,9 @@ type IconButtonInternalProps = {
 function Pagination({
   maxPaginationSize,
   pageInfo,
-  handleFirstPage,
-  handlePreviousPage,
-  handleNextPage,
+  onFirstPage,
+  onPreviousPage,
+  onNextPage,
   toolbarProps,
   firstIconButtonProps,
   nextIconButtonProps,
@@ -68,9 +68,9 @@ function Pagination({
     component: Link,
   };
   // Check if handle first page is declared
-  if (handleFirstPage) {
+  if (onFirstPage) {
     firstPageProps = {
-      onClick: handleFirstPage,
+      onClick: onFirstPage,
     };
   }
 
@@ -87,9 +87,9 @@ function Pagination({
     component: Link,
   };
   // Check if handle previous page is declared
-  if (handlePreviousPage) {
+  if (onPreviousPage) {
     previousPageProps = {
-      onClick: handlePreviousPage,
+      onClick: onPreviousPage,
     };
   }
 
@@ -106,9 +106,9 @@ function Pagination({
     component: Link,
   };
   // Check if handle next page is declared
-  if (handleNextPage) {
+  if (onNextPage) {
     nextPageProps = {
-      onClick: handleNextPage,
+      onClick: onNextPage,
     };
   }
 

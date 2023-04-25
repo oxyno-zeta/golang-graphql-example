@@ -21,9 +21,9 @@ function HelpForcedTooltip({ tooltipTitle, tooltipProps, svgIconProps, svgIconCo
     <ForcedTooltip
       title={<>{tooltipTitle}</>}
       {...tooltipProps}
-      render={(handleTooltipOpen) => (
+      render={(onTooltipOpen) => (
         <span style={svgIconContainerStyle}>
-          <SvgIcon onClick={() => handleTooltipOpen()} {...svgIconProps}>
+          <SvgIcon onClick={() => onTooltipOpen()} {...svgIconProps}>
             <path d={mdiHelpCircle} />
           </SvgIcon>
         </span>

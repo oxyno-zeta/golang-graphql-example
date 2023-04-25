@@ -53,10 +53,10 @@ function TopBarUserMenu() {
   const { oidcSignOutURL, oidcClientID } = config;
 
   // Hooks
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const onOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget.parentElement);
   };
-  const handleCloseUserMenu = () => {
+  const onCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
@@ -64,7 +64,7 @@ function TopBarUserMenu() {
     <>
       <Tooltip title={t('common.accountMenu')}>
         <span>
-          <IconButton onClick={handleOpenUserMenu}>
+          <IconButton onClick={onOpenUserMenu}>
             <SvgIcon>
               <path d={mdiAccountCircle} />
             </SvgIcon>
@@ -83,7 +83,7 @@ function TopBarUserMenu() {
           horizontal: 'right',
         }}
         open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
+        onClose={onCloseUserMenu}
       >
         <div style={{ margin: '10px 16px 10px 16px' }}>
           <div style={{ width: 'calc(100% - 20px)' }}>

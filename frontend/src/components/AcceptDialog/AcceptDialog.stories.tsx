@@ -16,7 +16,7 @@ export default {
   args: storybookProps,
 } as Meta<typeof AcceptDialog>;
 
-export const Playground: StoryFn<typeof AcceptDialog> = function C({ handleOk, handleClose, ...args }: Props) {
+export const Playground: StoryFn<typeof AcceptDialog> = function C({ onSubmit, onClose, ...args }: Props) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -30,12 +30,12 @@ export const Playground: StoryFn<typeof AcceptDialog> = function C({ handleOk, h
       <AcceptDialog
         {...args}
         open={open}
-        handleClose={() => {
-          handleClose();
+        onClose={() => {
+          onClose();
           setOpen(false);
         }}
-        handleOk={() => {
-          handleOk();
+        onSubmit={() => {
+          onSubmit();
           setOpen(false);
           return Promise.resolve();
         }}
@@ -44,7 +44,7 @@ export const Playground: StoryFn<typeof AcceptDialog> = function C({ handleOk, h
   );
 };
 
-export const OkDisabled: StoryFn<typeof AcceptDialog> = function C({ handleOk, handleClose, ...args }: Props) {
+export const OkDisabled: StoryFn<typeof AcceptDialog> = function C({ onSubmit, onClose, ...args }: Props) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -59,12 +59,12 @@ export const OkDisabled: StoryFn<typeof AcceptDialog> = function C({ handleOk, h
         {...args}
         okDisabled
         open={open}
-        handleClose={() => {
-          handleClose();
+        onClose={() => {
+          onClose();
           setOpen(false);
         }}
-        handleOk={() => {
-          handleOk();
+        onSubmit={() => {
+          onSubmit();
           setOpen(false);
           return Promise.resolve();
         }}

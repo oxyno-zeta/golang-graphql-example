@@ -124,7 +124,7 @@ function Todos() {
           <TopListContainer>
             <FilterSearchBar
               filter={filter}
-              setFilter={(f) => {
+              onSubmit={(f) => {
                 // Flush pagination
                 // When a pagination is set, like you are on second page and
                 // a new filter is applied, you want to start from start again.
@@ -181,7 +181,7 @@ function Todos() {
             />
             <SortButton
               sorts={sorts}
-              setSorts={(nSort) => {
+              onSubmit={(nSort) => {
                 setSorts(nSort);
               }}
               sortFields={todoSortFields}

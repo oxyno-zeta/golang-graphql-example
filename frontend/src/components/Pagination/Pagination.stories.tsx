@@ -17,7 +17,7 @@ export default {
 } as Meta<typeof Pagination>;
 
 export const Playground: StoryFn<typeof Pagination> = function C(args: Props) {
-  return <Pagination {...args} handleFirstPage={undefined} handleNextPage={undefined} handlePreviousPage={undefined} />;
+  return <Pagination {...args} onFirstPage={undefined} onNextPage={undefined} onPreviousPage={undefined} />;
 };
 Playground.parameters = {
   reactRouter: {
@@ -29,9 +29,9 @@ export const OnlyNextPage: StoryFn<typeof Pagination> = function C(args: Props) 
   return (
     <Pagination
       {...args}
-      handleFirstPage={undefined}
-      handleNextPage={undefined}
-      handlePreviousPage={undefined}
+      onFirstPage={undefined}
+      onNextPage={undefined}
+      onPreviousPage={undefined}
       pageInfo={{ hasNextPage: true, hasPreviousPage: false, endCursor: 'fake-end' }}
     />
   );
@@ -46,9 +46,9 @@ export const OnlyPreviousPage: StoryFn<typeof Pagination> = function C(args: Pro
   return (
     <Pagination
       {...args}
-      handleFirstPage={undefined}
-      handleNextPage={undefined}
-      handlePreviousPage={undefined}
+      onFirstPage={undefined}
+      onNextPage={undefined}
+      onPreviousPage={undefined}
       pageInfo={{ hasNextPage: false, hasPreviousPage: true, startCursor: 'fake-start' }}
     />
   );
@@ -63,9 +63,9 @@ export const AllEnabled: StoryFn<typeof Pagination> = function C(args: Props) {
   return (
     <Pagination
       {...args}
-      handleFirstPage={undefined}
-      handleNextPage={undefined}
-      handlePreviousPage={undefined}
+      onFirstPage={undefined}
+      onNextPage={undefined}
+      onPreviousPage={undefined}
       pageInfo={{ hasNextPage: true, hasPreviousPage: true, startCursor: 'fake-start', endCursor: 'fake-end' }}
     />
   );

@@ -8,7 +8,7 @@ import type { SxProps } from '@mui/material';
 interface Props {
   drawerWidth: number | string;
   drawerElement: ReactNode;
-  handleMobileDrawerToggle: () => void;
+  onMobileDrawerToggle: () => void;
   mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
   drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
   drawerContainerBoxSx?: SxProps;
@@ -23,7 +23,7 @@ const defaultProps = {
 function ContentDisplayDrawer({
   drawerElement,
   drawerWidth,
-  handleMobileDrawerToggle,
+  onMobileDrawerToggle,
   mobileDrawerProps,
   drawerProps,
   drawerContainerBoxSx,
@@ -46,7 +46,7 @@ function ContentDisplayDrawer({
         <Drawer
           variant="temporary"
           open={open}
-          onClose={handleMobileDrawerToggle}
+          onClose={onMobileDrawerToggle}
           anchor="right"
           sx={{
             display: 'block',

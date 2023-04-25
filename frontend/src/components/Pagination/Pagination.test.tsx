@@ -114,7 +114,7 @@ describe('Pagination', () => {
         paginationProps={{
           maxPaginationSize: 10,
           pageInfo: { hasNextPage: true, endCursor: 'fake-end', hasPreviousPage: false },
-          handleNextPage: () => {
+          onNextPage: () => {
             clicked = true;
           },
         }}
@@ -143,10 +143,10 @@ describe('Pagination', () => {
         paginationProps={{
           maxPaginationSize: 10,
           pageInfo: { hasNextPage: false, startCursor: 'fake-start', hasPreviousPage: true },
-          handlePreviousPage: () => {
+          onPreviousPage: () => {
             previousPageClicked = true;
           },
-          handleFirstPage: () => {
+          onFirstPage: () => {
             firstPageClicked = true;
           },
         }}
@@ -179,13 +179,13 @@ describe('Pagination', () => {
         paginationProps={{
           maxPaginationSize: 10,
           pageInfo: { hasNextPage: true, endCursor: 'fake-end', startCursor: 'fake-start', hasPreviousPage: true },
-          handleNextPage: () => {
+          onNextPage: () => {
             nextPageClicked = true;
           },
-          handlePreviousPage: () => {
+          onPreviousPage: () => {
             previousPageClicked = true;
           },
-          handleFirstPage: () => {
+          onFirstPage: () => {
             firstPageClicked = true;
           },
         }}

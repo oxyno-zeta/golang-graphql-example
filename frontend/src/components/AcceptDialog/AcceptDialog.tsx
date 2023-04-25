@@ -13,8 +13,8 @@ export interface Props {
   title: string;
   content?: string;
   contentElement?: ReactNode;
-  handleClose: () => void;
-  handleOk: () => Promise<void>;
+  onClose: () => void;
+  onSubmit: () => Promise<void>;
   okDisabled?: boolean;
   dialogProps?: Partial<Omit<DialogProps, 'open' | 'onClose'>>;
   dialogTitleProps?: Partial<DialogTitleProps>;
@@ -43,8 +43,8 @@ function AcceptDialog({
   title,
   content,
   contentElement,
-  handleClose,
-  handleOk,
+  onClose,
+  onSubmit,
   okDisabled,
   dialogProps,
   dialogTitleProps,
@@ -60,7 +60,7 @@ function AcceptDialog({
   // onClick ok
   const okOnClick = () => {
     setLoading(true);
-    handleOk().finally(() => {
+    onSubmit().finally(() => {
       setLoading(false);
     });
   };
@@ -68,7 +68,7 @@ function AcceptDialog({
   return (
     <Dialog
       open={open}
-      onClose={handleClose}
+      onClose={onClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
       {...dialogProps}
@@ -81,7 +81,7 @@ function AcceptDialog({
         {contentElement}
       </DialogContent>
       <DialogActions {...dialogActionsProps}>
-        <Button onClick={handleClose} {...cancelButtonProps}>
+        <Button onClick={onClose} {...cancelButtonProps}>
           {t('common.cancelAction')}
         </Button>
         <LoadingButton

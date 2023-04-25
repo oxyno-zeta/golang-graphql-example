@@ -20,9 +20,9 @@ function HelpTooltipButton({ tooltipTitle, tooltipProps, iconButtonProps }: Prop
     <ForcedTooltip
       title={<>{tooltipTitle}</>}
       {...tooltipProps}
-      render={(handleTooltipOpen) => (
+      render={(onTooltipOpen) => (
         <span>
-          <IconButton onClick={handleTooltipOpen} {...iconButtonProps}>
+          <IconButton onClick={onTooltipOpen} {...iconButtonProps}>
             <SvgIcon>
               <path d={mdiHelpCircle} />
             </SvgIcon>

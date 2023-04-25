@@ -49,7 +49,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
   const availableFields = sortFields.filter((value) => !sortsKeys.find((key) => key === value.field));
 
   // Add new line handler
-  const addLineHandler = () => {
+  const onAddLine = () => {
     const tmp = [...result];
     // Add new item with first available field
     tmp.push({ [availableFields[0].field]: SortOrderAsc } as T);
@@ -144,7 +144,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
         })}
         {availableFields.length !== 0 && (
           <Tooltip title={<>{t('common.sort.addNewField')}</>}>
-            <IconButton onClick={addLineHandler} sx={{ margin: '0 5px' }}>
+            <IconButton onClick={onAddLine} sx={{ margin: '0 5px' }}>
               <SvgIcon>
                 <path d={mdiPlus} />
               </SvgIcon>
