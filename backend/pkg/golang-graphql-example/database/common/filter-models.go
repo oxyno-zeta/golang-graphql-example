@@ -291,7 +291,7 @@ func parseOrGetTime(x interface{}) (*time.Time, error) {
 		if err != nil {
 			// In this particular case, display error in public message in order to help api user to detect the error
 			// and consider that error as an invalid input error.
-			return nil, errors.NewInvalidInputErrorWithErrorAndPublicMessage(err, err.Error())
+			return nil, errors.NewInvalidInputErrorWithError(err, errors.WithPublicError(err))
 		}
 
 		// Force utc

@@ -123,7 +123,10 @@ func manageObjectSortOrder(rKind reflect.Kind, rVal *reflect.Value, refuseMultip
 		}
 		// Check if sort have been already applied
 		if refuseMultipleField && sortApplied {
-			return nil, false, errors.NewInvalidInputErrorWithErrorAndPublicMessage(ErrSortListMustNotHaveMultipleFields, ErrSortListMustNotHaveMultipleFields.Error())
+			return nil, false, errors.NewInvalidInputErrorWithError(
+				ErrSortListMustNotHaveMultipleFields,
+				errors.WithPublicError(ErrSortListMustNotHaveMultipleFields),
+			)
 		}
 
 		// Get value from field

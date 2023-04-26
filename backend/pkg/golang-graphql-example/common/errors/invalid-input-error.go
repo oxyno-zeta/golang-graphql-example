@@ -2,56 +2,22 @@ package errors
 
 import (
 	"net/http"
-
-	"emperror.dev/errors"
 )
 
 const InvalidInputErrorCode = "INVALID_INPUT"
 
-func NewInvalidInputError(msg string) Error {
-	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, nil)
+func NewInvalidInputError(msg string, options ...GenericErrorOption) Error {
+	return NewInvalidInputErrorWithOptions(append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
 }
 
-func NewInvalidInputErrorWithPublicMessage(msg, pubMsg string) Error {
-	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(errors.New(msg), errors.New(pubMsg), nil)
+func NewInvalidInputErrorWithError(err error, options ...GenericErrorOption) Error {
+	return NewInvalidInputErrorWithOptions(append([]GenericErrorOption{WithError(err)}, options...)...)
 }
 
-func NewInvalidInputErrorWithError(err error) Error {
-	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, nil, nil)
-}
-
-func NewInvalidInputErrorWithErrorAndPublicMessage(err error, pubMsg string) Error {
-	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, errors.New(pubMsg), nil)
-}
-
-func NewInvalidInputErrorWithExtensions(msg string, customExtensions map[string]interface{}) Error {
-	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(errors.New(msg), nil, customExtensions)
-}
-
-func NewInvalidInputErrorWithExtensionsAndError(err error, customExtensions map[string]interface{}) Error {
-	return NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, nil, customExtensions)
-}
-
-func NewInvalidInputErrorWithExtensionsPublicErrorAndError(err, publicError error, customExtensions map[string]interface{}) Error {
-	// Check if custom extensions exists
-	if customExtensions == nil {
-		customExtensions = map[string]interface{}{}
-	}
-	// Add code in custom extensions
-	customExtensions["code"] = InvalidInputErrorCode
-
-	pubErr := errors.New("invalid input")
-	// Check if public error is set
-	if publicError != nil {
-		pubErr = publicError
-	}
-
-	// Return new error
-	return &GenericError{
-		err:         errors.WithStack(err),
-		ext:         customExtensions,
-		publicError: pubErr,
-		statusCode:  http.StatusBadRequest,
-		code:        InvalidInputErrorCode,
-	}
+func NewInvalidInputErrorWithOptions(options ...GenericErrorOption) Error {
+	return NewGenericError(append([]GenericErrorOption{
+		WithCode(InvalidInputErrorCode),
+		WithPublicErrorMessage("invalid input"),
+		WithStatusCode(http.StatusBadRequest),
+	}, options...)...)
 }
