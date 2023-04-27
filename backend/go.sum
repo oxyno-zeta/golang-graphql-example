@@ -331,6 +331,8 @@ github.com/hashicorp/hcl v1.0.0/go.mod h1:E5yfLk+7swimpb2L/Alb/PJmXilQ/rhwaUYs4T
 github.com/hashicorp/serf v0.10.1 h1:Z1H2J60yRKvfDYAOZLd2MU0ND4AH/WDz7xYHDWQsIPY=
 github.com/hasura/go-graphql-client v0.9.2 h1:4FyAeVOu+GcS1BaoELWNyxzaLY7s+g72LLH+qYItdEY=
 github.com/hasura/go-graphql-client v0.9.2/go.mod h1:AarJlxO1I59MPqU/TC7gQP0BMFgPEqUTt5LYPvykasw=
+github.com/hasura/go-graphql-client v0.9.3 h1:Xi3fqa2t9q4nJ2jM2AU8nB6qeAoMpbcYDiOSBnNAN1E=
+github.com/hasura/go-graphql-client v0.9.3/go.mod h1:AarJlxO1I59MPqU/TC7gQP0BMFgPEqUTt5LYPvykasw=
 github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
 github.com/ianlancetaylor/demangle v0.0.0-20200824232613-28f6c0f3b639 h1:mV02weKRL81bEnm8A0HT1/CAelMQDBuQIfLw8n+d6xI=
 github.com/ianlancetaylor/demangle v0.0.0-20200824232613-28f6c0f3b639/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
