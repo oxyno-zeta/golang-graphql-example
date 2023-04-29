@@ -26,7 +26,6 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.15.0
 	github.com/rabbitmq/amqp091-go v1.8.0
-	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.2
 	github.com/thoas/go-funk v0.9.3
@@ -36,6 +35,7 @@ require (
 	github.com/xhit/go-simple-mail/v2 v2.13.0
 	go.uber.org/automaxprocs v1.5.2
 	go.uber.org/goleak v1.2.1
+	go.uber.org/zap v1.21.0
 	golang.org/x/oauth2 v0.7.0
 	gorm.io/driver/postgres v1.5.0
 	gorm.io/driver/sqlite v1.4.4

@@ -76,7 +76,7 @@ func Middleware(logger Logger, getCorrelationID func(c *gin.Context) string, get
 
 		requestLogger := logger.WithFields(logFields)
 
-		requestLogger.Debugln("request started")
+		requestLogger.Debug("request started")
 
 		// Add logger to request
 		SetLoggerToGin(c, requestLogger)
@@ -98,14 +98,14 @@ func Middleware(logger Logger, getCorrelationID func(c *gin.Context) string, get
 
 		endRequestLogger := requestLogger.WithFields(endFields)
 
-		logFunc := endRequestLogger.Infoln
+		logFunc := endRequestLogger.Info
 
 		if status >= http.StatusMultipleChoices && status < http.StatusInternalServerError {
-			logFunc = endRequestLogger.Warnln
+			logFunc = endRequestLogger.Warn
 		}
 
 		if status >= http.StatusInternalServerError {
-			logFunc = endRequestLogger.Errorln
+			logFunc = endRequestLogger.Error
 		}
 
 		logFunc("request complete")

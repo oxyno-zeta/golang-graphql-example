@@ -295,7 +295,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		}
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
-			logger.Error(errors.New("No auth header or cookie detected, redirect to oidc login"))
+			logger.Error(cerrors.NewUnauthorizedError("No auth header or cookie detected, redirect to oidc login"))
 			redirectOrUnauthorized(c, unauthorizedPathRegexList)
 
 			return

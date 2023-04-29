@@ -106,6 +106,9 @@ func main() {
 		}
 	}()
 
+	// Defer sync
+	defer sv.logger.Sync() //nolint: errcheck // This is part of the job
+
 	sv.logger.Infof("Application version: %s (git commit: %s) built on %s", sv.version.Version, sv.version.GitCommit, sv.version.BuildDate)
 
 	// Check if list is empty

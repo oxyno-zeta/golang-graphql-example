@@ -6,5 +6,5 @@ type lockDistributorLogger struct {
 
 func (ldl *lockDistributorLogger) Println(v ...interface{}) {
 	// Log as debug to avoid to much log
-	ldl.logger.Debugln(v...)
+	ldl.logger.Debug(v...)
 }
