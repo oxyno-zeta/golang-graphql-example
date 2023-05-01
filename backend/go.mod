@@ -35,7 +35,7 @@ require (
 	github.com/xhit/go-simple-mail/v2 v2.13.0
 	go.uber.org/automaxprocs v1.5.2
 	go.uber.org/goleak v1.2.1
-	go.uber.org/zap v1.21.0
+	go.uber.org/zap v1.24.0
 	golang.org/x/oauth2 v0.7.0
 	gorm.io/driver/postgres v1.5.0
 	gorm.io/driver/sqlite v1.4.4
