@@ -7,7 +7,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import { mdiViewGridOutline, mdiViewSequential } from '@mdi/js';
 
 export interface Props {
-  setGridView: (input: boolean) => void;
+  onChange: (input: boolean) => void;
   gridView: boolean;
   buttonGroupProps?: ButtonGroupProps;
   tableButtonProps?: Omit<ButtonProps, 'onClick'>;
@@ -20,7 +20,7 @@ const defaultProps = {
   gridButtonProps: {},
 };
 
-function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableButtonProps, gridButtonProps }: Props) {
+function GridTableViewSwitcher({ onChange, gridView, buttonGroupProps, tableButtonProps, gridButtonProps }: Props) {
   // Get translator
   const { t } = useTranslation();
 
@@ -41,7 +41,7 @@ function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableB
           onClick={() => {
             // Optimization
             if (gridView) {
-              setGridView(false);
+              onChange(false);
             }
           }}
           {...tableButtonProps}
@@ -58,7 +58,7 @@ function GridTableViewSwitcher({ setGridView, gridView, buttonGroupProps, tableB
           onClick={() => {
             // Optimization
             if (!gridView) {
-              setGridView(true);
+              onChange(true);
             }
           }}
           {...gridButtonProps}

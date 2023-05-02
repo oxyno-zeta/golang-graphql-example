@@ -14,7 +14,7 @@ jest.mock('react-i18next', () => ({
 
 describe('GridTableViewSwitcher', () => {
   it('should mark grid in primary color', async () => {
-    const { container, findByRole } = render(<GridTableViewSwitcher setGridView={() => {}} gridView />);
+    const { container, findByRole } = render(<GridTableViewSwitcher onChange={() => {}} gridView />);
 
     expect(container).toMatchSnapshot();
     // Find group
@@ -26,7 +26,7 @@ describe('GridTableViewSwitcher', () => {
   });
 
   it('should mark table in primary color', async () => {
-    const { container, findByRole } = render(<GridTableViewSwitcher setGridView={() => {}} gridView={false} />);
+    const { container, findByRole } = render(<GridTableViewSwitcher onChange={() => {}} gridView={false} />);
 
     expect(container).toMatchSnapshot();
     // Find group
@@ -43,7 +43,7 @@ describe('GridTableViewSwitcher', () => {
 
     const { container, findByRole } = render(
       <GridTableViewSwitcher
-        setGridView={(v) => {
+        onChange={(v) => {
           clicked = true;
           gridViewValue = v;
         }}
@@ -71,7 +71,7 @@ describe('GridTableViewSwitcher', () => {
 
     const { container, findByRole } = render(
       <GridTableViewSwitcher
-        setGridView={(v) => {
+        onChange={(v) => {
           clicked = true;
           gridViewValue = v;
         }}
@@ -99,7 +99,7 @@ describe('GridTableViewSwitcher', () => {
 
     const { container, findByRole } = render(
       <GridTableViewSwitcher
-        setGridView={(v) => {
+        onChange={(v) => {
           clicked = true;
           gridViewValue = v;
         }}
@@ -127,7 +127,7 @@ describe('GridTableViewSwitcher', () => {
 
     const { container, findByRole } = render(
       <GridTableViewSwitcher
-        setGridView={(v) => {
+        onChange={(v) => {
           clicked = true;
           gridViewValue = v;
         }}

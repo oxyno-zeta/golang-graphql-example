@@ -186,7 +186,7 @@ function Todos() {
               }}
               sortFields={todoSortFields}
             />
-            <GridTableViewSwitcher setGridView={setGridView} gridView={gridView} />
+            <GridTableViewSwitcher onChange={setGridView} gridView={gridView} />
           </TopListContainer>
           <Divider />
           <div style={{ width: '100%' }}>
