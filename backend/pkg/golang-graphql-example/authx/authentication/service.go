@@ -33,6 +33,11 @@ const stateLength = 2
 
 var userContextKey = &contextKey{name: userContextKeyName}
 
+type providerEndpointsClaims struct {
+	EndSessionEndpointURL *url.URL
+	EndSessionEndpoint    string `json:"end_session_endpoint"`
+}
+
 type service struct {
 	verifier   *oidc.IDTokenVerifier
 	cfgManager config.Manager
