@@ -14,7 +14,9 @@ jest.mock('react-i18next', () => ({
 
 describe('GridTableViewSwitcher', () => {
   it('should mark grid in primary color', async () => {
-    const { container, findByRole } = render(<GridTableViewSwitcher onChange={() => {}} gridView />);
+    const onChangeMock = jest.fn();
+
+    const { container, findByRole } = render(<GridTableViewSwitcher onChange={onChangeMock} gridView />);
 
     expect(container).toMatchSnapshot();
     // Find group
@@ -23,10 +25,13 @@ describe('GridTableViewSwitcher', () => {
     expect(groupElement.children).toHaveLength(2);
     expect(groupElement.children[0].firstChild).not.toHaveClass('MuiSvgIcon-colorPrimary');
     expect(groupElement.children[1].firstChild).toHaveClass('MuiSvgIcon-colorPrimary');
+    expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should mark table in primary color', async () => {
-    const { container, findByRole } = render(<GridTableViewSwitcher onChange={() => {}} gridView={false} />);
+    const onChangeMock = jest.fn();
+
+    const { container, findByRole } = render(<GridTableViewSwitcher onChange={onChangeMock} gridView={false} />);
 
     expect(container).toMatchSnapshot();
     // Find group
@@ -35,20 +40,15 @@ describe('GridTableViewSwitcher', () => {
     expect(groupElement.children).toHaveLength(2);
     expect(groupElement.children[0].firstChild).toHaveClass('MuiSvgIcon-colorPrimary');
     expect(groupElement.children[1].firstChild).not.toHaveClass('MuiSvgIcon-colorPrimary');
+    expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it('should change grid marker when click on grid button and grid view is disabled', async () => {
-    let clicked = false;
-    let gridViewValue = false;
+    const onChangeMock = jest.fn();
+    const gridViewValue = false;
 
     const { container, findByRole } = render(
-      <GridTableViewSwitcher
-        onChange={(v) => {
-          clicked = true;
-          gridViewValue = v;
-        }}
-        gridView={gridViewValue}
-      />,
+      <GridTableViewSwitcher onChange={onChangeMock} gridView={gridViewValue} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -61,22 +61,16 @@ describe('GridTableViewSwitcher', () => {
 
     fireEvent.click(groupElement.children[1], 'click');
 
-    expect(clicked).toBeTruthy();
-    expect(gridViewValue).toBeTruthy();
+    expect(onChangeMock).toHaveBeenCalled();
+    expect(onChangeMock).toHaveBeenCalledWith(true);
   });
 
   it('should change grid marker when click on table button and grid view is enabled', async () => {
-    let clicked = false;
-    let gridViewValue = true;
+    const onChangeMock = jest.fn();
+    const gridViewValue = true;
 
     const { container, findByRole } = render(
-      <GridTableViewSwitcher
-        onChange={(v) => {
-          clicked = true;
-          gridViewValue = v;
-        }}
-        gridView={gridViewValue}
-      />,
+      <GridTableViewSwitcher onChange={onChangeMock} gridView={gridViewValue} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -89,22 +83,16 @@ describe('GridTableViewSwitcher', () => {
 
     fireEvent.click(groupElement.children[0], 'click');
 
-    expect(clicked).toBeTruthy();
-    expect(gridViewValue).toBeFalsy();
+    expect(onChangeMock).toHaveBeenCalled();
+    expect(onChangeMock).toHaveBeenCalledWith(false);
   });
 
   it("shouldn't change grid marker when click on grid button and grid view is already enabled", async () => {
-    let clicked = false;
-    let gridViewValue = true;
+    const onChangeMock = jest.fn();
+    const gridViewValue = true;
 
     const { container, findByRole } = render(
-      <GridTableViewSwitcher
-        onChange={(v) => {
-          clicked = true;
-          gridViewValue = v;
-        }}
-        gridView={gridViewValue}
-      />,
+      <GridTableViewSwitcher onChange={onChangeMock} gridView={gridViewValue} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -117,22 +105,15 @@ describe('GridTableViewSwitcher', () => {
 
     fireEvent.click(groupElement.children[1], 'click');
 
-    expect(clicked).toBeFalsy();
-    expect(gridViewValue).toBeTruthy();
+    expect(onChangeMock).not.toHaveBeenCalled();
   });
 
   it("shouldn't change grid marker when click on table button and grid view is already disabled", async () => {
-    let clicked = false;
-    let gridViewValue = false;
+    const onChangeMock = jest.fn();
+    const gridViewValue = false;
 
     const { container, findByRole } = render(
-      <GridTableViewSwitcher
-        onChange={(v) => {
-          clicked = true;
-          gridViewValue = v;
-        }}
-        gridView={gridViewValue}
-      />,
+      <GridTableViewSwitcher onChange={onChangeMock} gridView={gridViewValue} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -145,7 +126,6 @@ describe('GridTableViewSwitcher', () => {
 
     fireEvent.click(groupElement.children[0], 'click');
 
-    expect(clicked).toBeFalsy();
-    expect(gridViewValue).toBeFalsy();
+    expect(onChangeMock).not.toHaveBeenCalled();
   });
 });
