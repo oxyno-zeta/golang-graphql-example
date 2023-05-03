@@ -386,23 +386,23 @@ func (as *amqpService) Consume(
 					fields[log.LogTraceIDField] = trace.GetTraceID()
 				}
 				// Update
-				logger = logger.WithFields(fields)
+				childLogger := logger.WithFields(fields)
 				// Create new context with logger
-				cbCtx := log.SetLoggerToContext(ctx, logger)
+				cbCtx := log.SetLoggerToContext(ctx, childLogger)
 				// Set trace in context
 				cbCtx = tracing.SetTraceToContext(cbCtx, trace)
 				// Set correlation id in context
 				cbCtx = correlationid.SetInContext(cbCtx, d.CorrelationId)
 
 				// Log
-				logger.Debug("start consuming message")
+				childLogger.Debug("start consuming message")
 
 				// Call handler
 				err = as.consumeDeliveryHandler(cbCtx, trace, &d, cb)
 				// Check error
 				if err != nil {
-					logger.Error("message consumed failed with error")
-					logger.Error(err)
+					childLogger.Error("message consumed failed with error")
+					childLogger.Error(err)
 
 					// Calculate Requeue option
 					// Initialize
@@ -417,8 +417,8 @@ func (as *amqpService) Consume(
 					// Check error
 					// This may arrive when worker is disconnected
 					if err != nil {
-						logger.Error("cannot nack consumed message")
-						logger.Error(err)
+						childLogger.Error("cannot nack consumed message")
+						childLogger.Error(err)
 						// Stop
 						return nil
 					}
@@ -435,13 +435,13 @@ func (as *amqpService) Consume(
 					// Check error
 					// This may arrive when worker is disconnected
 					if err != nil {
-						logger.Error("cannot ack consumed message")
-						logger.Error(err)
+						childLogger.Error("cannot ack consumed message")
+						childLogger.Error(err)
 						// Stop
 						return nil
 					}
 
-					logger.Info("message successfully consumed")
+					childLogger.Info("message successfully consumed")
 					// Increase success counter
 					as.metricsSvc.IncreaseSuccessfullyAMQPConsumedMessage(
 						consumeCfg.QueueName,
