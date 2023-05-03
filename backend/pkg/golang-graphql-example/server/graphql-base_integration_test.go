@@ -22,7 +22,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	cmocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config/mocks"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	lockdistributor "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor/sql"
@@ -33,33 +32,6 @@ import (
 	"go.uber.org/goleak"
 	"gorm.io/gorm/schema"
 )
-
-var integrationTestsCfg *config.Config = &config.Config{
-	Server:  &config.ServerConfig{},
-	Log:     &config.LogConfig{Level: "debug", Format: "human"},
-	Tracing: &config.TracingConfig{Enabled: false},
-	OIDCAuthentication: &config.OIDCAuthConfig{
-		ClientID:          "client-without-secret",
-		State:             "my-secret-state-key",
-		IssuerURL:         "http://localhost:8088/auth/realms/integration",
-		RedirectURL:       "http://localhost:8080/",
-		LogoutRedirectURL: "http://localhost:8080/",
-		EmailVerified:     true,
-		Scopes:            config.DefaultOIDCScopes,
-		CookieName:        config.DefaultCookieName,
-	},
-	LockDistributor: &config.LockDistributorConfig{
-		TableName:          config.DefaultLockDistributorTableName,
-		LeaseDuration:      config.DefaultLockDistributorLeaseDuration,
-		HeartbeatFrequency: config.DefaultLockDistributionHeartbeatFrequency,
-	},
-	Database: &config.DatabaseConfig{
-		Driver: config.DefaultDatabaseDriver,
-		ConnectionURL: &config.CredentialConfig{
-			Value: "host=localhost port=5432 user=postgres dbname=postgres-integration password=postgres sslmode=disable",
-		},
-	},
-}
 
 type GraphQLTestSuite struct {
 	suite.Suite
