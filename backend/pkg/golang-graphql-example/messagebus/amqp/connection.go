@@ -42,7 +42,7 @@ func (as *amqpService) Reconnect() error {
 
 func (as *amqpService) Close() error {
 	// Check if consumer channel is opened
-	if !as.consumerChannel.IsClosed() {
+	if as.consumerChannel != nil && !as.consumerChannel.IsClosed() {
 		// Closing channel
 		err := as.consumerChannel.Close()
 		// Check error
@@ -52,7 +52,7 @@ func (as *amqpService) Close() error {
 	}
 
 	// Check if publish channel is opened
-	if !as.publisherChannel.IsClosed() {
+	if as.publisherChannel != nil && !as.publisherChannel.IsClosed() {
 		// Just closing publisher channel as no consumer are in
 		err := as.publisherChannel.Close()
 		// Check error
@@ -62,7 +62,7 @@ func (as *amqpService) Close() error {
 	}
 
 	// Check if publisher connection is opened
-	if !as.publisherConnection.IsClosed() {
+	if as.publisherConnection != nil && !as.publisherConnection.IsClosed() {
 		// Closing publisher connection
 		err := as.publisherConnection.Close()
 		// Check error
@@ -72,7 +72,7 @@ func (as *amqpService) Close() error {
 	}
 
 	// Check if consumer connection is opened
-	if !as.consumerConnection.IsClosed() {
+	if as.consumerConnection != nil && !as.consumerConnection.IsClosed() {
 		// Closing consumer connection
 		err := as.consumerConnection.Close()
 		// Check error
