@@ -44,6 +44,7 @@ type GraphQLTestSuite struct {
 
 // this function executes before the test suite begins execution
 func (suite *GraphQLTestSuite) SetupSuite() {
+	fmt.Println("SetupSuite phase")
 	// Override static files
 	StaticFiles = "../../../static/*.html"
 
@@ -152,6 +153,7 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 
 // this function executes after all tests executed
 func (suite *GraphQLTestSuite) TearDownSuite() {
+	fmt.Println("TearDownSuite phase")
 	// Close server if it exists
 	if suite.testServer != nil {
 		suite.testServer.Close()
@@ -159,6 +161,7 @@ func (suite *GraphQLTestSuite) TearDownSuite() {
 }
 
 func (suite *GraphQLTestSuite) AfterTest(suiteName, testName string) {
+	fmt.Println("AfterTest phase")
 	suite.cleanDB()
 }
 
