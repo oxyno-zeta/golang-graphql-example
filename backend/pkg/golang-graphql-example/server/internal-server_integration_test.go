@@ -3,6 +3,7 @@
 package server
 
 import (
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"sync"
@@ -113,15 +114,19 @@ func TestInternal_Server_Listen(t *testing.T) {
 
 	svr := NewInternalServer(log.NewLogger(), cfgManagerMock, metricsCtx, signalHandlerMock)
 	// Generate server
-	svr.GenerateServer()
+	err := svr.GenerateServer()
+	assert.NoError(t, err)
 
 	var wg sync.WaitGroup
 	// Add a wait
 	wg.Add(1)
 	// Listen and synchronize wait
-	go func() error {
+	go func() {
 		wg.Done()
-		return svr.Listen()
+		err := svr.Listen()
+		if !errors.Is(err, http.ErrServerClosed) {
+			assert.NoError(t, err)
+		}
 	}()
 	// Wait server up and running
 	wg.Wait()
@@ -129,7 +134,13 @@ func TestInternal_Server_Listen(t *testing.T) {
 	time.Sleep(time.Second)
 
 	// Do a request
-	resp, err := http.Get("http://localhost:8080/health")
+	req, err := http.NewRequest("GET", "http://localhost:8080/health", nil)
+	assert.NoError(t, err)
+	// Create client
+	httpc := &http.Client{
+		Timeout: 500 * time.Millisecond,
+	}
+	resp, err := httpc.Do(req)
 	assert.NoError(t, err)
 	assert.NotNil(t, resp)
 	assert.Equal(t, 200, resp.StatusCode)
