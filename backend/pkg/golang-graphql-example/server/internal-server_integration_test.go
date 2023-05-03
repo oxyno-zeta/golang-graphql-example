@@ -16,6 +16,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	smocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler/mocks"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/goleak"
 )
 
 func TestInternalServer_generateInternalRouter(t *testing.T) {
@@ -99,6 +100,15 @@ func TestInternalServer_generateInternalRouter(t *testing.T) {
 }
 
 func TestInternal_Server_Listen(t *testing.T) {
+	// Verify there isn't any go routine leak
+	defer goleak.VerifyNone(
+		t,
+		// Ignore database specific
+		goleak.IgnoreTopFunction("database/sql.(*DB).connectionOpener"),
+		// Ignore gorm prometheus plugin because it creates an infinite go routine
+		goleak.IgnoreTopFunction("gorm.io/plugin/prometheus.(*Prometheus).Initialize.func1.1"),
+	)
+
 	// Create go mock controller
 	ctrl := gomock.NewController(t)
 	cfgManagerMock := cmocks.NewMockManager(ctrl)
@@ -138,7 +148,7 @@ func TestInternal_Server_Listen(t *testing.T) {
 	assert.NoError(t, err)
 	// Create client
 	httpc := &http.Client{
-		Timeout: 500 * time.Millisecond,
+		Timeout: 200 * time.Millisecond,
 	}
 	resp, err := httpc.Do(req)
 	assert.NoError(t, err)
@@ -147,4 +157,7 @@ func TestInternal_Server_Listen(t *testing.T) {
 	// Defer close server
 	err = svr.server.Close()
 	assert.NoError(t, err)
+
+	// Wait a bit
+	time.Sleep(200 * time.Millisecond)
 }
