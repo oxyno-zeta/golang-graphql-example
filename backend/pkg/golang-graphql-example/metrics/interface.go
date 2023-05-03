@@ -33,8 +33,8 @@ type Service interface {
 	IncreaseFailedAMQPPublishedMessage(exchange, routingKey string)
 }
 
-// NewMetricsClient will generate a new Client.
-func NewMetricsClient() Service {
+// NewService will generate a new Service.
+func NewService() Service {
 	ctx := &prometheusMetrics{
 		gormPrometheus: map[string]gorm.Plugin{},
 	}

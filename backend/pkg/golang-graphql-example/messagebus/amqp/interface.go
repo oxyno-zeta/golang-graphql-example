@@ -104,7 +104,7 @@ type Service interface {
 	Ping() error
 }
 
-func New(
+func NewService(
 	logger log.Logger,
 	cfgManager config.Manager,
 	tracingSvc tracing.Service,

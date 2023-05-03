@@ -30,7 +30,7 @@ type Service interface {
 	DecreaseActiveRequestCounter()
 }
 
-func NewClient(logger log.Logger, serverMode bool, signalListToNotify []os.Signal) Service {
+func NewService(logger log.Logger, serverMode bool, signalListToNotify []os.Signal) Service {
 	// Create signal list to notify
 	signalListToNotifyInternal := []os.Signal{syscall.SIGTERM, syscall.SIGINT}
 	// Append all items from input inside

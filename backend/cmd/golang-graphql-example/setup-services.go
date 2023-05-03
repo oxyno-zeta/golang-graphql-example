@@ -34,7 +34,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	cfgManager := sv.cfgManager
 
 	// Create metrics client
-	metricsCl := metrics.NewMetricsClient()
+	metricsCl := metrics.NewService()
 	// Save
 	sv.metricsCl = metricsCl
 
@@ -113,7 +113,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	sv.ldSvc = ld
 
 	// Create signal handler service
-	signalHandlerSvc := signalhandler.NewClient(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
+	signalHandlerSvc := signalhandler.NewService(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
 	// Initialize service
 	err = signalHandlerSvc.InitializeOnce()
 	// Check error
@@ -138,7 +138,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Check if amqp have configuration set
 	if cfg.AMQP != nil {
 		// Create amqp bus message service
-		amqpSvc = amqpbusmessage.New(logger, cfgManager, tracingSvc, signalHandlerSvc, metricsCl)
+		amqpSvc = amqpbusmessage.NewService(logger, cfgManager, tracingSvc, signalHandlerSvc, metricsCl)
 		// Connect
 		err = amqpSvc.Connect()
 		// Check error

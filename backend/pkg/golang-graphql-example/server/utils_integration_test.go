@@ -7,4 +7,4 @@ import (
 )
 
 // Generate metrics instance
-var metricsCtx = metrics.NewMetricsClient()
+var metricsCtx = metrics.NewService()

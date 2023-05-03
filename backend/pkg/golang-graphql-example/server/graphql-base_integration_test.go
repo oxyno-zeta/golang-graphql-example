@@ -89,7 +89,7 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 	tracingSvc, err := tracing.New(cfgManagerMock, logger)
 	suite.NoError(err)
 	// Create signalhandler service
-	signalHandlerSvc := signalhandler.NewClient(logger, false, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
+	signalHandlerSvc := signalhandler.NewService(logger, false, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
 	// Create db service
 	db := database.NewDatabase("main", cfgManagerMock, logger, metricsCtx, tracingSvc)
 	// Connect
