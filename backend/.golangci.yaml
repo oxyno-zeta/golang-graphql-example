@@ -435,7 +435,7 @@ issues:
       path: pkg/.*/authx/models/oidc-user\.go
     - linters:
         - tagliatelle
-      path: pkg/.*/authx/authentication/client\.go
+      path: pkg/.*/authx/authentication/interface\.go
     - linters:
         - tagliatelle
       path: pkg/.*/authx/authorization/middleware\.go
