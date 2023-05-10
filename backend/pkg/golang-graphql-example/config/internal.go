@@ -237,7 +237,7 @@ func (ctx *managerimpl) loadConfiguration() error {
 	// Loop over all credentials in order to watch file change
 	funk.ForEach(credentials, func(cred *CredentialConfig) {
 		// Check if credential is about a path
-		if cred.Path != "" {
+		if cred != nil && cred.Path != "" {
 			// Create channel
 			ch := make(chan bool)
 			// Run the watch file
@@ -279,6 +279,11 @@ func (ctx *managerimpl) loadConfiguration() error {
 }
 
 func loadCredential(credCfg *CredentialConfig) error {
+	// Check nil
+	if credCfg == nil {
+		return nil
+	}
+
 	if credCfg.Path != "" {
 		// Secret file
 		databytes, err := os.ReadFile(credCfg.Path)
