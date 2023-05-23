@@ -95,15 +95,16 @@ function ErrorsDisplay({
       if (
         workingErr.networkError &&
         (workingErr.networkError as ServerError).result &&
-        (workingErr.networkError as ServerError).result.errors
+        ((workingErr.networkError as ServerError).result as Record<string, [CustomNetworkError]>).errors &&
+        Array.isArray(((workingErr.networkError as ServerError).result as Record<string, [CustomNetworkError]>).errors)
       ) {
         contents.push(
-          ...((workingErr.networkError as ServerError).result.errors as [CustomNetworkError]).map(
-            ({ message, path }, i) => ({
+          ...((workingErr.networkError as ServerError).result as Record<string, [CustomNetworkError]>).errors
+            .filter((it) => typeof it === 'object' && it !== null) // Ensure that it isn't null or not an object
+            .map(({ message, path }, i) => ({
               content: `${path?.join('.')} ${message}`,
               key: `${mainIndex}-networkError-${i}`,
-            }),
-          ),
+            })),
         );
       }
     } else {
