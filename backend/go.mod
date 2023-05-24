@@ -37,7 +37,7 @@ require (
 	go.uber.org/goleak v1.2.1
 	go.uber.org/zap v1.21.0
 	golang.org/x/oauth2 v0.7.0
-	gorm.io/driver/postgres v1.5.0
+	gorm.io/driver/postgres v1.5.2
 	gorm.io/driver/sqlite v1.4.4
 	gorm.io/gorm v1.25.0
 	gorm.io/plugin/opentracing v0.0.0-20211220013347-7d2b2af23560
