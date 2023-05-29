@@ -34,28 +34,28 @@ func (*prometheusMetrics) PrometheusHTTPHandler() http.Handler {
 	return promhttp.Handler()
 }
 
-func (ctx *prometheusMetrics) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string) {
-	ctx.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "success").Inc()
+func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string) {
+	impl.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "success").Inc()
 }
 
-func (ctx *prometheusMetrics) IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey string) {
-	ctx.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "error").Inc()
+func (impl *prometheusMetrics) IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey string) {
+	impl.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "error").Inc()
 }
 
-func (ctx *prometheusMetrics) IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string) {
-	ctx.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "success").Inc()
+func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string) {
+	impl.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "success").Inc()
 }
 
-func (ctx *prometheusMetrics) IncreaseFailedAMQPPublishedMessage(exchange, routingKey string) {
-	ctx.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "error").Inc()
+func (impl *prometheusMetrics) IncreaseFailedAMQPPublishedMessage(exchange, routingKey string) {
+	impl.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "error").Inc()
 }
 
 // The gorm prometheus plugin cannot be instantiated twice because there is a loop inside that cannot be modified or stopped.
 // This loop get all data from database and the loop cannot be modified in terms of the duration.
 // Labels and all other options cannot be modified.
-func (ctx *prometheusMetrics) DatabaseMiddleware(connectionName string) gorm.Plugin {
+func (impl *prometheusMetrics) DatabaseMiddleware(connectionName string) gorm.Plugin {
 	// Check if gorm prometheus doesn't already exist
-	if ctx.gormPrometheus[connectionName] == nil {
+	if impl.gormPrometheus[connectionName] == nil {
 		// Create middleware
 		md := gormprometheus.New(gormprometheus.Config{
 			RefreshInterval: defaultPrometheusGormRefreshMetricsSecond, // refresh metrics interval (default 15 seconds)
@@ -65,14 +65,14 @@ func (ctx *prometheusMetrics) DatabaseMiddleware(connectionName string) gorm.Plu
 			"connection_name": connectionName,
 		}
 		// Save it
-		ctx.gormPrometheus[connectionName] = md
+		impl.gormPrometheus[connectionName] = md
 	}
 
-	return ctx.gormPrometheus[connectionName]
+	return impl.gormPrometheus[connectionName]
 }
 
 // Instrument will instrument gin routes.
-func (ctx *prometheusMetrics) Instrument(serverName string, routerPath bool) gin.HandlerFunc {
+func (impl *prometheusMetrics) Instrument(serverName string, routerPath bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		start := time.Now()
 
@@ -89,10 +89,10 @@ func (ctx *prometheusMetrics) Instrument(serverName string, routerPath bool) gin
 			path = c.FullPath()
 		}
 
-		ctx.reqDur.WithLabelValues(serverName).Observe(elapsed)
-		ctx.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, path).Inc()
-		ctx.reqSz.WithLabelValues(serverName).Observe(float64(reqSz))
-		ctx.resSz.WithLabelValues(serverName).Observe(resSz)
+		impl.reqDur.WithLabelValues(serverName).Observe(elapsed)
+		impl.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, path).Inc()
+		impl.reqSz.WithLabelValues(serverName).Observe(float64(reqSz))
+		impl.resSz.WithLabelValues(serverName).Observe(resSz)
 	}
 }
 
@@ -124,69 +124,69 @@ func computeApproximateRequestSize(r *http.Request) int {
 	return s
 }
 
-func (ctx *prometheusMetrics) register() {
-	ctx.reqCnt = prometheus.NewCounterVec(
+func (impl *prometheusMetrics) register() {
+	impl.reqCnt = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
 			Name: "http_requests_total",
 			Help: "How many HTTP requests processed, partitioned by status code and HTTP method.",
 		},
 		[]string{"server_name", "status_code", "method", "host", "path"},
 	)
-	prometheus.MustRegister(ctx.reqCnt)
+	prometheus.MustRegister(impl.reqCnt)
 
-	ctx.reqDur = prometheus.NewSummaryVec(
+	impl.reqDur = prometheus.NewSummaryVec(
 		prometheus.SummaryOpts{
 			Name: "http_request_duration_seconds",
 			Help: "The HTTP request latencies in seconds.",
 		},
 		[]string{"server_name"},
 	)
-	prometheus.MustRegister(ctx.reqDur)
+	prometheus.MustRegister(impl.reqDur)
 
-	ctx.reqSz = prometheus.NewSummaryVec(
+	impl.reqSz = prometheus.NewSummaryVec(
 		prometheus.SummaryOpts{
 			Name: "http_request_size_bytes",
 			Help: "The HTTP request sizes in bytes.",
 		},
 		[]string{"server_name"},
 	)
-	prometheus.MustRegister(ctx.reqSz)
+	prometheus.MustRegister(impl.reqSz)
 
-	ctx.resSz = prometheus.NewSummaryVec(
+	impl.resSz = prometheus.NewSummaryVec(
 		prometheus.SummaryOpts{
 			Name: "http_response_size_bytes",
 			Help: "The HTTP response sizes in bytes.",
 		},
 		[]string{"server_name"},
 	)
-	prometheus.MustRegister(ctx.resSz)
+	prometheus.MustRegister(impl.resSz)
 
-	ctx.up = prometheus.NewGauge(
+	impl.up = prometheus.NewGauge(
 		prometheus.GaugeOpts{
 			Name: "up",
 			Help: "1 = up, 0 = down",
 		},
 	)
-	ctx.up.Set(1)
-	prometheus.MustRegister(ctx.up)
+	impl.up.Set(1)
+	prometheus.MustRegister(impl.up)
 
-	ctx.amqpConsumedMessages = prometheus.NewCounterVec(
+	impl.amqpConsumedMessages = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
 			Name: "amqp_consumed_messages_total",
 			Help: "How many AMQP messages have been consumed by queue, consumer tag, routing key and status",
 		},
 		[]string{"queue", "consumer_tag", "routing_key", "status"},
 	)
-	prometheus.MustRegister(ctx.amqpConsumedMessages)
+	prometheus.MustRegister(impl.amqpConsumedMessages)
 
-	ctx.amqpPublishedMessages = prometheus.NewCounterVec(
+	impl.amqpPublishedMessages = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
 			Name: "amqp_published_messages_total",
 			Help: "How many AMQP messages have been published by exchange, routing key and status",
 		},
 		[]string{"exchange", "routing_key", "status"},
 	)
-	prometheus.MustRegister(ctx.amqpPublishedMessages)
+	prometheus.MustRegister(impl.amqpPublishedMessages)
 
 	// Register gqlgen graphql prometheus metrics
 	gqlprometheus.Register()
