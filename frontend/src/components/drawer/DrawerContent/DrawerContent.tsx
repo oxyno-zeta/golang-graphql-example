@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import { TopBarSpacer } from '../../TopBar';
 
-interface Props {
+export interface Props {
   titleText?: string;
   titleElement?: string;
   subtitleElement?: ReactNode;

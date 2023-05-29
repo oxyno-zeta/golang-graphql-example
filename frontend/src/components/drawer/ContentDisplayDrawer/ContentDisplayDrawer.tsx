@@ -5,7 +5,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import type { SxProps } from '@mui/material';
 
-interface Props {
+export interface Props {
   drawerWidth: number | string;
   drawerElement: ReactNode;
   onMobileDrawerToggle: () => void;

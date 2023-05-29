@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Link as RouterLink, useMatch, useResolvedPath } from 'react-router-dom';
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 
-interface Props {
+export interface Props {
   to: string;
   children: ReactNode;
   listItemButtonProps?: Omit<ListItemButtonProps, 'component' | 'to' | 'selected'>;

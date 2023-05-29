@@ -5,7 +5,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
 
-interface Props {
+export interface Props {
   onDrawerToggle: () => void;
   iconButtonProps?: Partial<Omit<IconButtonProps, 'onClick'>>;
 }
