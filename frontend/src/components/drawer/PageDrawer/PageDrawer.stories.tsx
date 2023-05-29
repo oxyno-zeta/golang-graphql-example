@@ -18,7 +18,7 @@ import { mdiAccessPoint } from '@mdi/js';
 import ConfigContext from '../../../contexts/ConfigContext';
 import { defaultConfig } from '../../../models/config';
 import PageDrawer, { Props } from './PageDrawer';
-import { ListNavItemButton } from '../DrawerContent';
+import ListNavItemButton from '../ListNavItemButton';
 import OpenDrawerButton from '../OpenDrawerButton';
 
 // Extend dayjs
