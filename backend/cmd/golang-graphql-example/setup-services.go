@@ -34,9 +34,9 @@ func setupBasicsServices(_ []string, sv *services) {
 	cfgManager := sv.cfgManager
 
 	// Create metrics client
-	metricsCl := metrics.NewService()
+	metricsSvc := metrics.NewService()
 	// Save
-	sv.metricsCl = metricsCl
+	sv.metricsSvc = metricsSvc
 
 	// Generate tracing service instance
 	tracingSvc, err := tracing.New(cfgManager, logger)
@@ -56,7 +56,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	sv.tracingSvc = tracingSvc
 
 	// Create database service
-	db := database.NewDatabase("main", cfgManager, logger, metricsCl, tracingSvc)
+	db := database.NewDatabase("main", cfgManager, logger, metricsSvc, tracingSvc)
 	// Connect to engine
 	err = db.Connect()
 	// Check error
@@ -138,7 +138,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Check if amqp have configuration set
 	if cfg.AMQP != nil {
 		// Create amqp bus message service
-		amqpSvc = amqpbusmessage.NewService(logger, cfgManager, tracingSvc, signalHandlerSvc, metricsCl)
+		amqpSvc = amqpbusmessage.NewService(logger, cfgManager, tracingSvc, signalHandlerSvc, metricsSvc)
 		// Connect
 		err = amqpSvc.Connect()
 		// Check error

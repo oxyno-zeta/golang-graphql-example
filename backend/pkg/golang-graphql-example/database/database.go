@@ -41,13 +41,13 @@ func NewDatabase(
 	connectionName string,
 	cfgManager config.Manager,
 	logger log.Logger,
-	metricsCl metrics.Service,
+	metricsSvc metrics.Service,
 	tracingSvc tracing.Service,
 ) DB {
 	return &sqldb{
 		logger:         logger,
 		cfgManager:     cfgManager,
-		metricsCl:      metricsCl,
+		metricsSvc:     metricsSvc,
 		tracingSvc:     tracingSvc,
 		connectionName: connectionName,
 	}

@@ -45,7 +45,7 @@ var StaticFiles = "static/*.html"
 type Server struct {
 	logger            log.Logger
 	cfgManager        config.Manager
-	metricsCl         metrics.Service
+	metricsSvc        metrics.Service
 	tracingSvc        tracing.Service
 	busiServices      *business.Services
 	authenticationSvc authentication.Service
@@ -55,7 +55,7 @@ type Server struct {
 }
 
 func NewServer(
-	logger log.Logger, cfgManager config.Manager, metricsCl metrics.Service,
+	logger log.Logger, cfgManager config.Manager, metricsSvc metrics.Service,
 	tracingSvc tracing.Service, busiServices *business.Services,
 	authenticationSvc authentication.Service, authoSvc authorization.Service,
 	signalHandlerSvc signalhandler.Service,
@@ -63,7 +63,7 @@ func NewServer(
 	return &Server{
 		logger:            logger,
 		cfgManager:        cfgManager,
-		metricsCl:         metricsCl,
+		metricsSvc:        metricsSvc,
 		tracingSvc:        tracingSvc,
 		busiServices:      busiServices,
 		authenticationSvc: authenticationSvc,
@@ -155,7 +155,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	router.Use(correlationid.HTTPMiddleware(svr.logger))
 	router.Use(svr.tracingSvc.HTTPMiddleware(correlationid.GetFromContext))
 	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetSpanIDFromContext))
-	router.Use(svr.metricsCl.Instrument("business", true))
+	router.Use(svr.metricsSvc.Instrument("business", true))
 	// Add helmet for security
 	router.Use(helmet.Default())
 	// Add cors if configured
@@ -241,7 +241,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 		},
 	}))
 	h.Use(svr.tracingSvc.GraphqlMiddleware())
-	h.Use(svr.metricsCl.GraphqlMiddleware())
+	h.Use(svr.metricsSvc.GraphqlMiddleware())
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
 
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {

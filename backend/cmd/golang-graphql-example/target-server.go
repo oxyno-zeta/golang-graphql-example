@@ -15,7 +15,7 @@ func serverTargetRun(_ []string, sv *services) {
 	svr := server.NewServer(
 		sv.logger,
 		sv.cfgManager,
-		sv.metricsCl,
+		sv.metricsSvc,
 		sv.tracingSvc,
 		sv.busServices,
 		sv.authenticationSvc,

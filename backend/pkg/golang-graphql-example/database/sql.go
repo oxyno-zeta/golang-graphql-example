@@ -22,7 +22,7 @@ var (
 type sqldb struct {
 	logger         log.Logger
 	cfgManager     config.Manager
-	metricsCl      metrics.Service
+	metricsSvc     metrics.Service
 	tracingSvc     tracing.Service
 	db             *gorm.DB
 	connectionName string
@@ -136,7 +136,7 @@ func (sdb *sqldb) Connect() error {
 	}
 
 	// Get prometheus gorm middleware
-	md := sdb.metricsCl.DatabaseMiddleware(sdb.connectionName)
+	md := sdb.metricsSvc.DatabaseMiddleware(sdb.connectionName)
 	// Apply middleware
 	err = dbResult.Use(md)
 	// Check if error exists

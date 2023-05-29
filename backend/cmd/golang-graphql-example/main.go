@@ -29,7 +29,7 @@ type services struct {
 	cfgManager config.Manager
 	version    *version.AppVersion
 	// Basics
-	metricsCl         metrics.Service
+	metricsSvc        metrics.Service
 	tracingSvc        tracing.Service
 	db                database.DB
 	mailSvc           email.Service

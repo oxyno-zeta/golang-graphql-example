@@ -25,7 +25,7 @@ const (
 type InternalServer struct {
 	logger           log.Logger
 	cfgManager       config.Manager
-	metricsCl        metrics.Service
+	metricsSvc       metrics.Service
 	signalHandlerSvc signalhandler.Service
 	server           *http.Server
 	checkers         []*CheckerInput
@@ -39,11 +39,11 @@ type CheckerInput struct {
 	InitialDelay time.Duration
 }
 
-func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsCl metrics.Service, signalHandlerSvc signalhandler.Service) *InternalServer {
+func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsSvc metrics.Service, signalHandlerSvc signalhandler.Service) *InternalServer {
 	return &InternalServer{
 		logger:           logger,
 		cfgManager:       cfgManager,
-		metricsCl:        metricsCl,
+		metricsSvc:       metricsSvc,
 		signalHandlerSvc: signalHandlerSvc,
 		checkers:         make([]*CheckerInput, 0),
 	}
@@ -68,7 +68,7 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	router.Use(helmet.Default())
 	router.Use(correlationid.HTTPMiddleware(svr.logger))
 	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetSpanIDFromContext))
-	router.Use(svr.metricsCl.Instrument("internal", true))
+	router.Use(svr.metricsSvc.Instrument("internal", true))
 	// Add cors if configured
 	err := manageCORS(router, cfg.InternalServer)
 	// Check error
@@ -117,7 +117,7 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	}
 
 	// Add metrics path
-	router.GET("/metrics", gin.WrapH(svr.metricsCl.PrometheusHTTPHandler()))
+	router.GET("/metrics", gin.WrapH(svr.metricsSvc.PrometheusHTTPHandler()))
 	router.GET("/health", gin.WrapH(healthhttp.HandleHealthJSON(h2)))
 	router.GET("/ready", func(c *gin.Context) {
 		// Check if system is in shutdown

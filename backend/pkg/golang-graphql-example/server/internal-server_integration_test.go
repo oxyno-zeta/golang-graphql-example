@@ -56,7 +56,7 @@ func TestInternalServer_generateInternalRouter(t *testing.T) {
 			svr := &InternalServer{
 				logger:     log.NewLogger(),
 				cfgManager: cfgManagerMock,
-				metricsCl:  metricsCtx,
+				metricsSvc: metricsCtx,
 			}
 			got, err := svr.generateInternalRouter()
 			if err != nil {

@@ -7,7 +7,7 @@ import (
 )
 
 func GenerateInternalServer(sv *services) (*server.InternalServer, error) {
-	intSvr := server.NewInternalServer(sv.logger, sv.cfgManager, sv.metricsCl, sv.signalHandlerSvc)
+	intSvr := server.NewInternalServer(sv.logger, sv.cfgManager, sv.metricsSvc, sv.signalHandlerSvc)
 
 	// Add checker for database
 	intSvr.AddChecker(&server.CheckerInput{
