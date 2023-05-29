@@ -6,16 +6,18 @@ import { TopBarSpacer } from '../TopBar';
 interface Props {
   children: ReactNode;
   containerBoxSx?: SxProps;
+  disableTopSpacer?: boolean;
 }
 
 const defaultProps = {
   containerBoxSx: {},
+  disableTopSpacer: false,
 };
 
-function MainContentWrapper({ children, containerBoxSx }: Props) {
+function MainContentWrapper({ children, disableTopSpacer, containerBoxSx }: Props) {
   return (
     <Box sx={{ margin: '0 20px 20px 20px', ...containerBoxSx }}>
-      <TopBarSpacer />
+      {!disableTopSpacer && <TopBarSpacer />}
       {children}
     </Box>
   );

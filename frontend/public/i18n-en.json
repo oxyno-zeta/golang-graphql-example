@@ -5,6 +5,8 @@
     "cancelAction": "Cancel",
     "closeAction": "Close",
     "openAction": "Open",
+    "collapseSidebarAction": "Collapse sidebar",
+    "openSidebarAction": "Open sidebar",
     "openInNewTabAction": "Open in new tab",
     "clearAction": "Clear",
     "loadingText": "Loading...",
