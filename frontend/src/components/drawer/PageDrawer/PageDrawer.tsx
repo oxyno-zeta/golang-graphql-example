@@ -101,7 +101,7 @@ function PageDrawer({
   }
 
   const openedMixin = (): CSSObject => ({
-    width: drawerWidth,
+    width: `${drawerWidth}px`,
     overflowX: 'hidden',
   });
 
@@ -119,7 +119,7 @@ function PageDrawer({
         component="nav"
         sx={(theme: Theme) => ({
           flexShrink: { lg: 0 },
-          width: { lg: isNormalOpened ? drawerWidth : `calc(${theme.spacing(7)} + 1px)` },
+          width: { lg: isNormalOpened ? `${drawerWidth}px` : `calc(${theme.spacing(7)} + 1px)` },
           ...drawerContainerBoxSx,
         })}
       >
