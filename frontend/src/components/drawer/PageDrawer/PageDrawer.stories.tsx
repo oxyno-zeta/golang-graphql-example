@@ -79,7 +79,7 @@ export default {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListNavItemButton to="/fail">
+          <ListNavItemButton to="/fail" listItemButtonProps={{ sx: listItemButtonSx, dense: true }}>
             <ListItemIcon sx={listItemIconSx}>
               <SvgIcon>
                 <path d={mdiAccessPoint} />
