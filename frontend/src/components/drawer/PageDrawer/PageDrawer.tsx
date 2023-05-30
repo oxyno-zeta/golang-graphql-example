@@ -22,8 +22,8 @@ interface DrawerContentProps {
 }
 
 export interface Props {
-  renderDrawerContent: (props: DrawerContentProps) => ReactNode;
-  renderContent: (onDrawerToggle: () => void, isNormalCollapsed: boolean) => ReactNode;
+  renderDrawerContent: (props: DrawerContentProps, isNormalCollapsed: boolean) => ReactNode;
+  renderContent: (onDrawerToggle: () => void) => ReactNode;
   mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
   drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
   drawerContainerBoxSx?: SystemStyleObject<Theme>;
@@ -140,11 +140,14 @@ function PageDrawer({
           {...mobileDrawerProps}
         >
           {!disableTopSpacer && <TopBarSpacer />}
-          {renderDrawerContent({
-            listItemButtonSx: {},
-            listItemIconSx: {},
-            listItemTextSx: {},
-          })}
+          {renderDrawerContent(
+            {
+              listItemButtonSx: {},
+              listItemIconSx: {},
+              listItemTextSx: {},
+            },
+            isNormalOpened,
+          )}
         </Drawer>
         <Drawer
           variant="persistent"
@@ -183,11 +186,14 @@ function PageDrawer({
           )}
           {!disableTopSpacer && <TopBarSpacer />}
           <div style={{ overflowY: 'auto', height: '100%', display: 'flex', flexDirection: 'column' }}>
-            {renderDrawerContent({
-              listItemButtonSx: isNormalOpened ? {} : { justifyContent: 'center' },
-              listItemIconSx: isNormalOpened ? {} : { minWidth: 'unset' },
-              listItemTextSx: isNormalOpened ? {} : { display: 'none' },
-            })}
+            {renderDrawerContent(
+              {
+                listItemButtonSx: isNormalOpened ? {} : { justifyContent: 'center' },
+                listItemIconSx: isNormalOpened ? {} : { minWidth: 'unset' },
+                listItemTextSx: isNormalOpened ? {} : { display: 'none' },
+              },
+              isNormalOpened,
+            )}
             {!disableCollapse && (
               <div style={{ marginTop: 'auto' }}>
                 <List>
@@ -225,7 +231,7 @@ function PageDrawer({
       >
         <MainContentWrapper disableTopSpacer={disableTopSpacer}>
           {!disableTopSpacer && <div style={{ height: '20px' }} />}
-          {renderContent(onMobileDrawerToggle, isNormalOpened)}
+          {renderContent(onMobileDrawerToggle)}
         </MainContentWrapper>
       </Box>
     </div>
