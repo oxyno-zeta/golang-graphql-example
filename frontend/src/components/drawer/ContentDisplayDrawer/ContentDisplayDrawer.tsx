@@ -166,6 +166,7 @@ function ContentDisplayDrawer({
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
+              ...(disableResize ? {} : { borderLeft: 'unset' }),
             },
           }}
           anchor="right"
