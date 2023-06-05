@@ -3,7 +3,7 @@ module github.com/oxyno-zeta/golang-graphql-example
 go 1.18
 
 require (
-	cirello.io/pglock v1.12.0
+	cirello.io/pglock v1.13.0
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.31
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
