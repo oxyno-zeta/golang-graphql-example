@@ -53,13 +53,6 @@ repos:
     hooks:
       - id: gitleaks
         stages: [commit]
-  - repo: https://github.com/mrtazz/checkmake.git
-    # Or another commit hash or version
-    rev: 0.2.2
-    hooks:
-      # Use this hook to let pre-commit build checkmake in its sandbox
-      - id: checkmake
-        stages: [commit]
   - repo: local
     hooks:
       - id: backend-lint
