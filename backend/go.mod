@@ -107,5 +107,3 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	nhooyr.io/websocket v1.8.7 // indirect
 )
-
-replace github.com/99designs/gqlgen-contrib => github.com/oxyno-zeta/gqlgen-contrib v0.1.1-0.20210822164044-9b33d2c27fa1

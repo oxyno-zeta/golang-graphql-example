@@ -54,6 +54,8 @@ emperror.dev/errors v0.8.1/go.mod h1:YcRvLPh626Ubn2xqtoprejnA5nFha+TJ+2vew48kWuE
 github.com/99designs/gqlgen v0.11.3/go.mod h1:RgX5GRRdDWNkh4pBrdzNpNPFVsdoUFY2+adM6nb1N+4=
 github.com/99designs/gqlgen v0.17.31 h1:VncSQ82VxieHkea8tz11p7h/zSbvHSxSDZfywqWt158=
 github.com/99designs/gqlgen v0.17.31/go.mod h1:i4rEatMrzzu6RXaHydq1nmEPZkb3bKQsnxNRHS4DQB4=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd h1:jtzFT7TsrvMTGwBn8DvwMFDowJ2INPqtP7HpL1R9TIY=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd/go.mod h1:ud8RnaGvSBJFGEIfo0gMid33OUXXb68bNJlWUUZARGY=
 github.com/AppsFlyer/go-sundheit v0.5.0 h1:/VxpyigCfJrq1r97mn9HPiAB2qrhcTFHwNIIDr15CZM=
 github.com/AppsFlyer/go-sundheit v0.5.0/go.mod h1:2ZM0BnfqT/mljBQO224VbL5XH06TgWuQ6Cn+cTtCpTY=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
@@ -450,8 +452,6 @@ github.com/opentracing/opentracing-go v1.0.2/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFSt
 github.com/opentracing/opentracing-go v1.1.0/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
 github.com/opentracing/opentracing-go v1.2.0 h1:uEJPy/1a5RIPAJ0Ov+OIO8OxWu77jEv+1B0VhjKrZUs=
 github.com/opentracing/opentracing-go v1.2.0/go.mod h1:GxEUsuufX4nBwe+T+Wl9TAgYrxe9dPLANfrWvHYVTgc=
-github.com/oxyno-zeta/gqlgen-contrib v0.1.1-0.20210822164044-9b33d2c27fa1 h1:6cprT8WG1TNNXSyiXPlOl4gnt3jc51Rtvz9PJA4yzcU=
-github.com/oxyno-zeta/gqlgen-contrib v0.1.1-0.20210822164044-9b33d2c27fa1/go.mod h1:ud8RnaGvSBJFGEIfo0gMid33OUXXb68bNJlWUUZARGY=
 github.com/patrickmn/go-cache v2.1.0+incompatible h1:HRMgzkcYKYpi3C8ajMPV8OFXaaRUnok+kx1WdO15EQc=
 github.com/pelletier/go-toml/v2 v2.0.1/go.mod h1:r9LEWfGN8R5k0VXJ+0BkIe7MYkRdwZOjgMj2KwnJFUo=
 github.com/pelletier/go-toml/v2 v2.0.8 h1:0ctb6s9mE31h0/lhu+J6OPmVeDxJn+kYnJc2jZR9tGQ=
