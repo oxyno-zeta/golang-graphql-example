@@ -37,6 +37,7 @@ HAS_MOCKGEN:=$(shell command -v mockgen;)
 HAS_GQLGEN:=$(shell command -v gqlgen;)
 HAS_GOTESTFMT:=$(shell command -v gotestfmt;)
 HAS_FIELDALIGNMENT:=$(shell command -v fieldalignment;)
+HAS_GO_JUNIT_REPORT:=$(shell command -v go-junit-report;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
 
@@ -117,6 +118,10 @@ endif
 #############
 #   Tests   #
 #############
+
+.PHONY: test/all/junit
+test/all/junit: setup/dep/install setup/test/integration
+	$(GO) test -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/... | go-junit-report -set-exit-code > junit.xml
 
 .PHONY: test/all
 test/all: setup/dep/install setup/test/integration
@@ -211,6 +216,10 @@ endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
 	$(GO) install github.com/golang/mock/mockgen@v1.6.0
+endif
+ifndef HAS_GO_JUNIT_REPORT
+	@echo "=> Installing go-junit-report tool"
+	$(GO) install github.com/jstemmer/go-junit-report/v2@v2.0.0
 endif
 ifndef HAS_GOTESTFMT
 	@echo "=> Installing gotestfmt tool"

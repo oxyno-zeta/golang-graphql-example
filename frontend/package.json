@@ -96,6 +96,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.12",
     "jest-environment-jsdom": "^29.5.0",
+    "jest-junit": "^16.0.0",
     "react-docgen-typescript": "^2.2.2",
     "storybook": "^7.0.18",
     "storybook-addon-apollo-client": "^4.1.4",

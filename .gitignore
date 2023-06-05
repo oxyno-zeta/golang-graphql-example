@@ -258,3 +258,4 @@ coverage.html
 frontend/build/
 frontend/.vite-cache/
 frontend/storybook-static/
+junit.xml

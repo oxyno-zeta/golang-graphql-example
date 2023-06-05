@@ -15,6 +15,7 @@ const config: Config.InitialOptions = {
   setupFiles: ['<rootDir>/.jest/jest.setup.js'],
   globalSetup: '<rootDir>/.jest/jest.global-setup.js',
   snapshotSerializers: ['@emotion/jest/serializer'],
+  reporters: ['default', 'jest-junit'],
 };
 
 export default config;
