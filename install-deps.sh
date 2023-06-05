@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pipx install pre-commit==3.0.4
+pipx install pre-commit==3.3.2
 
 pre-commit install
 
