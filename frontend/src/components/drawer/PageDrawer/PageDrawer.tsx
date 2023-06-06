@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, { ReactNode, useCallback, useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer, { DrawerProps } from '@mui/material/Drawer';
 import type { Theme, CSSObject } from '@mui/material';
@@ -13,6 +13,7 @@ import { mdiChevronDoubleLeft, mdiChevronDoubleRight } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
 import { useTranslation } from 'react-i18next';
 import { TopBarSpacer } from '~components/TopBar';
+import PageDrawerContext from '~contexts/PageDrawerContext';
 import MainContentWrapper from '../../MainContentWrapper';
 
 interface DrawerContentProps {
@@ -23,7 +24,7 @@ interface DrawerContentProps {
 
 export interface Props {
   renderDrawerContent: (props: DrawerContentProps, isNormalCollapsed: boolean) => ReactNode;
-  renderContent: (onDrawerToggle: () => void) => ReactNode;
+  children: ReactNode;
   mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
   drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
   drawerContainerBoxSx?: SystemStyleObject<Theme>;
@@ -55,7 +56,7 @@ const defaultProps = {
 function PageDrawer({
   defaultDrawerWidth,
   renderDrawerContent,
-  renderContent,
+  children,
   mobileDrawerProps,
   drawerProps,
   drawerContainerBoxSx,
@@ -77,6 +78,8 @@ function PageDrawer({
   const onMobileDrawerToggle = () => {
     setMobileOpen((v) => !v);
   };
+
+  const pageDrawerCtxValue = useMemo(() => ({ onDrawerToggle: onMobileDrawerToggle }), [setMobileOpen]);
 
   const onNormalDrawerToggle = () => {
     setNormalOpened((v) => !v);
@@ -231,7 +234,7 @@ function PageDrawer({
       >
         <MainContentWrapper disableTopSpacer={disableTopSpacer}>
           {!disableTopSpacer && <div style={{ height: '20px' }} />}
-          {renderContent(onMobileDrawerToggle)}
+          <PageDrawerContext.Provider value={pageDrawerCtxValue}>{children}</PageDrawerContext.Provider>
         </MainContentWrapper>
       </Box>
     </div>

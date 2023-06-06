@@ -164,12 +164,11 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
                 </ListItem>
               </>
             )}
-            renderContent={() => (
-              <ContentDisplayDrawer {...args}>
-                <Content />
-              </ContentDisplayDrawer>
-            )}
-          />
+          >
+            <ContentDisplayDrawer {...args}>
+              <Content />
+            </ContentDisplayDrawer>
+          </PageDrawer>
         </ConfigContext.Provider>
       </TimezoneProvider>
     </RemoveStorybookPadding>

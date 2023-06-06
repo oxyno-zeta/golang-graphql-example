@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { StoryFn, Meta } from '@storybook/react';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import * as dayjs from 'dayjs';
@@ -15,6 +15,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { mdiAccessPoint } from '@mdi/js';
+import PageDrawerContext from '~contexts/PageDrawerContext';
 import ConfigContext from '../../../contexts/ConfigContext';
 import { defaultConfig } from '../../../models/config';
 import PageDrawer, { Props } from './PageDrawer';
@@ -25,6 +26,31 @@ import OpenDrawerButton from '../OpenDrawerButton';
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
+
+function RenderContent() {
+  const { onDrawerToggle } = useContext(PageDrawerContext);
+  return (
+    <div>
+      <div>
+        <OpenDrawerButton onDrawerToggle={onDrawerToggle} />
+      </div>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          <Paper>xs=8</Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper>xs=4</Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper>xs=4</Paper>
+        </Grid>
+        <Grid item xs={8}>
+          <Paper>xs=8</Paper>
+        </Grid>
+      </Grid>
+    </div>
+  );
+}
 
 export default {
   title: 'Components/drawer/PageDrawer',
@@ -90,27 +116,7 @@ export default {
         </ListItem>
       </>
     ),
-    renderContent: (onDrawerToggle) => (
-      <div>
-        <div>
-          <OpenDrawerButton onDrawerToggle={onDrawerToggle} />
-        </div>
-        <Grid container spacing={2}>
-          <Grid item xs={8}>
-            <Paper>xs=8</Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper>xs=4</Paper>
-          </Grid>
-          <Grid item xs={4}>
-            <Paper>xs=4</Paper>
-          </Grid>
-          <Grid item xs={8}>
-            <Paper>xs=8</Paper>
-          </Grid>
-        </Grid>
-      </div>
-    ),
+    children: <RenderContent />,
   },
   decorators: [withRouter],
 } as Meta<typeof PageDrawer>;
