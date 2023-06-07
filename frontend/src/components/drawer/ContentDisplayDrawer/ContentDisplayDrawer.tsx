@@ -130,7 +130,7 @@ function ContentDisplayDrawer({
   );
 
   return (
-    <Box sx={{ marginRight: `${drawerWidth}px`, ...mainContainerBoxSx }}>
+    <Box sx={{ ...(open ? { marginRight: `${drawerWidth}px` } : {}), ...mainContainerBoxSx }}>
       {children}
       <Box
         sx={{
