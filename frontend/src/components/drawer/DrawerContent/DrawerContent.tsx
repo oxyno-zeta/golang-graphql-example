@@ -62,7 +62,7 @@ function DrawerContent({ titleText, titleElement, subtitleElement, listItemsElem
             )}
           </div>
 
-          <div style={{ margin: '10px 25px 0 25px' }}>
+          <div style={{ margin: '0 25px' }}>
             <Divider />
           </div>
         </>
