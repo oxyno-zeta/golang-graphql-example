@@ -1569,19 +1569,19 @@
     "@lit-labs/react" "^1.0.2"
 
 "@fontsource/material-icons@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/material-icons/-/material-icons-5.0.2.tgz#dbe0b39eae3993f7914918cab41e251004b36149"
-  integrity sha512-dICflVHYxSvAe6VOP+BSnxTV1xSrQguwAMOIS31gaYZOP96SLweqq3iMU7kOE9aoVDNWFrCxNsCsgh+LBUMNqw==
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/material-icons/-/material-icons-5.0.3.tgz#2f387f6184289689ee85257fb36143c99ccb14c2"
+  integrity sha512-mDfny3FhZtbxA/YXw1NLDS38VT+RjTaDulbRZUEhqMz5jhLZUCbND2KLLvXAdIColLCZ90fqVStBPu3cYAnE2Q==
 
 "@fontsource/roboto@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-5.0.2.tgz#06f10be117be622e6c720a1c6579b00475420bcd"
-  integrity sha512-SLw0o3kWwJ53/Ogyk8GGwSaULNX6Hogs+GsVempDdqpX8wm5hKBLYgUkdUPk+NogiViPp1x++OnkuLA+fAd9Kg==
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-5.0.3.tgz#bff6ce627b8c537e8f56e6f2bba221f425bfdf78"
+  integrity sha512-jbZDFwEFARDlo8TqG7th/xjhuq87GYfFpFb+uxuy+0Ng1bhRVgBRWlLj8+WIKhCTOr+h4QXbjpybLWFLUirOwQ==
 
 "@graphql-typed-document-node/core@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.1.tgz#076d78ce99822258cf813ecc1e7fa460fa74d052"
-  integrity sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.2.0.tgz#5f3d96ec6b2354ad6d8a28bf216a1d97b5426861"
+  integrity sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==
 
 "@hookform/resolvers@^3.1.0":
   version "3.1.0"
