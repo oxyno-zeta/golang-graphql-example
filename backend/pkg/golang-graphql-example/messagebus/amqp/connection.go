@@ -48,7 +48,7 @@ func (as *amqpService) Close() error {
 		// Closing channel
 		err := as.consumerChannel.Close()
 		// Check error
-		if err != nil && !errors.Is(err, amqp091.ErrClosed) && !strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage) {
+		if err != nil && (!errors.Is(err, amqp091.ErrClosed) || !strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage)) {
 			return errors.WithStack(err)
 		}
 	}
@@ -58,7 +58,7 @@ func (as *amqpService) Close() error {
 		// Just closing publisher channel as no consumer are in
 		err := as.publisherChannel.Close()
 		// Check error
-		if err != nil && !errors.Is(err, amqp091.ErrClosed) && !strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage) {
+		if err != nil && (!errors.Is(err, amqp091.ErrClosed) || !strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage)) {
 			return errors.WithStack(err)
 		}
 	}
