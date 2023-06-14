@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer, { DrawerProps } from '@mui/material/Drawer';
 import type { Theme, CSSObject } from '@mui/material';
@@ -11,9 +11,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { mdiChevronDoubleLeft, mdiChevronDoubleRight } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
+import Cookies from 'universal-cookie';
 import { useTranslation } from 'react-i18next';
 import { TopBarSpacer } from '~components/TopBar';
 import PageDrawerContext from '~contexts/PageDrawerContext';
+import ConfigContext from '~contexts/ConfigContext';
 import MainContentWrapper from '../../MainContentWrapper';
 
 interface DrawerContentProps {
@@ -53,6 +55,8 @@ const defaultProps = {
   disableCollapse: false,
 };
 
+const cookieName = 'left-menu-collapsed';
+
 function PageDrawer({
   defaultDrawerWidth,
   renderDrawerContent,
@@ -69,11 +73,32 @@ function PageDrawer({
 }: Props) {
   // Setup translate
   const { t } = useTranslation();
+  // Get cookies object
+  const cookies = new Cookies();
+  // Get stored collapsed menu value
+  const storedCollapsedMenu = cookies.get(cookieName);
 
+  // Compute initial value
+  let initCollapsedVal = storedCollapsedMenu;
+  // Check if collapse is now disabled
+  if (!disableCollapse) {
+    if (!initCollapsedVal) {
+      initCollapsedVal = false;
+    } else {
+      initCollapsedVal = initCollapsedVal === 'true';
+    }
+  } else {
+    initCollapsedVal = false;
+  }
+
+  // Get config from context
+  const cfg = useContext(ConfigContext);
   // States
   const [isMobileOpen, setMobileOpen] = useState(false);
-  const [isNormalOpened, setNormalOpened] = useState(true);
+  const [isNormalOpened, setNormalOpened] = useState(!initCollapsedVal);
   const [drawerWidth, setDrawerWidth] = useState(defaultDrawerWidth);
+  // Expand
+  const { configCookieDomain } = cfg;
 
   const onMobileDrawerToggle = () => {
     setMobileOpen((v) => !v);
@@ -82,7 +107,18 @@ function PageDrawer({
   const pageDrawerCtxValue = useMemo(() => ({ onDrawerToggle: onMobileDrawerToggle }), [setMobileOpen]);
 
   const onNormalDrawerToggle = () => {
-    setNormalOpened((v) => !v);
+    setNormalOpened((v) => {
+      // !! Warning: Values are reversed
+      // Cookie is for collapsed
+      // Value is for opened
+      cookies.set(cookieName, v, {
+        path: '/',
+        maxAge: 31536000, // 1 year
+        domain: configCookieDomain,
+      });
+
+      return !v;
+    });
   };
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
