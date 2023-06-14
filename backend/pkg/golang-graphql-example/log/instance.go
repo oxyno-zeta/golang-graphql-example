@@ -1,23 +1,30 @@
 package log
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"emperror.dev/errors"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	gormlogger "gorm.io/gorm/logger"
 )
 
 const LogFileMode = 0666
 const LogTraceIDField = "trace_id"
+
+// This is dirty pkg/errors.
+type stackTracer interface {
+	StackTrace() errors.StackTrace
+}
 
 func getInitConfig() *zap.Config {
 	zconfig := zap.NewProductionConfig()
 	zconfig.EncoderConfig.TimeKey = "time"
 	zconfig.EncoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
 	zconfig.DisableCaller = true
+	zconfig.DisableStacktrace = true
 
 	return &zconfig
 }
@@ -37,20 +44,8 @@ type loggerIns struct {
 	*zap.SugaredLogger
 }
 
-func (ll *loggerIns) GetGormLogger() gormlogger.Interface {
-	return &gormLogger{
-		logger: ll,
-	}
-}
-
 func (ll *loggerIns) GetTracingLogger() TracingLogger {
 	return &tracingLogger{
-		logger: ll,
-	}
-}
-
-func (ll *loggerIns) GetLockDistributorLogger() LockDistributorLogger {
-	return &lockDistributorLogger{
 		logger: ll,
 	}
 }
@@ -125,8 +120,69 @@ func (ll *loggerIns) WithError(err error) Logger {
 		return ll
 	}
 
+	// Create new field logger with error
+	fieldL := ll.addPotentialWithError(err)
 	// Return new logger
 	return &loggerIns{
-		SugaredLogger: ll.SugaredLogger.With("error", err),
+		SugaredLogger: fieldL.With("error", err),
 	}
+}
+
+func (ll *loggerIns) addPotentialWithError(elem interface{}) *zap.SugaredLogger {
+	// Try to cast element to error
+	err, ok := elem.(error)
+	// Check if can be casted to error
+	if ok {
+		// Check if error as an hidden stackTracer
+		var st stackTracer
+		if errors.As(err, &st) {
+			// Get stack trace from error
+			st := st.StackTrace()
+			// Stringify stack trace
+			valued := fmt.Sprintf("%+v", st)
+			// Remove all tabs
+			valued = strings.ReplaceAll(valued, "\t", "")
+			// Split on new line
+			stack := strings.Split(valued, "\n")
+			// Remove first empty string
+			stack = stack[1:]
+			// Add stack trace to field logger
+			return ll.SugaredLogger.With("stacktrace", strings.Join(stack, ","))
+		}
+	}
+
+	// Default
+	return ll.SugaredLogger
+}
+
+func (ll *loggerIns) Error(args ...interface{}) {
+	// Add potential "WithError"
+	l := ll.addPotentialWithError(args[0])
+
+	// Call logger error method
+	l.Error(args...)
+}
+
+func (ll *loggerIns) Fatal(args ...interface{}) {
+	// Add potential "WithError"
+	l := ll.addPotentialWithError(args[0])
+
+	// Call logger fatal method
+	l.Fatal(args...)
+}
+
+func (ll *loggerIns) Errorf(format string, args ...interface{}) {
+	// Create error
+	err := errors.WithStack(errors.Errorf(format, args...))
+
+	// Log error
+	ll.Error(err)
+}
+
+func (ll *loggerIns) Fatalf(format string, args ...interface{}) {
+	// Create error
+	err := errors.WithStack(errors.Errorf(format, args...))
+
+	// Log fatal
+	ll.Fatal(err)
 }
