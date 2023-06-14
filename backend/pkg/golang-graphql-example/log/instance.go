@@ -9,6 +9,7 @@ import (
 	"emperror.dev/errors"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+	gormlogger "gorm.io/gorm/logger"
 )
 
 const LogFileMode = 0666
@@ -44,8 +45,20 @@ type loggerIns struct {
 	*zap.SugaredLogger
 }
 
+func (ll *loggerIns) GetGormLogger() gormlogger.Interface {
+	return &gormLogger{
+		logger: ll,
+	}
+}
+
 func (ll *loggerIns) GetTracingLogger() TracingLogger {
 	return &tracingLogger{
+		logger: ll,
+	}
+}
+
+func (ll *loggerIns) GetLockDistributorLogger() LockDistributorLogger {
+	return &lockDistributorLogger{
 		logger: ll,
 	}
 }
