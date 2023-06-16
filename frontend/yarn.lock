@@ -9363,17 +9363,17 @@ storybook-dark-mode@^3.0.0:
     fast-deep-equal "^3.1.3"
     memoizerific "^1.11.3"
 
-storybook-i18n@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/storybook-i18n/-/storybook-i18n-2.0.7.tgz#1569e55ab4d6a41146394366aa439efa27251c20"
-  integrity sha512-f+sXig9sx0G2IdE5ovMpNJDDkdtSU+k9LDL2LoVR4WCB9iIovwHr3bhrYM0mKx3QqKPrSXv+fGwkAE2hNlWHbA==
+storybook-i18n@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/storybook-i18n/-/storybook-i18n-2.0.8.tgz#94e1ba047cd8ad25a5f986fc6d51d5f2c054aea6"
+  integrity sha512-YJIA1XNLD+ba8H++sMtmgdbza6HgYTWDCrM1QWEPGxpwmIoqEpjXKOnHPFkUzf77VD7+2IpPNsthdmtk7E7F/w==
 
 storybook-react-i18next@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/storybook-react-i18next/-/storybook-react-i18next-2.0.2.tgz#1e771b8cf7792d99ef5e3f1479e2fd552d3c16e7"
-  integrity sha512-j5WsRYnKcgbF/Y874txiFglmg+by79geENbbYFQKZyfnrLMaDRNmltTf3xTxtMwbUgWaCeTwjeb09zwRUkrqeA==
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/storybook-react-i18next/-/storybook-react-i18next-2.0.6.tgz#6b89f7c275676148b220edc967c6e2496b032038"
+  integrity sha512-3wsYbkq1HSU/JEbHwJsYOBnRllGQX3SH8t9PfjFfgqCDGOUCg1YxN4GplzkQawJ5Qokfk2phmapSvKWLWa58LA==
   dependencies:
-    storybook-i18n "^2.0.7"
+    storybook-i18n "^2.0.8"
 
 storybook@^7.0.18:
   version "7.0.18"
