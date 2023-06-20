@@ -1,5 +1,9 @@
 import { createContext } from 'react';
 
-export default createContext({
+export interface PageDrawerContextModel {
+  onDrawerToggle: () => void;
+}
+
+export default createContext<PageDrawerContextModel>({
   onDrawerToggle: () => {},
 });
