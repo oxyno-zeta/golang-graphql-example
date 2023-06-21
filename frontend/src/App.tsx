@@ -10,6 +10,7 @@ import Footer from '~components/Footer';
 import ClientProvider from '~components/ClientProvider';
 import ThemeProvider from '~components/theming/ThemeProvider';
 import TimezoneProvider from '~components/timezone/TimezoneProvider';
+import PageDrawerSettingsProvider from '~components/drawer/PageDrawerSettingsProvider';
 
 function App() {
   return (
@@ -19,10 +20,12 @@ function App() {
           <ClientProvider>
             <ThemeProvider themeOptions={{}}>
               <TimezoneProvider>
-                <CssBaseline />
-                <TopBar />
-                <Outlet />
-                <Footer />
+                <PageDrawerSettingsProvider>
+                  <CssBaseline />
+                  <TopBar />
+                  <Outlet />
+                  <Footer />
+                </PageDrawerSettingsProvider>
               </TimezoneProvider>
             </ThemeProvider>
           </ClientProvider>

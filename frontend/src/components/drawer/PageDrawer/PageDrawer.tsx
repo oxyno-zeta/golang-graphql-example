@@ -11,21 +11,25 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { mdiChevronDoubleLeft, mdiChevronDoubleRight } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
-import Cookies from 'universal-cookie';
 import { useTranslation } from 'react-i18next';
 import { TopBarSpacer } from '~components/TopBar';
 import PageDrawerContext from '~contexts/PageDrawerContext';
-import ConfigContext from '~contexts/ConfigContext';
+import PageDrawerSettingsContext from '~contexts/PageDrawerSettingsContext';
 import MainContentWrapper from '../../MainContentWrapper';
 
 interface DrawerContentProps {
   listItemButtonSx: SystemStyleObject<Theme>;
   listItemIconSx: SystemStyleObject<Theme>;
   listItemTextSx: SystemStyleObject<Theme>;
+  isCollapsed: boolean;
 }
 
 export interface Props {
-  renderDrawerContent: (props: DrawerContentProps, isNormalCollapsed: boolean) => ReactNode;
+  renderDrawerContent: (
+    props: DrawerContentProps,
+    /** @deprecated Use isCollapsed in first object */
+    isNormalCollapsed: boolean,
+  ) => ReactNode;
   children: ReactNode;
   mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
   drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
@@ -55,8 +59,6 @@ const defaultProps = {
   disableCollapse: false,
 };
 
-const cookieName = 'left-menu-collapsed';
-
 function PageDrawer({
   defaultDrawerWidth,
   renderDrawerContent,
@@ -73,53 +75,23 @@ function PageDrawer({
 }: Props) {
   // Setup translate
   const { t } = useTranslation();
-  // Get cookies object
-  const cookies = new Cookies();
-  // Get stored collapsed menu value
-  const storedCollapsedMenu = cookies.get(cookieName);
+  // Get context
+  const pageDrawerSettingsCtx = useContext(PageDrawerSettingsContext);
 
-  // Compute initial value
-  let initCollapsedVal = storedCollapsedMenu;
-  // Check if collapse is now disabled
-  if (!disableCollapse) {
-    if (!initCollapsedVal) {
-      initCollapsedVal = false;
-    } else {
-      initCollapsedVal = initCollapsedVal === 'true';
-    }
-  } else {
-    initCollapsedVal = false;
-  }
+  // Expand
+  const { toggleCollapsed, getCollapsed } = pageDrawerSettingsCtx;
+  // Compute is collapsed
+  const isCollapsed = disableCollapse ? !disableCollapse : getCollapsed();
 
-  // Get config from context
-  const cfg = useContext(ConfigContext);
   // States
   const [isMobileOpen, setMobileOpen] = useState(false);
-  const [isNormalOpened, setNormalOpened] = useState(!initCollapsedVal);
   const [drawerWidth, setDrawerWidth] = useState(defaultDrawerWidth);
-  // Expand
-  const { configCookieDomain } = cfg;
 
   const onMobileDrawerToggle = () => {
     setMobileOpen((v) => !v);
   };
 
   const pageDrawerCtxValue = useMemo(() => ({ onDrawerToggle: onMobileDrawerToggle }), [setMobileOpen]);
-
-  const onNormalDrawerToggle = () => {
-    setNormalOpened((v) => {
-      // !! Warning: Values are reversed
-      // Cookie is for collapsed
-      // Value is for opened
-      cookies.set(cookieName, v, {
-        path: '/',
-        maxAge: 31536000, // 1 year
-        domain: configCookieDomain,
-      });
-
-      return !v;
-    });
-  };
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const newWidth = e.clientX - document.body.offsetLeft;
@@ -158,7 +130,7 @@ function PageDrawer({
         component="nav"
         sx={(theme: Theme) => ({
           flexShrink: { lg: 0 },
-          width: { lg: isNormalOpened ? `${drawerWidth}px` : `calc(${theme.spacing(7)} + 1px)` },
+          width: { lg: isCollapsed ? `calc(${theme.spacing(7)} + 1px)` : `${drawerWidth}px` },
           ...drawerContainerBoxSx,
         })}
       >
@@ -184,8 +156,9 @@ function PageDrawer({
               listItemButtonSx: {},
               listItemIconSx: {},
               listItemTextSx: {},
+              isCollapsed,
             },
-            isNormalOpened,
+            !isCollapsed,
           )}
         </Drawer>
         <Drawer
@@ -193,18 +166,18 @@ function PageDrawer({
           open
           sx={(theme) => ({
             display: { xs: 'none', lg: 'block' },
-            ...(isNormalOpened && {
+            ...(!isCollapsed && {
               ...openedMixin(),
               '& .MuiDrawer-paper': { ...(disableResize ? {} : { borderRight: 'unset' }), ...openedMixin() },
             }),
-            ...(!isNormalOpened && {
+            ...(isCollapsed && {
               ...closedMixin(theme),
               '& .MuiDrawer-paper': closedMixin(theme),
             }),
           })}
           {...drawerProps}
         >
-          {isNormalOpened && !disableResize && (
+          {!isCollapsed && !disableResize && (
             <Divider
               role="button"
               onMouseDown={() => handleMouseDown()}
@@ -227,11 +200,12 @@ function PageDrawer({
           <div style={{ overflowY: 'auto', height: '100%', display: 'flex', flexDirection: 'column' }}>
             {renderDrawerContent(
               {
-                listItemButtonSx: isNormalOpened ? {} : { justifyContent: 'center' },
-                listItemIconSx: isNormalOpened ? {} : { minWidth: 'unset' },
-                listItemTextSx: isNormalOpened ? {} : { display: 'none' },
+                listItemButtonSx: isCollapsed ? { justifyContent: 'center' } : {},
+                listItemIconSx: isCollapsed ? { minWidth: 'unset' } : {},
+                listItemTextSx: isCollapsed ? { display: 'none' } : {},
+                isCollapsed,
               },
-              isNormalOpened,
+              !isCollapsed,
             )}
             {!disableCollapse && (
               <div style={{ marginTop: 'auto' }}>
@@ -239,15 +213,15 @@ function PageDrawer({
                   <ListItem disablePadding dense>
                     <ListItemButton
                       dense
-                      onClick={onNormalDrawerToggle}
-                      sx={isNormalOpened ? {} : { justifyContent: 'center' }}
+                      onClick={toggleCollapsed}
+                      sx={isCollapsed ? { justifyContent: 'center' } : {}}
                     >
-                      <ListItemIcon sx={isNormalOpened ? {} : { minWidth: 'unset' }}>
+                      <ListItemIcon sx={isCollapsed ? { minWidth: 'unset' } : {}}>
                         <SvgIcon>
-                          <path d={isNormalOpened ? mdiChevronDoubleLeft : mdiChevronDoubleRight} />
+                          <path d={isCollapsed ? mdiChevronDoubleRight : mdiChevronDoubleLeft} />
                         </SvgIcon>
                       </ListItemIcon>
-                      <ListItemText sx={isNormalOpened ? {} : { display: 'none' }}>
+                      <ListItemText sx={isCollapsed ? { display: 'none' } : {}}>
                         {t('common.collapseSidebarAction')}
                       </ListItemText>
                     </ListItemButton>

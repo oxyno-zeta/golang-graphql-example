@@ -21,6 +21,7 @@ import { defaultConfig } from '../../../models/config';
 import PageDrawer, { Props } from './PageDrawer';
 import ListNavItemButton from '../ListNavItemButton';
 import OpenDrawerButton from '../OpenDrawerButton';
+import PageDrawerSettingsProvider from '../PageDrawerSettingsProvider';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
@@ -128,7 +129,9 @@ function RemoveStorybookPadding({ children }: { children: ReactNode }) {
 export const DisableTopSpace: StoryFn<typeof PageDrawer> = function C({ disableTopSpacer, ...args }: Props) {
   return (
     <RemoveStorybookPadding>
-      <PageDrawer {...args} disableTopSpacer />
+      <PageDrawerSettingsProvider>
+        <PageDrawer {...args} disableTopSpacer />
+      </PageDrawerSettingsProvider>
     </RemoveStorybookPadding>
   );
 };
@@ -136,7 +139,9 @@ export const DisableTopSpace: StoryFn<typeof PageDrawer> = function C({ disableT
 export const DisableResize: StoryFn<typeof PageDrawer> = function C({ disableResize, ...args }: Props) {
   return (
     <RemoveStorybookPadding>
-      <PageDrawer {...args} disableResize />
+      <PageDrawerSettingsProvider>
+        <PageDrawer {...args} disableResize />
+      </PageDrawerSettingsProvider>
     </RemoveStorybookPadding>
   );
 };
@@ -144,7 +149,9 @@ export const DisableResize: StoryFn<typeof PageDrawer> = function C({ disableRes
 export const DisableCollapse: StoryFn<typeof PageDrawer> = function C({ disableCollapse, ...args }: Props) {
   return (
     <RemoveStorybookPadding>
-      <PageDrawer {...args} disableCollapse />
+      <PageDrawerSettingsProvider>
+        <PageDrawer {...args} disableCollapse />
+      </PageDrawerSettingsProvider>
     </RemoveStorybookPadding>
   );
 };
@@ -153,10 +160,12 @@ export const WithTopBar: StoryFn<typeof PageDrawer> = function C({ ...args }: Pr
   return (
     <RemoveStorybookPadding>
       <TimezoneProvider>
-        <ConfigContext.Provider value={defaultConfig}>
-          <TopBar />
-          <PageDrawer {...args} />
-        </ConfigContext.Provider>
+        <PageDrawerSettingsProvider>
+          <ConfigContext.Provider value={defaultConfig}>
+            <TopBar />
+            <PageDrawer {...args} />
+          </ConfigContext.Provider>
+        </PageDrawerSettingsProvider>
       </TimezoneProvider>
     </RemoveStorybookPadding>
   );
