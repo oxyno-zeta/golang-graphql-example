@@ -9,7 +9,6 @@
     "plugin:import/typescript",
     "airbnb",
     "airbnb-typescript",
-    // "airbnb/hooks",
     "prettier",
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended"
