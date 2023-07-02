@@ -5,7 +5,7 @@ go 1.18
 require (
 	cirello.io/pglock v1.13.0
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.31
+	github.com/99designs/gqlgen v0.17.34
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/AppsFlyer/go-sundheit v0.5.0
 	github.com/DATA-DOG/go-sqlmock v1.5.0
@@ -29,7 +29,7 @@ require (
 	github.com/spf13/viper v1.16.0
 	github.com/stretchr/testify v1.8.4
 	github.com/thoas/go-funk v0.9.3
-	github.com/vektah/gqlparser/v2 v2.5.1
+	github.com/vektah/gqlparser/v2 v2.5.4
 	github.com/xhit/go-simple-mail/v2 v2.13.0
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.42.0
 	go.opentelemetry.io/contrib/propagators/b3 v1.17.0
@@ -73,7 +73,7 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.2 // indirect
-	github.com/hashicorp/golang-lru/v2 v2.0.2 // indirect
+	github.com/hashicorp/golang-lru/v2 v2.0.3 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
