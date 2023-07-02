@@ -6,13 +6,11 @@ package mocks
 
 import (
 	context "context"
-	http "net/http"
 	reflect "reflect"
 
 	graphql "github.com/99designs/gqlgen/graphql"
 	gin "github.com/gin-gonic/gin"
 	gomock "github.com/golang/mock/gomock"
-	opentracing "github.com/opentracing/opentracing-go"
 	tracing "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	gorm "gorm.io/gorm"
 )
@@ -40,6 +38,20 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 	return m.recorder
 }
 
+// Close mocks base method.
+func (m *MockService) Close() error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Close")
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// Close indicates an expected call of Close.
+func (mr *MockServiceMockRecorder) Close() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockService)(nil).Close))
+}
+
 // DatabaseMiddleware mocks base method.
 func (m *MockService) DatabaseMiddleware() gorm.Plugin {
 	m.ctrl.T.Helper()
@@ -52,50 +64,6 @@ func (m *MockService) DatabaseMiddleware() gorm.Plugin {
 func (mr *MockServiceMockRecorder) DatabaseMiddleware() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockService)(nil).DatabaseMiddleware))
-}
-
-// ExtractFromHTTPHeaderAndStartSpan mocks base method.
-func (m *MockService) ExtractFromHTTPHeaderAndStartSpan(arg0 http.Header, arg1 string) (tracing.Trace, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ExtractFromHTTPHeaderAndStartSpan", arg0, arg1)
-	ret0, _ := ret[0].(tracing.Trace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// ExtractFromHTTPHeaderAndStartSpan indicates an expected call of ExtractFromHTTPHeaderAndStartSpan.
-func (mr *MockServiceMockRecorder) ExtractFromHTTPHeaderAndStartSpan(arg0, arg1 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtractFromHTTPHeaderAndStartSpan", reflect.TypeOf((*MockService)(nil).ExtractFromHTTPHeaderAndStartSpan), arg0, arg1)
-}
-
-// ExtractFromTextMapAndStartSpan mocks base method.
-func (m *MockService) ExtractFromTextMapAndStartSpan(arg0 map[string]string, arg1 string) (tracing.Trace, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ExtractFromTextMapAndStartSpan", arg0, arg1)
-	ret0, _ := ret[0].(tracing.Trace)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// ExtractFromTextMapAndStartSpan indicates an expected call of ExtractFromTextMapAndStartSpan.
-func (mr *MockServiceMockRecorder) ExtractFromTextMapAndStartSpan(arg0, arg1 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtractFromTextMapAndStartSpan", reflect.TypeOf((*MockService)(nil).ExtractFromTextMapAndStartSpan), arg0, arg1)
-}
-
-// GetTracer mocks base method.
-func (m *MockService) GetTracer() opentracing.Tracer {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetTracer")
-	ret0, _ := ret[0].(opentracing.Tracer)
-	return ret0
-}
-
-// GetTracer indicates an expected call of GetTracer.
-func (mr *MockServiceMockRecorder) GetTracer() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTracer", reflect.TypeOf((*MockService)(nil).GetTracer))
 }
 
 // GraphqlMiddleware mocks base method.
@@ -112,18 +80,18 @@ func (mr *MockServiceMockRecorder) GraphqlMiddleware() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GraphqlMiddleware", reflect.TypeOf((*MockService)(nil).GraphqlMiddleware))
 }
 
-// HTTPMiddleware mocks base method.
-func (m *MockService) HTTPMiddleware(arg0 func(context.Context) string) gin.HandlerFunc {
+// HTTPMiddlewareList mocks base method.
+func (m *MockService) HTTPMiddlewareList(arg0 func(context.Context) string) []gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "HTTPMiddleware", arg0)
-	ret0, _ := ret[0].(gin.HandlerFunc)
+	ret := m.ctrl.Call(m, "HTTPMiddlewareList", arg0)
+	ret0, _ := ret[0].([]gin.HandlerFunc)
 	return ret0
 }
 
-// HTTPMiddleware indicates an expected call of HTTPMiddleware.
-func (mr *MockServiceMockRecorder) HTTPMiddleware(arg0 interface{}) *gomock.Call {
+// HTTPMiddlewareList indicates an expected call of HTTPMiddlewareList.
+func (mr *MockServiceMockRecorder) HTTPMiddlewareList(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HTTPMiddleware", reflect.TypeOf((*MockService)(nil).HTTPMiddleware), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HTTPMiddlewareList", reflect.TypeOf((*MockService)(nil).HTTPMiddlewareList), arg0)
 }
 
 // InitializeAndReload mocks base method.
@@ -140,30 +108,17 @@ func (mr *MockServiceMockRecorder) InitializeAndReload() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeAndReload", reflect.TypeOf((*MockService)(nil).InitializeAndReload))
 }
 
-// StartChildTraceOrTraceFromContext mocks base method.
-func (m *MockService) StartChildTraceOrTraceFromContext(arg0 context.Context, arg1 string) tracing.Trace {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "StartChildTraceOrTraceFromContext", arg0, arg1)
-	ret0, _ := ret[0].(tracing.Trace)
-	return ret0
-}
-
-// StartChildTraceOrTraceFromContext indicates an expected call of StartChildTraceOrTraceFromContext.
-func (mr *MockServiceMockRecorder) StartChildTraceOrTraceFromContext(arg0, arg1 interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartChildTraceOrTraceFromContext", reflect.TypeOf((*MockService)(nil).StartChildTraceOrTraceFromContext), arg0, arg1)
-}
-
 // StartTrace mocks base method.
-func (m *MockService) StartTrace(arg0 string) tracing.Trace {
+func (m *MockService) StartTrace(arg0 context.Context, arg1 string) (context.Context, tracing.Trace) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "StartTrace", arg0)
-	ret0, _ := ret[0].(tracing.Trace)
-	return ret0
+	ret := m.ctrl.Call(m, "StartTrace", arg0, arg1)
+	ret0, _ := ret[0].(context.Context)
+	ret1, _ := ret[1].(tracing.Trace)
+	return ret0, ret1
 }
 
 // StartTrace indicates an expected call of StartTrace.
-func (mr *MockServiceMockRecorder) StartTrace(arg0 interface{}) *gomock.Call {
+func (mr *MockServiceMockRecorder) StartTrace(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), arg0, arg1)
 }

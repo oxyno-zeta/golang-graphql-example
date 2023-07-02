@@ -5,6 +5,7 @@
 package mocks
 
 import (
+	context "context"
 	http "net/http"
 	reflect "reflect"
 
@@ -48,17 +49,18 @@ func (mr *MockTraceMockRecorder) Finish() *gomock.Call {
 }
 
 // GetChildTrace mocks base method.
-func (m *MockTrace) GetChildTrace(arg0 string) tracing.Trace {
+func (m *MockTrace) GetChildTrace(arg0 context.Context, arg1 string) (context.Context, tracing.Trace) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetChildTrace", arg0)
-	ret0, _ := ret[0].(tracing.Trace)
-	return ret0
+	ret := m.ctrl.Call(m, "GetChildTrace", arg0, arg1)
+	ret0, _ := ret[0].(context.Context)
+	ret1, _ := ret[1].(tracing.Trace)
+	return ret0, ret1
 }
 
 // GetChildTrace indicates an expected call of GetChildTrace.
-func (mr *MockTraceMockRecorder) GetChildTrace(arg0 interface{}) *gomock.Call {
+func (mr *MockTraceMockRecorder) GetChildTrace(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChildTrace", reflect.TypeOf((*MockTrace)(nil).GetChildTrace), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChildTrace", reflect.TypeOf((*MockTrace)(nil).GetChildTrace), arg0, arg1)
 }
 
 // GetTraceID mocks base method.
@@ -76,11 +78,9 @@ func (mr *MockTraceMockRecorder) GetTraceID() *gomock.Call {
 }
 
 // InjectInHTTPHeader mocks base method.
-func (m *MockTrace) InjectInHTTPHeader(arg0 http.Header) error {
+func (m *MockTrace) InjectInHTTPHeader(arg0 http.Header) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "InjectInHTTPHeader", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	m.ctrl.Call(m, "InjectInHTTPHeader", arg0)
 }
 
 // InjectInHTTPHeader indicates an expected call of InjectInHTTPHeader.
@@ -90,11 +90,9 @@ func (mr *MockTraceMockRecorder) InjectInHTTPHeader(arg0 interface{}) *gomock.Ca
 }
 
 // InjectInTextMap mocks base method.
-func (m *MockTrace) InjectInTextMap(arg0 map[string]string) error {
+func (m *MockTrace) InjectInTextMap(arg0 map[string]string) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "InjectInTextMap", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	m.ctrl.Call(m, "InjectInTextMap", arg0)
 }
 
 // InjectInTextMap indicates an expected call of InjectInTextMap.

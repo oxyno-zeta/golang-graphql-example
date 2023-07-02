@@ -22,7 +22,6 @@ require (
 	github.com/golang/mock v1.6.0
 	github.com/graph-gophers/dataloader/v7 v7.1.0
 	github.com/hasura/go-graphql-client v0.9.3
-	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.15.1
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/ravilushqa/otelgqlgen v0.13.1
@@ -92,6 +91,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
+	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
