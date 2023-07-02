@@ -14,6 +14,7 @@ func (*managerimpl) loadDefaultConfigurationValues(vip *viper.Viper) {
 	vip.SetDefault("lockDistributor.tableName", DefaultLockDistributorTableName)
 	vip.SetDefault("lockDistributor.leaseDuration", DefaultLockDistributorLeaseDuration)
 	vip.SetDefault("lockDistributor.heartbeatFrequency", DefaultLockDistributionHeartbeatFrequency)
+	vip.SetDefault("tracing.type", DefaultTracingType)
 }
 
 // Load default values based on business rules.

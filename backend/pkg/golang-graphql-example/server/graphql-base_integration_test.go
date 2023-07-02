@@ -59,7 +59,8 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 	suite.NoError(err)
 
 	// Create tracing service
-	tracingSvc, err := tracing.New(cfgManagerMock, logger)
+	tracingSvc := tracing.New(cfgManagerMock, logger)
+	err = tracingSvc.InitializeAndReload()
 	suite.NoError(err)
 	// Create signalhandler service
 	signalHandlerSvc := signalhandler.NewService(logger, false, []os.Signal{syscall.SIGTERM, syscall.SIGINT})

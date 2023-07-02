@@ -6,7 +6,6 @@ import (
 
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
-	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"gorm.io/gorm"
@@ -18,23 +17,16 @@ import (
 type Service interface {
 	// InitializeAndReload service.
 	InitializeAndReload() error
-	// Get opentracing tracer.
-	GetTracer() opentracing.Tracer
-	// Http Gin HttpMiddleware to add trace per request.
-	HTTPMiddleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc
+	// Http Gin HttpMiddleware list to add trace per request.
+	HTTPMiddlewareList(getRequestID func(ctx context.Context) string) []gin.HandlerFunc
 	// Graphql Middleware.
 	GraphqlMiddleware() gqlgraphql.HandlerExtension
 	// Get database middleware.
 	DatabaseMiddleware() gorm.Plugin
 	// StartSpan will return a new trace created from scratch.
-	StartTrace(operationName string) Trace
-	// StartChildTraceOrTraceFromContext will return a child trace if a trace is found inside
-	// the context or a new trace with the operation name.
-	StartChildTraceOrTraceFromContext(ctx context.Context, operationName string) Trace
-	// ExtractFromTextMapAndStartSpan will extract trace from textmap and start a new one from this one.
-	ExtractFromTextMapAndStartSpan(txtMap map[string]string, operationName string) (Trace, error)
-	// ExtractFromTextMapAndStartSpan will extract trace from http headers and start a new one from this one.
-	ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operationName string) (Trace, error)
+	StartTrace(ctx context.Context, operationName string) (context.Context, Trace)
+	// Close is used on application shutdown.
+	Close() error
 }
 
 // Trace structure.
@@ -48,17 +40,22 @@ type Trace interface {
 	// MarkAsError will mark trace as in error.
 	MarkAsError()
 	// Get a child trace.
-	GetChildTrace(operationName string) Trace
+	GetChildTrace(ctx context.Context, operationName string) (context.Context, Trace)
 	// End the trace.
 	Finish()
 	// Get the trace ID.
 	GetTraceID() string
 	// InjectInHTTPHeader will inject span in http header for forwarding.
-	InjectInHTTPHeader(header http.Header) error
+	// @deprecated: Use global method
+	InjectInHTTPHeader(header http.Header)
 	// InjectInTextMap will inject span in text map for forwarding.
-	InjectInTextMap(textMap map[string]string) error
+	// @deprecated: Use global method
+	InjectInTextMap(textMap map[string]string)
 }
 
-func New(cfgManager config.Manager, logger log.Logger) (Service, error) {
-	return newService(cfgManager, logger)
+func New(cfgManager config.Manager, logger log.Logger) Service {
+	return &service{
+		cfgManager: cfgManager,
+		logger:     logger,
+	}
 }

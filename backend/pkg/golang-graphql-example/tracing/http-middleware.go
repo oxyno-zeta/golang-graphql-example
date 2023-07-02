@@ -2,30 +2,22 @@ package tracing
 
 import (
 	"context"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/opentracing-contrib/go-gin/ginhttp"
-	opentracing "github.com/opentracing/opentracing-go"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
 
-func (s *service) HTTPMiddleware(getRequestID func(ctx context.Context) string) gin.HandlerFunc {
-	// Get version
-	v := version.GetVersion()
-	// Add more metadata to span
-	opt := ginhttp.MWSpanObserver(func(span opentracing.Span, r *http.Request) {
-		// Add request host
-		span.SetTag("http.request_host", r.Host)
-		// Add request id
-		span.SetTag("http.request_id", getRequestID(r.Context()))
-		// Add request path
-		span.SetTag("http.request_path", r.URL.Path)
-		// Add version
-		span.SetTag("service.version", v.Version)
-		// Add service name
-		span.SetTag("service.name", "golang-graphql-example")
-	})
-
-	return ginhttp.Middleware(s.tracer, opt)
+func (*service) HTTPMiddlewareList(getRequestID func(ctx context.Context) string) []gin.HandlerFunc {
+	return []gin.HandlerFunc{
+		otelgin.Middleware("golang-graphql-example"),
+		func(c *gin.Context) {
+			// Get trace
+			t := GetTraceFromContext(c.Request.Context())
+			// Add attributes
+			t.SetTags(map[string]interface{}{
+				"http.host":       c.Request.Host,
+				"http.request_id": getRequestID(c.Request.Context()),
+			})
+		},
+	}
 }

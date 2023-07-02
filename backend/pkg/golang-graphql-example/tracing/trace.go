@@ -4,13 +4,13 @@ import (
 	"context"
 	"net/http"
 
-	"emperror.dev/errors"
-	"github.com/opentracing/opentracing-go"
-	"github.com/uber/jaeger-client-go"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+	oteltrace "go.opentelemetry.io/otel/trace"
 )
 
 type trace struct {
-	span opentracing.Span
+	span oteltrace.Span
 }
 
 func (t *trace) MarkAsError() {
@@ -18,79 +18,45 @@ func (t *trace) MarkAsError() {
 }
 
 func (t *trace) SetTag(key string, value interface{}) {
-	t.span.SetTag(key, value)
+	t.span.SetAttributes(*manageGenericAttribute(key, value))
 }
 
 func (t *trace) SetTags(tags map[string]interface{}) {
 	for k, v := range tags {
-		t.span.SetTag(k, v)
+		t.SetTag(k, v)
 	}
 }
 
-func (t *trace) GetChildTrace(operationName string) Trace {
-	tracer := opentracing.GlobalTracer()
+func (*trace) GetChildTrace(ctx context.Context, operationName string) (context.Context, Trace) {
+	ctx, sp := getTracerFromTraceProvider(otel.GetTracerProvider()).Start(ctx, operationName)
 
-	childSpan := tracer.StartSpan(
-		operationName,
-		opentracing.ChildOf(t.span.Context()),
-	)
-
-	return &trace{span: childSpan}
+	return ctx, &trace{span: sp}
 }
 
-func (t *trace) InjectInHTTPHeader(header http.Header) error {
-	return errors.WithStack(opentracing.GlobalTracer().Inject(
-		t.span.Context(),
-		opentracing.HTTPHeaders,
-		opentracing.HTTPHeadersCarrier(header),
-	))
+func (t *trace) InjectInHTTPHeader(header http.Header) {
+	// Create fake context
+	ctx := oteltrace.ContextWithSpan(context.TODO(), t.span)
+
+	// Inject
+	otel.GetTextMapPropagator().Inject(ctx, propagation.HeaderCarrier(header))
 }
 
-func (t *trace) InjectInTextMap(textMap map[string]string) error {
-	return errors.WithStack(opentracing.GlobalTracer().Inject(
-		t.span.Context(),
-		opentracing.TextMap,
-		opentracing.TextMapCarrier(textMap),
-	))
+func (t *trace) InjectInTextMap(textMap map[string]string) {
+	// Create fake context
+	ctx := oteltrace.ContextWithSpan(context.TODO(), t.span)
+
+	// Inject
+	otel.GetTextMapPropagator().Inject(ctx, propagation.MapCarrier(textMap))
 }
 
 func (t *trace) Finish() {
-	t.span.Finish()
+	t.span.End()
 }
 
 func (t *trace) GetTraceID() string {
-	if sc, ok := t.span.Context().(jaeger.SpanContext); ok {
-		return sc.TraceID().String()
+	if t.span.SpanContext().HasTraceID() {
+		return t.span.SpanContext().TraceID().String()
 	}
 
 	return ""
-}
-
-func GetTraceFromContext(ctx context.Context) Trace {
-	sp := opentracing.SpanFromContext(ctx)
-	if sp == nil {
-		return nil
-	}
-
-	return &trace{
-		span: sp,
-	}
-}
-
-// @deprecated.
-func GetSpanIDFromContext(ctx context.Context) string {
-	return GetTraceIDFromContext(ctx)
-}
-
-func GetTraceIDFromContext(ctx context.Context) string {
-	tr := GetTraceFromContext(ctx)
-	if tr != nil {
-		return tr.GetTraceID()
-	}
-
-	return ""
-}
-
-func SetTraceToContext(ctx context.Context, t Trace) context.Context {
-	return opentracing.ContextWithSpan(ctx, t.(*trace).span) //nolint: forcetypeassert // Ignored
 }

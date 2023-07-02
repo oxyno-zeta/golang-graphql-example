@@ -153,8 +153,8 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	}))
 	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware())
 	router.Use(correlationid.HTTPMiddleware(svr.logger))
-	router.Use(svr.tracingSvc.HTTPMiddleware(correlationid.GetFromContext))
-	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetSpanIDFromContext))
+	router.Use(svr.tracingSvc.HTTPMiddlewareList(correlationid.GetFromContext)...)
+	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetTraceIDFromContext))
 	router.Use(svr.metricsSvc.Instrument("business", true))
 	// Add helmet for security
 	router.Use(helmet.Default())
@@ -273,7 +273,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 			// Wrap it as an internal server error
 			err4 := cerrors.NewInternalServerErrorWithError(err)
 			// Log
-			logger.Error(errors.WithStack(err4))
+			logger.Error(err4)
 			// Return new built error
 			return &gqlerror.Error{
 				Path:       gqlgraphql.GetPath(ctx),

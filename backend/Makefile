@@ -162,7 +162,8 @@ down/metrics-services:
 	@echo "Down metrics services"
 	docker rm -f prometheus || true
 	docker rm -f grafana || true
-	docker rm -f jaeger || true
+	# docker rm -f jaeger || true
+	docker rm -f tempo || true
 
 .PHONY: down/dev-services
 down/dev-services:
@@ -180,8 +181,8 @@ setup/dev-services: down/dev-services
 setup/metrics-services: down/metrics-services
 	@echo "Setup metrics services"
 	docker run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
-	docker run --rm -d --name grafana --network=host grafana/grafana:7.0.3
-	docker run --rm --name jaeger -d -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one:latest
+	docker run --rm -d --name grafana --network=host grafana/grafana:10.0.0
+	docker run --rm -d --name tempo  -v $(CURDIR)/.local-resources/tempo/tempo.yaml:/etc/tempo.yaml -p 14268:14268 -p 3200:3200 -p 4318:4318 -p 4317:4317 grafana/tempo:latest -config.file=/etc/tempo.yaml
 
 .PHONY: setup/services
 setup/services: down/services

@@ -21,7 +21,7 @@ func (as *amqpService) Publish(
 	// Increase active request counter
 	as.signalHandlerSvc.IncreaseActiveRequestCounter()
 	// Get trace from context
-	trace := as.tracingSvc.StartChildTraceOrTraceFromContext(ctx, tracingPublishOperation)
+	ctx, trace := as.tracingSvc.StartTrace(ctx, tracingPublishOperation)
 	// Defer the closing trace
 	defer func() {
 		// Decrease active request counter
@@ -95,11 +95,7 @@ func (as *amqpService) Publish(
 		message.Headers = amqp091.Table{}
 	}
 	// Create headers
-	err = as.injectTracedHeaders(trace, message.Headers)
-	// Check error
-	if err != nil {
-		return err
-	}
+	as.injectTracedHeaders(trace, message.Headers)
 
 	// Initialize retry send delay
 	sendDelayDur := defaultRetryDelay
@@ -329,11 +325,7 @@ func (as *amqpService) Consume(
 			// Create handler
 			handler := func() (err error) {
 				// Extract trace from message
-				trace, err := as.extractTraceFromHeaders(d.Headers)
-				// Check error
-				if err != nil {
-					return err
-				}
+				cbCtx, trace := as.extractTraceFromHeaders(d.Headers)
 				// Defer to close trace
 				defer func() {
 					// Check error
@@ -388,7 +380,7 @@ func (as *amqpService) Consume(
 				// Update
 				childLogger := logger.WithFields(fields)
 				// Create new context with logger
-				cbCtx := log.SetLoggerToContext(ctx, childLogger)
+				cbCtx = log.SetLoggerToContext(cbCtx, childLogger)
 				// Set trace in context
 				cbCtx = tracing.SetTraceToContext(cbCtx, trace)
 				// Set correlation id in context
@@ -508,7 +500,7 @@ func (*amqpService) consumeDeliveryHandler(
 	return nil
 }
 
-func (as *amqpService) extractTraceFromHeaders(h amqp091.Table) (tracing.Trace, error) {
+func (*amqpService) extractTraceFromHeaders(h amqp091.Table) (context.Context, tracing.Trace) {
 	// Create map string string
 	headers := map[string]string{}
 
@@ -522,24 +514,17 @@ func (as *amqpService) extractTraceFromHeaders(h amqp091.Table) (tracing.Trace, 
 	}
 
 	// Extract
-	return as.tracingSvc.ExtractFromTextMapAndStartSpan(headers, tracingConsumeOperation)
+	return tracing.ExtractFromTextMapAndStartSpan(context.TODO(), headers, tracingConsumeOperation)
 }
 
-func (*amqpService) injectTracedHeaders(trace tracing.Trace, headers amqp091.Table) error {
+func (*amqpService) injectTracedHeaders(trace tracing.Trace, headers amqp091.Table) {
 	// Create headers
 	h := map[string]string{}
 	// Use inject in headers
-	err := trace.InjectInTextMap(h)
-	// Check error
-	if err != nil {
-		return err
-	}
+	trace.InjectInTextMap(h)
 
 	// Create amqp headers
 	for k, v := range h {
 		headers[k] = v
 	}
-
-	// Return
-	return nil
 }

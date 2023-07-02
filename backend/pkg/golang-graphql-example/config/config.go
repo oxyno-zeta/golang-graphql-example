@@ -30,6 +30,11 @@ const DefaultCookieName = "oidc"
 // Default Database driver.
 const DefaultDatabaseDriver = "POSTGRES"
 
+// Default tracing type.
+const DefaultTracingType = TracingOtelHTTPType
+const TracingJaegerHTTPType = "JAEGER_HTTP"
+const TracingOtelHTTPType = "OTEL_HTTP"
+
 // Config Configuration object.
 type Config struct {
 	Log                    *LogConfig              `mapstructure:"log"`
@@ -128,12 +133,26 @@ type OPAServerAuthorization struct {
 
 // TracingConfig represents the Tracing configuration structure.
 type TracingConfig struct {
-	FixedTags     map[string]interface{} `mapstructure:"fixedTags"`
-	FlushInterval string                 `mapstructure:"flushInterval"`
-	UDPHost       string                 `mapstructure:"udpHost"`
-	QueueSize     int                    `mapstructure:"queueSize"`
-	Enabled       bool                   `mapstructure:"enabled"`
-	LogSpan       bool                   `mapstructure:"logSpan"`
+	FixedTags    map[string]string        `mapstructure:"fixedTags"`
+	JaegerHTTP   *TracingJaegerHTTPConfig `mapstructure:"jaegerHttp"   validate:"required_if=Type JAEGER_HTTP"`
+	OtelHTTP     *TracingOtelHTTPConfig   `mapstructure:"otelHttp"     validate:"required_if=Type OTEL_HTTP"`
+	Type         string                   `mapstructure:"type"         validate:"oneof=JAEGER_HTTP OTEL_HTTP"`
+	MaxQueueSize int                      `mapstructure:"maxQueueSize" validate:"omitempty,gte=0"`
+	MaxBatchSize int                      `mapstructure:"maxBatchSize" validate:"omitempty,gte=0"`
+	Enabled      bool                     `mapstructure:"enabled"`
+}
+
+// TracingJaegerHTTPConfig represents the Jaeger HTTP configuration structure.
+type TracingJaegerHTTPConfig struct {
+	ServerURL     string `mapstructure:"serverUrl" validate:"required,http_url"`
+	TimeoutString string `mapstructure:"timeout"`
+}
+
+// TracingOtelHTTPConfig represents the OTEL HTTP configuration structure.
+type TracingOtelHTTPConfig struct {
+	ServerURL     string            `mapstructure:"serverUrl" validate:"required,http_url"`
+	Headers       map[string]string `mapstructure:"headers"`
+	TimeoutString string            `mapstructure:"timeout"`
 }
 
 // LogConfig Log configuration.

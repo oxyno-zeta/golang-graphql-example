@@ -67,7 +67,7 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 	router.Use(gin.Recovery())
 	router.Use(helmet.Default())
 	router.Use(correlationid.HTTPMiddleware(svr.logger))
-	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetSpanIDFromContext))
+	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetTraceIDFromContext))
 	router.Use(svr.metricsSvc.Instrument("internal", true))
 	// Add cors if configured
 	err := manageCORS(router, cfg.InternalServer)

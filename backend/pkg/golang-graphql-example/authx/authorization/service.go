@@ -87,12 +87,23 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 	return true, nil
 }
 
-func (*service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAuthorization, body []byte) (bool, error) {
+func (*service) requestOPAServer(
+	ctx context.Context,
+	opaCfg *config.OPAServerAuthorization,
+	body []byte,
+) (authn bool, err error) {
 	// Get trace from context
 	trace := tracing.GetTraceFromContext(ctx)
 	// Generate child trace
-	childTrace := trace.GetChildTrace("opa-server.request")
-	defer childTrace.Finish()
+	ctx, childTrace := trace.GetChildTrace(ctx, "opa-server.request")
+	defer func() {
+		// Check error
+		if err != nil {
+			childTrace.MarkAsError()
+		}
+
+		childTrace.Finish()
+	}()
 	// Add data
 	childTrace.SetTag("opa.uri", opaCfg.URL)
 
@@ -105,11 +116,7 @@ func (*service) requestOPAServer(ctx context.Context, opaCfg *config.OPAServerAu
 	// Add content type
 	req.Header.Add("Content-Type", "application/json")
 	// Forward trace on request
-	err = childTrace.InjectInHTTPHeader(req.Header)
-	// Check error
-	if err != nil {
-		return false, err
-	}
+	childTrace.InjectInHTTPHeader(req.Header)
 	// Making request to OPA server
 	resp, err := http.DefaultClient.Do(req)
 	// Check error

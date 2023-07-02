@@ -2,196 +2,230 @@ package tracing
 
 import (
 	"context"
-	"io"
 	"net/http"
+	"net/url"
 	"time"
 
 	"emperror.dev/errors"
-	"github.com/99designs/gqlgen-contrib/gqlopentracing"
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
-	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/uber/jaeger-client-go"
-	jaegercfg "github.com/uber/jaeger-client-go/config"
-	jaegerprom "github.com/uber/jaeger-lib/metrics/prometheus"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
+	"github.com/ravilushqa/otelgqlgen"
+	b3propagator "go.opentelemetry.io/contrib/propagators/b3"
+	jaegerpropagator "go.opentelemetry.io/contrib/propagators/jaeger"
+	otpropagator "go.opentelemetry.io/contrib/propagators/ot"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/jaeger"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/otel/sdk/resource"
+	tracesdk "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
+	oteltrace "go.opentelemetry.io/otel/trace"
 	"gorm.io/gorm"
-	gormopentracing "gorm.io/plugin/opentracing"
+	gormtracing "gorm.io/plugin/opentelemetry/tracing"
 )
 
+const serviceName = "golang-graphql-example"
+const tracerName = serviceName
+
 type service struct {
-	closer         io.Closer
-	tracer         opentracing.Tracer
+	tracerProvider *tracesdk.TracerProvider
+	tracer         oteltrace.Tracer
 	cfgManager     config.Manager
 	logger         log.Logger
-	metricsFactory *jaegerprom.Factory
 }
 
 func (*service) DatabaseMiddleware() gorm.Plugin {
-	return gormopentracing.New(
-		gormopentracing.WithCreateOpName("sql:create"),
-		gormopentracing.WithUpdateOpName("sql:update"),
-		gormopentracing.WithQueryOpName("sql:query"),
-		gormopentracing.WithDeleteOpName("sql:delete"),
-		gormopentracing.WithRowOpName("sql:row"),
-		gormopentracing.WithRawOpName("sql:raw"),
-	)
+	return gormtracing.NewPlugin(gormtracing.WithoutMetrics())
 }
 
 func (*service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
-	return gqlopentracing.Tracer{}
+	return otelgqlgen.Middleware()
 }
 
-func (s *service) GetTracer() opentracing.Tracer {
+func (s *service) GetTracer() oteltrace.Tracer {
 	return s.tracer
 }
 
-func (s *service) StartTrace(operationName string) Trace {
+func (s *service) StartTrace(ctx context.Context, operationName string) (context.Context, Trace) {
 	// Start a new span from tracer
-	sp := s.tracer.StartSpan(operationName)
+	ctx, sp := s.tracer.Start(ctx, operationName)
 
 	// Return trace object with span
-	return &trace{span: sp}
+	return ctx, &trace{span: sp}
 }
 
-func (s *service) StartChildTraceOrTraceFromContext(ctx context.Context, operationName string) Trace {
-	// Get trace from context
-	tr := GetTraceFromContext(ctx)
-	// Check if it exists
-	if tr != nil {
-		return tr.GetChildTrace(operationName)
+func (s *service) Close() error {
+	// Check if tracer provider exists
+	if s.tracerProvider != nil {
+		// Shutdown
+		return errors.WithStack(s.tracerProvider.Shutdown(context.Background()))
 	}
 
-	// Create new trace
-	return s.StartTrace(operationName)
-}
-
-func (s *service) ExtractFromTextMapAndStartSpan(txtMap map[string]string, operationName string) (Trace, error) {
-	// Get carrier
-	carrier := opentracing.TextMapCarrier(txtMap)
-
-	// Extract
-	sctx, err := s.tracer.Extract(opentracing.TextMap, carrier)
-	// Check error
-	if err != nil && !errors.Is(err, opentracing.ErrSpanContextNotFound) {
-		return nil, errors.WithStack(err)
-	}
-
-	// Start span
-	sp := s.tracer.StartSpan(operationName, opentracing.ChildOf(sctx))
-
-	return &trace{span: sp}, nil
-}
-
-func (s *service) ExtractFromHTTPHeaderAndStartSpan(headers http.Header, operationName string) (Trace, error) {
-	// Get carrier
-	carrier := opentracing.HTTPHeadersCarrier(headers)
-
-	// Extract
-	sctx, err := s.tracer.Extract(opentracing.HTTPHeaders, carrier)
-	// Check error
-	if err != nil && !errors.Is(err, opentracing.ErrSpanContextNotFound) {
-		return nil, errors.WithStack(err)
-	}
-
-	// Start span
-	sp := s.tracer.StartSpan(operationName, opentracing.ChildOf(sctx))
-
-	return &trace{span: sp}, nil
-}
-
-func (s *service) InitializeAndReload() error {
-	// Save closer
-	cl := s.closer
-
-	// Setup
-	err := s.setup()
-	// Check error
-	if err != nil {
-		return err
-	}
-
-	// Close old one
-	err = cl.Close()
-	// Check error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
+	// Default
 	return nil
 }
 
-func (s *service) setup() error {
+func (s *service) InitializeAndReload() error {
+	// Get configuration
 	cfg := s.cfgManager.GetConfig()
-	// Initialize configuration
-	jcfg := jaegercfg.Configuration{
-		ServiceName: "golang-graphql-example",
-		Sampler: &jaegercfg.SamplerConfig{
-			Type:  jaeger.SamplerTypeConst,
-			Param: 1,
-		},
+
+	// Check if not enabled
+	if cfg.Tracing == nil || !cfg.Tracing.Enabled {
+		// Stop here
+		return nil
 	}
 
-	// Check if configuration can be set
-	if !cfg.Tracing.Enabled {
-		jcfg.Disabled = true
-	} else {
-		// Add reporter configuration
-		jcfg.Reporter = &jaegercfg.ReporterConfig{
-			LogSpans:  cfg.Tracing.LogSpan,
-			QueueSize: cfg.Tracing.QueueSize,
-		}
-
-		// Check if flush interval is customized
-		if cfg.Tracing.FlushInterval != "" {
-			// Try to parse duration for flush interval
-			dur, err := time.ParseDuration(cfg.Tracing.FlushInterval)
+	// Init exporter
+	var exp tracesdk.SpanExporter
+	// Switch on type
+	switch cfg.Tracing.Type {
+	case config.TracingJaegerHTTPType:
+		// Create http client
+		httpCl := &http.Client{}
+		// Check if timeout is set
+		if cfg.Tracing.JaegerHTTP.TimeoutString != "" {
+			dur, err := time.ParseDuration(cfg.Tracing.JaegerHTTP.TimeoutString)
+			// Check error
 			if err != nil {
 				return errors.WithStack(err)
 			}
-
-			jcfg.Reporter.BufferFlushInterval = dur
+			// Save
+			httpCl.Timeout = dur
+		}
+		// Create the Jaeger exporter
+		exp2, err := jaeger.New(jaeger.WithCollectorEndpoint(
+			jaeger.WithEndpoint(cfg.Tracing.JaegerHTTP.ServerURL),
+			jaeger.WithHTTPClient(httpCl),
+		))
+		// Check error
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		// Save
+		exp = exp2
+	case config.TracingOtelHTTPType:
+		ur, err := url.Parse(cfg.Tracing.OtelHTTP.ServerURL)
+		// Check error
+		if err != nil {
+			return errors.WithStack(err)
 		}
 
-		// Check if UDP is customized
-		if cfg.Tracing.UDPHost != "" {
-			jcfg.Reporter.LocalAgentHostPort = cfg.Tracing.UDPHost
+		// Create options array
+		opts := []otlptracehttp.Option{
+			otlptracehttp.WithEndpoint(ur.Host),
+			otlptracehttp.WithURLPath(ur.RawPath),
+		}
+		// Check if http is asked
+		if ur.Scheme == "http" {
+			opts = append(opts, otlptracehttp.WithInsecure())
+		}
+		// Check if timeout is set
+		if cfg.Tracing.OtelHTTP.TimeoutString != "" {
+			dur, err2 := time.ParseDuration(cfg.Tracing.OtelHTTP.TimeoutString)
+			// Check error
+			if err2 != nil {
+				return errors.WithStack(err2)
+			}
+			// Save
+			opts = append(opts, otlptracehttp.WithTimeout(dur))
+		}
+		// Check if headers are set
+		if cfg.Tracing.OtelHTTP.Headers != nil {
+			opts = append(opts, otlptracehttp.WithHeaders(cfg.Tracing.OtelHTTP.Headers))
+		}
+
+		// Create client
+		client := otlptracehttp.NewClient(opts...)
+		// Create exporter
+		exporter, err := otlptrace.New(context.TODO(), client)
+		// Check error
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		// Save
+		exp = exporter
+	default:
+		return errors.New("Tracing type not supported")
+	}
+
+	// Prepare attributes
+	attributes := []attribute.KeyValue{
+		semconv.ServiceName(serviceName),
+		semconv.ServiceVersion(version.GetVersion().Version),
+	}
+	// Check if fixed tags exists
+	if cfg.Tracing.FixedTags != nil {
+		for k, v := range cfg.Tracing.FixedTags {
+			attributes = append(attributes, *manageGenericAttribute(k, v))
 		}
 	}
 
-	// Initialize tracer with a logger and a metrics factory
-	tracer, closer, err := jcfg.NewTracer(
-		jaegercfg.Logger(s.logger.GetTracingLogger()),
-		jaegercfg.Metrics(s.metricsFactory),
+	// Create resource with attributes
+	res, err := resource.New(
+		context.Background(),
+		resource.WithFromEnv(),   // pull attributes from OTEL_RESOURCE_ATTRIBUTES and OTEL_SERVICE_NAME environment variables
+		resource.WithProcess(),   // This option configures a set of Detectors that discover process information
+		resource.WithOS(),        // This option configures a set of Detectors that discover OS information
+		resource.WithContainer(), // This option configures a set of Detectors that discover container information
+		resource.WithHost(),      // This option configures a set of Detectors that discover host information
+		resource.WithAttributes(attributes...),
 	)
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	// Set the singleton opentracing.Tracer with the Jaeger tracer.
-	opentracing.SetGlobalTracer(tracer)
 
-	s.closer = closer
-	s.tracer = tracer
+	// Create batch params
+	batchOpts := []tracesdk.BatchSpanProcessorOption{}
+	// Check if max queue size is defined
+	if cfg.Tracing.MaxQueueSize != 0 {
+		batchOpts = append(batchOpts, tracesdk.WithMaxQueueSize(cfg.Tracing.MaxQueueSize))
+	}
+	// Check if max batch size is defined
+	if cfg.Tracing.MaxBatchSize != 0 {
+		batchOpts = append(batchOpts, tracesdk.WithMaxExportBatchSize(cfg.Tracing.MaxBatchSize))
+	}
+
+	// Create tracer provider
+	tp := tracesdk.NewTracerProvider(
+		tracesdk.WithBatcher(exp, batchOpts...),
+		// Record information about this application in a Resource.
+		tracesdk.WithResource(res),
+	)
+
+	// Save tracer provider
+	s.tracerProvider = tp
+
+	// Save tracer provider
+	otel.SetTracerProvider(tp)
+	// Save propagator
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(
+		// Jaeger propagator
+		jaegerpropagator.Jaeger{},
+		// B3 propagators
+		b3propagator.New(b3propagator.WithInjectEncoding(b3propagator.B3SingleHeader)),
+		b3propagator.New(b3propagator.WithInjectEncoding(b3propagator.B3MultipleHeader)),
+		// OpenTracing propagator
+		otpropagator.OT{},
+		// Otel propagator
+		propagation.Baggage{},
+		propagation.TraceContext{},
+	))
+
+	// Create tracer
+	tr := getTracerFromTraceProvider(tp)
+
+	// Save it
+	s.tracer = tr
 
 	return nil
 }
 
-func newService(cfgManager config.Manager, logger log.Logger) (*service, error) {
-	// Create prometheus metrics factory
-	factory := jaegerprom.New()
-
-	svc := &service{
-		cfgManager:     cfgManager,
-		logger:         logger,
-		metricsFactory: factory,
-	}
-
-	// Run setup
-	err := svc.setup()
-	if err != nil {
-		return nil, err
-	}
-
-	return svc, nil
+func getTracerFromTraceProvider(tp oteltrace.TracerProvider) oteltrace.Tracer {
+	return tp.Tracer(tracerName)
 }

@@ -30,15 +30,8 @@ type Logger interface {
 	Fatal(args ...interface{})
 	Panic(args ...interface{})
 
-	GetTracingLogger() TracingLogger
 	GetLockDistributorLogger() LockDistributorLogger
 	GetGormLogger() gormlogger.Interface
-}
-
-type TracingLogger interface {
-	Error(msg string)
-	Infof(msg string, args ...interface{})
-	Debugf(msg string, args ...interface{})
 }
 
 type LockDistributorLogger interface {

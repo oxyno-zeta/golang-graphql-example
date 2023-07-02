@@ -51,12 +51,6 @@ func (ll *loggerIns) GetGormLogger() gormlogger.Interface {
 	}
 }
 
-func (ll *loggerIns) GetTracingLogger() TracingLogger {
-	return &tracingLogger{
-		logger: ll,
-	}
-}
-
 func (ll *loggerIns) GetLockDistributorLogger() LockDistributorLogger {
 	return &lockDistributorLogger{
 		logger: ll,

@@ -38,8 +38,21 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Save
 	sv.metricsSvc = metricsSvc
 
+	// Create signal handler service
+	signalHandlerSvc := signalhandler.NewService(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
+	// Initialize service
+	err := signalHandlerSvc.InitializeOnce()
+	// Check error
+	if err != nil {
+		logger.Fatal(err)
+	}
+	// Save
+	sv.signalHandlerSvc = signalHandlerSvc
+
 	// Generate tracing service instance
-	tracingSvc, err := tracing.New(cfgManager, logger)
+	tracingSvc := tracing.New(cfgManager, logger)
+	// Initialize
+	err = tracingSvc.InitializeAndReload()
 	// Check error
 	if err != nil {
 		logger.Fatal(err)
@@ -47,6 +60,14 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Prepare on reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err = tracingSvc.InitializeAndReload()
+		// Check error
+		if err != nil {
+			logger.Fatal(err)
+		}
+	})
+	// Register closing tracing on system stop
+	signalHandlerSvc.OnExit(func() {
+		err = tracingSvc.Close()
 		// Check error
 		if err != nil {
 			logger.Fatal(err)
@@ -66,6 +87,15 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Add configuration reload hook
 	cfgManager.AddOnChangeHook(func() {
 		err = db.Reconnect()
+		// Check error
+		if err != nil {
+			logger.Fatal(err)
+		}
+	})
+
+	// Register closing database connections on system stop
+	signalHandlerSvc.OnExit(func() {
+		err = db.Close()
 		// Check error
 		if err != nil {
 			logger.Fatal(err)
@@ -111,25 +141,6 @@ func setupBasicsServices(_ []string, sv *services) {
 	})
 	// Save
 	sv.ldSvc = ld
-
-	// Create signal handler service
-	signalHandlerSvc := signalhandler.NewService(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
-	// Initialize service
-	err = signalHandlerSvc.InitializeOnce()
-	// Check error
-	if err != nil {
-		logger.Fatal(err)
-	}
-	// Register closing database connections on system stop
-	signalHandlerSvc.OnExit(func() {
-		err = db.Close()
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
-	})
-	// Save
-	sv.signalHandlerSvc = signalHandlerSvc
 
 	// Get config
 	cfg := cfgManager.GetConfig()
