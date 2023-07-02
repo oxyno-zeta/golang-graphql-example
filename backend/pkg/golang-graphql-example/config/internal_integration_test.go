@@ -67,7 +67,7 @@ database:
 					Format: "text",
 					Level:  "error",
 				},
-				Tracing: &TracingConfig{Enabled: false},
+				Tracing: &TracingConfig{Enabled: false, Type: TracingOtelHTTPType},
 				Database: &DatabaseConfig{
 					Driver:        "POSTGRES",
 					ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -160,6 +160,8 @@ database:
 		"tracing.yaml": `
 tracing:
   enabled: true
+  otelHttp:
+    serverUrl: http://localhost:4318/v1/traces
 `,
 	}
 
@@ -209,7 +211,7 @@ tracing:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -259,7 +261,7 @@ log:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -292,6 +294,8 @@ database:
 		"tracing.yaml": `
 tracing:
   enabled: true
+  otelHttp:
+    serverUrl: http://localhost:4318/v1/traces
 `,
 		"auth.yaml": `
 oidcAuthentication:
@@ -351,7 +355,7 @@ oidcAuthentication:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -412,7 +416,7 @@ oidcAuthentication:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -458,6 +462,8 @@ database:
 		"tracing.yaml": `
 tracing:
   enabled: true
+  otelHttp:
+    serverUrl: http://localhost:4318/v1/traces
 `,
 	}
 
@@ -507,7 +513,7 @@ tracing:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -548,7 +554,7 @@ configuration with error
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -580,6 +586,8 @@ database:
 		"tracing.yaml": `
 tracing:
   enabled: true
+  otelHttp:
+    serverUrl: http://localhost:4318/v1/traces
 `,
 		"opa1.yaml": `
 opaServerAuthorization:
@@ -640,7 +648,7 @@ opaServerAuthorization:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -697,7 +705,7 @@ opaServerAuthorization:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: true},
+		Tracing: &TracingConfig{Enabled: true, Type: TracingOtelHTTPType, OtelHTTP: &TracingOtelHTTPConfig{ServerURL: "http://localhost:4318/v1/traces"}},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},
@@ -791,7 +799,7 @@ database:
 		InternalServer: &ServerConfig{
 			Port: 9090,
 		},
-		Tracing: &TracingConfig{Enabled: false},
+		Tracing: &TracingConfig{Enabled: false, Type: TracingOtelHTTPType},
 		Database: &DatabaseConfig{
 			Driver:        "POSTGRES",
 			ConnectionURL: &CredentialConfig{Value: "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"},

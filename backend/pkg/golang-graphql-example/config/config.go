@@ -134,8 +134,8 @@ type OPAServerAuthorization struct {
 // TracingConfig represents the Tracing configuration structure.
 type TracingConfig struct {
 	FixedTags    map[string]string        `mapstructure:"fixedTags"`
-	JaegerHTTP   *TracingJaegerHTTPConfig `mapstructure:"jaegerHttp"   validate:"required_if=Type JAEGER_HTTP"`
-	OtelHTTP     *TracingOtelHTTPConfig   `mapstructure:"otelHttp"     validate:"required_if=Type OTEL_HTTP"`
+	JaegerHTTP   *TracingJaegerHTTPConfig `mapstructure:"jaegerHttp"   validate:"required_if=Type JAEGER_HTTP Enabled true"`
+	OtelHTTP     *TracingOtelHTTPConfig   `mapstructure:"otelHttp"     validate:"required_if=Type OTEL_HTTP Enabled true"`
 	Type         string                   `mapstructure:"type"         validate:"oneof=JAEGER_HTTP OTEL_HTTP"`
 	MaxQueueSize int                      `mapstructure:"maxQueueSize" validate:"omitempty,gte=0"`
 	MaxBatchSize int                      `mapstructure:"maxBatchSize" validate:"omitempty,gte=0"`
