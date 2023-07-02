@@ -181,7 +181,7 @@ setup/dev-services: down/dev-services
 setup/metrics-services: down/metrics-services
 	@echo "Setup metrics services"
 	docker run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
-	docker run --rm -d --name grafana --network=host grafana/grafana:10.0.0
+	docker run --rm -d --name grafana -e GF_AUTH_ANONYMOUS_ENABLED=true -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin -e GF_AUTH_DISABLE_LOGIN_FORM=true -e GF_FEATURE_TOGGLES_ENABLE=traceqlEditor -v $(CURDIR)/.local-resources/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml --network=host grafana/grafana:10.0.0
 	docker run --rm -d --name tempo  -v $(CURDIR)/.local-resources/tempo/tempo.yaml:/etc/tempo.yaml -p 14268:14268 -p 3200:3200 -p 4318:4318 -p 4317:4317 grafana/tempo:latest -config.file=/etc/tempo.yaml
 
 .PHONY: setup/services
