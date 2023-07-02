@@ -80,7 +80,6 @@ function FormAutocomplete<T extends FieldValues>({
       }}
       renderInput={(params) => <TextField {...params} {...textFieldProps} {...errorProps} />}
       onChange={(input, newValue) => {
-        // field.onChange();
         if (newValue === null) {
           field.onChange(null);
 
