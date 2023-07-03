@@ -618,6 +618,16 @@ input StringFilter {
   Allow to test if value is not null
   """
   isNotNull: Boolean
+  """
+  Allow to lowercase field on search (not value).
+  That is important for non case sensitive search.
+  """
+  fieldLowercase: Boolean
+  """
+  Allow to uppercase field on search (not value).
+  That is important for non case sensitive search.
+  """
+  fieldUppercase: Boolean
 }
 
 """
@@ -4244,7 +4254,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 		asMap[k] = v
 	}
 
-	fieldsInOrder := [...]string{"eq", "notEq", "contains", "notContains", "startsWith", "notStartsWith", "endsWith", "notEndsWith", "in", "notIn", "isNull", "isNotNull"}
+	fieldsInOrder := [...]string{"eq", "notEq", "contains", "notContains", "startsWith", "notStartsWith", "endsWith", "notEndsWith", "in", "notIn", "isNull", "isNotNull", "fieldLowercase", "fieldUppercase"}
 	for _, k := range fieldsInOrder {
 		v, ok := asMap[k]
 		if !ok {
@@ -4379,6 +4389,24 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 			it.IsNotNull = data
+		case "fieldLowercase":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("fieldLowercase"))
+			data, err := ec.unmarshalOBoolean2bool(ctx, v)
+			if err != nil {
+				return it, err
+			}
+			it.FieldLowercase = data
+		case "fieldUppercase":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("fieldUppercase"))
+			data, err := ec.unmarshalOBoolean2bool(ctx, v)
+			if err != nil {
+				return it, err
+			}
+			it.FieldUppercase = data
 		}
 	}
 

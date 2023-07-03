@@ -80,6 +80,16 @@ input StringFilter {
   Allow to test if value is not null
   """
   isNotNull: Boolean
+  """
+  Allow to lowercase field on search (not value).
+  That is important for non case sensitive search.
+  """
+  fieldLowercase: Boolean
+  """
+  Allow to uppercase field on search (not value).
+  That is important for non case sensitive search.
+  """
+  fieldUppercase: Boolean
 }
 
 """
