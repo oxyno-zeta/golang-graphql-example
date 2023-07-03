@@ -223,16 +223,47 @@ func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bo
 	return res, nil
 }
 
+func GenerateQueryTemplate(
+	operation string,
+	value string,
+	fieldUppercase bool,
+	fieldLowercase bool,
+	valueUppercase bool,
+	valueLowercase bool,
+) string {
+	first := "%s"
+	second := value
+
+	// Manage field
+	if fieldLowercase {
+		first = "lower(" + first + ")"
+	} else if fieldUppercase {
+		first = "upper(" + first + ")"
+	}
+
+	// Manage value
+	if valueLowercase {
+		second = "lower(" + second + ")"
+	} else if valueUppercase {
+		second = "upper(" + second + ")"
+	}
+
+	// Result
+	return first + " " + operation + " " + second
+}
+
 func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB, error) {
 	// Create result
 	dbRes := db
 	// Check Equal case
 	if v.Eq != nil {
-		dbRes = dbRes.Where(fmt.Sprintf("%s = ?", dbCol), v.Eq)
+		tpl := GenerateQueryTemplate("=", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), v.Eq)
 	}
 	// Check not equal case
 	if v.NotEq != nil {
-		dbRes = dbRes.Not(fmt.Sprintf("%s = ?", dbCol), v.NotEq)
+		tpl := GenerateQueryTemplate("=", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), v.NotEq)
 	}
 	// Check greater and equal than case
 	if v.Gte != nil {
@@ -275,7 +306,8 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("contains " + err.Error())
 		}
 
-		dbRes = dbRes.Where(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s%%", s))
+		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%%%s%%", s))
 	}
 	// Check not contains case
 	if v.NotContains != nil {
@@ -286,7 +318,8 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("notContains " + err.Error())
 		}
 
-		dbRes = dbRes.Not(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s%%", s))
+		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%%%s%%", s))
 	}
 	// Check starts with case
 	if v.StartsWith != nil {
@@ -297,7 +330,8 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("startsWith " + err.Error())
 		}
 
-		dbRes = dbRes.Where(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%s%%", s))
+		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%s%%", s))
 	}
 	// Check not starts with case
 	if v.NotStartsWith != nil {
@@ -308,7 +342,8 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("notStartsWith " + err.Error())
 		}
 
-		dbRes = dbRes.Not(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%s%%", s))
+		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%s%%", s))
 	}
 	// Check ends with case
 	if v.EndsWith != nil {
@@ -319,7 +354,8 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("endsWith " + err.Error())
 		}
 
-		dbRes = dbRes.Where(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s", s))
+		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%%%s", s))
 	}
 	// Check not ends with case
 	if v.NotEndsWith != nil {
@@ -330,15 +366,18 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("notEndsWith " + err.Error())
 		}
 
-		dbRes = dbRes.Not(fmt.Sprintf("%s LIKE ?", dbCol), fmt.Sprintf("%%%s", s))
+		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase)
+		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%%%s", s))
 	}
 	// Check in case
 	if v.In != nil {
-		dbRes = dbRes.Where(fmt.Sprintf("%s IN (?)", dbCol), v.In)
+		tpl := GenerateQueryTemplate("IN", "(?)", v.FieldUppercase, v.FieldLowercase, false, false)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), v.In)
 	}
 	// Check not in case
 	if v.NotIn != nil {
-		dbRes = dbRes.Where(fmt.Sprintf("%s NOT IN (?)", dbCol), v.NotIn)
+		tpl := GenerateQueryTemplate("NOT IN", "(?)", v.FieldUppercase, v.FieldLowercase, false, false)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), v.NotIn)
 	}
 	// Check is null case
 	if v.IsNull {
