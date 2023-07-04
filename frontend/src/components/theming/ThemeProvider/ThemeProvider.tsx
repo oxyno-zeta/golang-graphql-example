@@ -11,6 +11,8 @@ export interface Props {
   themeOptions: ThemeOptions;
 }
 
+const cookieName = 'palette-mode';
+
 function ThemeProvider({ children, themeOptions }: Props) {
   // Get config from context
   const cfg = useContext(ConfigContext);
@@ -19,7 +21,7 @@ function ThemeProvider({ children, themeOptions }: Props) {
   // Check prefer color scheme from system
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // Get stored theme mode
-  const storedThemeMode = cookies.get('palette-mode');
+  const storedThemeMode = cookies.get(cookieName);
   // Compute initial value
   let initVal = storedThemeMode;
   if (initVal === null || (initVal !== 'dark' && initVal !== 'light')) {
@@ -36,7 +38,7 @@ function ThemeProvider({ children, themeOptions }: Props) {
   const colorMode = useMemo(() => {
     // Set cookie
     const setCookie = (input: PaletteMode) => {
-      cookies.set('palette-mode', input, {
+      cookies.set(cookieName, input, {
         path: '/',
         maxAge: 31536000, // 1 year
         domain: configCookieDomain,
