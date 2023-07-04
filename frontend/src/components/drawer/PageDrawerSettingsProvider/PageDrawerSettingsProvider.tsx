@@ -44,7 +44,7 @@ function PageDrawerSettingsProvider({ children }: Props) {
     };
 
     return {
-      getCollapsed: () => isCollapsed,
+      isCollapsed: () => isCollapsed,
       toggleCollapsed: () => {
         setCollapsed((v) => {
           // Save in storage

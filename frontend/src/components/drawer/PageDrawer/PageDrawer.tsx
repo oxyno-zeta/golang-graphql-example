@@ -21,13 +21,13 @@ interface DrawerContentProps {
   listItemButtonSx: SystemStyleObject<Theme>;
   listItemIconSx: SystemStyleObject<Theme>;
   listItemTextSx: SystemStyleObject<Theme>;
-  isCollapsed: boolean;
+  isCollapsedComputed: boolean;
 }
 
 export interface Props {
   renderDrawerContent: (
     props: DrawerContentProps,
-    /** @deprecated Use isCollapsed in first object */
+    /** @deprecated Use isCollapsedComputed in first object */
     isNormalCollapsed: boolean,
   ) => ReactNode;
   children: ReactNode;
@@ -79,9 +79,9 @@ function PageDrawer({
   const pageDrawerSettingsCtx = useContext(PageDrawerSettingsContext);
 
   // Expand
-  const { toggleCollapsed, getCollapsed } = pageDrawerSettingsCtx;
+  const { toggleCollapsed, isCollapsed } = pageDrawerSettingsCtx;
   // Compute is collapsed
-  const isCollapsed = disableCollapse ? !disableCollapse : getCollapsed();
+  const isCollapsedComputed = disableCollapse ? !disableCollapse : isCollapsed();
 
   // States
   const [isMobileOpen, setMobileOpen] = useState(false);
@@ -130,7 +130,7 @@ function PageDrawer({
         component="nav"
         sx={(theme: Theme) => ({
           flexShrink: { lg: 0 },
-          width: { lg: isCollapsed ? `calc(${theme.spacing(7)} + 1px)` : `${drawerWidth}px` },
+          width: { lg: isCollapsedComputed ? `calc(${theme.spacing(7)} + 1px)` : `${drawerWidth}px` },
           ...drawerContainerBoxSx,
         })}
       >
@@ -156,9 +156,9 @@ function PageDrawer({
               listItemButtonSx: {},
               listItemIconSx: {},
               listItemTextSx: {},
-              isCollapsed,
+              isCollapsedComputed,
             },
-            !isCollapsed,
+            !isCollapsedComputed,
           )}
         </Drawer>
         <Drawer
@@ -166,18 +166,18 @@ function PageDrawer({
           open
           sx={(theme) => ({
             display: { xs: 'none', lg: 'block' },
-            ...(!isCollapsed && {
+            ...(!isCollapsedComputed && {
               ...openedMixin(),
               '& .MuiDrawer-paper': { ...(disableResize ? {} : { borderRight: 'unset' }), ...openedMixin() },
             }),
-            ...(isCollapsed && {
+            ...(isCollapsedComputed && {
               ...closedMixin(theme),
               '& .MuiDrawer-paper': closedMixin(theme),
             }),
           })}
           {...drawerProps}
         >
-          {!isCollapsed && !disableResize && (
+          {!isCollapsedComputed && !disableResize && (
             <Divider
               role="button"
               onMouseDown={() => handleMouseDown()}
@@ -200,12 +200,12 @@ function PageDrawer({
           <div style={{ overflowY: 'auto', height: '100%', display: 'flex', flexDirection: 'column' }}>
             {renderDrawerContent(
               {
-                listItemButtonSx: isCollapsed ? { justifyContent: 'center' } : {},
-                listItemIconSx: isCollapsed ? { minWidth: 'unset' } : {},
-                listItemTextSx: isCollapsed ? { display: 'none' } : {},
-                isCollapsed,
+                listItemButtonSx: isCollapsedComputed ? { justifyContent: 'center' } : {},
+                listItemIconSx: isCollapsedComputed ? { minWidth: 'unset' } : {},
+                listItemTextSx: isCollapsedComputed ? { display: 'none' } : {},
+                isCollapsedComputed,
               },
-              !isCollapsed,
+              !isCollapsedComputed,
             )}
             {!disableCollapse && (
               <div style={{ marginTop: 'auto' }}>
@@ -214,14 +214,14 @@ function PageDrawer({
                     <ListItemButton
                       dense
                       onClick={toggleCollapsed}
-                      sx={isCollapsed ? { justifyContent: 'center' } : {}}
+                      sx={isCollapsedComputed ? { justifyContent: 'center' } : {}}
                     >
-                      <ListItemIcon sx={isCollapsed ? { minWidth: 'unset' } : {}}>
+                      <ListItemIcon sx={isCollapsedComputed ? { minWidth: 'unset' } : {}}>
                         <SvgIcon>
-                          <path d={isCollapsed ? mdiChevronDoubleRight : mdiChevronDoubleLeft} />
+                          <path d={isCollapsedComputed ? mdiChevronDoubleRight : mdiChevronDoubleLeft} />
                         </SvgIcon>
                       </ListItemIcon>
-                      <ListItemText sx={isCollapsed ? { display: 'none' } : {}}>
+                      <ListItemText sx={isCollapsedComputed ? { display: 'none' } : {}}>
                         {t('common.collapseSidebarAction')}
                       </ListItemText>
                     </ListItemButton>

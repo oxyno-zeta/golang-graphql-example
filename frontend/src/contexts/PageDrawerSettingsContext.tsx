@@ -2,10 +2,10 @@ import { createContext } from 'react';
 
 export interface PageDrawerSettingsContextModel {
   toggleCollapsed: () => void;
-  getCollapsed: () => boolean;
+  isCollapsed: () => boolean;
 }
 
 export default createContext<PageDrawerSettingsContextModel>({
   toggleCollapsed: () => {},
-  getCollapsed: () => false,
+  isCollapsed: () => false,
 });
