@@ -11,6 +11,7 @@ import ClientProvider from '~components/ClientProvider';
 import ThemeProvider from '~components/theming/ThemeProvider';
 import TimezoneProvider from '~components/timezone/TimezoneProvider';
 import PageDrawerSettingsProvider from '~components/drawer/PageDrawerSettingsProvider';
+import GridTableViewSwitcherProvider from '~components/gridTableViewSwitch/GridTableViewSwitcherProvider';
 
 function App() {
   return (
@@ -21,10 +22,12 @@ function App() {
             <ThemeProvider themeOptions={{}}>
               <TimezoneProvider>
                 <PageDrawerSettingsProvider>
-                  <CssBaseline />
-                  <TopBar />
-                  <Outlet />
-                  <Footer />
+                  <GridTableViewSwitcherProvider>
+                    <CssBaseline />
+                    <TopBar />
+                    <Outlet />
+                    <Footer />
+                  </GridTableViewSwitcherProvider>
                 </PageDrawerSettingsProvider>
               </TimezoneProvider>
             </ThemeProvider>

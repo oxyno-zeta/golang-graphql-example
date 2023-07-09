@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button, { ButtonProps } from '@mui/material/Button';
 import ButtonGroup, { ButtonGroupProps } from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiViewGridOutline, mdiViewSequential } from '@mdi/js';
+import GridTableViewSwitcherContext from '~contexts/GridTableViewSwitcherContext';
 
 export interface Props {
-  onChange: (input: boolean) => void;
-  gridView: boolean;
   buttonGroupProps?: ButtonGroupProps;
   tableButtonProps?: Omit<ButtonProps, 'onClick'>;
   gridButtonProps?: Omit<ButtonProps, 'onClick'>;
@@ -20,9 +19,13 @@ const defaultProps = {
   gridButtonProps: {},
 };
 
-function GridTableViewSwitcher({ onChange, gridView, buttonGroupProps, tableButtonProps, gridButtonProps }: Props) {
+function GridTableViewSwitcher({ buttonGroupProps, tableButtonProps, gridButtonProps }: Props) {
   // Get translator
   const { t } = useTranslation();
+  // Get context
+  const { isGridViewEnabled, toggleGridTableView } = useContext(GridTableViewSwitcherContext);
+  // Get grid view
+  const gridView = isGridViewEnabled();
 
   return (
     <ButtonGroup
@@ -41,7 +44,7 @@ function GridTableViewSwitcher({ onChange, gridView, buttonGroupProps, tableButt
           onClick={() => {
             // Optimization
             if (gridView) {
-              onChange(false);
+              toggleGridTableView();
             }
           }}
           {...tableButtonProps}
@@ -58,7 +61,7 @@ function GridTableViewSwitcher({ onChange, gridView, buttonGroupProps, tableButt
           onClick={() => {
             // Optimization
             if (!gridView) {
-              onChange(true);
+              toggleGridTableView();
             }
           }}
           {...gridButtonProps}

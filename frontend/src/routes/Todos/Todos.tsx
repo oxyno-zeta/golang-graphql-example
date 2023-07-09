@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';
 import { useSearchParams } from 'react-router-dom';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 import Title from '~components/Title';
 import FilterSearchBar from '~components/filters/FilterSearchBar';
 import ErrorsDisplay from '~components/ErrorsDisplay';
 import SortButton from '~components/sorts/SortButton';
 import Pagination from '~components/Pagination';
-import GridTableViewSwitcher from '~components/GridTableViewSwitcher';
+import GridTableViewSwitcher from '~components/gridTableViewSwitch/GridTableViewSwitcher';
 import { onMainSearchChangeContains } from '~components/filters/utils/mainSearch';
 import TopListContainer from '~components/TopListContainer';
 import {
@@ -24,6 +22,7 @@ import {
 import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '~models/general';
 import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '~utils/pagination';
 import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '~utils/urlSearchParams';
+import GridTableViewSwitcherContext from '~contexts/GridTableViewSwitcherContext';
 import GridView from './components/GridView';
 import TableView from './components/TableView';
 
@@ -73,10 +72,6 @@ const maxPagination = 20;
 const initialPagination = { first: maxPagination };
 
 function Todos() {
-  // Theming
-  const theme = useTheme();
-  const sizeMatching = useMediaQuery(theme.breakpoints.down('lg'));
-
   // Get search params
   const [searchParams, setSearchParams] = useSearchParams();
   // Filter, pagination and sort values
@@ -96,8 +91,9 @@ function Todos() {
     setJSONObjectSearchParam(FilterQueryParamName, data, searchParams, setSearchParams);
   };
 
-  // States
-  const [gridView, setGridView] = useState(sizeMatching);
+  // Get data from context
+  const gridView = useContext(GridTableViewSwitcherContext).isGridViewEnabled();
+
   // Call graphql
   const { data, loading, error } = useQuery<QueryResult, QueryVariables>(GET_TODOS_QUERY, {
     variables: { ...pagination, sorts, filter },
@@ -186,7 +182,7 @@ function Todos() {
               }}
               sortFields={todoSortFields}
             />
-            <GridTableViewSwitcher onChange={setGridView} gridView={gridView} />
+            <GridTableViewSwitcher />
           </TopListContainer>
           <Divider />
           <div style={{ width: '100%' }}>
