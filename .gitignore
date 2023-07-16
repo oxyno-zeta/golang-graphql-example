@@ -259,3 +259,5 @@ frontend/build/
 frontend/.vite-cache/
 frontend/storybook-static/
 junit.xml
+coverage.xml
+gl-code-quality-report.json

@@ -15,7 +15,26 @@ const config: Config.InitialOptions = {
   setupFiles: ['<rootDir>/.jest/jest.setup.js'],
   globalSetup: '<rootDir>/.jest/jest.global-setup.js',
   snapshotSerializers: ['@emotion/jest/serializer'],
-  reporters: ['default', 'jest-junit'],
+  reporters: [
+    'default',
+    // 'jest-junit' to enable GitLab unit test report integration
+    [
+      'jest-junit',
+      {
+        outputName: 'junit.xml',
+      },
+    ],
+  ],
+  coverageDirectory: 'reports',
+  coverageReporters: [
+    // 'text' to let GitLab grab coverage from stdout
+    'text',
+    'clover',
+    'json',
+    'lcov',
+    // 'cobertura' to enable GitLab test coverage visualization
+    'cobertura',
+  ],
 };
 
 export default config;

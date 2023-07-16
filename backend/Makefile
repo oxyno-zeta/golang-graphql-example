@@ -35,9 +35,9 @@ HAS_GOLANGCI_LINT := $(shell command -v golangci-lint;)
 HAS_CURL:=$(shell command -v curl;)
 HAS_MOCKGEN:=$(shell command -v mockgen;)
 HAS_GQLGEN:=$(shell command -v gqlgen;)
-HAS_GOTESTFMT:=$(shell command -v gotestfmt;)
 HAS_FIELDALIGNMENT:=$(shell command -v fieldalignment;)
-HAS_GO_JUNIT_REPORT:=$(shell command -v go-junit-report;)
+HAS_GOTESTSUM:=$(shell command -v gotestsum;)
+HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
 
@@ -50,6 +50,10 @@ HAS_GO_JUNIT_REPORT:=$(shell command -v go-junit-report;)
 .PHONY: code/lint
 code/lint: setup/dep/install
 	golangci-lint run ./...
+
+.PHONY: code/lint/gitlab
+code/lint/gitlab: setup/dep/install
+	golangci-lint run ./... --out-format code-climate:gl-code-quality-report.json,line-number
 
 .PHONY: code/fieldalignment
 code/fieldalignment: setup/dep/install
@@ -119,17 +123,13 @@ endif
 #   Tests   #
 #############
 
-.PHONY: test/all/junit
-test/all/junit: setup/dep/install setup/test/integration
-	$(GO) test -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/... | go-junit-report -set-exit-code > junit.xml
-
 .PHONY: test/all
 test/all: setup/dep/install setup/test/integration
-	$(GO) test -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
+	gotestsum --format testname --format-hide-empty-pkg  --junitfile junit.xml -- -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
-.PHONY: test/all/gotestfmt
-test/all/gotestfmt: setup/dep/install
-	$(GO) test -json --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/... | tee /tmp/gotest.log | gotestfmt
+.PHONY: test/all/original
+test/all/original: setup/dep/install setup/test/integration
+	$(GO) test -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/unit
 test/unit: setup/dep/install
@@ -144,6 +144,7 @@ test/coverage:
 	cat c.out.tmp | grep -v "mock_" | grep -v "generated" > c.out
 	$(GO) tool cover -html=c.out -o coverage.html
 	$(GO) tool cover -func c.out
+	gocover-cobertura < c.out > coverage.xml
 
 #############
 #   Setup   #
@@ -218,13 +219,13 @@ ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
 	$(GO) install github.com/golang/mock/mockgen@v1.6.0
 endif
-ifndef HAS_GO_JUNIT_REPORT
-	@echo "=> Installing go-junit-report tool"
-	$(GO) install github.com/jstemmer/go-junit-report/v2@v2.0.0
+ifndef HAS_GOTESTSUM
+	@echo "=> Installing gotestsum tool"
+	$(GO) install gotest.tools/gotestsum@v1.10.1
 endif
-ifndef HAS_GOTESTFMT
-	@echo "=> Installing gotestfmt tool"
-	$(GO) install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@v2.4.1
+ifndef HAS_GOCOVER_COBERTURA
+	@echo "=> Installing gocover-cobertura tool"
+	$(GO) install github.com/boumenot/gocover-cobertura@v1.2.0
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
