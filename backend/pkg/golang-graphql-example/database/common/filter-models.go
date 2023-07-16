@@ -67,17 +67,20 @@ type GenericFilter struct {
 	// Allow to test if value is not null
 	IsNotNull bool
 	// Allow to apply "upper()" function on field
-	// This is available on Eq, NotEq, StartsWith, NotStartsWith, EndsWith, NotEndsWith, In, NotIn
+	// This is available on Eq, NotEq, Contains, NotContains, StartsWith, NotStartsWith, EndsWith, NotEndsWith, In, NotIn
 	FieldUppercase bool
 	// Allow to apply "lower()" function on field
-	// This is available on Eq, NotEq, StartsWith, NotStartsWith, EndsWith, NotEndsWith, In, NotIn
+	// This is available on Eq, NotEq, Contains, NotContains, StartsWith, NotStartsWith, EndsWith, NotEndsWith, In, NotIn
 	FieldLowercase bool
 	// Allow to apply "upper()" function on values
-	// This is available on Eq, NotEq, StartsWith, NotStartsWith, EndsWith, NotEndsWith
+	// This is available on Eq, NotEq, Contains, NotContains, StartsWith, NotStartsWith, EndsWith, NotEndsWith
 	ValueUppercase bool
 	// Allow to apply "lower()" function on values
-	// This is available on Eq, NotEq, StartsWith, NotStartsWith, EndsWith, NotEndsWith
+	// This is available on Eq, NotEq, Contains, NotContains, StartsWith, NotStartsWith, EndsWith, NotEndsWith
 	ValueLowercase bool
+	// Allow case insensitive search.
+	// That will automatically set FieldLowercase and ValueLowercase fields and generate correct SQL query.
+	CaseInsensitive bool
 }
 
 // DateFilter is a structure that will handle filters for dates.

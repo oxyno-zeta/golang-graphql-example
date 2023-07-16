@@ -1063,6 +1063,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE lower(field_1) = $1",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "eq case with case insensitive enabled",
+			args: args{
+				v: &GenericFilter{Eq: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) = lower($1)",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// NOT EQ
 		{
 			name: "not eq case with string",
@@ -1176,6 +1184,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE NOT lower(field_1) = $1",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "not eq case with case insensitive enabled",
+			args: args{
+				v: &GenericFilter{NotEq: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT lower(field_1) = lower($1)",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// GTE
 		{
 			name: "gte case with string",
@@ -1269,6 +1285,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			name: "gte case with lower field must be ignored",
 			args: args{
 				v: &GenericFilter{Gte: "fake", FieldLowercase: true},
+			},
+			expectedIntermediateQuery: "WHERE field_1 >= $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "gte case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{Gte: "fake", CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 >= $1",
 			expectedArgs:              []driver.Value{"fake"},
@@ -1370,6 +1394,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE NOT field_1 >= $1",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "not gte case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{NotGte: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT field_1 >= $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// GT
 		{
 			name: "gt case with string",
@@ -1463,6 +1495,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			name: "gt case with lower field must be ignored",
 			args: args{
 				v: &GenericFilter{Gt: "fake", FieldLowercase: true},
+			},
+			expectedIntermediateQuery: "WHERE field_1 > $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "gt case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{Gt: "fake", CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 > $1",
 			expectedArgs:              []driver.Value{"fake"},
@@ -1564,6 +1604,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE NOT field_1 > $1",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "not gt case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{NotGt: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT field_1 > $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// LTE
 		{
 			name: "lte case with string",
@@ -1657,6 +1705,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			name: "lte case with lower field must be ignored",
 			args: args{
 				v: &GenericFilter{Lte: "fake", FieldLowercase: true},
+			},
+			expectedIntermediateQuery: "WHERE field_1 <= $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "lte case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{Lte: "fake", CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 <= $1",
 			expectedArgs:              []driver.Value{"fake"},
@@ -1758,6 +1814,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE NOT field_1 <= $1",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "not lte case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{NotLte: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT field_1 <= $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// LT
 		{
 			name: "lt case with string",
@@ -1855,6 +1919,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE field_1 < $1",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "lt case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{Lt: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE field_1 < $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// NOT LT
 		{
 			name: "not lt case with string",
@@ -1948,6 +2020,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			name: "not lt case with lower field must be ignored",
 			args: args{
 				v: &GenericFilter{NotLt: "fake", FieldLowercase: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT field_1 < $1",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "not lt case with case insensitive must be ignored",
+			args: args{
+				v: &GenericFilter{NotLt: "fake", CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE NOT field_1 < $1",
 			expectedArgs:              []driver.Value{"fake"},
@@ -2065,6 +2145,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE lower(field_1) LIKE $1",
 			expectedArgs:              []driver.Value{"%fake%"},
 		},
+		{
+			name: "contains case with case insensitive",
+			args: args{
+				v: &GenericFilter{Contains: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) LIKE lower($1)",
+			expectedArgs:              []driver.Value{"%fake%"},
+		},
 		// NOT CONTAINS
 		{
 			name: "not contains case with *string",
@@ -2176,6 +2264,14 @@ func Test_manageFilterRequest(t *testing.T) {
 				v: &GenericFilter{NotContains: "fake", FieldLowercase: true},
 			},
 			expectedIntermediateQuery: "WHERE NOT lower(field_1) LIKE $1",
+			expectedArgs:              []driver.Value{"%fake%"},
+		},
+		{
+			name: "not contains case with case insensitive",
+			args: args{
+				v: &GenericFilter{NotContains: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT lower(field_1) LIKE lower($1)",
 			expectedArgs:              []driver.Value{"%fake%"},
 		},
 		// STARTS WITH
@@ -2291,6 +2387,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE lower(field_1) LIKE $1",
 			expectedArgs:              []driver.Value{"fake%"},
 		},
+		{
+			name: "starts with case with case insensitive",
+			args: args{
+				v: &GenericFilter{StartsWith: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) LIKE lower($1)",
+			expectedArgs:              []driver.Value{"fake%"},
+		},
 		// NOT STARTS WITH
 		{
 			name: "not starts with case with *string",
@@ -2402,6 +2506,14 @@ func Test_manageFilterRequest(t *testing.T) {
 				v: &GenericFilter{NotStartsWith: "fake", FieldLowercase: true},
 			},
 			expectedIntermediateQuery: "WHERE NOT lower(field_1) LIKE $1",
+			expectedArgs:              []driver.Value{"fake%"},
+		},
+		{
+			name: "not starts with case with case insensitive",
+			args: args{
+				v: &GenericFilter{NotStartsWith: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT lower(field_1) LIKE lower($1)",
 			expectedArgs:              []driver.Value{"fake%"},
 		},
 		// ENDS WITH
@@ -2517,6 +2629,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE lower(field_1) LIKE $1",
 			expectedArgs:              []driver.Value{"%fake"},
 		},
+		{
+			name: "ends with case with case insensitive",
+			args: args{
+				v: &GenericFilter{EndsWith: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) LIKE lower($1)",
+			expectedArgs:              []driver.Value{"%fake"},
+		},
 		// NOT ENDS WITH
 		{
 			name: "not ends with case with *string",
@@ -2630,6 +2750,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE NOT lower(field_1) LIKE $1",
 			expectedArgs:              []driver.Value{"%fake"},
 		},
+		{
+			name: "not ends with case with case insensitive",
+			args: args{
+				v: &GenericFilter{NotEndsWith: "fake", CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE NOT lower(field_1) LIKE lower($1)",
+			expectedArgs:              []driver.Value{"%fake"},
+		},
 		// IN
 		{
 			name: "in case with []string",
@@ -2711,6 +2839,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE lower(field_1) IN ($1)",
 			expectedArgs:              []driver.Value{"fake"},
 		},
+		{
+			name: "in case with case insensitive",
+			args: args{
+				v: &GenericFilter{In: []string{"fake"}, CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) IN ($1)",
+			expectedArgs:              []driver.Value{"fake"},
+		},
 		// NOT IN
 		{
 			name: "not in case with []string",
@@ -2761,7 +2897,7 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedArgs:              []driver.Value{"FAKE"},
 		},
 		{
-			name: "in case with upper value",
+			name: "not in case with upper value",
 			args: args{
 				v: &GenericFilter{NotIn: []string{"fake"}, ValueUppercase: true},
 			},
@@ -2769,7 +2905,7 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedArgs:              []driver.Value{"fake"},
 		},
 		{
-			name: "in case with lower value",
+			name: "not in case with lower value",
 			args: args{
 				v: &GenericFilter{NotIn: []string{"fake"}, ValueLowercase: true},
 			},
@@ -2777,7 +2913,7 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedArgs:              []driver.Value{"fake"},
 		},
 		{
-			name: "in case with upper field",
+			name: "not in case with upper field",
 			args: args{
 				v: &GenericFilter{NotIn: []string{"fake"}, FieldUppercase: true},
 			},
@@ -2785,9 +2921,17 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedArgs:              []driver.Value{"fake"},
 		},
 		{
-			name: "in case with lower field",
+			name: "not in case with lower field",
 			args: args{
 				v: &GenericFilter{NotIn: []string{"fake"}, FieldLowercase: true},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) NOT IN ($1)",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "not in case with case insensitive",
+			args: args{
+				v: &GenericFilter{NotIn: []string{"fake"}, CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE lower(field_1) NOT IN ($1)",
 			expectedArgs:              []driver.Value{"fake"},
@@ -2839,6 +2983,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			expectedIntermediateQuery: "WHERE field_1 IS NULL",
 			expectedArgs:              []driver.Value{},
 		},
+		{
+			name: "is null case with case insensitive",
+			args: args{
+				v: &GenericFilter{IsNull: true, CaseInsensitive: true},
+			},
+			expectedIntermediateQuery: "WHERE field_1 IS NULL",
+			expectedArgs:              []driver.Value{},
+		},
 		// IS NOT NULL
 		{
 			name: "is not null false",
@@ -2882,6 +3034,14 @@ func Test_manageFilterRequest(t *testing.T) {
 			name: "is not null case with lower field",
 			args: args{
 				v: &GenericFilter{IsNotNull: true, FieldLowercase: true},
+			},
+			expectedIntermediateQuery: "WHERE field_1 IS NOT NULL",
+			expectedArgs:              []driver.Value{},
+		},
+		{
+			name: "is not null case with case insensitive",
+			args: args{
+				v: &GenericFilter{IsNotNull: true, CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 IS NOT NULL",
 			expectedArgs:              []driver.Value{},
