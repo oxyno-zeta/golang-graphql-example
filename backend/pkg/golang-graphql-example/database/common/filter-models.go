@@ -78,6 +78,9 @@ type GenericFilter struct {
 	// Allow to apply "lower()" function on values
 	// This is available on Eq, NotEq, StartsWith, NotStartsWith, EndsWith, NotEndsWith
 	ValueLowercase bool
+	// Allow case insensitive search.
+	// That will automatically set FieldLowercase and ValueLowercase fields and generate correct SQL query.
+	CaseInsensitive bool
 }
 
 // DateFilter is a structure that will handle filters for dates.

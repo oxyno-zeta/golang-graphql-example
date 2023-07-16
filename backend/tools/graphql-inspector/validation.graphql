@@ -177,15 +177,10 @@ input StringFilter {
   """
   isNotNull: Boolean
   """
-  Allow to lowercase field on search (not value).
-  That is important for non case sensitive search.
+  Allow case insensitive search.
+  Warning: This is available on eq, notEq, startsWith, notStartsWith, endsWith, notEndsWith.
   """
-  fieldLowercase: Boolean
-  """
-  Allow to uppercase field on search (not value).
-  That is important for non case sensitive search.
-  """
-  fieldUppercase: Boolean
+  caseInsensitive: Boolean
 }
 
 """
