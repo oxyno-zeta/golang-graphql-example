@@ -4,6 +4,7 @@ package common
 
 import (
 	"database/sql/driver"
+	"reflect"
 	"testing"
 	"time"
 
@@ -223,6 +224,45 @@ func Test_ManageFilter(t *testing.T) {
 			},
 			expectedIntermediateQuery: "WHERE upper(field_1) = lower($1)",
 			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "one field with case insensitive",
+			args: args{
+				filter: &Filter1{
+					Field1: &GenericFilter{
+						In:              []string{"FAKE"},
+						CaseInsensitive: true,
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE lower(field_1) IN ($1)",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "one field IN with value lowercase",
+			args: args{
+				filter: &Filter1{
+					Field1: &GenericFilter{
+						In:             []string{"FAKE"},
+						ValueLowercase: true,
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 IN ($1)",
+			expectedArgs:              []driver.Value{"fake"},
+		},
+		{
+			name: "one field IN with value uppercase",
+			args: args{
+				filter: &Filter1{
+					Field1: &GenericFilter{
+						In:             []string{"fake"},
+						ValueUppercase: true,
+					},
+				},
+			},
+			expectedIntermediateQuery: "WHERE field_1 IN ($1)",
+			expectedArgs:              []driver.Value{"FAKE"},
 		},
 		{
 			name: "two fields and root level",
@@ -2813,12 +2853,12 @@ func Test_manageFilterRequest(t *testing.T) {
 				v: &GenericFilter{In: []string{"fake"}, ValueUppercase: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 IN ($1)",
-			expectedArgs:              []driver.Value{"fake"},
+			expectedArgs:              []driver.Value{"FAKE"},
 		},
 		{
 			name: "in case with lower value",
 			args: args{
-				v: &GenericFilter{In: []string{"fake"}, ValueLowercase: true},
+				v: &GenericFilter{In: []string{"FAKE"}, ValueLowercase: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 IN ($1)",
 			expectedArgs:              []driver.Value{"fake"},
@@ -2842,7 +2882,7 @@ func Test_manageFilterRequest(t *testing.T) {
 		{
 			name: "in case with case insensitive",
 			args: args{
-				v: &GenericFilter{In: []string{"fake"}, CaseInsensitive: true},
+				v: &GenericFilter{In: []string{"FAKE"}, CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE lower(field_1) IN ($1)",
 			expectedArgs:              []driver.Value{"fake"},
@@ -2902,12 +2942,12 @@ func Test_manageFilterRequest(t *testing.T) {
 				v: &GenericFilter{NotIn: []string{"fake"}, ValueUppercase: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 NOT IN ($1)",
-			expectedArgs:              []driver.Value{"fake"},
+			expectedArgs:              []driver.Value{"FAKE"},
 		},
 		{
 			name: "not in case with lower value",
 			args: args{
-				v: &GenericFilter{NotIn: []string{"fake"}, ValueLowercase: true},
+				v: &GenericFilter{NotIn: []string{"FAKE"}, ValueLowercase: true},
 			},
 			expectedIntermediateQuery: "WHERE field_1 NOT IN ($1)",
 			expectedArgs:              []driver.Value{"fake"},
@@ -2923,15 +2963,15 @@ func Test_manageFilterRequest(t *testing.T) {
 		{
 			name: "not in case with lower field",
 			args: args{
-				v: &GenericFilter{NotIn: []string{"fake"}, FieldLowercase: true},
+				v: &GenericFilter{NotIn: []string{"FAKE"}, FieldLowercase: true},
 			},
 			expectedIntermediateQuery: "WHERE lower(field_1) NOT IN ($1)",
-			expectedArgs:              []driver.Value{"fake"},
+			expectedArgs:              []driver.Value{"FAKE"},
 		},
 		{
 			name: "not in case with case insensitive",
 			args: args{
-				v: &GenericFilter{NotIn: []string{"fake"}, CaseInsensitive: true},
+				v: &GenericFilter{NotIn: []string{"FAKE"}, CaseInsensitive: true},
 			},
 			expectedIntermediateQuery: "WHERE lower(field_1) NOT IN ($1)",
 			expectedArgs:              []driver.Value{"fake"},
@@ -3144,4 +3184,78 @@ func Test_manageFilterRequest(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Test_transformToLowerOrUpperCasesList(t *testing.T) {
+	type args struct {
+		input       interface{}
+		toLowercase bool
+	}
+	tests := []struct {
+		name string
+		args args
+		want interface{}
+	}{
+		{
+			name: "should ignore nil",
+			args: args{input: nil, toLowercase: true},
+			want: nil,
+		},
+		{
+			name: "should ignore int",
+			args: args{input: 1, toLowercase: true},
+			want: 1,
+		},
+		{
+			name: "should ignore *int",
+			args: args{input: starAny(1), toLowercase: true},
+			want: starAny(1),
+		},
+		{
+			name: "should ignore string",
+			args: args{input: "FakE", toLowercase: true},
+			want: "FakE",
+		},
+		{
+			name: "should ignore *string",
+			args: args{input: starAny("FakE"), toLowercase: true},
+			want: starAny("FakE"),
+		},
+		{
+			name: "should be ok with empty []string",
+			args: args{input: []string{}, toLowercase: true},
+			want: []string{},
+		},
+		{
+			name: "should be ok with values in []string",
+			args: args{input: []string{"FaKe", "FAKE", "fake"}, toLowercase: true},
+			want: []string{"fake", "fake", "fake"},
+		},
+		{
+			name: "should be ok with empty []*string",
+			args: args{input: []*string{}, toLowercase: true},
+			want: []*string{},
+		},
+		{
+			name: "should be ok with values in []*string",
+			args: args{input: []*string{starAny("FakE"), starAny("fake"), starAny("FAKE")}, toLowercase: true},
+			want: []*string{starAny("fake"), starAny("fake"), starAny("fake")},
+		},
+		{
+			name: "should be ok with nil value in []*string",
+			args: args{input: []*string{nil}, toLowercase: true},
+			want: []*string{nil},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := transformToLowerOrUpperCasesList(tt.args.input, tt.args.toLowercase); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("transformToLowerOrUpperCasesList() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func starAny[T any](i T) *T {
+	return &i
 }

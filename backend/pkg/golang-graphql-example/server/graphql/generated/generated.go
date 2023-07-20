@@ -620,7 +620,6 @@ input StringFilter {
   isNotNull: Boolean
   """
   Allow case insensitive search.
-  Warning: This is available on eq, notEq, contains, notContains, startsWith, notStartsWith, endsWith, notEndsWith.
   """
   caseInsensitive: Boolean
 }

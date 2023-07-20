@@ -3,6 +3,7 @@ package common
 import (
 	"fmt"
 	"reflect"
+	"strings"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"gorm.io/gorm"
@@ -372,13 +373,29 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 	}
 	// Check in case
 	if v.In != nil {
+		// Init working values
+		val := v.In
+		// Check if we need to transform data
+		// TODO Need to find a better way and to make it directly on PG side
+		if v.CaseInsensitive || v.ValueLowercase || v.ValueUppercase {
+			val = transformToLowerOrUpperCasesList(val, v.CaseInsensitive || v.ValueLowercase)
+		}
+
 		tpl := GenerateQueryTemplate("IN", "(?)", v.FieldUppercase, v.FieldLowercase || v.CaseInsensitive, false, false, false)
-		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), v.In)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), val)
 	}
 	// Check not in case
 	if v.NotIn != nil {
+		// Init working values
+		val := v.NotIn
+		// Check if we need to transform data
+		// TODO Need to find a better way and to make it directly on PG side
+		if v.CaseInsensitive || v.ValueLowercase || v.ValueUppercase {
+			val = transformToLowerOrUpperCasesList(val, v.CaseInsensitive || v.ValueLowercase)
+		}
+
 		tpl := GenerateQueryTemplate("NOT IN", "(?)", v.FieldUppercase, v.FieldLowercase || v.CaseInsensitive, false, false, false)
-		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), v.NotIn)
+		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), val)
 	}
 	// Check is null case
 	if v.IsNull {
@@ -391,6 +408,72 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 
 	// Return
 	return dbRes, nil
+}
+
+// That will only transform []string. Everything else will returned without any transformation.
+func transformToLowerOrUpperCasesList(input interface{}, toLowercase bool) interface{} {
+	// Get reflect value
+	rValue := reflect.ValueOf(input)
+	// Get reflect kind
+	rKind := rValue.Kind()
+
+	// Check if kind isn't an array or slice
+	if rKind != reflect.Array && rKind != reflect.Slice {
+		return input
+	}
+
+	// Get sub element
+	rType := rValue.Type().Elem()
+	// Check if it isn't a string or *string kind
+	if rType.Kind() != reflect.String && !(rType.Kind() == reflect.Pointer && rType.Elem().Kind() == reflect.String) {
+		return input
+	}
+
+	// Create result
+	res := reflect.MakeSlice(reflect.TypeOf(input), 0, 0)
+
+	// Loop to transform
+	for i := 0; i < rValue.Len(); i++ {
+		// Get reflect value
+		rv := rValue.Index(i)
+
+		// Initialize markers
+		ptr := false
+
+		// Check it is a pointer
+		if rv.Kind() == reflect.Pointer {
+			// Check if it is nil
+			if rv.IsNil() {
+				// Save as input
+				res = reflect.Append(res, rv)
+
+				// Stop
+				continue
+			}
+
+			// Save marker and value
+			ptr = true
+			rv = reflect.Indirect(rv)
+		}
+
+		v := ""
+		it := rv.String()
+		// Check if lowercase if asked
+		if toLowercase {
+			v = strings.ToLower(it)
+		} else {
+			v = strings.ToUpper(it)
+		}
+
+		// Check if it is a pointer
+		if ptr {
+			res = reflect.Append(res, reflect.ValueOf(&v))
+		} else {
+			res = reflect.Append(res, reflect.ValueOf(v))
+		}
+	}
+
+	return res.Interface()
 }
 
 func getStringValue(x interface{}) (string, error) {
