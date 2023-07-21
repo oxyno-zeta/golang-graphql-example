@@ -145,8 +145,8 @@ export function buildFieldInitialValue(
 
     // Get operations
     const operations = Object.keys(fieldData);
-    // Check if operations exists
-    if (operations.length === 0) {
+    // Check if operations exists or the only one is case insensitive
+    if (operations.length === 0 || (operations.length === 1 && operations[0] === 'caseInsensitive')) {
       res.push({
         field: key,
         operation: '',
@@ -158,6 +158,11 @@ export function buildFieldInitialValue(
 
     // Loop over operations
     operations.forEach((operation) => {
+      if (operation === 'caseInsensitive') {
+        // Stop
+        return;
+      }
+
       // Save
       res.push({
         field: key,

@@ -36,12 +36,14 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     initialValue: '',
     input: true,
     inputType: 'string',
+    caseInsensitiveEnabled: true,
   },
   notEq: {
     display: 'common.operations.notEq',
     initialValue: '',
     input: true,
     inputType: 'string',
+    caseInsensitiveEnabled: true,
   },
   contains: {
     display: 'common.operations.contains',
@@ -49,6 +51,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     input: true,
     inputType: 'string',
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   notContains: {
     display: 'common.operations.notContains',
@@ -56,6 +59,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     input: true,
     inputType: 'string',
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   startsWith: {
     display: 'common.operations.startsWith',
@@ -63,6 +67,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     input: true,
     inputType: 'string',
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   notStartsWith: {
     display: 'common.operations.notStartsWith',
@@ -70,6 +75,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     input: true,
     inputType: 'string',
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   endsWith: {
     display: 'common.operations.endsWith',
@@ -77,6 +83,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     input: true,
     inputType: 'string',
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   notEndsWith: {
     display: 'common.operations.notEndsWith',
@@ -84,6 +91,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     input: true,
     inputType: 'string',
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   in: {
     display: 'common.operations.in',
@@ -92,6 +100,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     inputType: 'string',
     multipleValues: true,
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   notIn: {
     display: 'common.operations.notIn',
@@ -100,6 +109,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     inputType: 'string',
     multipleValues: true,
     inputValidate: requiredInputValidate,
+    caseInsensitiveEnabled: true,
   },
   isNull: {
     display: 'common.operations.isNull',

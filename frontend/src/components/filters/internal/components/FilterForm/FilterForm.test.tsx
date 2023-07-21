@@ -275,7 +275,7 @@ describe('filters/internal/FilterForm', () => {
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
-    expect(onChange).toHaveBeenCalledWith({ text: { eq: 'fake' } } as TestFilterModel);
+    expect(onChange).toHaveBeenCalledWith({ text: { eq: 'fake', caseInsensitive: true } } as TestFilterModel);
 
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
@@ -298,7 +298,7 @@ describe('filters/internal/FilterForm', () => {
     expect(buttons).toHaveLength(2);
 
     fireEvent.change(inputElements[2], { target: { value: 'foo' } });
-    expect(onChange).toHaveBeenLastCalledWith({ text: { eq: 'foo' } } as TestFilterModel);
+    expect(onChange).toHaveBeenLastCalledWith({ text: { eq: 'foo', caseInsensitive: true } } as TestFilterModel);
   });
 
   it('should be ok to just display a simple field with multiples text values and should be able to change it', async () => {
@@ -314,7 +314,7 @@ describe('filters/internal/FilterForm', () => {
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
-    expect(onChange).toHaveBeenCalledWith({ text: { in: ['fake'] } } as TestFilterModel);
+    expect(onChange).toHaveBeenCalledWith({ text: { in: ['fake'], caseInsensitive: true } } as TestFilterModel);
 
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
@@ -409,7 +409,7 @@ describe('filters/internal/FilterForm', () => {
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
     expect(onChange).toHaveBeenCalledWith({
-      AND: [{ done: { eq: true } }, { text: { eq: 'foo' } }],
+      AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
 
     const inputElements = container.querySelectorAll('input');
@@ -439,7 +439,7 @@ describe('filters/internal/FilterForm', () => {
     fireEvent.keyDown(inputElements[2], { key: 'ArrowDown' });
     fireEvent.keyDown(inputElements[2], { key: 'Enter' });
     expect(onChange).toHaveBeenLastCalledWith({
-      AND: [{ done: { eq: false } }, { text: { eq: 'foo' } }],
+      AND: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
 
     const buttons = container.querySelectorAll('button');
@@ -448,7 +448,7 @@ describe('filters/internal/FilterForm', () => {
     expect(buttons[1]).not.toBeNull();
     fireEvent.click(buttons[1]);
     expect(onChange).toHaveBeenLastCalledWith({
-      OR: [{ done: { eq: false } }, { text: { eq: 'foo' } }],
+      OR: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
     expect(container).toMatchSnapshot();
   });
@@ -467,7 +467,7 @@ describe('filters/internal/FilterForm', () => {
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
     expect(onChange).toHaveBeenCalledWith({
-      AND: [{ done: { eq: true } }, { text: { eq: 'foo' } }],
+      AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
 
     const inputElements = container.querySelectorAll('input');
@@ -514,7 +514,11 @@ describe('filters/internal/FilterForm', () => {
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
     expect(onChange).toHaveBeenLastCalledWith({
-      AND: [{ done: { eq: true } }, { text: { eq: 'foo' } }, { text: { notEq: 'bar' } }],
+      AND: [
+        { done: { eq: true } },
+        { text: { eq: 'foo', caseInsensitive: true } },
+        { text: { notEq: 'bar', caseInsensitive: true } },
+      ],
     } as TestFilterModel);
   });
 
@@ -525,14 +529,16 @@ describe('filters/internal/FilterForm', () => {
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
         onChange={onChange}
-        initialFilter={{ AND: [{ done: { eq: false } }, { text: { eq: 'foo' } }] } as TestFilterModel}
+        initialFilter={
+          { AND: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }] } as TestFilterModel
+        }
       />,
     );
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
     expect(onChange).toHaveBeenCalledWith({
-      AND: [{ done: { eq: false } }, { text: { eq: 'foo' } }],
+      AND: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
 
     const inputElements = container.querySelectorAll('input');
@@ -543,7 +549,7 @@ describe('filters/internal/FilterForm', () => {
     expect(buttons[4]).not.toBeNull();
     fireEvent.click(buttons[4]);
     expect(onChange).toHaveBeenLastCalledWith({
-      text: { eq: 'foo' },
+      text: { eq: 'foo', caseInsensitive: true },
     } as TestFilterModel);
     expect(container).toMatchSnapshot();
   });
@@ -555,14 +561,16 @@ describe('filters/internal/FilterForm', () => {
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
         onChange={onChange}
-        initialFilter={{ AND: [{ done: { eq: true } }, { text: { eq: 'foo' } }] } as TestFilterModel}
+        initialFilter={
+          { AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }] } as TestFilterModel
+        }
       />,
     );
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
     expect(onChange).toHaveBeenCalledWith({
-      AND: [{ done: { eq: true } }, { text: { eq: 'foo' } }],
+      AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
 
     const inputElements = container.querySelectorAll('input');
@@ -643,8 +651,8 @@ describe('filters/internal/FilterForm', () => {
     expect(onChange).toHaveBeenLastCalledWith({
       AND: [
         { done: { eq: true } },
-        { text: { eq: 'foo' } },
-        { AND: [{ text: { notEq: 'bar' } }, { text: { notEq: 'bar' } }] },
+        { text: { eq: 'foo', caseInsensitive: true } },
+        { AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
       ],
     } as TestFilterModel);
   });
@@ -673,8 +681,8 @@ describe('filters/internal/FilterForm', () => {
     expect(onChange).toHaveBeenCalledWith({
       AND: [
         { done: { eq: true } },
-        { text: { eq: 'foo' } },
-        { AND: [{ text: { notEq: 'bar' } }, { text: { notEq: 'bar' } }] },
+        { text: { eq: 'foo', caseInsensitive: true } },
+        { AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
       ],
     } as TestFilterModel);
 
@@ -692,8 +700,8 @@ describe('filters/internal/FilterForm', () => {
     expect(onChange).toHaveBeenLastCalledWith({
       AND: [
         { done: { eq: true } },
-        { text: { eq: 'foo' } },
-        { OR: [{ text: { notEq: 'bar' } }, { text: { notEq: 'bar' } }] },
+        { text: { eq: 'foo', caseInsensitive: true } },
+        { OR: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
       ],
     } as TestFilterModel);
     expect(container).toMatchSnapshot();
@@ -723,8 +731,8 @@ describe('filters/internal/FilterForm', () => {
     expect(onChange).toHaveBeenCalledWith({
       AND: [
         { done: { eq: true } },
-        { text: { eq: 'foo' } },
-        { AND: [{ text: { notEq: 'bar' } }, { text: { notEq: 'bar' } }] },
+        { text: { eq: 'foo', caseInsensitive: true } },
+        { AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
       ],
     } as TestFilterModel);
 
@@ -740,7 +748,7 @@ describe('filters/internal/FilterForm', () => {
 
     await waitFor(() => 0);
     expect(onChange).toHaveBeenLastCalledWith({
-      AND: [{ done: { eq: true } }, { text: { eq: 'foo' } }],
+      AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }],
     } as TestFilterModel);
     expect(container).toMatchSnapshot();
   });

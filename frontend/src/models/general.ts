@@ -47,6 +47,7 @@ export type StringFilterModel = {
   notIn?: string[];
   isNull?: boolean;
   isNotNull?: boolean;
+  caseInsensitive?: boolean;
 };
 
 // Note: This is called "IntFilter" but
@@ -116,6 +117,7 @@ export type FilterOperationMetadataModel<T> = {
   enumValues?: FilterDefinitionEnumObjectModel<T>[];
   // Put that flag with "enumValues" for a multi select enum
   multipleSelect?: boolean;
+  caseInsensitiveEnabled?: boolean;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -8,14 +8,14 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import {
+import type {
   FilterDefinitionFieldsModel,
   FilterDefinitionFieldObjectMetadataModel,
   FilterOperationMetadataModel,
 } from '../../../../../models/general';
 import FilterBuilderFieldValue from '../FilterBuilderFieldValue';
 import { requiredInputValidate } from '../../utils';
-import { FieldInitialValueObject, FilterValueObject } from '../../types';
+import type { FieldInitialValueObject, FieldOperationValueObject, FilterValueObject } from '../../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
@@ -66,8 +66,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
       return;
     }
 
+    // Build inner object
+    const innerObj: FieldOperationValueObject = { [selectedOperation]: value };
+    if (operationData?.caseInsensitiveEnabled) {
+      innerObj.caseInsensitive = true;
+    }
     // Save filter object
-    onChange({ [selectedField]: { [selectedOperation]: value } });
+    onChange({ [selectedField]: innerObj });
   }, [selectedOperation, value]);
 
   return (

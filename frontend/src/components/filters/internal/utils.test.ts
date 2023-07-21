@@ -82,6 +82,22 @@ describe('buildFilterBuilderInitialItems', () => {
     };
     expect(res).toEqual(expected);
   });
+  test('should be ok result when input is a simple AND array with 1 value and caseInsensitive inside', () => {
+    const res = buildFilterBuilderInitialItems({
+      AND: [{ f1: { eq: 'val1', caseInsensitive: true } }],
+    });
+    const expected: BuilderInitialValueObject = {
+      group: 'AND',
+      items: [
+        {
+          key: 'undefinedAND0f100',
+          type: 'line',
+          initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
+        },
+      ],
+    };
+    expect(res).toEqual(expected);
+  });
   test('should be ok result when input is a simple OR array with 1 value', () => {
     const res = buildFilterBuilderInitialItems({
       OR: [{ f1: { eq: 'val1' } }],
@@ -197,9 +213,51 @@ describe('buildFilterBuilderInitialItems', () => {
     };
     expect(res).toEqual(expected);
   });
+  test('should be ok when input is a simple AND array with nested AND without any other field and caseInsensitive', () => {
+    const res = buildFilterBuilderInitialItems({
+      AND: [{ AND: [{ f1: { eq: 'val1' } }, { f2: { notEq: 'val1', caseInsensitive: true } }] }],
+    });
+    const expected: BuilderInitialValueObject = {
+      group: 'AND',
+      items: [
+        {
+          key: 'undefinedAND0AND0f100',
+          type: 'line',
+          initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
+        },
+        {
+          key: 'undefinedAND0AND1f200',
+          type: 'line',
+          initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
+        },
+      ],
+    };
+    expect(res).toEqual(expected);
+  });
   test('should be ok when input is a simple AND array nested OR without any other field', () => {
     const res = buildFilterBuilderInitialItems({
       AND: [{ OR: [{ f1: { eq: 'val1' } }, { f2: { notEq: 'val1' } }] }],
+    });
+    const expected: BuilderInitialValueObject = {
+      group: 'OR',
+      items: [
+        {
+          key: 'undefinedAND0OR0f100',
+          type: 'line',
+          initialValue: { field: 'f1', operation: 'eq', value: 'val1' },
+        },
+        {
+          key: 'undefinedAND0OR1f200',
+          type: 'line',
+          initialValue: { field: 'f2', operation: 'notEq', value: 'val1' },
+        },
+      ],
+    };
+    expect(res).toEqual(expected);
+  });
+  test('should be ok when input is a simple AND array nested OR without any other field and caseInsensitive', () => {
+    const res = buildFilterBuilderInitialItems({
+      AND: [{ OR: [{ f1: { eq: 'val1' } }, { f2: { notEq: 'val1', caseInsensitive: true } }] }],
     });
     const expected: BuilderInitialValueObject = {
       group: 'OR',
@@ -489,6 +547,22 @@ describe('buildFilterBuilderInitialItems', () => {
               },
             ],
           },
+        },
+      ],
+    };
+    expect(res).toEqual(expected);
+  });
+  test('should ignore operation containing only case insensitive', () => {
+    const res = buildFilterBuilderInitialItems({
+      f1: { caseInsensitive: true },
+    });
+    const expected: BuilderInitialValueObject = {
+      group: 'AND',
+      items: [
+        {
+          key: 'undefinedf100',
+          type: 'line',
+          initialValue: { field: 'f1', operation: '', value: undefined },
         },
       ],
     };
