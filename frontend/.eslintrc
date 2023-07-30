@@ -20,7 +20,7 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["import", "eslint-plugin-react-hooks", "@typescript-eslint/eslint-plugin"],
+  "plugins": ["unicorn", "import", "eslint-plugin-react-hooks", "@typescript-eslint/eslint-plugin"],
   "settings": {
     "import/resolver": {
       "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
