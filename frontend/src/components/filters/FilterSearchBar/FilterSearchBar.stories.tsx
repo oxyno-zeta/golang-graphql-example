@@ -47,3 +47,7 @@ export default {
 export const Playground: StoryFn<typeof FilterSearchBar> = function C(args: Props<TestFilterModel>) {
   return <FilterSearchBar {...args} />;
 };
+
+export const WithPredefinedFilters: StoryFn<typeof FilterSearchBar> = function C(args: Props<TestFilterModel>) {
+  return <FilterSearchBar {...args} predefinedFilterObjects={[{ display: 'fake', filter: { done: { eq: true } } }]} />;
+};
