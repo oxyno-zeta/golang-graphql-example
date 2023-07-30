@@ -17,9 +17,6 @@
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "project": "./tsconfig.json"
   },
   "plugins": ["import", "eslint-plugin-react-hooks", "@typescript-eslint/eslint-plugin"],

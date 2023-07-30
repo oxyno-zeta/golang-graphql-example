@@ -45,8 +45,12 @@
     "test": "jest --runInBand",
     "test:update": "jest -u --runInBand",
     "test:coverage": "jest --runInBand --coverage --coverageDirectory=coverage",
-    "lint": "tsc && eslint --fix --max-warnings=0 --color src/**/*.{j,t}s{x,}",
-    "lint:gitlab": "tsc && eslint --fix --max-warnings=0 --color --format gitlab src/**/*.{j,t}s{x,}",
+    "lint:tsc": "tsc",
+    "lint:eslint:base": "eslint --cache --cache-strategy content --fix --max-warnings=0 --color",
+    "lint:eslint:gitlab": "yon run lint:eslint:base --format gitlab src/**/*.{j,t}s{x,}",
+    "lint:eslint": "yon run lint:eslint:base src/**/*.{j,t}s{x,}",
+    "lint": "concurrently npm:lint:eslint npm:lint:tsc",
+    "lint:gitlab": "concurrently npm:lint:eslint:gitlab npm:lint:tsc",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
   },
@@ -80,6 +84,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "@vitejs/plugin-react": "^4.0.1",
     "@welldone-software/why-did-you-render": "^7.0.1",
+    "concurrently": "^8.2.0",
     "eslint": "^8.44.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -111,6 +116,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^3.2.0",
     "vite-tsconfig-paths": "^4.2.0",
-    "whatwg-fetch": "^3.6.2"
+    "whatwg-fetch": "^3.6.2",
+    "yarn-or-npm": "^3.0.1"
   }
 }
