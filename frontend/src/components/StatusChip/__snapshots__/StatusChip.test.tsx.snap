@@ -24,7 +24,6 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
   white-space: nowrap;
   -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  cursor: default;
   outline: 0;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -168,7 +167,6 @@ exports[`StatusChip should display label with default color 1`] = `
   white-space: nowrap;
   -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  cursor: default;
   outline: 0;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -312,7 +310,6 @@ exports[`StatusChip should display label with error color 1`] = `
   white-space: nowrap;
   -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  cursor: default;
   outline: 0;
   -webkit-text-decoration: none;
   text-decoration: none;

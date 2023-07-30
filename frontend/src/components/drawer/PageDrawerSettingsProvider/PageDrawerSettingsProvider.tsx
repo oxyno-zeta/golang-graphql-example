@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext, useMemo, useState } from 'react';
-import PageDrawerSettingsContext from '~contexts/PageDrawerSettingsContext';
 import Cookies from 'universal-cookie';
+import PageDrawerSettingsContext from '~contexts/PageDrawerSettingsContext';
 import ConfigContext from '~contexts/ConfigContext';
 
 export interface Props {
