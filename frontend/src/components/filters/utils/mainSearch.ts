@@ -62,7 +62,7 @@ export function onMainSearchChangeGeneric<T>(
       // Check if it isn't a flush case
       if (newValue !== '') {
         // Set filter
-        filterCopy[filterKey] = { [filterOperation]: newValue } as StringFilterModel;
+        filterCopy[filterKey] = { [filterOperation]: newValue, caseInsensitive: true } as StringFilterModel;
       }
 
       // Save
@@ -98,11 +98,11 @@ export function onMainSearchChangeGeneric<T>(
 
         // Check if item exists
         if (item) {
-          item[filterKey] = { [filterOperation]: newValue };
+          item[filterKey] = { [filterOperation]: newValue, caseInsensitive: true };
           return { ...filterCopy };
         }
 
-        filterCopy.AND.push({ [filterKey]: { [filterOperation]: newValue } });
+        filterCopy.AND.push({ [filterKey]: { [filterOperation]: newValue, caseInsensitive: true } });
         return { ...filterCopy };
       }
     }
@@ -115,10 +115,10 @@ export function onMainSearchChangeGeneric<T>(
     }
 
     if (filterCopy && Object.keys(filterCopy).length >= 1) {
-      filterCopy.AND = [{ [filterKey]: { [filterOperation]: newValue } }];
+      filterCopy.AND = [{ [filterKey]: { [filterOperation]: newValue, caseInsensitive: true } }];
       return { ...filterCopy };
     }
 
-    return { [filterKey]: { [filterOperation]: newValue } };
+    return { [filterKey]: { [filterOperation]: newValue, caseInsensitive: true } };
   });
 }
