@@ -98,4 +98,4 @@ repos:
           - "yarn lint"
         require_serial: false
         language: script
-        pass_filenames: true
+        pass_filenames: false
