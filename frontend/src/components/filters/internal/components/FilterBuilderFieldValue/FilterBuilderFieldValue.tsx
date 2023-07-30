@@ -5,14 +5,14 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Autocomplete from '@mui/material/Autocomplete';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import dayjs, { Dayjs } from 'dayjs';
+import { DateTimePicker } from '@mui/x-date-pickers';
 import { FilterOperationMetadataModel, FilterDefinitionEnumObjectModel } from '../../../../../models/general';
-import { AdapterDayjsTZ } from './AdapterDayjsTZ';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
@@ -275,10 +275,14 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
       }
 
       return (
-        <LocalizationProvider dateAdapter={AdapterDayjsTZ} dateLibInstance={dayjs}>
-          <MobileDateTimePicker
+        <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs}>
+          <DateTimePicker
             label={t('common.filter.value')}
             value={val}
+            // See formatting here: https://moment.github.io/luxon/#/parsing
+            format="YYYY-MM-DD HH:mm:ss"
+            ampm={false}
+            ampmInClock={false}
             onChange={(newValue) => {
               // Check if date is null
               if (newValue === null) {
