@@ -11,7 +11,7 @@ const cookieName = 'left-menu-collapsed';
 
 function PageDrawerSettingsProvider({ children }: Props) {
   // Get cookies object
-  const cookies = new Cookies();
+  const cookies = useMemo(() => new Cookies(), []);
   // Get stored collapsed menu value
   const storedCollapsedMenu = cookies.get(cookieName);
 
@@ -54,7 +54,7 @@ function PageDrawerSettingsProvider({ children }: Props) {
         });
       },
     };
-  }, [isCollapsed]);
+  }, [isCollapsed, configCookieDomain, cookies]);
 
   return <PageDrawerSettingsContext.Provider value={contextValue}>{children}</PageDrawerSettingsContext.Provider>;
 }

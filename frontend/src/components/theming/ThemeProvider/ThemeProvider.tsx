@@ -17,7 +17,7 @@ function ThemeProvider({ children, themeOptions }: Props) {
   // Get config from context
   const cfg = useContext(ConfigContext);
   // Get cookies object
-  const cookies = new Cookies();
+  const cookies = useMemo(() => new Cookies(), []);
   // Check prefer color scheme from system
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // Get stored theme mode
@@ -67,7 +67,7 @@ function ThemeProvider({ children, themeOptions }: Props) {
         });
       },
     };
-  }, []);
+  }, [configCookieDomain, cookies]);
 
   const theme = useMemo(() => {
     // Initialize working copy

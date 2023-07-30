@@ -70,13 +70,16 @@ function ContentDisplayDrawer({
   const theme = useTheme();
   const sizeMatching = useMediaQuery(theme.breakpoints.up('lg'));
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const newWidth = document.body.offsetWidth - (e.clientX - document.body.offsetLeft);
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const newWidth = document.body.offsetWidth - (e.clientX - document.body.offsetLeft);
 
-    if (newWidth > minDrawerWidth && newWidth < maxDrawerWidth) {
-      setDrawerWidth(newWidth);
-    }
-  }, []);
+      if (newWidth > minDrawerWidth && newWidth < maxDrawerWidth) {
+        setDrawerWidth(newWidth);
+      }
+    },
+    [minDrawerWidth, maxDrawerWidth],
+  );
 
   function handleMouseDown() {
     document.addEventListener('mouseup', handleMouseUp, true);

@@ -46,42 +46,45 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
     });
   }, [initialValue]);
 
-  const localSaveManagementHandler = (newGroupKey: string) => {
-    // Create new items
-    const newItems = Object.values(resultsRef.current);
+  const localSaveManagementHandler = useCallback(
+    (newGroupKey: string) => {
+      // Create new items
+      const newItems = Object.values(resultsRef.current);
 
-    // Check if array is empty and if the accept empty lines isn't enabled
-    if (newItems.length === 0 && !acceptEmptyLines) {
-      // Don't accepting this
-      onChange(null);
-      return;
-    }
+      // Check if array is empty and if the accept empty lines isn't enabled
+      if (newItems.length === 0 && !acceptEmptyLines) {
+        // Don't accepting this
+        onChange(null);
+        return;
+      }
 
-    // Check if array is empty and if the accept empty lines is enabled
-    if (newItems.length === 0 && acceptEmptyLines) {
-      // Accepting this
-      onChange({});
-      return;
-    }
+      // Check if array is empty and if the accept empty lines is enabled
+      if (newItems.length === 0 && acceptEmptyLines) {
+        // Accepting this
+        onChange({});
+        return;
+      }
 
-    // Find one item that doesn't have value
-    const withoutValueIndex = newItems.findIndex((v) => !v);
-    // Check if there is an item without value
-    if (withoutValueIndex !== -1) {
-      onChange(null);
-      return;
-    }
+      // Find one item that doesn't have value
+      const withoutValueIndex = newItems.findIndex((v) => !v);
+      // Check if there is an item without value
+      if (withoutValueIndex !== -1) {
+        onChange(null);
+        return;
+      }
 
-    // Optimization if there is only 1 value
-    // Return directly the value
-    if (newItems.length === 1) {
-      onChange(newItems[0] as any);
-      return;
-    }
+      // Optimization if there is only 1 value
+      // Return directly the value
+      if (newItems.length === 1) {
+        onChange(newItems[0] as any);
+        return;
+      }
 
-    // Otherwise create and save object
-    onChange({ [newGroupKey]: newItems });
-  };
+      // Otherwise create and save object
+      onChange({ [newGroupKey]: newItems });
+    },
+    [acceptEmptyLines, onChange],
+  );
 
   // Add group handler
   const addGroupHandler = useCallback(() => {
@@ -105,7 +108,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
 
       return newItems;
     });
-  }, []);
+  }, [groupKey, localSaveManagementHandler]);
 
   // Add line handler
   const addLineHandler = useCallback(() => {
@@ -122,7 +125,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
 
       return newItems;
     });
-  }, []);
+  }, [groupKey, localSaveManagementHandler]);
 
   // Local remove handler
   const localRemoveHandler = useCallback(
@@ -137,7 +140,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
         return newItems;
       });
     },
-    [],
+    [groupKey, localSaveManagementHandler],
   );
 
   // Create all memorized save handlers
@@ -150,7 +153,7 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
         // Save management
         localSaveManagementHandler(groupKey);
       }),
-    [items],
+    [items, groupKey, localSaveManagementHandler],
   );
 
   return (

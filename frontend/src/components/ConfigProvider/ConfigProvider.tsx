@@ -14,6 +14,7 @@ interface Props {
 
 const defaultProps = { skipConfigLoader: false };
 
+/* eslint-disable react-hooks/rules-of-hooks */
 function ConfigProvider({ children, loadingComponent, skipConfigLoader }: Props) {
   // Check if skip is enabled
   if (skipConfigLoader) {

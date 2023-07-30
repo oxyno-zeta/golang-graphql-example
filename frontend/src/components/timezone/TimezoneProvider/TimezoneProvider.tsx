@@ -14,7 +14,7 @@ function TimezoneProvider({ children }: Props) {
   // Get config from context
   const cfg = useContext(ConfigContext);
   // Get cookies object
-  const cookies = new Cookies();
+  const cookies = useMemo(() => new Cookies(), []);
   // Get stored selected timezone
   const storedSelectedTimezone = cookies.get(cookieName);
   // Compute initial value
@@ -57,7 +57,7 @@ function TimezoneProvider({ children }: Props) {
         });
       },
     };
-  }, [selectedTimezone]);
+  }, [selectedTimezone, configCookieDomain, cookies]);
 
   return <TimezoneContext.Provider value={contextValue}>{children}</TimezoneContext.Provider>;
 }

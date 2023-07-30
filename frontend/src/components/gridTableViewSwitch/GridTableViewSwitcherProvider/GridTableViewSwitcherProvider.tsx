@@ -15,7 +15,7 @@ function GridTableViewSwitcherProvider({ children }: Props) {
   // Get config from context
   const cfg = useContext(ConfigContext);
   // Get cookies object
-  const cookies = new Cookies();
+  const cookies = useMemo(() => new Cookies(), []);
   // Get stored value
   const storedValue = cookies.get(cookieName);
   // Compute initial value
@@ -63,7 +63,7 @@ function GridTableViewSwitcherProvider({ children }: Props) {
       },
       isGridViewEnabled: () => gridView,
     };
-  }, [gridView]);
+  }, [gridView, configCookieDomain, cookies]);
 
   return (
     <GridTableViewSwitcherContext.Provider value={tableGridViewSwitcherCtx}>

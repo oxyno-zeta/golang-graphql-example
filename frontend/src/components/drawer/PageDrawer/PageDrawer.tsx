@@ -91,15 +91,18 @@ function PageDrawer({
     setMobileOpen((v) => !v);
   };
 
-  const pageDrawerCtxValue = useMemo(() => ({ onDrawerToggle: onMobileDrawerToggle }), [setMobileOpen]);
+  const pageDrawerCtxValue = useMemo(() => ({ onDrawerToggle: onMobileDrawerToggle }), []);
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const newWidth = e.clientX - document.body.offsetLeft;
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const newWidth = e.clientX - document.body.offsetLeft;
 
-    if (newWidth > minDrawerWidth && newWidth < maxDrawerWidth) {
-      setDrawerWidth(newWidth);
-    }
-  }, []);
+      if (newWidth > minDrawerWidth && newWidth < maxDrawerWidth) {
+        setDrawerWidth(newWidth);
+      }
+    },
+    [minDrawerWidth, maxDrawerWidth],
+  );
 
   function handleMouseDown() {
     document.addEventListener('mouseup', handleMouseUp, true);

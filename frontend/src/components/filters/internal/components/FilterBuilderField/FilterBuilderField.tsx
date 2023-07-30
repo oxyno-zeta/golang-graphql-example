@@ -73,7 +73,16 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
     }
     // Save filter object
     onChange({ [selectedField]: innerObj });
-  }, [selectedOperation, value]);
+  }, [
+    fieldErrorMsg,
+    onChange,
+    operationData?.caseInsensitiveEnabled,
+    operationErrorMsg,
+    selectedField,
+    selectedOperation,
+    value,
+    valueErrorMsg,
+  ]);
 
   return (
     <>

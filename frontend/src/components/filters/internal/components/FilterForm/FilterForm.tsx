@@ -31,15 +31,26 @@ function FilterForm({ filterDefinitionModel, predefinedFilterObjects, initialFil
   const [predefinedFilter, setPredefinedFilter] = useState<PredefinedFilter | null>(null);
 
   // Watch initialFilter
-  useEffect(() => {
-    // Build new value
-    const nV = buildFilterBuilderInitialItems(initialFilter);
-    // Check if objects are different
-    if (JSON.stringify(nV) !== JSON.stringify(init)) {
+  useEffect(
+    () => {
+      // Build new value
+      const nV = buildFilterBuilderInitialItems(initialFilter);
       // Set init
-      setInit(nV);
-    }
-  }, [initialFilter]);
+      setInit((innerInit) => {
+        // Check if objects are different
+        if (JSON.stringify(nV) !== JSON.stringify(innerInit)) {
+          return nV;
+        }
+
+        // Keep like that
+        return innerInit;
+      });
+    },
+    // Do not add init in this one otherwise, it won't be reloaded and so not updated.
+    // This case happen when a predefined filter is selected.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [initialFilter],
+  );
 
   return (
     <>
