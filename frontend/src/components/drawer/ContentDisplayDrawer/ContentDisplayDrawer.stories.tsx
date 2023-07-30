@@ -20,6 +20,7 @@ import { defaultConfig } from '../../../models/config';
 import ContentDisplayDrawer, { Props } from './ContentDisplayDrawer';
 import ListNavItemButton from '../ListNavItemButton';
 import PageDrawer from '../PageDrawer';
+import PageDrawerSettingsProvider from '../PageDrawerSettingsProvider';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
@@ -101,75 +102,77 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
   return (
     <RemoveStorybookPadding>
       <TimezoneProvider>
-        <ConfigContext.Provider value={defaultConfig}>
-          <TopBar />
-          <PageDrawer
-            defaultDrawerWidth={200}
-            renderDrawerContent={({ listItemButtonSx, listItemIconSx, listItemTextSx }) => (
-              <>
-                <ListItem disablePadding>
-                  <ListItemButton dense sx={listItemButtonSx}>
-                    <ListItemIcon sx={listItemIconSx}>
-                      <SvgIcon>
-                        <path d={mdiAccessPoint} />
-                      </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText
-                      primary="Menu"
-                      secondary="Sub menu"
-                      secondaryTypographyProps={{ noWrap: true, fontSize: 12, lineHeight: '16px' }}
-                      sx={listItemTextSx}
-                    />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding dense>
-                  <ListItemButton dense sx={listItemButtonSx}>
-                    <ListItemIcon sx={listItemIconSx}>
-                      <SvgIcon>
-                        <path d={mdiAccessPoint} />
-                      </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText sx={listItemTextSx}>Menu</ListItemText>
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding dense>
-                  <ListItemButton dense sx={listItemButtonSx}>
-                    <ListItemIcon sx={listItemIconSx}>
-                      <SvgIcon>
-                        <path d={mdiAccessPoint} />
-                      </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText sx={listItemTextSx}>Menu</ListItemText>
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding dense>
-                  <ListItemButton dense sx={listItemButtonSx}>
-                    <ListItemIcon sx={listItemIconSx}>
-                      <SvgIcon>
-                        <path d={mdiAccessPoint} />
-                      </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText sx={listItemTextSx}>Menu</ListItemText>
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListNavItemButton to="/fail" listItemButtonProps={{ sx: listItemButtonSx, dense: true }}>
-                    <ListItemIcon sx={listItemIconSx}>
-                      <SvgIcon>
-                        <path d={mdiAccessPoint} />
-                      </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText sx={listItemTextSx}>Link</ListItemText>
-                  </ListNavItemButton>
-                </ListItem>
-              </>
-            )}
-          >
-            <ContentDisplayDrawer {...args}>
-              <Content />
-            </ContentDisplayDrawer>
-          </PageDrawer>
-        </ConfigContext.Provider>
+        <PageDrawerSettingsProvider>
+          <ConfigContext.Provider value={defaultConfig}>
+            <TopBar />
+            <PageDrawer
+              defaultDrawerWidth={200}
+              renderDrawerContent={({ listItemButtonSx, listItemIconSx, listItemTextSx }) => (
+                <>
+                  <ListItem disablePadding>
+                    <ListItemButton dense sx={listItemButtonSx}>
+                      <ListItemIcon sx={listItemIconSx}>
+                        <SvgIcon>
+                          <path d={mdiAccessPoint} />
+                        </SvgIcon>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary="Menu"
+                        secondary="Sub menu"
+                        secondaryTypographyProps={{ noWrap: true, fontSize: 12, lineHeight: '16px' }}
+                        sx={listItemTextSx}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding dense>
+                    <ListItemButton dense sx={listItemButtonSx}>
+                      <ListItemIcon sx={listItemIconSx}>
+                        <SvgIcon>
+                          <path d={mdiAccessPoint} />
+                        </SvgIcon>
+                      </ListItemIcon>
+                      <ListItemText sx={listItemTextSx}>Menu</ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding dense>
+                    <ListItemButton dense sx={listItemButtonSx}>
+                      <ListItemIcon sx={listItemIconSx}>
+                        <SvgIcon>
+                          <path d={mdiAccessPoint} />
+                        </SvgIcon>
+                      </ListItemIcon>
+                      <ListItemText sx={listItemTextSx}>Menu</ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding dense>
+                    <ListItemButton dense sx={listItemButtonSx}>
+                      <ListItemIcon sx={listItemIconSx}>
+                        <SvgIcon>
+                          <path d={mdiAccessPoint} />
+                        </SvgIcon>
+                      </ListItemIcon>
+                      <ListItemText sx={listItemTextSx}>Menu</ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListNavItemButton to="/fail" listItemButtonProps={{ sx: listItemButtonSx, dense: true }}>
+                      <ListItemIcon sx={listItemIconSx}>
+                        <SvgIcon>
+                          <path d={mdiAccessPoint} />
+                        </SvgIcon>
+                      </ListItemIcon>
+                      <ListItemText sx={listItemTextSx}>Link</ListItemText>
+                    </ListNavItemButton>
+                  </ListItem>
+                </>
+              )}
+            >
+              <ContentDisplayDrawer {...args}>
+                <Content />
+              </ContentDisplayDrawer>
+            </PageDrawer>
+          </ConfigContext.Provider>
+        </PageDrawerSettingsProvider>
       </TimezoneProvider>
     </RemoveStorybookPadding>
   );
