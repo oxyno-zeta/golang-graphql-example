@@ -63,8 +63,9 @@ repos:
         args:
           - backend
           - "make code/lint"
-        require_serial: true
+        require_serial: false
         language: script
+        pass_filenames: false
       - id: backend-graphql-concat
         stages: [commit]
         files: \.graphql$
@@ -75,6 +76,7 @@ repos:
           - "make code/graphql/concat"
         require_serial: true
         language: script
+        pass_filenames: false
       - id: backend-graphql-no-break-check
         stages: [commit]
         files: \.graphql$
@@ -85,6 +87,7 @@ repos:
           - "make code/graphql/no-break-check"
         require_serial: true
         language: script
+        pass_filenames: false
       - id: frontend-lint
         stages: [commit]
         files: \.(tsx|ts|js|jsx)$
@@ -93,5 +96,6 @@ repos:
         args:
           - frontend
           - "yarn lint"
-        require_serial: true
+        require_serial: false
         language: script
+        pass_filenames: true
