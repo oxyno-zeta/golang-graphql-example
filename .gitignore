@@ -248,6 +248,22 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Yarn 3 files
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+frontend/.pnp.*
+frontend/.yarn/*
+!frontend/.yarn/patches
+!frontend/.yarn/plugins
+!frontend/.yarn/releases
+!frontend/.yarn/sdks
+!frontend/.yarn/versions
+
 bin/
 config.yaml
 dist/

@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@3.6.1",
   "dependencies": {
     "@apollo/client": "^3.7.17",
     "@emotion/react": "^11.11.1",
