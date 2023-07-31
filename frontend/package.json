@@ -104,6 +104,7 @@
     "jest-junit": "^16.0.0",
     "prettier": "^3.0.0",
     "react-docgen-typescript": "^2.2.2",
+    "rollup-plugin-visualizer": "^5.9.2",
     "storybook": "^7.1.1",
     "storybook-addon-apollo-client": "^5.0.0",
     "storybook-addon-designs": "^6.3.1",

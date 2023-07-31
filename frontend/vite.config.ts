@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
   plugins: [
@@ -16,6 +17,13 @@ export default defineConfig({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       exclude: [/virtual:/, /node_modules/],
+    }),
+    visualizer({
+      template: 'treemap', // or sunburst
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+      filename: 'bundle-analyze.html', // will be saved in project's root
     }),
   ],
   build: {

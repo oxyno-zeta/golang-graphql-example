@@ -277,3 +277,4 @@ frontend/storybook-static/
 junit.xml
 coverage.xml
 gl-code-quality-report.json
+bundle-analyze.html
