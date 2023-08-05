@@ -74,83 +74,97 @@ func (s *service) InitializeAndReload() error {
 	// Get configuration
 	cfg := s.cfgManager.GetConfig()
 
-	// Check if not enabled
-	if cfg.Tracing == nil || !cfg.Tracing.Enabled {
-		// Stop here
-		return nil
-	}
+	// Build option array
+	tracerOpts := []tracesdk.TracerProviderOption{}
 
-	// Init exporter
-	var exp tracesdk.SpanExporter
-	// Switch on type
-	switch cfg.Tracing.Type {
-	case config.TracingJaegerHTTPType:
-		// Create http client
-		httpCl := &http.Client{}
-		// Check if timeout is set
-		if cfg.Tracing.JaegerHTTP.TimeoutString != "" {
-			dur, err := time.ParseDuration(cfg.Tracing.JaegerHTTP.TimeoutString)
+	// Check if enabled
+	if cfg.Tracing != nil && cfg.Tracing.Enabled {
+		// Init exporter
+		var exp tracesdk.SpanExporter
+		// Switch on type
+		switch cfg.Tracing.Type {
+		case config.TracingJaegerHTTPType:
+			// Create http client
+			httpCl := &http.Client{}
+			// Check if timeout is set
+			if cfg.Tracing.JaegerHTTP.TimeoutString != "" {
+				dur, err := time.ParseDuration(cfg.Tracing.JaegerHTTP.TimeoutString)
+				// Check error
+				if err != nil {
+					return errors.WithStack(err)
+				}
+				// Save
+				httpCl.Timeout = dur
+			}
+			// Create the Jaeger exporter
+			exp2, err := jaeger.New(jaeger.WithCollectorEndpoint(
+				jaeger.WithEndpoint(cfg.Tracing.JaegerHTTP.ServerURL),
+				jaeger.WithHTTPClient(httpCl),
+			))
 			// Check error
 			if err != nil {
 				return errors.WithStack(err)
 			}
 			// Save
-			httpCl.Timeout = dur
-		}
-		// Create the Jaeger exporter
-		exp2, err := jaeger.New(jaeger.WithCollectorEndpoint(
-			jaeger.WithEndpoint(cfg.Tracing.JaegerHTTP.ServerURL),
-			jaeger.WithHTTPClient(httpCl),
-		))
-		// Check error
-		if err != nil {
-			return errors.WithStack(err)
-		}
-		// Save
-		exp = exp2
-	case config.TracingOtelHTTPType:
-		ur, err := url.Parse(cfg.Tracing.OtelHTTP.ServerURL)
-		// Check error
-		if err != nil {
-			return errors.WithStack(err)
-		}
-
-		// Create options array
-		opts := []otlptracehttp.Option{
-			otlptracehttp.WithEndpoint(ur.Host),
-			otlptracehttp.WithURLPath(ur.RawPath),
-		}
-		// Check if http is asked
-		if ur.Scheme == "http" {
-			opts = append(opts, otlptracehttp.WithInsecure())
-		}
-		// Check if timeout is set
-		if cfg.Tracing.OtelHTTP.TimeoutString != "" {
-			dur, err2 := time.ParseDuration(cfg.Tracing.OtelHTTP.TimeoutString)
+			exp = exp2
+		case config.TracingOtelHTTPType:
+			ur, err := url.Parse(cfg.Tracing.OtelHTTP.ServerURL)
 			// Check error
-			if err2 != nil {
-				return errors.WithStack(err2)
+			if err != nil {
+				return errors.WithStack(err)
+			}
+
+			// Create options array
+			opts := []otlptracehttp.Option{
+				otlptracehttp.WithEndpoint(ur.Host),
+				otlptracehttp.WithURLPath(ur.RawPath),
+			}
+			// Check if http is asked
+			if ur.Scheme == "http" {
+				opts = append(opts, otlptracehttp.WithInsecure())
+			}
+			// Check if timeout is set
+			if cfg.Tracing.OtelHTTP.TimeoutString != "" {
+				dur, err2 := time.ParseDuration(cfg.Tracing.OtelHTTP.TimeoutString)
+				// Check error
+				if err2 != nil {
+					return errors.WithStack(err2)
+				}
+				// Save
+				opts = append(opts, otlptracehttp.WithTimeout(dur))
+			}
+			// Check if headers are set
+			if cfg.Tracing.OtelHTTP.Headers != nil {
+				opts = append(opts, otlptracehttp.WithHeaders(cfg.Tracing.OtelHTTP.Headers))
+			}
+
+			// Create client
+			client := otlptracehttp.NewClient(opts...)
+			// Create exporter
+			exporter, err := otlptrace.New(context.TODO(), client)
+			// Check error
+			if err != nil {
+				return errors.WithStack(err)
 			}
 			// Save
-			opts = append(opts, otlptracehttp.WithTimeout(dur))
-		}
-		// Check if headers are set
-		if cfg.Tracing.OtelHTTP.Headers != nil {
-			opts = append(opts, otlptracehttp.WithHeaders(cfg.Tracing.OtelHTTP.Headers))
+			exp = exporter
+		default:
+			return errors.New("Tracing type not supported")
 		}
 
-		// Create client
-		client := otlptracehttp.NewClient(opts...)
-		// Create exporter
-		exporter, err := otlptrace.New(context.TODO(), client)
-		// Check error
-		if err != nil {
-			return errors.WithStack(err)
+		// Create batch params
+		batchOpts := []tracesdk.BatchSpanProcessorOption{}
+		// Check if max queue size is defined
+		if cfg.Tracing.MaxQueueSize != 0 {
+			batchOpts = append(batchOpts, tracesdk.WithMaxQueueSize(cfg.Tracing.MaxQueueSize))
 		}
-		// Save
-		exp = exporter
-	default:
-		return errors.New("Tracing type not supported")
+		// Check if max batch size is defined
+		if cfg.Tracing.MaxBatchSize != 0 {
+			batchOpts = append(batchOpts, tracesdk.WithMaxExportBatchSize(cfg.Tracing.MaxBatchSize))
+		}
+
+		// Exporter
+		tracerOpts = append(tracerOpts, tracesdk.WithBatcher(exp, batchOpts...))
 	}
 
 	// Prepare attributes
@@ -159,7 +173,7 @@ func (s *service) InitializeAndReload() error {
 		semconv.ServiceVersion(version.GetVersion().Version),
 	}
 	// Check if fixed tags exists
-	if cfg.Tracing.FixedTags != nil {
+	if cfg.Tracing != nil && cfg.Tracing.FixedTags != nil {
 		for k, v := range cfg.Tracing.FixedTags {
 			attributes = append(attributes, *manageGenericAttribute(k, v))
 		}
@@ -180,22 +194,15 @@ func (s *service) InitializeAndReload() error {
 		return errors.WithStack(err)
 	}
 
-	// Create batch params
-	batchOpts := []tracesdk.BatchSpanProcessorOption{}
-	// Check if max queue size is defined
-	if cfg.Tracing.MaxQueueSize != 0 {
-		batchOpts = append(batchOpts, tracesdk.WithMaxQueueSize(cfg.Tracing.MaxQueueSize))
-	}
-	// Check if max batch size is defined
-	if cfg.Tracing.MaxBatchSize != 0 {
-		batchOpts = append(batchOpts, tracesdk.WithMaxExportBatchSize(cfg.Tracing.MaxBatchSize))
-	}
+	// Add resources to options
+	tracerOpts = append(tracerOpts,
+		// Record information about this application in a Resource.
+		tracesdk.WithResource(res),
+	)
 
 	// Create tracer provider
 	tp := tracesdk.NewTracerProvider(
-		tracesdk.WithBatcher(exp, batchOpts...),
-		// Record information about this application in a Resource.
-		tracesdk.WithResource(res),
+		tracerOpts...,
 	)
 
 	// Save tracer provider
