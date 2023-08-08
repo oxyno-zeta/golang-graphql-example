@@ -20,7 +20,7 @@ export default defineConfig({
     }),
     visualizer({
       template: 'treemap', // or sunburst
-      open: true,
+      open: false,
       gzipSize: true,
       brotliSize: true,
       filename: 'bundle-analyze.html', // will be saved in project's root
