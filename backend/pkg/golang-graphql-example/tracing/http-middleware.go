@@ -9,7 +9,7 @@ import (
 
 func (*service) HTTPMiddlewareList(getRequestID func(ctx context.Context) string) []gin.HandlerFunc {
 	return []gin.HandlerFunc{
-		otelgin.Middleware("golang-graphql-example"),
+		otelgin.Middleware(serviceName),
 		func(c *gin.Context) {
 			// Get trace
 			t := GetTraceFromContext(c.Request.Context())
