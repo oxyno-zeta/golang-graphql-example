@@ -100,20 +100,23 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -1737,20 +1740,23 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -3492,20 +3498,23 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -5247,20 +5256,23 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -7002,20 +7014,23 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -8757,20 +8772,23 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -11797,20 +11815,23 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {
@@ -13434,20 +13455,23 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
   min-width: 40px;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:first-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  margin-top: -1px;
-}
-
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type) {
+.emotion-3 .MuiButtonGroup-firstButton,
+.emotion-3 .MuiButtonGroup-middleButton {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-grouped:not(:last-of-type):hover {
+.emotion-3 .MuiButtonGroup-firstButton:hover,
+.emotion-3 .MuiButtonGroup-middleButton:hover {
   border-bottom-color: currentColor;
+}
+
+.emotion-3 .MuiButtonGroup-lastButton,
+.emotion-3 .MuiButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  margin-top: -1px;
 }
 
 .emotion-4 {

@@ -57,10 +57,6 @@ describe('QueryRedirectTo', () => {
       </TestComponent>,
     );
 
-    // Workaround to avoid "react component change without any act called"...
-    // See issue: https://github.com/apollographql/apollo-client/issues/5920
-    await waitFor(() => 0);
-
     expect(container).toMatchSnapshot();
 
     // Find progressbar
@@ -86,10 +82,6 @@ describe('QueryRedirectTo', () => {
         />
       </TestComponent>,
     );
-
-    // Workaround to avoid "react component change without any act called"...
-    // See issue: https://github.com/apollographql/apollo-client/issues/5920
-    await waitFor(() => 0);
 
     expect(container).toMatchSnapshot();
 
@@ -119,10 +111,6 @@ describe('QueryRedirectTo', () => {
       </TestComponent>,
     );
 
-    // Workaround to avoid "react component change without any act called"...
-    // See issue: https://github.com/apollographql/apollo-client/issues/5920
-    await waitFor(() => 0);
-
     expect(container).toMatchSnapshot();
 
     // Find progressbar
@@ -150,10 +138,6 @@ describe('QueryRedirectTo', () => {
       </TestComponent>,
     );
 
-    // Workaround to avoid "react component change without any act called"...
-    // See issue: https://github.com/apollographql/apollo-client/issues/5920
-    await waitFor(() => 0);
-
     expect(container).toMatchSnapshot();
 
     // Find progressbar
@@ -180,10 +164,6 @@ describe('QueryRedirectTo', () => {
         <QueryRedirectTo query={QUERY} buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} />
       </TestComponent>,
     );
-
-    // Workaround to avoid "react component change without any act called"...
-    // See issue: https://github.com/apollographql/apollo-client/issues/5920
-    await waitFor(() => 0);
 
     expect(container).toMatchSnapshot();
 

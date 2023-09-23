@@ -91,11 +91,7 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -199,11 +195,7 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -348,8 +340,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 1`] = `
   -ms-transform: scale(1, 0.60);
   transform: scale(1, 0.60);
   border-radius: 4px/6.7px;
-  -webkit-animation: animation-0 1.5s ease-in-out 0.5s infinite;
-  animation: animation-0 1.5s ease-in-out 0.5s infinite;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
 }
 
 .emotion-2:empty:before {
@@ -491,8 +483,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 1`] = 
   -ms-transform: scale(1, 0.60);
   transform: scale(1, 0.60);
   border-radius: 4px/6.7px;
-  -webkit-animation: animation-0 1.5s ease-in-out 0.5s infinite;
-  animation: animation-0 1.5s ease-in-out 0.5s infinite;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
 }
 
 .emotion-2:empty:before {
@@ -578,11 +570,7 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = 
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -710,8 +698,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
   -ms-transform: scale(1, 0.60);
   transform: scale(1, 0.60);
   border-radius: 4px/6.7px;
-  -webkit-animation: animation-0 1.5s ease-in-out 0.5s infinite;
-  animation: animation-0 1.5s ease-in-out 0.5s infinite;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
 }
 
 .emotion-2:empty:before {
@@ -826,11 +814,7 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -867,8 +851,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
   -ms-transform: scale(1, 0.60);
   transform: scale(1, 0.60);
   border-radius: 4px/6.7px;
-  -webkit-animation: animation-0 1.5s ease-in-out 0.5s infinite;
-  animation: animation-0 1.5s ease-in-out 0.5s infinite;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
 }
 
 .emotion-6:empty:before {
@@ -1095,11 +1079,7 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1136,8 +1116,8 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
   -ms-transform: scale(1, 0.60);
   transform: scale(1, 0.60);
   border-radius: 4px/6.7px;
-  -webkit-animation: animation-0 1.5s ease-in-out 0.5s infinite;
-  animation: animation-0 1.5s ease-in-out 0.5s infinite;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
 }
 
 .emotion-4:empty:before {
@@ -1213,11 +1193,7 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1396,11 +1372,7 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1437,8 +1409,8 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
   -ms-transform: scale(1, 0.60);
   transform: scale(1, 0.60);
   border-radius: 4px/6.7px;
-  -webkit-animation: animation-0 1.5s ease-in-out 0.5s infinite;
-  animation: animation-0 1.5s ease-in-out 0.5s infinite;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
 }
 
 .emotion-4:empty:before {
@@ -1513,11 +1485,7 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
 
 .emotion-2 {
   margin: 0;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  font: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
