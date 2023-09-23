@@ -213,15 +213,15 @@ ifndef HAS_GIT
 endif
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.36
+	$(GO) install github.com/99designs/gqlgen@v0.17.38
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
-	$(GO) install github.com/golang/mock/mockgen@v1.6.0
+	$(GO) install go.uber.org/mock/mockgen@v0.3.0
 endif
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
-	$(GO) install gotest.tools/gotestsum@v1.10.1
+	$(GO) install gotest.tools/gotestsum@v1.11.0
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"

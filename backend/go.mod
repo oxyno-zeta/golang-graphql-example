@@ -5,7 +5,7 @@ go 1.18
 require (
 	cirello.io/pglock v1.13.0
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.36
+	github.com/99designs/gqlgen v0.17.38
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20200601100547-7a955d321bbd
 	github.com/AppsFlyer/go-sundheit v0.5.0
 	github.com/DATA-DOG/go-sqlmock v1.5.0
@@ -19,7 +19,6 @@ require (
 	github.com/go-gormigrate/gormigrate/v2 v2.1.0
 	github.com/go-playground/validator/v10 v10.14.1
 	github.com/gofrs/uuid v4.4.0+incompatible
-	github.com/golang/mock v1.6.0
 	github.com/graph-gophers/dataloader/v7 v7.1.0
 	github.com/hasura/go-graphql-client v0.9.3
 	github.com/prometheus/client_golang v1.16.0
@@ -28,7 +27,7 @@ require (
 	github.com/spf13/viper v1.16.0
 	github.com/stretchr/testify v1.8.4
 	github.com/thoas/go-funk v0.9.3
-	github.com/vektah/gqlparser/v2 v2.5.8
+	github.com/vektah/gqlparser/v2 v2.5.10
 	github.com/xhit/go-simple-mail/v2 v2.15.0
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.42.0
 	go.opentelemetry.io/contrib/propagators/b3 v1.17.0
@@ -42,6 +41,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.16.0
 	go.uber.org/automaxprocs v1.5.3
 	go.uber.org/goleak v1.2.1
+	go.uber.org/mock v0.3.0
 	go.uber.org/zap v1.24.0
 	golang.org/x/oauth2 v0.10.0
 	gorm.io/driver/postgres v1.5.2
