@@ -13,51 +13,51 @@ repos:
     rev: v4.4.0
     hooks:
       - id: check-json
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-merge-conflict
-        stages: [commit]
+        stages: [pre-commit]
       - id: trailing-whitespace
-        stages: [commit]
+        stages: [pre-commit]
         exclude: \.test\.tsx\.snap|\.yarn\/releases\/.*\.cjs$
       - id: end-of-file-fixer
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-yaml
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-added-large-files
-        stages: [commit]
+        stages: [pre-commit]
         exclude: \.yarn\/releases\/.*\.cjs$
       - id: check-executables-have-shebangs
-        stages: [commit]
+        stages: [pre-commit]
       - id: detect-aws-credentials
-        stages: [commit]
+        stages: [pre-commit]
       - id: detect-private-key
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-symlinks
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-shebang-scripts-are-executable
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-toml
-        stages: [commit]
+        stages: [pre-commit]
   - repo: https://github.com/pre-commit/mirrors-prettier
     # Use the sha or branch you want to point at
     rev: v3.0.3
     hooks:
       - id: prettier
-        stages: [commit]
+        stages: [pre-commit]
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.9.0.5
     hooks:
       - id: shellcheck
-        stages: [commit]
+        stages: [pre-commit]
   - repo: https://github.com/zricethezav/gitleaks
     rev: v8.18.0
     hooks:
       - id: gitleaks
-        stages: [commit]
+        stages: [pre-commit]
   - repo: local
     hooks:
       - id: backend-lint
-        stages: [commit]
+        stages: [pre-commit]
         files: \.go$
         name: Backend Lint
         entry: ./run-sub-folder-task.sh
@@ -68,7 +68,7 @@ repos:
         language: script
         pass_filenames: false
       - id: backend-graphql-concat
-        stages: [commit]
+        stages: [pre-commit]
         files: \.graphql$
         name: Backend graphql concat
         entry: ./run-sub-folder-task.sh
@@ -79,7 +79,7 @@ repos:
         language: script
         pass_filenames: false
       - id: backend-graphql-no-break-check
-        stages: [commit]
+        stages: [pre-commit]
         files: \.graphql$
         name: Backend graphql no breaking check
         entry: ./run-sub-folder-task.sh
@@ -90,7 +90,7 @@ repos:
         language: script
         pass_filenames: false
       - id: frontend-lint
-        stages: [commit]
+        stages: [pre-commit]
         files: \.(tsx|ts|js|jsx)$
         name: Frontend lint
         entry: ./run-sub-folder-task.sh
