@@ -5,7 +5,7 @@ default_install_hook_types:
   - commit-msg
 repos:
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.5.4
+    rev: 3.9.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -40,7 +40,7 @@ repos:
         stages: [commit]
   - repo: https://github.com/pre-commit/mirrors-prettier
     # Use the sha or branch you want to point at
-    rev: v3.0.0
+    rev: v3.0.3
     hooks:
       - id: prettier
         stages: [commit]
@@ -50,7 +50,7 @@ repos:
       - id: shellcheck
         stages: [commit]
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.17.0
+    rev: v8.18.0
     hooks:
       - id: gitleaks
         stages: [commit]
