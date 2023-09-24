@@ -60,10 +60,7 @@ repos:
         stages: [pre-commit]
         files: \.go$
         name: Backend Lint
-        entry: ./run-sub-folder-task.sh
-        args:
-          - backend
-          - "make code/lint"
+        entry: ./run-sub-folder-task.sh backend "make code/lint"
         require_serial: false
         language: script
         pass_filenames: false
@@ -71,10 +68,7 @@ repos:
         stages: [pre-commit]
         files: \.graphql$
         name: Backend graphql concat
-        entry: ./run-sub-folder-task.sh
-        args:
-          - backend
-          - "make code/graphql/concat"
+        entry: ./run-sub-folder-task.sh backend "make code/graphql/concat"
         require_serial: true
         language: script
         pass_filenames: false
@@ -82,10 +76,7 @@ repos:
         stages: [pre-commit]
         files: \.graphql$
         name: Backend graphql no breaking check
-        entry: ./run-sub-folder-task.sh
-        args:
-          - backend
-          - "make code/graphql/no-break-check"
+        entry: ./run-sub-folder-task.sh backend "make code/graphql/no-break-check"
         require_serial: true
         language: script
         pass_filenames: false
@@ -93,10 +84,7 @@ repos:
         stages: [pre-commit]
         files: \.(tsx|ts|js|jsx)$
         name: Frontend lint
-        entry: ./run-sub-folder-task.sh
-        args:
-          - frontend
-          - "yarn lint"
+        entry: ./run-sub-folder-task.sh frontend "yarn lint"
         require_serial: false
         language: script
         pass_filenames: false
