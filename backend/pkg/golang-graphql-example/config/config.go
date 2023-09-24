@@ -32,7 +32,6 @@ const DefaultDatabaseDriver = "POSTGRES"
 
 // Default tracing type.
 const DefaultTracingType = TracingOtelHTTPType
-const TracingJaegerHTTPType = "JAEGER_HTTP"
 const TracingOtelHTTPType = "OTEL_HTTP"
 
 // Config Configuration object.
@@ -46,13 +45,13 @@ type Config struct {
 	OIDCAuthentication     *OIDCAuthConfig         `mapstructure:"oidcAuthentication"`
 	OPAServerAuthorization *OPAServerAuthorization `mapstructure:"opaServerAuthorization"`
 	SMTP                   *SMTPConfig             `mapstructure:"smtp"                   validate:"omitempty"`
-	AMQP                   *AMQPConfig             `mapstructure:"amqp"                   validate:"omitempty,dive"`
+	AMQP                   *AMQPConfig             `mapstructure:"amqp"                   validate:"omitempty"`
 }
 
 // AMQPConfig AMQP Message Bus configuration.
 type AMQPConfig struct {
 	Connection *AMQPConnectionConfig  `mapstructure:"connection" validate:"required"`
-	ChannelQos *AMQPChannelQosConfig  `mapstructure:"channelQos" validate:"omitempty,dive"`
+	ChannelQos *AMQPChannelQosConfig  `mapstructure:"channelQos" validate:"omitempty"`
 	Exchanges  []*AMQPExchangeConfig  `mapstructure:"exchanges"  validate:"required,dive,required"`
 	Queues     []*AMQPQueueConfig     `mapstructure:"queues"     validate:"omitempty,dive"`
 	QueueBinds []*AMQPQueueBindConfig `mapstructure:"queueBinds" validate:"omitempty,dive"`
@@ -113,7 +112,7 @@ type LockDistributorConfig struct {
 
 // OIDCAuthConfig OpenID Connect authentication configurations.
 type OIDCAuthConfig struct {
-	ClientSecret      *CredentialConfig `mapstructure:"clientSecret"      validate:"omitempty,dive"`
+	ClientSecret      *CredentialConfig `mapstructure:"clientSecret"      validate:"omitempty"`
 	ClientID          string            `mapstructure:"clientId"          validate:"required"`
 	IssuerURL         string            `mapstructure:"issuerUrl"         validate:"required,url"`
 	RedirectURL       string            `mapstructure:"redirectUrl"       validate:"required,url"`
@@ -133,19 +132,12 @@ type OPAServerAuthorization struct {
 
 // TracingConfig represents the Tracing configuration structure.
 type TracingConfig struct {
-	FixedTags    map[string]string        `mapstructure:"fixedTags"`
-	JaegerHTTP   *TracingJaegerHTTPConfig `mapstructure:"jaegerHttp"   validate:"required_if=Type JAEGER_HTTP Enabled true"`
-	OtelHTTP     *TracingOtelHTTPConfig   `mapstructure:"otelHttp"     validate:"required_if=Type OTEL_HTTP Enabled true"`
-	Type         string                   `mapstructure:"type"         validate:"oneof=JAEGER_HTTP OTEL_HTTP"`
-	MaxQueueSize int                      `mapstructure:"maxQueueSize" validate:"omitempty,gte=0"`
-	MaxBatchSize int                      `mapstructure:"maxBatchSize" validate:"omitempty,gte=0"`
-	Enabled      bool                     `mapstructure:"enabled"`
-}
-
-// TracingJaegerHTTPConfig represents the Jaeger HTTP configuration structure.
-type TracingJaegerHTTPConfig struct {
-	ServerURL     string `mapstructure:"serverUrl" validate:"required,http_url"`
-	TimeoutString string `mapstructure:"timeout"`
+	FixedTags    map[string]string      `mapstructure:"fixedTags"`
+	OtelHTTP     *TracingOtelHTTPConfig `mapstructure:"otelHttp"     validate:"required_if=Type OTEL_HTTP Enabled true"`
+	Type         string                 `mapstructure:"type"         validate:"oneof=OTEL_HTTP"`
+	MaxQueueSize int                    `mapstructure:"maxQueueSize" validate:"omitempty,gte=0"`
+	MaxBatchSize int                    `mapstructure:"maxBatchSize" validate:"omitempty,gte=0"`
+	Enabled      bool                   `mapstructure:"enabled"`
 }
 
 // TracingOtelHTTPConfig represents the OTEL HTTP configuration structure.

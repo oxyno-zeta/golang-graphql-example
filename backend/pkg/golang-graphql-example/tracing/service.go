@@ -2,7 +2,6 @@ package tracing
 
 import (
 	"context"
-	"net/http"
 	"net/url"
 	"time"
 
@@ -17,7 +16,6 @@ import (
 	otpropagator "go.opentelemetry.io/contrib/propagators/ot"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/exporters/jaeger"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/propagation"
@@ -83,30 +81,6 @@ func (s *service) InitializeAndReload() error {
 		var exp tracesdk.SpanExporter
 		// Switch on type
 		switch cfg.Tracing.Type {
-		case config.TracingJaegerHTTPType:
-			// Create http client
-			httpCl := &http.Client{}
-			// Check if timeout is set
-			if cfg.Tracing.JaegerHTTP.TimeoutString != "" {
-				dur, err := time.ParseDuration(cfg.Tracing.JaegerHTTP.TimeoutString)
-				// Check error
-				if err != nil {
-					return errors.WithStack(err)
-				}
-				// Save
-				httpCl.Timeout = dur
-			}
-			// Create the Jaeger exporter
-			exp2, err := jaeger.New(jaeger.WithCollectorEndpoint(
-				jaeger.WithEndpoint(cfg.Tracing.JaegerHTTP.ServerURL),
-				jaeger.WithHTTPClient(httpCl),
-			))
-			// Check error
-			if err != nil {
-				return errors.WithStack(err)
-			}
-			// Save
-			exp = exp2
 		case config.TracingOtelHTTPType:
 			ur, err := url.Parse(cfg.Tracing.OtelHTTP.ServerURL)
 			// Check error
