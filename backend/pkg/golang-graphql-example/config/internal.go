@@ -26,6 +26,7 @@ type managerimpl struct {
 	onChangeHooks             []func()
 	logger                    log.Logger
 	internalFileWatchChannels []chan bool
+	credentialConfigPathList  [][]string
 }
 
 func (impl *managerimpl) AddOnChangeHook(hook func()) {
@@ -227,7 +228,7 @@ func (impl *managerimpl) loadConfiguration() error {
 	}
 
 	// Load all credentials
-	credentials, err := loadAllCredentials(&out)
+	credentials, err := impl.loadAllCredentials(&out)
 	if err != nil {
 		return err
 	}
@@ -309,4 +310,18 @@ func loadCredential(credCfg *CredentialConfig) error {
 // GetConfig allow to get configuration object.
 func (impl *managerimpl) GetConfig() *Config {
 	return impl.cfg
+}
+
+func (impl *managerimpl) InitializeOnce() error {
+	cl, err := getCredentialConfigPathList()
+	// Check error
+	if err != nil {
+		return err
+	}
+
+	// Save
+	impl.credentialConfigPathList = cl
+
+	// Default
+	return nil
 }

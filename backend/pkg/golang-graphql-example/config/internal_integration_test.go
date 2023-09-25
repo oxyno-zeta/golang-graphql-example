@@ -333,6 +333,10 @@ oidcAuthentication:
 		logger: log.NewLogger(),
 	}
 
+	// Initialize
+	err = ctx.InitializeOnce()
+	assert.NoError(t, err)
+
 	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
 		reloadHookCalled = true
@@ -491,6 +495,10 @@ tracing:
 		logger: log.NewLogger(),
 	}
 
+	// Initialize
+	err = ctx.InitializeOnce()
+	assert.NoError(t, err)
+
 	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
 		reloadHookCalled = true
@@ -625,6 +633,10 @@ opaServerAuthorization:
 	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
+
+	// Initialize
+	err = ctx.InitializeOnce()
+	assert.NoError(t, err)
 
 	reloadHookCalled := false
 	ctx.AddOnChangeHook(func() {
@@ -781,6 +793,10 @@ database:
 	ctx := &managerimpl{
 		logger: log.NewLogger(),
 	}
+
+	// Initialize
+	err = ctx.InitializeOnce()
+	assert.NoError(t, err)
 
 	// Load config
 	err = ctx.Load(dir)

@@ -9,6 +9,8 @@ const DefaultMainConfigFolderPath = "conf/"
 //
 //go:generate mockgen -destination=./mocks/mock_Manager.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config Manager
 type Manager interface {
+	// Initialize Once
+	InitializeOnce() error
 	// Load configuration
 	Load(inputConfigFilePath string) error
 	// Get configuration object

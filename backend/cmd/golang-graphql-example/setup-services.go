@@ -210,9 +210,15 @@ func setupMandatoryServices(sv *services, configFolderPath string) {
 
 	// Create configuration manager
 	cfgManager := config.NewManager(logger)
+	// Initialize once
+	err := cfgManager.InitializeOnce()
+	// Check error
+	if err != nil {
+		logger.Fatal(err)
+	}
 
 	// Load configuration
-	err := cfgManager.Load(configFolderPath)
+	err = cfgManager.Load(configFolderPath)
 	// Check error
 	if err != nil {
 		logger.Fatal(err)

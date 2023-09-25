@@ -64,6 +64,20 @@ func (mr *MockManagerMockRecorder) GetConfig() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetConfig", reflect.TypeOf((*MockManager)(nil).GetConfig))
 }
 
+// InitializeOnce mocks base method.
+func (m *MockManager) InitializeOnce() error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "InitializeOnce")
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// InitializeOnce indicates an expected call of InitializeOnce.
+func (mr *MockManagerMockRecorder) InitializeOnce() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeOnce", reflect.TypeOf((*MockManager)(nil).InitializeOnce))
+}
+
 // Load mocks base method.
 func (m *MockManager) Load(arg0 string) error {
 	m.ctrl.T.Helper()
