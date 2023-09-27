@@ -99,14 +99,20 @@ func getRecursivelyCredentialConfigPathList(keys []string, r reflect.Type) ([][]
 		// Check if it is a CredentialConfig
 		// If yes, save path and continue
 		if fieldType.AssignableTo(credCfgType) {
-			res = append(res, append(keys, fieldName))
+			// Force recreate a slice
+			inter := append([]string{}, keys...)
+			inter = append(inter, fieldName)
+			// Save
+			res = append(res, inter)
 
 			continue
 		}
 
+		// Create new array by forcing array recreation
+		inter := append([]string{}, keys...)
 		// Analyze sub type
 		intRes, err := getRecursivelyCredentialConfigPathList(
-			append(keys, fieldName),
+			append(inter, fieldName),
 			fieldType,
 		)
 		// Check error
