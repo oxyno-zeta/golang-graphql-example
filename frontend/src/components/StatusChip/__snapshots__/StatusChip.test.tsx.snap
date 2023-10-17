@@ -126,8 +126,8 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
 .emotion-1 {
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 7px;
+  padding-right: 7px;
   white-space: nowrap;
 }
 
@@ -270,8 +270,8 @@ exports[`StatusChip should display label with default color 1`] = `
 .emotion-1 {
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 7px;
+  padding-right: 7px;
   white-space: nowrap;
 }
 
@@ -425,8 +425,8 @@ exports[`StatusChip should display label with error color 1`] = `
 .emotion-1 {
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 7px;
+  padding-right: 7px;
   white-space: nowrap;
 }
 

@@ -951,7 +951,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-68>:not(:first-of-type) {
+.emotion-68>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -2513,7 +2513,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-100>:not(:first-of-type) {
+.emotion-100>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -4271,7 +4271,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-100>:not(:first-of-type) {
+.emotion-100>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -6029,7 +6029,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-100>:not(:first-of-type) {
+.emotion-100>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -7787,7 +7787,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-100>:not(:first-of-type) {
+.emotion-100>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -9545,7 +9545,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-100>:not(:first-of-type) {
+.emotion-100>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -11247,7 +11247,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-32>:not(:first-of-type) {
+.emotion-32>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -12666,7 +12666,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-68>:not(:first-of-type) {
+.emotion-68>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -14228,7 +14228,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-15:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-100>:not(:first-of-type) {
+.emotion-100>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -15304,7 +15304,7 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
   flex: 0 0 auto;
 }
 
-.emotion-4>:not(:first-of-type) {
+.emotion-4>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
@@ -16418,7 +16418,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   flex: 0 0 auto;
 }
 
-.emotion-32>:not(:first-of-type) {
+.emotion-32>:not(style)~:not(style) {
   margin-left: 8px;
 }
 
