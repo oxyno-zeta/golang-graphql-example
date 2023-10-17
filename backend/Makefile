@@ -213,7 +213,7 @@ ifndef HAS_GIT
 endif
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.38
+	$(GO) install github.com/99designs/gqlgen@v0.17.39
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
@@ -229,7 +229,7 @@ ifndef HAS_GOCOVER_COBERTURA
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@latest
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.14.0
 endif
 # Uncomment to use gox instead of goreleaser
 # ifndef HAS_GOX
