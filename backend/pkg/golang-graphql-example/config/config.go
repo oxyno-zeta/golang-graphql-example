@@ -67,6 +67,8 @@ type AMQPChannelQosConfig struct {
 // AMQPConnectionConfig AMQP Connection Configuration.
 type AMQPConnectionConfig struct {
 	URL               *CredentialConfig      `mapstructure:"url"               validate:"required"`
+	Username          *CredentialConfig      `mapstructure:"username"          validate:"required_with=Password"`
+	Password          *CredentialConfig      `mapstructure:"password"          validate:"required_with=Username"`
 	ExtraArgs         map[string]interface{} `mapstructure:"extraArgs"`
 	HeartbeatDuration string                 `mapstructure:"heartbeatDuration"`
 	ChannelMax        int                    `mapstructure:"channelMax"`

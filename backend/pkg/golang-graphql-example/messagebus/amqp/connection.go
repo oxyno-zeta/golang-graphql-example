@@ -1,6 +1,7 @@
 package amqpbusmessage
 
 import (
+	"net/url"
 	"os"
 	"strings"
 	"time"
@@ -405,10 +406,21 @@ func (as *amqpService) connect() (*amqp091.Connection, error) {
 
 	// Trim url
 	bURL := strings.TrimSpace(amqpCfg.Connection.URL.Value)
+	// Parse url
+	fullURL, err := url.Parse(bURL)
+	// Check error
+	if err != nil {
+		return nil, errors.WithStack(err)
+	}
+
+	// Check if configuration have a username and a password declared
+	if amqpCfg.Connection.Username != nil && amqpCfg.Connection.Password != nil {
+		fullURL.User = url.UserPassword(amqpCfg.Connection.Username.Value, amqpCfg.Connection.Password.Value)
+	}
 
 	as.logger.Debugf("Trying to establish connection to AMQP bus")
 	// Connect
-	conn, err := amqp091.DialConfig(bURL, connACfg)
+	conn, err := amqp091.DialConfig(fullURL.String(), connACfg)
 	// Check error
 	if err != nil {
 		return nil, errors.WithStack(err)

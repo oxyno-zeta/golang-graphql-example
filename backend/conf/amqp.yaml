@@ -2,6 +2,10 @@ amqp:
   connection:
     url:
       value: amqp://guest:guest@localhost:5672/
+    # username:
+    #   value: guest
+    # password:
+    #   value: guest
   channelQos:
     prefetchCount: 3
   exchanges:
