@@ -4752,9 +4752,9 @@ __metadata:
   linkType: hard
 
 "@types/autosuggest-highlight@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "@types/autosuggest-highlight@npm:3.2.0"
-  checksum: 1cb51e14fb5e109df8f2882d779d15a04863799f3e8546572d64e70ff4c84247747bffecf4a0b8591a45d05be4dbed6e08f6f766449e9ea73221a037569251ba
+  version: 3.2.2
+  resolution: "@types/autosuggest-highlight@npm:3.2.2"
+  checksum: 68a8b775549415651831fdaf984113ac4784d9fff3f44ab62803782f24a1e92ce9fdfc9c6df8e21d3a01f010fb80edcc7da741b135f076712691c98c65170a51
   languageName: node
   linkType: hard
 
