@@ -41,27 +41,61 @@ func internalLoadAllCredentials(out interface{}, credentialConfigPathList [][]st
 
 		// Check if value exists
 		if pVal.IsValid() && !pVal.IsNil() {
-			// Get value
-			v := pVal.Interface()
+			// Check if it is an array or slice
+			if pVal.Kind() == reflect.Array || pVal.Kind() == reflect.Slice {
+				// Loop over it
+				for i := 0; i < pVal.Len(); i++ {
+					// Get value
+					pVal2 := pVal.Index(i)
+					// Check if value exists
+					if pVal2.IsValid() && !pVal2.IsNil() {
+						// Get value
+						v := pVal2.Interface()
 
-			// Cast
-			vv, ok := v.(*CredentialConfig)
-			// Check if cast is ok
-			if !ok {
-				return nil, errors.New("cannot cast to *CredentialConfig")
-			}
+						vv, err := internalLoadCredential(v)
+						// Check error
+						if err != nil {
+							return nil, err
+						}
+						// Append result
+						result = append(result, vv)
+					}
+				}
+			} else {
+				// Direct object case
 
-			// Load database credential
-			err := loadCredential(vv)
-			if err != nil {
-				return nil, err
+				// Get value
+				v := pVal.Interface()
+
+				vv, err := internalLoadCredential(v)
+				// Check error
+				if err != nil {
+					return nil, err
+				}
+				// Append result
+				result = append(result, vv)
 			}
-			// Append result
-			result = append(result, vv)
 		}
 	}
 
 	return result, nil
+}
+
+func internalLoadCredential(in interface{}) (*CredentialConfig, error) {
+	// Cast
+	vv, ok := in.(*CredentialConfig)
+	// Check if cast is ok
+	if !ok {
+		return nil, errors.New("cannot cast to *CredentialConfig")
+	}
+
+	// Load database credential
+	err := loadCredential(vv)
+	if err != nil {
+		return nil, err
+	}
+
+	return vv, nil
 }
 
 func getCredentialConfigPathList() ([][]string, error) {
@@ -86,6 +120,17 @@ func getRecursivelyCredentialConfigPathList(keys []string, r reflect.Type) ([][]
 		if fieldType.Kind() == reflect.Pointer {
 			// Remove pointer
 			fieldType = fieldType.Elem()
+		}
+
+		// Check if it is an array or slice
+		if fieldType.Kind() == reflect.Array || fieldType.Kind() == reflect.Slice {
+			// Get slice/array element
+			fieldType = fieldType.Elem()
+			// Check if it is a pointer
+			if fieldType.Kind() == reflect.Pointer {
+				// Remove pointer
+				fieldType = fieldType.Elem()
+			}
 		}
 
 		// Check if it isn't a struct or pointer
