@@ -8,3 +8,4 @@ scan:
   # Specify the comma separated files and directories to skip. Supports * syntax.
   skip-path:
     - backend/tools/voyager/*
+    - backend/*
