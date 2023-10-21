@@ -30,6 +30,19 @@ jobs:
               - 'frontend/**/*'
             ci:
               - '.github/workflows/ci.yml'
+  rule_check:
+    if: |
+      (needs.changes.outputs.ci == 'true') ||
+      (needs.changes.outputs.frontend == 'true') ||
+      (needs.changes.outputs.backend == 'true')
+    runs-on: ubuntu-latest
+    needs:
+      - changes
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Report
+        id: report
+        uses: bearer/bearer-action@v2
   backend-lint:
     if: |
       (needs.changes.outputs.ci == 'true') ||
