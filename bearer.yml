@@ -1,0 +1,10 @@
+# Source: https://docs.bearer.com/reference/config/
+# Scan settings
+scan:
+  # Specify the type of scanner (sast, secrets).
+  scanner:
+    - sast
+    - secrets
+  # Specify the comma separated files and directories to skip. Supports * syntax.
+  skip-path:
+    - backend/tools/voyager/*
