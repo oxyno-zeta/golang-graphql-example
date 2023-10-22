@@ -13,7 +13,7 @@ require (
 	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/coreos/go-oidc/v3 v3.7.0
 	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
-	github.com/fsnotify/fsnotify v1.6.0
+	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-contrib/gzip v0.0.6
 	github.com/gin-contrib/static v0.0.1
