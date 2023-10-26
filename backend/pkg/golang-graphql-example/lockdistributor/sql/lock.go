@@ -4,14 +4,17 @@ import (
 	"context"
 
 	"emperror.dev/errors"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 
 	"cirello.io/pglock"
 )
 
 type lock struct {
-	pl   *pglock.Lock
-	s    *service
-	name string
+	pl    *pglock.Lock
+	s     *service
+	trace tracing.Trace
+	ctx   context.Context //nolint:containedctx // Keep the first context
+	name  string
 }
 
 func (l *lock) IsAlreadyTaken() (bool, error) {
@@ -31,7 +34,29 @@ func (l *lock) IsAlreadyTaken() (bool, error) {
 	return lo != nil, nil
 }
 
-func (l *lock) AcquireWithContext(ctx context.Context) error {
+func (l *lock) AcquireWithContext(ctx context.Context) (err error) {
+	// Get trace
+	trace := tracing.GetTraceFromContext(ctx)
+	// Save it
+	l.trace = trace
+	l.ctx = ctx
+
+	// Start trace
+	ctx, ct := trace.GetChildTrace(ctx, "lockdistributor.Acquire")
+	// Add tags
+	ct.SetTag("lock.name", l.name)
+	ct.SetTag("lock.engine", "postgresql")
+	// Defer end
+	defer func() {
+		// Check error
+		if err != nil {
+			ct.MarkAsError()
+			ct.SetTag("lock.error", err.Error())
+		}
+		// End
+		ct.Finish()
+	}()
+
 	// Create timeout
 	timeoutCtx, cancel := context.WithTimeout(ctx, acquireTimeoutDuration)
 	// Defer the cancel in case it is finishing earlier
@@ -61,9 +86,25 @@ func (l *lock) IsReleased() (bool, error) {
 	return l.pl.IsReleased(), nil
 }
 
-func (l *lock) Release() error {
+func (l *lock) Release() (err error) {
+	// Get child trace
+	_, ct := l.trace.GetChildTrace(l.ctx, "lockdistributor.Release")
+	// Add tags
+	ct.SetTag("lock.name", l.name)
+	ct.SetTag("lock.engine", "postgresql")
+	// Defer
+	defer func() {
+		// Check error
+		if err != nil {
+			ct.MarkAsError()
+			ct.SetTag("lock.error", err.Error())
+		}
+		// End
+		ct.Finish()
+	}()
+
 	// Close
-	err := l.pl.Close()
+	err = l.pl.Close()
 	// Check error
 	if err != nil && !errors.Is(err, pglock.ErrLockAlreadyReleased) {
 		return errors.WithStack(err)
