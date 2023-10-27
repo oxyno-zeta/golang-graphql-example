@@ -42,7 +42,7 @@ func (l *lock) AcquireWithContext(ctx context.Context) (err error) {
 	l.ctx = ctx
 
 	// Start trace
-	ctx, ct := trace.GetChildTrace(ctx, "lockdistributor.Acquire")
+	ctx, ct := trace.GetChildTrace(ctx, "lockdistributor.Acquiring")
 	// Add tags
 	ct.SetTag("lock.name", l.name)
 	ct.SetTag("lock.engine", "postgresql")
