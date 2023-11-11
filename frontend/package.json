@@ -22,7 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "autosuggest-highlight": "^3.3.4",
-    "axios": "^1.5.1",
+    "axios": "^1.6.0",
     "dayjs": "^1.11.10",
     "graphql": "^16.8.1",
     "i18next": "^23.6.0",
