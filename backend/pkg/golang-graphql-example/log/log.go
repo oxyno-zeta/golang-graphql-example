@@ -39,10 +39,10 @@ type LockDistributorLogger interface {
 }
 
 type GormLogger interface {
-	LogMode(gormlogger.LogLevel) GormLogger
-	Info(context.Context, string, ...interface{})
-	Warn(context.Context, string, ...interface{})
-	Error(context.Context, string, ...interface{})
+	LogMode(lvl gormlogger.LogLevel) GormLogger
+	Info(ctx context.Context, msg string, args ...interface{})
+	Warn(ctx context.Context, msg string, args ...interface{})
+	Error(ctx context.Context, msg string, args ...interface{})
 	Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error)
 }
 
