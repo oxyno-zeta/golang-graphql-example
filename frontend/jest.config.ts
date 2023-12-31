@@ -12,8 +12,8 @@ const config: Config.InitialOptions = {
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   modulePaths: ['<rootDir>'],
-  setupFiles: ['<rootDir>/.jest/jest.setup.js'],
-  globalSetup: '<rootDir>/.jest/jest.global-setup.js',
+  setupFiles: ['<rootDir>/.jest/jest.setup.cjs'],
+  globalSetup: '<rootDir>/.jest/jest.global-setup.cjs',
   snapshotSerializers: ['@emotion/jest/serializer'],
   reporters: [
     'default',

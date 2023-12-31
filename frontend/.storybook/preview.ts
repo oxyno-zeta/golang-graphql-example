@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 import * as jest from 'jest-mock';
 import { MockedProvider } from '@apollo/client/testing';
 import { withMuiTheme } from './with-mui-theme.decorator';
-import i18n from './i18next.js';
+import i18n from './i18next.cjs';
 
 // Inject jest correctly
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
