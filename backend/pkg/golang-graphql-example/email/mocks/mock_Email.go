@@ -5,6 +5,7 @@
 //
 //	mockgen -destination=./mocks/mock_Email.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email Email
 //
+
 // Package mocks is a generated GoMock package.
 package mocks
 

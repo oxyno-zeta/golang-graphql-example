@@ -5,6 +5,7 @@
 //
 //	mockgen -destination=./mocks/mock_Lock.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor/sql Lock
 //
+
 // Package mocks is a generated GoMock package.
 package mocks
 

@@ -5,6 +5,7 @@
 //
 //	mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos Service
 //
+
 // Package mocks is a generated GoMock package.
 package mocks
 

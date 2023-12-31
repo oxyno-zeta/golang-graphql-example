@@ -252,7 +252,7 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 		// Initialize gqlparser error
 		var err3 *gqlerror.Error
 		// Get generic error if available
-		if errors.As(err, &err2) { //nolint:gocritic // Switch case for errors.as isn't working
+		if errors.As(err, &err2) {
 			// Log error generic error
 			logger.Error(err2)
 			// Return graphql error
@@ -269,19 +269,20 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 			logger.WithError(errors.WithStack(err3)).Warn(err3)
 			// Return graphql error
 			return err3
-		} else { // Not a managed error. Manage it as internal server error
-			// Wrap it as an internal server error
-			err4 := cerrors.NewInternalServerErrorWithError(err)
-			// Log
-			logger.Error(err4)
-			// Return new built error
-			return &gqlerror.Error{
-				Path:       gqlgraphql.GetPath(ctx),
-				Extensions: err4.Extensions(),
-				Message:    err4.PublicMessage(),
-				Locations:  err3.Locations,
-				Rule:       err3.Rule,
-			}
+		}
+
+		// Not a managed error. Manage it as internal server error
+		// Wrap it as an internal server error
+		err4 := cerrors.NewInternalServerErrorWithError(err)
+		// Log
+		logger.Error(err4)
+		// Return new built error
+		return &gqlerror.Error{
+			Path:       gqlgraphql.GetPath(ctx),
+			Extensions: err4.Extensions(),
+			Message:    err4.PublicMessage(),
+			Locations:  err3.Locations,
+			Rule:       err3.Rule,
 		}
 	})
 	h.SetRecoverFunc(func(ctx context.Context, errI interface{}) (userMessage error) {

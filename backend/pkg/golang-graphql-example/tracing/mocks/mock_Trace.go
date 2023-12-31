@@ -5,6 +5,7 @@
 //
 //	mockgen -destination=./mocks/mock_Trace.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Trace
 //
+
 // Package mocks is a generated GoMock package.
 package mocks
 

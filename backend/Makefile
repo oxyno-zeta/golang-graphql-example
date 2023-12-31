@@ -206,18 +206,18 @@ ifndef HAS_GOLANGCI_LINT
 ifndef HAS_CURL
 	$(error You must install curl)
 endif
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin v1.54.2
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin v1.55.2
 endif
 ifndef HAS_GIT
 	$(error You must install Git)
 endif
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.39
+	$(GO) install github.com/99designs/gqlgen@v0.17.42
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
-	$(GO) install go.uber.org/mock/mockgen@v0.3.0
+	$(GO) install go.uber.org/mock/mockgen@v0.4.0
 endif
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
@@ -229,7 +229,7 @@ ifndef HAS_GOCOVER_COBERTURA
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.14.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.16.1
 endif
 # Uncomment to use gox instead of goreleaser
 # ifndef HAS_GOX

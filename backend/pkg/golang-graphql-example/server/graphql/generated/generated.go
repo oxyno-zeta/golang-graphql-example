@@ -3851,8 +3851,6 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 		}
 		switch k {
 		case "eq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("eq"))
 			data, err := ec.unmarshalOBoolean2ᚖbool(ctx, v)
 			if err != nil {
@@ -3862,8 +3860,6 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 				return it, err
 			}
 		case "notEq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notEq"))
 			data, err := ec.unmarshalOBoolean2ᚖbool(ctx, v)
 			if err != nil {
@@ -3893,8 +3889,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 		}
 		switch k {
 		case "eq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("eq"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3904,8 +3898,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "notEq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notEq"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3915,8 +3907,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "gte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("gte"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3926,8 +3916,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "notGte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notGte"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3937,8 +3925,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "gt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("gt"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3948,8 +3934,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "notGt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notGt"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3959,8 +3943,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "lte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("lte"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3970,8 +3952,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "notLte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notLte"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3981,8 +3961,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "lt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("lt"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -3992,8 +3970,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "notLt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notLt"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4003,8 +3979,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "in":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("in"))
 			data, err := ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
@@ -4014,8 +3988,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "notIn":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notIn"))
 			data, err := ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
@@ -4025,8 +3997,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 				return it, err
 			}
 		case "isNull":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNull"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4034,8 +4004,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 			}
 			it.IsNull = data
 		case "isNotNull":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNotNull"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4063,8 +4031,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 		}
 		switch k {
 		case "eq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("eq"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4074,8 +4040,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "notEq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notEq"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4085,8 +4049,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "gte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("gte"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4096,8 +4058,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "notGte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notGte"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4107,8 +4067,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "gt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("gt"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4118,8 +4076,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "notGt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notGt"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4129,8 +4085,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "lte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("lte"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4140,8 +4094,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "notLte":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notLte"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4151,8 +4103,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "lt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("lt"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4162,8 +4112,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "notLt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notLt"))
 			data, err := ec.unmarshalOInt2ᚖint(ctx, v)
 			if err != nil {
@@ -4173,8 +4121,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "in":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("in"))
 			data, err := ec.unmarshalOInt2ᚕᚖint(ctx, v)
 			if err != nil {
@@ -4184,8 +4130,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "notIn":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notIn"))
 			data, err := ec.unmarshalOInt2ᚕᚖint(ctx, v)
 			if err != nil {
@@ -4195,8 +4139,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 				return it, err
 			}
 		case "isNull":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNull"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4204,8 +4146,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 			}
 			it.IsNull = data
 		case "isNotNull":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNotNull"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4233,8 +4173,6 @@ func (ec *executionContext) unmarshalInputNewTodo(ctx context.Context, obj inter
 		}
 		switch k {
 		case "text":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("text"))
 			data, err := ec.unmarshalNString2string(ctx, v)
 			if err != nil {
@@ -4262,8 +4200,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 		}
 		switch k {
 		case "eq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("eq"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4273,8 +4209,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "notEq":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notEq"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4284,8 +4218,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "contains":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("contains"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4295,8 +4227,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "notContains":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notContains"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4306,8 +4236,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "startsWith":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("startsWith"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4317,8 +4245,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "notStartsWith":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notStartsWith"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4328,8 +4254,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "endsWith":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("endsWith"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4339,8 +4263,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "notEndsWith":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notEndsWith"))
 			data, err := ec.unmarshalOString2ᚖstring(ctx, v)
 			if err != nil {
@@ -4350,8 +4272,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "in":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("in"))
 			data, err := ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
@@ -4361,8 +4281,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "notIn":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("notIn"))
 			data, err := ec.unmarshalOString2ᚕᚖstring(ctx, v)
 			if err != nil {
@@ -4372,8 +4290,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 				return it, err
 			}
 		case "isNull":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNull"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4381,8 +4297,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			}
 			it.IsNull = data
 		case "isNotNull":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("isNotNull"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4390,8 +4304,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			}
 			it.IsNotNull = data
 		case "caseInsensitive":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("caseInsensitive"))
 			data, err := ec.unmarshalOBoolean2bool(ctx, v)
 			if err != nil {
@@ -4419,8 +4331,6 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 		}
 		switch k {
 		case "AND":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("AND"))
 			data, err := ec.unmarshalOTodoFilter2ᚕᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐFilterᚄ(ctx, v)
 			if err != nil {
@@ -4428,8 +4338,6 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 			}
 			it.AND = data
 		case "OR":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("OR"))
 			data, err := ec.unmarshalOTodoFilter2ᚕᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐFilterᚄ(ctx, v)
 			if err != nil {
@@ -4437,8 +4345,6 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 			}
 			it.OR = data
 		case "createdAt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("createdAt"))
 			data, err := ec.unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐDateFilter(ctx, v)
 			if err != nil {
@@ -4446,8 +4352,6 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 			}
 			it.CreatedAt = data
 		case "updatedAt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("updatedAt"))
 			data, err := ec.unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐDateFilter(ctx, v)
 			if err != nil {
@@ -4455,8 +4359,6 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 			}
 			it.UpdatedAt = data
 		case "text":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("text"))
 			data, err := ec.unmarshalOStringFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx, v)
 			if err != nil {
@@ -4464,8 +4366,6 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj in
 			}
 			it.Text = data
 		case "done":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("done"))
 			data, err := ec.unmarshalOBooleanFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx, v)
 			if err != nil {
@@ -4493,8 +4393,6 @@ func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj
 		}
 		switch k {
 		case "createdAt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("createdAt"))
 			data, err := ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐSortOrderEnum(ctx, v)
 			if err != nil {
@@ -4502,8 +4400,6 @@ func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj
 			}
 			it.CreatedAt = data
 		case "updatedAt":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("updatedAt"))
 			data, err := ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐSortOrderEnum(ctx, v)
 			if err != nil {
@@ -4511,8 +4407,6 @@ func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj
 			}
 			it.UpdatedAt = data
 		case "text":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("text"))
 			data, err := ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐSortOrderEnum(ctx, v)
 			if err != nil {
@@ -4520,8 +4414,6 @@ func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj
 			}
 			it.Text = data
 		case "done":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("done"))
 			data, err := ec.unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐSortOrderEnum(ctx, v)
 			if err != nil {
@@ -4549,8 +4441,6 @@ func (ec *executionContext) unmarshalInputUpdateTodo(ctx context.Context, obj in
 		}
 		switch k {
 		case "id":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
 			data, err := ec.unmarshalNID2string(ctx, v)
 			if err != nil {
@@ -4558,8 +4448,6 @@ func (ec *executionContext) unmarshalInputUpdateTodo(ctx context.Context, obj in
 			}
 			it.ID = data
 		case "text":
-			var err error
-
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("text"))
 			data, err := ec.unmarshalNString2string(ctx, v)
 			if err != nil {

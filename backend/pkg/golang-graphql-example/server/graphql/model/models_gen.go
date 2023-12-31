@@ -7,8 +7,14 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
+type Mutation struct {
+}
+
 type NewTodo struct {
 	Text string `json:"text"`
+}
+
+type Query struct {
 }
 
 type TodoConnection struct {

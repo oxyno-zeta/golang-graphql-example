@@ -5,6 +5,7 @@
 //
 //	mockgen -destination=./mocks/mock_AuthorizationService.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos AuthorizationService
 //
+
 // Package mocks is a generated GoMock package.
 package mocks
 
