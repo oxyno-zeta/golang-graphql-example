@@ -10,7 +10,7 @@ require (
 	github.com/99designs/gqlgen v0.17.42
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20230605152740-d49a0a0239a7
 	github.com/AppsFlyer/go-sundheit v0.5.0
-	github.com/DATA-DOG/go-sqlmock v1.5.0
+	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/coreos/go-oidc/v3 v3.9.0
 	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
 	github.com/fsnotify/fsnotify v1.7.0
