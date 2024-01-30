@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.0",
   "type": "module",
   "dependencies": {
     "@apollo/client": "^3.8.8",
