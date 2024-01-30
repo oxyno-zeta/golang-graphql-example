@@ -19,21 +19,28 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   width: 100%;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-firstButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-lastButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
   margin-left: -1px;
   border-left: 1px solid transparent;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
-  border-left: 0;
-  margin-left: 0;
+.emotion-1 .MuiToggleButtonGroup-lastButton.Mui-disabled,
+.emotion-1 .MuiToggleButtonGroup-middleButton.Mui-disabled {
+  border-left: 1px solid transparent;
 }
 
 .emotion-2 {
@@ -173,7 +180,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -196,7 +203,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
@@ -240,21 +247,28 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   width: 100%;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-firstButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-lastButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
   margin-left: -1px;
   border-left: 1px solid transparent;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
-  border-left: 0;
-  margin-left: 0;
+.emotion-1 .MuiToggleButtonGroup-lastButton.Mui-disabled,
+.emotion-1 .MuiToggleButtonGroup-middleButton.Mui-disabled {
+  border-left: 1px solid transparent;
 }
 
 .emotion-2 {
@@ -394,7 +408,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -417,7 +431,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
@@ -461,21 +475,28 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   width: 100%;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-firstButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-lastButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
   margin-left: -1px;
   border-left: 1px solid transparent;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
-  border-left: 0;
-  margin-left: 0;
+.emotion-1 .MuiToggleButtonGroup-lastButton.Mui-disabled,
+.emotion-1 .MuiToggleButtonGroup-middleButton.Mui-disabled {
+  border-left: 1px solid transparent;
 }
 
 .emotion-2 {
@@ -615,7 +636,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -638,7 +659,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
@@ -682,21 +703,28 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   width: 100%;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
+  border-left: 0;
+  margin-left: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-firstButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.emotion-1 .MuiToggleButtonGroup-lastButton,
+.emotion-1 .MuiToggleButtonGroup-middleButton {
   margin-left: -1px;
   border-left: 1px solid transparent;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.emotion-1 .MuiToggleButtonGroup-grouped:not(:last-of-type) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.emotion-1 .MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected {
-  border-left: 0;
-  margin-left: 0;
+.emotion-1 .MuiToggleButtonGroup-lastButton.Mui-disabled,
+.emotion-1 .MuiToggleButtonGroup-middleButton.Mui-disabled {
+  border-left: 1px solid transparent;
 }
 
 .emotion-2 {
@@ -836,7 +864,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -859,7 +887,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
