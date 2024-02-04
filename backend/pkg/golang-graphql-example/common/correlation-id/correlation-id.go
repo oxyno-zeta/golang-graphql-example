@@ -14,8 +14,8 @@ type contextKey struct {
 var correlationIDCtxKey = &contextKey{name: "correlation-id"}
 
 func Generate() (string, error) {
-	// Generate uuidGenerated
-	uuidGenerated, err := uuid.NewV4()
+	// Generate uuid v7 instead of v4 to improve speed
+	uuidGenerated, err := uuid.NewV7()
 	// Check error
 	if err != nil {
 		return "", errors.WithStack(err)
