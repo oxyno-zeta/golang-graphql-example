@@ -12,7 +12,7 @@ import (
 type Base struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	DeletedAt *time.Time `sql:"index"`
+	DeletedAt *time.Time `gorm:"index"`
 	ID        string     `gorm:"primary_key"`
 }
 
