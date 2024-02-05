@@ -406,7 +406,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE (field_1 = $1 OR field_1 = $2)",
+			expectedIntermediateQuery: "WHERE field_1 = $1 OR field_1 = $2",
 			expectedArgs:              []driver.Value{"fake2", "fake3"},
 		},
 		{
@@ -442,7 +442,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE (field_1 = $1 OR (field_1 LIKE $2 AND field_2 = $3))",
+			expectedIntermediateQuery: "WHERE field_1 = $1 OR (field_1 LIKE $2 AND field_2 = $3)",
 			expectedArgs:              []driver.Value{"fake1", "%fake3%", "fake2"},
 		},
 		{
@@ -460,7 +460,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE ((field_1 = $1 OR field_2 = $2) AND field_1 LIKE $3)",
+			expectedIntermediateQuery: "WHERE (field_1 = $1 OR field_2 = $2) AND field_1 LIKE $3",
 			expectedArgs:              []driver.Value{"fake1", "fake2", "%fake3%"},
 		},
 		{
@@ -485,7 +485,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE ((field_1 = $1 AND (field_2 = $2 OR field_2 = $3)) OR field_1 = $4)",
+			expectedIntermediateQuery: "WHERE (field_1 = $1 AND (field_2 = $2 OR field_2 = $3)) OR field_1 = $4",
 			expectedArgs:              []driver.Value{"fake2", "fake", "fake4", "fake3"},
 		},
 		{
@@ -509,7 +509,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE ((field_2 = $1 OR field_2 = $2) OR field_1 = $3)",
+			expectedIntermediateQuery: "WHERE (field_2 = $1 OR field_2 = $2) OR field_1 = $3",
 			expectedArgs:              []driver.Value{"fake", "fake4", "fake3"},
 		},
 		{
@@ -582,7 +582,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE (field_1 = $1 AND field_1 = $2)",
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_1 = $2",
 			expectedArgs:              []driver.Value{"fake2", "fake3"},
 		},
 		{
@@ -607,7 +607,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE (field_1 = $1 AND (field_2 = $2 AND field_2 = $3) AND field_1 = $4)",
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND (field_2 = $2 AND field_2 = $3) AND field_1 = $4",
 			expectedArgs:              []driver.Value{"fake2", "fake", "fake4", "fake3"},
 		},
 		{
@@ -631,7 +631,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE ((field_2 = $1 AND field_2 = $2) AND field_1 = $3)",
+			expectedIntermediateQuery: "WHERE (field_2 = $1 AND field_2 = $2) AND field_1 = $3",
 			expectedArgs:              []driver.Value{"fake", "fake4", "fake3"},
 		},
 		{
@@ -834,7 +834,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE ((field_1 = $1 AND field_1 = $2) OR field_2 = $3 OR (field_1 = $4 AND field_1 = $5))",
+			expectedIntermediateQuery: "WHERE (field_1 = $1 AND field_1 = $2) OR field_2 = $3 OR (field_1 = $4 AND field_1 = $5)",
 			expectedArgs:              []driver.Value{"fake1", "fake2", "fake3", "fake4", "fake5"},
 		},
 		{
@@ -858,7 +858,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE ((field_1 = $1 OR field_1 = $2) AND field_2 = $3 AND (field_1 = $4 OR field_1 = $5))",
+			expectedIntermediateQuery: "WHERE (field_1 = $1 OR field_1 = $2) AND field_2 = $3 AND (field_1 = $4 OR field_1 = $5)",
 			expectedArgs:              []driver.Value{"fake1", "fake2", "fake3", "fake4", "fake5"},
 		},
 		{
@@ -875,7 +875,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE (field_1 = $1 AND field_1 = $2)",
+			expectedIntermediateQuery: "WHERE field_1 = $1 AND field_1 = $2",
 			expectedArgs:              []driver.Value{"fake1", "fake2"},
 		},
 		{
@@ -909,7 +909,7 @@ func Test_ManageFilter(t *testing.T) {
 					},
 				},
 			},
-			expectedIntermediateQuery: "WHERE (field_1 = $1 OR field_1 = $2)",
+			expectedIntermediateQuery: "WHERE field_1 = $1 OR field_1 = $2",
 			expectedArgs:              []driver.Value{"fake1", "fake2"},
 		},
 	}
