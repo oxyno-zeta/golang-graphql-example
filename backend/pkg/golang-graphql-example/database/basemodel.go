@@ -23,7 +23,7 @@ func (base *Base) BeforeCreate(_ *gorm.DB) error {
 	// time with a fixed id.
 	if base.ID == "" {
 		// Generate new id
-		uuidGenerated, err := uuid.NewV4()
+		uuidGenerated, err := uuid.NewV7()
 		if err != nil {
 			return errors.WithStack(err)
 		}
