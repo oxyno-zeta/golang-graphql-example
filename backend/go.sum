@@ -853,6 +853,8 @@ gorm.io/driver/sqlite v1.5.4/go.mod h1:qxAuCol+2r6PannQDpOP1FP6ag3mKi4esLnB/jHed
 gorm.io/gorm v1.25.0/go.mod h1:L4uxeKpfBml98NYqVqwAdmV1a2nBtAec/cf3fpucW/k=
 gorm.io/gorm v1.25.6 h1:V92+vVda1wEISSOMtodHVRcUIOPYa2tgQtyF+DfFx+A=
 gorm.io/gorm v1.25.6/go.mod h1:hbnx/Oo0ChWMn1BIhpy1oYozzpM15i4YPuHDmfYtwg8=
+gorm.io/gorm v1.25.7 h1:VsD6acwRjz2zFxGO50gPO6AkNs7KKnvfzUjHQhZDz/A=
+gorm.io/gorm v1.25.7/go.mod h1:hbnx/Oo0ChWMn1BIhpy1oYozzpM15i4YPuHDmfYtwg8=
 gorm.io/plugin/opentelemetry v0.1.4 h1:7p0ocWELjSSRI7NCKPW2mVe6h43YPini99sNJcbsTuc=
 gorm.io/plugin/opentelemetry v0.1.4/go.mod h1:tndJHOdvPT0pyGhOb8E2209eXJCUxhC5UpKw7bGVWeI=
 gorm.io/plugin/prometheus v0.1.0 h1:kDQwAfCUsT9D6jDUpIp7pnc7bCJu/6voM8I/BmFjxUQ=
