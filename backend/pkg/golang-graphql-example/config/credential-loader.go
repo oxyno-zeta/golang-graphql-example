@@ -63,7 +63,6 @@ func internalLoadAllCredentials(out interface{}, credentialConfigPathList [][]st
 				}
 			} else {
 				// Direct object case
-
 				// Get value
 				v := pVal.Interface()
 

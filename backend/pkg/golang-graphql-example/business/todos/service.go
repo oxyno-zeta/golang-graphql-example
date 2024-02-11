@@ -128,7 +128,7 @@ func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
 	var res *models.Todo
 
 	// Create transaction
-	err = s.dbSvc.ExecuteTransaction(ctx, func(c context.Context) error {
+	err = s.dbSvc.ExecuteTransaction(ctx, func(ctx context.Context) error {
 		// Search by id first
 		tt, err2 := s.dao.FindByID(ctx, id, nil)
 		// Check error

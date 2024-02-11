@@ -59,7 +59,7 @@ func (impl *managerimpl) Load(inputConfigFilePath string) error {
 	// Loop over config files
 	funk.ForEach(impl.configs, func(vip *viper.Viper) {
 		// Add hooks for on change events
-		vip.OnConfigChange(func(in fsnotify.Event) {
+		vip.OnConfigChange(func(_ fsnotify.Event) {
 			impl.logger.Infof("Reload configuration detected for file %s", vip.ConfigFileUsed())
 
 			// Reload config

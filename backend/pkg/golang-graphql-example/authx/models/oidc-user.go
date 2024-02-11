@@ -1,7 +1,5 @@
 package models
 
-import "fmt"
-
 type OIDCUser struct {
 	PreferredUsername string `json:"preferred_username"`
 	Name              string `json:"name"`
@@ -13,7 +11,7 @@ type OIDCUser struct {
 }
 
 func (u *OIDCUser) GetAuthorizationHeader() string {
-	return fmt.Sprintf("Bearer %s", u.OriginalToken)
+	return "Bearer " + u.OriginalToken
 }
 
 func (u *OIDCUser) GetIdentifier() string {

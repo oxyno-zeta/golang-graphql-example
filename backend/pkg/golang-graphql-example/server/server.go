@@ -100,6 +100,7 @@ func (svr *Server) GenerateServer() error {
 		}
 		// Change server handler
 		server.Handler = r
+
 		svr.logger.Info("Server handler reloaded")
 	})
 
@@ -228,13 +229,13 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 				CreateTodo func(childComplexity int, input model.NewTodo) int
 				UpdateTodo func(childComplexity int, input *model.UpdateTodo) int
 			}{
-				CloseTodo: func(childComplexity int, todoID string) int {
+				CloseTodo: func(childComplexity int, _ string) int {
 					return gutils.CalculateMutationComplexity(childComplexity)
 				},
-				CreateTodo: func(childComplexity int, input model.NewTodo) int {
+				CreateTodo: func(childComplexity int, _ model.NewTodo) int {
 					return gutils.CalculateMutationComplexity(childComplexity)
 				},
-				UpdateTodo: func(childComplexity int, input *model.UpdateTodo) int {
+				UpdateTodo: func(childComplexity int, _ *model.UpdateTodo) int {
 					return gutils.CalculateMutationComplexity(childComplexity)
 				},
 			},
@@ -264,7 +265,6 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 		} else if errors.As(err, &err3) && err3.Extensions != nil && err3.Extensions["code"] == gqlerrorcode.ValidationFailed {
 			// This case is for GraphQL validation failed.
 			// This can arrive when a user send a request with a unknown field or if types are wrong.
-
 			// Log error generic error
 			logger.WithError(errors.WithStack(err3)).Warn(err3)
 			// Return graphql error
