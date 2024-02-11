@@ -168,10 +168,29 @@ func (s *service) InitializeAndReload() error {
 		return errors.WithStack(err)
 	}
 
-	// Add resources to options
+	var sampler tracesdk.Sampler
+	// Create sampling configuration
+	switch cfg.Tracing.SamplerType {
+	// Check if there is always on sampler is defined or is not defined
+	case "", config.TracingSamplerAlwaysOn:
+		sampler = tracesdk.AlwaysSample()
+	// Check if there is always off sampler is defined
+	case config.TracingSamplerAlwaysOff:
+		sampler = tracesdk.NeverSample()
+	// Check if there is ratio sampler is defined
+	case config.TracingSamplerRatio:
+		// Check if there is a ratio configuration
+		if cfg.Tracing.SamplerCfg != nil && cfg.Tracing.SamplerCfg.RatioCfg != nil {
+			sampler = tracesdk.TraceIDRatioBased(cfg.Tracing.SamplerCfg.RatioCfg.Ratio)
+		}
+	}
+
+	// Add resources and sampling to options
 	tracerOpts = append(tracerOpts,
 		// Record information about this application in a Resource.
 		tracesdk.WithResource(res),
+		// Add sampler
+		tracesdk.WithSampler(sampler),
 	)
 
 	// Create tracer provider

@@ -34,6 +34,11 @@ const DefaultDatabaseDriver = "POSTGRES"
 const DefaultTracingType = TracingOtelHTTPType
 const TracingOtelHTTPType = "OTEL_HTTP"
 
+// Default tracing sampler type.
+const TracingSamplerAlwaysOff = "ALWAYS_OFF"
+const TracingSamplerAlwaysOn = "ALWAYS_ON"
+const TracingSamplerRatio = "RATIO"
+
 // Config Configuration object.
 type Config struct {
 	Log                    *LogConfig              `mapstructure:"log"`
@@ -136,10 +141,22 @@ type OPAServerAuthorization struct {
 type TracingConfig struct {
 	FixedTags    map[string]string      `mapstructure:"fixedTags"`
 	OtelHTTP     *TracingOtelHTTPConfig `mapstructure:"otelHttp"     validate:"required_if=Type OTEL_HTTP Enabled true"`
+	SamplerCfg   *TracingSamplerConfig  `mapstructure:"samplerCfg"`
+	SamplerType  string                 `mapstructure:"samplerType"  validate:"omitempty,oneof=ALWAYS_OFF ALWAYS_ON RATIO"`
 	Type         string                 `mapstructure:"type"         validate:"oneof=OTEL_HTTP"`
 	MaxQueueSize int                    `mapstructure:"maxQueueSize" validate:"omitempty,gte=0"`
 	MaxBatchSize int                    `mapstructure:"maxBatchSize" validate:"omitempty,gte=0"`
 	Enabled      bool                   `mapstructure:"enabled"`
+}
+
+// TracingSamplerConfig Tracing Sampler configuration.
+type TracingSamplerConfig struct {
+	RatioCfg *TracingRatioSamplerConfig `mapstructure:"ratioCfg"`
+}
+
+// TracingRatioSamplerConfig Tracing Ratio Sampler configuration.
+type TracingRatioSamplerConfig struct {
+	Ratio float64 `mapstructure:"ratio" validate:"required,gte=0"`
 }
 
 // TracingOtelHTTPConfig represents the OTEL HTTP configuration structure.
