@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/graph-gophers/dataloader/v7"
-	dataloadertracing "github.com/graph-gophers/dataloader/v7/trace/opentracing"
+	dataloadertracing "github.com/graph-gophers/dataloader/v7/trace/otel"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
@@ -30,7 +30,7 @@ func New(busiServices *business.Services) *TodosDataloaders {
 					)
 				},
 			),
-			dataloader.WithTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](&dataloadertracing.Tracer[*dataloaderscommon.IDProjectionKey, *models.Todo]{}),
+			dataloader.WithTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloadertracing.NewTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](nil)),
 			dataloader.WithWait[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloaderscommon.DefaultWait),
 			dataloader.WithBatchCapacity[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloaderscommon.DefaultBatchCapacity),
 			dataloader.WithCache[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloaderscommon.NewCache[*dataloaderscommon.IDProjectionKey, *models.Todo]()),
