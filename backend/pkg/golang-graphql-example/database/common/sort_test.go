@@ -243,8 +243,8 @@ func Test_ManageSortOrder(t *testing.T) {
 			}
 
 			// Create expected query
-			expectedQuery := `SELECT * FROM "people" ` + tt.expectedSortQuery + " LIMIT 1"
-			mock.ExpectQuery(expectedQuery).WithArgs().WillReturnRows(
+			expectedQuery := `SELECT * FROM "people" ` + tt.expectedSortQuery + " LIMIT $1"
+			mock.ExpectQuery(expectedQuery).WithArgs(1).WillReturnRows(
 				sqlmock.NewRows([]string{"name"}).AddRow("fake"),
 			)
 

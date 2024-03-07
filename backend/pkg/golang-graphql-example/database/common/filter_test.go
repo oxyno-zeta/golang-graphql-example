@@ -5,6 +5,7 @@ package common
 import (
 	"database/sql/driver"
 	"reflect"
+	"strconv"
 	"testing"
 	"time"
 
@@ -945,7 +946,9 @@ func Test_ManageFilter(t *testing.T) {
 			if tt.expectedIntermediateQuery != "" {
 				expectedQuery += " "
 			}
-			expectedQuery += `ORDER BY "people"."name" LIMIT 1`
+			expectedQuery += `ORDER BY "people"."name" LIMIT $` + strconv.Itoa(len(tt.expectedArgs)+1)
+			// Add limit to expected args
+			tt.expectedArgs = append(tt.expectedArgs, 1)
 
 			mock.ExpectQuery(expectedQuery).
 				WithArgs(tt.expectedArgs...).
@@ -3168,7 +3171,9 @@ func Test_manageFilterRequest(t *testing.T) {
 			if tt.expectedIntermediateQuery != "" {
 				expectedQuery += " "
 			}
-			expectedQuery += `ORDER BY "people"."name" LIMIT 1`
+			expectedQuery += `ORDER BY "people"."name" LIMIT $` + strconv.Itoa(len(tt.expectedArgs)+1)
+			// Add limit to expected args
+			tt.expectedArgs = append(tt.expectedArgs, 1)
 
 			mock.ExpectQuery(expectedQuery).
 				WithArgs(tt.expectedArgs...).

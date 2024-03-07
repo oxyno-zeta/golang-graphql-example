@@ -3,7 +3,6 @@
 package common
 
 import (
-	"database/sql/driver"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
@@ -40,7 +39,6 @@ func TestManageProjection(t *testing.T) {
 		name                      string
 		args                      args
 		expectedIntermediateQuery string
-		expectedArgs              []driver.Value
 		wantErr                   bool
 		errorString               string
 	}{
@@ -139,10 +137,10 @@ func TestManageProjection(t *testing.T) {
 
 			// Create expected query
 			expectedQuery := `SELECT ` + tt.expectedIntermediateQuery + ` FROM "people" `
-			expectedQuery += `ORDER BY "people"."name" LIMIT 1`
+			expectedQuery += `ORDER BY "people"."name" LIMIT $1`
 
 			mock.ExpectQuery(expectedQuery).
-				WithArgs(tt.expectedArgs...).
+				WithArgs(1).
 				WillReturnRows(
 					sqlmock.NewRows([]string{"name"}).AddRow("fake"),
 				)
