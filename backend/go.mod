@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.0
 
 require (
-	cirello.io/pglock v1.14.1
+	cirello.io/pglock v1.14.2
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.44
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20230605152740-d49a0a0239a7
