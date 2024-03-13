@@ -2155,9 +2155,9 @@ __metadata:
   linkType: hard
 
 "@fontsource/material-icons@npm:^5.0.14":
-  version: 5.0.14
-  resolution: "@fontsource/material-icons@npm:5.0.14"
-  checksum: 10/4fd0d3bfe82c9e8f778e5f572dd4b9febaa6e637b3e36b502a46ed7fba542da34f9c5cdef5909501a8788267aee0bf8bfd7ad5053ca4d91098d2c26b1332b5aa
+  version: 5.0.16
+  resolution: "@fontsource/material-icons@npm:5.0.16"
+  checksum: 10/1aff0a91f9d33e4503c83c5a0eb45fc9e1ab1613d58cbd93e08296999334ce0cab9a7d0e6012f9ccbfff183db9698f7e6cbc77b097ff9caf9aaa151b23582be0
   languageName: node
   linkType: hard
 
