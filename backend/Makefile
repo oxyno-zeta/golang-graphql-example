@@ -110,6 +110,19 @@ code/clean:
 #  Release  #
 #############
 
+.PHONY: release/docker/multiarch
+release/docker/multiarch:
+ifeq ("$(DEFAULT_CONTAINER_RUNTIME)", "docker")
+	- $(DEFAULT_CONTAINER_RUNTIME) buildx create --name project-v3-builder
+	$(DEFAULT_CONTAINER_RUNTIME) buildx use project-v3-builder
+	$(DEFAULT_CONTAINER_RUNTIME) buildx build --platform=$(BUILDX_PLATFORMS) --push --tag $(IMG) -f Dockerfile.multiarch .
+	- $(DEFAULT_CONTAINER_RUNTIME) buildx rm project-v3-builder
+else
+	$(DEFAULT_CONTAINER_RUNTIME) manifest create $(IMG_NAME)
+	$(DEFAULT_CONTAINER_RUNTIME) build --platform linux/amd64,linux/arm64 --manifest $(IMG_NAME) -f Dockerfile.multiarch .
+	$(DEFAULT_CONTAINER_RUNTIME) manifest push $(IMG_NAME)
+endif
+
 # Uncomment to use gox instead of goreleaser
 # .PHONY: release/all
 # release/all: code/clean setup/dep/install code/build-cross
