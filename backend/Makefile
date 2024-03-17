@@ -86,7 +86,7 @@ code/graphql: code/graphql/generate code/graphql/concat
 
 .PHONY: code/build
 code/build: code/clean setup/dep/install
-	$(GO) build $(GO_VENDOR) -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
+	CGO_ENABLED=0 $(GO) build $(GO_VENDOR) -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
 
 # Uncomment to use gox instead of goreleaser
 # .PHONY: code/build-cross
