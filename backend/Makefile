@@ -1,6 +1,8 @@
 TARGETS           ?= linux/amd64 darwin/amd64 windows/amd64 linux/386 linux/ppc64le linux/s390x linux/arm linux/arm64
+BUILDX_PLATFORMS  ?= linux/arm64,linux/amd64,linux/s390x,linux/ppc64le
 PROJECT_NAME	  := golang-graphql-example
 PKG				  := github.com/oxyno-zeta/$(PROJECT_NAME)
+IMG_NAME		  ?= $(PROJECT_NAME)
 
 # go option
 GO        ?= go
@@ -13,6 +15,7 @@ LDFLAGS   := -w -s
 GOFLAGS   :=
 BINDIR    := $(CURDIR)/bin
 DISTDIR   := dist
+IMG       ?= $(PROJECT_NAME)
 
 # Required for globs to work correctly
 SHELL=/usr/bin/env bash
@@ -40,6 +43,8 @@ HAS_GOTESTSUM:=$(shell command -v gotestsum;)
 HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
+
+DEFAULT_CONTAINER_RUNTIME ?= podman
 
 .DEFAULT_GOAL := code/lint
 
@@ -153,51 +158,50 @@ test/coverage:
 .PHONY: down/services
 down/services:
 	@echo "Down services"
-	docker rm -f postgres || true
-	docker rm -f opa || true
-	docker rm -f keycloak || true
-	docker rm -f rabbitmq || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f postgres || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f opa || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f keycloak || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f rabbitmq || true
 
 .PHONY: down/metrics-services
 down/metrics-services:
 	@echo "Down metrics services"
-	docker rm -f prometheus || true
-	docker rm -f grafana || true
-	# docker rm -f jaeger || true
-	docker rm -f tempo || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f prometheus || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f grafana || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f tempo || true
 
 .PHONY: down/dev-services
 down/dev-services:
 	@echo "Down dev services"
-	docker rm -f pgadmin || true
-	docker rm -f maildev || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f pgadmin || true
+	$(DEFAULT_CONTAINER_RUNTIME) rm -f maildev || true
 
 .PHONY: setup/dev-services
 setup/dev-services: down/dev-services
 	@echo "Setup dev services"
-	docker run --rm --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4
-	docker run --rm --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev:1.1.0 --incoming-user fake --incoming-pass fakepassword
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev:1.1.0 --incoming-user fake --incoming-pass fakepassword
 
 .PHONY: setup/metrics-services
 setup/metrics-services: down/metrics-services
 	@echo "Setup metrics services"
-	docker run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
-	docker run --rm -d --name grafana -e GF_AUTH_ANONYMOUS_ENABLED=true -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin -e GF_AUTH_DISABLE_LOGIN_FORM=true -e GF_FEATURE_TOGGLES_ENABLE=traceqlEditor -v $(CURDIR)/.local-resources/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml --network=host grafana/grafana:10.0.0
-	docker run --rm -d --name tempo  -v $(CURDIR)/.local-resources/tempo/tempo.yaml:/etc/tempo.yaml -p 14268:14268 -p 3200:3200 -p 4318:4318 -p 4317:4317 grafana/tempo:latest -config.file=/etc/tempo.yaml
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name grafana -e GF_AUTH_ANONYMOUS_ENABLED=true -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin -e GF_AUTH_DISABLE_LOGIN_FORM=true -e GF_FEATURE_TOGGLES_ENABLE=traceqlEditor -v $(CURDIR)/.local-resources/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml --network=host grafana/grafana:10.0.0
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name tempo  -v $(CURDIR)/.local-resources/tempo/tempo.yaml:/etc/tempo.yaml -p 14268:14268 -p 3200:3200 -p 4318:4318 -p 4317:4317 grafana/tempo:latest -config.file=/etc/tempo.yaml
 
 .PHONY: setup/services
 setup/services: down/services
 	@echo "Setup services"
-	docker run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/.run/postgres:/var/lib/postgresql/data postgres:14
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/.run/postgres:/var/lib/postgresql/data postgres:14
 	tar czvf .local-resources/opa/bundle.tar.gz --directory=.local-resources/opa/bundle example/
-	docker run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:0.25.2 run --server --log-level debug --log-format text --bundle /bundle.tar.gz
-	docker run -d --rm --name keycloak -p 8088:8080 -e KEYCLOAK_IMPORT=/tmp/realm-export.json -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/tmp/realm-export.json -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.3
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:0.25.2 run --server --log-level debug --log-format text --bundle /bundle.tar.gz
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name keycloak -p 8088:8080 -e KEYCLOAK_IMPORT=/tmp/realm-export.json -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/tmp/realm-export.json -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.3
 	# User: guest / Password: guest
-	docker run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 .PHONY: setup/test/integration
 setup/test/integration:
-	docker run --rm --link postgres:postgres --name postgres-integration-setup -e PGHOST=postgres -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:12 psql -c 'CREATE DATABASE "postgres-integration"' || true
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --link postgres:postgres --name postgres-integration-setup -e PGHOST=postgres -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:12 psql -c 'CREATE DATABASE "postgres-integration"' || true
 
 .PHONY: setup/dep/install
 setup/dep/install:
