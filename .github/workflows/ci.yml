@@ -97,6 +97,7 @@ jobs:
       (needs.changes.outputs.backend == 'true')
     runs-on: ubuntu-latest
     env:
+      DEFAULT_CONTAINER_RUNTIME: docker
       DOCKER_CLI_EXPERIMENTAL: "enabled"
     needs:
       - changes
@@ -117,6 +118,8 @@ jobs:
     needs:
       - changes
       - backend-lint
+    env:
+      DEFAULT_CONTAINER_RUNTIME: docker
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
