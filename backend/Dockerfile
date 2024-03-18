@@ -5,7 +5,7 @@ ENV APP=golang-graphql-example
 ENV UID=1000
 ENV GID=1000
 
-RUN apk add --update --no-cache ca-certificates=20230506-r0 && \
+RUN apk add --update --no-cache ca-certificates=20240226-r0 && \
     rm -Rf /var/cache/apk/* && \
     addgroup -g $GID $USER && \
     adduser -D -g "" -h "/$USER" -G "$USER" -H -u "$UID" "$USER"
