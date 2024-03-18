@@ -208,7 +208,7 @@ setup/services: down/services
 	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/.run/postgres:/var/lib/postgresql/data postgres:14
 	tar czvf .local-resources/opa/bundle.tar.gz --directory=.local-resources/opa/bundle example/
 	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:0.25.2 run --server --log-level debug --log-format text --bundle /bundle.tar.gz
-	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name keycloak -p 8088:8080 -e KEYCLOAK_IMPORT=/tmp/realm-export.json -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/tmp/realm-export.json -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.3
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name keycloak -p 8088:8080 -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_HTTP_RELATIVE_PATH=/auth quay.io/keycloak/keycloak:24.0.1 start-dev --import-realm
 	# User: guest / Password: guest
 	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
