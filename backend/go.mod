@@ -18,7 +18,7 @@ require (
 	github.com/gin-contrib/gzip v0.0.6
 	github.com/gin-contrib/static v1.1.0
 	github.com/gin-gonic/gin v1.9.1
-	github.com/go-gormigrate/gormigrate/v2 v2.1.1
+	github.com/go-gormigrate/gormigrate/v2 v2.1.2
 	github.com/go-playground/validator/v10 v10.19.0
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.0
@@ -129,5 +129,3 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	nhooyr.io/websocket v1.8.10 // indirect
 )
-
-replace github.com/go-gormigrate/gormigrate/v2 v2.1.1 => github.com/oxyno-zeta/gormigrate/v2 v2.0.0-20240318121440-b7e1f70e30f6
