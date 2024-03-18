@@ -132,7 +132,11 @@ func manageObjectSortOrder(rKind reflect.Kind, rVal *reflect.Value, refuseMultip
 		// Get value from field
 		val := fVal.Interface()
 		// Cast value to Sort Order Enum
-		enu, _ := val.(*SortOrderEnum)
+		enu, ok := val.(*SortOrderEnum)
+		// Check if it is ok or not
+		if !ok {
+			return nil, false, gerrors.Errorf("%v isn't a valid SortOrderEnum value", val)
+		}
 		// Apply order
 		res = res.Order(fmt.Sprintf("%s %s", tagVal, enu.String()))
 		// Store sort applied
