@@ -119,7 +119,7 @@ ifeq ("$(DEFAULT_CONTAINER_RUNTIME)", "docker")
 	- $(DEFAULT_CONTAINER_RUNTIME) buildx rm project-v3-builder
 else
 	$(DEFAULT_CONTAINER_RUNTIME) manifest create $(IMG_NAME)
-	$(DEFAULT_CONTAINER_RUNTIME) build --platform linux/amd64,linux/arm64 --manifest $(IMG_NAME) -f Dockerfile.multiarch .
+	$(DEFAULT_CONTAINER_RUNTIME) build --platform=$(BUILDX_PLATFORMS) --manifest $(IMG_NAME) -f Dockerfile.multiarch .
 	$(DEFAULT_CONTAINER_RUNTIME) manifest push $(IMG_NAME)
 endif
 
