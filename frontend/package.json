@@ -112,7 +112,7 @@
     "storybook": "^7.6.17",
     "storybook-addon-apollo-client": "^5.0.0",
     "storybook-addon-react-router-v6": "^2.0.11",
-    "storybook-dark-mode": "^3.0.3",
+    "storybook-dark-mode": "^4.0.0",
     "storybook-react-i18next": "^2.1.1",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
