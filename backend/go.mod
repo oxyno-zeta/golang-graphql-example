@@ -47,7 +47,7 @@ require (
 	golang.org/x/oauth2 v0.18.0
 	gorm.io/driver/postgres v1.5.7
 	gorm.io/driver/sqlite v1.5.5
-	gorm.io/gorm v1.25.7
+	gorm.io/gorm v1.25.8
 	gorm.io/plugin/opentelemetry v0.1.4
 	gorm.io/plugin/prometheus v0.1.0
 )
@@ -129,3 +129,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	nhooyr.io/websocket v1.8.10 // indirect
 )
+
+replace github.com/go-gormigrate/gormigrate/v2 v2.1.1 => github.com/oxyno-zeta/gormigrate/v2 v2.0.0-20240318121440-b7e1f70e30f6
