@@ -8747,7 +8747,7 @@ __metadata:
     storybook-addon-apollo-client: "npm:^5.0.0"
     storybook-addon-react-router-v6: "npm:^2.0.11"
     storybook-dark-mode: "npm:^3.0.3"
-    storybook-react-i18next: "npm:^2.1.1"
+    storybook-react-i18next: "npm:^3.0.0"
     ts-jest: "npm:^29.1.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.4.2"
@@ -13516,24 +13516,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-i18n@npm:^2.1.1":
-  version: 2.1.2
-  resolution: "storybook-i18n@npm:2.1.2"
-  checksum: 10/26541eafd37ffba692028d09bec812528edf0fb70566e21c6a467325a981e93c23e8375fed00f928ed0940792c2a2cfebadca05e1c99053b0d2c6ddc42a86406
+"storybook-i18n@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "storybook-i18n@npm:3.0.1"
+  checksum: 10/3a4236f6b495f9d2839125e668b783e27562f20aecb4803b817277848be9b1deaf21f4a2e64f09e5b393ec9484a0db091739960673e1c7eb18c7903aa047efdd
   languageName: node
   linkType: hard
 
-"storybook-react-i18next@npm:^2.1.1":
-  version: 2.1.2
-  resolution: "storybook-react-i18next@npm:2.1.2"
+"storybook-react-i18next@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "storybook-react-i18next@npm:3.0.1"
   dependencies:
-    storybook-i18n: "npm:^2.1.1"
+    storybook-i18n: "npm:^3.0.1"
   peerDependencies:
     i18next: ^22.0.0 || ^23.0.0 || ^24.0.0
     i18next-browser-languagedetector: ^7.0.0
     i18next-http-backend: ^2.0.0
     react-i18next: ^12.0.0 || ^13.0.0 || ^14.0.0
-  checksum: 10/b618bf98da7b1268d4c21e4c7913287e4b5f3e430a1fb5e083bcf857c7ef9bb85d0ff7d658d0ea21bbf25d2b2d4607aaa74c9a2c8107a7cd19911e0f5123e4f3
+  checksum: 10/616322cb26c271a4078eca7b79e163711a684deb1782f2a54982ae491fc3873f1afbf748a30ee703ef44e10972ac040930e677ce8b0725bf733ded4432f725da
   languageName: node
   linkType: hard
 
