@@ -206,13 +206,25 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		}
 
 		// Check if rdVal exists and that redirect url value is valid
-		if rdVal != "" && !isValidRedirect(rdVal) {
-			err := cerrors.NewInvalidInputError("redirect url is invalid")
+		if rdVal != "" {
+			isValid, err := isValidRedirect(rdVal, utils.GetRequestURL(c.Request))
+			// Check error
+			if err != nil {
+				// Answer
+				logger.Error(err)
+				utils.AnswerWithError(c, err)
 
-			logger.Error(err)
-			utils.AnswerWithError(c, err)
+				return
+			}
+			// Check if it is invalid
+			if !isValid {
+				err := cerrors.NewInvalidInputError("redirect url is invalid", cerrors.WithPublicErrorMessage("redirect url is invalid"))
 
-			return
+				logger.Error(err)
+				utils.AnswerWithError(c, err)
+
+				return
+			}
 		}
 
 		oauth2Token, err := oauthConfig.Exchange(ctx, c.Query("code"))
@@ -428,6 +440,30 @@ func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string,
 }
 
 // IsValidRedirect checks whether the redirect URL is whitelisted.
-func isValidRedirect(redirect string) bool {
-	return strings.HasPrefix(redirect, "http://") || strings.HasPrefix(redirect, "https://")
+func isValidRedirect(redirectURLStr, reqURLStr string) (bool, error) {
+	// Check if it isn't forged with complete urls
+	if !(strings.HasPrefix(redirectURLStr, "http://") || strings.HasPrefix(redirectURLStr, "https://")) {
+		return false, nil
+	}
+
+	// Parse request URL
+	currentURL, err := url.Parse(reqURLStr)
+	// Check error
+	if err != nil {
+		return false, errors.WithStack(err)
+	}
+	// Parse redirect URL
+	redURL, err := url.Parse(redirectURLStr)
+	// Check error
+	if err != nil {
+		return false, errors.WithStack(err)
+	}
+
+	// Check if hosts aren't the same
+	if redURL.Host != currentURL.Host {
+		return false, nil
+	}
+
+	// Default
+	return true, nil
 }
