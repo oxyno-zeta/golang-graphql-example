@@ -214,7 +214,7 @@ setup/services: down/services
 
 .PHONY: setup/test/integration
 setup/test/integration:
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm --link postgres:postgres --name postgres-integration-setup -e PGHOST=postgres -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:12 psql -c 'CREATE DATABASE "postgres-integration"' || true
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --network=host --name postgres-integration-setup -e PGHOST=localhost -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:12 psql -c 'CREATE DATABASE "postgres-integration"' || true
 
 .PHONY: setup/dep/install
 setup/dep/install:
