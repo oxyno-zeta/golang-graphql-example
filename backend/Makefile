@@ -3,6 +3,8 @@ BUILDX_PLATFORMS  ?= linux/arm64,linux/amd64,linux/s390x,linux/ppc64le
 PROJECT_NAME	  := golang-graphql-example
 PKG				  := github.com/oxyno-zeta/$(PROJECT_NAME)
 IMG_NAME		  ?= $(PROJECT_NAME)
+IMG_VERSION		  ?= latest
+REGISTRY_IMG      ?= localhost
 
 # go option
 GO        ?= go
@@ -117,9 +119,9 @@ ifeq ("$(DEFAULT_CONTAINER_RUNTIME)", "docker")
 	$(DEFAULT_CONTAINER_RUNTIME) buildx build --platform=$(BUILDX_PLATFORMS) --push --tag $(IMG) -f Dockerfile.multiarch .
 	- $(DEFAULT_CONTAINER_RUNTIME) buildx rm project-v3-builder
 else
-	$(DEFAULT_CONTAINER_RUNTIME) manifest create $(IMG_NAME)
-	$(DEFAULT_CONTAINER_RUNTIME) build --platform=$(BUILDX_PLATFORMS) --manifest $(IMG_NAME) -f Dockerfile.multiarch .
-	$(DEFAULT_CONTAINER_RUNTIME) manifest push $(IMG_NAME)
+	- $(DEFAULT_CONTAINER_RUNTIME) manifest create $(IMG_NAME):$(IMG_VERSION)
+	$(DEFAULT_CONTAINER_RUNTIME) build --platform=$(BUILDX_PLATFORMS) --manifest $(IMG_NAME):$(IMG_VERSION) -f Dockerfile.multiarch .
+	$(DEFAULT_CONTAINER_RUNTIME) manifest push $(IMG_NAME):$(IMG_VERSION) $(REGISTRY_IMG)/$(IMG_NAME):$(IMG_VERSION)
 endif
 
 # Uncomment to use gox instead of goreleaser
