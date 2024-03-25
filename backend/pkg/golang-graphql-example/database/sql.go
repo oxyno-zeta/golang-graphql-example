@@ -17,6 +17,7 @@ import (
 
 var (
 	transactionContextKey = &contextKey{name: "TRANSACTION"}
+	transactionTraceName  = "database:execute-transaction"
 )
 
 type sqldb struct {
@@ -49,9 +50,23 @@ func GetTransactionalGormDBFromContext(ctx context.Context) *gorm.DB {
 
 func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Context) error) error {
 	// Create transaction callback
-	txCb := func(tx *gorm.DB) error {
+	txCb := func(tx *gorm.DB) (err error) {
+		// Get parent trace
+		parentTrace := tracing.GetTraceFromContext(ctx)
+		// Create child trace
+		cctx, childTrace := parentTrace.GetChildTrace(ctx, transactionTraceName)
+		// Defer close
+		defer func() {
+			// Check error
+			if err != nil {
+				childTrace.MarkAsError()
+			}
+			// Finish trace
+			childTrace.Finish()
+		}()
+
 		// Inject transactional db in context
-		newCtx := SetTransactionalGormDBToContext(ctx, tx)
+		newCtx := SetTransactionalGormDBToContext(cctx, tx)
 
 		// Callback
 		return cb(newCtx)
