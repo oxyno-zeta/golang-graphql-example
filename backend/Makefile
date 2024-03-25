@@ -33,7 +33,6 @@ LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.GitCommit=${GIT_COMMIT}
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.BuildDate=${DATE}
 
 HAS_GORELEASER := $(shell command -v goreleaser;)
-HAS_GIT := $(shell command -v git;)
 HAS_GOLANGCI_LINT := $(shell command -v golangci-lint;)
 HAS_CURL:=$(shell command -v curl;)
 HAS_MOCKGEN:=$(shell command -v mockgen;)
@@ -216,8 +215,11 @@ setup/services: down/services
 setup/test/integration:
 	$(DEFAULT_CONTAINER_RUNTIME) run --rm --network=host --name postgres-integration-setup -e PGHOST=localhost -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:12 psql -c 'CREATE DATABASE "postgres-integration"' || true
 
-.PHONY: setup/dep/install
-setup/dep/install:
+.PHONY: setup/dep/all/install
+setup/dep/all/install: setup/dep/lint/install setup/dep/gen/install setup/dep/test/install setup/dep/build/install
+
+.PHONY: setup/dep/lint/install
+setup/dep/lint/install: setup/dep/install
 ifndef HAS_GOLANGCI_LINT
 	@echo "=> Installing golangci-lint tool"
 ifndef HAS_CURL
@@ -225,9 +227,9 @@ ifndef HAS_CURL
 endif
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin v1.56.2
 endif
-ifndef HAS_GIT
-	$(error You must install Git)
-endif
+
+.PHONY: setup/dep/gen/install
+setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
 	$(GO) install github.com/99designs/gqlgen@v0.17.44
@@ -236,6 +238,13 @@ ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
 	$(GO) install go.uber.org/mock/mockgen@v0.4.0
 endif
+ifndef HAS_FIELDALIGNMENT
+	@echo "=> Installing fieldalignment tool"
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.16.1
+endif
+
+.PHONY: setup/dep/test/install
+setup/dep/test/install: setup/dep/install
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
 	$(GO) install gotest.tools/gotestsum@v1.11.0
@@ -244,15 +253,17 @@ ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
 	$(GO) install github.com/boumenot/gocover-cobertura@v1.2.0
 endif
-ifndef HAS_FIELDALIGNMENT
-	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.16.1
-endif
+
+.PHONY: setup/dep/build/install
+setup/dep/build/install: setup/dep/install
 # Uncomment to use gox instead of goreleaser
 # ifndef HAS_GOX
 # 	@echo "=> Installing gox"
 # 	$(GO) install github.com/mitchellh/gox@v1.0.1
 # endif
+
+.PHONY: setup/dep/install
+setup/dep/install:
 	$(GO) mod download all
 
 .PHONY: setup/dep/tidy
