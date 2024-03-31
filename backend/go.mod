@@ -47,7 +47,7 @@ require (
 	golang.org/x/oauth2 v0.18.0
 	gorm.io/driver/postgres v1.5.7
 	gorm.io/driver/sqlite v1.5.5
-	gorm.io/gorm v1.25.8
+	gorm.io/gorm v1.25.9
 	gorm.io/plugin/opentelemetry v0.1.4
 	gorm.io/plugin/prometheus v0.1.0
 )
