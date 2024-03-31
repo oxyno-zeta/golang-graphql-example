@@ -11,7 +11,7 @@ require (
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20230605152740-d49a0a0239a7
 	github.com/AppsFlyer/go-sundheit v0.5.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
-	github.com/coreos/go-oidc/v3 v3.9.0
+	github.com/coreos/go-oidc/v3 v3.10.0
 	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gin-contrib/cors v1.7.0
@@ -64,6 +64,7 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-jose/go-jose/v3 v3.0.3 // indirect
+	github.com/go-jose/go-jose/v4 v4.0.1 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
