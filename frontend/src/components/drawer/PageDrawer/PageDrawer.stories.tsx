@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext } from 'react';
 import { StoryFn, Meta } from '@storybook/react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { withRouter } from 'storybook-addon-remix-react-router';
 import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';

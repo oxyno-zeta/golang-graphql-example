@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DataGrid, GridColDef, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiPencil, mdiDelete } from '@mdi/js';
@@ -57,8 +57,7 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
       filterable: false,
       sortable: true,
       disableColumnMenu: true,
-      valueGetter: (params: GridValueGetterParams<TodoModel, string>) =>
-        getDayjsTz(params.value, timezone).format('LLLL'),
+      valueGetter: (value: string) => getDayjsTz(value, timezone).format('LLLL'),
     },
     {
       field: 'done',
