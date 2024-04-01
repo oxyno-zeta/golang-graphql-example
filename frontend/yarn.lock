@@ -13713,12 +13713,12 @@ __metadata:
   linkType: hard
 
 "universal-cookie@npm:^7.1.2":
-  version: 7.1.2
-  resolution: "universal-cookie@npm:7.1.2"
+  version: 7.1.4
+  resolution: "universal-cookie@npm:7.1.4"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
-  checksum: 10/7c06154fd1001ed34f2736b4df48b36843283355495e4137339aa046f736b6fde049b68947df67ba66c2a06d001f4cdd9f9ada6544e4f2c59dd88e6bbe0615d2
+  checksum: 10/1a3ae4cd37e90838cc0f034374ae73f294b444a377525a43c4dce80dddd32f1ad36a05b38332f8fb446d641df481ecd99b64fdbb008aa82a6ab5c0d2854a89a4
   languageName: node
   linkType: hard
 
