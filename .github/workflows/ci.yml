@@ -133,6 +133,7 @@ jobs:
               && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.6.0.tar.gz \
               && rm dockerize-linux-amd64-v0.6.0.tar.gz;
           fi
+      - run: cd backend && make setup/dep/test/install
       - run: cd backend && make setup/services
       - run: dockerize -wait tcp://localhost:8088 -timeout 5m
       - run: dockerize -wait tcp://localhost:8181 -timeout 5m
