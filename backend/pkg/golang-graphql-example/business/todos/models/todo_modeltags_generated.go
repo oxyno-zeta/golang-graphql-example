@@ -22,22 +22,22 @@ const TodoTextGormColumnName = "text"
 const TodoUpdatedAtGormColumnName = "updated_at"
 
 // Todo CreatedAt JSON Key Name
-const TodoCreatedAtJSONKeyName = "CreatedAt"
+const TodoCreatedAtJSONKeyName = "createdAt"
 
 // Todo DeletedAt JSON Key Name
-const TodoDeletedAtJSONKeyName = "DeletedAt"
+const TodoDeletedAtJSONKeyName = "deletedAt"
 
 // Todo Done JSON Key Name
 const TodoDoneJSONKeyName = "Done"
 
 // Todo ID JSON Key Name
-const TodoIDJSONKeyName = "ID"
+const TodoIDJSONKeyName = "id"
 
 // Todo Text JSON Key Name
 const TodoTextJSONKeyName = "Text"
 
 // Todo UpdatedAt JSON Key Name
-const TodoUpdatedAtJSONKeyName = "UpdatedAt"
+const TodoUpdatedAtJSONKeyName = "updatedAt"
 
 // Transform Todo Gorm Column To JSON Key
 func TransformTodoGormColumnToJSONKey(gormColumn string) (string, error) {
