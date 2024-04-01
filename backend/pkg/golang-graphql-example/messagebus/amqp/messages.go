@@ -323,7 +323,7 @@ func (as *amqpService) Consume(
 			as.signalHandlerSvc.IncreaseActiveRequestCounter()
 
 			// Create handler
-			handler := func() (err error) {
+			handler := func() (err error) { //nolint:contextcheck // False positive
 				// Extract trace from message
 				cbCtx, trace := as.extractTraceFromHeaders(d.Headers)
 				// Defer to close trace
