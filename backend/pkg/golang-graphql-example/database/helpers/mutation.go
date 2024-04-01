@@ -63,3 +63,30 @@ func Delete[T any](
 	// Return result
 	return input, nil
 }
+
+/**
+ * PatchUpdate will update specific columns and return the updated object/model.
+ * Params:
+ * - ctx context
+ * - model Original object
+ * - input is a map with gorm key with values that should be updated.
+ */
+func PatchUpdate[T any](
+	ctx context.Context,
+	model T,
+	input map[string]interface{},
+	db database.DB,
+) (T, error) {
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	dbres := gdb.Model(model).Updates(input)
+
+	// Check error
+	err := dbres.Error
+	if err != nil {
+		return *new(T), errors.WithStack(err)
+	}
+
+	// Return result
+	return model, nil
+}
