@@ -38,7 +38,15 @@ func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model
 		return nil, err
 	}
 
-	res, err := r.BusiServices.TodoSvc.Close(ctx, bid)
+	// Get projection
+	proj := &models.Projection{}
+	err = utils.ManageSimpleProjection(ctx, proj)
+	// Check error
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := r.BusiServices.TodoSvc.Close(ctx, bid, proj)
 	if err != nil {
 		return nil, err
 	}

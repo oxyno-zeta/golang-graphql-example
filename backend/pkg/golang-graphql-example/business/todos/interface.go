@@ -32,7 +32,7 @@ type Service interface {
 	FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error)
 	Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error)
 	Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error)
-	Close(ctx context.Context, id string) (*models.Todo, error)
+	Close(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error)
 }
 
 type InputCreateTodo struct {

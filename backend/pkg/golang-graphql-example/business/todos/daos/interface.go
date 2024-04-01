@@ -24,6 +24,7 @@ type Dao interface {
 		projection *models.Projection,
 	) ([]*models.Todo, *pagination.PageOutput, error)
 	CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo, error)
+	PatchUpdate(ctx context.Context, tt *models.Todo, input map[string]interface{}) (*models.Todo, error)
 	FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error)
 }
 

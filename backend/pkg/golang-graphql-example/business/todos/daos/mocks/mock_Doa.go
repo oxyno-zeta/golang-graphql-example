@@ -101,3 +101,18 @@ func (mr *MockDaoMockRecorder) GetAllPaginated(arg0, arg1, arg2, arg3, arg4 any)
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockDao)(nil).GetAllPaginated), arg0, arg1, arg2, arg3, arg4)
 }
+
+// PatchUpdate mocks base method.
+func (m *MockDao) PatchUpdate(arg0 context.Context, arg1 *models.Todo, arg2 map[string]any) (*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PatchUpdate", arg0, arg1, arg2)
+	ret0, _ := ret[0].(*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PatchUpdate indicates an expected call of PatchUpdate.
+func (mr *MockDaoMockRecorder) PatchUpdate(arg0, arg1, arg2 any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PatchUpdate", reflect.TypeOf((*MockDao)(nil).PatchUpdate), arg0, arg1, arg2)
+}

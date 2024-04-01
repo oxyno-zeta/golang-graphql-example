@@ -31,6 +31,15 @@ func (d *dao) CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo
 	)
 }
 
+func (d *dao) PatchUpdate(ctx context.Context, tt *models.Todo, input map[string]interface{}) (*models.Todo, error) {
+	return databasehelpers.PatchUpdate(
+		ctx,
+		tt,
+		input,
+		d.db,
+	)
+}
+
 func (d *dao) GetAllPaginated(
 	ctx context.Context,
 	page *pagination.PageInput,

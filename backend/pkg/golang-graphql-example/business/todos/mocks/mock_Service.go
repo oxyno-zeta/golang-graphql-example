@@ -43,18 +43,18 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // Close mocks base method.
-func (m *MockService) Close(arg0 context.Context, arg1 string) (*models.Todo, error) {
+func (m *MockService) Close(arg0 context.Context, arg1 string, arg2 *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close", arg0, arg1)
+	ret := m.ctrl.Call(m, "Close", arg0, arg1, arg2)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Close indicates an expected call of Close.
-func (mr *MockServiceMockRecorder) Close(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Close(arg0, arg1, arg2 any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockService)(nil).Close), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockService)(nil).Close), arg0, arg1, arg2)
 }
 
 // Create mocks base method.

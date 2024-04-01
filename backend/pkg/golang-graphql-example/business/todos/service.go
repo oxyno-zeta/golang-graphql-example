@@ -112,7 +112,7 @@ func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Tod
 	return s.dao.CreateOrUpdate(ctx, tt)
 }
 
-func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
+func (s *service) Close(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	// Check authorization
 	err := s.authSvc.CheckAuthorized(
 		ctx,
@@ -130,15 +130,13 @@ func (s *service) Close(ctx context.Context, id string) (*models.Todo, error) {
 	// Create transaction
 	err = s.dbSvc.ExecuteTransaction(ctx, func(ctx context.Context) error {
 		// Search by id first
-		tt, err2 := s.dao.FindByID(ctx, id, nil)
+		tt, err2 := s.dao.FindByID(ctx, id, projection)
 		// Check error
 		if err2 != nil {
 			return err2
 		}
-		// Update text in existing result
-		tt.Done = true
 		// Save
-		res, err2 = s.dao.CreateOrUpdate(ctx, tt)
+		res, err2 = s.dao.PatchUpdate(ctx, tt, map[string]interface{}{models.TodoDoneJSONKeyName: false})
 
 		return err2
 	})
