@@ -544,8 +544,8 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -667,6 +667,15 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -1856,8 +1865,8 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -1979,6 +1988,15 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -3580,8 +3598,8 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -3703,6 +3721,15 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -5304,8 +5331,8 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 }
 
 .emotion-38 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-38 .MuiAutocomplete-inputRoot {
@@ -5427,6 +5454,15 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-38 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-38 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -7124,8 +7160,8 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -7247,6 +7283,15 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -9054,8 +9099,8 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -9177,6 +9222,15 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -10720,8 +10774,8 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -10843,6 +10897,15 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -12656,8 +12719,8 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -12779,6 +12842,15 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -14355,8 +14427,8 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -14478,6 +14550,15 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -16320,8 +16401,8 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
 }
 
 .emotion-1 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-1 .MuiAutocomplete-inputRoot {
@@ -16443,6 +16524,15 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-1 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-1 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -17328,8 +17418,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 }
 
 .emotion-30 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-30 .MuiAutocomplete-inputRoot {
@@ -17451,6 +17541,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-30 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-30 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -18395,8 +18494,8 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
 }
 
 .emotion-1 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-1 .MuiAutocomplete-inputRoot {
@@ -18518,6 +18617,15 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-1 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-1 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -19516,8 +19624,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 }
 
 .emotion-35 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-35 .MuiAutocomplete-inputRoot {
@@ -19639,6 +19747,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-35 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-35 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -20826,8 +20943,8 @@ exports[`filters/internal/FilterForm should be ok to just display no initial fil
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -20949,6 +21066,15 @@ exports[`filters/internal/FilterForm should be ok to just display no initial fil
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -22138,8 +22264,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -22261,6 +22387,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -24164,8 +24299,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -24287,6 +24422,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -26493,8 +26637,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -26616,6 +26760,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -28917,8 +29070,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -29040,6 +29193,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -31371,8 +31533,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -31494,6 +31656,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -33762,8 +33933,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -33885,6 +34056,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -36456,8 +36636,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -36579,6 +36759,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -39245,8 +39434,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -39368,6 +39557,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -42064,8 +42262,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -42187,6 +42385,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -44820,8 +45027,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -44943,6 +45150,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -47576,8 +47792,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -47699,6 +47915,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -50236,8 +50461,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -50359,6 +50584,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -52262,8 +52496,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -52385,6 +52619,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -54922,8 +55165,8 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -55045,6 +55288,15 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -57582,8 +57834,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -57705,6 +57957,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -59608,8 +59869,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -59731,6 +59992,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -61841,8 +62111,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -61964,6 +62234,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -64169,8 +64448,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -64292,6 +64571,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -66527,8 +66815,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -66650,6 +66938,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -68822,8 +69119,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -68945,6 +69242,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -71117,8 +71423,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -71240,6 +71546,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -73143,8 +73458,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -73266,6 +73581,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -75169,8 +75493,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -75292,6 +75616,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -77195,8 +77528,8 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 }
 
 .emotion-21 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-21 .MuiAutocomplete-inputRoot {
@@ -77318,6 +77651,15 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-21 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-21 .MuiAutocomplete-input {
   opacity: 1;
 }
 

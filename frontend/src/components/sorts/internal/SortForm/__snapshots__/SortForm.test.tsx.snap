@@ -435,8 +435,8 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -558,6 +558,15 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -2079,8 +2088,8 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -2202,6 +2211,15 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -3841,8 +3859,8 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -3964,6 +3982,15 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -5603,8 +5630,8 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -5726,6 +5753,15 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -7365,8 +7401,8 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -7488,6 +7524,15 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -9127,8 +9172,8 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -9250,6 +9295,15 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -10755,8 +10809,8 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
 }
 
 .emotion-8 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-8 .MuiAutocomplete-inputRoot {
@@ -10878,6 +10932,15 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-8 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-8 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -12178,8 +12241,8 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -12301,6 +12364,15 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -13822,8 +13894,8 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
 }
 
 .emotion-12 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-12 .MuiAutocomplete-inputRoot {
@@ -13945,6 +14017,15 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-12 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-12 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -15938,8 +16019,8 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
 }
 
 .emotion-8 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-8 .MuiAutocomplete-inputRoot {
@@ -16061,6 +16142,15 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-8 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-8 .MuiAutocomplete-input {
   opacity: 1;
 }
 

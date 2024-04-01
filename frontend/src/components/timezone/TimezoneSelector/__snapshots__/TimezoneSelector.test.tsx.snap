@@ -16,8 +16,8 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 .emotion-0 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-0 .MuiAutocomplete-inputRoot {
@@ -139,6 +139,15 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-0 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-0 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -757,8 +766,8 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 .emotion-0 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-0 .MuiAutocomplete-inputRoot {
@@ -880,6 +889,15 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-0 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-0 .MuiAutocomplete-input {
   opacity: 1;
 }
 
@@ -2259,8 +2277,8 @@ exports[`timezone/TimezoneSelector should display an autocomplete with default v
 }
 
 .emotion-0 .MuiAutocomplete-tag {
-  margin: 2px;
-  max-width: calc(100% - 4px);
+  margin: 3px;
+  max-width: calc(100% - 6px);
 }
 
 .emotion-0 .MuiAutocomplete-inputRoot {
@@ -2382,6 +2400,15 @@ exports[`timezone/TimezoneSelector should display an autocomplete with default v
   -ms-flex-positive: 1;
   flex-grow: 1;
   text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-0 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-0 .MuiAutocomplete-input {
   opacity: 1;
 }
 
