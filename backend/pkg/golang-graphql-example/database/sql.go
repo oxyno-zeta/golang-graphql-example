@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"database/sql"
+	"strings"
 	"time"
 
 	"emperror.dev/errors"
@@ -142,7 +143,7 @@ func (sdb *sqldb) Connect() error {
 	}
 
 	// Trim url
-	sURL := cfg.Database.ConnectionURL.Value
+	sURL := strings.TrimSpace(cfg.Database.ConnectionURL.Value)
 
 	sdb.logger.Debugf("Trying to connect to database engine of type %s", cfg.Database.Driver)
 	// Connect to database
@@ -156,7 +157,7 @@ func (sdb *sqldb) Connect() error {
 	if len(cfg.Database.ReplicaConnectionURLs) != 0 {
 		// Create connections list
 		conns, _ := funk.Map(cfg.Database.ReplicaConnectionURLs, func(sc *config.CredentialConfig) gorm.Dialector {
-			return openFunction(sc.Value)
+			return openFunction(strings.TrimSpace(sc.Value))
 		}).([]gorm.Dialector)
 
 		// Inject db resolver configuration
