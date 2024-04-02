@@ -204,14 +204,15 @@ type ServerCorsConfig struct {
 
 // DatabaseConfig Database configuration.
 type DatabaseConfig struct {
-	ConnectionURL                    *CredentialConfig `mapstructure:"connectionUrl"                    validate:"required"`
-	Driver                           string            `mapstructure:"driver"                           validate:"required,oneof=POSTGRES SQLITE"`
-	SQLConnectionMaxLifetimeDuration string            `mapstructure:"sqlConnectionMaxLifetimeDuration"`
-	SQLMaxIdleConnections            int               `mapstructure:"sqlMaxIdleConnections"`
-	SQLMaxOpenConnections            int               `mapstructure:"sqlMaxOpenConnections"`
-	DisableForeignKeyWhenMigrating   bool              `mapstructure:"disableForeignKeyWhenMigrating"`
-	AllowGlobalUpdate                bool              `mapstructure:"allowGlobalUpdate"`
-	PrepareStatement                 bool              `mapstructure:"prepareStatement"`
+	ConnectionURL                    *CredentialConfig   `mapstructure:"connectionUrl"                    validate:"required"`
+	Driver                           string              `mapstructure:"driver"                           validate:"required,oneof=POSTGRES SQLITE"`
+	SQLConnectionMaxLifetimeDuration string              `mapstructure:"sqlConnectionMaxLifetimeDuration"`
+	ReplicaConnectionURLs            []*CredentialConfig `mapstructure:"replicaConnectionUrls"`
+	SQLMaxIdleConnections            int                 `mapstructure:"sqlMaxIdleConnections"`
+	SQLMaxOpenConnections            int                 `mapstructure:"sqlMaxOpenConnections"`
+	DisableForeignKeyWhenMigrating   bool                `mapstructure:"disableForeignKeyWhenMigrating"`
+	AllowGlobalUpdate                bool                `mapstructure:"allowGlobalUpdate"`
+	PrepareStatement                 bool                `mapstructure:"prepareStatement"`
 }
 
 // SMTPConfig SMTP Configuration.

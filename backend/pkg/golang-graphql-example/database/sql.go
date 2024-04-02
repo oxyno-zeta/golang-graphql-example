@@ -10,9 +10,11 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	"github.com/thoas/go-funk"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"gorm.io/plugin/dbresolver"
 )
 
 var (
@@ -148,6 +150,27 @@ func (sdb *sqldb) Connect() error {
 	// Check if error exists
 	if err != nil {
 		return errors.WithStack(err)
+	}
+
+	// Check if there are replica in configuration
+	if len(cfg.Database.ReplicaConnectionURLs) != 0 {
+		// Create connections list
+		conns, _ := funk.Map(cfg.Database.ReplicaConnectionURLs, func(sc *config.CredentialConfig) gorm.Dialector {
+			return openFunction(sc.Value)
+		}).([]gorm.Dialector)
+
+		// Inject db resolver configuration
+		err = dbResult.Use(dbresolver.Register(dbresolver.Config{
+			Replicas: conns,
+			// sources/replicas load balancing policy
+			Policy: dbresolver.RandomPolicy{},
+			// print sources/replicas mode in logger
+			TraceResolverMode: true,
+		}))
+		// Check error
+		if err != nil {
+			return errors.WithStack(err)
+		}
 	}
 
 	// Get prometheus gorm middleware
