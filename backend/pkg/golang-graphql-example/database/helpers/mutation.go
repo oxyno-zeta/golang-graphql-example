@@ -45,7 +45,7 @@ func PermanentDelete[T any](
 	return input, nil
 }
 
-func Delete[T any](
+func SoftDelete[T any](
 	ctx context.Context,
 	input T,
 	db database.DB,
