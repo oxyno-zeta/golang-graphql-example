@@ -322,139 +322,141 @@ func (as *amqpService) Consume(
 			// Increase active request counter
 			as.signalHandlerSvc.IncreaseActiveRequestCounter()
 
-			// Create handler
-			handler := func() (err error) { //nolint:contextcheck // False positive
-				// Extract trace from message
-				cbCtx, trace := as.extractTraceFromHeaders(d.Headers)
-				// Defer to close trace
-				defer func() {
+			go func(d amqp091.Delivery) { //nolint:contextcheck // False positive
+				// Create handler
+				handler := func() (err error) {
+					// Extract trace from message
+					cbCtx, trace := as.extractTraceFromHeaders(d.Headers)
+					// Defer to close trace
+					defer func() {
+						// Check error
+						if err != nil {
+							trace.MarkAsError()
+						}
+
+						trace.Finish()
+					}()
+
+					// Check if correlation id is set
+					// Otherwise, create it
+					if d.CorrelationId == "" {
+						// Generate new id
+						id, err2 := correlationid.Generate()
+						// Check error
+						if err2 != nil {
+							return err2
+						}
+
+						// Save it
+						d.CorrelationId = id
+					}
+
+					// Set tags in trace
+					trace.SetTags(map[string]interface{}{
+						"queue":          consumeCfg.QueueName,
+						"consumer-tag":   d.ConsumerTag,
+						"routing-key":    d.RoutingKey,
+						"correlation-id": d.CorrelationId,
+						"message-id":     d.MessageId,
+						"priority":       d.Priority,
+						"type":           d.Type,
+						"redelivered":    d.Redelivered,
+					})
+
+					// Create fields
+					fields := map[string]interface{}{
+						"correlation_id": d.CorrelationId,
+						"consumer_tag":   d.ConsumerTag,
+						"routing_key":    d.RoutingKey,
+						"message_id":     d.MessageId,
+						"priority":       d.Priority,
+						"type":           d.Type,
+						"redelivered":    d.Redelivered,
+					}
+					// Check if trace id exists
+					if trace.GetTraceID() != "" {
+						// Set it in log
+						fields[log.LogTraceIDField] = trace.GetTraceID()
+					}
+					// Update
+					childLogger := logger.WithFields(fields)
+					// Create new context with logger
+					cbCtx = log.SetLoggerToContext(cbCtx, childLogger)
+					// Set trace in context
+					cbCtx = tracing.SetTraceToContext(cbCtx, trace)
+					// Set correlation id in context
+					cbCtx = correlationid.SetInContext(cbCtx, d.CorrelationId)
+
+					// Log
+					childLogger.Debug("start consuming message")
+
+					// Call handler
+					err = as.consumeDeliveryHandler(cbCtx, trace, &d, cb)
 					// Check error
 					if err != nil {
-						trace.MarkAsError()
+						childLogger.Error("message consumed failed with error")
+						childLogger.Error(err)
+
+						// Calculate Requeue option
+						// Initialize
+						requeue := true
+						// Check if option is set
+						if consumeCfg.RequeueOnNackFn != nil {
+							requeue = consumeCfg.RequeueOnNackFn(&d, err)
+						}
+
+						// Nack message
+						err = d.Nack(false, requeue)
+						// Check error
+						// This may arrive when worker is disconnected
+						if err != nil {
+							childLogger.Error("cannot nack consumed message")
+							childLogger.Error(err)
+							// Stop
+							return nil
+						}
+
+						// Increase failed counter
+						as.metricsSvc.IncreaseFailedAMQPConsumedMessage(
+							consumeCfg.QueueName,
+							d.ConsumerTag,
+							d.RoutingKey,
+						)
+					} else {
+						// Ack message
+						err = d.Ack(false)
+						// Check error
+						// This may arrive when worker is disconnected
+						if err != nil {
+							childLogger.Error("cannot ack consumed message")
+							childLogger.Error(err)
+							// Stop
+							return nil
+						}
+
+						childLogger.Info("message successfully consumed")
+						// Increase success counter
+						as.metricsSvc.IncreaseSuccessfullyAMQPConsumedMessage(
+							consumeCfg.QueueName,
+							d.ConsumerTag,
+							d.RoutingKey,
+						)
 					}
 
-					trace.Finish()
-				}()
-
-				// Check if correlation id is set
-				// Otherwise, create it
-				if d.CorrelationId == "" {
-					// Generate new id
-					id, err2 := correlationid.Generate()
-					// Check error
-					if err2 != nil {
-						return err2
-					}
-
-					// Save it
-					d.CorrelationId = id
+					// Default
+					return nil
 				}
-
-				// Set tags in trace
-				trace.SetTags(map[string]interface{}{
-					"queue":          consumeCfg.QueueName,
-					"consumer-tag":   d.ConsumerTag,
-					"routing-key":    d.RoutingKey,
-					"correlation-id": d.CorrelationId,
-					"message-id":     d.MessageId,
-					"priority":       d.Priority,
-					"type":           d.Type,
-					"redelivered":    d.Redelivered,
-				})
-
-				// Create fields
-				fields := map[string]interface{}{
-					"correlation_id": d.CorrelationId,
-					"consumer_tag":   d.ConsumerTag,
-					"routing_key":    d.RoutingKey,
-					"message_id":     d.MessageId,
-					"priority":       d.Priority,
-					"type":           d.Type,
-					"redelivered":    d.Redelivered,
-				}
-				// Check if trace id exists
-				if trace.GetTraceID() != "" {
-					// Set it in log
-					fields[log.LogTraceIDField] = trace.GetTraceID()
-				}
-				// Update
-				childLogger := logger.WithFields(fields)
-				// Create new context with logger
-				cbCtx = log.SetLoggerToContext(cbCtx, childLogger)
-				// Set trace in context
-				cbCtx = tracing.SetTraceToContext(cbCtx, trace)
-				// Set correlation id in context
-				cbCtx = correlationid.SetInContext(cbCtx, d.CorrelationId)
-
-				// Log
-				childLogger.Debug("start consuming message")
 
 				// Call handler
-				err = as.consumeDeliveryHandler(cbCtx, trace, &d, cb)
+				err := handler()
 				// Check error
 				if err != nil {
-					childLogger.Error("message consumed failed with error")
-					childLogger.Error(err)
-
-					// Calculate Requeue option
-					// Initialize
-					requeue := true
-					// Check if option is set
-					if consumeCfg.RequeueOnNackFn != nil {
-						requeue = consumeCfg.RequeueOnNackFn(&d, err)
-					}
-
-					// Nack message
-					err = d.Nack(false, requeue)
-					// Check error
-					// This may arrive when worker is disconnected
-					if err != nil {
-						childLogger.Error("cannot nack consumed message")
-						childLogger.Error(err)
-						// Stop
-						return nil
-					}
-
-					// Increase failed counter
-					as.metricsSvc.IncreaseFailedAMQPConsumedMessage(
-						consumeCfg.QueueName,
-						d.ConsumerTag,
-						d.RoutingKey,
-					)
-				} else {
-					// Ack message
-					err = d.Ack(false)
-					// Check error
-					// This may arrive when worker is disconnected
-					if err != nil {
-						childLogger.Error("cannot ack consumed message")
-						childLogger.Error(err)
-						// Stop
-						return nil
-					}
-
-					childLogger.Info("message successfully consumed")
-					// Increase success counter
-					as.metricsSvc.IncreaseSuccessfullyAMQPConsumedMessage(
-						consumeCfg.QueueName,
-						d.ConsumerTag,
-						d.RoutingKey,
-					)
+					logger.Error(err)
 				}
 
-				// Default
-				return nil
-			}
-
-			// Call handler
-			err := handler()
-			// Check error
-			if err != nil {
-				logger.Error(err)
-			}
-
-			// Decrease active request counter
-			as.signalHandlerSvc.DecreaseActiveRequestCounter()
+				// Decrease active request counter
+				as.signalHandlerSvc.DecreaseActiveRequestCounter()
+			}(d)
 		}
 	}
 }
