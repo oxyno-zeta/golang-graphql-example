@@ -206,6 +206,7 @@ setup/metrics-services: down/metrics-services
 .PHONY: setup/services
 setup/services: down/services
 	@echo "Setup services"
+	mkdir -p .run/postgres || true
 	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/.run/postgres:/var/lib/postgresql/data postgres:16
 	tar czvf .local-resources/opa/bundle.tar.gz --directory=.local-resources/opa/bundle example/
 	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:0.25.2 run --server --log-level debug --log-format text --bundle /bundle.tar.gz
