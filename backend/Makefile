@@ -54,11 +54,11 @@ DEFAULT_CONTAINER_RUNTIME ?= podman
 #############
 
 .PHONY: code/lint
-code/lint: setup/dep/install
+code/lint: setup/dep/install setup/dep/lint/install
 	golangci-lint run ./...
 
 .PHONY: code/lint/gitlab
-code/lint/gitlab: setup/dep/install
+code/lint/gitlab: setup/dep/install setup/dep/lint/install
 	golangci-lint run ./... --out-format code-climate:gl-code-quality-report.json,line-number
 
 .PHONY: code/fieldalignment
@@ -75,11 +75,11 @@ code/graphql/no-break-check:  code/graphql/concat
 	graphql-inspector diff 'git:origin/master:./tools/graphql-inspector/validation.graphql' './tools/graphql-inspector/validation.graphql'
 
 .PHONY: code/graphql/generate
-code/graphql/generate:
+code/graphql/generate: setup/dep/gen/install
 	gqlgen generate
 
 .PHONY: code/generate
-code/generate:
+code/generate: setup/dep/gen/install
 	$(GO) $(GO_VENDOR) generate ./...
 
 .PHONY: code/graphql
@@ -143,23 +143,23 @@ endif
 #############
 
 .PHONY: test/all
-test/all: setup/dep/install setup/test/integration
+test/all: setup/dep/install setup/dep/test/install setup/test/integration
 	gotestsum --format testname --format-hide-empty-pkg  --junitfile junit.xml -- -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/all/original
-test/all/original: setup/dep/install setup/test/integration
+test/all/original: setup/dep/install setup/dep/test/install setup/test/integration
 	$(GO) test -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/unit
-test/unit: setup/dep/install
+test/unit: setup/dep/install setup/dep/test/install
 	$(GO) test $(GO_VENDOR) --tags=unit -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/integration
-test/integration: setup/dep/install setup/test/integration
+test/integration: setup/dep/install setup/dep/test/install setup/test/integration
 	$(GO) test -p 1 $(GO_VENDOR) --tags=integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/coverage
-test/coverage:
+test/coverage: setup/dep/test/install
 	cat c.out.tmp | grep -v "mock_" | grep -v "generated" > c.out
 	$(GO) tool cover -html=c.out -o coverage.html
 	$(GO) tool cover -func c.out
