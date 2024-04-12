@@ -62,7 +62,7 @@ code/lint/gitlab: setup/dep/install setup/dep/lint/install
 	golangci-lint run ./... --out-format code-climate:gl-code-quality-report.json,line-number
 
 .PHONY: code/fieldalignment
-code/fieldalignment: setup/dep/install
+code/fieldalignment: setup/dep/install setup/dep/gen/install
 	fieldalignment -fix -test=false ./...
 
 .PHONY: code/graphql/concat
