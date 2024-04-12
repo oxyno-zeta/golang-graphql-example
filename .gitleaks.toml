@@ -7,4 +7,8 @@ paths = [
     '''.*\/.local-resources\/.*''',
     '''.*\/.yarn\/.*''',
     '''.*\/.vite-cache\/.*''',
+    '''.run\/.*''',
+    '''.local-resources\/.*''',
+    '''.yarn\/.*''',
+    '''.vite-cache\/.*''',
 ]
