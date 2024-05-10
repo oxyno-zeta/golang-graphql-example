@@ -8614,11 +8614,11 @@ __metadata:
   linkType: hard
 
 "i18next@npm:^23.10.1":
-  version: 23.10.1
-  resolution: "i18next@npm:23.10.1"
+  version: 23.11.4
+  resolution: "i18next@npm:23.11.4"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/e4cfb143bdb6fd343f68749a40cf562aa47f11c7af0243c0533868ae097912c3ddd6c384eb4116d1fced024a91279424abd8c2d1f694bbf304c42ebe3968ecca
+  checksum: 10/399314e2b53658d436801ce78a3c226e7a9fdc51db5320104c9337750dd84fdb6556601ec98c5114d81110c7026f845efea2086b4a972e4ece70da741e44581d
   languageName: node
   linkType: hard
 
