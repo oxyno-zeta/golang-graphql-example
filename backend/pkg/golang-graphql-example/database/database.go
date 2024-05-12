@@ -20,7 +20,7 @@ const (
 //go:generate mockgen -destination=./mocks/mock_DB.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database DB
 type DB interface {
 	// ExecuteTransaction will execute a transaction.
-	ExecuteTransaction(ctx context.Context, cb func(context.Context) error) error
+	ExecuteTransaction(ctx context.Context, cb func(context.Context) error, opts ...TransactionOption) error
 	// GetTransactionalOrDefaultGormDB will return a transactional gorm db if it exists in context, otherwise the default db.
 	GetTransactionalOrDefaultGormDB(ctx context.Context) *gorm.DB
 	// Get Gorm db object.

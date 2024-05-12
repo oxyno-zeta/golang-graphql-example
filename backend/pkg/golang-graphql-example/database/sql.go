@@ -53,7 +53,7 @@ func GetTransactionalGormDBFromContext(ctx context.Context) *gorm.DB {
 	return res
 }
 
-func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Context) error) error {
+func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Context) error, opts ...TransactionOption) error {
 	// Create transaction callback
 	txCb := func(tx *gorm.DB) (err error) {
 		// Get parent trace
@@ -77,7 +77,28 @@ func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Contex
 		return cb(newCtx)
 	}
 
-	return sdb.db.Transaction(txCb)
+	// Create options
+	optCfg := &TransactionOptionsConfig{}
+	// Apply options
+	for _, fn := range opts {
+		fn(optCfg)
+	}
+
+	db := sdb.db
+	sqlOpts := &sql.TxOptions{}
+	// Apply clauses for read transaction
+	if optCfg.ReadTransaction {
+		db = db.Clauses(dbresolver.Read)
+		// Mark sql options too
+		sqlOpts.ReadOnly = true
+	} else {
+		db = db.Clauses(dbresolver.Write)
+	}
+
+	// Add isolation
+	sqlOpts.Isolation = optCfg.IsolationLevel
+
+	return db.Transaction(txCb, sqlOpts)
 }
 
 func (sdb *sqldb) GetTransactionalOrDefaultGormDB(ctx context.Context) *gorm.DB {

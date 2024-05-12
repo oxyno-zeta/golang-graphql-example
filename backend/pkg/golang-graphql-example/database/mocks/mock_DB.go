@@ -14,6 +14,7 @@ import (
 	sql "database/sql"
 	reflect "reflect"
 
+	database "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	gomock "go.uber.org/mock/gomock"
 	gorm "gorm.io/gorm"
 )
@@ -70,17 +71,22 @@ func (mr *MockDBMockRecorder) Connect() *gomock.Call {
 }
 
 // ExecuteTransaction mocks base method.
-func (m *MockDB) ExecuteTransaction(arg0 context.Context, arg1 func(context.Context) error) error {
+func (m *MockDB) ExecuteTransaction(arg0 context.Context, arg1 func(context.Context) error, arg2 ...database.TransactionOption) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ExecuteTransaction", arg0, arg1)
+	varargs := []any{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "ExecuteTransaction", varargs...)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // ExecuteTransaction indicates an expected call of ExecuteTransaction.
-func (mr *MockDBMockRecorder) ExecuteTransaction(arg0, arg1 any) *gomock.Call {
+func (mr *MockDBMockRecorder) ExecuteTransaction(arg0, arg1 any, arg2 ...any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExecuteTransaction", reflect.TypeOf((*MockDB)(nil).ExecuteTransaction), arg0, arg1)
+	varargs := append([]any{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExecuteTransaction", reflect.TypeOf((*MockDB)(nil).ExecuteTransaction), varargs...)
 }
 
 // GetGormDB mocks base method.
