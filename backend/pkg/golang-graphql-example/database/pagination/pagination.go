@@ -1,7 +1,10 @@
 package pagination
 
 import (
+	"context"
+
 	"emperror.dev/errors"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"gorm.io/gorm"
 )
@@ -23,8 +26,8 @@ type PageOutput struct {
 
 // PagingOptions represents pagination options.
 type PagingOptions struct {
-	// Gorm database
-	DB *gorm.DB
+	// DB Service
+	DBSvc database.DB
 	// Pagination input
 	PageInput *PageInput
 	// Must be a pointer to an object with *SortOrderEnum objects with tags
@@ -35,6 +38,8 @@ type PagingOptions struct {
 	Projection interface{}
 	// This function is called after filters and before any sorts
 	ExtraFunc func(db *gorm.DB) (*gorm.DB, error)
+	// Transaction options
+	TOpts []database.TransactionOption
 }
 
 // Paging function in order to have a paginated sorted and filters list of objects.
@@ -43,6 +48,7 @@ type PagingOptions struct {
 // - options: Pagination options
 // .
 func Paging(
+	ctx context.Context,
 	result interface{},
 	options *PagingOptions,
 ) (*PageOutput, error) {
@@ -54,8 +60,20 @@ func Paging(
 	// Initialize
 	var count int64
 
+	// Create local transaction options
+	localTOpts := options.TOpts
+	// Check if nil
+	if localTOpts == nil {
+		// Init it
+		localTOpts = make([]database.TransactionOption, 0)
+	}
+	// Add local options
+	localTOpts = append(localTOpts, database.WithReadTransactionOpt)
+
 	// Create transaction to avoid situations where count and find are different
-	err := options.DB.Transaction(func(db *gorm.DB) error {
+	err := options.DBSvc.ExecuteTransaction(ctx, func(ctx context.Context) error {
+		// Get gorm db
+		db := options.DBSvc.GetTransactionalOrDefaultGormDB(ctx)
 		// Apply filter
 		db, err := common.ManageFilter(options.Filter, db)
 		// Check error
@@ -101,7 +119,7 @@ func Paging(
 		}
 
 		return nil
-	})
+	}, localTOpts...)
 
 	// Check error
 	if err != nil {

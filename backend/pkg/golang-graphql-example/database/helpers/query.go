@@ -179,16 +179,16 @@ func GetAllPaginated[T any](
 	sort interface{},
 	filter interface{},
 	projection interface{},
+	tOpts ...database.TransactionOption,
 ) ([]T, *pagination.PageOutput, error) {
-	// Get gorm db
-	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
 	// Find
-	pageOut, err := pagination.Paging(&res, &pagination.PagingOptions{
-		DB:         gdb,
+	pageOut, err := pagination.Paging(ctx, &res, &pagination.PagingOptions{
+		DBSvc:      db,
 		PageInput:  page,
 		Filter:     filter,
 		Sort:       sort,
 		Projection: projection,
+		TOpts:      tOpts,
 	})
 	// Check error
 	if err != nil {

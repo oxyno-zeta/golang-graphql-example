@@ -3,18 +3,25 @@
 package pagination
 
 import (
+	"context"
 	"database/sql/driver"
 	"errors"
 	"reflect"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
+
+type DBSvcTest interface {
+	database.DB
+	SetGormDB(*gorm.DB)
+}
 
 func TestPaging(t *testing.T) {
 	type Person struct{ Name string }
@@ -171,6 +178,16 @@ func TestPaging(t *testing.T) {
 				return
 			}
 
+			// Create mock controller
+			// ctrl := gomock.NewController(t)
+			officialDBSvc := database.NewDatabase("test", nil, nil, nil, nil, nil)
+			// Cheat mode to inject a custom gorm db instance
+			dbSvc, ok := officialDBSvc.(DBSvcTest)
+			if !ok {
+				panic("perdu")
+			}
+			dbSvc.SetGormDB(db)
+
 			// Create expected query
 			countExpectedQuery := `SELECT count(*) FROM "people" ` + tt.countExpectedIntermediateQuery
 			// Create expected query
@@ -192,8 +209,8 @@ func TestPaging(t *testing.T) {
 
 			res := make([]*Person, 0)
 
-			got, err := Paging(&res, &PagingOptions{
-				DB:         db,
+			got, err := Paging(context.TODO(), &res, &PagingOptions{
+				DBSvc:      dbSvc,
 				PageInput:  tt.args.p,
 				Sort:       tt.args.sort,
 				Filter:     tt.args.filter,
