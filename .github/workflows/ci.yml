@@ -52,13 +52,13 @@ jobs:
       - changes
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
-          go-version: "^1.21.0"
-      - uses: golangci/golangci-lint-action@v3
+          go-version: "^1.22.0"
+      - uses: golangci/golangci-lint-action@v6
         with:
           # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
-          version: v1.57.2
+          version: v1.58.1
 
           # Optional: working directory, useful for monorepos
           working-directory: backend
@@ -87,9 +87,9 @@ jobs:
       - backend-lint
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
-          go-version: "^1.21.0"
+          go-version: "^1.22.0"
       - run: cd backend && make code/build
   backend-build-cross:
     if: |
@@ -106,9 +106,9 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
-          go-version: "^1.21.0"
+          go-version: "^1.22.0"
       - run: cd backend && make code/build-cross
   backend-test:
     if: |
@@ -122,9 +122,9 @@ jobs:
       DEFAULT_CONTAINER_RUNTIME: docker
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
-          go-version: "^1.21.0"
+          go-version: "^1.22.0"
       - run: |
           if [ -f /usr/local/bin/dockerize ]; then
             echo "dockerize found; skipping installation";
