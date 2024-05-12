@@ -9,17 +9,20 @@ export default function getDataGridCommonProps(t: (d: string) => string | undefi
     sx: {
       border: '0px',
       borderRadius: '0px',
+      '& .MuiDataGrid-cell': { display: 'flex', alignItems: 'center' },
       '& .MuiDataGrid-cell:focus': { outline: 'none' },
       '& .MuiDataGrid-cell:focus-within': { outline: 'none' },
       '& .MuiDataGrid-cell:focus-visible': { outline: 'none' },
       '& .MuiDataGrid-columnHeader:focus': { outline: 'none' },
       '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
       '& .MuiDataGrid-columnHeader:focus-visible': { outline: 'none' },
-      '& .MuiDataGrid-columnHeaders': {
-        backgroundColor: (theme: Theme) =>
-          theme.palette.mode === 'light' ? theme.palette.grey['200'] : theme.palette.grey['800'],
+      '& .MuiDataGrid-virtualScroller:first-of-type': {
         borderTopLeftRadius: '0px',
         borderTopRightRadius: '0px',
+      },
+      '& .MuiDataGrid-columnHeader': {
+        backgroundColor: (theme: Theme) =>
+          theme.palette.mode === 'light' ? theme.palette.grey['200'] : theme.palette.grey['800'],
       },
       ...sx,
     },
