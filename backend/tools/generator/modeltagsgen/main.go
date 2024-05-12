@@ -26,7 +26,7 @@ func main() {
 	var rootCmd = &cobra.Command{
 		Use:   "modeltagsgen [package] [model]",
 		Short: "used to generate constants from tag models",
-		Args:  cobra.MinimumNArgs(2), //nolint:gomnd // No const
+		Args:  cobra.MinimumNArgs(2), //nolint:mnd // No const
 		Run: func(_ *cobra.Command, args []string) {
 			// Put args into structure
 			input := &inputData{

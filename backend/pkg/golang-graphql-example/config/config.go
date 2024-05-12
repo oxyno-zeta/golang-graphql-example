@@ -76,7 +76,7 @@ type AMQPConnectionConfig struct {
 	Password          *CredentialConfig      `mapstructure:"password"          validate:"required_with=Username"`
 	ExtraArgs         map[string]interface{} `mapstructure:"extraArgs"`
 	HeartbeatDuration string                 `mapstructure:"heartbeatDuration"`
-	ChannelMax        int                    `mapstructure:"channelMax"`
+	ChannelMax        uint16                 `mapstructure:"channelMax"`
 	FrameSize         int                    `mapstructure:"frameSize"`
 }
 

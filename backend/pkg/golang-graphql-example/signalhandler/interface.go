@@ -45,6 +45,6 @@ func NewService(logger log.Logger, serverMode bool, signalListToNotify []os.Sign
 		hooksStorage:             map[os.Signal][]func(){},
 		onExitHookStorage:        []func(){},
 		activeRequestCounter:     0,
-		activeRequestCounterChan: make(chan int64, 100), //nolint:gomnd// Ignore this
+		activeRequestCounterChan: make(chan int64, 100), //nolint:mnd// Ignore this
 	}
 }

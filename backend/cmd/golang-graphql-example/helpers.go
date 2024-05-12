@@ -13,7 +13,7 @@ func GenerateInternalServer(sv *services) (*server.InternalServer, error) {
 	intSvr.AddChecker(&server.CheckerInput{
 		Name:     "database",
 		CheckFn:  sv.db.Ping,
-		Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
+		Interval: 2 * time.Second, //nolint:mnd // Won't do a const for that
 		Timeout:  time.Second,
 	})
 	// Add checker for email service
@@ -22,8 +22,8 @@ func GenerateInternalServer(sv *services) (*server.InternalServer, error) {
 		CheckFn: sv.mailSvc.Check,
 		// Interval is long because it takes a lot of time to connect SMTP server (can be 1 second).
 		// Moreover, connect 6 time per minute should be ok.
-		Interval: 10 * time.Second, //nolint:gomnd // Won't do a const for that
-		Timeout:  3 * time.Second,  //nolint:gomnd // Won't do a const for that
+		Interval: 10 * time.Second, //nolint:mnd // Won't do a const for that
+		Timeout:  3 * time.Second,  //nolint:mnd // Won't do a const for that
 	})
 
 	// Check if amqp service exists
@@ -32,7 +32,7 @@ func GenerateInternalServer(sv *services) (*server.InternalServer, error) {
 		intSvr.AddChecker(&server.CheckerInput{
 			Name:     "amqp",
 			CheckFn:  sv.amqpSvc.Ping,
-			Interval: 2 * time.Second, //nolint:gomnd // Won't do a const for that
+			Interval: 2 * time.Second, //nolint:mnd // Won't do a const for that
 			Timeout:  time.Second,
 		})
 	}
