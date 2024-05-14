@@ -3743,7 +3743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/test@npm:8.0.10":
+"@storybook/test@npm:8.0.10, @storybook/test@npm:^8.0.10":
   version: 8.0.10
   resolution: "@storybook/test@npm:8.0.10"
   dependencies:
@@ -12668,16 +12668,17 @@ __metadata:
   linkType: hard
 
 "storybook-react-i18next@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "storybook-react-i18next@npm:3.0.1"
+  version: 3.1.1
+  resolution: "storybook-react-i18next@npm:3.1.1"
   dependencies:
+    "@storybook/test": "npm:^8.0.10"
     storybook-i18n: "npm:^3.0.1"
   peerDependencies:
     i18next: ^22.0.0 || ^23.0.0 || ^24.0.0
-    i18next-browser-languagedetector: ^7.0.0
+    i18next-browser-languagedetector: ^7.0.0 || ^8.0.0
     i18next-http-backend: ^2.0.0
     react-i18next: ^12.0.0 || ^13.0.0 || ^14.0.0
-  checksum: 10/616322cb26c271a4078eca7b79e163711a684deb1782f2a54982ae491fc3873f1afbf748a30ee703ef44e10972ac040930e677ce8b0725bf733ded4432f725da
+  checksum: 10/f6a397f580bc6f003d6385200e0e66d4639b0f7ec4a6c36f4eb6495d739ba5b29c08d81b1839eac7f44fc49ecd571241f129f61c62ad18a463d3b0095feee919
   languageName: node
   linkType: hard
 
