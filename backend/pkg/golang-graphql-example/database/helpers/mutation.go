@@ -5,6 +5,7 @@ import (
 
 	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 )
 
 func CreateOrUpdate[T any](
@@ -89,4 +90,42 @@ func PatchUpdate[T any](
 
 	// Return result
 	return originalObject, nil
+}
+
+/**
+ * PatchUpdateAllFiltered will update specific columns filtered on where.
+ * Params:
+ * - ctx context
+ * - model Empty object to have object column (!! This is different from PatchUpdate function !!)
+ * - input is a map with gorm key with values that should be updated.
+ * - filter is a filter object that will be used to filter lines where to apply patch.
+ */
+func PatchUpdateAllFiltered[T any](
+	ctx context.Context,
+	model T,
+	input map[string]interface{},
+	filter interface{},
+	db database.DB,
+) error {
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Updates
+	dbres := gdb.Model(model).Updates(input)
+
+	// Check error
+	err = dbres.Error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Return result
+	return nil
 }

@@ -10,6 +10,7 @@ import (
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	dbmocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/mocks"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
@@ -153,6 +154,137 @@ func TestUpdate(t *testing.T) {
 				return
 			}
 			assert.Equal(t, tt.want, got)
+		})
+	}
+}
+
+func TestPatchUpdateAllFiltered(t *testing.T) {
+	now := time.Now()
+
+	type People struct {
+		database.Base
+		Name       string
+		FullName   string `gorm:"column:full__name"`
+		LoggedOnce bool
+	}
+	type Filter struct {
+		Name       *common.GenericFilter `dbfield:"name"`
+		FullName   *common.GenericFilter `dbfield:"full__name"`
+		LoggedOnce *common.GenericFilter `dbfield:"logged_once"`
+		AND        []*Filter
+		OR         []*Filter
+	}
+	type args struct {
+		model  interface{}
+		input  map[string]interface{}
+		filter interface{}
+	}
+	tests := []struct {
+		name             string
+		args             args
+		wantErr          bool
+		errorString      string
+		expectedSQLQuery string
+		expectedSQLArgs  []driver.Value
+	}{
+		{
+			name: "1 simple field",
+			args: args{
+				model: &People{},
+				input: map[string]interface{}{"name": "updated"},
+				filter: &Filter{
+					OR: []*Filter{
+						{Name: &common.GenericFilter{Eq: "fake"}},
+						{LoggedOnce: &common.GenericFilter{Eq: true}},
+					},
+				},
+			},
+			expectedSQLQuery: `UPDATE "peoples" SET "name"=$1,"updated_at"=$2 WHERE name = $3 OR logged_once = $4`,
+			expectedSQLArgs:  []driver.Value{"updated", now, "fake", true},
+		},
+		{
+			name: "1 custom field",
+			args: args{
+				model: &People{},
+				input: map[string]interface{}{"full__name": "updated"},
+				filter: &Filter{
+					OR: []*Filter{
+						{Name: &common.GenericFilter{Eq: "fake"}},
+						{LoggedOnce: &common.GenericFilter{Eq: true}},
+					},
+				},
+			},
+			expectedSQLQuery: `UPDATE "peoples" SET "full__name"=$1,"updated_at"=$2 WHERE name = $3 OR logged_once = $4`,
+			expectedSQLArgs:  []driver.Value{"updated", now, "fake", true},
+		},
+		{
+			name: "2 simple fields",
+			args: args{
+				model: &People{},
+				input: map[string]interface{}{"name": "updated", "logged_once": false},
+				filter: &Filter{
+					OR: []*Filter{
+						{Name: &common.GenericFilter{Eq: "fake"}},
+						{LoggedOnce: &common.GenericFilter{Eq: true}},
+					},
+				},
+			},
+			expectedSQLQuery: `UPDATE "peoples" SET "logged_once"=$1,"name"=$2,"updated_at"=$3 WHERE name = $4 OR logged_once = $5`,
+			expectedSQLArgs:  []driver.Value{false, "updated", now, "fake", true},
+		},
+		{
+			name: "1 custom and 1 simple field",
+			args: args{
+				model: &People{},
+				input: map[string]interface{}{"full__name": "updated", "name": "updated"},
+				filter: &Filter{
+					OR: []*Filter{
+						{Name: &common.GenericFilter{Eq: "fake"}},
+						{LoggedOnce: &common.GenericFilter{Eq: true}},
+					},
+				},
+			},
+			expectedSQLQuery: `UPDATE "peoples" SET "full__name"=$1,"name"=$2,"updated_at"=$3 WHERE name = $4 OR logged_once = $5`,
+			expectedSQLArgs:  []driver.Value{"updated", "updated", now, "fake", true},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			defer sqlDB.Close()
+
+			db, err := gorm.Open(postgres.New(postgres.Config{Conn: sqlDB}), &gorm.Config{Logger: logger.Discard, NowFunc: func() time.Time {
+				return now
+			}})
+			if err != nil {
+				t.Error(err)
+				return
+			}
+
+			ctrl := gomock.NewController(t)
+			dbSvc := dbmocks.NewMockDB(ctrl)
+			dbSvc.EXPECT().GetTransactionalOrDefaultGormDB(gomock.Any()).AnyTimes().Return(db)
+
+			mock.ExpectBegin()
+			mock.ExpectExec(tt.expectedSQLQuery).
+				WithArgs(tt.expectedSQLArgs...).
+				WillReturnResult(sqlmock.NewResult(0, 1))
+			mock.ExpectCommit()
+
+			ctx := context.TODO()
+			err = PatchUpdateAllFiltered(ctx, tt.args.model, tt.args.input, tt.args.filter, dbSvc)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("PatchUpdateAllFiltered() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if err != nil && err.Error() != tt.errorString {
+				t.Errorf("PatchUpdateAllFiltered() error = %v, wantErr %v", err, tt.errorString)
+				return
+			}
 		})
 	}
 }
