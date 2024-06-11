@@ -234,6 +234,7 @@ func FindOne[T any](
 	ctx context.Context,
 	res T,
 	db database.DB,
+	sort interface{},
 	filter interface{},
 	projection interface{},
 ) (T, error) {
@@ -241,6 +242,13 @@ func FindOne[T any](
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
 	// Apply filter
 	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return *new(T), err
+	}
+
+	// Apply sort
+	gdb, err = common.ManageSortOrder(sort, gdb)
 	// Check error
 	if err != nil {
 		return *new(T), err
