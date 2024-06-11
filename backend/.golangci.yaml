@@ -386,9 +386,6 @@ linters:
     - sloglint
     - testifylint
   disable:
-    - deadcode
-    - varcheck
-    - structcheck
     - prealloc
     - gochecknoglobals
     - gocyclo
@@ -399,12 +396,10 @@ linters:
     - gci
     - err113 # Forbid dynamic errors
     - nestif
-    - scopelint
     - ireturn
     - varnamelen
     - maintidx
     - exhaustruct
-    - nosnakecase
     - interfacebloat
     - zerologlint
     - depguard
