@@ -533,26 +533,9 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -567,6 +550,24 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -1854,26 +1855,9 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -1888,6 +1872,24 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -3587,26 +3589,9 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -3621,6 +3606,24 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -5320,26 +5323,9 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
   width: 100%;
 }
 
-.emotion-38.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-38:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-38 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-38 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-38 .MuiAutocomplete-inputRoot,
@@ -5354,6 +5340,24 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 .emotion-38 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-38.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-38.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-38:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-38:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-38 .MuiInput-root {
@@ -7149,26 +7153,9 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -7183,6 +7170,24 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -7814,6 +7819,164 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-25:focus::-ms-input-
   }
 }
 
+.emotion-51 {
+  width: 100%;
+}
+
+.emotion-51 .MuiAutocomplete-tag {
+  margin: 3px;
+  max-width: calc(100% - 6px);
+}
+
+.MuiAutocomplete-hasPopupIcon.emotion-51 .MuiAutocomplete-inputRoot,
+.MuiAutocomplete-hasClearIcon.emotion-51 .MuiAutocomplete-inputRoot {
+  padding-right: 30px;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.emotion-51 .MuiAutocomplete-inputRoot {
+  padding-right: 56px;
+}
+
+.emotion-51 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
+  width: 0;
+  min-width: 30px;
+}
+
+.emotion-51.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-51.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-51:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-51:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
+}
+
+.emotion-51 .MuiInput-root {
+  padding-bottom: 1px;
+}
+
+.emotion-51 .MuiInput-root .MuiInput-input {
+  padding: 4px 4px 4px 0px;
+}
+
+.emotion-51 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input {
+  padding: 2px 4px 3px 0;
+}
+
+.emotion-51 .MuiOutlinedInput-root {
+  padding: 9px;
+}
+
+.MuiAutocomplete-hasPopupIcon.emotion-51 .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.emotion-51 .MuiOutlinedInput-root {
+  padding-right: 39px;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.emotion-51 .MuiOutlinedInput-root {
+  padding-right: 65px;
+}
+
+.emotion-51 .MuiOutlinedInput-root .MuiAutocomplete-input {
+  padding: 7.5px 4px 7.5px 5px;
+}
+
+.emotion-51 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
+  right: 9px;
+}
+
+.emotion-51 .MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+}
+
+.emotion-51 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
+  padding: 2.5px 4px 2.5px 8px;
+}
+
+.emotion-51 .MuiFilledInput-root {
+  padding-top: 19px;
+  padding-left: 8px;
+}
+
+.MuiAutocomplete-hasPopupIcon.emotion-51 .MuiFilledInput-root,
+.MuiAutocomplete-hasClearIcon.emotion-51 .MuiFilledInput-root {
+  padding-right: 39px;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.emotion-51 .MuiFilledInput-root {
+  padding-right: 65px;
+}
+
+.emotion-51 .MuiFilledInput-root .MuiFilledInput-input {
+  padding: 7px 4px;
+}
+
+.emotion-51 .MuiFilledInput-root .MuiAutocomplete-endAdornment {
+  right: 9px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-sizeSmall {
+  padding-bottom: 1px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input {
+  padding: 2.5px 4px;
+}
+
+.emotion-51 .MuiInputBase-hiddenLabel {
+  padding-top: 8px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-hiddenLabel {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-hiddenLabel .MuiAutocomplete-input {
+  padding-top: 16px;
+  padding-bottom: 17px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-hiddenLabel.MuiInputBase-sizeSmall .MuiAutocomplete-input {
+  padding-top: 8px;
+  padding-bottom: 9px;
+}
+
+.emotion-51 .MuiAutocomplete-input {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-51 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-51 .MuiAutocomplete-input {
+  opacity: 1;
+}
+
+.emotion-51 .MuiAutocomplete-inputRoot {
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
 .emotion-54 {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -8431,7 +8594,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-58:focus::-ms-input-
             class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4 emotion-35"
           >
             <div
-              class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-21"
+              class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-51"
             >
               <div
                 class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root emotion-22"
@@ -9088,26 +9251,9 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -9122,6 +9268,24 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -9753,6 +9917,164 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-25:focus::-ms-input-
   }
 }
 
+.emotion-51 {
+  width: 100%;
+}
+
+.emotion-51 .MuiAutocomplete-tag {
+  margin: 3px;
+  max-width: calc(100% - 6px);
+}
+
+.MuiAutocomplete-hasPopupIcon.emotion-51 .MuiAutocomplete-inputRoot,
+.MuiAutocomplete-hasClearIcon.emotion-51 .MuiAutocomplete-inputRoot {
+  padding-right: 30px;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.emotion-51 .MuiAutocomplete-inputRoot {
+  padding-right: 56px;
+}
+
+.emotion-51 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
+  width: 0;
+  min-width: 30px;
+}
+
+.emotion-51.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-51.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-51:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-51:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
+}
+
+.emotion-51 .MuiInput-root {
+  padding-bottom: 1px;
+}
+
+.emotion-51 .MuiInput-root .MuiInput-input {
+  padding: 4px 4px 4px 0px;
+}
+
+.emotion-51 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input {
+  padding: 2px 4px 3px 0;
+}
+
+.emotion-51 .MuiOutlinedInput-root {
+  padding: 9px;
+}
+
+.MuiAutocomplete-hasPopupIcon.emotion-51 .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.emotion-51 .MuiOutlinedInput-root {
+  padding-right: 39px;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.emotion-51 .MuiOutlinedInput-root {
+  padding-right: 65px;
+}
+
+.emotion-51 .MuiOutlinedInput-root .MuiAutocomplete-input {
+  padding: 7.5px 4px 7.5px 5px;
+}
+
+.emotion-51 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
+  right: 9px;
+}
+
+.emotion-51 .MuiOutlinedInput-root.MuiInputBase-sizeSmall {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+}
+
+.emotion-51 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input {
+  padding: 2.5px 4px 2.5px 8px;
+}
+
+.emotion-51 .MuiFilledInput-root {
+  padding-top: 19px;
+  padding-left: 8px;
+}
+
+.MuiAutocomplete-hasPopupIcon.emotion-51 .MuiFilledInput-root,
+.MuiAutocomplete-hasClearIcon.emotion-51 .MuiFilledInput-root {
+  padding-right: 39px;
+}
+
+.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.emotion-51 .MuiFilledInput-root {
+  padding-right: 65px;
+}
+
+.emotion-51 .MuiFilledInput-root .MuiFilledInput-input {
+  padding: 7px 4px;
+}
+
+.emotion-51 .MuiFilledInput-root .MuiAutocomplete-endAdornment {
+  right: 9px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-sizeSmall {
+  padding-bottom: 1px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input {
+  padding: 2.5px 4px;
+}
+
+.emotion-51 .MuiInputBase-hiddenLabel {
+  padding-top: 8px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-hiddenLabel {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-hiddenLabel .MuiAutocomplete-input {
+  padding-top: 16px;
+  padding-bottom: 17px;
+}
+
+.emotion-51 .MuiFilledInput-root.MuiInputBase-hiddenLabel.MuiInputBase-sizeSmall .MuiAutocomplete-input {
+  padding-top: 8px;
+  padding-bottom: 9px;
+}
+
+.emotion-51 .MuiAutocomplete-input {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  opacity: 0;
+}
+
+.emotion-51 .MuiAutocomplete-tag {
+  margin: 2px;
+  max-width: calc(100% - 4px);
+}
+
+.emotion-51 .MuiAutocomplete-input {
+  opacity: 1;
+}
+
+.emotion-51 .MuiAutocomplete-inputRoot {
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
 .emotion-53 {
   color: rgba(0, 0, 0, 0.6);
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -10144,7 +10466,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-25:focus::-ms-input-
             class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4 emotion-35"
           >
             <div
-              class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasPopupIcon emotion-21"
+              class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasPopupIcon emotion-51"
             >
               <div
                 class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root emotion-22"
@@ -10763,26 +11085,9 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -10797,6 +11102,24 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -12708,26 +13031,9 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -12742,6 +13048,24 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -14416,26 +14740,9 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -14450,6 +14757,24 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -16390,26 +16715,9 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
   max-width: 300px;
 }
 
-.emotion-1.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-1:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-1 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-1 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-1 .MuiAutocomplete-inputRoot,
@@ -16424,6 +16732,24 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
 .emotion-1 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-1.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-1.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-1:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-1:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-1 .MuiInput-root {
@@ -17407,26 +17733,9 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   width: 100%;
 }
 
-.emotion-30.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-30:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-30 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-30 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-30 .MuiAutocomplete-inputRoot,
@@ -17441,6 +17750,24 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 .emotion-30 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-30.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-30.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-30:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-30:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-30 .MuiInput-root {
@@ -18483,26 +18810,9 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
   max-width: 300px;
 }
 
-.emotion-1.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-1:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-1 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-1 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-1 .MuiAutocomplete-inputRoot,
@@ -18517,6 +18827,24 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
 .emotion-1 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-1.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-1.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-1:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-1:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-1 .MuiInput-root {
@@ -19613,26 +19941,9 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   width: 100%;
 }
 
-.emotion-35.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-35:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-35 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-35 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-35 .MuiAutocomplete-inputRoot,
@@ -19647,6 +19958,24 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 .emotion-35 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-35.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-35.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-35:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-35:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-35 .MuiInput-root {
@@ -20932,26 +21261,9 @@ exports[`filters/internal/FilterForm should be ok to just display no initial fil
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -20966,6 +21278,24 @@ exports[`filters/internal/FilterForm should be ok to just display no initial fil
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -22253,26 +22583,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -22287,6 +22600,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -24288,26 +24619,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -24322,6 +24636,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -26626,26 +26958,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -26660,6 +26975,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -29059,26 +29392,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -29093,6 +29409,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -31522,26 +31856,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -31556,6 +31873,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -33922,26 +34257,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -33956,6 +34274,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -36625,26 +36961,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -36659,6 +36978,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -39423,26 +39760,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -39457,6 +39777,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -42251,26 +42589,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -42285,6 +42606,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -45016,26 +45355,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -45050,6 +45372,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -47781,26 +48121,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -47815,6 +48138,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -50450,26 +50791,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -50484,6 +50808,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -52485,26 +52827,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -52519,6 +52844,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -55154,26 +55497,9 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -55188,6 +55514,24 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -57823,26 +58167,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -57857,6 +58184,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -59858,26 +60203,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -59892,6 +60220,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -62100,26 +62446,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -62134,6 +62463,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -64437,26 +64784,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -64471,6 +64801,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -66804,26 +67152,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -66838,6 +67169,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -69108,26 +69457,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -69142,6 +69474,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -71412,26 +71762,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -71446,6 +71779,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -73447,26 +73798,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -73481,6 +73815,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -75482,26 +75834,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -75516,6 +75851,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
@@ -77517,26 +77870,9 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
   width: 100%;
 }
 
-.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-@media (pointer: fine) {
-  .emotion-21:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-}
-
 .emotion-21 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
-}
-
-.emotion-21 .MuiAutocomplete-inputRoot {
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .MuiAutocomplete-hasPopupIcon.emotion-21 .MuiAutocomplete-inputRoot,
@@ -77551,6 +77887,24 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 .emotion-21 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+.emotion-21.Mui-focused .MuiAutocomplete-input {
+  min-width: 0;
+}
+
+@media (pointer: fine) {
+  .emotion-21:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+
+  .emotion-21:hover .MuiAutocomplete-input {
+    min-width: 0;
+  }
 }
 
 .emotion-21 .MuiInput-root {
