@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.20
 
 ENV USER=appuser
 ENV APP=golang-graphql-example
