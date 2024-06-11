@@ -235,7 +235,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.46
+	$(GO) install github.com/99designs/gqlgen@v0.17.48
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
@@ -243,7 +243,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.21.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.22.0
 endif
 
 .PHONY: setup/dep/test/install
