@@ -239,15 +239,15 @@ func FindOne[T any](
 ) (T, error) {
 	// Get gorm db
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
-	// Apply projection
-	gdb, err := common.ManageProjection(projection, gdb)
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
 	// Check error
 	if err != nil {
 		return *new(T), err
 	}
 
-	// Apply filter
-	gdb, err = common.ManageFilter(filter, gdb)
+	// Apply projection
+	gdb, err = common.ManageProjection(projection, gdb)
 	// Check error
 	if err != nil {
 		return *new(T), err
