@@ -97,6 +97,20 @@ func (mr *MockServiceMockRecorder) Consume(arg0, arg1, arg2 any) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Consume", reflect.TypeOf((*MockService)(nil).Consume), arg0, arg1, arg2)
 }
 
+// ExtraSetup mocks base method.
+func (m *MockService) ExtraSetup(arg0 *amqpbusmessage.ExtraSetupInput) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ExtraSetup", arg0)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// ExtraSetup indicates an expected call of ExtraSetup.
+func (mr *MockServiceMockRecorder) ExtraSetup(arg0 any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtraSetup", reflect.TypeOf((*MockService)(nil).ExtraSetup), arg0)
+}
+
 // Ping mocks base method.
 func (m *MockService) Ping() error {
 	m.ctrl.T.Helper()

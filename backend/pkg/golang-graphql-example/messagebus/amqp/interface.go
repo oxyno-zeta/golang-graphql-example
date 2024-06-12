@@ -25,6 +25,9 @@ var ErrPublishTimeoutReached = errors.New("timeout reached")
 // ErrMessageNotJSON is the error thrown when the message utils parse function is called on a non "application/json" message.
 var ErrMessageNotJSON = errors.New("input haven't the json content type")
 
+// ErrNoActiveChannelFound is the error thrown when no active channel can be found for setup configurations.
+var ErrNoActiveChannelFound = errors.Sentinel("no active channel found")
+
 // PublishConfigInput represents the publish configuration input.
 type PublishConfigInput struct {
 	// Exchange is the exchange name where the message is published.
@@ -73,6 +76,13 @@ type ConsumeConfigInput struct {
 	NoWait bool
 }
 
+// ExtraSetupInput Extra setup input object.
+type ExtraSetupInput struct {
+	Exchanges  []*config.AMQPExchangeConfig
+	Queues     []*config.AMQPQueueConfig
+	QueueBinds []*config.AMQPQueueBindConfig
+}
+
 // Service represents the AMQP client.
 //
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/messagebus/amqp Service
@@ -102,6 +112,9 @@ type Service interface {
 	) error
 	// Ping will check connections statuses.
 	Ping() error
+	// Extra setup
+	// This is made for programmatic configuration.
+	ExtraSetup(input *ExtraSetupInput) error
 }
 
 func NewService(
