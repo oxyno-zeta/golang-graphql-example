@@ -1,6 +1,7 @@
 package signalhandler
 
 import (
+	"context"
 	"os"
 	"os/signal"
 	"syscall"
@@ -15,13 +16,19 @@ const (
 
 type service struct {
 	logger                   log.Logger
+	cancelCtx                context.Context //nolint:containedctx
 	hooksStorage             map[os.Signal][]func()
 	activeRequestCounterChan chan int64
+	cancelFunc               context.CancelFunc
 	signalListToNotify       []os.Signal
 	onExitHookStorage        []func()
 	activeRequestCounter     int64
 	serverMode               bool
 	stoppingSysInProgress    bool
+}
+
+func (s *service) GetStoppingSystemContext() context.Context {
+	return s.cancelCtx
 }
 
 func (s *service) IncreaseActiveRequestCounter() {
@@ -139,4 +146,6 @@ func (s *service) stoppingAppHook() {
 
 	// Updating the stopping flag
 	s.stoppingSysInProgress = true
+	// Cancel the cancel context
+	s.cancelFunc()
 }

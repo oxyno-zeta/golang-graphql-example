@@ -10,6 +10,7 @@
 package mocks
 
 import (
+	context "context"
 	os "os"
 	reflect "reflect"
 
@@ -64,6 +65,20 @@ func (m *MockService) DecreaseActiveRequestCounter() {
 func (mr *MockServiceMockRecorder) DecreaseActiveRequestCounter() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DecreaseActiveRequestCounter", reflect.TypeOf((*MockService)(nil).DecreaseActiveRequestCounter))
+}
+
+// GetStoppingSystemContext mocks base method.
+func (m *MockService) GetStoppingSystemContext() context.Context {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetStoppingSystemContext")
+	ret0, _ := ret[0].(context.Context)
+	return ret0
+}
+
+// GetStoppingSystemContext indicates an expected call of GetStoppingSystemContext.
+func (mr *MockServiceMockRecorder) GetStoppingSystemContext() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStoppingSystemContext", reflect.TypeOf((*MockService)(nil).GetStoppingSystemContext))
 }
 
 // IncreaseActiveRequestCounter mocks base method.

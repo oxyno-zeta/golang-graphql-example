@@ -1,6 +1,7 @@
 package signalhandler
 
 import (
+	"context"
 	"os"
 	"syscall"
 
@@ -28,6 +29,9 @@ type Service interface {
 	IncreaseActiveRequestCounter()
 	// DecreaseActiveRequestCounter will decrease active request counter by one.
 	DecreaseActiveRequestCounter()
+	// GetStoppingSystemContext will return a context that will be cancelled on system stopping.
+	// This context must be used by calling "ctx.Done()". This will be unblocked on system stopping.
+	GetStoppingSystemContext() context.Context
 }
 
 func NewService(logger log.Logger, serverMode bool, signalListToNotify []os.Signal) Service {
@@ -38,6 +42,9 @@ func NewService(logger log.Logger, serverMode bool, signalListToNotify []os.Sign
 	// Filter to unique
 	signalListToNotifyInternal, _ = funk.Uniq(signalListToNotifyInternal).([]os.Signal)
 
+	// Create ctx that will be cancelled when OS is stopping
+	ctx, cancel := context.WithCancel(context.TODO())
+
 	return &service{
 		logger:                   logger,
 		serverMode:               serverMode,
@@ -46,5 +53,7 @@ func NewService(logger log.Logger, serverMode bool, signalListToNotify []os.Sign
 		onExitHookStorage:        []func(){},
 		activeRequestCounter:     0,
 		activeRequestCounterChan: make(chan int64, 100), //nolint:mnd// Ignore this
+		cancelCtx:                ctx,
+		cancelFunc:               cancel,
 	}
 }
