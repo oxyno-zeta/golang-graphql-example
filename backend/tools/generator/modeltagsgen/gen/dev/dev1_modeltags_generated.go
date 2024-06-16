@@ -3,6 +3,12 @@ package dev
 
 import "emperror.dev/errors"
 
+// ErrUnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
+var ErrUnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
+
+// ErrUnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
+var ErrUnsupportedJSONKey = errors.Sentinel("unsupported json key")
+
 // Dev1 CreatedAt Gorm Column Name
 const Dev1CreatedAtGormColumnName = "created_at"
 
@@ -61,10 +67,9 @@ func TransformDev1GormColumnToJSONKey(gormColumn string) (string, error) {
 	case Dev1UpdatedAtGormColumnName:
 		return Dev1UpdatedAtJSONKeyName, nil
 	default:
-		return "", errors.New("unsupported gorm column")
+		return "", errors.WithStack(ErrUnsupportedGormColumn)
 	}
 }
-
 
 // Transform Dev1 JSON Key To Gorm Column
 func TransformDev1JSONKeyToGormColumn(jsonKey string) (string, error) {
@@ -82,11 +87,14 @@ func TransformDev1JSONKeyToGormColumn(jsonKey string) (string, error) {
 	case Dev1UpdatedAtJSONKeyName:
 		return Dev1UpdatedAtGormColumnName, nil
 	default:
-		return "", errors.New("unsupported json key")
+		return "", errors.WithStack(ErrUnsupportedJSONKey)
 	}
 }
 
-func TransformDev1JSONKeyMapToGormColumnMap(input map[string]interface{}) (map[string]interface{}, error) {
+func TransformDev1JSONKeyMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
 	// Rebuild
 	m := map[string]interface{}{}
 	// Loop over input
@@ -94,6 +102,13 @@ func TransformDev1JSONKeyMapToGormColumnMap(input map[string]interface{}) (map[s
 		r, err := TransformDev1JSONKeyToGormColumn(k)
 		// Check error
 		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrUnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
 			return nil, err
 		}
 		// Save
@@ -103,7 +118,10 @@ func TransformDev1JSONKeyMapToGormColumnMap(input map[string]interface{}) (map[s
 	return m, nil
 }
 
-func TransformDev1GormColumnMapToJSONKeyMap(input map[string]interface{}) (map[string]interface{}, error) {
+func TransformDev1GormColumnMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
 	// Rebuild
 	m := map[string]interface{}{}
 	// Loop over input
@@ -111,6 +129,13 @@ func TransformDev1GormColumnMapToJSONKeyMap(input map[string]interface{}) (map[s
 		r, err := TransformDev1GormColumnToJSONKey(k)
 		// Check error
 		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrUnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
 			return nil, err
 		}
 		// Save
