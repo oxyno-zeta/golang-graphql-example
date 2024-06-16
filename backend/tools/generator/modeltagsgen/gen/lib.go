@@ -50,6 +50,40 @@ func Transform{{ .ObjectName }}JSONKeyToGormColumn(jsonKey string) (string, erro
 		return "", errors.New("unsupported json key")
 	}
 }
+
+func Transform{{ .ObjectName }}JSONKeyMapToGormColumnMap(input map[string]interface{}) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := Transform{{ .ObjectName }}JSONKeyToGormColumn(k)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+func Transform{{ .ObjectName }}GormColumnMapToJSONKeyMap(input map[string]interface{}) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := Transform{{ .ObjectName }}GormColumnToJSONKey(k)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
 `
 
 type MainPkg struct {

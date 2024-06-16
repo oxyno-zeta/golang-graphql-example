@@ -85,3 +85,37 @@ func TransformDev1JSONKeyToGormColumn(jsonKey string) (string, error) {
 		return "", errors.New("unsupported json key")
 	}
 }
+
+func TransformDev1JSONKeyMapToGormColumnMap(input map[string]interface{}) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformDev1JSONKeyToGormColumn(k)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+func TransformDev1GormColumnMapToJSONKeyMap(input map[string]interface{}) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformDev1GormColumnToJSONKey(k)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}

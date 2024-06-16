@@ -79,3 +79,37 @@ func TransformTodoJSONKeyToGormColumn(jsonKey string) (string, error) {
 		return "", errors.New("unsupported json key")
 	}
 }
+
+func TransformTodoJSONKeyMapToGormColumnMap(input map[string]interface{}) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformTodoJSONKeyToGormColumn(k)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+func TransformTodoGormColumnMapToJSONKeyMap(input map[string]interface{}) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformTodoGormColumnToJSONKey(k)
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
