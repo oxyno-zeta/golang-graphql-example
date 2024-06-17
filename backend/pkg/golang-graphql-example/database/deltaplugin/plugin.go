@@ -26,9 +26,10 @@ func (dtp *deltaPlugin) Initialize(db *gorm.DB) error {
 		if db.Error == nil && db.RowsAffected != 0 {
 			// Build delta object
 			delt := &Delta{
-				Action: CREATE,
-				Table:  db.Statement.Table,
-				Result: db.Statement.Model,
+				Action:    CREATE,
+				Table:     db.Statement.Table,
+				Result:    db.Statement.Model,
+				EventDate: NanoDateTime(db.NowFunc()),
 			}
 
 			// Send to channel
@@ -46,9 +47,10 @@ func (dtp *deltaPlugin) Initialize(db *gorm.DB) error {
 		if db.Error == nil && db.RowsAffected != 0 {
 			// Build delta object
 			delt := &Delta{
-				Action: DELETE,
-				Table:  db.Statement.Table,
-				Result: db.Statement.Model,
+				Action:    DELETE,
+				Table:     db.Statement.Table,
+				Result:    db.Statement.Model,
+				EventDate: NanoDateTime(db.NowFunc()),
 			}
 
 			// Send to channel
@@ -79,10 +81,11 @@ func (dtp *deltaPlugin) Initialize(db *gorm.DB) error {
 
 			// Build delta object
 			delt := &Delta{
-				Action: action,
-				Table:  db.Statement.Table,
-				Result: db.Statement.Model,
-				Patch:  patch,
+				Action:    action,
+				Table:     db.Statement.Table,
+				Result:    db.Statement.Model,
+				Patch:     patch,
+				EventDate: NanoDateTime(db.NowFunc()),
 			}
 
 			// Send to channel
