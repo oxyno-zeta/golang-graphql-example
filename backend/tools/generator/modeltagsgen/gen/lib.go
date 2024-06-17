@@ -56,6 +56,7 @@ func Transform{{ .ObjectName }}JSONKeyToGormColumn(jsonKey string) (string, erro
 	}
 }
 
+// Transform {{ .ObjectName }} JSON Key map To Gorm Column map
 func Transform{{ .ObjectName }}JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -83,6 +84,7 @@ func Transform{{ .ObjectName }}JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform {{ .ObjectName }} Gorm Column map To JSON Key map
 func Transform{{ .ObjectName }}GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,

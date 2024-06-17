@@ -123,6 +123,7 @@ func TransformObject1JSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Object1 JSON Key map To Gorm Column map
 func TransformObject1JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -150,6 +151,7 @@ func TransformObject1JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Object1 Gorm Column map To JSON Key map
 func TransformObject1GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -254,6 +256,7 @@ func TransformObject2JSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Object2 JSON Key map To Gorm Column map
 func TransformObject2JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -281,6 +284,7 @@ func TransformObject2JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Object2 Gorm Column map To JSON Key map
 func TransformObject2GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -392,6 +396,7 @@ func TransformObject3JSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Object3 JSON Key map To Gorm Column map
 func TransformObject3JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -419,6 +424,7 @@ func TransformObject3JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Object3 Gorm Column map To JSON Key map
 func TransformObject3GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -523,6 +529,7 @@ func TransformObject4JSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Object4 JSON Key map To Gorm Column map
 func TransformObject4JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -550,6 +557,7 @@ func TransformObject4JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Object4 Gorm Column map To JSON Key map
 func TransformObject4GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -661,6 +669,7 @@ func TransformObject5JSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Object5 JSON Key map To Gorm Column map
 func TransformObject5JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -688,6 +697,7 @@ func TransformObject5JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Object5 Gorm Column map To JSON Key map
 func TransformObject5GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
