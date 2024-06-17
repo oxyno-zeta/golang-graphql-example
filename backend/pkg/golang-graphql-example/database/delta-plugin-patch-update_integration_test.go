@@ -48,6 +48,7 @@ func (suite *DeltaPluginTestSuite) TestPatchUpdateWithFoundItem() {
 		Patch: map[string]interface{}{
 			"name": "fake",
 		},
+		EventDate: deltaplugin.NanoDateTime(suite.now),
 	}
 
 	_, err := databasehelpers.PatchUpdate(

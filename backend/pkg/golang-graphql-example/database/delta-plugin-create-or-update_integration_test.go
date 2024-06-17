@@ -15,9 +15,10 @@ import (
 func (suite *DeltaPluginTestSuite) TestCreateOrUpdateWithNotFoundItem() {
 	ctx := context.TODO()
 	expectedV := &deltaplugin.Delta{
-		Table:  "peoples",
-		Action: deltaplugin.CREATE,
-		Result: &People{Base: database.Base{ID: "init-fake-id", CreatedAt: suite.now, UpdatedAt: suite.now}, Name: "fake"},
+		Table:     "peoples",
+		Action:    deltaplugin.CREATE,
+		Result:    &People{Base: database.Base{ID: "init-fake-id", CreatedAt: suite.now, UpdatedAt: suite.now}, Name: "fake"},
+		EventDate: deltaplugin.NanoDateTime(suite.now),
 	}
 
 	_, err := databasehelpers.CreateOrUpdate(
@@ -36,9 +37,10 @@ func (suite *DeltaPluginTestSuite) TestCreateOrUpdateWithNotFoundItem() {
 func (suite *DeltaPluginTestSuite) TestCreateOrUpdateWithNotFoundItemAndFromID() {
 	ctx := context.TODO()
 	expectedV := &deltaplugin.Delta{
-		Table:  "peoples",
-		Action: deltaplugin.CREATE,
-		Result: &People{Base: database.Base{ID: "fake-id", CreatedAt: suite.now, UpdatedAt: suite.now}, Name: "fake"},
+		Table:     "peoples",
+		Action:    deltaplugin.CREATE,
+		Result:    &People{Base: database.Base{ID: "fake-id", CreatedAt: suite.now, UpdatedAt: suite.now}, Name: "fake"},
+		EventDate: deltaplugin.NanoDateTime(suite.now),
 	}
 
 	_, err := databasehelpers.CreateOrUpdate(
@@ -68,9 +70,10 @@ func (suite *DeltaPluginTestSuite) TestCreateOrUpdateWithFoundItem() {
 
 	ctx := context.TODO()
 	expectedV := &deltaplugin.Delta{
-		Table:  "peoples",
-		Action: deltaplugin.UPDATE,
-		Result: &People{Base: database.Base{ID: "fake-id", UpdatedAt: suite.now}, Name: "fake"},
+		Table:     "peoples",
+		Action:    deltaplugin.UPDATE,
+		Result:    &People{Base: database.Base{ID: "fake-id", UpdatedAt: suite.now}, Name: "fake"},
+		EventDate: deltaplugin.NanoDateTime(suite.now),
 	}
 
 	_, err := databasehelpers.CreateOrUpdate(

@@ -37,9 +37,10 @@ func (suite *DeltaPluginTestSuite) TestPermanentDeleteWithFoundItem() {
 
 	ctx := context.TODO()
 	expectedV := &deltaplugin.Delta{
-		Table:  "peoples",
-		Action: deltaplugin.DELETE,
-		Result: &People{Base: database.Base{ID: "fake-id"}},
+		Table:     "peoples",
+		Action:    deltaplugin.DELETE,
+		Result:    &People{Base: database.Base{ID: "fake-id"}},
+		EventDate: deltaplugin.NanoDateTime(suite.now),
 	}
 
 	_, err := databasehelpers.PermanentDelete(ctx, &People{Base: database.Base{ID: "fake-id"}}, suite.db)
