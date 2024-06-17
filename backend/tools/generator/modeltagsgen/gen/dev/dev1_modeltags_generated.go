@@ -3,11 +3,11 @@ package dev
 
 import "emperror.dev/errors"
 
-// ErrUnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
-var ErrUnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
+// ErrDev1UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
+var ErrDev1UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
-// ErrUnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
-var ErrUnsupportedJSONKey = errors.Sentinel("unsupported json key")
+// ErrDev1UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
+var ErrDev1UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
 // Dev1 CreatedAt Gorm Column Name
 const Dev1CreatedAtGormColumnName = "created_at"
@@ -67,7 +67,7 @@ func TransformDev1GormColumnToJSONKey(gormColumn string) (string, error) {
 	case Dev1UpdatedAtGormColumnName:
 		return Dev1UpdatedAtJSONKeyName, nil
 	default:
-		return "", errors.WithStack(ErrUnsupportedGormColumn)
+		return "", errors.WithStack(ErrDev1UnsupportedGormColumn)
 	}
 }
 
@@ -87,7 +87,7 @@ func TransformDev1JSONKeyToGormColumn(jsonKey string) (string, error) {
 	case Dev1UpdatedAtJSONKeyName:
 		return Dev1UpdatedAtGormColumnName, nil
 	default:
-		return "", errors.WithStack(ErrUnsupportedJSONKey)
+		return "", errors.WithStack(ErrDev1UnsupportedJSONKey)
 	}
 }
 
@@ -103,7 +103,7 @@ func TransformDev1JSONKeyMapToGormColumnMap(
 		// Check error
 		if err != nil {
 			// Check if ignore is enabled and error is matching
-			if ignoreUnsupportedError && errors.Is(err, ErrUnsupportedJSONKey) {
+			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedJSONKey) {
 				// Continue the loop
 				continue
 			}
@@ -130,7 +130,7 @@ func TransformDev1GormColumnMapToJSONKeyMap(
 		// Check error
 		if err != nil {
 			// Check if ignore is enabled and error is matching
-			if ignoreUnsupportedError && errors.Is(err, ErrUnsupportedGormColumn) {
+			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedGormColumn) {
 				// Continue the loop
 				continue
 			}

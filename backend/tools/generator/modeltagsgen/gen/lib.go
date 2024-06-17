@@ -15,11 +15,11 @@ package {{ .PkgName }}
 
 import "emperror.dev/errors"
 
-// ErrUnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
-var ErrUnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
+// Err{{ $.ObjectName }}UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
+var Err{{ $.ObjectName }}UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
-// ErrUnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
-var ErrUnsupportedJSONKey = errors.Sentinel("unsupported json key")
+// Err{{ $.ObjectName }}UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
+var Err{{ $.ObjectName }}UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 {{ range $key, $value := .GormMap }}
 // {{ $.ObjectName }} {{ $key }} Gorm Column Name
 const {{ $.ObjectName }}{{ $key }}GormColumnName = "{{ $value }}"
@@ -38,7 +38,7 @@ func Transform{{ .ObjectName }}GormColumnToJSONKey(gormColumn string) (string, e
 	{{ end -}}
 	{{ end -}}
 	default:
-		return "", errors.WithStack(ErrUnsupportedGormColumn)
+		return "", errors.WithStack(Err{{ $.ObjectName }}UnsupportedGormColumn)
 	}
 }
 
@@ -52,7 +52,7 @@ func Transform{{ .ObjectName }}JSONKeyToGormColumn(jsonKey string) (string, erro
 	{{ end -}}
 	{{ end -}}
 	default:
-		return "", errors.WithStack(ErrUnsupportedJSONKey)
+		return "", errors.WithStack(Err{{ $.ObjectName }}UnsupportedJSONKey)
 	}
 }
 
@@ -68,7 +68,7 @@ func Transform{{ .ObjectName }}JSONKeyMapToGormColumnMap(
 		// Check error
 		if err != nil {
 			// Check if ignore is enabled and error is matching
-			if ignoreUnsupportedError && errors.Is(err, ErrUnsupportedJSONKey) {
+			if ignoreUnsupportedError && errors.Is(err, Err{{ $.ObjectName }}UnsupportedJSONKey) {
 				// Continue the loop
 				continue
 			}
@@ -95,7 +95,7 @@ func Transform{{ .ObjectName }}GormColumnMapToJSONKeyMap(
 		// Check error
 		if err != nil {
 			// Check if ignore is enabled and error is matching
-			if ignoreUnsupportedError && errors.Is(err, ErrUnsupportedGormColumn) {
+			if ignoreUnsupportedError && errors.Is(err, Err{{ $.ObjectName }}UnsupportedGormColumn) {
 				// Continue the loop
 				continue
 			}
