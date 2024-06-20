@@ -8575,6 +8575,7 @@ __metadata:
     react-router-dom: "npm:^6.23.1"
     react-window: "npm:^1.8.10"
     rollup-plugin-visualizer: "npm:^5.12.0"
+    rollup-preserve-directives: "npm:^1.1.1"
     storybook: "npm:^8.1.10"
     storybook-addon-apollo-client: "npm:^7.3.0"
     storybook-addon-remix-react-router: "npm:^3.0.0"
@@ -10795,6 +10796,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"magic-string@npm:^0.30.5":
+  version: 0.30.10
+  resolution: "magic-string@npm:0.30.10"
+  dependencies:
+    "@jridgewell/sourcemap-codec": "npm:^1.4.15"
+  checksum: 10/9f8bf6363a14c98a9d9f32ef833b194702a5c98fb931b05ac511b76f0b06fd30ed92beda6ca3261d2d52d21e39e891ef1136fbd032023f6cbb02d0b7d5767201
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^2.0.0, make-dir@npm:^2.1.0":
   version: 2.1.0
   resolution: "make-dir@npm:2.1.0"
@@ -12700,6 +12710,17 @@ __metadata:
   bin:
     rollup-plugin-visualizer: dist/bin/cli.js
   checksum: 10/47358feb672291d6edcfd94197577c192a84c24cb644119425dae8241fb6f5a52556efd0c501f38b276c07534642a80c0885ef681babb474e83c7b5a3b475b84
+  languageName: node
+  linkType: hard
+
+"rollup-preserve-directives@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "rollup-preserve-directives@npm:1.1.1"
+  dependencies:
+    magic-string: "npm:^0.30.5"
+  peerDependencies:
+    rollup: ^2.0.0 || ^3.0.0 || ^4.0.0
+  checksum: 10/33e0381282e0acb05f55f1a9dda55ee4da1384095d8cf68566211e9df4d8ddd5bd4b1b32141514d3e35a5b56fafbaa31b7f433d42e18c72133fc54d9add6d8a6
   languageName: node
   linkType: hard
 

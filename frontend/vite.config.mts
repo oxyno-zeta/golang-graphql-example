@@ -3,9 +3,11 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
 import { visualizer } from 'rollup-plugin-visualizer';
+import preserveDirectives from 'rollup-preserve-directives';
 
 export default defineConfig({
   plugins: [
+    preserveDirectives(),
     react({
       // Exclude storybook stories
       exclude: /\.stories\.(t|j)sx?$/,
