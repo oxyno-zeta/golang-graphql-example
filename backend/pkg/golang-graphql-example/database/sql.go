@@ -309,17 +309,23 @@ func (sdb *sqldb) Reconnect() error {
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	// Defer closing old database connection
-	defer sqlDB.Close()
 	// Connect to new database
 	err = sdb.Connect()
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
 	}
+
 	// Wait for 1 sec before closing connection to old db
 	// Here, we suppose that waiting 1 second is enough for reload
 	time.Sleep(time.Second)
+
+	// Closing old database connection
+	err = sqlDB.Close()
+	// Check error
+	if err != nil {
+		return errors.WithStack(err)
+	}
 
 	return nil
 }
