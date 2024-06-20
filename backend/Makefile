@@ -235,7 +235,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.48
+	$(GO) install github.com/99designs/gqlgen@v0.17.49
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
