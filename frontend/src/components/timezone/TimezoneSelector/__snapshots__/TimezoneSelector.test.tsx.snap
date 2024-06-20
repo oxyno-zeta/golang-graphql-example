@@ -5,6 +5,16 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   width: 100%;
 }
 
+.emotion-0.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-0:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-0 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -22,24 +32,6 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 .emotion-0 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-0.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-0.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-0:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-0:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-0 .MuiInput-root {
@@ -756,6 +748,16 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   width: 100%;
 }
 
+.emotion-0.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-0:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-0 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -773,24 +775,6 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 .emotion-0 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-0.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-0.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-0:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-0:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-0 .MuiInput-root {
@@ -2268,6 +2252,16 @@ exports[`timezone/TimezoneSelector should display an autocomplete with default v
   width: 100%;
 }
 
+.emotion-0.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-0:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-0 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -2285,24 +2279,6 @@ exports[`timezone/TimezoneSelector should display an autocomplete with default v
 .emotion-0 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-0.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-0.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-0:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-0:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-0 .MuiInput-root {

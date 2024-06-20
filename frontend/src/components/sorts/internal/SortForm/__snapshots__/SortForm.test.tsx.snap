@@ -424,6 +424,16 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -441,24 +451,6 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -2078,6 +2070,16 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -2095,24 +2097,6 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -3850,6 +3834,16 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -3867,24 +3861,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -5622,6 +5598,16 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -5639,24 +5625,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -7394,6 +7362,16 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -7411,24 +7389,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -9166,6 +9126,16 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -9183,24 +9153,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -10804,6 +10756,16 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
   width: 100%;
 }
 
+.emotion-8.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-8:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-8 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -10821,24 +10783,6 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
 .emotion-8 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-8.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-8.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-8:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-8:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-8 .MuiInput-root {
@@ -12237,6 +12181,16 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -12254,24 +12208,6 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -13891,6 +13827,16 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
   width: 100%;
 }
 
+.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-12:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-12 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -13908,24 +13854,6 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
 .emotion-12 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-12.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-12:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-12:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-12 .MuiInput-root {
@@ -16017,6 +15945,16 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
   width: 100%;
 }
 
+.emotion-8.Mui-focused .MuiAutocomplete-clearIndicator {
+  visibility: visible;
+}
+
+@media (pointer: fine) {
+  .emotion-8:hover .MuiAutocomplete-clearIndicator {
+    visibility: visible;
+  }
+}
+
 .emotion-8 .MuiAutocomplete-tag {
   margin: 3px;
   max-width: calc(100% - 6px);
@@ -16034,24 +15972,6 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
 .emotion-8 .MuiAutocomplete-inputRoot .MuiAutocomplete-input {
   width: 0;
   min-width: 30px;
-}
-
-.emotion-8.Mui-focused .MuiAutocomplete-clearIndicator {
-  visibility: visible;
-}
-
-.emotion-8.Mui-focused .MuiAutocomplete-input {
-  min-width: 0;
-}
-
-@media (pointer: fine) {
-  .emotion-8:hover .MuiAutocomplete-clearIndicator {
-    visibility: visible;
-  }
-
-  .emotion-8:hover .MuiAutocomplete-input {
-    min-width: 0;
-  }
 }
 
 .emotion-8 .MuiInput-root {
