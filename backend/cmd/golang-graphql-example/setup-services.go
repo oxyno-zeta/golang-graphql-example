@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"syscall"
+	"time"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
@@ -38,6 +39,9 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Save
 	sv.metricsSvc = metricsSvc
 
+	// Add metrics in cfgManager
+	cfgManager.SetExtraServices(metricsSvc)
+
 	// Create signal handler service
 	signalHandlerSvc := signalhandler.NewService(logger, true, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
 	// Initialize service
@@ -58,12 +62,8 @@ func setupBasicsServices(_ []string, sv *services) {
 		logger.Fatal(err)
 	}
 	// Prepare on reload hook
-	cfgManager.AddOnChangeHook(func() {
-		err = tracingSvc.InitializeAndReload()
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
+	cfgManager.AddOnChangeHook(&config.HookDefinition{
+		Hook: tracingSvc.InitializeAndReload,
 	})
 	// Register closing tracing on system stop
 	signalHandlerSvc.OnExit(func() {
@@ -85,12 +85,10 @@ func setupBasicsServices(_ []string, sv *services) {
 		logger.Fatal(err)
 	}
 	// Add configuration reload hook
-	cfgManager.AddOnChangeHook(func() {
-		err = db.Reconnect()
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
+	cfgManager.AddOnChangeHook(&config.HookDefinition{
+		Hook:              db.Reconnect,
+		RetryCount:        3,                      //nolint:mnd
+		RetryWaitDuration: 200 * time.Millisecond, //nolint:mnd
 	})
 
 	// Register closing database connections on system stop
@@ -113,12 +111,8 @@ func setupBasicsServices(_ []string, sv *services) {
 		logger.Fatal(err)
 	}
 	// Add configuration reload hook
-	cfgManager.AddOnChangeHook(func() {
-		err = mailSvc.InitializeAndReload()
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
+	cfgManager.AddOnChangeHook(&config.HookDefinition{
+		Hook: mailSvc.InitializeAndReload,
 	})
 	// Save
 	sv.mailSvc = mailSvc
@@ -132,12 +126,10 @@ func setupBasicsServices(_ []string, sv *services) {
 		logger.Fatal(err)
 	}
 	// Add configuration reload hook
-	cfgManager.AddOnChangeHook(func() {
-		err = ld.InitializeAndReload(logger)
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
+	cfgManager.AddOnChangeHook(&config.HookDefinition{
+		Hook: func() error {
+			return ld.InitializeAndReload(logger)
+		},
 	})
 	// Save
 	sv.ldSvc = ld
@@ -157,12 +149,8 @@ func setupBasicsServices(_ []string, sv *services) {
 			logger.Fatal(err)
 		}
 		// Add configuration reload hook
-		cfgManager.AddOnChangeHook(func() {
-			err = amqpSvc.Reconnect()
-			// Check error
-			if err != nil {
-				logger.Fatal(err)
-			}
+		cfgManager.AddOnChangeHook(&config.HookDefinition{
+			Hook: amqpSvc.Reconnect,
 		})
 		// Register closing connections on system stop
 		signalHandlerSvc.OnExit(func() {
@@ -234,15 +222,20 @@ func setupMandatoryServices(sv *services, configFolderPath string) {
 	}
 
 	// Watch change for logger (special case)
-	cfgManager.AddOnChangeHook(func() {
-		// Get configuration
-		newCfg := cfgManager.GetConfig()
-		// Configure logger
-		err = logger.Configure(newCfg.Log.Level, newCfg.Log.Format, newCfg.Log.FilePath)
-		// Check error
-		if err != nil {
-			logger.Fatal(err)
-		}
+	cfgManager.AddOnChangeHook(&config.HookDefinition{
+		Hook: func() error {
+			// Get configuration
+			newCfg := cfgManager.GetConfig()
+			// Configure logger
+			err = logger.Configure(newCfg.Log.Level, newCfg.Log.Format, newCfg.Log.FilePath)
+			// Check error
+			if err != nil {
+				return err
+			}
+
+			// Default
+			return nil
+		},
 	})
 	// Save
 	sv.cfgManager = cfgManager

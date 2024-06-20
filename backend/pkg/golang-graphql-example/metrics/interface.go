@@ -31,6 +31,10 @@ type Service interface {
 	IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string)
 	// IncreaseFailedAMQPPublishedMessage will increase counter of failed AMQP published message.
 	IncreaseFailedAMQPPublishedMessage(exchange, routingKey string)
+	// UpFailedConfigReload will raise the failed configuration reload gauge.
+	UpFailedConfigReload()
+	// DownFailedConfigReload will down the failed configuration reload gauge.
+	DownFailedConfigReload()
 }
 
 // NewService will generate a new Service.

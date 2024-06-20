@@ -92,16 +92,21 @@ func (svr *Server) GenerateServer() error {
 	}
 
 	// Prepare for configuration onChange
-	svr.cfgManager.AddOnChangeHook(func() {
-		// Generate router
-		r, err2 := svr.generateRouter()
-		if err2 != nil {
-			svr.logger.Fatal(err2)
-		}
-		// Change server handler
-		server.Handler = r
+	svr.cfgManager.AddOnChangeHook(&config.HookDefinition{
+		Hook: func() error {
+			// Generate router
+			r, err2 := svr.generateRouter()
+			// Check error
+			if err2 != nil {
+				return err2
+			}
+			// Change server handler
+			server.Handler = r
 
-		svr.logger.Info("Server handler reloaded")
+			svr.logger.Info("Server handler reloaded")
+
+			return nil
+		},
 	})
 
 	// Store server

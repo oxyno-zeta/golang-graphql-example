@@ -21,6 +21,7 @@ type prometheusMetrics struct {
 	reqDur                *prometheus.SummaryVec
 	reqSz                 *prometheus.SummaryVec
 	up                    prometheus.Gauge
+	configReloadFail      prometheus.Gauge
 	gormPrometheus        map[string]gorm.Plugin
 	amqpConsumedMessages  *prometheus.CounterVec
 	amqpPublishedMessages *prometheus.CounterVec
@@ -32,6 +33,14 @@ func (*prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
 
 func (*prometheusMetrics) PrometheusHTTPHandler() http.Handler {
 	return promhttp.Handler()
+}
+
+func (impl *prometheusMetrics) UpFailedConfigReload() {
+	impl.configReloadFail.Set(1)
+}
+
+func (impl *prometheusMetrics) DownFailedConfigReload() {
+	impl.configReloadFail.Set(0)
 }
 
 func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string) {
@@ -169,6 +178,14 @@ func (impl *prometheusMetrics) register() {
 	)
 	impl.up.Set(1)
 	prometheus.MustRegister(impl.up)
+
+	impl.configReloadFail = prometheus.NewGauge(
+		prometheus.GaugeOpts{
+			Name: "config_reload_fail",
+			Help: "1 = last config reload failed, 0 = last config reload was ok",
+		},
+	)
+	prometheus.MustRegister(impl.configReloadFail)
 
 	impl.amqpConsumedMessages = prometheus.NewCounterVec(
 		prometheus.CounterOpts{

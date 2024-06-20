@@ -40,7 +40,7 @@ func (m *MockManager) EXPECT() *MockManagerMockRecorder {
 }
 
 // AddOnChangeHook mocks base method.
-func (m *MockManager) AddOnChangeHook(arg0 func()) {
+func (m *MockManager) AddOnChangeHook(arg0 *config.HookDefinition) {
 	m.ctrl.T.Helper()
 	m.ctrl.Call(m, "AddOnChangeHook", arg0)
 }
@@ -91,4 +91,16 @@ func (m *MockManager) Load(arg0 string) error {
 func (mr *MockManagerMockRecorder) Load(arg0 any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Load", reflect.TypeOf((*MockManager)(nil).Load), arg0)
+}
+
+// SetExtraServices mocks base method.
+func (m *MockManager) SetExtraServices(arg0 config.MetricsService) {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "SetExtraServices", arg0)
+}
+
+// SetExtraServices indicates an expected call of SetExtraServices.
+func (mr *MockManagerMockRecorder) SetExtraServices(arg0 any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetExtraServices", reflect.TypeOf((*MockManager)(nil).SetExtraServices), arg0)
 }

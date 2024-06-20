@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 	"sync"
+	"time"
 
 	"emperror.dev/errors"
 	"github.com/fsnotify/fsnotify"
@@ -23,14 +24,21 @@ var validate = validator.New()
 type managerimpl struct {
 	cfg                       *Config
 	configs                   []*viper.Viper
-	onChangeHooks             []func()
+	onChangeHooks             []*HookDefinition
 	logger                    log.Logger
+	metricsSvc                MetricsService
 	internalFileWatchChannels []chan bool
 	credentialConfigPathList  [][]string
 }
 
-func (impl *managerimpl) AddOnChangeHook(hook func()) {
-	impl.onChangeHooks = append(impl.onChangeHooks, hook)
+func (impl *managerimpl) AddOnChangeHook(input *HookDefinition) {
+	// Check if retry count is set to set a default value
+	if input.RetryCount == 0 {
+		input.RetryCount = 1
+	}
+
+	// Save
+	impl.onChangeHooks = append(impl.onChangeHooks, input)
 }
 
 func (impl *managerimpl) Load(inputConfigFilePath string) error {
@@ -66,12 +74,19 @@ func (impl *managerimpl) Load(inputConfigFilePath string) error {
 			err2 := impl.loadConfiguration()
 			if err2 != nil {
 				impl.logger.Error(err2)
+
+				// Check if metrics service is set
+				if impl.metricsSvc != nil {
+					// Up metrics
+					impl.metricsSvc.UpFailedConfigReload()
+				}
+
 				// Stop here and do not call hooks => configuration is unstable
 				return
 			}
 			// Call all hooks in sequence in order to manage correctly reload database and after
 			// services that depends on it
-			funk.ForEach(impl.onChangeHooks, func(hook func()) { hook() })
+			impl.runAllHooks()
 		})
 		// Watch for configuration changes
 		vip.WatchConfig()
@@ -255,7 +270,7 @@ func (impl *managerimpl) loadConfiguration() error {
 				}
 				// Call all hooks in sequence in order to manage correctly reload database and after
 				// services that depends on it
-				funk.ForEach(impl.onChangeHooks, func(hook func()) { hook() })
+				impl.runAllHooks()
 			})
 			// Add channel to list of channels
 			impl.internalFileWatchChannels = append(impl.internalFileWatchChannels, ch)
@@ -324,4 +339,60 @@ func (impl *managerimpl) InitializeOnce() error {
 
 	// Default
 	return nil
+}
+
+func (impl *managerimpl) SetExtraServices(metricsSvc MetricsService) {
+	impl.metricsSvc = metricsSvc
+}
+
+func (impl *managerimpl) runAllHooks() {
+	// Init failed
+	failed := false
+	// Run all hooks
+	funk.ForEach(impl.onChangeHooks, func(h *HookDefinition) {
+		// Run hook
+		r := impl.runReloadHook(h)
+		// Save failed
+		failed = failed || r
+	})
+
+	// Check if metrics services is set
+	if impl.metricsSvc != nil {
+		// If failed, up metric. Otherwise, down it
+		if failed {
+			impl.metricsSvc.UpFailedConfigReload()
+		} else {
+			impl.metricsSvc.DownFailedConfigReload()
+		}
+	}
+}
+
+func (impl *managerimpl) runReloadHook(h *HookDefinition) (res bool) {
+	// Loop on retry count
+	for i := range h.RetryCount {
+		// Run hook
+		err := h.Hook()
+		// Check if error is empty
+		if err == nil {
+			// Stop here
+			return
+		}
+
+		// Save last fail
+		res = i == (h.RetryCount - 1)
+
+		// Check if we are on max try and fatal error
+		if res && h.FatalOnMaxTry {
+			// Log fatal error
+			impl.logger.Fatal(err)
+		} else {
+			// Log error
+			impl.logger.Error(err)
+		}
+
+		// Sleep the wait duration
+		time.Sleep(h.RetryWaitDuration)
+	}
+
+	return
 }
