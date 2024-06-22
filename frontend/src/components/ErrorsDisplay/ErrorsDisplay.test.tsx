@@ -16,6 +16,10 @@ import {
 } from './ErrorsDisplay.storage-test';
 
 import ErrorsDisplay from './ErrorsDisplay';
+import {
+  GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey,
+  NetworkErrorCustomComponentMapKey,
+} from './constants';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -37,6 +41,40 @@ describe('ErrorsDisplay', () => {
             networkError: forbiddenNetworkError,
           })
         }
+      />,
+    );
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(2);
+
+    // Prepare values
+    const values = ['common.errors:', 'Forbidden'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display a network error when error is present with a custom component', () => {
+    function Fake({ input }: { input: string }) {
+      return <p>{input}</p>;
+    }
+
+    const { container } = render(
+      <ErrorsDisplay
+        error={
+          new ApolloError({
+            errorMessage: 'network apollo error',
+            networkError: forbiddenNetworkError,
+          })
+        }
+        customErrorComponents={{
+          [NetworkErrorCustomComponentMapKey]: Fake,
+        }}
+        customErrorComponentProps={{
+          [NetworkErrorCustomComponentMapKey]: { input: 'fake' },
+        }}
       />,
     );
 
@@ -292,6 +330,45 @@ describe('ErrorsDisplay', () => {
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display two graphql error with extension when errors are present (2 items with 1 custom component)', () => {
+    function Fake({ input }: { input: string }) {
+      return <p>{input}</p>;
+    }
+
+    const { container } = render(
+      <ErrorsDisplay
+        errors={[
+          new ApolloError({
+            errorMessage: 'two graphql apollo error',
+            graphQLErrors: [simpleForbiddenGraphqlError],
+          }),
+          new ApolloError({
+            errorMessage: 'two graphql apollo error',
+            graphQLErrors: [simpleInternalServerErrorGraphqlError],
+          }),
+        ]}
+        customErrorComponents={{
+          [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: Fake,
+        }}
+        customErrorComponentProps={{
+          [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: { input: 'fake' },
+        }}
+      />,
+    );
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(3);
+
+    // Prepare values
+    const values = ['common.errors:', 'fake', 'common.errorCode.INTERNAL_SERVER_ERROR'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+    expect(container).not.toHaveTextContent('common.errorCode.FORBIDDEN');
 
     expect(container).toMatchSnapshot();
   });

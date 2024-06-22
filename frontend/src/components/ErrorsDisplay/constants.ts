@@ -1,0 +1,13 @@
+export const ServerErrorCustomComponentMapKey = 'SERVER_ERROR';
+export const NetworkErrorCustomComponentMapKey = 'NETWORK_ERROR';
+
+export const GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix = 'GRAPHQL_ERRORS_EXTENSIONS_CODE_';
+
+export const GraphqlErrorsExtensionsCodeConflictCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}CONFLICT`;
+export const GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}FORBIDDEN`;
+export const GraphqlErrorsExtensionsCodeInternalServerErrorCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}INTERNAL_SERVER_ERROR`;
+export const GraphqlErrorsExtensionsCodeInvalidInputCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}INVALID_INPUT`;
+export const GraphqlErrorsExtensionsCodeLockedCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}LOCKED`;
+export const GraphqlErrorsExtensionsCodeNotFoundCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}NOT_FOUND`;
+export const GraphqlErrorsExtensionsCodeTooManyRequestsCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}TOO_MANY_REQUESTS`;
+export const GraphqlErrorsExtensionsCodeUnauthorizedCustomComponentMapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}UNAUTHORIZED`;

@@ -1,9 +1,14 @@
 import React, { Key, ReactNode } from 'react';
 import Typography, { TypographyProps } from '@mui/material/Typography';
-import Box from '@mui/material//Box';
+import Box from '@mui/material/Box';
 import { ApolloError, ServerError } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
+import {
+  GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix,
+  ServerErrorCustomComponentMapKey,
+  NetworkErrorCustomComponentMapKey,
+} from './constants';
 
 export interface Props {
   error?: ApolloError | Error | null;
@@ -14,6 +19,8 @@ export interface Props {
   errorElementTypographyProps?: TypographyProps;
   ulSx?: SxProps;
   liSx?: SxProps;
+  customErrorComponents?: Record<string, React.ElementType>;
+  customErrorComponentProps?: Record<string, object>;
 }
 
 export interface CustomNetworkError {
@@ -30,6 +37,8 @@ const defaultProps = {
   errorElementTypographyProps: {},
   ulSx: {},
   liSx: {},
+  customErrorComponents: {},
+  customErrorComponentProps: {},
 };
 
 /* eslint-disable react/no-array-index-key */
@@ -42,6 +51,8 @@ function ErrorsDisplay({
   errorElementTypographyProps,
   ulSx,
   liSx,
+  customErrorComponents = {},
+  customErrorComponentProps = {},
 }: Props) {
   // Initialize translate
   const { t } = useTranslation();
@@ -64,7 +75,7 @@ function ErrorsDisplay({
 
   // Loop over errors
   errorList?.forEach((err, mainIndex) => {
-    const contents: { content: string; key: Key }[] = [];
+    const contents: { content: string; key: Key; CustomComp?: React.ElementType; customCompProps?: object }[] = [];
     if ((err as ApolloError).networkError || (err as ApolloError).graphQLErrors) {
       // Create intermediate variable just for typescript.............
       const workingErr: ApolloError = err as ApolloError;
@@ -75,19 +86,36 @@ function ErrorsDisplay({
           Object.keys((workingErr.networkError as ServerError).result).length === 0 ||
           !workingErr.graphQLErrors)
       ) {
-        contents.push({ content: workingErr.networkError.message, key: mainIndex });
+        contents.push({
+          content: workingErr.networkError.message,
+          key: mainIndex,
+          CustomComp: customErrorComponents[ServerErrorCustomComponentMapKey],
+          customCompProps: customErrorComponentProps[ServerErrorCustomComponentMapKey],
+        });
       }
 
       if (workingErr.graphQLErrors) {
         contents.push(
           ...workingErr.graphQLErrors.map(({ message, extensions }, i) => {
             let mess = message;
+            let customComp: React.ElementType | undefined;
+            let customCompProps: object | undefined;
             // Check if there is a code in extensions
             if (extensions && extensions.code) {
               mess = t(`common.errorCode.${extensions.code}`);
+
+              const mapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}${extensions.code}`;
+
+              customComp = customErrorComponents[mapKey];
+              customCompProps = customErrorComponentProps[mapKey];
             }
 
-            return { content: mess, key: `${mainIndex}-graphQLErrors-${i}` };
+            return {
+              content: mess,
+              key: `${mainIndex}-graphQLErrors-${i}`,
+              CustomComp: customComp,
+              customCompProps,
+            };
           }),
         );
       }
@@ -104,6 +132,8 @@ function ErrorsDisplay({
             .map(({ message, path }, i) => ({
               content: `${path?.join('.')} ${message}`,
               key: `${mainIndex}-networkError-${i}`,
+              CustomComp: customErrorComponents[NetworkErrorCustomComponentMapKey],
+              customCompProps: customErrorComponentProps[NetworkErrorCustomComponentMapKey],
             })),
         );
       }
@@ -116,11 +146,15 @@ function ErrorsDisplay({
       // Check if a content have been detected
       // Save element
       elements.push(
-        ...contents.map(({ content, key }) => (
+        ...contents.map(({ content, key, CustomComp, customCompProps }) => (
           <Box component="li" key={key} sx={liSx}>
-            <Typography color="error" {...errorElementTypographyProps}>
-              {content}
-            </Typography>
+            {CustomComp ? (
+              <CustomComp {...customCompProps} />
+            ) : (
+              <Typography color="error" {...errorElementTypographyProps}>
+                {content}
+              </Typography>
+            )}
           </Box>
         )),
       );
