@@ -23,7 +23,13 @@ export interface Props {
   onChange: (fo: null | FilterValueObject) => void;
 }
 
-function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue, acceptEmptyLines }: Props) {
+function FilterBuilder({
+  filterDefinitionModel,
+  onRemove = undefined,
+  onChange,
+  initialValue,
+  acceptEmptyLines = false,
+}: Props) {
   // Setup translate
   const { t } = useTranslation();
   // States
@@ -259,10 +265,5 @@ function FilterBuilder({ filterDefinitionModel, onRemove, onChange, initialValue
     </Box>
   );
 }
-
-FilterBuilder.defaultProps = {
-  onRemove: undefined,
-  acceptEmptyLines: false,
-};
 
 export default memo(FilterBuilder);

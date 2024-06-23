@@ -6,11 +6,7 @@ export interface Props {
   typographyProps?: Omit<TypographyProps, 'children'>;
 }
 
-const defaultProps = {
-  typographyProps: {},
-};
-
-function NoData({ typographyProps }: Props) {
+function NoData({ typographyProps = {} }: Props) {
   // Setup translate
   const { t } = useTranslation();
 
@@ -23,7 +19,5 @@ function NoData({ typographyProps }: Props) {
     </Typography>
   );
 }
-
-NoData.defaultProps = defaultProps;
 
 export default NoData;

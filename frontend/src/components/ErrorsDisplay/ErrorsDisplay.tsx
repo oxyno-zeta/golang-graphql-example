@@ -28,29 +28,16 @@ export interface CustomNetworkError {
   path: null | undefined | ReadonlyArray<string | number>;
 }
 
-const defaultProps = {
-  error: null,
-  errors: [],
-  noMargin: false,
-  containerBoxSx: {},
-  errorTitleTypographyProps: {},
-  errorElementTypographyProps: {},
-  ulSx: {},
-  liSx: {},
-  customErrorComponents: {},
-  customErrorComponentProps: {},
-};
-
 /* eslint-disable react/no-array-index-key */
 function ErrorsDisplay({
-  error,
-  errors,
-  noMargin,
-  containerBoxSx,
-  errorTitleTypographyProps,
-  errorElementTypographyProps,
-  ulSx,
-  liSx,
+  error = null,
+  errors = [],
+  noMargin = false,
+  containerBoxSx = {},
+  errorTitleTypographyProps = {},
+  errorElementTypographyProps = {},
+  ulSx = {},
+  liSx = {},
   customErrorComponents = {},
   customErrorComponentProps = {},
 }: Props) {
@@ -173,7 +160,5 @@ function ErrorsDisplay({
   );
 }
 /* eslint-enable */
-
-ErrorsDisplay.defaultProps = defaultProps;
 
 export default ErrorsDisplay;

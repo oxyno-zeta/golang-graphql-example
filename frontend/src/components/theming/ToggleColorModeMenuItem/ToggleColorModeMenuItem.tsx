@@ -13,11 +13,7 @@ export interface Props {
   titleStyle?: React.CSSProperties;
 }
 
-const defaultProps = {
-  titleStyle: { fontSize: 13, marginBottom: '2px' },
-};
-
-function ToggleColorModeMenuItem({ titleStyle }: Props) {
+function ToggleColorModeMenuItem({ titleStyle = { fontSize: 13, marginBottom: '2px' } }: Props) {
   // Setup translate
   const { t } = useTranslation();
   // Get theme
@@ -56,7 +52,5 @@ function ToggleColorModeMenuItem({ titleStyle }: Props) {
     </>
   );
 }
-
-ToggleColorModeMenuItem.defaultProps = defaultProps;
 
 export default ToggleColorModeMenuItem;

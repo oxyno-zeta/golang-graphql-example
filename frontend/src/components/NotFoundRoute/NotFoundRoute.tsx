@@ -6,11 +6,7 @@ export interface Props {
   typographyProps?: TypographyProps;
 }
 
-const defaultProps = {
-  typographyProps: {},
-};
-
-function NotFoundRoute({ typographyProps }: Props) {
+function NotFoundRoute({ typographyProps = {} }: Props) {
   // Setup translate
   const { t } = useTranslation();
 
@@ -23,7 +19,5 @@ function NotFoundRoute({ typographyProps }: Props) {
     </Typography>
   );
 }
-
-NotFoundRoute.defaultProps = defaultProps;
 
 export default NotFoundRoute;

@@ -10,13 +10,12 @@ export interface Props {
   svgIconContainerStyle?: Record<string, string>;
 }
 
-const defaultProps = {
-  tooltipProps: {},
-  svgIconProps: {},
-  svgIconContainerStyle: { padding: '8px', verticalAlign: 'middle', textAlign: 'center', display: 'inline-flex' },
-};
-
-function InfoForcedTooltip({ tooltipTitle, tooltipProps, svgIconProps, svgIconContainerStyle }: Props) {
+function InfoForcedTooltip({
+  tooltipTitle,
+  tooltipProps = {},
+  svgIconProps = {},
+  svgIconContainerStyle = { padding: '8px', verticalAlign: 'middle', textAlign: 'center', display: 'inline-flex' },
+}: Props) {
   return (
     <ForcedTooltip
       title={<>{tooltipTitle}</>}
@@ -31,7 +30,5 @@ function InfoForcedTooltip({ tooltipTitle, tooltipProps, svgIconProps, svgIconCo
     />
   );
 }
-
-InfoForcedTooltip.defaultProps = defaultProps;
 
 export default InfoForcedTooltip;

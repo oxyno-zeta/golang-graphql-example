@@ -8,11 +8,7 @@ export interface Props {
   listItemButtonProps?: Omit<ListItemButtonProps, 'component' | 'to' | 'selected'>;
 }
 
-const defaultProps = {
-  listItemButtonProps: {},
-};
-
-function ListNavItemButton({ to, children, listItemButtonProps }: Props) {
+function ListNavItemButton({ to, children, listItemButtonProps = {} }: Props) {
   const match = useMatch({ path: useResolvedPath(to).pathname, end: true });
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -24,7 +20,5 @@ function ListNavItemButton({ to, children, listItemButtonProps }: Props) {
     </ListItemButton>
   );
 }
-
-ListNavItemButton.defaultProps = defaultProps;
 
 export default ListNavItemButton;

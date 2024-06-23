@@ -22,7 +22,12 @@ export interface Props {
   initialFilter?: undefined | null | FilterValueObject;
 }
 
-function FilterForm({ filterDefinitionModel, predefinedFilterObjects, initialFilter, onChange }: Props) {
+function FilterForm({
+  filterDefinitionModel,
+  predefinedFilterObjects = undefined,
+  initialFilter = undefined,
+  onChange,
+}: Props) {
   // Setup translate
   const { t } = useTranslation();
   // State
@@ -145,10 +150,5 @@ function FilterForm({ filterDefinitionModel, predefinedFilterObjects, initialFil
   );
 }
 /* eslint-enable react/no-array-index-key */
-
-FilterForm.defaultProps = {
-  predefinedFilterObjects: undefined,
-  initialFilter: undefined,
-};
 
 export default memo(FilterForm);

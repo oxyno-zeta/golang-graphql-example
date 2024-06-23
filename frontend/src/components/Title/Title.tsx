@@ -11,22 +11,20 @@ export interface Props {
   toolbarProps?: Partial<ToolbarProps>;
 }
 
-const defaultProps = {
-  leftElement: null,
-  title: '',
-  titleElement: null,
-  rightElement: null,
-  titleTypographyProps: {
+function Title({
+  leftElement = null,
+  title = '',
+  titleElement = null,
+  rightElement = null,
+  titleTypographyProps = {
     variant: 'h5',
     color: 'inherit',
     style: { fontWeight: 'bold' },
   },
-  toolbarProps: {
+  toolbarProps = {
     style: { paddingLeft: '0px', paddingRight: '0px' },
   },
-};
-
-function Title({ leftElement, title, titleElement, rightElement, titleTypographyProps, toolbarProps }: Props) {
+}: Props) {
   return (
     <Toolbar {...toolbarProps}>
       {leftElement}
@@ -37,7 +35,5 @@ function Title({ leftElement, title, titleElement, rightElement, titleTypography
     </Toolbar>
   );
 }
-
-Title.defaultProps = defaultProps;
 
 export default Title;

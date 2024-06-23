@@ -17,17 +17,12 @@ export type Props<T extends FilterValueObject> = {
   isAdvancedFilterPopperEnabled?: boolean;
 };
 
-const defaultProps = {
-  predefinedFilterObjects: undefined,
-  isAdvancedFilterPopperEnabled: false,
-};
-
 function FilterButton<T extends FilterValueObject>({
   filter,
   onSubmit,
   filterDefinitionModel,
-  predefinedFilterObjects,
-  isAdvancedFilterPopperEnabled,
+  predefinedFilterObjects = undefined,
+  isAdvancedFilterPopperEnabled = false,
 }: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
@@ -86,7 +81,5 @@ function FilterButton<T extends FilterValueObject>({
     </>
   );
 }
-
-FilterButton.defaultProps = defaultProps;
 
 export default memo(FilterButton);

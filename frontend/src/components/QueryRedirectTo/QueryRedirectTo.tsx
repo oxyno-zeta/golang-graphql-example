@@ -29,25 +29,16 @@ export interface Props<T, P extends OperationVariables> {
   navigateProps?: Omit<NavigateProps, 'to'>;
 }
 
-const defaultProps = {
-  queryHookOptions: {},
-  noDataTypographyProps: {},
-  centerLoadingProps: {},
-  graphqlErrorsProps: {},
-  navigateProps: {},
-  disableCenterLoadingSubtitle: false,
-};
-
 function QueryRedirectTo<T, P extends OperationVariables>({
   query,
   buildQueryVariables,
   buildNavigateTo,
-  disableCenterLoadingSubtitle,
-  queryHookOptions,
-  noDataTypographyProps,
-  centerLoadingProps,
-  graphqlErrorsProps,
-  navigateProps,
+  disableCenterLoadingSubtitle = false,
+  queryHookOptions = {},
+  noDataTypographyProps = {},
+  centerLoadingProps = {},
+  graphqlErrorsProps = {},
+  navigateProps = {},
 }: Props<T, P>) {
   // Setup translate
   const { t } = useTranslation();
@@ -90,7 +81,5 @@ function QueryRedirectTo<T, P extends OperationVariables>({
 
   return <Navigate to={to} {...navigateProps} />;
 }
-
-QueryRedirectTo.defaultProps = defaultProps;
 
 export default QueryRedirectTo;

@@ -23,17 +23,12 @@ export type Props<T extends FilterValueObject> = {
   mainSearchDisplay: string;
 };
 
-const defaultProps = {
-  predefinedFilterObjects: undefined,
-  isAdvancedFilterPopperEnabled: false,
-};
-
 function FilterSearchBar<T extends FilterValueObject>({
   filter,
   onSubmit,
   filterDefinitionModel,
-  predefinedFilterObjects,
-  isAdvancedFilterPopperEnabled,
+  predefinedFilterObjects = undefined,
+  isAdvancedFilterPopperEnabled = undefined,
   onMainSearchChange,
   mainSearchInitialValue,
   mainSearchDisplay,
@@ -129,7 +124,5 @@ function FilterSearchBar<T extends FilterValueObject>({
     </Paper>
   );
 }
-
-FilterSearchBar.defaultProps = defaultProps;
 
 export default memo(FilterSearchBar);

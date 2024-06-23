@@ -4,23 +4,16 @@ import Backdrop, { BackdropProps } from '@mui/material/Backdrop';
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 
 export interface Props {
-  backdropProps?: BackdropProps;
+  backdropProps?: Omit<BackdropProps, 'open'>;
   circularProgressProps?: CircularProgressProps;
 }
 
-const defaultProps = {
-  backdropProps: {},
-  circularProgressProps: {},
-};
-
-function MainPageCenterLoading({ backdropProps, circularProgressProps }: Props) {
+function MainPageCenterLoading({ backdropProps = {}, circularProgressProps = {} }: Props) {
   return (
-    <Backdrop sx={{ color: '#fff', zIndex: (theme: Theme) => theme.zIndex.drawer + 1 }} open {...backdropProps}>
+    <Backdrop sx={{ color: '#fff', zIndex: (theme: Theme) => theme.zIndex.drawer + 1 }} {...backdropProps} open>
       <CircularProgress color="inherit" {...circularProgressProps} />
     </Backdrop>
   );
 }
-
-MainPageCenterLoading.defaultProps = defaultProps;
 
 export default MainPageCenterLoading;

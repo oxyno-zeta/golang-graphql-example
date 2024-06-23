@@ -26,14 +26,12 @@ export interface Props {
   subtitleTypographyProps?: Partial<TypographyProps>;
 }
 
-const defaultProps = {
-  containerBoxSx: {},
-  circularProgressProps: {},
-  subtitleTypographyProps: {},
-  subtitle: undefined,
-};
-
-function CenterLoading({ containerBoxSx, circularProgressProps, subtitle, subtitleTypographyProps }: Props) {
+function CenterLoading({
+  containerBoxSx = {},
+  circularProgressProps = {},
+  subtitle = undefined,
+  subtitleTypographyProps = {},
+}: Props) {
   return (
     <Box
       sx={{
@@ -59,7 +57,5 @@ function CenterLoading({ containerBoxSx, circularProgressProps, subtitle, subtit
     </Box>
   );
 }
-
-CenterLoading.defaultProps = defaultProps;
 
 export default CenterLoading;

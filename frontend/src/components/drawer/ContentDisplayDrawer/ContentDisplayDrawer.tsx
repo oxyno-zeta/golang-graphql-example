@@ -34,32 +34,20 @@ export interface Props {
 const defaultMinDrawerWidth = 150;
 const defaultMaxDrawerWidth = 400;
 
-const defaultProps = {
-  mobileDrawerProps: {},
-  drawerProps: {},
-  drawerContainerBoxSx: {},
-  mainContainerBoxSx: {},
-  disableTopSpacer: false,
-  titleElement: null,
-  minDrawerWidth: defaultMinDrawerWidth,
-  maxDrawerWidth: defaultMaxDrawerWidth,
-  disableResize: false,
-};
-
 function ContentDisplayDrawer({
   children,
   drawerElement,
   defaultDrawerWidth,
   onClose,
-  mobileDrawerProps,
-  drawerProps,
-  drawerContainerBoxSx,
-  mainContainerBoxSx,
-  disableTopSpacer,
-  titleElement,
+  mobileDrawerProps = {},
+  drawerProps = {},
+  drawerContainerBoxSx = {},
+  mainContainerBoxSx = {},
+  disableTopSpacer = false,
+  titleElement = null,
   minDrawerWidth = defaultMinDrawerWidth,
   maxDrawerWidth = defaultMaxDrawerWidth,
-  disableResize,
+  disableResize = false,
 }: Props) {
   // Setup translate
   const { t } = useTranslation();
@@ -183,7 +171,5 @@ function ContentDisplayDrawer({
     </Box>
   );
 }
-
-ContentDisplayDrawer.defaultProps = defaultProps;
 
 export default ContentDisplayDrawer;

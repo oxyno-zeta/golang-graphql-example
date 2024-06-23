@@ -13,13 +13,7 @@ export interface Props {
   gridButtonProps?: Omit<ButtonProps, 'onClick'>;
 }
 
-const defaultProps = {
-  buttonGroupProps: {},
-  tableButtonProps: {},
-  gridButtonProps: {},
-};
-
-function GridTableViewSwitcher({ buttonGroupProps, tableButtonProps, gridButtonProps }: Props) {
+function GridTableViewSwitcher({ buttonGroupProps = {}, tableButtonProps = {}, gridButtonProps = {} }: Props) {
   // Get translator
   const { t } = useTranslation();
   // Get context
@@ -74,7 +68,5 @@ function GridTableViewSwitcher({ buttonGroupProps, tableButtonProps, gridButtonP
     </ButtonGroup>
   );
 }
-
-GridTableViewSwitcher.defaultProps = defaultProps;
 
 export default GridTableViewSwitcher;

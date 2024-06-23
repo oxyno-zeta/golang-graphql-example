@@ -10,12 +10,7 @@ export interface Props {
   typographyProps?: TypographyProps;
 }
 
-const defaultProps = {
-  containerBoxSx: {},
-  typographyProps: {},
-};
-
-function Footer({ containerBoxSx, typographyProps }: Props) {
+function Footer({ containerBoxSx = {}, typographyProps = {} }: Props) {
   return (
     <Box
       sx={{
@@ -37,7 +32,5 @@ function Footer({ containerBoxSx, typographyProps }: Props) {
     </Box>
   );
 }
-
-Footer.defaultProps = defaultProps;
 
 export default Footer;

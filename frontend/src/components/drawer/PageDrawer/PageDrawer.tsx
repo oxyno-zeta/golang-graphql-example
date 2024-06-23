@@ -47,31 +47,19 @@ export interface Props {
 const defaultMinDrawerWidth = 150;
 const defaultMaxDrawerWidth = 400;
 
-const defaultProps = {
-  mobileDrawerProps: {},
-  drawerProps: {},
-  drawerContainerBoxSx: {},
-  mainContainerBoxSx: {},
-  disableTopSpacer: false,
-  minDrawerWidth: defaultMinDrawerWidth,
-  maxDrawerWidth: defaultMaxDrawerWidth,
-  disableResize: false,
-  disableCollapse: false,
-};
-
 function PageDrawer({
   defaultDrawerWidth,
   renderDrawerContent,
   children,
-  mobileDrawerProps,
-  drawerProps,
-  drawerContainerBoxSx,
-  mainContainerBoxSx,
-  disableTopSpacer,
+  mobileDrawerProps = {},
+  drawerProps = {},
+  drawerContainerBoxSx = {},
+  mainContainerBoxSx = {},
+  disableTopSpacer = false,
   minDrawerWidth = defaultMinDrawerWidth,
   maxDrawerWidth = defaultMaxDrawerWidth,
-  disableResize,
-  disableCollapse,
+  disableResize = false,
+  disableCollapse = false,
 }: Props) {
   // Setup translate
   const { t } = useTranslation();
@@ -253,7 +241,5 @@ function PageDrawer({
     </div>
   );
 }
-
-PageDrawer.defaultProps = defaultProps;
 
 export default PageDrawer;

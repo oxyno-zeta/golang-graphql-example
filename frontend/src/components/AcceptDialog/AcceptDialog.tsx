@@ -25,34 +25,21 @@ export interface Props {
   okButtonProps?: Partial<Omit<LoadingButtonProps, 'loading' | 'onClick' | 'disabled'>>;
 }
 
-const defaultProps = {
-  content: '',
-  contentElement: null,
-  okDisabled: false,
-  dialogProps: {},
-  dialogTitleProps: {},
-  dialogContentProps: {},
-  dialogContentTextProps: {},
-  dialogActionsProps: {},
-  cancelButtonProps: {},
-  okButtonProps: {},
-};
-
 function AcceptDialog({
   open,
   title,
-  content,
-  contentElement,
+  content = '',
+  contentElement = null,
   onClose,
   onSubmit,
-  okDisabled,
-  dialogProps,
-  dialogTitleProps,
-  dialogContentProps,
-  dialogContentTextProps,
-  dialogActionsProps,
-  cancelButtonProps,
-  okButtonProps,
+  okDisabled = false,
+  dialogProps = {},
+  dialogTitleProps = {},
+  dialogContentProps = {},
+  dialogContentTextProps = {},
+  dialogActionsProps = {},
+  cancelButtonProps = {},
+  okButtonProps = {},
 }: Props) {
   const { t } = useTranslation();
   // Manage loading
@@ -98,7 +85,5 @@ function AcceptDialog({
     </Dialog>
   );
 }
-// Add default props
-AcceptDialog.defaultProps = defaultProps;
 
 export default AcceptDialog;

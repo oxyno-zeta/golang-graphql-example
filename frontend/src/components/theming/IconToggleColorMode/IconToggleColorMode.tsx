@@ -11,11 +11,7 @@ export interface Props {
   iconButtonProps?: IconButtonProps;
 }
 
-const defaultProps = {
-  iconButtonProps: {},
-};
-
-function IconToggleColorMode({ iconButtonProps }: Props) {
+function IconToggleColorMode({ iconButtonProps = {} }: Props) {
   // Setup translate
   const { t } = useTranslation();
   // Get theme
@@ -44,7 +40,5 @@ function IconToggleColorMode({ iconButtonProps }: Props) {
     </Tooltip>
   );
 }
-
-IconToggleColorMode.defaultProps = defaultProps;
 
 export default IconToggleColorMode;

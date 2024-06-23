@@ -25,8 +25,8 @@ function FormAutocomplete<T extends FieldValues>({
   control,
   name,
   values,
-  autocompleteProps,
-  textFieldProps,
+  autocompleteProps = {},
+  textFieldProps = {},
 }: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
@@ -116,10 +116,5 @@ function FormAutocomplete<T extends FieldValues>({
     />
   );
 }
-
-FormAutocomplete.defaultProps = {
-  autocompleteProps: {},
-  textFieldProps: {},
-};
 
 export default FormAutocomplete;

@@ -10,11 +10,7 @@ export interface Props {
   iconButtonProps?: Partial<Omit<IconButtonProps, 'onClick'>>;
 }
 
-const defaultProps = {
-  iconButtonProps: {},
-};
-
-function OpenDrawerButton({ onDrawerToggle, iconButtonProps }: Props) {
+function OpenDrawerButton({ onDrawerToggle, iconButtonProps = {} }: Props) {
   // Setup translate
   const { t } = useTranslation();
 
@@ -30,7 +26,5 @@ function OpenDrawerButton({ onDrawerToggle, iconButtonProps }: Props) {
     </Tooltip>
   );
 }
-
-OpenDrawerButton.defaultProps = defaultProps;
 
 export default OpenDrawerButton;

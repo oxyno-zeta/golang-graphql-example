@@ -15,13 +15,11 @@ export type Props<T extends Record<string, SortOrderModel>> = {
   isPopperEnabled?: boolean;
 };
 
-const defaultProps = { isPopperEnabled: false };
-
 function SortButton<T extends Record<string, SortOrderModel>>({
   sorts,
   onSubmit,
   sortFields,
-  isPopperEnabled,
+  isPopperEnabled = false,
 }: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
@@ -79,7 +77,5 @@ function SortButton<T extends Record<string, SortOrderModel>>({
     </>
   );
 }
-
-SortButton.defaultProps = defaultProps;
 
 export default SortButton;

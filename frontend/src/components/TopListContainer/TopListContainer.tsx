@@ -7,11 +7,7 @@ export interface Props {
   children: ReactNode;
 }
 
-const defaultProps = {
-  sx: {},
-};
-
-function TopListContainer({ children, sx }: Props) {
+function TopListContainer({ children, sx = {} }: Props) {
   return (
     <Box
       sx={{
@@ -27,7 +23,5 @@ function TopListContainer({ children, sx }: Props) {
     </Box>
   );
 }
-
-TopListContainer.defaultProps = defaultProps;
 
 export default TopListContainer;

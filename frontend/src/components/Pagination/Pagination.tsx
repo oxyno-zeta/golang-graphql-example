@@ -25,16 +25,6 @@ export interface Props {
   nextIconButtonProps?: IconButtonProps;
 }
 
-const defaultProps = {
-  onFirstPage: undefined,
-  onPreviousPage: undefined,
-  onNextPage: undefined,
-  toolbarProps: {},
-  firstIconButtonProps: {},
-  previousIconButtonProps: {},
-  nextIconButtonProps: {},
-};
-
 type IconButtonInternalProps = {
   to?: string;
   component?: ForwardRefExoticComponent<LinkProps & RefAttributes<HTMLAnchorElement>>;
@@ -44,13 +34,13 @@ type IconButtonInternalProps = {
 function Pagination({
   maxPaginationSize,
   pageInfo,
-  onFirstPage,
-  onPreviousPage,
-  onNextPage,
-  toolbarProps,
-  firstIconButtonProps,
-  nextIconButtonProps,
-  previousIconButtonProps,
+  onFirstPage = undefined,
+  onPreviousPage = undefined,
+  onNextPage = undefined,
+  toolbarProps = {},
+  firstIconButtonProps = {},
+  nextIconButtonProps = {},
+  previousIconButtonProps = {},
 }: Props) {
   // Setup translate
   const { t } = useTranslation();
@@ -146,7 +136,5 @@ function Pagination({
     </Toolbar>
   );
 }
-
-Pagination.defaultProps = defaultProps;
 
 export default Pagination;

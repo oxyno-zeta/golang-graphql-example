@@ -138,15 +138,13 @@ export interface Props {
   autocompleteProps?: Partial<AutocompleteProps<string, false, true, false>>;
 }
 
-const defaultProps = {
-  autocompleteProps: {
+function TimezoneSelector({
+  autocompleteProps = {
     fullWidth: true,
     size: 'small',
     sx: { minWidth: { xs: '250px', md: '300px' } },
   },
-};
-
-function TimezoneSelector({ autocompleteProps }: Props) {
+}: Props) {
   // Get timezone context
   const timezoneCtx = useContext(TimezoneContext);
   // Setup translate
@@ -198,7 +196,5 @@ function TimezoneSelector({ autocompleteProps }: Props) {
     />
   );
 }
-
-TimezoneSelector.defaultProps = defaultProps;
 
 export default TimezoneSelector;

@@ -9,12 +9,7 @@ interface Props {
   disableTopSpacer?: boolean;
 }
 
-const defaultProps = {
-  containerBoxSx: {},
-  disableTopSpacer: false,
-};
-
-function MainContentWrapper({ children, disableTopSpacer, containerBoxSx }: Props) {
+function MainContentWrapper({ children, disableTopSpacer = false, containerBoxSx = {} }: Props) {
   return (
     <Box sx={{ margin: '0 20px 20px 20px', ...containerBoxSx }}>
       {!disableTopSpacer && <TopBarSpacer />}
@@ -22,7 +17,5 @@ function MainContentWrapper({ children, disableTopSpacer, containerBoxSx }: Prop
     </Box>
   );
 }
-
-MainContentWrapper.defaultProps = defaultProps;
 
 export default MainContentWrapper;

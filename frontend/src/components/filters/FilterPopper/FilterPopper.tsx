@@ -20,18 +20,13 @@ export type Props<T extends FilterValueObject> = {
   anchorElement: HTMLFormElement | HTMLButtonElement | null;
 };
 
-const defaultProps = {
-  predefinedFilterObjects: undefined,
-  initialFilter: undefined,
-};
-
 function FilterPopper<T extends FilterValueObject>({
   filterDefinitionModel,
-  predefinedFilterObjects,
+  predefinedFilterObjects = undefined,
   onSubmit,
   onReset,
   onClose,
-  initialFilter,
+  initialFilter = undefined,
   open,
   anchorElement,
 }: Props<T>) {
@@ -118,7 +113,5 @@ function FilterPopper<T extends FilterValueObject>({
     </Popper>
   );
 }
-
-FilterPopper.defaultProps = defaultProps;
 
 export default FilterPopper;

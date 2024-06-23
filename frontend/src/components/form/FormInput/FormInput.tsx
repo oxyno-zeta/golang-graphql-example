@@ -10,7 +10,7 @@ type Props<T extends FieldValues> = {
   textFieldProps?: TextFieldProps;
 };
 
-function FormInput<T extends FieldValues>({ control, name, textFieldProps }: Props<T>) {
+function FormInput<T extends FieldValues>({ control, name, textFieldProps = {} }: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
   // Use controller
@@ -36,9 +36,5 @@ function FormInput<T extends FieldValues>({ control, name, textFieldProps }: Pro
 
   return <TextField {...errorProps} {...field} {...textFieldProps} />;
 }
-
-FormInput.defaultProps = {
-  textFieldProps: {},
-};
 
 export default FormInput;

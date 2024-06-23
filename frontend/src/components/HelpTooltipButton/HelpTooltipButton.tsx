@@ -10,12 +10,7 @@ export interface Props {
   iconButtonProps?: Omit<IconButtonProps, 'onClick'>;
 }
 
-const defaultProps = {
-  tooltipProps: {},
-  iconButtonProps: {},
-};
-
-function HelpTooltipButton({ tooltipTitle, tooltipProps, iconButtonProps }: Props) {
+function HelpTooltipButton({ tooltipTitle, tooltipProps = {}, iconButtonProps = {} }: Props) {
   return (
     <ForcedTooltip
       title={<>{tooltipTitle}</>}
@@ -32,7 +27,5 @@ function HelpTooltipButton({ tooltipTitle, tooltipProps, iconButtonProps }: Prop
     />
   );
 }
-
-HelpTooltipButton.defaultProps = defaultProps;
 
 export default HelpTooltipButton;

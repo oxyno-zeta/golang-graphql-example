@@ -7,12 +7,7 @@ export type Props = Omit<TooltipProps, 'onClose' | 'onOpen' | 'open' | 'children
   children?: ReactElement;
 };
 
-const defaultProps = {
-  render: undefined,
-  children: undefined,
-};
-
-function ForcedTooltip({ render, children, ...props }: Props) {
+function ForcedTooltip({ render = undefined, children = undefined, ...props }: Props) {
   const [open, setOpen] = useState(false);
 
   const onTooltipClose = () => {
@@ -41,7 +36,5 @@ function ForcedTooltip({ render, children, ...props }: Props) {
     </ClickAwayListener>
   );
 }
-
-ForcedTooltip.defaultProps = defaultProps;
 
 export default ForcedTooltip;

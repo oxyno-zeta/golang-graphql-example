@@ -11,13 +11,13 @@ export interface Props {
   isNormalCollapsed: boolean;
 }
 
-const defaultProps = {
-  titleText: '',
-  titleElement: undefined,
-  subtitleElement: undefined,
-};
-
-function DrawerContent({ titleText, titleElement, subtitleElement, listItemsElement, isNormalCollapsed }: Props) {
+function DrawerContent({
+  titleText = '',
+  titleElement = undefined,
+  subtitleElement = undefined,
+  listItemsElement,
+  isNormalCollapsed,
+}: Props) {
   return (
     <>
       {isNormalCollapsed && (
@@ -72,7 +72,5 @@ function DrawerContent({ titleText, titleElement, subtitleElement, listItemsElem
     </>
   );
 }
-
-DrawerContent.defaultProps = defaultProps;
 
 export default DrawerContent;

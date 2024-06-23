@@ -20,18 +20,13 @@ export type Props<T extends FilterValueObject> = {
   initialFilter?: undefined | null | T;
 };
 
-const defaultProps = {
-  predefinedFilterObjects: undefined,
-  initialFilter: undefined,
-};
-
 function FilterDialog<T extends FilterValueObject>({
   filterDefinitionModel,
-  predefinedFilterObjects,
+  predefinedFilterObjects = undefined,
   onSubmit,
   onReset,
   onClose,
-  initialFilter,
+  initialFilter = undefined,
   open,
 }: Props<T>) {
   // Setup translate
@@ -97,7 +92,5 @@ function FilterDialog<T extends FilterValueObject>({
     </Dialog>
   );
 }
-
-FilterDialog.defaultProps = defaultProps;
 
 export default FilterDialog;
