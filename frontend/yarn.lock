@@ -29,9 +29,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.10.5":
-  version: 3.10.5
-  resolution: "@apollo/client@npm:3.10.5"
+"@apollo/client@npm:^3.10.6":
+  version: 3.10.6
+  resolution: "@apollo/client@npm:3.10.6"
   dependencies:
     "@graphql-typed-document-node/core": "npm:^3.1.1"
     "@wry/caches": "npm:^1.0.0"
@@ -62,7 +62,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 10/586d06bd7cda6e9d5623039008438eede80c2e4674c5659931b11dbd3cd3ac5d72a09d320aea5e5f0621742e185473fa62003b4e9e6c450c723a4b898215f8a9
+  checksum: 10/15ccdd7fab632f467a0a5ea381a4129fcf6d3cad37e3f9b95b53651cfc8bfb6ff0b1aec8acb3e2c7cd82b76ede5da5c5152a27efb511f0e777b6aa40df8db288
   languageName: node
   linkType: hard
 
@@ -2839,13 +2839,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-data-grid@npm:^7.7.0":
-  version: 7.7.0
-  resolution: "@mui/x-data-grid@npm:7.7.0"
+"@mui/x-data-grid@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mui/x-data-grid@npm:7.7.1"
   dependencies:
     "@babel/runtime": "npm:^7.24.7"
-    "@mui/system": "npm:^5.15.15"
-    "@mui/utils": "npm:^5.15.14"
+    "@mui/system": "npm:^5.15.20"
+    "@mui/utils": "npm:^5.15.20"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
     reselect: "npm:^4.1.8"
@@ -2853,18 +2853,18 @@ __metadata:
     "@mui/material": ^5.15.14
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
-  checksum: 10/2ec4c1104a3c4a76b28c1b677454c21d34e35f81a42a3ea5384f179785957cc7f87c9e1bd00e2bfd98576bf26ecc825490835bab6b2de71465772b5f426712e0
+  checksum: 10/8344706c8591a1fdea17862337d21476b4626b710d029c6e4af57e3cf0bab31e21aed87b018f5a219315f1c04f9340f2d6aca5776d57e6cf4367f249fa3111d9
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:^7.7.0":
-  version: 7.7.0
-  resolution: "@mui/x-date-pickers@npm:7.7.0"
+"@mui/x-date-pickers@npm:^7.7.1":
+  version: 7.7.1
+  resolution: "@mui/x-date-pickers@npm:7.7.1"
   dependencies:
     "@babel/runtime": "npm:^7.24.7"
     "@mui/base": "npm:^5.0.0-beta.40"
-    "@mui/system": "npm:^5.15.15"
-    "@mui/utils": "npm:^5.15.14"
+    "@mui/system": "npm:^5.15.20"
+    "@mui/utils": "npm:^5.15.20"
     "@types/react-transition-group": "npm:^4.4.10"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
@@ -2901,7 +2901,7 @@ __metadata:
       optional: true
     moment-jalaali:
       optional: true
-  checksum: 10/c1855031d222f927277e0678b83cd6b05bdeccb09b183445bd23b6a9c6099a8b48921879db9a2931d9b789efab5c2fa6ac5574c78dfec827b8659b7d27aa2e31
+  checksum: 10/79117f8194cf2b21391842a12095edc46da8ec90bc603a3c1ac94c6e7a44e093971b55d094f8f991528329e196711a9e1bb2a4357b12c6dcec503386dbfd0377
   languageName: node
   linkType: hard
 
@@ -4822,12 +4822,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.14.6":
-  version: 20.14.6
-  resolution: "@types/node@npm:20.14.6"
+"@types/node@npm:*, @types/node@npm:^20.14.8":
+  version: 20.14.8
+  resolution: "@types/node@npm:20.14.8"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/1dcfeeb03ce3c3a1d8a537fefee7cd0cffb78f89e9535b74ee12940559566b57c39dad20d1b165b60b5727408dd44e1a52e5c01cf02d0a99d93ef3da8062c86e
+  checksum: 10/73822f66f269ce865df7e2f586787ac7444bd1169fd265cbed1e851b72787f1170517c5b616e0308ec2fbc0934ec6403b0f28d4152acbb0486071aec41167d51
   languageName: node
   linkType: hard
 
@@ -8503,7 +8503,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend@workspace:."
   dependencies:
-    "@apollo/client": "npm:^3.10.5"
+    "@apollo/client": "npm:^3.10.6"
     "@emotion/jest": "npm:^11.11.0"
     "@emotion/react": "npm:^11.11.4"
     "@emotion/styled": "npm:^11.11.5"
@@ -8513,8 +8513,8 @@ __metadata:
     "@mdi/js": "npm:^7.4.47"
     "@mui/lab": "npm:^5.0.0-alpha.170"
     "@mui/material": "npm:^5.15.20"
-    "@mui/x-data-grid": "npm:^7.7.0"
-    "@mui/x-date-pickers": "npm:^7.7.0"
+    "@mui/x-data-grid": "npm:^7.7.1"
+    "@mui/x-date-pickers": "npm:^7.7.1"
     "@storybook/addon-actions": "npm:^8.1.10"
     "@storybook/addon-designs": "npm:^8.0.2"
     "@storybook/addon-essentials": "npm:^8.1.10"
@@ -8531,7 +8531,7 @@ __metadata:
     "@testing-library/user-event": "npm:^14.5.2"
     "@types/autosuggest-highlight": "npm:^3.2.3"
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.14.6"
+    "@types/node": "npm:^20.14.8"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
     "@types/react-test-renderer": "npm:^18.3.0"
@@ -8558,7 +8558,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.2"
     eslint-plugin-storybook: "npm:^0.8.0"
     eslint-plugin-unicorn: "npm:^54.0.0"
-    graphql: "npm:^16.8.2"
+    graphql: "npm:^16.9.0"
     i18next: "npm:^23.11.5"
     i18next-browser-languagedetector: "npm:^8.0.0"
     i18next-http-backend: "npm:^2.5.2"
@@ -8971,10 +8971,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16.8.2":
-  version: 16.8.2
-  resolution: "graphql@npm:16.8.2"
-  checksum: 10/d74aa1f28a0bbc1c7e60aeb7e4e199e0818ed7169b97bd4d4e86cf345d5645615a9ccb33a11f1ab5e145fdd91d432b3aa475836d3bc5f9647e6103c8854e7e99
+"graphql@npm:^16.9.0":
+  version: 16.9.0
+  resolution: "graphql@npm:16.9.0"
+  checksum: 10/5833f82bb6c31bec120bbf9cd400eda873e1bb7ef5c17974fa262cd82dc68728fda5d4cb859dc8aaa4c4fe4f6fe1103a9c47efc01a12c02ae5cb581d8e4029e2
   languageName: node
   linkType: hard
 
@@ -10787,16 +10787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.30.0":
-  version: 0.30.3
-  resolution: "magic-string@npm:0.30.3"
-  dependencies:
-    "@jridgewell/sourcemap-codec": "npm:^1.4.15"
-  checksum: 10/f3c546b9be20d0f4b2f0a10fe0ad7b994d438c02e089a0777fd8128a00f76bd2004b13d5cd7219aa5cf445dc5fb84e915e48017d7a4cd20fa98ce8052cc15370
-  languageName: node
-  linkType: hard
-
-"magic-string@npm:^0.30.5":
+"magic-string@npm:^0.30.0, magic-string@npm:^0.30.5":
   version: 0.30.10
   resolution: "magic-string@npm:0.30.10"
   dependencies:
@@ -14112,11 +14103,11 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A^5.5.2#optional!builtin<compat/typescript>":
   version: 5.5.2
-  resolution: "typescript@patch:typescript@npm%3A5.5.2#optional!builtin<compat/typescript>::version=5.5.2&hash=b45daf"
+  resolution: "typescript@patch:typescript@npm%3A5.5.2#optional!builtin<compat/typescript>::version=5.5.2&hash=379a07"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/28b3de2ddaf63a7620e7ddbe5d377af71ce93ecc558c41bf0e3d88661d8e6e7aa6c7739164fef98055f69819e41faca49252938ef3633a3dff2734cca6a9042e
+  checksum: 10/ac3145f65cf9e72ab29f2196e05d5816b355dc1a9195b9f010d285182a12457cfacd068be2dd22c877f88ebc966ac6e0e83f51c8586412b16499a27e3670ff4b
   languageName: node
   linkType: hard
 
