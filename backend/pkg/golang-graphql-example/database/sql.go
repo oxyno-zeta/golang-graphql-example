@@ -84,7 +84,7 @@ func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Contex
 		fn(optCfg)
 	}
 
-	db := sdb.db
+	db := sdb.GetTransactionalOrDefaultGormDB(ctx)
 	sqlOpts := &sql.TxOptions{}
 	// Apply clauses for read transaction
 	if optCfg.ReadTransaction {
