@@ -69,6 +69,9 @@
   },
   "devDependencies": {
     "@emotion/jest": "^11.11.0",
+    "@farmfe/cli": "^1.0.2",
+    "@farmfe/core": "^1.2.5",
+    "@farmfe/plugin-react": "^1.1.0",
     "@fontsource/material-icons": "^5.0.18",
     "@fontsource/roboto": "^5.0.13",
     "@storybook/addon-actions": "^8.1.10",
@@ -82,6 +85,7 @@
     "@storybook/react": "^8.1.10",
     "@storybook/react-vite": "^8.1.10",
     "@storybook/testing-library": "^0.2.2",
+    "@swc/plugin-emotion": "^3.0.8",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
