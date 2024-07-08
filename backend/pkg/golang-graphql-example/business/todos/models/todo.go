@@ -8,3 +8,11 @@ type Todo struct {
 	Text string `gorm:"type:varchar(2000)"`
 	Done bool
 }
+
+func (*Todo) ObjectSchemaVersion() int {
+	return 1
+}
+
+func (*Todo) MapPatchToJSON(patch map[string]interface{}) (map[string]interface{}, error) {
+	return TransformTodoGormColumnMapToJSONKeyMap(patch, true)
+}

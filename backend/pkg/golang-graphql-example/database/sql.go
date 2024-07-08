@@ -8,7 +8,6 @@ import (
 
 	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/deltaplugin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
@@ -30,7 +29,7 @@ type sqldb struct {
 	metricsSvc            metrics.Service
 	tracingSvc            tracing.Service
 	db                    *gorm.DB
-	deltaNotificationChan chan *deltaplugin.Delta
+	deltaNotificationChan chan *Delta
 	connectionName        string
 }
 
@@ -197,13 +196,10 @@ func (sdb *sqldb) Connect() error {
 		}
 	}
 
-	// Check if delta plugin is wanted
-	if sdb.deltaNotificationChan != nil {
-		err = dbResult.Use(deltaplugin.New(sdb.deltaNotificationChan))
-		// Check if error exists
-		if err != nil {
-			return errors.WithStack(err)
-		}
+	err = dbResult.Use(NewTransactionalOutboxPlugin())
+	// Check if error exists
+	if err != nil {
+		return errors.WithStack(err)
 	}
 
 	// Get prometheus gorm middleware
@@ -252,6 +248,12 @@ func (sdb *sqldb) Connect() error {
 	if cfg.Database.SQLConnectionMaxLifetimeDuration != "" {
 		// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
 		sqlDB.SetConnMaxLifetime(sqlConnectionMaxLifetimeDuration)
+	}
+
+	// Auto migrate delta
+	err = dbResult.AutoMigrate(&TransactionalOutbox{})
+	if err != nil {
+		return errors.WithStack(err)
 	}
 
 	// Save gorm db object

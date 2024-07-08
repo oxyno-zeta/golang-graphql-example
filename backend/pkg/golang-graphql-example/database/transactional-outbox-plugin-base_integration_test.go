@@ -10,7 +10,6 @@ import (
 
 	cmocks "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config/mocks"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/deltaplugin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/stretchr/testify/suite"
@@ -25,12 +24,11 @@ const (
 	EventuallyWaitFor = 2 * time.Second
 )
 
-type DeltaPluginTestSuite struct {
+type TransactionalOutboxPluginTestSuite struct {
 	suite.Suite
 
-	db                    database.DB
-	deltaNotificationChan chan *deltaplugin.Delta
-	now                   time.Time
+	db  database.DB
+	now time.Time
 }
 
 type People struct {
@@ -41,9 +39,14 @@ type People struct {
 }
 
 // Override before create to avoid uuid generation
-func (base *People) BeforeCreate(_ *gorm.DB) error {
-	base.Base.ID = "init-fake-id"
+func (p *People) BeforeCreate(_ *gorm.DB) error {
+	p.Base.ID = "id-" + p.Name
 	return nil
+}
+
+// Override before create to avoid uuid generation
+func (base *People) ObjectSchemaVersion() int {
+	return 1
 }
 
 type PeopleNotDBCreated struct {
@@ -54,7 +57,7 @@ type PeopleNotDBCreated struct {
 }
 
 // this function executes before the test suite begins execution
-func (suite *DeltaPluginTestSuite) SetupSuite() {
+func (suite *TransactionalOutboxPluginTestSuite) SetupSuite() {
 	fmt.Println("SetupSuite phase")
 
 	// Create mock configuration
@@ -73,7 +76,7 @@ func (suite *DeltaPluginTestSuite) SetupSuite() {
 	suite.NoError(err)
 
 	now := time.Now()
-	deltaNotificationChan := make(chan *deltaplugin.Delta, 100)
+	deltaNotificationChan := make(chan *database.Delta, 100)
 	// Create db service
 	db := database.NewDatabase("main", cfgManagerMock, logger, metricsCtx, tracingSvc, deltaNotificationChan)
 	// Connect
@@ -91,28 +94,25 @@ func (suite *DeltaPluginTestSuite) SetupSuite() {
 
 	// Save data
 	suite.db = db
-	suite.deltaNotificationChan = deltaNotificationChan
 	suite.now = now
 }
 
 // this function executes after all tests executed
-func (suite *DeltaPluginTestSuite) TearDownSuite() {
+func (suite *TransactionalOutboxPluginTestSuite) TearDownSuite() {
 	fmt.Println("TearDownSuite phase")
 }
 
-func (suite *DeltaPluginTestSuite) AfterTest(suiteName, testName string) {
-	fmt.Println("AfterTest phase")
+func (suite *TransactionalOutboxPluginTestSuite) BeforeTest(suiteName, testName string) {
+	fmt.Println("BeforeTest phase")
 	suite.cleanDB()
-	suite.cleanDeltaNotificationChannel()
 }
 
-func (suite *DeltaPluginTestSuite) cleanDeltaNotificationChannel() {
-	for len(suite.deltaNotificationChan) > 0 {
-		<-suite.deltaNotificationChan
-	}
+func (suite *TransactionalOutboxPluginTestSuite) AfterTest(suiteName, testName string) {
+	fmt.Println("AfterTest phase")
+	// suite.cleanDB()
 }
 
-func (suite *DeltaPluginTestSuite) cleanDB() {
+func (suite *TransactionalOutboxPluginTestSuite) cleanDB() {
 	modelList := []interface{}{
 		&People{},
 	}
@@ -126,13 +126,13 @@ func (suite *DeltaPluginTestSuite) cleanDB() {
 	}
 }
 
-func (suite *DeltaPluginTestSuite) setupGenericDataset(dataset []interface{}) {
+func (suite *TransactionalOutboxPluginTestSuite) setupGenericDataset(dataset []interface{}) {
 	for _, it := range dataset {
 		suite.NoError(suite.db.GetGormDB().Save(it).Error)
 	}
 }
 
-func TestGraphQLTestSuite(t *testing.T) {
+func TestTransactionalOutboxPluginTestSuite(t *testing.T) {
 	// Verify there isn't any go routine leak
 	defer goleak.VerifyNone(
 		t,
@@ -141,5 +141,5 @@ func TestGraphQLTestSuite(t *testing.T) {
 		// Ignore gorm prometheus plugin because it creates an infinite go routine
 		goleak.IgnoreTopFunction("gorm.io/plugin/prometheus.(*Prometheus).Initialize.func1.1"),
 	)
-	suite.Run(t, new(DeltaPluginTestSuite))
+	suite.Run(t, new(TransactionalOutboxPluginTestSuite))
 }

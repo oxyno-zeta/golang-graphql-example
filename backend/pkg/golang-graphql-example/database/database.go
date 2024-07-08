@@ -5,7 +5,6 @@ import (
 	"database/sql"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/deltaplugin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
@@ -44,7 +43,7 @@ func NewDatabase(
 	logger log.Logger,
 	metricsSvc metrics.Service,
 	tracingSvc tracing.Service,
-	deltaNotificationChan chan *deltaplugin.Delta,
+	deltaNotificationChan chan *Delta,
 ) DB {
 	return &sqldb{
 		logger:                logger,
