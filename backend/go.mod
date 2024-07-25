@@ -9,7 +9,7 @@ require (
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.49
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20240617120339-2c008e74bff2
-	github.com/AppsFlyer/go-sundheit v0.5.0
+	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/coreos/go-oidc/v3 v3.10.0
 	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
