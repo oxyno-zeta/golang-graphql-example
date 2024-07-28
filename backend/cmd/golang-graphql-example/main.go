@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"strings"
 	"sync"
@@ -50,8 +51,12 @@ var targetDefinitionsMap = map[string]*targetDefinition{
 	// Extra
 }
 
+// Those definitions are saving daemon definitions that will be launched with every target.
+var daemonDefinitions = []*daemonDefinition{}
+
 // WaitGroup is used to wait for the program to finish goroutines.
 var wg sync.WaitGroup
+var daemonWg sync.WaitGroup
 
 func main() {
 	// Compute possible targets
@@ -175,6 +180,22 @@ func main() {
 		}
 	}
 
+	// Add count for daemon wait group
+	daemonWg.Add(len(daemonDefinitions))
+
+	// Create cancellable daemon context
+	dCtx, dCancel := context.WithCancel(context.TODO())
+
+	for _, dDef := range daemonDefinitions {
+		go func(dDef *daemonDefinition) {
+			// Inform routine is completed
+			defer daemonWg.Done()
+
+			// Run target
+			dDef.Run(dCtx, targets, sv)
+		}(dDef)
+	}
+
 	// Start all primary targets
 	for _, tDef := range primaryList {
 		// Run
@@ -198,4 +219,10 @@ func main() {
 
 	// Wait
 	wg.Wait()
+
+	// Cancel daemon context
+	dCancel()
+
+	// Wait all daemons
+	daemonWg.Wait()
 }

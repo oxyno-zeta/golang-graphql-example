@@ -1,6 +1,9 @@
 package main
 
-import "strings"
+import (
+	"context"
+	"strings"
+)
 
 type targetDefinition struct {
 	// Run target function
@@ -10,6 +13,12 @@ type targetDefinition struct {
 	Primary bool
 	// Should be considered in "all" target ?
 	InAllTarget bool
+}
+
+type daemonDefinition struct {
+	// Run target function
+	// This function must crash the app if necessary
+	Run func(ctx context.Context, targets []string, sv *services)
 }
 
 type arrayFlags []string
