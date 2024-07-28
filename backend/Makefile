@@ -243,7 +243,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.22.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.23.0
 endif
 
 .PHONY: setup/dep/test/install
