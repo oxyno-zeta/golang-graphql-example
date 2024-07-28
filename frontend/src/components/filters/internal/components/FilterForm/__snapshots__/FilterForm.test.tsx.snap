@@ -12353,7 +12353,7 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 <div
-  class="base-Popper-root MuiAutocomplete-popper emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   data-popper-escaped=""
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
@@ -15897,7 +15897,7 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 <div
-  class="base-Popper-root MuiAutocomplete-popper emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   data-popper-escaped=""
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
@@ -16509,7 +16509,7 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 }
 
 <div
-  class="base-Popper-root MuiAutocomplete-popper emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   data-popper-escaped=""
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
@@ -18645,7 +18645,7 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
 }
 
 <div
-  class="base-Popper-root MuiAutocomplete-popper emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   data-popper-escaped=""
   data-popper-placement="bottom"
   data-popper-reference-hidden=""

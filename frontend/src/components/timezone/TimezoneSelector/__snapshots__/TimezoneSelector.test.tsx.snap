@@ -1619,7 +1619,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 <div
-  class="base-Popper-root MuiAutocomplete-popper emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   data-popper-escaped=""
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
@@ -1998,7 +1998,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 <div
-  class="base-Popper-root MuiAutocomplete-popper emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   role="presentation"
   style="width: 0px;"
 >

@@ -310,7 +310,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
       </button>
     </span>
     <div
-      class="base-Popper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
+      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -639,7 +639,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
       </button>
     </span>
     <div
-      class="base-Popper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
+      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -1242,7 +1242,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
       </button>
     </span>
     <div
-      class="base-Popper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
+      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""

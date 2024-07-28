@@ -116,7 +116,7 @@ exports[`InfoForcedTooltip should display element tooltip on mouse click 2`] = `
       </svg>
     </span>
     <div
-      class="base-Popper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
+      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -251,7 +251,7 @@ exports[`InfoForcedTooltip should display element tooltip on mouse over only 2`]
       </svg>
     </span>
     <div
-      class="base-Popper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
+      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -466,7 +466,7 @@ exports[`InfoForcedTooltip should display text tooltip on mouse over only 2`] = 
       </svg>
     </span>
     <div
-      class="base-Popper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
+      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
