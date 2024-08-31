@@ -3,6 +3,11 @@ import { pathsToModuleNameMapper } from 'ts-jest';
 
 const { compilerOptions } = require('./tsconfig.json');
 
+// Delete assets
+delete compilerOptions.paths['~assets/*'];
+
+const tsModuleNameMapper = pathsToModuleNameMapper(compilerOptions.paths);
+
 // Sync object
 const config: Config.InitialOptions = {
   testEnvironment: 'jsdom',
@@ -10,7 +15,12 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+  moduleNameMapper: {
+    ...tsModuleNameMapper,
+    '.+\\.(css|styl|less|sass|scss)': 'identity-obj-proxy',
+    '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)':
+      '<rootDir>/__mocks__/fileMock.js',
+  },
   modulePaths: ['<rootDir>'],
   setupFiles: ['<rootDir>/.jest/jest.setup.cjs'],
   globalSetup: '<rootDir>/.jest/jest.global-setup.cjs',
