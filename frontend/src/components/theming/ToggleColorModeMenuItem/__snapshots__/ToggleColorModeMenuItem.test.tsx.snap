@@ -78,15 +78,17 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   color: inherit;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   border-radius: 4px;
-  padding: 7px;
+  padding: 11px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #fff;
   width: 100%;
+  padding: 7px;
+  font-size: 0.8125rem;
 }
 
 .emotion-2::-moz-focus-inner {
@@ -145,49 +147,37 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
   margin-right: 5px;
 }
 
-.emotion-4 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 emotion-0"
+    class="MuiTypography-root MuiTypography-body1  emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
     role="group"
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -197,20 +187,17 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
       </svg>
        
       common.darkThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -220,9 +207,6 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
       </svg>
        
       common.lightThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
   </div>
 </div>
@@ -306,15 +290,17 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   color: inherit;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   border-radius: 4px;
-  padding: 7px;
+  padding: 11px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   color: rgba(0, 0, 0, 0.54);
   width: 100%;
+  padding: 7px;
+  font-size: 0.8125rem;
 }
 
 .emotion-2::-moz-focus-inner {
@@ -373,49 +359,37 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
   margin-right: 5px;
 }
 
-.emotion-4 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 emotion-0"
+    class="MuiTypography-root MuiTypography-body1  emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
     role="group"
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -425,20 +399,17 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
       </svg>
        
       common.darkThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -448,9 +419,6 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
       </svg>
        
       common.lightThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
   </div>
 </div>
@@ -534,15 +502,17 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   color: inherit;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   border-radius: 4px;
-  padding: 7px;
+  padding: 11px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   color: rgba(0, 0, 0, 0.54);
   width: 100%;
+  padding: 7px;
+  font-size: 0.8125rem;
 }
 
 .emotion-2::-moz-focus-inner {
@@ -601,49 +571,37 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
   margin-right: 5px;
 }
 
-.emotion-4 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 emotion-0"
+    class="MuiTypography-root MuiTypography-body1  emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
     role="group"
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -653,20 +611,17 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
       </svg>
        
       common.darkThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -676,9 +631,6 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
       </svg>
        
       common.lightThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
   </div>
 </div>
@@ -762,15 +714,17 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   color: inherit;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.75;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
   border-radius: 4px;
-  padding: 7px;
+  padding: 11px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #fff;
   width: 100%;
+  padding: 7px;
+  font-size: 0.8125rem;
 }
 
 .emotion-2::-moz-focus-inner {
@@ -829,49 +783,37 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
   margin-right: 5px;
 }
 
-.emotion-4 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 emotion-0"
+    class="MuiTypography-root MuiTypography-body1  emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-fullWidth emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
     role="group"
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -881,20 +823,17 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
       </svg>
        
       common.darkThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -904,9 +843,6 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
       </svg>
        
       common.lightThemeSelector
-      <span
-        class="MuiTouchRipple-root emotion-4"
-      />
     </button>
   </div>
 </div>

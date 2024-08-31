@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import IconButton from '@mui/material/IconButton';
@@ -20,7 +20,7 @@ function GridViewItem({ item }: Props) {
   const timezone = useTimezone();
 
   return (
-    <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
+    <Grid size={{ xl: 3, lg: 3, md: 6, sm: 6, xs: 12 }}>
       <Card>
         <CardHeader
           action={

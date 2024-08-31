@@ -22,7 +22,7 @@ exports[`NotFoundRoute should display no data 1`] = `
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1 emotion-0"
+    class="MuiTypography-root MuiTypography-body1  emotion-0"
   >
     common.routeNotFound
   </p>
@@ -51,7 +51,7 @@ exports[`NotFoundRoute should display no data with specific variant 1`] = `
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body2 emotion-0"
+    class="MuiTypography-root MuiTypography-body2  emotion-0"
   >
     common.routeNotFound
   </p>

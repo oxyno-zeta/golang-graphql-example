@@ -27,7 +27,7 @@ exports[`ErrorsDisplay should display a graphql error with extension when error 
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -39,7 +39,7 @@ exports[`ErrorsDisplay should display a graphql error with extension when error 
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -76,7 +76,7 @@ exports[`ErrorsDisplay should display a graphql error with extension when errors
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -88,7 +88,7 @@ exports[`ErrorsDisplay should display a graphql error with extension when errors
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -125,7 +125,7 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -137,7 +137,7 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           simple graphql error
         </p>
@@ -174,7 +174,7 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -186,7 +186,7 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           simple graphql error
         </p>
@@ -223,7 +223,7 @@ exports[`ErrorsDisplay should display a network error when error is present 1`] 
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -235,7 +235,7 @@ exports[`ErrorsDisplay should display a network error when error is present 1`] 
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           Forbidden
         </p>
@@ -272,7 +272,7 @@ exports[`ErrorsDisplay should display a network error when error is present with
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -284,7 +284,7 @@ exports[`ErrorsDisplay should display a network error when error is present with
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           Forbidden
         </p>
@@ -321,7 +321,7 @@ exports[`ErrorsDisplay should display a network error when errors are present 1`
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -333,7 +333,7 @@ exports[`ErrorsDisplay should display a network error when errors are present 1`
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           Forbidden
         </p>
@@ -370,7 +370,7 @@ exports[`ErrorsDisplay should display a network error with 1 error when error is
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -382,7 +382,7 @@ exports[`ErrorsDisplay should display a network error with 1 error when error is
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           fake.path fake message
         </p>
@@ -419,7 +419,7 @@ exports[`ErrorsDisplay should display a network error with multiple errors when 
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -431,7 +431,7 @@ exports[`ErrorsDisplay should display a network error with multiple errors when 
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           fake.path fake message
         </p>
@@ -440,7 +440,7 @@ exports[`ErrorsDisplay should display a network error with multiple errors when 
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           fake.path2 fake message 2
         </p>
@@ -477,7 +477,7 @@ exports[`ErrorsDisplay should display classic error when error is present 1`] = 
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -489,7 +489,7 @@ exports[`ErrorsDisplay should display classic error when error is present 1`] = 
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           error1
         </p>
@@ -526,7 +526,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (1 i
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -538,7 +538,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (1 i
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           error1
         </p>
@@ -575,7 +575,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (2 i
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -587,7 +587,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (2 i
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           error1
         </p>
@@ -596,7 +596,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (2 i
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           error2
         </p>
@@ -633,7 +633,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -645,7 +645,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -654,7 +654,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
@@ -691,7 +691,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -703,7 +703,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -712,7 +712,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
@@ -749,7 +749,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -768,7 +768,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>
@@ -805,7 +805,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1 emotion-1"
+      class="MuiTypography-root MuiTypography-body1  emotion-1"
     >
       common.errors
       :
@@ -817,7 +817,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -826,7 +826,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-1"
+          class="MuiTypography-root MuiTypography-body1  emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
         </p>

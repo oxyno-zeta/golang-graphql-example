@@ -3,7 +3,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
@@ -86,7 +86,16 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
 
   return (
     <>
-      <Grid item xl={4} lg={4} md={6} sm={6} xs={12} sx={{ display: 'flex' }}>
+      <Grid
+        sx={{ display: 'flex' }}
+        size={{
+          xl: 4,
+          lg: 4,
+          md: 6,
+          sm: 6,
+          xs: 12,
+        }}
+      >
         <Autocomplete
           fullWidth
           noOptionsText={t('common.filter.noOptions')}
@@ -161,7 +170,15 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           }}
         />
       </Grid>
-      <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+      <Grid
+        size={{
+          xl: 4,
+          lg: 4,
+          md: 6,
+          sm: 6,
+          xs: 12,
+        }}
+      >
         {selectedFieldData && (
           <Autocomplete
             fullWidth
@@ -244,7 +261,15 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           />
         )}
       </Grid>
-      <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+      <Grid
+        size={{
+          xl: 4,
+          lg: 4,
+          md: 6,
+          sm: 6,
+          xs: 12,
+        }}
+      >
         {operationData && (
           <FilterBuilderFieldValue
             value={value}

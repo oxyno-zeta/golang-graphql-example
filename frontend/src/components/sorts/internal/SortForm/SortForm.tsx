@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import DialogActions from '@mui/material/DialogActions';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import DialogContent from '@mui/material/DialogContent';
 import { useTranslation } from 'react-i18next';
 import SortField from '../SortField';
@@ -123,7 +123,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
                   </IconButton>
                 </Tooltip>
               </Box>
-              <Grid container spacing={1}>
+              <Grid container spacing={1} sx={{ flexGrow: 1 }}>
                 <SortField
                   availableFields={availableFields}
                   sortFields={sortFields}

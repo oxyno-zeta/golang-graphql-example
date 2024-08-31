@@ -16,11 +16,13 @@ export default function getDataGridCommonProps(t: (d: string) => string | undefi
       '& .MuiDataGrid-columnHeader:focus': { outline: 'none' },
       '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
       '& .MuiDataGrid-columnHeader:focus-visible': { outline: 'none' },
-      '& .MuiDataGrid-virtualScroller:first-of-type': {
+      '& .MuiDataGrid-columnHeaders': {
         borderTopLeftRadius: '0px',
         borderTopRightRadius: '0px',
       },
       '& .MuiDataGrid-columnHeader': {
+        borderTopLeftRadius: '0px !important',
+        borderTopRightRadius: '0px !important',
         backgroundColor: (theme: Theme) =>
           theme.palette.mode === 'light' ? theme.palette.grey['200'] : theme.palette.grey['800'],
       },

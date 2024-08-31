@@ -17,7 +17,7 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  height: 24px;
+  height: 32px;
   color: rgba(0, 0, 0, 0.87);
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 16px;
@@ -32,6 +32,7 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
   padding: 0;
   vertical-align: middle;
   box-sizing: border-box;
+  height: 24px;
   background-color: transparent;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
@@ -71,24 +72,36 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
 }
 
 .emotion-0 .MuiChip-icon {
-  margin-left: 4px;
-  margin-right: -4px;
-  font-size: 18px;
-  color: #616161;
+  margin-left: 5px;
+  margin-right: -6px;
 }
 
 .emotion-0 .MuiChip-deleteIcon {
   -webkit-tap-highlight-color: transparent;
   color: rgba(0, 0, 0, 0.26);
-  font-size: 16px;
+  font-size: 22px;
   cursor: pointer;
   margin: 0 5px 0 -6px;
-  margin-right: 4px;
-  margin-left: -4px;
 }
 
 .emotion-0 .MuiChip-deleteIcon:hover {
   color: rgba(0, 0, 0, 0.4);
+}
+
+.emotion-0 .MuiChip-icon {
+  font-size: 18px;
+  margin-left: 4px;
+  margin-right: -4px;
+}
+
+.emotion-0 .MuiChip-deleteIcon {
+  font-size: 16px;
+  margin-right: 4px;
+  margin-left: -4px;
+}
+
+.emotion-0 .MuiChip-icon {
+  color: #616161;
 }
 
 .emotion-0.MuiChip-clickable:hover {
@@ -126,17 +139,23 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
 .emotion-1 {
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 12px;
+  padding-right: 12px;
+  white-space: nowrap;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-left: 7px;
   padding-right: 7px;
-  white-space: nowrap;
 }
 
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault emotion-0"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault  emotion-0"
   >
     <span
-      class="MuiChip-label MuiChip-labelSmall emotion-1"
+      class="MuiChip-label MuiChip-labelSmall  emotion-1"
     >
       fake-label
     </span>
@@ -161,7 +180,7 @@ exports[`StatusChip should display label with default color 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  height: 24px;
+  height: 32px;
   color: rgba(0, 0, 0, 0.87);
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 16px;
@@ -176,6 +195,7 @@ exports[`StatusChip should display label with default color 1`] = `
   padding: 0;
   vertical-align: middle;
   box-sizing: border-box;
+  height: 24px;
   background-color: transparent;
   border: 1px solid #bdbdbd;
   border-radius: 5px;
@@ -215,24 +235,36 @@ exports[`StatusChip should display label with default color 1`] = `
 }
 
 .emotion-0 .MuiChip-icon {
-  margin-left: 4px;
-  margin-right: -4px;
-  font-size: 18px;
-  color: #616161;
+  margin-left: 5px;
+  margin-right: -6px;
 }
 
 .emotion-0 .MuiChip-deleteIcon {
   -webkit-tap-highlight-color: transparent;
   color: rgba(0, 0, 0, 0.26);
-  font-size: 16px;
+  font-size: 22px;
   cursor: pointer;
   margin: 0 5px 0 -6px;
-  margin-right: 4px;
-  margin-left: -4px;
 }
 
 .emotion-0 .MuiChip-deleteIcon:hover {
   color: rgba(0, 0, 0, 0.4);
+}
+
+.emotion-0 .MuiChip-icon {
+  font-size: 18px;
+  margin-left: 4px;
+  margin-right: -4px;
+}
+
+.emotion-0 .MuiChip-deleteIcon {
+  font-size: 16px;
+  margin-right: 4px;
+  margin-left: -4px;
+}
+
+.emotion-0 .MuiChip-icon {
+  color: #616161;
 }
 
 .emotion-0.MuiChip-clickable:hover {
@@ -270,17 +302,23 @@ exports[`StatusChip should display label with default color 1`] = `
 .emotion-1 {
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 12px;
+  padding-right: 12px;
+  white-space: nowrap;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-left: 7px;
   padding-right: 7px;
-  white-space: nowrap;
 }
 
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault emotion-0"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault  emotion-0"
   >
     <span
-      class="MuiChip-label MuiChip-labelSmall emotion-1"
+      class="MuiChip-label MuiChip-labelSmall  emotion-1"
     >
       fake-label
     </span>
@@ -305,9 +343,9 @@ exports[`StatusChip should display label with error color 1`] = `
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  height: 24px;
-  color: #fff;
-  background-color: #d32f2f;
+  height: 32px;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   white-space: nowrap;
   -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -320,9 +358,13 @@ exports[`StatusChip should display label with error color 1`] = `
   padding: 0;
   vertical-align: middle;
   box-sizing: border-box;
+  height: 24px;
+  background-color: #d32f2f;
+  color: #fff;
   background-color: transparent;
-  border: 1px solid rgba(211, 47, 47, 0.7);
+  border: 1px solid #bdbdbd;
   color: #d32f2f;
+  border: 1px solid rgba(211, 47, 47, 0.7);
   border-radius: 5px;
   background-color: #d32f2f60;
 }
@@ -360,24 +402,36 @@ exports[`StatusChip should display label with error color 1`] = `
 }
 
 .emotion-0 .MuiChip-icon {
-  margin-left: 4px;
-  margin-right: -4px;
-  font-size: 18px;
-  color: inherit;
+  margin-left: 5px;
+  margin-right: -6px;
 }
 
 .emotion-0 .MuiChip-deleteIcon {
   -webkit-tap-highlight-color: transparent;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
+  color: rgba(0, 0, 0, 0.26);
+  font-size: 22px;
   cursor: pointer;
   margin: 0 5px 0 -6px;
-  margin-right: 4px;
-  margin-left: -4px;
 }
 
 .emotion-0 .MuiChip-deleteIcon:hover {
   color: rgba(0, 0, 0, 0.4);
+}
+
+.emotion-0 .MuiChip-icon {
+  font-size: 18px;
+  margin-left: 4px;
+  margin-right: -4px;
+}
+
+.emotion-0 .MuiChip-deleteIcon {
+  font-size: 16px;
+  margin-right: 4px;
+  margin-left: -4px;
+}
+
+.emotion-0 .MuiChip-deleteIcon {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .emotion-0 .MuiChip-deleteIcon:hover,
@@ -385,12 +439,20 @@ exports[`StatusChip should display label with error color 1`] = `
   color: #fff;
 }
 
+.emotion-0 .MuiChip-icon {
+  color: #616161;
+}
+
+.emotion-0 .MuiChip-icon {
+  color: inherit;
+}
+
 .emotion-0.MuiChip-clickable:hover {
-  background-color: rgba(211, 47, 47, 0.04);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-0.Mui-focusVisible {
-  background-color: rgba(211, 47, 47, 0.12);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .emotion-0 .MuiChip-avatar {
@@ -410,6 +472,22 @@ exports[`StatusChip should display label with error color 1`] = `
 }
 
 .emotion-0 .MuiChip-deleteIcon {
+  margin-right: 5px;
+}
+
+.emotion-0 .MuiChip-deleteIconSmall {
+  margin-right: 3px;
+}
+
+.emotion-0.MuiChip-clickable:hover {
+  background-color: rgba(211, 47, 47, 0.04);
+}
+
+.emotion-0.Mui-focusVisible {
+  background-color: rgba(211, 47, 47, 0.12);
+}
+
+.emotion-0 .MuiChip-deleteIcon {
   color: rgba(211, 47, 47, 0.7);
 }
 
@@ -418,24 +496,26 @@ exports[`StatusChip should display label with error color 1`] = `
   color: #d32f2f;
 }
 
-.emotion-0 .MuiChip-deleteIconSmall {
-  margin-right: 3px;
-}
-
 .emotion-1 {
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 12px;
+  padding-right: 12px;
+  white-space: nowrap;
+  padding-left: 11px;
+  padding-right: 11px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-left: 7px;
   padding-right: 7px;
-  white-space: nowrap;
 }
 
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorError MuiChip-outlinedError emotion-0"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorError MuiChip-outlinedError  emotion-0"
   >
     <span
-      class="MuiChip-label MuiChip-labelSmall emotion-1"
+      class="MuiChip-label MuiChip-labelSmall  emotion-1"
     >
       fake-label
     </span>

@@ -5,7 +5,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import { useTranslation } from 'react-i18next';
 import { SortOrderModel, SortOrderFieldModel } from '../../../../models/general';
 
@@ -33,7 +33,15 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
 
   return (
     <>
-      <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+      <Grid
+        size={{
+          xl: 6,
+          lg: 6,
+          md: 6,
+          sm: 6,
+          xs: 12,
+        }}
+      >
         <Autocomplete
           fullWidth
           noOptionsText={t('common.filter.noOptions')}
@@ -73,7 +81,15 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
           }}
         />
       </Grid>
-      <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+      <Grid
+        size={{
+          xl: 6,
+          lg: 6,
+          md: 6,
+          sm: 6,
+          xs: 12,
+        }}
+      >
         <Autocomplete
           fullWidth
           noOptionsText={t('common.filter.noOptions')}

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState, memo, useRef } from 'react';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -238,6 +238,7 @@ function FilterBuilder({
                   sx={{
                     // Force line height to always include space for errors
                     minHeight: '72px',
+                    flexGrow: 1,
                   }}
                 >
                   <FilterBuilderField

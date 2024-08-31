@@ -41,7 +41,6 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: #fff;
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -87,25 +86,13 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -114,13 +101,13 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -128,9 +115,6 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
           d="M10,2C8.18,2 6.47,2.5 5,3.35C8,5.08 10,8.3 10,12C10,15.7 8,18.92 5,20.65C6.47,21.5 8.18,22 10,22A10,10 0 0,0 20,12A10,10 0 0,0 10,2Z"
         />
       </svg>
-      <span
-        class="MuiTouchRipple-root emotion-2"
-      />
     </button>
   </span>
 </div>
@@ -177,7 +161,6 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -223,25 +206,13 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -250,13 +221,13 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -264,9 +235,6 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
           d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z"
         />
       </svg>
-      <span
-        class="MuiTouchRipple-root emotion-2"
-      />
     </button>
   </span>
 </div>
@@ -313,7 +281,6 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -359,25 +326,13 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -386,13 +341,13 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -400,9 +355,6 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
           d="M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z"
         />
       </svg>
-      <span
-        class="MuiTouchRipple-root emotion-2"
-      />
     </button>
   </span>
 </div>
@@ -449,7 +401,6 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: #fff;
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -495,25 +446,13 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -522,13 +461,13 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -536,9 +475,6 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
           d="M10,2C8.18,2 6.47,2.5 5,3.35C8,5.08 10,8.3 10,12C10,15.7 8,18.92 5,20.65C6.47,21.5 8.18,22 10,22A10,10 0 0,0 20,12A10,10 0 0,0 10,2Z"
         />
       </svg>
-      <span
-        class="MuiTouchRipple-root emotion-2"
-      />
     </button>
   </span>
 </div>

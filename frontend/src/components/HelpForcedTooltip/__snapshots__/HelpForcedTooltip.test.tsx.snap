@@ -9,12 +9,12 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 1`] = `
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
@@ -27,7 +27,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -49,17 +49,18 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
 .emotion-1 {
   z-index: 1500;
+  pointer-events: none;
   pointer-events: auto;
 }
 
@@ -78,12 +79,10 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
 
 .MuiTooltip-popper[data-popper-placement*="left"] .emotion-2 {
   transform-origin: right center;
-  margin-right: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .emotion-2 {
   transform-origin: left center;
-  margin-left: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="top"] .emotion-2 {
@@ -96,6 +95,14 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
   margin-top: 14px;
 }
 
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-2 {
+  margin-right: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-2 {
+  margin-left: 14px;
+}
+
 <div>
   <div>
     <span
@@ -106,7 +113,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -116,7 +123,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
       </svg>
     </span>
     <div
-      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
+      class="MuiPopper-root  MuiTooltip-popper MuiTooltip-popperInteractive  emotion-1"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -125,7 +132,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-2"
+        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom  emotion-2"
         style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       >
         fake-tooltip
@@ -144,12 +151,12 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 1`]
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
@@ -162,7 +169,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 1`]
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -184,17 +191,18 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
 .emotion-1 {
   z-index: 1500;
+  pointer-events: none;
   pointer-events: auto;
 }
 
@@ -213,12 +221,10 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
 
 .MuiTooltip-popper[data-popper-placement*="left"] .emotion-2 {
   transform-origin: right center;
-  margin-right: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .emotion-2 {
   transform-origin: left center;
-  margin-left: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="top"] .emotion-2 {
@@ -231,6 +237,14 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
   margin-top: 14px;
 }
 
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-2 {
+  margin-right: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-2 {
+  margin-left: 14px;
+}
+
 <div>
   <div>
     <span
@@ -241,7 +255,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -251,7 +265,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
       </svg>
     </span>
     <div
-      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
+      class="MuiPopper-root  MuiTooltip-popper MuiTooltip-popperInteractive  emotion-1"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -260,7 +274,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-2"
+        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom  emotion-2"
         style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       >
         fake-tooltip
@@ -279,12 +293,12 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 3`]
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
@@ -297,7 +311,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 3`]
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -319,12 +333,12 @@ exports[`HelpForcedTooltip should display text tooltip on mouse click 1`] = `
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
@@ -337,7 +351,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse click 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -359,12 +373,12 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 1`] = 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
@@ -377,7 +391,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 1`] = 
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -399,17 +413,18 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
 .emotion-1 {
   z-index: 1500;
+  pointer-events: none;
   pointer-events: auto;
 }
 
@@ -428,12 +443,10 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
 
 .MuiTooltip-popper[data-popper-placement*="left"] .emotion-2 {
   transform-origin: right center;
-  margin-right: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .emotion-2 {
   transform-origin: left center;
-  margin-left: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="top"] .emotion-2 {
@@ -446,6 +459,14 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
   margin-top: 14px;
 }
 
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-2 {
+  margin-right: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-2 {
+  margin-left: 14px;
+}
+
 <div>
   <div>
     <span
@@ -456,7 +477,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -466,7 +487,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
       </svg>
     </span>
     <div
-      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-1"
+      class="MuiPopper-root  MuiTooltip-popper MuiTooltip-popperInteractive  emotion-1"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -475,7 +496,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-2"
+        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom  emotion-2"
         style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       >
         fake-tooltip
@@ -494,12 +515,12 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 3`] = 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
@@ -512,7 +533,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 3`] = 
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-0"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-0"
         focusable="false"
         viewBox="0 0 24 24"
       >

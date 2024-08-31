@@ -18,7 +18,7 @@ export default defineConfig({
       // See issue: https://github.com/storybookjs/builder-vite/issues/367
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      exclude: [/virtual:/, /node_modules/],
+      exclude: [/virtual:/, /node_modules/, /sb-preview/],
     }),
     visualizer({
       template: 'treemap', // or sunburst

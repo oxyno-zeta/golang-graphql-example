@@ -41,7 +41,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -86,25 +85,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -114,13 +101,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -128,9 +115,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
   </div>
@@ -178,7 +162,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -223,33 +206,22 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
 .emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
-.emotion-3 {
   z-index: 1500;
+  pointer-events: none;
   pointer-events: auto;
 }
 
-.emotion-4 {
+.emotion-3 {
   background-color: rgba(97, 97, 97, 0.92);
   border-radius: 4px;
   color: #fff;
@@ -262,24 +234,30 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
   font-weight: 500;
 }
 
-.MuiTooltip-popper[data-popper-placement*="left"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
   transform-origin: right center;
-  margin-right: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="right"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
   transform-origin: left center;
-  margin-left: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="top"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="top"] .emotion-3 {
   transform-origin: center bottom;
   margin-bottom: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-3 {
   transform-origin: center top;
   margin-top: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
+  margin-right: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
+  margin-left: 14px;
 }
 
 <div>
@@ -290,13 +268,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -304,13 +282,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
     <div
-      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
+      class="MuiPopper-root  MuiTooltip-popper MuiTooltip-popperInteractive  emotion-2"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -319,7 +294,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-4"
+        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom  emotion-3"
         style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       >
         fake-tooltip
@@ -370,7 +345,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -415,25 +389,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -443,13 +405,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -457,9 +419,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
   </div>
@@ -507,7 +466,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -552,33 +510,22 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
 .emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
-.emotion-3 {
   z-index: 1500;
+  pointer-events: none;
   pointer-events: auto;
 }
 
-.emotion-4 {
+.emotion-3 {
   background-color: rgba(97, 97, 97, 0.92);
   border-radius: 4px;
   color: #fff;
@@ -591,24 +538,30 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
   font-weight: 500;
 }
 
-.MuiTooltip-popper[data-popper-placement*="left"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
   transform-origin: right center;
-  margin-right: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="right"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
   transform-origin: left center;
-  margin-left: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="top"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="top"] .emotion-3 {
   transform-origin: center bottom;
   margin-bottom: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-3 {
   transform-origin: center top;
   margin-top: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
+  margin-right: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
+  margin-left: 14px;
 }
 
 <div>
@@ -619,13 +572,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -633,13 +586,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
     <div
-      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
+      class="MuiPopper-root  MuiTooltip-popper MuiTooltip-popperInteractive  emotion-2"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -648,7 +598,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-4"
+        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom  emotion-3"
         style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       >
         fake-tooltip
@@ -699,7 +649,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -744,25 +693,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -772,13 +709,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -786,9 +723,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
   </div>
@@ -836,7 +770,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -881,25 +814,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -909,13 +830,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -923,9 +844,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
   </div>
@@ -973,7 +891,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -1018,25 +935,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -1046,13 +951,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -1060,9 +965,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
   </div>
@@ -1110,7 +1012,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -1155,33 +1056,22 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
 }
 
 .emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-}
-
-.emotion-3 {
   z-index: 1500;
+  pointer-events: none;
   pointer-events: auto;
 }
 
-.emotion-4 {
+.emotion-3 {
   background-color: rgba(97, 97, 97, 0.92);
   border-radius: 4px;
   color: #fff;
@@ -1194,24 +1084,30 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
   font-weight: 500;
 }
 
-.MuiTooltip-popper[data-popper-placement*="left"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
   transform-origin: right center;
-  margin-right: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="right"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
   transform-origin: left center;
-  margin-left: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="top"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="top"] .emotion-3 {
   transform-origin: center bottom;
   margin-bottom: 14px;
 }
 
-.MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-4 {
+.MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-3 {
   transform-origin: center top;
   margin-top: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
+  margin-right: 14px;
+}
+
+.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
+  margin-left: 14px;
 }
 
 <div>
@@ -1222,13 +1118,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -1236,13 +1132,10 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
     <div
-      class="MuiPopper-root MuiTooltip-popper MuiTooltip-popperInteractive emotion-3"
+      class="MuiPopper-root  MuiTooltip-popper MuiTooltip-popperInteractive  emotion-2"
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
@@ -1251,7 +1144,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-4"
+        class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom  emotion-3"
         style="opacity: 1; transform: scale(1, 1); transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 133ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       >
         fake-tooltip
@@ -1302,7 +1195,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
   font-size: 1.5rem;
   padding: 8px;
   border-radius: 50%;
-  overflow: visible;
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -1347,25 +1239,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
   width: 1em;
   height: 1em;
   display: inline-block;
-  fill: currentColor;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
   font-size: 1.5rem;
-}
-
-.emotion-2 {
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
 }
 
 <div>
@@ -1375,13 +1255,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
       data-mui-internal-clone-element="true"
     >
       <button
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-0"
         tabindex="0"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -1389,9 +1269,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
             d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
           />
         </svg>
-        <span
-          class="MuiTouchRipple-root emotion-2"
-        />
       </button>
     </span>
   </div>

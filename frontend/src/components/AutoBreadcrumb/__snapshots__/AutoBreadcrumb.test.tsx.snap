@@ -41,16 +41,16 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 1 level 1`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-2"
+          class="MuiTypography-root MuiTypography-body1  emotion-2"
         >
           root
         </p>
@@ -92,6 +92,8 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -128,16 +130,16 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           root
@@ -145,15 +147,15 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-4"
+          class="MuiTypography-root MuiTypography-body1  emotion-4"
         >
           level1
         </p>
@@ -196,6 +198,8 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -232,16 +236,16 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           root
@@ -249,15 +253,15 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/level1"
         >
           level1
@@ -265,15 +269,15 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-6"
+          class="MuiTypography-root MuiTypography-body1  emotion-6"
         >
           level2
         </p>
@@ -331,9 +335,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 1`] = `
 .emotion-2 {
   display: block;
   background-color: rgba(0, 0, 0, 0.11);
-  height: auto;
+  height: 1.2em;
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
   transform-origin: 0 55%;
   -webkit-transform: scale(1, 0.60);
   -moz-transform: scale(1, 0.60);
@@ -350,16 +355,16 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 1`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-2"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-2"
           style="width: 40px;"
         />
       </li>
@@ -409,16 +414,16 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 2`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-2"
+          class="MuiTypography-root MuiTypography-body1  emotion-2"
         >
           Query1
         </p>
@@ -474,9 +479,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 1`] = 
 .emotion-2 {
   display: block;
   background-color: rgba(0, 0, 0, 0.11);
-  height: auto;
+  height: 1.2em;
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
   transform-origin: 0 55%;
   -webkit-transform: scale(1, 0.60);
   -moz-transform: scale(1, 0.60);
@@ -506,30 +512,30 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 1`] = 
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-2"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-2"
           style="width: 40px;"
         />
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-2"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-2"
           style="width: 40px;"
         />
       </li>
@@ -571,6 +577,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = 
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -607,16 +615,16 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = 
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           Query1
@@ -624,15 +632,15 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = 
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-4"
+          class="MuiTypography-root MuiTypography-body1  emotion-4"
         >
           Query2
         </p>
@@ -689,9 +697,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
 .emotion-2 {
   display: block;
   background-color: rgba(0, 0, 0, 0.11);
-  height: auto;
+  height: 1.2em;
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
   transform-origin: 0 55%;
   -webkit-transform: scale(1, 0.60);
   -moz-transform: scale(1, 0.60);
@@ -721,44 +730,44 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-2"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-2"
           style="width: 40px;"
         />
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-2"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-2"
           style="width: 40px;"
         />
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-2"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-2"
           style="width: 40px;"
         />
       </li>
@@ -815,6 +824,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -842,9 +853,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
 .emotion-6 {
   display: block;
   background-color: rgba(0, 0, 0, 0.11);
-  height: auto;
+  height: 1.2em;
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
   transform-origin: 0 55%;
   -webkit-transform: scale(1, 0.60);
   -moz-transform: scale(1, 0.60);
@@ -861,16 +873,16 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           Query1
@@ -878,15 +890,15 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/level1"
         >
           Query2
@@ -894,15 +906,15 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-6"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-6"
           style="width: 40px;"
         />
       </li>
@@ -954,16 +966,16 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-2"
+          class="MuiTypography-root MuiTypography-body1  emotion-2"
         >
           fake
         </p>
@@ -1014,16 +1026,16 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-2"
+          class="MuiTypography-root MuiTypography-body1  emotion-2"
         >
           fake
         </p>
@@ -1080,6 +1092,8 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1107,9 +1121,10 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 .emotion-4 {
   display: block;
   background-color: rgba(0, 0, 0, 0.11);
-  height: auto;
+  height: 1.2em;
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
   transform-origin: 0 55%;
   -webkit-transform: scale(1, 0.60);
   -moz-transform: scale(1, 0.60);
@@ -1126,16 +1141,16 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           fake
@@ -1143,15 +1158,15 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-4"
           style="width: 40px;"
         />
       </li>
@@ -1194,6 +1209,8 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1230,16 +1247,16 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           fake
@@ -1247,15 +1264,15 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-4"
+          class="MuiTypography-root MuiTypography-body1  emotion-4"
         >
           Query1
         </p>
@@ -1308,16 +1325,16 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 1 level 1`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-2"
+          class="MuiTypography-root MuiTypography-body1  emotion-2"
         >
           fake
         </p>
@@ -1373,6 +1390,8 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1400,9 +1419,10 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
 .emotion-4 {
   display: block;
   background-color: rgba(0, 0, 0, 0.11);
-  height: auto;
+  height: 1.2em;
   margin-top: 0;
   margin-bottom: 0;
+  height: auto;
   transform-origin: 0 55%;
   -webkit-transform: scale(1, 0.60);
   -moz-transform: scale(1, 0.60);
@@ -1419,16 +1439,16 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           fake
@@ -1436,15 +1456,15 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <span
-          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse  emotion-4"
           style="width: 40px;"
         />
       </li>
@@ -1486,6 +1506,8 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
 .emotion-2 {
   margin: 0;
   font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
   color: inherit;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1522,16 +1544,16 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
 
 <div>
   <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+    class="MuiTypography-root MuiTypography-body1  MuiBreadcrumbs-root  emotion-0"
   >
     <ol
-      class="MuiBreadcrumbs-ol emotion-1"
+      class="MuiBreadcrumbs-ol  emotion-1"
     >
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <a
-          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineHover  emotion-2"
           href="/"
         >
           fake
@@ -1539,15 +1561,15 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
       </li>
       <li
         aria-hidden="true"
-        class="MuiBreadcrumbs-separator emotion-3"
+        class="MuiBreadcrumbs-separator  emotion-3"
       >
         /
       </li>
       <li
-        class="MuiBreadcrumbs-li"
+        class="MuiBreadcrumbs-li "
       >
         <p
-          class="MuiTypography-root MuiTypography-body1 emotion-4"
+          class="MuiTypography-root MuiTypography-body1  emotion-4"
         >
           Query2
         </p>

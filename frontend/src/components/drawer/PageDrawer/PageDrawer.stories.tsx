@@ -11,7 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SvgIcon from '@mui/material/SvgIcon';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import { mdiAccessPoint } from '@mdi/js';
 import TopBar from '~components/TopBar';
 import TimezoneProvider from '~components/timezone/TimezoneProvider';
@@ -36,16 +36,16 @@ function RenderContent() {
         <OpenDrawerButton onDrawerToggle={onDrawerToggle} />
       </div>
       <Grid container spacing={2}>
-        <Grid item xs={8}>
+        <Grid size={8}>
           <Paper>xs=8</Paper>
         </Grid>
-        <Grid item xs={4}>
+        <Grid size={4}>
           <Paper>xs=4</Paper>
         </Grid>
-        <Grid item xs={4}>
+        <Grid size={4}>
           <Paper>xs=4</Paper>
         </Grid>
-        <Grid item xs={8}>
+        <Grid size={8}>
           <Paper>xs=8</Paper>
         </Grid>
       </Grid>
