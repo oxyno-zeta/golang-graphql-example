@@ -5,9 +5,9 @@ import { Control, useController, Path, FieldValues } from 'react-hook-form';
 import type { YupTranslateErrorModel } from '../../../models/general';
 
 type Props<T extends FieldValues> = {
-  control: Control<T>;
-  name: Path<T>;
-  textFieldProps?: TextFieldProps;
+  readonly control: Control<T>;
+  readonly name: Path<T>;
+  readonly textFieldProps?: TextFieldProps;
 };
 
 function FormInput<T extends FieldValues>({ control, name, textFieldProps = {} }: Props<T>) {

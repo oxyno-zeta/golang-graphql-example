@@ -8,7 +8,7 @@ import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
 export interface Props {
-  iconButtonProps?: IconButtonProps;
+  readonly iconButtonProps?: IconButtonProps;
 }
 
 function IconToggleColorMode({ iconButtonProps = {} }: Props) {
@@ -25,7 +25,7 @@ function IconToggleColorMode({ iconButtonProps = {} }: Props) {
   return (
     <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common.lightThemeTooltip' : 'common.darkThemeTooltip')}</>}>
       <span>
-        <IconButton onClick={toggleColorMode} color="inherit" {...iconButtonProps}>
+        <IconButton color="inherit" onClick={toggleColorMode} {...iconButtonProps}>
           {theme.palette.mode === 'dark' ? (
             <SvgIcon>
               <path d={mdiBrightness2} />

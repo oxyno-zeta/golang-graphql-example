@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import type { BreadcrumbFixedDataConfig } from './types';
 
 interface Props {
-  breadcrumbData: BreadcrumbFixedDataConfig;
-  last: boolean;
-  pathname: string;
+  readonly breadcrumbData: BreadcrumbFixedDataConfig;
+  readonly last: boolean;
+  readonly pathname: string;
 }
 
 function FixedBreadcrumb({ breadcrumbData, last, pathname }: Props) {
@@ -24,7 +24,7 @@ function FixedBreadcrumb({ breadcrumbData, last, pathname }: Props) {
   }
 
   return (
-    <Link underline="hover" color="inherit" component={RouterLink} to={pathname} {...(breadcrumbData.linkProps || {})}>
+    <Link color="inherit" component={RouterLink} to={pathname} underline="hover" {...(breadcrumbData.linkProps || {})}>
       {t(breadcrumbData.textContent)}
     </Link>
   );

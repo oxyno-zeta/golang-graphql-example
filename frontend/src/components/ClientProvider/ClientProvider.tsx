@@ -5,7 +5,7 @@ import { ConfigModel } from '../../models/config';
 import ConfigContext from '../../contexts/ConfigContext';
 
 interface Props {
-  children: ReactNode;
+  readonly children: ReactNode;
 }
 
 function generateClient(cfg: ConfigModel) {

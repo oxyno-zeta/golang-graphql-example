@@ -6,17 +6,17 @@ export type Props = ChipProps;
 function StatusChip({ label, color, sx = {}, ...rest }: Props) {
   return (
     <Chip
-      label={label}
-      color={color}
-      variant="outlined"
-      size="small"
       clickable={false}
+      color={color}
+      label={label}
+      size="small"
       sx={{
         ...sx,
         borderRadius: '5px',
         backgroundColor: (theme) =>
           color === 'default' || !color ? theme.palette.action.selected : `${theme.palette[color].main}60`,
       }}
+      variant="outlined"
       {...rest}
     />
   );

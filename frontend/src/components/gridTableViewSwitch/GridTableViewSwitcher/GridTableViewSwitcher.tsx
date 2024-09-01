@@ -8,9 +8,9 @@ import { mdiViewGridOutline, mdiViewSequential } from '@mdi/js';
 import GridTableViewSwitcherContext from '~contexts/GridTableViewSwitcherContext';
 
 export interface Props {
-  buttonGroupProps?: ButtonGroupProps;
-  tableButtonProps?: Omit<ButtonProps, 'onClick'>;
-  gridButtonProps?: Omit<ButtonProps, 'onClick'>;
+  readonly buttonGroupProps?: ButtonGroupProps;
+  readonly tableButtonProps?: Omit<ButtonProps, 'onClick'>;
+  readonly gridButtonProps?: Omit<ButtonProps, 'onClick'>;
 }
 
 function GridTableViewSwitcher({ buttonGroupProps = {}, tableButtonProps = {}, gridButtonProps = {} }: Props) {
@@ -23,23 +23,23 @@ function GridTableViewSwitcher({ buttonGroupProps = {}, tableButtonProps = {}, g
 
   return (
     <ButtonGroup
-      variant="outlined"
       sx={{ border: (theme) => `1px solid ${theme.palette.divider}` }}
+      variant="outlined"
       {...buttonGroupProps}
     >
       <Tooltip title={<>{t('common.tableViewTooltip')}</>}>
         <Button
           color="inherit"
-          sx={{
-            border: 'none',
-            padding: '5px 10px',
-            minWidth: '46px',
-          }}
           onClick={() => {
             // Optimization
             if (gridView) {
               toggleGridTableView();
             }
+          }}
+          sx={{
+            border: 'none',
+            padding: '5px 10px',
+            minWidth: '46px',
           }}
           {...tableButtonProps}
         >
@@ -51,13 +51,13 @@ function GridTableViewSwitcher({ buttonGroupProps = {}, tableButtonProps = {}, g
       <Tooltip title={<>{t('common.gridViewTooltip')}</>}>
         <Button
           color="inherit"
-          sx={{ border: 'none', padding: '5px 10px', minWidth: '46px' }}
           onClick={() => {
             // Optimization
             if (!gridView) {
               toggleGridTableView();
             }
           }}
+          sx={{ border: 'none', padding: '5px 10px', minWidth: '46px' }}
           {...gridButtonProps}
         >
           <SvgIcon color={gridView ? 'primary' : 'inherit'}>

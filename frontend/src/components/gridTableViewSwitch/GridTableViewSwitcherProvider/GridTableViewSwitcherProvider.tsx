@@ -6,7 +6,7 @@ import GridTableViewSwitcherContext from '~contexts/GridTableViewSwitcherContext
 import ConfigContext from '../../../contexts/ConfigContext';
 
 export interface Props {
-  children: ReactNode;
+  readonly children: ReactNode;
 }
 
 const cookieName = 'grid-view';

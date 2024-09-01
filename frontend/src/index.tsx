@@ -26,7 +26,7 @@ const router = createBrowserRouter([
 ]);
 
 const container = document.getElementById('root');
-const root = createRoot(container!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />

@@ -33,9 +33,9 @@ describe('sorts/internal/SortForm', () => {
     const { container } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -58,9 +58,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole, findByTestId, queryAllByRole } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -101,9 +101,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole, findByTestId } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }, { createdAt: 'DESC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -158,9 +158,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole, findByTestId } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }, { createdAt: 'DESC' }, { updatedAt: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -226,9 +226,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole, findByTestId, queryAllByRole } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC', createdAt: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -269,9 +269,9 @@ describe('sorts/internal/SortForm', () => {
     const { container } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -290,9 +290,9 @@ describe('sorts/internal/SortForm', () => {
     const { container } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -312,9 +312,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -342,9 +342,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -372,9 +372,9 @@ describe('sorts/internal/SortForm', () => {
     const { container } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -396,9 +396,9 @@ describe('sorts/internal/SortForm', () => {
     const { container } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }, { createdAt: 'DESC' }, { updatedAt: 'ASC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 
@@ -441,9 +441,9 @@ describe('sorts/internal/SortForm', () => {
     const { container, findAllByRole } = render(
       <SortForm<TestSortOrderModel>
         initialSorts={[{ text: 'ASC' }, { createdAt: 'DESC' }]}
-        sortFields={testSortFields}
         onReset={onReset}
         onSubmit={onSubmit}
+        sortFields={testSortFields}
       />,
     );
 

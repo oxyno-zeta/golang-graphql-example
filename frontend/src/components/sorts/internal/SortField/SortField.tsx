@@ -16,10 +16,10 @@ const valueOptions: { value: SortOrderModel; display: string }[] = [
 
 /* eslint-disable react/no-array-index-key */
 export interface Props {
-  value: Record<string, SortOrderModel>;
-  sortFields: SortOrderFieldModel[];
-  availableFields: SortOrderFieldModel[];
-  onChange: (v: Record<string, SortOrderModel>) => void;
+  readonly value: Record<string, SortOrderModel>;
+  readonly sortFields: SortOrderFieldModel[];
+  readonly availableFields: SortOrderFieldModel[];
+  readonly onChange: (v: Record<string, SortOrderModel>) => void;
 }
 
 function SortField({ value, sortFields, availableFields, onChange }: Props) {
@@ -43,20 +43,18 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
         }}
       >
         <Autocomplete
-          fullWidth
-          noOptionsText={t('common.filter.noOptions')}
-          openText={t('common.openAction')}
           closeText={t('common.closeAction')}
           disableClearable
-          size="small"
-          value={sortFields.find((it) => it.field === key)}
-          options={availableFields}
+          fullWidth
+          getOptionLabel={(option) => t(option.display)}
           isOptionEqualToValue={(a, b) => a.field === b.field}
-          renderInput={(params) => <TextField {...params} />}
+          noOptionsText={t('common.filter.noOptions')}
           onChange={(input, newValue) => {
             onChange({ [newValue.field]: fieldValue });
           }}
-          getOptionLabel={(option) => t(option.display)}
+          openText={t('common.openAction')}
+          options={availableFields}
+          renderInput={(params) => <TextField {...params} />}
           renderOption={(props, option, { inputValue }) => {
             const displayedOption = t(option.display);
             const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
@@ -79,6 +77,8 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
               </MenuItem>
             );
           }}
+          size="small"
+          value={sortFields.find((it) => it.field === key)}
         />
       </Grid>
       <Grid
@@ -91,19 +91,17 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
         }}
       >
         <Autocomplete
-          fullWidth
-          noOptionsText={t('common.filter.noOptions')}
-          openText={t('common.openAction')}
           closeText={t('common.closeAction')}
           disableClearable
-          size="small"
-          value={valueOptions.find((it) => it.value === fieldValue)}
-          options={valueOptions}
-          renderInput={(params) => <TextField {...params} />}
+          fullWidth
+          getOptionLabel={(option) => t(option.display)}
+          noOptionsText={t('common.filter.noOptions')}
           onChange={(input, newValue) => {
             onChange({ [key]: newValue.value });
           }}
-          getOptionLabel={(option) => t(option.display)}
+          openText={t('common.openAction')}
+          options={valueOptions}
+          renderInput={(params) => <TextField {...params} />}
           renderOption={(props, option, { inputValue }) => {
             const displayedOption = t(option.display);
             const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
@@ -126,6 +124,8 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
               </MenuItem>
             );
           }}
+          size="small"
+          value={valueOptions.find((it) => it.value === fieldValue)}
         />
       </Grid>
     </>

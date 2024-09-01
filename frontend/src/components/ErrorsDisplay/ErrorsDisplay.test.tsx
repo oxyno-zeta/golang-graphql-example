@@ -57,24 +57,24 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display a network error when error is present with a custom component', () => {
-    function Fake({ input }: { input: string }) {
+    function Fake({ input }: { readonly input: string }) {
       return <p>{input}</p>;
     }
 
     const { container } = render(
       <ErrorsDisplay
+        customErrorComponentProps={{
+          [NetworkErrorCustomComponentMapKey]: { input: 'fake' },
+        }}
+        customErrorComponents={{
+          [NetworkErrorCustomComponentMapKey]: Fake,
+        }}
         error={
           new ApolloError({
             errorMessage: 'network apollo error',
             networkError: forbiddenNetworkError,
           })
         }
-        customErrorComponents={{
-          [NetworkErrorCustomComponentMapKey]: Fake,
-        }}
-        customErrorComponentProps={{
-          [NetworkErrorCustomComponentMapKey]: { input: 'fake' },
-        }}
       />,
     );
 
@@ -335,12 +335,18 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display two graphql error with extension when errors are present (2 items with 1 custom component)', () => {
-    function Fake({ input }: { input: string }) {
+    function Fake({ input }: { readonly input: string }) {
       return <p>{input}</p>;
     }
 
     const { container } = render(
       <ErrorsDisplay
+        customErrorComponentProps={{
+          [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: { input: 'fake' },
+        }}
+        customErrorComponents={{
+          [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: Fake,
+        }}
         errors={[
           new ApolloError({
             errorMessage: 'two graphql apollo error',
@@ -351,12 +357,6 @@ describe('ErrorsDisplay', () => {
             graphQLErrors: [simpleInternalServerErrorGraphqlError],
           }),
         ]}
-        customErrorComponents={{
-          [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: Fake,
-        }}
-        customErrorComponentProps={{
-          [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: { input: 'fake' },
-        }}
       />,
     );
 

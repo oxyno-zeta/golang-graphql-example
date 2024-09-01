@@ -10,11 +10,11 @@ import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
 export type Props<T extends FilterValueObject> = {
-  filter: undefined | null | T;
-  onSubmit: (f: T) => void;
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  predefinedFilterObjects?: PredefinedFilter[];
-  isAdvancedFilterPopperEnabled?: boolean;
+  readonly filter: undefined | null | T;
+  readonly onSubmit: (f: T) => void;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly predefinedFilterObjects?: PredefinedFilter[];
+  readonly isAdvancedFilterPopperEnabled?: boolean;
 };
 
 function FilterButton<T extends FilterValueObject>({
@@ -59,14 +59,14 @@ function FilterButton<T extends FilterValueObject>({
       <Tooltip title={<>{t('common.filter.buttonTooltip')}</>}>
         <Button
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
-          variant="outlined"
-          sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
           onClick={onClick}
           ref={(d: HTMLButtonElement) => {
             if (d && d !== anchorEl) {
               setAnchorEl(d);
             }
           }}
+          sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
+          variant="outlined"
         >
           <SvgIcon>
             <path d={mdiTune} />
@@ -74,9 +74,9 @@ function FilterButton<T extends FilterValueObject>({
         </Button>
       </Tooltip>
       {isAdvancedFilterPopperEnabled ? (
-        <FilterPopper<T> anchorElement={anchorEl} {...defaultFilterProps} />
+        <FilterPopper anchorElement={anchorEl} {...defaultFilterProps} />
       ) : (
-        <FilterDialog<T> {...defaultFilterProps} />
+        <FilterDialog {...defaultFilterProps} />
       )}
     </>
   );

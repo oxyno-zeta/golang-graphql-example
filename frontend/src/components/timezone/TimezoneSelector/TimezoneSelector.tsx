@@ -38,16 +38,16 @@ function renderRow(props: ListChildComponentProps) {
   };
 
   if (dataSet.type === 'group') {
-    const d = dataSet as GroupModel<string, string>;
+    const d = dataSet;
 
     return (
-      <ListSubheader key={d.value} component="div" style={inlineStyle}>
+      <ListSubheader component="div" key={d.value} style={inlineStyle}>
         {d.value}
       </ListSubheader>
     );
   }
 
-  const d = dataSet as ItemModel<string>;
+  const d = dataSet;
 
   const displayedOption = d.value;
   const matches = match(displayedOption, d.state.inputValue, { insideWords: true, findAllOccurrences: true });
@@ -67,7 +67,7 @@ function renderRow(props: ListChildComponentProps) {
           </span>
         ))}
       </Typography>
-      <Typography style={{ fontSize: 12 }} color="text.secondary">
+      <Typography color="text.secondary" style={{ fontSize: 12 }}>
         {getTimeZone(d.value)}
       </Typography>
     </li>
@@ -94,8 +94,10 @@ function useResetCache(length: number) {
 
 // Adapter for react-window
 const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>((props, ref) => {
+  // eslint-disable-next-line react/prop-types
   const { children, ...other } = props;
   const itemData: GroupOrItemModel<string, string>[] = [];
+  // eslint-disable-next-line react/prop-types
   (children as GroupModel<string, string>[]).forEach((item: GroupModel<string, string>) => {
     itemData.push(item);
     itemData.push(...(item.children || []));
@@ -117,15 +119,15 @@ const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
     <div ref={ref}>
       <OuterElementContext.Provider value={other}>
         <VariableSizeList
-          itemData={itemData}
           height={4 * 48}
-          width="100%"
-          ref={gridRef}
-          outerElementType={OuterElementType}
           innerElementType="ul"
-          itemSize={(index) => getChildSize(itemData[index])}
-          overscanCount={5}
           itemCount={itemCount}
+          itemData={itemData}
+          itemSize={(index) => getChildSize(itemData[index])}
+          outerElementType={OuterElementType}
+          overscanCount={5}
+          ref={gridRef}
+          width="100%"
         >
           {renderRow}
         </VariableSizeList>
@@ -135,7 +137,7 @@ const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
 });
 
 export interface Props {
-  autocompleteProps?: Partial<AutocompleteProps<string, false, true, false>>;
+  readonly autocompleteProps?: Partial<AutocompleteProps<string, false, true, false>>;
 }
 
 function TimezoneSelector({
@@ -155,16 +157,31 @@ function TimezoneSelector({
 
   return (
     <Autocomplete
-      value={getTimezone()}
-      options={availableTimezones}
+      ListboxComponent={ListboxComponent}
+      clearText={t('common.clearAction')}
+      closeText={t('common.closeAction')}
+      disableListWrap
       groupBy={(option) => option.split('/')[0]}
-      renderInput={(params) => <TextField {...params} label={t('common.timezone')} />}
+      noOptionsText={t('common.filter.noOptions')}
       onChange={(event, input) => {
         // Check if input exists
         if (input) {
           setTimezone(input);
         }
       }}
+      openText={t('common.openAction')}
+      options={availableTimezones}
+      renderGroup={(params) => {
+        const res: GroupModel<string, string> = {
+          type: 'group',
+          value: params.group,
+          children: params.children as ItemModel<string>[],
+        };
+
+        // TODO: Post React 18 update - validate this conversion, look like a hidden bug
+        return res as unknown as ReactNode;
+      }}
+      renderInput={(params) => <TextField {...params} label={t('common.timezone')} />}
       renderOption={(props, option, state) => {
         const res: ItemModel<string> = {
           type: 'item',
@@ -176,22 +193,7 @@ function TimezoneSelector({
         // TODO: Post React 18 update - validate this conversion, look like a hidden bug
         return res as unknown as ReactNode;
       }}
-      renderGroup={(params) => {
-        const res: GroupModel<string, string> = {
-          type: 'group',
-          value: params.group,
-          children: params.children as ItemModel<string>[],
-        };
-
-        // TODO: Post React 18 update - validate this conversion, look like a hidden bug
-        return res as unknown as ReactNode;
-      }}
-      disableListWrap
-      ListboxComponent={ListboxComponent}
-      noOptionsText={t('common.filter.noOptions')}
-      openText={t('common.openAction')}
-      clearText={t('common.clearAction')}
-      closeText={t('common.closeAction')}
+      value={getTimezone()}
       {...autocompleteProps}
     />
   );

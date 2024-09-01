@@ -29,7 +29,6 @@ export const Playground: StoryFn<typeof AcceptDialog> = function C({ onSubmit, o
       </Button>
       <AcceptDialog
         {...args}
-        open={open}
         onClose={() => {
           onClose();
           setOpen(false);
@@ -39,6 +38,7 @@ export const Playground: StoryFn<typeof AcceptDialog> = function C({ onSubmit, o
           setOpen(false);
           return Promise.resolve();
         }}
+        open={open}
       />
     </>
   );
@@ -58,7 +58,6 @@ export const OkDisabled: StoryFn<typeof AcceptDialog> = function C({ onSubmit, o
       <AcceptDialog
         {...args}
         okDisabled
-        open={open}
         onClose={() => {
           onClose();
           setOpen(false);
@@ -68,6 +67,7 @@ export const OkDisabled: StoryFn<typeof AcceptDialog> = function C({ onSubmit, o
           setOpen(false);
           return Promise.resolve();
         }}
+        open={open}
       />
     </>
   );

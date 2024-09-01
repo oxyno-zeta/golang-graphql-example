@@ -10,7 +10,7 @@ import { PaletteMode } from '@mui/material';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
 export interface Props {
-  titleStyle?: React.CSSProperties;
+  readonly titleStyle?: React.CSSProperties;
 }
 
 function ToggleColorModeMenuItem({ titleStyle = { fontSize: 13, marginBottom: '2px' } }: Props) {
@@ -28,13 +28,13 @@ function ToggleColorModeMenuItem({ titleStyle = { fontSize: 13, marginBottom: '2
     <>
       <Typography style={titleStyle}>{t('common.themeTitle')}</Typography>
       <ToggleButtonGroup
-        fullWidth
-        size="small"
-        value={theme.palette.mode}
         exclusive
+        fullWidth
         onChange={(event, value) => {
           setColorMode(value as PaletteMode);
         }}
+        size="small"
+        value={theme.palette.mode}
       >
         <ToggleButton value="dark">
           <SvgIcon sx={{ marginRight: '5px' }}>

@@ -15,13 +15,13 @@ export default defineConfig({
       exclude: /\.stories\.(t|j)sx?$/,
     }),
     tsconfigPaths(),
-    eslint({
-      emitWarning: true,
-      // See issue: https://github.com/storybookjs/builder-vite/issues/367
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      exclude: [/virtual:/, /node_modules/, /sb-preview/],
-    }),
+    // eslint({
+    //   emitWarning: true,
+    //   // See issue: https://github.com/storybookjs/builder-vite/issues/367
+    //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //   // @ts-ignore
+    //   exclude: [/virtual:/, /node_modules/, /sb-preview/],
+    // }),
     visualizer({
       template: 'treemap', // or sunburst
       open: false,

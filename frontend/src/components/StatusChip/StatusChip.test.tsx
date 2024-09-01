@@ -23,7 +23,7 @@ describe('StatusChip', () => {
   });
 
   it('should display label with default color', async () => {
-    const { container } = render(<StatusChip label="fake-label" color="default" />);
+    const { container } = render(<StatusChip color="default" label="fake-label" />);
     // Now find text
     expect(container).toHaveTextContent('fake-label');
     expect(container.firstChild).toHaveClass('MuiChip-colorDefault');
@@ -32,7 +32,7 @@ describe('StatusChip', () => {
   });
 
   it('should display label with error color', async () => {
-    const { container } = render(<StatusChip label="fake-label" color="error" />);
+    const { container } = render(<StatusChip color="error" label="fake-label" />);
     // Now find text
     expect(container).toHaveTextContent('fake-label');
     expect(container.firstChild).toHaveClass('MuiChip-colorError');

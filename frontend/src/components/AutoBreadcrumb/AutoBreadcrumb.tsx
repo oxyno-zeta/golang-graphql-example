@@ -33,8 +33,8 @@ function AutoBreadcrumb(props: Props) {
         if (breadcrumbData.fixed) {
           return (
             <FixedBreadcrumb
-              key={breadcrumbData.id || y.id}
               breadcrumbData={breadcrumbData.fixed}
+              key={breadcrumbData.id || y.id}
               last={last}
               pathname={y.pathname}
             />
@@ -43,8 +43,8 @@ function AutoBreadcrumb(props: Props) {
 
         return (
           <GraphQLBreadcrumb
-            key={breadcrumbData.id || y.id}
             breadcrumbData={breadcrumbData.graphql}
+            key={breadcrumbData.id || y.id}
             last={last}
             params={params}
             pathname={y.pathname}

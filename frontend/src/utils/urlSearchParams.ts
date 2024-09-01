@@ -48,15 +48,10 @@ export function setJSONObjectSearchParam(
   searchParams.set(key, objStr);
 
   // Save search params
-  setSearchParams(searchParams);
+  setSearchParams(searchParams as URLSearchParamsInit);
 }
 
-export function getJSONObjectFromSearchParam<T>(
-  key: string,
-  init: T,
-  searchParams: URLSearchParams,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): T {
+export function getJSONObjectFromSearchParam<T>(key: string, init: T, searchParams: URLSearchParams): T {
   // Get key
   const objStr = searchParams.get(key);
 
@@ -73,7 +68,7 @@ export function getJSONObjectFromSearchParam<T>(
 
     // Return
     return obj;
-  } catch (e) {
+  } catch {
     // Return init
     return init;
   }
@@ -115,5 +110,5 @@ export function deleteAndSetSearchParams(
   });
 
   // Clean all
-  setSearchParams(searchParams);
+  setSearchParams(searchParams as URLSearchParamsInit);
 }

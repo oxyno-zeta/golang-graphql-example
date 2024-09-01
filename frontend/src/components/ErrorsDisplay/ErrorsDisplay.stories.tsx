@@ -83,13 +83,13 @@ export const TwoGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = funct
 export const OneGraphQLErrorWithoutMargin: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
-      noMargin
       error={
         new ApolloError({
           errorMessage: 'one graphql apollo error',
           graphQLErrors: [simpleForbiddenGraphqlError],
         })
       }
+      noMargin
     />
   );
 };

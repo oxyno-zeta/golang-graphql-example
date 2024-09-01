@@ -4,11 +4,11 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 
 export interface Props {
-  titleText?: string;
-  titleElement?: string;
-  subtitleElement?: ReactNode;
-  listItemsElement: ReactNode;
-  isNormalCollapsed: boolean;
+  readonly titleText?: string;
+  readonly titleElement?: string;
+  readonly subtitleElement?: ReactNode;
+  readonly listItemsElement: ReactNode;
+  readonly isNormalCollapsed: boolean;
 }
 
 function DrawerContent({
@@ -20,7 +20,7 @@ function DrawerContent({
 }: Props) {
   return (
     <>
-      {isNormalCollapsed && (
+      {isNormalCollapsed ? (
         <>
           <div style={{ margin: '10px' }}>
             <div
@@ -31,7 +31,7 @@ function DrawerContent({
                 justifyContent: 'center',
               }}
             >
-              {titleText && (
+              {titleText ? (
                 <Typography
                   style={{
                     fontWeight: 'bold',
@@ -43,11 +43,11 @@ function DrawerContent({
                 >
                   {titleText}
                 </Typography>
-              )}
+              ) : null}
               {titleElement}
             </div>
 
-            {subtitleElement && (
+            {subtitleElement ? (
               <div
                 style={{
                   marginTop: '5px',
@@ -59,14 +59,14 @@ function DrawerContent({
               >
                 {subtitleElement}
               </div>
-            )}
+            ) : null}
           </div>
 
           <div style={{ margin: '0 25px' }}>
             <Divider />
           </div>
         </>
-      )}
+      ) : null}
 
       <List>{listItemsElement}</List>
     </>

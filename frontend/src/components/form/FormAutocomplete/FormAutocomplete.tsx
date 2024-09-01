@@ -13,11 +13,11 @@ import type { YupTranslateErrorModel } from '../../../models/general';
 type ValueModel = { display: string; value: string };
 
 type Props<T extends FieldValues> = {
-  control: Control<T>;
-  name: Path<T>;
-  values: ValueModel[];
-  autocompleteProps?: Partial<AutocompleteProps<ValueModel, false, false, false>>;
-  textFieldProps?: Partial<TextFieldProps>;
+  readonly control: Control<T>;
+  readonly name: Path<T>;
+  readonly values: ValueModel[];
+  readonly autocompleteProps?: Partial<AutocompleteProps<ValueModel, false, false, false>>;
+  readonly textFieldProps?: Partial<TextFieldProps>;
 };
 
 /* eslint-disable react/no-array-index-key */
@@ -61,14 +61,8 @@ function FormAutocomplete<T extends FieldValues>({
 
   return (
     <Autocomplete<ValueModel, false, false, false>
-      noOptionsText={t('common.filter.noOptions')}
-      openText={t('common.openAction')}
       clearText={t('common.clearAction')}
       closeText={t('common.closeAction')}
-      onBlur={field.onBlur}
-      value={value}
-      ref={field.ref}
-      options={values}
       getOptionLabel={(option: ValueModel | string) => {
         // Check if option is empty
         if (option === '') {
@@ -78,7 +72,8 @@ function FormAutocomplete<T extends FieldValues>({
         // Normal case
         return (option as ValueModel).display;
       }}
-      renderInput={(params) => <TextField {...params} {...textFieldProps} {...errorProps} />}
+      noOptionsText={t('common.filter.noOptions')}
+      onBlur={field.onBlur}
       onChange={(input, newValue) => {
         if (newValue === null) {
           field.onChange(null);
@@ -86,8 +81,12 @@ function FormAutocomplete<T extends FieldValues>({
           return;
         }
 
-        field.onChange((newValue as ValueModel).value);
+        field.onChange(newValue.value);
       }}
+      openText={t('common.openAction')}
+      options={values}
+      ref={field.ref}
+      renderInput={(params) => <TextField {...params} {...textFieldProps} {...errorProps} />}
       renderOption={(props, data: ValueModel, { inputValue }) => {
         const displayedOption = t(data.display);
         const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
@@ -112,6 +111,7 @@ function FormAutocomplete<T extends FieldValues>({
           </MenuItem>
         );
       }}
+      value={value}
       {...autocompleteProps}
     />
   );

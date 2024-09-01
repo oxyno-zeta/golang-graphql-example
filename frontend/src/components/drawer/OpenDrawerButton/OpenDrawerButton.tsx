@@ -6,8 +6,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
 
 export interface Props {
-  onDrawerToggle: () => void;
-  iconButtonProps?: Partial<Omit<IconButtonProps, 'onClick'>>;
+  readonly onDrawerToggle: () => void;
+  readonly iconButtonProps?: Partial<Omit<IconButtonProps, 'onClick'>>;
 }
 
 function OpenDrawerButton({ onDrawerToggle, iconButtonProps = {} }: Props) {

@@ -7,8 +7,8 @@ import ColorModeContext from '../../../contexts/ColorModeContext';
 import ConfigContext from '../../../contexts/ConfigContext';
 
 export interface Props {
-  children: ReactNode;
-  themeOptions: ThemeOptions;
+  readonly children: ReactNode;
+  readonly themeOptions: ThemeOptions;
 }
 
 const cookieName = 'palette-mode';

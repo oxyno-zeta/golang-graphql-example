@@ -4,17 +4,22 @@ import { mdiHelpCircle } from '@mdi/js';
 import ForcedTooltip, { ForcedTooltipProps } from '../ForcedTooltip';
 
 export interface Props {
-  tooltipTitle: ReactNode;
-  tooltipProps?: Omit<ForcedTooltipProps, 'title'>;
-  svgIconProps?: Omit<SvgIconProps, 'onClick'>;
-  svgIconContainerStyle?: Record<string, string>;
+  readonly tooltipTitle: ReactNode;
+  readonly tooltipProps?: Omit<ForcedTooltipProps, 'title'>;
+  readonly svgIconProps?: Omit<SvgIconProps, 'onClick'>;
+  readonly svgIconContainerStyle?: Record<string, string>;
 }
 
 function HelpForcedTooltip({
   tooltipTitle,
   tooltipProps = {},
   svgIconProps = {},
-  svgIconContainerStyle = { padding: '8px', verticalAlign: 'middle', textAlign: 'center', display: 'inline-flex' },
+  svgIconContainerStyle = {
+    padding: '8px',
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    display: 'inline-flex',
+  },
 }: Props) {
   return (
     <ForcedTooltip

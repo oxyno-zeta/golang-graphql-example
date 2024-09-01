@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material';
 
 export interface Props {
-  containerBoxSx?: SxProps;
-  typographyProps?: TypographyProps;
+  readonly containerBoxSx?: SxProps;
+  readonly typographyProps?: TypographyProps;
 }
 
 function Footer({ containerBoxSx = {}, typographyProps = {} }: Props) {

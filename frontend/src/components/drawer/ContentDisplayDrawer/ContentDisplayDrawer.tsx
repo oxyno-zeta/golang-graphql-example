@@ -16,19 +16,19 @@ import { TopBarSpacer } from '~components/TopBar';
 
 export interface Props {
   // Default drawer width for init.
-  defaultDrawerWidth: number;
-  drawerElement: ReactNode;
-  children: ReactNode;
-  onClose: () => void;
-  mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
-  drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
-  mainContainerBoxSx?: Omit<SystemStyleObject<Theme>, 'width'>;
-  drawerContainerBoxSx?: Omit<SystemStyleObject<Theme>, 'width' | 'display' | 'flexShrink'>;
-  disableTopSpacer?: boolean;
-  titleElement?: ReactNode;
-  minDrawerWidth?: number;
-  maxDrawerWidth?: number;
-  disableResize?: boolean;
+  readonly defaultDrawerWidth: number;
+  readonly drawerElement: ReactNode;
+  readonly children: ReactNode;
+  readonly onClose: () => void;
+  readonly mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
+  readonly drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
+  readonly mainContainerBoxSx?: Omit<SystemStyleObject<Theme>, 'width'>;
+  readonly drawerContainerBoxSx?: Omit<SystemStyleObject<Theme>, 'width' | 'display' | 'flexShrink'>;
+  readonly disableTopSpacer?: boolean;
+  readonly titleElement?: ReactNode;
+  readonly minDrawerWidth?: number;
+  readonly maxDrawerWidth?: number;
+  readonly disableResize?: boolean;
 }
 
 const defaultMinDrawerWidth = 150;
@@ -83,10 +83,10 @@ function ContentDisplayDrawer({
     <>
       {!disableResize && (
         <Divider
-          role="button"
+          flexItem
           onMouseDown={() => handleMouseDown()}
           orientation="vertical"
-          flexItem
+          role="button"
           sx={(th) => ({
             cursor: 'ew-resize',
             position: 'absolute',
@@ -102,7 +102,7 @@ function ContentDisplayDrawer({
       )}
       <div style={{ display: 'flex', alignItems: 'center', margin: '10px' }}>
         {titleElement || (
-          <Typography variant="h6" sx={{ marginRight: 'auto' }}>
+          <Typography sx={{ marginRight: 'auto' }} variant="h6">
             {t('common.details')}
           </Typography>
         )}
@@ -132,12 +132,11 @@ function ContentDisplayDrawer({
         }}
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        {open && !sizeMatching && (
+        {open && !sizeMatching ? (
           <Drawer
-            variant="temporary"
-            open={open}
-            onClose={onClose}
             anchor="right"
+            onClose={onClose}
+            open={open}
             sx={{
               display: 'block',
               '& .MuiDrawer-paper': {
@@ -145,13 +144,15 @@ function ContentDisplayDrawer({
                 width: drawerWidth,
               },
             }}
+            variant="temporary"
             {...mobileDrawerProps}
           >
             {content}
           </Drawer>
-        )}
+        ) : null}
         <Drawer
-          variant="persistent"
+          anchor="right"
+          open={open}
           sx={{
             display: { xs: 'none', lg: 'block' },
             '& .MuiDrawer-paper': {
@@ -160,8 +161,7 @@ function ContentDisplayDrawer({
               ...(disableResize ? {} : { borderLeft: 'unset' }),
             },
           }}
-          anchor="right"
-          open={open}
+          variant="persistent"
           {...drawerProps}
         >
           {!disableTopSpacer && <TopBarSpacer />}

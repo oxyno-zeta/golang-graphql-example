@@ -72,7 +72,7 @@ describe('filters/internal/FilterForm', () => {
     const onChange = jest.fn().mockImplementation((i) => i);
 
     const { container } = render(
-      <FilterForm filterDefinitionModel={testFilterDefinitionObject} onChange={onChange} initialFilter={{}} />,
+      <FilterForm filterDefinitionModel={testFilterDefinitionObject} initialFilter={{}} onChange={onChange} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -114,7 +114,7 @@ describe('filters/internal/FilterForm', () => {
     const onChange = jest.fn().mockImplementation((i) => i);
 
     const { container } = render(
-      <FilterForm filterDefinitionModel={testFilterDefinitionObject} onChange={onChange} initialFilter={{}} />,
+      <FilterForm filterDefinitionModel={testFilterDefinitionObject} initialFilter={{}} onChange={onChange} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -208,8 +208,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{ text: { isNull: true } } as TestFilterModel}
+        onChange={onChange}
       />,
     );
 
@@ -241,7 +241,7 @@ describe('filters/internal/FilterForm', () => {
     Object.values(stringOperations).forEach((v) => {
       expect(role2).toHaveTextContent(v.display);
       if (v.description) {
-        expect(role2).toHaveTextContent(v.description as string);
+        expect(role2).toHaveTextContent(v.description);
       }
     });
     // Select value
@@ -257,7 +257,7 @@ describe('filters/internal/FilterForm', () => {
     Object.values(testFilterDefinitionObject).forEach((v) => {
       expect(role1).toHaveTextContent(v.display);
       if (v.description) {
-        expect(role1).toHaveTextContent(v.description as string);
+        expect(role1).toHaveTextContent(v.description);
       }
     });
   });
@@ -268,8 +268,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{ text: { eq: 'fake' } } as TestFilterModel}
+        onChange={onChange}
       />,
     );
 
@@ -307,8 +307,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{ text: { in: ['fake'] } } as TestFilterModel}
+        onChange={onChange}
       />,
     );
 
@@ -349,8 +349,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{ done: { eq: true } } as TestFilterModel}
+        onChange={onChange}
       />,
     );
 
@@ -385,7 +385,7 @@ describe('filters/internal/FilterForm', () => {
     Object.values(booleanOperations).forEach((v) => {
       expect(role3).toHaveTextContent(v.display);
       if (v.description) {
-        expect(role3).toHaveTextContent(v.description as string);
+        expect(role3).toHaveTextContent(v.description);
       }
     });
     // Select value
@@ -401,8 +401,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{ done: { eq: true }, text: { eq: 'foo' } } as TestFilterModel}
+        onChange={onChange}
       />,
     );
 
@@ -459,8 +459,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{ done: { eq: true }, text: { eq: 'foo' } } as TestFilterModel}
+        onChange={onChange}
       />,
     );
 
@@ -528,10 +528,10 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={
           { AND: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }] } as TestFilterModel
         }
+        onChange={onChange}
       />,
     );
 
@@ -560,10 +560,10 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={
           { AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }] } as TestFilterModel
         }
+        onChange={onChange}
       />,
     );
 
@@ -663,7 +663,6 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={
           {
             AND: [
@@ -673,6 +672,7 @@ describe('filters/internal/FilterForm', () => {
             ],
           } as TestFilterModel
         }
+        onChange={onChange}
       />,
     );
 
@@ -713,7 +713,6 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={
           {
             AND: [
@@ -723,6 +722,7 @@ describe('filters/internal/FilterForm', () => {
             ],
           } as TestFilterModel
         }
+        onChange={onChange}
       />,
     );
 
@@ -759,8 +759,8 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        onChange={onChange}
         initialFilter={{}}
+        onChange={onChange}
         predefinedFilterObjects={[{ display: 'fake', filter: { done: { eq: true } } }]}
       />,
     );

@@ -4,13 +4,13 @@ import Typography from '@mui/material/Typography';
 import type { BoxProps, TypographyProps } from '@mui/material';
 
 export interface Props {
-  labelText?: string;
-  labelElement?: ReactNode;
-  boxProps?: BoxProps;
-  labelTypographyProps?: TypographyProps;
-  valueElement?: ReactNode;
-  valueText?: string;
-  valueTypographyProps?: TypographyProps;
+  readonly labelText?: string;
+  readonly labelElement?: ReactNode;
+  readonly boxProps?: BoxProps;
+  readonly labelTypographyProps?: TypographyProps;
+  readonly valueElement?: ReactNode;
+  readonly valueText?: string;
+  readonly valueTypographyProps?: TypographyProps;
 }
 
 function OneLineLabelValueDisplay({
@@ -24,14 +24,14 @@ function OneLineLabelValueDisplay({
 }: Props) {
   return (
     <Box sx={{ display: { sm: 'flex' } }} {...boxProps}>
-      {labelText && (
+      {labelText ? (
         <Typography sx={{ fontWeight: 'bold', marginRight: { sm: '5px' } }} {...labelTypographyProps}>
           {labelText}
         </Typography>
-      )}
-      {labelElement && <>{labelElement}</>}
-      {valueText && <Typography {...valueTypographyProps}>{valueText}</Typography>}
-      {valueElement && <>{valueElement}</>}
+      ) : null}
+      {labelElement ? <>{labelElement}</> : null}
+      {valueText ? <Typography {...valueTypographyProps}>{valueText}</Typography> : null}
+      {valueElement ? <>{valueElement}</> : null}
     </Box>
   );
 }

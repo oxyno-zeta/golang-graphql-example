@@ -14,14 +14,14 @@ jest.mock('react-i18next', () => ({
 }));
 
 interface Props {
-  paginationProps: PaginationProps;
+  readonly paginationProps: PaginationProps;
 }
 
 function TestComponent({ paginationProps }: Props) {
   return (
     <MemoryRouter initialEntries={['/route']}>
       <Routes>
-        <Route path="/route" element={<Pagination {...paginationProps} />} />
+        <Route element={<Pagination {...paginationProps} />} path="/route" />
       </Routes>
     </MemoryRouter>
   );
@@ -91,7 +91,12 @@ describe('Pagination', () => {
       <TestComponent
         paginationProps={{
           maxPaginationSize: 10,
-          pageInfo: { hasNextPage: true, startCursor: 'fake-start', hasPreviousPage: true, endCursor: 'fake-end' },
+          pageInfo: {
+            hasNextPage: true,
+            startCursor: 'fake-start',
+            hasPreviousPage: true,
+            endCursor: 'fake-end',
+          },
         }}
       />,
     );
@@ -178,7 +183,12 @@ describe('Pagination', () => {
       <TestComponent
         paginationProps={{
           maxPaginationSize: 10,
-          pageInfo: { hasNextPage: true, endCursor: 'fake-end', startCursor: 'fake-start', hasPreviousPage: true },
+          pageInfo: {
+            hasNextPage: true,
+            endCursor: 'fake-end',
+            startCursor: 'fake-start',
+            hasPreviousPage: true,
+          },
           onNextPage: () => {
             nextPageClicked = true;
           },

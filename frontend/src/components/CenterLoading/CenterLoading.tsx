@@ -9,21 +9,21 @@ export interface Props {
    * Container Box sx.
    * Following this documentation: https://mui.com/system/getting-started/the-sx-prop/ .
    */
-  containerBoxSx?: SxProps;
+  readonly containerBoxSx?: SxProps;
   /**
    * Circular progress props.
    * Following this documentation: https://mui.com/material-ui/api/circular-progress/#props .
    */
-  circularProgressProps?: Partial<CircularProgressProps>;
+  readonly circularProgressProps?: Partial<CircularProgressProps>;
   /**
    * subtitle.
    */
-  subtitle?: string;
+  readonly subtitle?: string;
   /**
    * Typography props.
    * Following this documentation: https://mui.com/material-ui/api/typography/#props .
    */
-  subtitleTypographyProps?: Partial<TypographyProps>;
+  readonly subtitleTypographyProps?: Partial<TypographyProps>;
 }
 
 function CenterLoading({
@@ -44,16 +44,16 @@ function CenterLoading({
       }}
     >
       <CircularProgress {...circularProgressProps} />
-      {subtitle && (
+      {subtitle ? (
         <Typography
           color="text.secondary"
-          variant="subtitle2"
           sx={{ fontSize: '12px', marginTop: '7px' }}
+          variant="subtitle2"
           {...subtitleTypographyProps}
         >
           {subtitle}
         </Typography>
-      )}
+      ) : null}
     </Box>
   );
 }

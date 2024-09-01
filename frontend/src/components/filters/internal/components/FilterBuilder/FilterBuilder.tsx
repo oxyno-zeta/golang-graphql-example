@@ -16,11 +16,11 @@ import { LineOrGroup, BuilderInitialValueObject, FieldInitialValueObject, Filter
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface Props {
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  initialValue: BuilderInitialValueObject;
-  acceptEmptyLines?: boolean;
-  onRemove?: () => void | undefined;
-  onChange: (fo: null | FilterValueObject) => void;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly initialValue: BuilderInitialValueObject;
+  readonly acceptEmptyLines?: boolean;
+  readonly onRemove?: () => void | undefined;
+  readonly onChange: (fo: null | FilterValueObject) => void;
 }
 
 function FilterBuilder({
@@ -82,7 +82,7 @@ function FilterBuilder({
       // Optimization if there is only 1 value
       // Return directly the value
       if (newItems.length === 1) {
-        onChange(newItems[0] as any);
+        onChange(newItems[0]);
         return;
       }
 
@@ -173,7 +173,7 @@ function FilterBuilder({
         }}
       />
       <Box sx={{ display: 'block', width: '100%' }}>
-        <ButtonGroup size="small" color={items.length === 0 && !acceptEmptyLines ? 'error' : 'primary'}>
+        <ButtonGroup color={items.length === 0 && !acceptEmptyLines ? 'error' : 'primary'} size="small">
           <Button
             onClick={() => {
               setGroupKey('AND');
@@ -209,7 +209,7 @@ function FilterBuilder({
             </SvgIcon>
           </IconButton>
         </Tooltip>
-        {onRemove && (
+        {onRemove ? (
           <Tooltip title={<>{t('common.filter.deleteGroupField')}</>}>
             <IconButton onClick={onRemove}>
               <SvgIcon>
@@ -217,12 +217,12 @@ function FilterBuilder({
               </SvgIcon>
             </IconButton>
           </Tooltip>
-        )}
+        ) : null}
 
         {items.map((it, index) => {
           if (it.type === 'line') {
             return (
-              <Box key={it.key} data-testid={it.key} sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
+              <Box data-testid={it.key} key={it.key} sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', margin: '-20px 5px 0 0' }}>
                   <Tooltip title={<>{t('common.filter.deleteField')}</>}>
                     <IconButton onClick={localRemoveHandler(it.key)}>
@@ -242,8 +242,8 @@ function FilterBuilder({
                   }}
                 >
                   <FilterBuilderField
-                    id={it.key}
                     filterDefinitionModel={filterDefinitionModel}
+                    id={it.key}
                     initialValue={it.initialValue as FieldInitialValueObject}
                     onChange={saveHandlers[index]}
                   />
@@ -254,11 +254,11 @@ function FilterBuilder({
 
           return (
             <FilterBuilder
-              key={it.key}
               filterDefinitionModel={filterDefinitionModel}
               initialValue={it.initialValue as BuilderInitialValueObject}
-              onRemove={localRemoveHandler(it.key)}
+              key={it.key}
               onChange={saveHandlers[index]}
+              onRemove={localRemoveHandler(it.key)}
             />
           );
         })}

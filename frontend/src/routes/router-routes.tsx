@@ -1,5 +1,5 @@
 import React from 'react';
-import type { RouteObject } from 'react-router-dom';
+import type { Params, RouteObject } from 'react-router-dom';
 import { gql } from '@apollo/client';
 import NotFoundRoute from '~components/NotFoundRoute';
 import MainContentWrapper from '~components/MainContentWrapper';
@@ -28,6 +28,11 @@ interface QueryVariables {
   name: string;
 }
 
+const buildNavigateTo = (params?: QueryResult) =>
+  params?.todos?.edges && params?.todos?.edges[0] && `/fake/${params?.todos?.edges[0].node.id}`;
+
+const buildQueryVariables = (params: Params<string>) => ({ name: params.name as string });
+
 const router: RouteObject[] = [
   {
     path: '/',
@@ -43,11 +48,9 @@ const router: RouteObject[] = [
     element: (
       <MainContentWrapper>
         <QueryRedirectTo<QueryResult, QueryVariables>
+          buildNavigateTo={buildNavigateTo}
+          buildQueryVariables={buildQueryVariables}
           query={QUERY}
-          buildNavigateTo={(params) =>
-            params?.todos?.edges && params?.todos?.edges[0] && `/fake/${params?.todos?.edges[0].node.id}`
-          }
-          buildQueryVariables={(params) => ({ name: params.name as string })}
         />
       </MainContentWrapper>
     ),

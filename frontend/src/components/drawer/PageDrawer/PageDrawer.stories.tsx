@@ -75,7 +75,7 @@ export default {
             />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding dense>
+        <ListItem dense disablePadding>
           <ListItemButton dense sx={listItemButtonSx}>
             <ListItemIcon sx={listItemIconSx}>
               <SvgIcon>
@@ -85,7 +85,7 @@ export default {
             <ListItemText sx={listItemTextSx}>Menu</ListItemText>
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding dense>
+        <ListItem dense disablePadding>
           <ListItemButton dense sx={listItemButtonSx}>
             <ListItemIcon sx={listItemIconSx}>
               <SvgIcon>
@@ -95,7 +95,7 @@ export default {
             <ListItemText sx={listItemTextSx}>Menu</ListItemText>
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding dense>
+        <ListItem dense disablePadding>
           <ListItemButton dense sx={listItemButtonSx}>
             <ListItemIcon sx={listItemIconSx}>
               <SvgIcon>
@@ -106,7 +106,7 @@ export default {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListNavItemButton to="/fail" listItemButtonProps={{ sx: listItemButtonSx, dense: true }}>
+          <ListNavItemButton listItemButtonProps={{ sx: listItemButtonSx, dense: true }} to="/fail">
             <ListItemIcon sx={listItemIconSx}>
               <SvgIcon>
                 <path d={mdiAccessPoint} />
@@ -122,7 +122,7 @@ export default {
   decorators: [withRouter],
 } as Meta<typeof PageDrawer>;
 
-function RemoveStorybookPadding({ children }: { children: ReactNode }) {
+function RemoveStorybookPadding({ children }: { readonly children: ReactNode }) {
   return <div style={{ margin: '-1rem' }}>{children}</div>;
 }
 

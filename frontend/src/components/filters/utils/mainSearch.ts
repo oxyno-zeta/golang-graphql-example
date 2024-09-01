@@ -21,8 +21,8 @@ export function getMainSearchInitialValueGeneric<T, R>(
   filter: any,
 ) {
   // Check if it is at root level
-  if (filter && filter[filterKey] && (filter[filterKey] as any)[filterOperation]) {
-    return (filter[filterKey] as any)[filterOperation] as R;
+  if (filter && filter[filterKey] && filter[filterKey][filterOperation]) {
+    return filter[filterKey][filterOperation] as R;
   }
 
   // Check if the AND case exists
@@ -30,7 +30,7 @@ export function getMainSearchInitialValueGeneric<T, R>(
     const v = filter.AND.find((it: any) => it[filterKey] && it[filterKey][filterOperation]);
     // Check if v exists
     if (v) {
-      return (v[filterKey] as any)[filterOperation] as R;
+      return v[filterKey][filterOperation] as R;
     }
   }
 

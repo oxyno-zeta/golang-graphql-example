@@ -4,7 +4,7 @@ import PageDrawerSettingsContext from '~contexts/PageDrawerSettingsContext';
 import ConfigContext from '~contexts/ConfigContext';
 
 export interface Props {
-  children: ReactNode;
+  readonly children: ReactNode;
 }
 
 const cookieName = 'left-menu-collapsed';
@@ -30,7 +30,7 @@ function PageDrawerSettingsProvider({ children }: Props) {
   const { configCookieDomain } = cfg;
 
   // States
-  const [isCollapsed, setCollapsed] = useState<boolean>(initCollapsedVal);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(initCollapsedVal);
 
   // Create color mode context
   const contextValue = useMemo(() => {
@@ -46,7 +46,7 @@ function PageDrawerSettingsProvider({ children }: Props) {
     return {
       isCollapsed: () => isCollapsed,
       toggleCollapsed: () => {
-        setCollapsed((v) => {
+        setIsCollapsed((v) => {
           // Save in storage
           setCookie(!v);
 

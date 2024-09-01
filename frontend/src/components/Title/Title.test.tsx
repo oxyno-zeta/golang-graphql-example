@@ -26,7 +26,6 @@ describe('Title', () => {
   it('should display title with left element only', async () => {
     const { container, findByRole } = render(
       <Title
-        title="Fake title"
         leftElement={
           <IconButton>
             <SvgIcon>
@@ -34,6 +33,7 @@ describe('Title', () => {
             </SvgIcon>
           </IconButton>
         }
+        title="Fake title"
       />,
     );
     // Now find text
@@ -48,7 +48,6 @@ describe('Title', () => {
   it('should display title with right element only', async () => {
     const { container, findByRole } = render(
       <Title
-        title="Fake title"
         rightElement={
           <IconButton>
             <SvgIcon>
@@ -56,6 +55,7 @@ describe('Title', () => {
             </SvgIcon>
           </IconButton>
         }
+        title="Fake title"
       />,
     );
     // Now find text
@@ -70,7 +70,6 @@ describe('Title', () => {
   it('should display title with right and left element', async () => {
     const { container, findAllByRole } = render(
       <Title
-        title="Fake title"
         leftElement={
           <IconButton>
             <SvgIcon>
@@ -85,6 +84,7 @@ describe('Title', () => {
             </SvgIcon>
           </IconButton>
         }
+        title="Fake title"
       />,
     );
     // Now find text

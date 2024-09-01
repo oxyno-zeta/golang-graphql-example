@@ -4,9 +4,9 @@ import type { SxProps } from '@mui/material';
 import { TopBarSpacer } from '../TopBar';
 
 interface Props {
-  children: ReactNode;
-  containerBoxSx?: SxProps;
-  disableTopSpacer?: boolean;
+  readonly children: ReactNode;
+  readonly containerBoxSx?: SxProps;
+  readonly disableTopSpacer?: boolean;
 }
 
 function MainContentWrapper({ children, disableTopSpacer = false, containerBoxSx = {} }: Props) {

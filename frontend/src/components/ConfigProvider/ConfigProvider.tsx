@@ -7,9 +7,9 @@ import ConfigContext from '../../contexts/ConfigContext';
 import { ConfigModel, defaultConfig } from '../../models/config';
 
 interface Props {
-  children: ReactNode;
-  loadingComponent: ReactNode;
-  skipConfigLoader?: boolean;
+  readonly children: ReactNode;
+  readonly loadingComponent: ReactNode;
+  readonly skipConfigLoader?: boolean;
 }
 
 /* eslint-disable react-hooks/rules-of-hooks */

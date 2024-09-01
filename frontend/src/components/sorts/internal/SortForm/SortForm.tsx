@@ -15,13 +15,12 @@ import { SortOrderModel, SortOrderFieldModel, SortOrderAsc } from '../../../../m
 import { arrayMoveItem } from '../../../../utils/array';
 
 export interface Props<T extends Record<string, SortOrderModel>> {
-  onSubmit: (sort: T[]) => void;
-  onReset: () => void;
-  initialSorts: null | undefined | T[];
-  sortFields: SortOrderFieldModel[];
+  readonly onSubmit: (sort: T[]) => void;
+  readonly onReset: () => void;
+  readonly initialSorts: null | undefined | T[];
+  readonly sortFields: SortOrderFieldModel[];
 }
 
-/* eslint-disable react/no-array-index-key */
 function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset, initialSorts, sortFields }: Props<T>) {
   // Setup translate
   const { t } = useTranslation();
@@ -65,21 +64,21 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
           const id = `sort-${index}-${Object.keys(item)[0]}`;
 
           return (
-            <Box key={id} data-testid={id} sx={{ display: 'flex', margin: '10px 0 20px 0' }}>
+            <Box data-testid={id} key={id} sx={{ display: 'flex', margin: '10px 0 20px 0' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '5px' }}>
                 {result.length > 1 && (
                   <ButtonGroup orientation="vertical">
                     {index !== 0 && (
                       <Tooltip title={<>{t('common.upAction')}</>}>
                         <IconButton
-                          size="small"
-                          sx={{ height: '24px', width: '24px' }}
                           onClick={() => {
                             // Move
                             arrayMoveItem(result, index, index - 1);
                             // Save
                             setResult([...result]);
                           }}
+                          size="small"
+                          sx={{ height: '24px', width: '24px' }}
                         >
                           <SvgIcon sx={{ height: '16px', width: '16px' }}>
                             <path d={mdiChevronUp} />
@@ -90,14 +89,14 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
                     {index !== result.length - 1 && (
                       <Tooltip title={<>{t('common.downAction')}</>}>
                         <IconButton
-                          size="small"
-                          sx={{ height: '24px', width: '24px' }}
                           onClick={() => {
                             // Move
                             arrayMoveItem(result, index, index + 1);
                             // Save
                             setResult([...result]);
                           }}
+                          size="small"
+                          sx={{ height: '24px', width: '24px' }}
                         >
                           <SvgIcon sx={{ height: '16px', width: '16px' }}>
                             <path d={mdiChevronDown} />
@@ -126,8 +125,6 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
               <Grid container spacing={1} sx={{ flexGrow: 1 }}>
                 <SortField
                   availableFields={availableFields}
-                  sortFields={sortFields}
-                  value={item}
                   onChange={(v) => {
                     const res = [...result];
 
@@ -137,6 +134,8 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
                     // Save
                     setResult(res);
                   }}
+                  sortFields={sortFields}
+                  value={item}
                 />
               </Grid>
             </Box>
@@ -162,11 +161,11 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
           {t('common.resetAction')}
         </Button>
         <Button
-          variant="contained"
-          onClick={() => {
-            onSubmit(result as T[]);
-          }}
           autoFocus
+          onClick={() => {
+            onSubmit(result);
+          }}
+          variant="contained"
         >
           {t('common.applyAction')}
         </Button>

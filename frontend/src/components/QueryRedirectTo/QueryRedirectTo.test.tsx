@@ -25,17 +25,17 @@ const QUERY = gql`
 `;
 
 interface Props {
-  children: ReactNode;
-  mockedResponse: MockedResponse;
+  readonly children: ReactNode;
+  readonly mockedResponse: MockedResponse;
 }
 
 function TestComponent({ children, mockedResponse }: Props) {
   return (
-    <MockedProvider mocks={[mockedResponse]} addTypename={false}>
+    <MockedProvider addTypename={false} mocks={[mockedResponse]}>
       <MemoryRouter initialEntries={['/route/fake-name']}>
         <Routes>
-          <Route path="/fake" element={<div>Fake</div>} />
-          <Route path="/route/:name" element={<>{children}</>} />
+          <Route element={<div>Fake</div>} path="/fake" />
+          <Route element={<>{children}</>} path="/route/:name" />
         </Routes>
       </MemoryRouter>
     </MockedProvider>
@@ -53,7 +53,7 @@ describe('QueryRedirectTo', () => {
           },
         }}
       >
-        <QueryRedirectTo query={QUERY} buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} />
+        <QueryRedirectTo buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
       </TestComponent>,
     );
 
@@ -75,10 +75,10 @@ describe('QueryRedirectTo', () => {
         }}
       >
         <QueryRedirectTo
-          query={QUERY}
           buildNavigateTo={() => '/fake'}
           buildQueryVariables={({ name }) => ({ name })}
           disableCenterLoadingSubtitle
+          query={QUERY}
         />
       </TestComponent>,
     );
@@ -107,7 +107,7 @@ describe('QueryRedirectTo', () => {
           }),
         }}
       >
-        <QueryRedirectTo query={QUERY} buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} />
+        <QueryRedirectTo buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
       </TestComponent>,
     );
 
@@ -134,7 +134,7 @@ describe('QueryRedirectTo', () => {
           },
         }}
       >
-        <QueryRedirectTo query={QUERY} buildNavigateTo={() => null} buildQueryVariables={({ name }) => ({ name })} />
+        <QueryRedirectTo buildNavigateTo={() => null} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
       </TestComponent>,
     );
 
@@ -161,7 +161,7 @@ describe('QueryRedirectTo', () => {
           },
         }}
       >
-        <QueryRedirectTo query={QUERY} buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} />
+        <QueryRedirectTo buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
       </TestComponent>,
     );
 

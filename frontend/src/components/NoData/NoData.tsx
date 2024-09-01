@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
 export interface Props {
-  typographyProps?: Omit<TypographyProps, 'children'>;
+  readonly typographyProps?: Omit<TypographyProps, 'children'>;
 }
 
 function NoData({ typographyProps = {} }: Props) {
@@ -12,7 +12,12 @@ function NoData({ typographyProps = {} }: Props) {
 
   return (
     <Typography
-      sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center', margin: '10px 0' }}
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+        margin: '10px 0',
+      }}
       {...typographyProps}
     >
       {t('common.noData')}

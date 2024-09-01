@@ -1,9 +1,9 @@
 import React, { ComponentProps, useEffect, useState } from 'react';
 
 type Props = {
-  placeholderSrc: string;
-  src: string;
-  alt: string;
+  readonly placeholderSrc: string;
+  readonly src: string;
+  readonly alt: string;
 } & ComponentProps<'img'>;
 
 // Inspired from: https://blog.logrocket.com/progressive-image-loading-react-tutorial/
@@ -18,7 +18,7 @@ function ProgressiveImg({ placeholderSrc, src, alt, ...props }: Props) {
     };
   }, [src]);
 
-  return <img src={imgSrc} alt={alt} {...props} />;
+  return <img alt={alt} src={imgSrc} {...props} />;
 }
 
 export default ProgressiveImg;

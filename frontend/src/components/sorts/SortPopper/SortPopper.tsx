@@ -6,13 +6,13 @@ import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
 import SortForm from '../internal/SortForm';
 
 export type Props<T extends Record<string, SortOrderModel>> = {
-  onSubmit: (sort: T[]) => void;
-  onReset: () => void;
-  onClose: () => void;
-  open: boolean;
-  anchorElement: HTMLButtonElement | null;
-  initialSorts: null | undefined | T[];
-  sortFields: SortOrderFieldModel[];
+  readonly onSubmit: (sort: T[]) => void;
+  readonly onReset: () => void;
+  readonly onClose: () => void;
+  readonly open: boolean;
+  readonly anchorElement: HTMLButtonElement | null;
+  readonly initialSorts: null | undefined | T[];
+  readonly sortFields: SortOrderFieldModel[];
 };
 
 function SortPopper<T extends Record<string, SortOrderModel>>({
@@ -26,11 +26,11 @@ function SortPopper<T extends Record<string, SortOrderModel>>({
 }: Props<T>) {
   return (
     <Popper
-      open={open}
       anchorEl={anchorElement}
-      placement="bottom-end"
       disablePortal={false}
       modifiers={[]}
+      open={open}
+      placement="bottom-end"
       sx={{
         minWidth: {
           xs: '300px',
@@ -45,16 +45,16 @@ function SortPopper<T extends Record<string, SortOrderModel>>({
     >
       <ClickAwayListener onClickAway={onClose}>
         <Paper
-          variant="outlined"
           sx={{
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
             borderTop: '0px',
           }}
+          variant="outlined"
         >
-          {open && (
+          {open ? (
             <SortForm initialSorts={initialSorts} onReset={onReset} onSubmit={onSubmit} sortFields={sortFields} />
-          )}
+          ) : null}
         </Paper>
       </ClickAwayListener>
     </Popper>

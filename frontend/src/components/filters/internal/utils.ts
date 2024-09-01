@@ -52,7 +52,7 @@ export function buildFilterBuilderInitialItems(
     // Check if group have a value
     // Note: This is security for Typescript bypass cases or API coming filters that cannot be tested by TS.
     if (initialValue[group]) {
-      res.items = (initialValue[group] as FilterValueObject[]).map((it, index) => {
+      res.items = initialValue[group].map((it, index) => {
         // Build key
         const key = keyPrefix + group + index;
 

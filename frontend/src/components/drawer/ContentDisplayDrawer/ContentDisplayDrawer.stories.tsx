@@ -37,7 +37,7 @@ export default {
   decorators: [withRouter],
 } as Meta<typeof ContentDisplayDrawer>;
 
-function RemoveStorybookPadding({ children }: { children: ReactNode }) {
+function RemoveStorybookPadding({ children }: { readonly children: ReactNode }) {
   return <div style={{ margin: '-1rem' }}>{children}</div>;
 }
 
@@ -124,7 +124,7 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
                       />
                     </ListItemButton>
                   </ListItem>
-                  <ListItem disablePadding dense>
+                  <ListItem dense disablePadding>
                     <ListItemButton dense sx={listItemButtonSx}>
                       <ListItemIcon sx={listItemIconSx}>
                         <SvgIcon>
@@ -134,7 +134,7 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
                       <ListItemText sx={listItemTextSx}>Menu</ListItemText>
                     </ListItemButton>
                   </ListItem>
-                  <ListItem disablePadding dense>
+                  <ListItem dense disablePadding>
                     <ListItemButton dense sx={listItemButtonSx}>
                       <ListItemIcon sx={listItemIconSx}>
                         <SvgIcon>
@@ -144,7 +144,7 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
                       <ListItemText sx={listItemTextSx}>Menu</ListItemText>
                     </ListItemButton>
                   </ListItem>
-                  <ListItem disablePadding dense>
+                  <ListItem dense disablePadding>
                     <ListItemButton dense sx={listItemButtonSx}>
                       <ListItemIcon sx={listItemIconSx}>
                         <SvgIcon>
@@ -155,7 +155,7 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
                     </ListItemButton>
                   </ListItem>
                   <ListItem disablePadding>
-                    <ListNavItemButton to="/fail" listItemButtonProps={{ sx: listItemButtonSx, dense: true }}>
+                    <ListNavItemButton listItemButtonProps={{ sx: listItemButtonSx, dense: true }} to="/fail">
                       <ListItemIcon sx={listItemIconSx}>
                         <SvgIcon>
                           <path d={mdiAccessPoint} />

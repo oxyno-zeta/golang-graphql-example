@@ -7,8 +7,8 @@ import NoData from '../../../../components/NoData';
 import { ConnectionModel } from '../../../../models/general';
 
 interface Props {
-  data: ConnectionModel<TodoModel> | undefined;
-  loading: boolean;
+  readonly data: ConnectionModel<TodoModel> | undefined;
+  readonly loading: boolean;
 }
 
 function GridView({ data, loading }: Props) {
@@ -25,7 +25,7 @@ function GridView({ data, loading }: Props) {
   const items: TodoModel[] = data.edges.map((it) => it.node);
 
   return (
-    <Grid sx={{ padding: '10px' }} container spacing={2}>
+    <Grid container spacing={2} sx={{ padding: '10px' }}>
       {items.map((item) => (
         <GridViewItem item={item} key={item.id} />
       ))}

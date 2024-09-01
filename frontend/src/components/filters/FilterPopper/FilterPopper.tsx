@@ -10,14 +10,14 @@ import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
 export type Props<T extends FilterValueObject> = {
-  onSubmit: (filter: T) => void;
-  onReset: () => void;
-  onClose: () => void;
-  open: boolean;
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  predefinedFilterObjects?: PredefinedFilter[];
-  initialFilter?: undefined | null | T;
-  anchorElement: HTMLFormElement | HTMLButtonElement | null;
+  readonly onSubmit: (filter: T) => void;
+  readonly onReset: () => void;
+  readonly onClose: () => void;
+  readonly open: boolean;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly predefinedFilterObjects?: PredefinedFilter[];
+  readonly initialFilter?: undefined | null | T;
+  readonly anchorElement: HTMLFormElement | HTMLButtonElement | null;
 };
 
 function FilterPopper<T extends FilterValueObject>({
@@ -54,11 +54,11 @@ function FilterPopper<T extends FilterValueObject>({
 
   return (
     <Popper
-      open={open}
       anchorEl={anchorElement}
-      placement="bottom-end"
       disablePortal={false}
       modifiers={[]}
+      open={open}
+      placement="bottom-end"
       sx={{
         minWidth: {
           xs: '300px',
@@ -73,18 +73,18 @@ function FilterPopper<T extends FilterValueObject>({
     >
       <ClickAwayListener onClickAway={onClose}>
         <Paper
-          variant="outlined"
           sx={{
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
             borderTop: '0px',
           }}
+          variant="outlined"
         >
           <div style={{ padding: '10px' }}>
             <FilterForm
               filterDefinitionModel={filterDefinitionModel}
-              onChange={localOnChange}
               initialFilter={initialFilter}
+              onChange={localOnChange}
               predefinedFilterObjects={predefinedFilterObjects}
             />
           </div>
@@ -98,12 +98,12 @@ function FilterPopper<T extends FilterValueObject>({
               {t('common.resetAction')}
             </Button>
             <Button
-              variant="contained"
+              autoFocus
               disabled={error}
               onClick={() => {
                 onSubmit(resultRef.current as T);
               }}
-              autoFocus
+              variant="contained"
             >
               {t('common.applyAction')}
             </Button>

@@ -3,12 +3,12 @@ import Typography, { TypographyProps } from '@mui/material/Typography';
 import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
 
 export interface Props {
-  leftElement?: ReactNode;
-  titleElement?: ReactNode;
-  rightElement?: ReactNode;
-  title?: string;
-  titleTypographyProps?: Partial<TypographyProps>;
-  toolbarProps?: Partial<ToolbarProps>;
+  readonly leftElement?: ReactNode;
+  readonly titleElement?: ReactNode;
+  readonly rightElement?: ReactNode;
+  readonly title?: string;
+  readonly titleTypographyProps?: Partial<TypographyProps>;
+  readonly toolbarProps?: Partial<ToolbarProps>;
 }
 
 function Title({
@@ -28,7 +28,7 @@ function Title({
   return (
     <Toolbar {...toolbarProps}>
       {leftElement}
-      {title && <Typography {...titleTypographyProps}>{title}</Typography>}
+      {title ? <Typography {...titleTypographyProps}>{title}</Typography> : null}
       {titleElement}
       <div style={{ flexGrow: 1 }} />
       {rightElement}

@@ -8,11 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import type {
-  FilterDefinitionFieldsModel,
-  FilterDefinitionFieldObjectMetadataModel,
-  FilterOperationMetadataModel,
-} from '../../../../../models/general';
+import type { FilterDefinitionFieldsModel } from '../../../../../models/general';
 import FilterBuilderFieldValue from '../FilterBuilderFieldValue';
 import { requiredInputValidate } from '../../utils';
 import type { FieldInitialValueObject, FieldOperationValueObject, FilterValueObject } from '../../types';
@@ -20,10 +16,10 @@ import type { FieldInitialValueObject, FieldOperationValueObject, FilterValueObj
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
 export interface Props {
-  id: string;
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  initialValue: FieldInitialValueObject;
-  onChange: (fo: null | FilterValueObject) => void;
+  readonly id: string;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly initialValue: FieldInitialValueObject;
+  readonly onChange: (fo: null | FilterValueObject) => void;
 }
 
 function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id }: Props) {
@@ -32,15 +28,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
   // States
   const [selectedField, setSelectedField] = useState(initialValue.field);
   const [selectedOperation, setSelectedOperation] = useState(initialValue.operation);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const [value, setValue] = useState<any>(initialValue.value);
   // Data
   const fieldKeys = Object.keys(filterDefinitionModel);
   const selectedFieldData = selectedField !== '' ? filterDefinitionModel[selectedField] : null;
   const operations = selectedFieldData ? Object.keys(selectedFieldData.operations) : [];
-  const operationData = selectedFieldData
-    ? (selectedFieldData as FilterDefinitionFieldObjectMetadataModel<any>).operations[selectedOperation]
-    : null;
+  const operationData = selectedFieldData ? selectedFieldData.operations[selectedOperation] : null;
   // Validation
   const fieldErrorMsg = requiredInputValidate(selectedField);
   const operationErrorMsg = requiredInputValidate(selectedOperation);
@@ -87,7 +81,6 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
   return (
     <>
       <Grid
-        sx={{ display: 'flex' }}
         size={{
           xl: 4,
           lg: 4,
@@ -95,26 +88,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           sm: 6,
           xs: 12,
         }}
+        sx={{ display: 'flex' }}
       >
         <Autocomplete
-          fullWidth
-          noOptionsText={t('common.filter.noOptions')}
-          openText={t('common.openAction')}
           clearText={t('common.clearAction')}
           closeText={t('common.closeAction')}
-          size="small"
+          fullWidth
           id={`${id}-field`}
-          value={t(filterDefinitionModel[selectedField]?.display)}
-          options={fieldKeys}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              error={!!fieldErrorMsg}
-              helperText={fieldErrorMsg && t(fieldErrorMsg)}
-              label={t('common.filter.field')}
-              placeholder={t('common.filter.field')}
-            />
-          )}
           isOptionEqualToValue={(option, v) => {
             // Check if value is set
             if (v === '') {
@@ -127,6 +107,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
             // Check if displayed option is the same as value
             return t(optDisplay) === v;
           }}
+          noOptionsText={t('common.filter.noOptions')}
           onChange={(input, newValue) => {
             // Check if value isn't the same as actual
             if (newValue !== selectedField) {
@@ -138,6 +119,17 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
               setValue(undefined);
             }
           }}
+          openText={t('common.openAction')}
+          options={fieldKeys}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              error={!!fieldErrorMsg}
+              helperText={fieldErrorMsg ? t(fieldErrorMsg) : null}
+              label={t('common.filter.field')}
+              placeholder={t('common.filter.field')}
+            />
+          )}
           renderOption={(props, fieldKey: string, { inputValue }) => {
             const fieldData = filterDefinitionModel[fieldKey];
             const displayedOption = t(fieldData.display);
@@ -159,15 +151,17 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                       </span>
                     ))}
                   </Typography>
-                  {fieldData.description && (
+                  {fieldData.description ? (
                     <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
                       {t(fieldData.description)}
                     </Typography>
-                  )}
+                  ) : null}
                 </Box>
               </MenuItem>
             );
           }}
+          size="small"
+          value={t(filterDefinitionModel[selectedField]?.display)}
         />
       </Grid>
       <Grid
@@ -179,27 +173,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           xs: 12,
         }}
       >
-        {selectedFieldData && (
+        {selectedFieldData ? (
           <Autocomplete
-            fullWidth
-            noOptionsText={t('common.filter.noOptions')}
-            openText={t('common.openAction')}
             clearText={t('common.clearAction')}
             closeText={t('common.closeAction')}
-            size="small"
-            id={`${id}-operation`}
-            value={t(selectedFieldData.operations[selectedOperation]?.display)}
-            options={operations}
+            fullWidth
             getOptionLabel={(option: string) => t(option)}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                error={!!operationErrorMsg}
-                helperText={operationErrorMsg && t(operationErrorMsg)}
-                label={t('common.filter.operation')}
-                placeholder={t('common.filter.operation')}
-              />
-            )}
+            id={`${id}-operation`}
             isOptionEqualToValue={(option, v) => {
               // Check if value is set
               if (v === '') {
@@ -207,12 +187,12 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
               }
 
               // Get option
-              const optDisplay = (selectedFieldData as FilterDefinitionFieldObjectMetadataModel<any>).operations[option]
-                .display;
+              const optDisplay = selectedFieldData.operations[option].display;
 
               // Check if displayed option is the same as value
               return t(optDisplay) === v;
             }}
+            noOptionsText={t('common.filter.noOptions')}
             onChange={(input, newValue) => {
               // Check if value isn't the same as actual
               if (newValue !== selectedOperation) {
@@ -221,15 +201,23 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
 
                 if (newValue !== null) {
                   // Reset value
-                  setValue(
-                    (selectedFieldData as FilterDefinitionFieldObjectMetadataModel<any>).operations[newValue]
-                      .initialValue,
-                  );
+                  setValue(selectedFieldData.operations[newValue].initialValue);
                 }
               }
             }}
+            openText={t('common.openAction')}
+            options={operations}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                error={!!operationErrorMsg}
+                helperText={operationErrorMsg ? t(operationErrorMsg) : null}
+                label={t('common.filter.operation')}
+                placeholder={t('common.filter.operation')}
+              />
+            )}
             renderOption={(props, key: string, { inputValue }) => {
-              const opData = (selectedFieldData as FilterDefinitionFieldObjectMetadataModel<any>).operations[key];
+              const opData = selectedFieldData.operations[key];
               const displayedOption = t(opData.display);
               const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
               const parts = parse(displayedOption, matches);
@@ -249,17 +237,19 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                         </span>
                       ))}
                     </Typography>
-                    {opData.description && (
+                    {opData.description ? (
                       <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
                         {t(opData.description)}
                       </Typography>
-                    )}
+                    ) : null}
                   </Box>
                 </MenuItem>
               );
             }}
+            size="small"
+            value={t(selectedFieldData.operations[selectedOperation]?.display)}
           />
-        )}
+        ) : null}
       </Grid>
       <Grid
         size={{
@@ -270,15 +260,15 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           xs: 12,
         }}
       >
-        {operationData && (
+        {operationData ? (
           <FilterBuilderFieldValue
-            value={value}
+            errorMsg={valueErrorMsg}
             id={`${id}-value`}
             onChange={setValue}
-            operation={operationData as FilterOperationMetadataModel<any>}
-            errorMsg={valueErrorMsg}
+            operation={operationData}
+            value={value}
           />
-        )}
+        ) : null}
       </Grid>
     </>
   );

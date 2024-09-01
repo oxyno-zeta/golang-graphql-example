@@ -14,10 +14,10 @@ import useTimezone from '../../../../components/timezone/useTimezone';
 import { getDayjsTz } from '../../../../components/timezone/utils';
 
 interface Props {
-  data: ConnectionModel<TodoModel> | undefined;
-  loading: boolean;
-  sorts: TodoSortOrderModel[];
-  setSorts: (data: TodoSortOrderModel[]) => void;
+  readonly data: ConnectionModel<TodoModel> | undefined;
+  readonly loading: boolean;
+  readonly sorts: TodoSortOrderModel[];
+  readonly setSorts: (data: TodoSortOrderModel[]) => void;
 }
 
 function TableView({ data, loading, sorts, setSorts }: Props) {
@@ -74,12 +74,12 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
       headerName: t('common.actions'),
       width: 90,
       getActions: () => [
-        <IconButton size="small">
+        <IconButton key="0" size="small">
           <SvgIcon style={{ fontSize: '1.25rem' }}>
             <path d={mdiPencil} />
           </SvgIcon>
         </IconButton>,
-        <IconButton size="small">
+        <IconButton key="1" size="small">
           <SvgIcon style={{ fontSize: '1.25rem' }}>
             <path d={mdiDelete} />
           </SvgIcon>
@@ -91,14 +91,14 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
   return (
     <DataGrid
       {...getDataGridCommonProps(t)}
-      loading={loading}
       columns={columns}
-      sortingMode="server"
-      sortModel={buildMUIXSort(sorts, columns)}
-      onSortModelChange={setMUIXSortBuilder(setSorts)}
-      onRowDoubleClick={sizeMatching ? handleClick : undefined}
+      loading={loading}
       onRowClick={!sizeMatching ? handleClick : undefined}
+      onRowDoubleClick={sizeMatching ? handleClick : undefined}
+      onSortModelChange={setMUIXSortBuilder(setSorts)}
       rows={items}
+      sortModel={buildMUIXSort(sorts, columns)}
+      sortingMode="server"
     />
   );
 }

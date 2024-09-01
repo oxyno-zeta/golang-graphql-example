@@ -74,7 +74,7 @@ export function getPaginationFromSearchParams(
   if (firstStr !== '' && after !== '') {
     try {
       // Parsed first
-      let first = parseInt(firstStr as string, 10);
+      let first = parseInt(firstStr, 10);
       // Check if parsed as NaN
       if (Number.isNaN(first)) {
         // Cannot be parsed
@@ -94,7 +94,7 @@ export function getPaginationFromSearchParams(
         first,
         after,
       };
-    } catch (e) {
+    } catch {
       // Cannot be parsed
       // => Clean all
       // => Return init pagination
@@ -108,7 +108,7 @@ export function getPaginationFromSearchParams(
   if (lastStr !== '' && before !== '') {
     try {
       // Parsed last
-      let last = parseInt(lastStr as string, 10);
+      let last = parseInt(lastStr, 10);
       // Check if parsed as NaN
       if (Number.isNaN(last)) {
         // Cannot be parsed
@@ -128,7 +128,7 @@ export function getPaginationFromSearchParams(
         last,
         before,
       };
-    } catch (e) {
+    } catch {
       // Cannot be parsed
       // => Clean all
       // => Return init pagination

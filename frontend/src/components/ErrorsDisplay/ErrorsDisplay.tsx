@@ -11,16 +11,16 @@ import {
 } from './constants';
 
 export interface Props {
-  error?: ApolloError | Error | null;
-  errors?: (ApolloError | Error)[];
-  noMargin?: boolean;
-  containerBoxSx?: SxProps;
-  errorTitleTypographyProps?: TypographyProps;
-  errorElementTypographyProps?: TypographyProps;
-  ulSx?: SxProps;
-  liSx?: SxProps;
-  customErrorComponents?: Record<string, React.ElementType>;
-  customErrorComponentProps?: Record<string, object>;
+  readonly error?: ApolloError | Error | null;
+  readonly errors?: (ApolloError | Error)[];
+  readonly noMargin?: boolean;
+  readonly containerBoxSx?: SxProps;
+  readonly errorTitleTypographyProps?: TypographyProps;
+  readonly errorElementTypographyProps?: TypographyProps;
+  readonly ulSx?: SxProps;
+  readonly liSx?: SxProps;
+  readonly customErrorComponents?: Record<string, React.ElementType>;
+  readonly customErrorComponentProps?: Record<string, object>;
 }
 
 export interface CustomNetworkError {
@@ -28,7 +28,6 @@ export interface CustomNetworkError {
   path: null | undefined | ReadonlyArray<string | number>;
 }
 
-/* eslint-disable react/no-array-index-key */
 function ErrorsDisplay({
   error = null,
   errors = [],
@@ -159,6 +158,5 @@ function ErrorsDisplay({
     </Box>
   );
 }
-/* eslint-enable */
 
 export default ErrorsDisplay;

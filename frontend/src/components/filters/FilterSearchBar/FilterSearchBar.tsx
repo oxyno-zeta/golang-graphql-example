@@ -13,14 +13,14 @@ import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
 export type Props<T extends FilterValueObject> = {
-  filter: undefined | null | T;
-  onSubmit: (f: T) => void;
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  predefinedFilterObjects?: PredefinedFilter[];
-  isAdvancedFilterPopperEnabled?: boolean;
-  onMainSearchChange: (newValue: string, oldValue: string) => void;
-  mainSearchInitialValue: string;
-  mainSearchDisplay: string;
+  readonly filter: undefined | null | T;
+  readonly onSubmit: (f: T) => void;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly predefinedFilterObjects?: PredefinedFilter[];
+  readonly isAdvancedFilterPopperEnabled?: boolean;
+  readonly onMainSearchChange: (newValue: string, oldValue: string) => void;
+  readonly mainSearchInitialValue: string;
+  readonly mainSearchDisplay: string;
 };
 
 function FilterSearchBar<T extends FilterValueObject>({
@@ -81,21 +81,18 @@ function FilterSearchBar<T extends FilterValueObject>({
           onMainSearchChange(value, mainSearchInitialValue);
         }
       }}
-      sx={{ display: 'flex', flex: 1, alignItems: 'center' }}
-      style={open ? { borderBottomRightRadius: 0 } : {}}
-      variant="outlined"
       ref={(d: HTMLFormElement) => {
         if (d && d !== anchorEl) {
           setAnchorEl(d);
         }
       }}
+      style={open ? { borderBottomRightRadius: 0 } : {}}
+      sx={{ display: 'flex', flex: 1, alignItems: 'center' }}
+      variant="outlined"
     >
       <InputBase
-        fullWidth
-        sx={{ ml: 1, flex: 1, minWidth: '200px' }}
-        placeholder={mainSearchDisplay}
         disabled={open}
-        value={value}
+        fullWidth
         onChange={(event) => {
           const newValue = event.target.value;
           // Check if values are different
@@ -103,13 +100,21 @@ function FilterSearchBar<T extends FilterValueObject>({
             setValue(newValue);
           }
         }}
+        placeholder={mainSearchDisplay}
+        sx={{ ml: 1, flex: 1, minWidth: '200px' }}
+        value={value}
       />
-      <Divider sx={{ height: 28 }} orientation="vertical" />
+      <Divider orientation="vertical" sx={{ height: 28 }} />
       <Tooltip title={<>{t('common.filter.buttonTooltip')}</>}>
         <Button
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
-          sx={{ padding: '5px 10px', minWidth: '46px', height: 38, borderRadius: '0px 2px 2px 0px' }}
           onClick={onClick}
+          sx={{
+            padding: '5px 10px',
+            minWidth: '46px',
+            height: 38,
+            borderRadius: '0px 2px 2px 0px',
+          }}
         >
           <SvgIcon>
             <path d={mdiTune} />
@@ -117,9 +122,9 @@ function FilterSearchBar<T extends FilterValueObject>({
         </Button>
       </Tooltip>
       {isAdvancedFilterPopperEnabled ? (
-        <FilterPopper<T> anchorElement={anchorEl} {...defaultFilterProps} />
+        <FilterPopper anchorElement={anchorEl} {...defaultFilterProps} />
       ) : (
-        <FilterDialog<T> {...defaultFilterProps} />
+        <FilterDialog {...defaultFilterProps} />
       )}
     </Paper>
   );

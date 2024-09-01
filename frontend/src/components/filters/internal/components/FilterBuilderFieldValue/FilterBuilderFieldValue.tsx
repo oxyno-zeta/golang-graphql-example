@@ -17,11 +17,11 @@ import { FilterOperationMetadataModel, FilterDefinitionEnumObjectModel } from '.
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
 export interface Props {
-  id: string;
-  value: any;
-  onChange: (v: any) => void;
-  operation: FilterOperationMetadataModel<any>;
-  errorMsg: string | null | undefined;
+  readonly id: string;
+  readonly value: any;
+  readonly onChange: (v: any) => void;
+  readonly operation: FilterOperationMetadataModel<any>;
+  readonly errorMsg: string | null | undefined;
 }
 
 function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: Props) {
@@ -48,29 +48,28 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
 
     return (
       <Autocomplete<FilterDefinitionEnumObjectModel<any>, true, false, false>
-        multiple
+        clearText={t('common.clearAction')}
+        closeText={t('common.closeAction')}
         fullWidth
-        value={vEnum}
-        size="small"
+        getOptionLabel={(option) => t(option.display)}
         id={id}
+        multiple
+        noOptionsText={t('common.filter.noOptions')}
         onChange={(event, newValue) => {
           // Reformat data
           const res = newValue.map((it) => it.value);
           // Save values
           onChange(res);
         }}
+        openText={t('common.openAction')}
         options={operation.enumValues}
-        getOptionLabel={(option) => t(option.display)}
-        renderTags={(tagValue, getTagProps) =>
-          tagValue.map((option, index) => <Chip size="small" label={t(option.display)} {...getTagProps({ index })} />)
-        }
         renderInput={(params) => (
           <TextField
             {...params}
+            error={!!errorMsg}
+            helperText={errorMsg ? t(errorMsg) : null}
             label={t('common.filter.value')}
             placeholder={t('common.filter.value')}
-            error={!!errorMsg}
-            helperText={errorMsg && t(errorMsg)}
             type={operation.inputType}
           />
         )}
@@ -94,19 +93,20 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
                     </span>
                   ))}
                 </Typography>
-                {data.description && (
+                {data.description ? (
                   <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
                     {t(data.description)}
                   </Typography>
-                )}
+                ) : null}
               </Box>
             </MenuItem>
           );
         }}
-        noOptionsText={t('common.filter.noOptions')}
-        openText={t('common.openAction')}
-        clearText={t('common.clearAction')}
-        closeText={t('common.closeAction')}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => <Chip label={t(option.display)} size="small" {...getTagProps({ index })} />)
+        }
+        size="small"
+        value={vEnum}
       />
     );
   }
@@ -123,15 +123,9 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
     }
     return (
       <Autocomplete<FilterDefinitionEnumObjectModel<any>, false, false, false>
-        fullWidth
-        noOptionsText={t('common.filter.noOptions')}
-        openText={t('common.openAction')}
         clearText={t('common.clearAction')}
         closeText={t('common.closeAction')}
-        size="small"
-        id={id}
-        value={vEnum}
-        options={operation.enumValues}
+        fullWidth
         getOptionLabel={(option: FilterDefinitionEnumObjectModel<any> | string) => {
           // Check if option is empty
           if (option === '') {
@@ -141,15 +135,8 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           // Normal case
           return t((option as FilterDefinitionEnumObjectModel<any>).display);
         }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            error={!!errorMsg}
-            helperText={errorMsg && t(errorMsg)}
-            label={t('common.filter.value')}
-            placeholder={t('common.filter.value')}
-          />
-        )}
+        id={id}
+        noOptionsText={t('common.filter.noOptions')}
         onChange={(input, newValue) => {
           // Check if new value is a string
           if (newValue === null) {
@@ -157,8 +144,19 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
             return;
           }
 
-          onChange((newValue as FilterDefinitionEnumObjectModel<any>).value);
+          onChange(newValue.value);
         }}
+        openText={t('common.openAction')}
+        options={operation.enumValues}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            error={!!errorMsg}
+            helperText={errorMsg ? t(errorMsg) : null}
+            label={t('common.filter.value')}
+            placeholder={t('common.filter.value')}
+          />
+        )}
         renderOption={(props, data: FilterDefinitionEnumObjectModel<any>, { inputValue }) => {
           const displayedOption = t(data.display);
           const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
@@ -179,15 +177,17 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
                     </span>
                   ))}
                 </Typography>
-                {data.description && (
+                {data.description ? (
                   <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
                     {t(data.description)}
                   </Typography>
-                )}
+                ) : null}
               </Box>
             </MenuItem>
           );
         }}
+        size="small"
+        value={vEnum}
       />
     );
   }
@@ -196,26 +196,8 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
   if (operation.input && operation.multipleValues) {
     return (
       <Autocomplete
-        multiple
-        fullWidth
-        value={value}
-        size="small"
-        id={id}
-        onChange={(event, newValue) => {
-          // Reformat data
-          const res = newValue.map((it) => {
-            // Check if it is a new option
-            if (typeof it === 'object') {
-              // Get value from option
-              return it.value;
-            }
-
-            // Already selected value
-            return it;
-          });
-          // Save values
-          onChange(res);
-        }}
+        clearText={t('common.clearAction')}
+        closeText={t('common.closeAction')}
         filterOptions={(options, params) => {
           // Open params
           const { inputValue } = params;
@@ -241,25 +223,43 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
             },
           ];
         }}
-        options={[]}
+        fullWidth
         getOptionLabel={(option) => option.display}
-        renderTags={(tagValue, getTagProps) =>
-          tagValue.map((option, index) => <Chip size="small" label={option} {...getTagProps({ index })} />)
-        }
+        id={id}
+        multiple
+        noOptionsText={t('common.filter.noOptions')}
+        onChange={(event, newValue) => {
+          // Reformat data
+          const res = newValue.map((it) => {
+            // Check if it is a new option
+            if (typeof it === 'object') {
+              // Get value from option
+              return it.value;
+            }
+
+            // Already selected value
+            return it;
+          });
+          // Save values
+          onChange(res);
+        }}
+        openText={t('common.openAction')}
+        options={[]}
         renderInput={(params) => (
           <TextField
             {...params}
+            error={!!errorMsg}
+            helperText={errorMsg ? t(errorMsg) : null}
             label={t('common.filter.value')}
             placeholder={t('common.filter.value')}
-            error={!!errorMsg}
-            helperText={errorMsg && t(errorMsg)}
             type={operation.inputType}
           />
         )}
-        noOptionsText={t('common.filter.noOptions')}
-        openText={t('common.openAction')}
-        clearText={t('common.clearAction')}
-        closeText={t('common.closeAction')}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => <Chip label={option} size="small" {...getTagProps({ index })} />)
+        }
+        size="small"
+        value={value}
       />
     );
   }
@@ -277,12 +277,16 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
       return (
         <LocalizationProvider dateAdapter={AdapterDayjs} dateLibInstance={dayjs}>
           <DateTimePicker
-            label={t('common.filter.value')}
-            value={val}
-            // See formatting here: https://moment.github.io/luxon/#/parsing
-            format="YYYY-MM-DD HH:mm:ss"
             ampm={false}
             ampmInClock={false}
+            label={t('common.filter.value')}
+            localeText={{
+              openPreviousView: t('common.date.previousMonthAction'),
+              previousMonth: t('common.date.previousMonthAction'),
+              openNextView: t('common.date.nextMonthAction'),
+              nextMonth: t('common.date.nextMonthAction'),
+              toolbarTitle: t('common.date.dateTimePickerToolbarTitle'),
+            }}
             onChange={(newValue) => {
               // Check if date is null
               if (newValue === null) {
@@ -294,14 +298,10 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
               // !! Note: This is using the default timezone
               onChange(newValue.tz().format());
             }}
-            localeText={{
-              openPreviousView: t('common.date.previousMonthAction'),
-              previousMonth: t('common.date.previousMonthAction'),
-              openNextView: t('common.date.nextMonthAction'),
-              nextMonth: t('common.date.nextMonthAction'),
-              toolbarTitle: t('common.date.dateTimePickerToolbarTitle'),
-            }}
             slotProps={{ textField: { size: 'small', fullWidth: true } }}
+            value={val}
+            // See formatting here: https://moment.github.io/luxon/#/parsing
+            format="YYYY-MM-DD HH:mm:ss"
           />
         </LocalizationProvider>
       );
@@ -309,18 +309,18 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
 
     return (
       <TextField
-        fullWidth
-        size="small"
-        id={id}
-        type={operation.inputType}
-        label={t('common.filter.value')}
-        placeholder={t('common.filter.value')}
         error={!!errorMsg}
-        helperText={errorMsg && t(errorMsg)}
-        value={value}
+        fullWidth
+        helperText={errorMsg ? t(errorMsg) : null}
+        id={id}
+        label={t('common.filter.value')}
         onChange={(event) => {
           onChange(event.target.value);
         }}
+        placeholder={t('common.filter.value')}
+        size="small"
+        type={operation.inputType}
+        value={value}
       />
     );
   }

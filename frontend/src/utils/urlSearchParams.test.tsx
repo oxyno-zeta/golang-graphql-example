@@ -141,7 +141,7 @@ describe('utils/urlSearchParams', () => {
     it('should return the object value in search params', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      input.set(key, `{"k":1}`);
+      input.set(key, '{"k":1}');
 
       const res = getJSONObjectFromSearchParam(key, {}, input);
 
@@ -151,7 +151,7 @@ describe('utils/urlSearchParams', () => {
     it('should return the init value when not an object in search params', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      input.set(key, `fail`);
+      input.set(key, 'fail');
 
       const res = getJSONObjectFromSearchParam(key, { k: 1 }, input);
 
@@ -179,7 +179,7 @@ describe('utils/urlSearchParams', () => {
       const key = 'key1';
       const fn = jest.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
-      expectedRes.set(key, `{"k1":1}`);
+      expectedRes.set(key, '{"k1":1}');
 
       // Call
       setJSONObjectSearchParam(key, { k1: 1 }, input, fn);
@@ -193,7 +193,7 @@ describe('utils/urlSearchParams', () => {
       const key = 'key1';
       const fn = jest.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
-      expectedRes.set(key, `{"k1":{"k2":"fake"}}`);
+      expectedRes.set(key, '{"k1":{"k2":"fake"}}');
 
       // Call
       setJSONObjectSearchParam(key, { k1: { k2: 'fake' } }, input, fn);
@@ -221,7 +221,7 @@ describe('utils/urlSearchParams', () => {
       // Call
       const res = addJSONObjectSearchParam(key, { k1: 1 }, input);
 
-      expect(res.get(key)).toEqual(`{"k1":1}`);
+      expect(res.get(key)).toEqual('{"k1":1}');
     });
 
     it('should be ok with complex object', () => {
@@ -231,7 +231,7 @@ describe('utils/urlSearchParams', () => {
       // Call
       const res = addJSONObjectSearchParam(key, { k1: { k2: 'fake' } }, input);
 
-      expect(res.get(key)).toEqual(`{"k1":{"k2":"fake"}}`);
+      expect(res.get(key)).toEqual('{"k1":{"k2":"fake"}}');
     });
 
     it('should be ok to override key', () => {
@@ -242,7 +242,7 @@ describe('utils/urlSearchParams', () => {
       // Call
       const res = addJSONObjectSearchParam(key, { k1: { k2: 'fake' } }, input);
 
-      expect(res.get(key)).toEqual(`{"k1":{"k2":"fake"}}`);
+      expect(res.get(key)).toEqual('{"k1":{"k2":"fake"}}');
     });
   });
 

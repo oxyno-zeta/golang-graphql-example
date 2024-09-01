@@ -114,22 +114,15 @@ function Todos() {
   return (
     <>
       <Title title="Todos" />
-      {error && <ErrorsDisplay error={error} />}
+      {error ? <ErrorsDisplay error={error} /> : null}
       {!error && (
         <Paper variant="outlined">
           <TopListContainer>
             <FilterSearchBar
               filter={filter}
-              onSubmit={(f) => {
-                // Flush pagination
-                // When a pagination is set, like you are on second page and
-                // a new filter is applied, you want to start from start again.
-                cleanAndSetCleanedPagination(searchParams, setSearchParams);
-                // Set filter
-                setFilter(f);
-              }}
-              mainSearchInitialValue={mainSearchInitialValue}
+              filterDefinitionModel={todoFilterDefinitionObject}
               mainSearchDisplay="Todos contains"
+              mainSearchInitialValue={mainSearchInitialValue}
               onMainSearchChange={(newValue: string, oldValue: string) => {
                 // Flush pagination
                 // When a pagination is set, like you are on second page and
@@ -149,7 +142,14 @@ function Todos() {
                   },
                 );
               }}
-              filterDefinitionModel={todoFilterDefinitionObject}
+              onSubmit={(f) => {
+                // Flush pagination
+                // When a pagination is set, like you are on second page and
+                // a new filter is applied, you want to start from start again.
+                cleanAndSetCleanedPagination(searchParams, setSearchParams);
+                // Set filter
+                setFilter(f);
+              }}
               predefinedFilterObjects={[
                 {
                   display: 'code',
@@ -176,24 +176,24 @@ function Todos() {
               ]}
             />
             <SortButton
-              sorts={sorts}
               onSubmit={(nSort) => {
                 setSorts(nSort);
               }}
               sortFields={todoSortFields}
+              sorts={sorts}
             />
             <GridTableViewSwitcher />
           </TopListContainer>
           <Divider />
           <div style={{ width: '100%' }}>
-            {gridView && <GridView loading={loading} data={data?.todos} />}
-            {!gridView && <TableView data={data?.todos} loading={loading} sorts={sorts} setSorts={setSorts} />}
-            {data && data.todos && (
+            {gridView ? <GridView data={data?.todos} loading={loading} /> : null}
+            {!gridView && <TableView data={data?.todos} loading={loading} setSorts={setSorts} sorts={sorts} />}
+            {data && data.todos ? (
               <>
                 <Divider />
-                <Pagination pageInfo={data.todos.pageInfo} maxPaginationSize={maxPagination} />
+                <Pagination maxPaginationSize={maxPagination} pageInfo={data.todos.pageInfo} />
               </>
-            )}
+            ) : null}
           </div>
         </Paper>
       )}

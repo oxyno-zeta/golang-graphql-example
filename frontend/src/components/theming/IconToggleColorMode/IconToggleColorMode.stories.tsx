@@ -13,7 +13,7 @@ export default {
 
 function Info() {
   const theme = useTheme();
-  return <Typography>Theme mode: {theme.palette.mode}</Typography>;
+  return <Typography>Theme mode:{theme.palette.mode}</Typography>;
 }
 
 export const Playbook: StoryFn<typeof IconToggleColorMode> = function C(args: Props) {

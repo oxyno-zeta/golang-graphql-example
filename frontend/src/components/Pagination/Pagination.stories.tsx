@@ -66,7 +66,12 @@ export const AllEnabled: StoryFn<typeof Pagination> = function C(args: Props) {
       onFirstPage={undefined}
       onNextPage={undefined}
       onPreviousPage={undefined}
-      pageInfo={{ hasNextPage: true, hasPreviousPage: true, startCursor: 'fake-start', endCursor: 'fake-end' }}
+      pageInfo={{
+        hasNextPage: true,
+        hasPreviousPage: true,
+        startCursor: 'fake-start',
+        endCursor: 'fake-end',
+      }}
     />
   );
 };
@@ -80,7 +85,12 @@ export const AllEnabledWithFunctions: StoryFn<typeof Pagination> = function C(ar
   return (
     <Pagination
       {...args}
-      pageInfo={{ hasNextPage: true, hasPreviousPage: true, startCursor: 'fake-start', endCursor: 'fake-end' }}
+      pageInfo={{
+        hasNextPage: true,
+        hasPreviousPage: true,
+        startCursor: 'fake-start',
+        endCursor: 'fake-end',
+      }}
     />
   );
 };

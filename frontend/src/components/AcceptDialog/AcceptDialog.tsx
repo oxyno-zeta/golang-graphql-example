@@ -9,20 +9,20 @@ import DialogTitle, { DialogTitleProps } from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
 
 export interface Props {
-  open: boolean;
-  title: string;
-  content?: string;
-  contentElement?: ReactNode;
-  onClose: () => void;
-  onSubmit: () => Promise<void>;
-  okDisabled?: boolean;
-  dialogProps?: Partial<Omit<DialogProps, 'open' | 'onClose'>>;
-  dialogTitleProps?: Partial<DialogTitleProps>;
-  dialogContentProps?: Partial<DialogContentProps>;
-  dialogContentTextProps?: Partial<DialogContentTextProps>;
-  dialogActionsProps?: Partial<DialogActionsProps>;
-  cancelButtonProps?: Partial<Omit<ButtonProps, 'onClick'>>;
-  okButtonProps?: Partial<Omit<LoadingButtonProps, 'loading' | 'onClick' | 'disabled'>>;
+  readonly open: boolean;
+  readonly title: string;
+  readonly content?: string;
+  readonly contentElement?: ReactNode;
+  readonly onClose: () => void;
+  readonly onSubmit: () => Promise<void>;
+  readonly okDisabled?: boolean;
+  readonly dialogProps?: Partial<Omit<DialogProps, 'open' | 'onClose'>>;
+  readonly dialogTitleProps?: Partial<DialogTitleProps>;
+  readonly dialogContentProps?: Partial<DialogContentProps>;
+  readonly dialogContentTextProps?: Partial<DialogContentTextProps>;
+  readonly dialogActionsProps?: Partial<DialogActionsProps>;
+  readonly cancelButtonProps?: Partial<Omit<ButtonProps, 'onClick'>>;
+  readonly okButtonProps?: Partial<Omit<LoadingButtonProps, 'loading' | 'onClick' | 'disabled'>>;
 }
 
 function AcceptDialog({
@@ -43,28 +43,28 @@ function AcceptDialog({
 }: Props) {
   const { t } = useTranslation();
   // Manage loading
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   // onClick ok
   const okOnClick = () => {
-    setLoading(true);
+    setIsLoading(true);
     onSubmit().finally(() => {
-      setLoading(false);
+      setIsLoading(false);
     });
   };
 
   return (
     <Dialog
-      open={open}
-      onClose={onClose}
-      aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      aria-labelledby="alert-dialog-title"
+      onClose={onClose}
+      open={open}
       {...dialogProps}
     >
       <DialogTitle id="alert-dialog-title" {...dialogTitleProps}>
         {title}
       </DialogTitle>
       <DialogContent id="alert-dialog-description" {...dialogContentProps}>
-        {content && <DialogContentText {...dialogContentTextProps}>{content}</DialogContentText>}
+        {content ? <DialogContentText {...dialogContentTextProps}>{content}</DialogContentText> : null}
         {contentElement}
       </DialogContent>
       <DialogActions {...dialogActionsProps}>
@@ -72,11 +72,11 @@ function AcceptDialog({
           {t('common.cancelAction')}
         </Button>
         <LoadingButton
-          loading={isLoading}
-          variant="contained"
-          onClick={okOnClick}
-          disabled={okDisabled}
           autoFocus
+          disabled={okDisabled}
+          loading={isLoading}
+          onClick={okOnClick}
+          variant="contained"
           {...okButtonProps}
         >
           {t('common.okAction')}

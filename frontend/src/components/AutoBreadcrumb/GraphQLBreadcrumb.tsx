@@ -6,10 +6,10 @@ import type { BreadcrumbGraphQLDataConfig } from './types';
 import FixedBreadcrumb from './FixedBreadcrumb';
 
 interface Props {
-  params: Params<string>;
-  breadcrumbData: BreadcrumbGraphQLDataConfig;
-  last: boolean;
-  pathname: string;
+  readonly params: Params<string>;
+  readonly breadcrumbData: BreadcrumbGraphQLDataConfig;
+  readonly last: boolean;
+  readonly pathname: string;
 }
 
 function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname }: Props) {

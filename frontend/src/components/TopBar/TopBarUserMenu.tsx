@@ -72,18 +72,18 @@ function TopBarUserMenu() {
         </span>
       </Tooltip>
       <Popover
-        sx={{ marginTop: '28px' }}
         anchorEl={anchorElUser}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}
+        onClose={onCloseUserMenu}
+        open={Boolean(anchorElUser)}
+        sx={{ marginTop: '28px' }}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}
-        open={Boolean(anchorElUser)}
-        onClose={onCloseUserMenu}
       >
         <div style={{ margin: '10px 16px 10px 16px' }}>
           <div style={{ width: 'calc(100% - 20px)' }}>
@@ -102,18 +102,18 @@ function TopBarUserMenu() {
           </div>
         </div>
 
-        {oidcSignOutURL && (
+        {oidcSignOutURL ? (
           <div style={{ margin: '0 25px' }}>
             <Divider />
           </div>
-        )}
+        ) : null}
 
         <MenuList>
-          {oidcSignOutURL && (
+          {oidcSignOutURL ? (
             <MenuItem component="a" href={buildLogoutURL(oidcSignOutURL, oidcClientID || '')} rel="noopener noreferrer">
               {t('common.signOutAction')}
             </MenuItem>
-          )}
+          ) : null}
         </MenuList>
       </Popover>
     </>

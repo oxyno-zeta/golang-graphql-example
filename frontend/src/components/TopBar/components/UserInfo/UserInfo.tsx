@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 function UserInfo() {
   return (
     <>
-      <Typography style={{ fontSize: 14 }} gutterBottom>
+      <Typography gutterBottom style={{ fontSize: 14 }}>
         Fake User
       </Typography>
-      <Typography style={{ fontSize: 11 }} color="text.secondary" gutterBottom>
+      <Typography color="text.secondary" gutterBottom style={{ fontSize: 11 }}>
         fake@fake.com
       </Typography>
     </>

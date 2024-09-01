@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material';
 
 export interface Props {
-  sx?: SxProps;
-  children: ReactNode;
+  readonly sx?: SxProps;
+  readonly children: ReactNode;
 }
 
 function TopListContainer({ children, sx = {} }: Props) {

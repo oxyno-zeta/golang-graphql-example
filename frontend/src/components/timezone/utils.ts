@@ -1,14 +1,5 @@
 import dayjs, { ConfigType } from 'dayjs';
 
-/* eslint-disable @typescript-eslint/no-namespace */
-// Hack because not supported by Typescript....
-// https://github.com/microsoft/TypeScript/issues/49231
-declare namespace Intl {
-  type Key = 'calendar' | 'collation' | 'currency' | 'numberingSystem' | 'timeZone' | 'unit';
-
-  function supportedValuesOf(input: Key): string[];
-}
-
 export const availableTimezones = Intl.supportedValuesOf('timeZone');
 
 /**

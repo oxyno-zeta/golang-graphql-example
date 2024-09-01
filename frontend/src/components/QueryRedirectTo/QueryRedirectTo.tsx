@@ -8,25 +8,25 @@ import NoData, { NoDataTypographyProps } from '~components/NoData';
 
 export interface Props<T, P extends OperationVariables> {
   // Query document to execute.
-  query: DocumentNode;
+  readonly query: DocumentNode;
   // Build navigate to function will return a path.
   // If path result is empty or undefined, then "no data" is displayed.
   // If you don't want any "no data" displayed, manage the redirect path
-  buildNavigateTo: (params: T | undefined) => string | undefined | null;
+  readonly buildNavigateTo: (params: T | undefined) => string | undefined | null;
   // Build query variables function will return a query variable object.
-  buildQueryVariables: (params: Params<string>) => P;
+  readonly buildQueryVariables: (params: Params<string>) => P;
   // Disable center loading subtitle.
-  disableCenterLoadingSubtitle?: boolean;
+  readonly disableCenterLoadingSubtitle?: boolean;
   // Query hook options.
-  queryHookOptions?: Omit<QueryHookOptions<T, P>, 'variables'>;
+  readonly queryHookOptions?: Omit<QueryHookOptions<T, P>, 'variables'>;
   // No data Typography props.
-  noDataTypographyProps?: NoDataTypographyProps;
+  readonly noDataTypographyProps?: NoDataTypographyProps;
   // Center loading props.
-  centerLoadingProps?: CenterLoadingProps;
+  readonly centerLoadingProps?: CenterLoadingProps;
   // Graphql Errors props.
-  graphqlErrorsProps?: Omit<ErrorsDisplayProps, 'error|errors'>;
+  readonly graphqlErrorsProps?: Omit<ErrorsDisplayProps, 'error|errors'>;
   // Navigate props.
-  navigateProps?: Omit<NavigateProps, 'to'>;
+  readonly navigateProps?: Omit<NavigateProps, 'to'>;
 }
 
 function QueryRedirectTo<T, P extends OperationVariables>({
@@ -59,8 +59,8 @@ function QueryRedirectTo<T, P extends OperationVariables>({
   if (loading) {
     return (
       <CenterLoading
-        subtitle={!disableCenterLoadingSubtitle ? t('common.loadingText') : undefined}
         containerBoxSx={{ margin: '15px 0' }}
+        subtitle={!disableCenterLoadingSubtitle ? t('common.loadingText') : undefined}
         {...centerLoadingProps}
       />
     );

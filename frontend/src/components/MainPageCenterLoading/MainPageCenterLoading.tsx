@@ -4,8 +4,8 @@ import Backdrop, { BackdropProps } from '@mui/material/Backdrop';
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 
 export interface Props {
-  backdropProps?: Omit<BackdropProps, 'open'>;
-  circularProgressProps?: CircularProgressProps;
+  readonly backdropProps?: Omit<BackdropProps, 'open'>;
+  readonly circularProgressProps?: CircularProgressProps;
 }
 
 function MainPageCenterLoading({ backdropProps = {}, circularProgressProps = {} }: Props) {

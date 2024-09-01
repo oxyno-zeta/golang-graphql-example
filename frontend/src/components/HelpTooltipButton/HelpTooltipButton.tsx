@@ -5,9 +5,9 @@ import { mdiHelpCircle } from '@mdi/js';
 import ForcedTooltip, { ForcedTooltipProps } from '../ForcedTooltip';
 
 export interface Props {
-  tooltipTitle: ReactNode;
-  tooltipProps?: Omit<ForcedTooltipProps, 'title'>;
-  iconButtonProps?: Omit<IconButtonProps, 'onClick'>;
+  readonly tooltipTitle: ReactNode;
+  readonly tooltipProps?: Omit<ForcedTooltipProps, 'title'>;
+  readonly iconButtonProps?: Omit<IconButtonProps, 'onClick'>;
 }
 
 function HelpTooltipButton({ tooltipTitle, tooltipProps = {}, iconButtonProps = {} }: Props) {

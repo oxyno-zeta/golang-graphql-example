@@ -6,13 +6,13 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
 interface Props {
-  error: Error;
+  readonly error: Error;
 }
 
 function FallbackErrorBoundary({ error }: Props) {
   return (
     <Box sx={{ p: 5 }}>
-      <Typography variant="h5" component="h3" sx={{ color: 'red', marginBottom: '10px' }}>
+      <Typography component="h3" sx={{ color: 'red', marginBottom: '10px' }} variant="h5">
         Something went wrong: {error.message}
       </Typography>
 

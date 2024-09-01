@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid2';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -12,15 +13,26 @@ import { getDayjsTz } from '../../../../components/timezone/utils';
 import useTimezone from '../../../../components/timezone/useTimezone';
 
 interface Props {
-  item: TodoModel;
+  readonly item: TodoModel;
 }
 
 function GridViewItem({ item }: Props) {
+  // Setup translate
+  const { t } = useTranslation();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const timezone = useTimezone();
 
   return (
-    <Grid size={{ xl: 3, lg: 3, md: 6, sm: 6, xs: 12 }}>
+    <Grid
+      size={{
+        xl: 3,
+        lg: 3,
+        md: 6,
+        sm: 6,
+        xs: 12,
+      }}
+    >
       <Card>
         <CardHeader
           action={
@@ -34,8 +46,8 @@ function GridViewItem({ item }: Props) {
               </SvgIcon>
             </IconButton>
           }
-          title={item.text}
           subheader={getDayjsTz(item.createdAt, timezone).format('LLLL')}
+          title={item.text}
         />
       </Card>
       <Menu
@@ -58,14 +70,14 @@ function GridViewItem({ item }: Props) {
             setAnchorEl(null);
           }}
         >
-          Edit
+          {t('common.editAction')}
         </MenuItem>
         <MenuItem
           onClick={() => {
             setAnchorEl(null);
           }}
         >
-          Delete
+          {t('common.deleteAction')}
         </MenuItem>
       </Menu>
     </Grid>

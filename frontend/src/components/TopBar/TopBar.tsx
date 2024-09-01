@@ -14,12 +14,12 @@ function TopBar() {
   return (
     <AppBar id="topbar" position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar variant="dense">
-        <Avatar src="/logo.png" component={Link} to="/" />
+        <Avatar component={Link} src="/logo.png" to="/" />
         <Typography
-          variant="h6"
           component={Link}
           sx={{ marginLeft: '10px', textDecoration: 'none', color: 'inherit' }}
           to="/"
+          variant="h6"
         >
           {t('common.mainTitle')}
         </Typography>

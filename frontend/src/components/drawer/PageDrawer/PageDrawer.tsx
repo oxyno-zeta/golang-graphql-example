@@ -25,23 +25,23 @@ interface DrawerContentProps {
 }
 
 export interface Props {
-  renderDrawerContent: (
+  readonly renderDrawerContent: (
     props: DrawerContentProps,
     /** @deprecated Use isCollapsedComputed in first object */
     isNormalCollapsed: boolean,
   ) => ReactNode;
-  children: ReactNode;
-  mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
-  drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
-  drawerContainerBoxSx?: SystemStyleObject<Theme>;
-  mainContainerBoxSx?: SystemStyleObject<Theme>;
-  disableTopSpacer?: boolean;
+  readonly children: ReactNode;
+  readonly mobileDrawerProps?: Partial<Omit<DrawerProps, 'open' | 'onClose'>>;
+  readonly drawerProps?: Partial<Omit<DrawerProps, 'open'>>;
+  readonly drawerContainerBoxSx?: SystemStyleObject<Theme>;
+  readonly mainContainerBoxSx?: SystemStyleObject<Theme>;
+  readonly disableTopSpacer?: boolean;
   // Default drawer width for init.
-  defaultDrawerWidth: number;
-  minDrawerWidth?: number;
-  maxDrawerWidth?: number;
-  disableResize?: boolean;
-  disableCollapse?: boolean;
+  readonly defaultDrawerWidth: number;
+  readonly minDrawerWidth?: number;
+  readonly maxDrawerWidth?: number;
+  readonly disableResize?: boolean;
+  readonly disableCollapse?: boolean;
 }
 
 const defaultMinDrawerWidth = 150;
@@ -72,11 +72,11 @@ function PageDrawer({
   const isCollapsedComputed = disableCollapse ? !disableCollapse : isCollapsed();
 
   // States
-  const [isMobileOpen, setMobileOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [drawerWidth, setDrawerWidth] = useState(defaultDrawerWidth);
 
   const onMobileDrawerToggle = () => {
-    setMobileOpen((v) => !v);
+    setIsMobileOpen((v) => !v);
   };
 
   const pageDrawerCtxValue = useMemo(() => ({ onDrawerToggle: onMobileDrawerToggle }), []);
@@ -127,18 +127,18 @@ function PageDrawer({
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
-          variant="temporary"
-          open={isMobileOpen}
-          onClose={onMobileDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
+          onClose={onMobileDrawerToggle}
+          open={isMobileOpen}
           sx={{
             display: { xs: 'block', lg: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
             },
           }}
+          variant="temporary"
           {...mobileDrawerProps}
         >
           {!disableTopSpacer && <TopBarSpacer />}
@@ -153,7 +153,6 @@ function PageDrawer({
           )}
         </Drawer>
         <Drawer
-          variant="persistent"
           open
           sx={(theme) => ({
             display: { xs: 'none', lg: 'block' },
@@ -166,14 +165,15 @@ function PageDrawer({
               '& .MuiDrawer-paper': closedMixin(theme),
             }),
           })}
+          variant="persistent"
           {...drawerProps}
         >
           {!isCollapsedComputed && !disableResize && (
             <Divider
-              role="button"
+              flexItem
               onMouseDown={() => handleMouseDown()}
               orientation="vertical"
-              flexItem
+              role="button"
               sx={(theme) => ({
                 cursor: 'ew-resize',
                 position: 'absolute',
@@ -188,7 +188,14 @@ function PageDrawer({
             />
           )}
           {!disableTopSpacer && <TopBarSpacer />}
-          <div style={{ overflowY: 'auto', height: '100%', display: 'flex', flexDirection: 'column' }}>
+          <div
+            style={{
+              overflowY: 'auto',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             {renderDrawerContent(
               {
                 listItemButtonSx: isCollapsedComputed ? { justifyContent: 'center' } : {},
@@ -201,7 +208,7 @@ function PageDrawer({
             {!disableCollapse && (
               <div style={{ marginTop: 'auto' }}>
                 <List>
-                  <ListItem disablePadding dense>
+                  <ListItem dense disablePadding>
                     <ListItemButton
                       dense
                       onClick={toggleCollapsed}

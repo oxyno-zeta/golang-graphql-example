@@ -3,9 +3,9 @@ import { Link as RouterLink, useMatch, useResolvedPath } from 'react-router-dom'
 import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
 
 export interface Props {
-  to: string;
-  children: ReactNode;
-  listItemButtonProps?: Omit<ListItemButtonProps, 'component' | 'to' | 'selected'>;
+  readonly to: string;
+  readonly children: ReactNode;
+  readonly listItemButtonProps?: Omit<ListItemButtonProps, 'component' | 'to' | 'selected'>;
 }
 
 function ListNavItemButton({ to, children, listItemButtonProps = {} }: Props) {
@@ -15,7 +15,7 @@ function ListNavItemButton({ to, children, listItemButtonProps = {} }: Props) {
   // Coming from official mui documentation
   // https://mui.com/material-ui/react-breadcrumbs/#integration-with-react-router
   return (
-    <ListItemButton component={RouterLink as any} to={to} selected={!!match} {...listItemButtonProps}>
+    <ListItemButton component={RouterLink as any} selected={!!match} to={to} {...listItemButtonProps}>
       {children}
     </ListItemButton>
   );

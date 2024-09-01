@@ -17,5 +17,5 @@ export type ConfigModel = {
 
 export const defaultConfig: ConfigModel = {
   graphqlEndpoint: '/api/graphql',
-  configCookieDomain: location.hostname, // eslint-disable-line no-restricted-globals
+  configCookieDomain: location.hostname,
 };

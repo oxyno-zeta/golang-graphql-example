@@ -9,7 +9,7 @@ interface Props<
   DisableClearable extends boolean | undefined,
   FreeSolo extends boolean | undefined,
 > extends AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {
-  loadMore: () => void;
+  readonly loadMore: () => void;
 }
 
 function AutocompleteInfiniteScroll<

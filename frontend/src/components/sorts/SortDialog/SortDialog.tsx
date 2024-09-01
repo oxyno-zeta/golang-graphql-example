@@ -6,12 +6,12 @@ import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
 import SortForm from '../internal/SortForm';
 
 export type Props<T extends Record<string, SortOrderModel>> = {
-  onSubmit: (sort: T[]) => void;
-  onReset: () => void;
-  onClose: () => void;
-  open: boolean;
-  initialSorts: null | undefined | T[];
-  sortFields: SortOrderFieldModel[];
+  readonly onSubmit: (sort: T[]) => void;
+  readonly onReset: () => void;
+  readonly onClose: () => void;
+  readonly open: boolean;
+  readonly initialSorts: null | undefined | T[];
+  readonly sortFields: SortOrderFieldModel[];
 };
 
 function SortDialog<T extends Record<string, SortOrderModel>>({
@@ -27,15 +27,17 @@ function SortDialog<T extends Record<string, SortOrderModel>>({
 
   return (
     <Dialog
-      open={open}
-      onClose={onClose}
+      aria-describedby="sort-dialog-description"
+      aria-labelledby="sort-dialog-title"
       fullWidth
       maxWidth="lg"
-      aria-labelledby="sort-dialog-title"
-      aria-describedby="sort-dialog-description"
+      onClose={onClose}
+      open={open}
     >
       <DialogTitle id="sort-dialog-title">{t('common.sort.dialogTitle')}</DialogTitle>
-      {open && <SortForm initialSorts={initialSorts} onReset={onReset} onSubmit={onSubmit} sortFields={sortFields} />}
+      {open ? (
+        <SortForm initialSorts={initialSorts} onReset={onReset} onSubmit={onSubmit} sortFields={sortFields} />
+      ) : null}
     </Dialog>
   );
 }

@@ -9,10 +9,10 @@ import SortPopper from '../SortPopper';
 import SortDialog from '../SortDialog';
 
 export type Props<T extends Record<string, SortOrderModel>> = {
-  sorts: null | undefined | T[];
-  onSubmit: (s: T[]) => void;
-  sortFields: SortOrderFieldModel[];
-  isPopperEnabled?: boolean;
+  readonly sorts: null | undefined | T[];
+  readonly onSubmit: (s: T[]) => void;
+  readonly sortFields: SortOrderFieldModel[];
+  readonly isPopperEnabled?: boolean;
 };
 
 function SortButton<T extends Record<string, SortOrderModel>>({
@@ -55,14 +55,14 @@ function SortButton<T extends Record<string, SortOrderModel>>({
       <Tooltip title={<>{t('common.sort.buttonTooltip')}</>}>
         <Button
           color="inherit"
-          variant="outlined"
-          sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
+          onClick={onClick}
           ref={(d: HTMLButtonElement) => {
             if (d && d !== anchorEl) {
               setAnchorEl(d);
             }
           }}
-          onClick={onClick}
+          sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
+          variant="outlined"
         >
           <SvgIcon color="inherit">
             <path d={mdiSortVariant} />

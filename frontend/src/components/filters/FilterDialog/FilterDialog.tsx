@@ -9,15 +9,14 @@ import FilterForm from '../internal/components/FilterForm';
 import { FilterDefinitionFieldsModel } from '../../../models/general';
 import { FilterValueObject, PredefinedFilter } from '../internal/types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export type Props<T extends FilterValueObject> = {
-  onSubmit: (filter: T) => void;
-  onReset: () => void;
-  onClose: () => void;
-  open: boolean;
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  predefinedFilterObjects?: PredefinedFilter[];
-  initialFilter?: undefined | null | T;
+  readonly onSubmit: (filter: T) => void;
+  readonly onReset: () => void;
+  readonly onClose: () => void;
+  readonly open: boolean;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly predefinedFilterObjects?: PredefinedFilter[];
+  readonly initialFilter?: undefined | null | T;
 };
 
 function FilterDialog<T extends FilterValueObject>({
@@ -53,19 +52,19 @@ function FilterDialog<T extends FilterValueObject>({
 
   return (
     <Dialog
-      open={open}
-      onClose={onClose}
+      aria-describedby="filter-dialog-description"
+      aria-labelledby="filter-dialog-title"
       fullWidth
       maxWidth="lg"
-      aria-labelledby="filter-dialog-title"
-      aria-describedby="filter-dialog-description"
+      onClose={onClose}
+      open={open}
     >
       <DialogTitle id="filter-dialog-title">{t('common.filter.dialogTitle')}</DialogTitle>
       <DialogContent>
         <FilterForm
           filterDefinitionModel={filterDefinitionModel}
-          onChange={localOnChange}
           initialFilter={initialFilter}
+          onChange={localOnChange}
           predefinedFilterObjects={predefinedFilterObjects}
         />
       </DialogContent>
@@ -79,12 +78,12 @@ function FilterDialog<T extends FilterValueObject>({
           {t('common.resetAction')}
         </Button>
         <Button
-          variant="contained"
+          autoFocus
           disabled={error}
           onClick={() => {
             onSubmit(resultRef.current as T);
           }}
-          autoFocus
+          variant="contained"
         >
           {t('common.applyAction')}
         </Button>

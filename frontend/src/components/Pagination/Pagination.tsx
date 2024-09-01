@@ -11,18 +11,18 @@ import { getAllSearchParams } from '../../utils/urlSearchParams';
 import { cleanPaginationSearchParams } from '../../utils/pagination';
 
 export interface Props {
-  pageInfo: PageInfoModel;
-  maxPaginationSize: number;
+  readonly pageInfo: PageInfoModel;
+  readonly maxPaginationSize: number;
   // Using onFirstPage will disable search param management
-  onFirstPage?: () => void | undefined;
+  readonly onFirstPage?: () => void | undefined;
   // Using onPreviousPage will disable search param management
-  onPreviousPage?: () => void | undefined;
+  readonly onPreviousPage?: () => void | undefined;
   // Using onNextPage will disable search param management
-  onNextPage?: () => void | undefined;
-  toolbarProps?: ToolbarProps;
-  firstIconButtonProps?: IconButtonProps;
-  previousIconButtonProps?: IconButtonProps;
-  nextIconButtonProps?: IconButtonProps;
+  readonly onNextPage?: () => void | undefined;
+  readonly toolbarProps?: ToolbarProps;
+  readonly firstIconButtonProps?: IconButtonProps;
+  readonly previousIconButtonProps?: IconButtonProps;
+  readonly nextIconButtonProps?: IconButtonProps;
 }
 
 type IconButtonInternalProps = {

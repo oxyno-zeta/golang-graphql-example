@@ -3,8 +3,8 @@ import MuiTooltip, { TooltipProps } from '@mui/material/Tooltip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 export type Props = Omit<TooltipProps, 'onClose' | 'onOpen' | 'open' | 'children'> & {
-  render?: (onTooltipOpen: () => void, onTooltipClose: () => void) => ReactElement;
-  children?: ReactElement;
+  readonly render?: (onTooltipOpen: () => void, onTooltipClose: () => void) => ReactElement;
+  readonly children?: ReactElement;
 };
 
 function ForcedTooltip({ render = undefined, children = undefined, ...props }: Props) {

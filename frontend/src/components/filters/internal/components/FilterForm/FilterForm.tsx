@@ -16,10 +16,10 @@ import { BuilderInitialValueObject, FilterValueObject, PredefinedFilter } from '
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
 export interface Props {
-  filterDefinitionModel: FilterDefinitionFieldsModel;
-  onChange: (filter: FilterValueObject | null) => void;
-  predefinedFilterObjects?: PredefinedFilter[];
-  initialFilter?: undefined | null | FilterValueObject;
+  readonly filterDefinitionModel: FilterDefinitionFieldsModel;
+  readonly onChange: (filter: FilterValueObject | null) => void;
+  readonly predefinedFilterObjects?: PredefinedFilter[];
+  readonly initialFilter?: undefined | null | FilterValueObject;
 }
 
 function FilterForm({
@@ -36,43 +36,30 @@ function FilterForm({
   const [predefinedFilter, setPredefinedFilter] = useState<PredefinedFilter | null>(null);
 
   // Watch initialFilter
-  useEffect(
-    () => {
-      // Build new value
-      const nV = buildFilterBuilderInitialItems(initialFilter);
-      // Set init
-      setInit((innerInit) => {
-        // Check if objects are different
-        if (JSON.stringify(nV) !== JSON.stringify(innerInit)) {
-          return nV;
-        }
+  useEffect(() => {
+    // Build new value
+    const nV = buildFilterBuilderInitialItems(initialFilter);
+    // Set init
+    setInit((innerInit) => {
+      // Check if objects are different
+      if (JSON.stringify(nV) !== JSON.stringify(innerInit)) {
+        return nV;
+      }
 
-        // Keep like that
-        return innerInit;
-      });
-    },
-    // Do not add init in this one otherwise, it won't be reloaded and so not updated.
-    // This case happen when a predefined filter is selected.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [initialFilter],
-  );
+      // Keep like that
+      return innerInit;
+    });
+  }, [initialFilter]);
 
   return (
     <>
-      {predefinedFilterObjects && (
+      {predefinedFilterObjects ? (
         <Box sx={{ display: 'flex', margin: '7px 0' }}>
           <Autocomplete
-            fullWidth
-            freeSolo
-            id="predefined-filters"
-            sx={{ maxWidth: 300 }}
-            noOptionsText={t('common.filter.noOptions')}
-            openText={t('common.openAction')}
             clearText={t('common.clearAction')}
             closeText={t('common.closeAction')}
-            size="small"
-            value={predefinedFilter}
-            options={predefinedFilterObjects}
+            freeSolo
+            fullWidth
             getOptionLabel={(option: PredefinedFilter | string) => {
               // Handle empty case
               if (option === '') {
@@ -82,13 +69,8 @@ function FilterForm({
               // Normal case
               return t((option as PredefinedFilter).display);
             }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label={t('common.filter.selectPredefinedFilter')}
-                placeholder={t('common.filter.selectPredefinedFilter')}
-              />
-            )}
+            id="predefined-filters"
+            noOptionsText={t('common.filter.noOptions')}
             onChange={(input, newValue) => {
               // Handle empty case
               if (newValue === '') {
@@ -97,6 +79,15 @@ function FilterForm({
               // Normal case
               setPredefinedFilter(newValue as PredefinedFilter);
             }}
+            openText={t('common.openAction')}
+            options={predefinedFilterObjects}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label={t('common.filter.selectPredefinedFilter')}
+                placeholder={t('common.filter.selectPredefinedFilter')}
+              />
+            )}
             renderOption={(props, option: PredefinedFilter, { inputValue }) => {
               const displayedOption = t(option.display);
               const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
@@ -117,34 +108,37 @@ function FilterForm({
                         </span>
                       ))}
                     </Typography>
-                    {option.description && (
+                    {option.description ? (
                       <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
                         {t(option.description)}
                       </Typography>
-                    )}
+                    ) : null}
                   </Box>
                 </MenuItem>
               );
             }}
+            size="small"
+            sx={{ maxWidth: 300 }}
+            value={predefinedFilter}
           />
           <Button
-            size="small"
-            sx={{ marginLeft: '5px' }}
             disabled={predefinedFilter === null}
             onClick={() => {
               // Load new init object
               setInit(buildFilterBuilderInitialItems(predefinedFilter?.filter));
             }}
+            size="small"
+            sx={{ marginLeft: '5px' }}
           >
             {t('common.loadAction')}
           </Button>
         </Box>
-      )}
+      ) : null}
       <FilterBuilder
-        filterDefinitionModel={filterDefinitionModel}
-        onChange={onChange}
-        initialValue={init}
         acceptEmptyLines
+        filterDefinitionModel={filterDefinitionModel}
+        initialValue={init}
+        onChange={onChange}
       />
     </>
   );
