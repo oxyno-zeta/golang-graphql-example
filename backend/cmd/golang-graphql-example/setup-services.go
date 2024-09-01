@@ -77,7 +77,7 @@ func setupBasicsServices(_ []string, sv *services) {
 	sv.tracingSvc = tracingSvc
 
 	// Create database service
-	db := database.NewDatabase("main", cfgManager, logger, metricsSvc, tracingSvc, nil)
+	db := database.NewDatabase("main", cfgManager, logger, metricsSvc, tracingSvc)
 	// Connect to engine
 	err = db.Connect()
 	// Check error

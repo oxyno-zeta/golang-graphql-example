@@ -8,7 +8,6 @@ import (
 
 	"emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/deltaplugin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
@@ -25,13 +24,12 @@ var (
 )
 
 type sqldb struct {
-	logger                log.Logger
-	cfgManager            config.Manager
-	metricsSvc            metrics.Service
-	tracingSvc            tracing.Service
-	db                    *gorm.DB
-	deltaNotificationChan chan *deltaplugin.Delta
-	connectionName        string
+	logger         log.Logger
+	cfgManager     config.Manager
+	metricsSvc     metrics.Service
+	tracingSvc     tracing.Service
+	db             *gorm.DB
+	connectionName string
 }
 
 func SetTransactionalGormDBToContext(ctx context.Context, db *gorm.DB) context.Context {
@@ -192,15 +190,6 @@ func (sdb *sqldb) Connect() error {
 			TraceResolverMode: true,
 		}))
 		// Check error
-		if err != nil {
-			return errors.WithStack(err)
-		}
-	}
-
-	// Check if delta plugin is wanted
-	if sdb.deltaNotificationChan != nil {
-		err = dbResult.Use(deltaplugin.New(sdb.deltaNotificationChan))
-		// Check if error exists
 		if err != nil {
 			return errors.WithStack(err)
 		}

@@ -180,7 +180,7 @@ func TestPaging(t *testing.T) {
 
 			// Create mock controller
 			// ctrl := gomock.NewController(t)
-			officialDBSvc := database.NewDatabase("test", nil, nil, nil, nil, nil)
+			officialDBSvc := database.NewDatabase("test", nil, nil, nil, nil)
 			// Cheat mode to inject a custom gorm db instance
 			dbSvc, ok := officialDBSvc.(DBSvcTest)
 			if !ok {

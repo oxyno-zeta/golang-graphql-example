@@ -65,7 +65,7 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 	// Create signalhandler service
 	signalHandlerSvc := signalhandler.NewService(logger, false, []os.Signal{syscall.SIGTERM, syscall.SIGINT})
 	// Create db service
-	db := database.NewDatabase("main", cfgManagerMock, logger, metricsCtx, tracingSvc, nil)
+	db := database.NewDatabase("main", cfgManagerMock, logger, metricsCtx, tracingSvc)
 	// Connect
 	err = db.Connect()
 	suite.NoError(err)
