@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
-import eslint from 'vite-plugin-eslint';
 import { visualizer } from 'rollup-plugin-visualizer';
 import preserveDirectives from 'rollup-preserve-directives';
 import UnpluginInjectPreload from 'unplugin-inject-preload/vite';
@@ -15,13 +14,6 @@ export default defineConfig({
       exclude: /\.stories\.(t|j)sx?$/,
     }),
     tsconfigPaths(),
-    // eslint({
-    //   emitWarning: true,
-    //   // See issue: https://github.com/storybookjs/builder-vite/issues/367
-    //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //   // @ts-ignore
-    //   exclude: [/virtual:/, /node_modules/, /sb-preview/],
-    // }),
     visualizer({
       template: 'treemap', // or sunburst
       open: false,
