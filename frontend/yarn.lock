@@ -7125,8 +7125,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.35.0":
-  version: 7.35.0
-  resolution: "eslint-plugin-react@npm:7.35.0"
+  version: 7.36.1
+  resolution: "eslint-plugin-react@npm:7.36.1"
   dependencies:
     array-includes: "npm:^3.1.8"
     array.prototype.findlast: "npm:^1.2.5"
@@ -7148,7 +7148,7 @@ __metadata:
     string.prototype.repeat: "npm:^1.0.0"
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
-  checksum: 10/fa0a54f9ea249cf89d92bb5983bf7df741da3709a0ebd6a885a67d05413ed302fd8b64c9dc819b33df8efa6d8b06f5e56b1f6965a9be7cc3e79054da4dbae5ed
+  checksum: 10/bca154b446c35af4859a92fd043dcfe5c74851eb27652234020548570bb81d37cc9f1eb1795b3c9e7514de6c9b48f42fcc00153062eca879dab45ab84e49d0b1
   languageName: node
   linkType: hard
 
