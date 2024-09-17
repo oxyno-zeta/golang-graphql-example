@@ -53,13 +53,13 @@ exports[`Footer should display footer 1`] = `
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1  emotion-1"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       Todo list application / With
        
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-colorError MuiSvgIcon-fontSizeMedium  emotion-2"
+        class="MuiSvgIcon-root MuiSvgIcon-colorError MuiSvgIcon-fontSizeMedium emotion-2"
         focusable="false"
         viewBox="0 0 24 24"
       >

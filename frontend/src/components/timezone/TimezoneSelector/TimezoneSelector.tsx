@@ -94,10 +94,9 @@ function useResetCache(length: number) {
 
 // Adapter for react-window
 const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>((props, ref) => {
-  // eslint-disable-next-line react/prop-types
   const { children, ...other } = props;
   const itemData: GroupOrItemModel<string, string>[] = [];
-  // eslint-disable-next-line react/prop-types
+
   (children as GroupModel<string, string>[]).forEach((item: GroupModel<string, string>) => {
     itemData.push(item);
     itemData.push(...(item.children || []));

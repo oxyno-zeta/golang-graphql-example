@@ -79,20 +79,20 @@ exports[`MainPageCenterLoading should display main page center loading 1`] = `
 <div>
   <div
     aria-hidden="true"
-    class="MuiBackdrop-root  emotion-0"
+    class="MuiBackdrop-root emotion-0"
     style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorInherit  emotion-1"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorInherit emotion-1"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg  emotion-2"
+        class="MuiCircularProgress-svg emotion-2"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate  emotion-3"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
           cx="44"
           cy="44"
           fill="none"

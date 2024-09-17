@@ -101,13 +101,13 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -221,13 +221,13 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -341,13 +341,13 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -461,13 +461,13 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
     data-mui-internal-clone-element="true"
   >
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium  emotion-0"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-1"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
         focusable="false"
         viewBox="0 0 24 24"
       >

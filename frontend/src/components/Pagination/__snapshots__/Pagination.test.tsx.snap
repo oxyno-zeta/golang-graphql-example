@@ -118,7 +118,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -129,13 +129,13 @@ exports[`Pagination should display 3 disable links when no next or previous page
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -151,13 +151,13 @@ exports[`Pagination should display 3 disable links when no next or previous page
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?before=&last=10"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -173,13 +173,13 @@ exports[`Pagination should display 3 disable links when no next or previous page
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?after=&first=10"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -312,7 +312,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -322,13 +322,13 @@ exports[`Pagination should display next and previous page buttons as enabled and
         data-mui-internal-clone-element="true"
       >
         <button
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -343,13 +343,13 @@ exports[`Pagination should display next and previous page buttons as enabled and
         data-mui-internal-clone-element="true"
       >
         <button
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -364,13 +364,13 @@ exports[`Pagination should display next and previous page buttons as enabled and
         data-mui-internal-clone-element="true"
       >
         <button
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -503,7 +503,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -514,13 +514,13 @@ exports[`Pagination should display only next page button as enabled and clickabl
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -536,13 +536,13 @@ exports[`Pagination should display only next page button as enabled and clickabl
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?before=&last=10"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -557,13 +557,13 @@ exports[`Pagination should display only next page button as enabled and clickabl
         data-mui-internal-clone-element="true"
       >
         <button
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -696,7 +696,7 @@ exports[`Pagination should display only next page link as enabled with correct u
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -707,13 +707,13 @@ exports[`Pagination should display only next page link as enabled with correct u
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -729,13 +729,13 @@ exports[`Pagination should display only next page link as enabled with correct u
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?before=&last=10"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -750,13 +750,13 @@ exports[`Pagination should display only next page link as enabled with correct u
         data-mui-internal-clone-element="true"
       >
         <a
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?after=fake-end&first=10"
           tabindex="0"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -889,7 +889,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -899,13 +899,13 @@ exports[`Pagination should display only previous page buttons as enabled and cli
         data-mui-internal-clone-element="true"
       >
         <button
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -920,13 +920,13 @@ exports[`Pagination should display only previous page buttons as enabled and cli
         data-mui-internal-clone-element="true"
       >
         <button
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -942,13 +942,13 @@ exports[`Pagination should display only previous page buttons as enabled and cli
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?after=&first=10"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1081,7 +1081,7 @@ exports[`Pagination should display only previous page links as enabled with corr
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -1091,13 +1091,13 @@ exports[`Pagination should display only previous page links as enabled with corr
         data-mui-internal-clone-element="true"
       >
         <a
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route"
           tabindex="0"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1112,13 +1112,13 @@ exports[`Pagination should display only previous page links as enabled with corr
         data-mui-internal-clone-element="true"
       >
         <a
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?before=fake-start&last=10"
           tabindex="0"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1134,13 +1134,13 @@ exports[`Pagination should display only previous page links as enabled with corr
       >
         <a
           aria-disabled="true"
-          class="MuiButtonBase-root Mui-disabled  MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?after=&first=10"
           tabindex="-1"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1273,7 +1273,7 @@ exports[`Pagination should display previous and next page links as enabled with 
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense emotion-0"
   >
     <div
       style="margin-left: auto;"
@@ -1283,13 +1283,13 @@ exports[`Pagination should display previous and next page links as enabled with 
         data-mui-internal-clone-element="true"
       >
         <a
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route"
           tabindex="0"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1304,13 +1304,13 @@ exports[`Pagination should display previous and next page links as enabled with 
         data-mui-internal-clone-element="true"
       >
         <a
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?before=fake-start&last=10"
           tabindex="0"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1325,13 +1325,13 @@ exports[`Pagination should display previous and next page links as enabled with 
         data-mui-internal-clone-element="true"
       >
         <a
-          class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?after=fake-end&first=10"
           tabindex="0"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
             focusable="false"
             viewBox="0 0 24 24"
           >

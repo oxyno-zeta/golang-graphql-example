@@ -49,11 +49,11 @@ exports[`Title should display title only 1`] = `
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-0"
     style="padding-left: 0px; padding-right: 0px;"
   >
     <h5
-      class="MuiTypography-root MuiTypography-h5  emotion-1"
+      class="MuiTypography-root MuiTypography-h5 emotion-1"
       style="font-weight: bold;"
     >
       Fake title
@@ -207,17 +207,17 @@ exports[`Title should display title with left element only 1`] = `
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-0"
     style="padding-left: 0px; padding-right: 0px;"
   >
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -227,7 +227,7 @@ exports[`Title should display title with left element only 1`] = `
       </svg>
     </button>
     <h5
-      class="MuiTypography-root MuiTypography-h5  emotion-3"
+      class="MuiTypography-root MuiTypography-h5 emotion-3"
       style="font-weight: bold;"
     >
       Fake title
@@ -381,17 +381,17 @@ exports[`Title should display title with right and left element 1`] = `
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-0"
     style="padding-left: 0px; padding-right: 0px;"
   >
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -401,7 +401,7 @@ exports[`Title should display title with right and left element 1`] = `
       </svg>
     </button>
     <h5
-      class="MuiTypography-root MuiTypography-h5  emotion-3"
+      class="MuiTypography-root MuiTypography-h5 emotion-3"
       style="font-weight: bold;"
     >
       Fake title
@@ -410,13 +410,13 @@ exports[`Title should display title with right and left element 1`] = `
       style="flex-grow: 1;"
     />
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-1"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-2"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-2"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -571,11 +571,11 @@ exports[`Title should display title with right element only 1`] = `
 
 <div>
   <div
-    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular  emotion-0"
+    class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-0"
     style="padding-left: 0px; padding-right: 0px;"
   >
     <h5
-      class="MuiTypography-root MuiTypography-h5  emotion-1"
+      class="MuiTypography-root MuiTypography-h5 emotion-1"
       style="font-weight: bold;"
     >
       Fake title
@@ -584,13 +584,13 @@ exports[`Title should display title with right element only 1`] = `
       style="flex-grow: 1;"
     />
     <button
-      class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  emotion-2"
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-2"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >

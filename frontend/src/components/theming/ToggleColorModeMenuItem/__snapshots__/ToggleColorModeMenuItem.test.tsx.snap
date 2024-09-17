@@ -159,25 +159,25 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1  emotion-0"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -190,14 +190,14 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -371,25 +371,25 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1  emotion-0"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -402,14 +402,14 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -583,25 +583,25 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1  emotion-0"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -614,14 +614,14 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -795,25 +795,25 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1  emotion-0"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
     common.themeTitle
   </p>
   <div
-    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth  emotion-1"
+    class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
     role="group"
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-firstButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -826,14 +826,14 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard  MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal  MuiToggleButtonGroup-lastButton  emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-3"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-3"
         focusable="false"
         viewBox="0 0 24 24"
       >

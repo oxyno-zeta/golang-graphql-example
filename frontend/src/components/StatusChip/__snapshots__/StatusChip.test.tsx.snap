@@ -152,10 +152,10 @@ exports[`StatusChip should display label with default color (no value) 1`] = `
 
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault  emotion-0"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault emotion-0"
   >
     <span
-      class="MuiChip-label MuiChip-labelSmall  emotion-1"
+      class="MuiChip-label MuiChip-labelSmall emotion-1"
     >
       fake-label
     </span>
@@ -315,10 +315,10 @@ exports[`StatusChip should display label with default color 1`] = `
 
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault  emotion-0"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorDefault MuiChip-outlinedDefault emotion-0"
   >
     <span
-      class="MuiChip-label MuiChip-labelSmall  emotion-1"
+      class="MuiChip-label MuiChip-labelSmall emotion-1"
     >
       fake-label
     </span>
@@ -512,10 +512,10 @@ exports[`StatusChip should display label with error color 1`] = `
 
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorError MuiChip-outlinedError  emotion-0"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorError MuiChip-outlinedError emotion-0"
   >
     <span
-      class="MuiChip-label MuiChip-labelSmall  emotion-1"
+      class="MuiChip-label MuiChip-labelSmall emotion-1"
     >
       fake-label
     </span>

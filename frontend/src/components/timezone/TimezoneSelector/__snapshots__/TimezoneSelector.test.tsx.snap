@@ -641,13 +641,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 
 <div>
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon  emotion-0"
+    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-0"
   >
     <div
-      class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  emotion-1"
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root emotion-1"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined  MuiFormLabel-colorPrimary MuiFormLabel-filled  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined  emotion-2"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined emotion-2"
         data-shrink="true"
         for=":r2:"
         id=":r2:-label"
@@ -655,7 +655,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
         common.timezone
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd  MuiAutocomplete-inputRoot  emotion-3"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot emotion-3"
       >
         <input
           aria-autocomplete="list"
@@ -663,7 +663,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input  MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd  MuiAutocomplete-input MuiAutocomplete-inputFocused  emotion-4"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
           id=":r2:"
           role="combobox"
           spellcheck="false"
@@ -671,18 +671,18 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           value="UTC"
         />
         <div
-          class="MuiAutocomplete-endAdornment  emotion-5"
+          class="MuiAutocomplete-endAdornment emotion-5"
         >
           <button
             aria-label="common.clearAction"
-            class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  MuiAutocomplete-clearIndicator  emotion-6"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
             tabindex="-1"
             title="common.clearAction"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall  emotion-7"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-7"
               data-testid="CloseIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -694,14 +694,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           </button>
           <button
             aria-label="common.openAction"
-            class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  MuiAutocomplete-popupIndicator  emotion-8"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-8"
             tabindex="-1"
             title="common.openAction"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-9"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-9"
               data-testid="ArrowDropDownIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -714,7 +714,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
         </div>
         <fieldset
           aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline  emotion-10"
+          class="MuiOutlinedInput-notchedOutline emotion-10"
         >
           <legend
             class="emotion-11"
@@ -1386,13 +1386,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 <div>
   <div
     aria-owns=":r4:-listbox"
-    class="MuiAutocomplete-root Mui-expanded Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon  emotion-0"
+    class="MuiAutocomplete-root Mui-expanded Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-0"
   >
     <div
-      class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  emotion-1"
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root emotion-1"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined  MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined  emotion-2"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined emotion-2"
         data-shrink="true"
         for=":r4:"
         id=":r4:-label"
@@ -1400,7 +1400,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
         common.timezone
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd  MuiAutocomplete-inputRoot  emotion-3"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot emotion-3"
       >
         <input
           aria-autocomplete="list"
@@ -1409,7 +1409,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input  MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd  MuiAutocomplete-input MuiAutocomplete-inputFocused  emotion-4"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
           id=":r4:"
           role="combobox"
           spellcheck="false"
@@ -1417,18 +1417,18 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           value="UTC"
         />
         <div
-          class="MuiAutocomplete-endAdornment  emotion-5"
+          class="MuiAutocomplete-endAdornment emotion-5"
         >
           <button
             aria-label="common.clearAction"
-            class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  MuiAutocomplete-clearIndicator  emotion-6"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
             tabindex="-1"
             title="common.clearAction"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall  emotion-7"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-7"
               data-testid="CloseIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1440,14 +1440,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           </button>
           <button
             aria-label="common.closeAction"
-            class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen  emotion-8"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen emotion-8"
             tabindex="-1"
             title="common.closeAction"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-9"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-9"
               data-testid="ArrowDropDownIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -1460,7 +1460,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
         </div>
         <fieldset
           aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline  emotion-10"
+          class="MuiOutlinedInput-notchedOutline emotion-10"
         >
           <legend
             class="emotion-11"
@@ -1614,7 +1614,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 <div
-  class="MuiPopper-root  MuiAutocomplete-popper  emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   data-popper-escaped=""
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
@@ -1622,13 +1622,13 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
 >
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiAutocomplete-paper  emotion-1"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
     <div>
       <div
         aria-labelledby=":r4:-label"
-        class="MuiAutocomplete-listbox  emotion-2"
+        class="MuiAutocomplete-listbox emotion-2"
         id=":r4:-listbox"
         role="listbox"
         style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
@@ -1637,7 +1637,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           style="height: 21414px; width: 100%;"
         >
           <div
-            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky  emotion-3"
+            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
             style="position: absolute; left: 0px; top: 0px; height: 48px; width: 100%;"
           >
             Africa
@@ -1645,7 +1645,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="0"
             id=":r4:-option-0"
             role="option"
@@ -1653,7 +1653,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1662,7 +1662,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -1671,7 +1671,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="1"
             id=":r4:-option-1"
             role="option"
@@ -1679,7 +1679,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1688,7 +1688,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -1697,7 +1697,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="2"
             id=":r4:-option-2"
             role="option"
@@ -1705,7 +1705,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1714,7 +1714,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+03:00
@@ -1723,7 +1723,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="3"
             id=":r4:-option-3"
             role="option"
@@ -1731,7 +1731,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1740,7 +1740,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+01:00
@@ -1749,7 +1749,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="4"
             id=":r4:-option-4"
             role="option"
@@ -1757,7 +1757,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1766,7 +1766,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+03:00
@@ -1775,7 +1775,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="5"
             id=":r4:-option-5"
             role="option"
@@ -1783,7 +1783,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1792,7 +1792,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -1801,7 +1801,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="6"
             id=":r4:-option-6"
             role="option"
@@ -1809,7 +1809,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1818,7 +1818,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+01:00
@@ -1827,7 +1827,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="7"
             id=":r4:-option-7"
             role="option"
@@ -1835,7 +1835,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -1844,7 +1844,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -1995,18 +1995,18 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 }
 
 <div
-  class="MuiPopper-root  MuiAutocomplete-popper  emotion-0"
+  class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   role="presentation"
   style="width: 0px;"
 >
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiAutocomplete-paper  emotion-1"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
     <div>
       <div
         aria-labelledby=":r4:-label"
-        class="MuiAutocomplete-listbox  emotion-2"
+        class="MuiAutocomplete-listbox emotion-2"
         id=":r4:-listbox"
         role="listbox"
         style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
@@ -2015,7 +2015,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           style="height: 21414px; width: 100%;"
         >
           <div
-            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky  emotion-3"
+            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
             style="position: absolute; left: 0px; top: 0px; height: 48px; width: 100%;"
           >
             Africa
@@ -2023,7 +2023,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="0"
             id=":r4:-option-0"
             role="option"
@@ -2031,7 +2031,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2040,7 +2040,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -2049,7 +2049,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="1"
             id=":r4:-option-1"
             role="option"
@@ -2057,7 +2057,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2066,7 +2066,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -2075,7 +2075,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="2"
             id=":r4:-option-2"
             role="option"
@@ -2083,7 +2083,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2092,7 +2092,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+03:00
@@ -2101,7 +2101,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="3"
             id=":r4:-option-3"
             role="option"
@@ -2109,7 +2109,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2118,7 +2118,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+01:00
@@ -2127,7 +2127,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="4"
             id=":r4:-option-4"
             role="option"
@@ -2135,7 +2135,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2144,7 +2144,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+03:00
@@ -2153,7 +2153,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="5"
             id=":r4:-option-5"
             role="option"
@@ -2161,7 +2161,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2170,7 +2170,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -2179,7 +2179,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="6"
             id=":r4:-option-6"
             role="option"
@@ -2187,7 +2187,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2196,7 +2196,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC+01:00
@@ -2205,7 +2205,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
           <li
             aria-disabled="false"
             aria-selected="false"
-            class="MuiAutocomplete-option "
+            class="MuiAutocomplete-option"
             data-option-index="7"
             id=":r4:-option-7"
             role="option"
@@ -2213,7 +2213,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             tabindex="-1"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap  emotion-4"
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
             >
               <span
                 style="font-weight: 400;"
@@ -2222,7 +2222,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
               </span>
             </p>
             <p
-              class="MuiTypography-root MuiTypography-body1  emotion-5"
+              class="MuiTypography-root MuiTypography-body1 emotion-5"
               style="font-size: 12px;"
             >
               UTC
@@ -2886,13 +2886,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 
 <div>
   <div
-    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon  emotion-0"
+    class="MuiAutocomplete-root MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-0"
   >
     <div
-      class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  emotion-1"
+      class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root emotion-1"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined  MuiFormLabel-colorPrimary MuiFormLabel-filled  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined  emotion-2"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined emotion-2"
         data-shrink="true"
         for=":r0:"
         id=":r0:-label"
@@ -2900,7 +2900,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
         common.timezone
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd  MuiAutocomplete-inputRoot  emotion-3"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot emotion-3"
       >
         <input
           aria-autocomplete="list"
@@ -2908,7 +2908,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input  MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd  MuiAutocomplete-input MuiAutocomplete-inputFocused  emotion-4"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
           id=":r0:"
           role="combobox"
           spellcheck="false"
@@ -2916,18 +2916,18 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           value="UTC"
         />
         <div
-          class="MuiAutocomplete-endAdornment  emotion-5"
+          class="MuiAutocomplete-endAdornment emotion-5"
         >
           <button
             aria-label="common.clearAction"
-            class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  MuiAutocomplete-clearIndicator  emotion-6"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
             tabindex="-1"
             title="common.clearAction"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall  emotion-7"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-7"
               data-testid="CloseIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -2939,14 +2939,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           </button>
           <button
             aria-label="common.openAction"
-            class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  MuiAutocomplete-popupIndicator  emotion-8"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-8"
             tabindex="-1"
             title="common.openAction"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  emotion-9"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-9"
               data-testid="ArrowDropDownIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -2959,7 +2959,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
         </div>
         <fieldset
           aria-hidden="true"
-          class="MuiOutlinedInput-notchedOutline  emotion-10"
+          class="MuiOutlinedInput-notchedOutline emotion-10"
         >
           <legend
             class="emotion-11"

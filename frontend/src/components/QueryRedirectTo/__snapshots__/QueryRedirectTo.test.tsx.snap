@@ -89,16 +89,16 @@ exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
     class="MuiBox-root emotion-0"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary  emotion-1"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary emotion-1"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg  emotion-2"
+        class="MuiCircularProgress-svg emotion-2"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate  emotion-3"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -108,7 +108,7 @@ exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
       </svg>
     </span>
     <h6
-      class="MuiTypography-root MuiTypography-subtitle2  emotion-4"
+      class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
       common.loadingText
     </h6>
@@ -193,16 +193,16 @@ exports[`QueryRedirectTo should display a loading without subtitle when query is
     class="MuiBox-root emotion-0"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary  emotion-1"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary emotion-1"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg  emotion-2"
+        class="MuiCircularProgress-svg emotion-2"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate  emotion-3"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -304,16 +304,16 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
     class="MuiBox-root emotion-0"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary  emotion-1"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary emotion-1"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg  emotion-2"
+        class="MuiCircularProgress-svg emotion-2"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate  emotion-3"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -323,7 +323,7 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
       </svg>
     </span>
     <h6
-      class="MuiTypography-root MuiTypography-subtitle2  emotion-4"
+      class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
       common.loadingText
     </h6>
@@ -358,7 +358,7 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
     class="MuiBox-root emotion-0"
   >
     <p
-      class="MuiTypography-root MuiTypography-body1  emotion-1"
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
       common.errors
       :
@@ -370,7 +370,7 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
         class="MuiBox-root emotion-2"
       >
         <p
-          class="MuiTypography-root MuiTypography-body1  emotion-1"
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.FORBIDDEN
         </p>
@@ -469,16 +469,16 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
     class="MuiBox-root emotion-0"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary  emotion-1"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary emotion-1"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg  emotion-2"
+        class="MuiCircularProgress-svg emotion-2"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate  emotion-3"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -488,7 +488,7 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
       </svg>
     </span>
     <h6
-      class="MuiTypography-root MuiTypography-subtitle2  emotion-4"
+      class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
       common.loadingText
     </h6>
@@ -518,7 +518,7 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
 
 <div>
   <p
-    class="MuiTypography-root MuiTypography-body1  emotion-0"
+    class="MuiTypography-root MuiTypography-body1 emotion-0"
   >
     common.noData
   </p>
@@ -614,16 +614,16 @@ exports[`QueryRedirectTo should redirect to new path on success 1`] = `
     class="MuiBox-root emotion-0"
   >
     <span
-      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary  emotion-1"
+      class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary emotion-1"
       role="progressbar"
       style="width: 40px; height: 40px;"
     >
       <svg
-        class="MuiCircularProgress-svg  emotion-2"
+        class="MuiCircularProgress-svg emotion-2"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate  emotion-3"
+          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -633,7 +633,7 @@ exports[`QueryRedirectTo should redirect to new path on success 1`] = `
       </svg>
     </span>
     <h6
-      class="MuiTypography-root MuiTypography-subtitle2  emotion-4"
+      class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
       common.loadingText
     </h6>
