@@ -8,6 +8,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
+	"github.com/samber/lo"
 	"github.com/thoas/go-funk"
 )
 
@@ -16,6 +17,14 @@ const graphqlFieldTagKey = "graphqlfield"
 func ManageConnectionNodeProjection(
 	ctx context.Context,
 	projectionOut interface{},
+) error {
+	return ManageDepthProjection(ctx, projectionOut, []string{"edges", "node"})
+}
+
+func ManageDepthProjection(
+	ctx context.Context,
+	projectionOut interface{},
+	fieldChain []string,
 ) error {
 	// Validate projection out
 	err := validateProjectionOut(projectionOut)
@@ -29,36 +38,12 @@ func ManageConnectionNodeProjection(
 	// Get graphql fields
 	fields := graphql.CollectFieldsCtx(ctx, nil)
 
-	// Find edges in fields
-	fEdgesInt := funk.Find(fields, func(f graphql.CollectedField) bool {
-		return f.Name == "edges"
-	})
-	// Check if edges field exists in graphql fields
-	if fEdgesInt == nil {
-		// Not found in graphql projection => stop
-		return nil
-	}
-	// Cast field
-	fEdges, _ := fEdgesInt.(graphql.CollectedField)
-
-	// Get graphql fields projection in edges
-	inFEdges := graphql.CollectFields(octx, fEdges.Selections, nil)
-
-	// Find node in edges graphql fields
-	fNodeInt := funk.Find(inFEdges, func(f graphql.CollectedField) bool {
-		return f.Name == "node"
-	})
-	// Check if node field exists in graphql fields
-	if fNodeInt == nil {
-		// Not found in graphql projection => stop
-		return nil
-	}
-	// Cast field
-	fNode, _ := fNodeInt.(graphql.CollectedField)
+	// Dive to get collected fields under chain
+	collectedFields := diveToGraphqlCollectedField(octx, fields, fieldChain)
 
 	// Start projection on this path
 	err = manageGraphqlProjection(
-		graphql.CollectFields(octx, fNode.Selections, nil),
+		collectedFields,
 		projectionOut,
 	)
 	// Check error
@@ -74,25 +59,36 @@ func ManageSimpleProjection(
 	ctx context.Context,
 	projectionOut interface{},
 ) error {
-	// Validate projection out
-	err := validateProjectionOut(projectionOut)
-	// Check error
-	if err != nil {
-		return err
+	return ManageDepthProjection(ctx, projectionOut, []string{})
+}
+
+func diveToGraphqlCollectedField(
+	octx *graphql.OperationContext,
+	fields []graphql.CollectedField,
+	fieldChain []string,
+) []graphql.CollectedField {
+	// Check if field chain have values
+	if len(fieldChain) == 0 {
+		return fields
 	}
 
-	// Manage graphql projection
-	err = manageGraphqlProjection(
-		graphql.CollectFieldsCtx(ctx, nil),
-		projectionOut,
-	)
-	// Check error
-	if err != nil {
-		return err
+	// Pop first item on chain
+	f, fieldChain := fieldChain[0], fieldChain[1:]
+
+	// Find collected field
+	fieldC, ok := lo.Find(fields, func(fieldC graphql.CollectedField) bool {
+		return fieldC.Name == f
+	})
+	// Check if it is found
+	if !ok {
+		return nil
 	}
 
-	// Default
-	return nil
+	// Get collected fields from field selections
+	subFieldCollections := graphql.CollectFields(octx, fieldC.Selections, nil)
+
+	// Dive
+	return diveToGraphqlCollectedField(octx, subFieldCollections, fieldChain)
 }
 
 func validateProjectionOut(projectionOut interface{}) error {
