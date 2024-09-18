@@ -13,7 +13,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/rabbitmq/amqp091-go"
-	"github.com/thoas/go-funk"
+	"github.com/samber/lo"
 )
 
 const rabbitmqAlreadyClosedErrorMessage = "CHANNEL_ERROR - expected 'channel.open'"
@@ -503,7 +503,7 @@ func (as *amqpService) Ping() error {
 
 func (as *amqpService) appendToConsumerTags(newConsumerTag string) {
 	// Add it only if array isn't containing data
-	if !funk.ContainsString(as.consumerTags, newConsumerTag) {
+	if !lo.Contains(as.consumerTags, newConsumerTag) {
 		as.consumerTags = append(as.consumerTags, newConsumerTag)
 	}
 }

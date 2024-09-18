@@ -20,7 +20,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
-	"github.com/thoas/go-funk"
+	"github.com/samber/lo"
 	_ "go.uber.org/automaxprocs"
 )
 
@@ -60,7 +60,7 @@ var daemonWg sync.WaitGroup
 
 func main() {
 	// Compute possible targets
-	possibleTargetValues, _ := funk.Keys(targetDefinitionsMap).([]string)
+	possibleTargetValues := lo.Keys(targetDefinitionsMap)
 	// Add "all" in those cases
 	possibleTargetValues = append(possibleTargetValues, "all")
 
@@ -123,15 +123,15 @@ func main() {
 	}
 
 	// Check if "all" is present with other things
-	if funk.ContainsString(targets, "all") && len(targets) != 1 {
+	if lo.Contains(targets, "all") && len(targets) != 1 {
 		// Reset to "all"
 		targets = []string{"all"}
 	}
 	// Uniq targets
-	targets = funk.UniqString(targets)
+	targets = lo.Uniq(targets)
 	// Check if target list have only accepted values
 	for _, targetFlag := range targets {
-		if !funk.ContainsString(possibleTargetValues, targetFlag) {
+		if !lo.Contains(possibleTargetValues, targetFlag) {
 			sv.logger.Fatalf("target %s not supported", targetFlag)
 		}
 	}

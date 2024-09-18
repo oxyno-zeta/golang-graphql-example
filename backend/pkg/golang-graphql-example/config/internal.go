@@ -12,8 +12,8 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/go-playground/validator/v10"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/samber/lo"
 	"github.com/spf13/viper"
-	"github.com/thoas/go-funk"
 )
 
 // TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials.
@@ -65,7 +65,7 @@ func (impl *managerimpl) Load(inputConfigFilePath string) error {
 	}
 
 	// Loop over config files
-	funk.ForEach(impl.configs, func(vip *viper.Viper) {
+	lo.ForEach(impl.configs, func(vip *viper.Viper, _ int) {
 		// Add hooks for on change events
 		vip.OnConfigChange(func(_ fsnotify.Event) {
 			impl.logger.Infof("Reload configuration detected for file %s", vip.ConfigFileUsed())
@@ -169,7 +169,7 @@ func (impl *managerimpl) watchInternalFile(filePath string, forceStop chan bool,
 func generateViperInstances(files []os.DirEntry, configFolderPath string) []*viper.Viper {
 	list := make([]*viper.Viper, 0)
 	// Loop over static files to create viper instance for them
-	funk.ForEach(files, func(file os.DirEntry) {
+	lo.ForEach(files, func(file os.DirEntry, _ int) {
 		filename := file.Name()
 		// Create config file name
 		cfgFileName := strings.TrimSuffix(filename, path.Ext(filename))
@@ -251,7 +251,7 @@ func (impl *managerimpl) loadConfiguration() error {
 	internalFileWatchChannels := make([]chan bool, 0)
 	impl.internalFileWatchChannels = internalFileWatchChannels
 	// Loop over all credentials in order to watch file change
-	funk.ForEach(credentials, func(cred *CredentialConfig) {
+	lo.ForEach(credentials, func(cred *CredentialConfig, _ int) {
 		// Check if credential is about a path
 		if cred != nil && cred.Path != "" {
 			// Create channel
@@ -349,7 +349,7 @@ func (impl *managerimpl) runAllHooks() {
 	// Init failed
 	failed := false
 	// Run all hooks
-	funk.ForEach(impl.onChangeHooks, func(h *HookDefinition) {
+	lo.ForEach(impl.onChangeHooks, func(h *HookDefinition, _ int) {
 		// Run hook
 		r := impl.runReloadHook(h)
 		// Save failed

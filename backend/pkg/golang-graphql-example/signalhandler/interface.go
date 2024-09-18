@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/thoas/go-funk"
+	"github.com/samber/lo"
 )
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler Service
@@ -40,7 +40,7 @@ func NewService(logger log.Logger, serverMode bool, signalListToNotify []os.Sign
 	// Append all items from input inside
 	signalListToNotifyInternal = append(signalListToNotifyInternal, signalListToNotify...)
 	// Filter to unique
-	signalListToNotifyInternal, _ = funk.Uniq(signalListToNotifyInternal).([]os.Signal)
+	signalListToNotifyInternal = lo.Uniq(signalListToNotifyInternal)
 
 	// Create ctx that will be cancelled when OS is stopping
 	ctx, cancel := context.WithCancel(context.TODO())

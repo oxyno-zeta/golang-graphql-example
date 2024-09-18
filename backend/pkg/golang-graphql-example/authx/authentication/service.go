@@ -19,7 +19,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/thoas/go-funk"
+	"github.com/samber/lo"
 	"golang.org/x/oauth2"
 )
 
@@ -370,11 +370,11 @@ func flushAuthCookie(c *gin.Context, cfg *config.Config) {
 
 func redirectOrUnauthorized(c *gin.Context, unauthorizedPathRegexList []*regexp.Regexp) {
 	// Find a potential match into all regexps
-	match := funk.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
+	_, match := lo.Find(unauthorizedPathRegexList, func(reg *regexp.Regexp) bool {
 		return reg.MatchString(c.Request.URL.Path)
 	})
 
-	if match != nil {
+	if match {
 		// Unauthorized error
 		err := cerrors.NewUnauthorizedError("unauthorized")
 		utils.AnswerWithError(c, err)

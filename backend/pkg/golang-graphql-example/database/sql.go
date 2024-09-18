@@ -11,7 +11,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/thoas/go-funk"
+	"github.com/samber/lo"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -177,9 +177,9 @@ func (sdb *sqldb) Connect() error {
 	// Check if there are replica in configuration
 	if len(cfg.Database.ReplicaConnectionURLs) != 0 {
 		// Create connections list
-		conns, _ := funk.Map(cfg.Database.ReplicaConnectionURLs, func(sc *config.CredentialConfig) gorm.Dialector {
+		conns := lo.Map(cfg.Database.ReplicaConnectionURLs, func(sc *config.CredentialConfig, _ int) gorm.Dialector {
 			return openFunction(strings.TrimSpace(sc.Value))
-		}).([]gorm.Dialector)
+		})
 
 		// Inject db resolver configuration
 		err = dbResult.Use(dbresolver.Register(dbresolver.Config{

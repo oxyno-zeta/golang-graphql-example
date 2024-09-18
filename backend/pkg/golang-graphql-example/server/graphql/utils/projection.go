@@ -9,7 +9,6 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/samber/lo"
-	"github.com/thoas/go-funk"
 )
 
 const graphqlFieldTagKey = "graphqlfield"
@@ -179,11 +178,11 @@ func manageFieldProjection(
 	fieldType *reflect.StructField,
 ) error {
 	// Check if field is asked in graphql
-	gfieldInt := funk.Find(gfields, func(gfield graphql.CollectedField) bool {
+	found := lo.ContainsBy(gfields, func(gfield graphql.CollectedField) bool {
 		return gfield.Name == tagValue
 	})
 	// Check if field isn't found
-	if gfieldInt == nil {
+	if !found {
 		// Field isn't found => continue to next field
 		return nil
 	}
