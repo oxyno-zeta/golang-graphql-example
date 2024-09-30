@@ -25,6 +25,16 @@
       "groupName": "golangci/golangci-lint",
       "groupSlug": "golangci_golangci_lint",
       "matchPackageNames": ["golangci/golangci-lint"]
+    },
+    {
+      "matchFileNames": ["backend/**"],
+      "groupName": "backend",
+      "groupSlug": "backend"
+    },
+    {
+      "matchFileNames": ["frontend/**"],
+      "groupName": "frontend",
+      "groupSlug": "frontend"
     }
   ],
   "customManagers": [
