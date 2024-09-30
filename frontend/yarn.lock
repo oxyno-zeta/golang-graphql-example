@@ -6405,7 +6405,7 @@ __metadata:
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.6.2"
     typescript-eslint: "npm:^8.6.0"
-    universal-cookie: "npm:7.1.4"
+    universal-cookie: "npm:7.2.0"
     unplugin-inject-preload: "npm:^3.0.0"
     vite: "npm:^5.4.6"
     vite-imagetools: "npm:^7.0.4"
@@ -11320,13 +11320,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"universal-cookie@npm:7.1.4":
-  version: 7.1.4
-  resolution: "universal-cookie@npm:7.1.4"
+"universal-cookie@npm:7.2.0":
+  version: 7.2.0
+  resolution: "universal-cookie@npm:7.2.0"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
-  checksum: 10/1a3ae4cd37e90838cc0f034374ae73f294b444a377525a43c4dce80dddd32f1ad36a05b38332f8fb446d641df481ecd99b64fdbb008aa82a6ab5c0d2854a89a4
+  checksum: 10/56f217528469a23a703ad19c84451b8a4cee66dee8e8c292a0419df40ffd8f11d38ed778132b223150f775aa5dd31124d07931346e67b7c0d8cbb1a58fdca0df
   languageName: node
   linkType: hard
 
