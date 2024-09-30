@@ -45,6 +45,33 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
 
+#
+## Tool versions
+#
+
+# ? Note: Go install versions are inline because renovate can manage them like that.
+
+# renovate: datasource=github-tags depName=golangci/golangci-lint
+GOLANGCI_LINT_VERSION := "v1.60.3"
+# renovate: datasource=docker depName=dpage/pgadmin4
+PGADMIN_VERSION := "8.12.0"
+# renovate: datasource=docker depName=maildev/maildev
+MAILDEV_VERSION := "1.11.0"
+# renovate: datasource=docker depName=prom/prometheus
+PROMETHEUS_VERSION := "v2.18.0"
+# renovate: datasource=docker depName=grafana/grafana
+GRAFANA_VERSION := "10.4.1"
+# renovate: datasource=docker depName=grafana/tempo
+TEMPO_VERSION := "2.6.0"
+# renovate: datasource=docker depName=postgres
+POSTGRESQL_VERSION := "16"
+# renovate: datasource=docker depName=openpolicyagent/opa
+OPA_VERSION := "0.25.2"
+# renovate: datasource=docker depName=quay.io/keycloak/keycloak
+KEYCLOAK_VERSION := "24.0.1"
+# renovate: datasource=docker depName=rabbitmq
+RABBITMQ_VERSION := "3-management"
+
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
 .DEFAULT_GOAL := code/lint
@@ -193,30 +220,30 @@ down/dev-services:
 .PHONY: setup/dev-services
 setup/dev-services: down/dev-services
 	@echo "Setup dev services"
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev:1.1.0 --incoming-user fake --incoming-pass fakepassword
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --name pgadmin -p 8090:80 --link postgres:postgres -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' -d dpage/pgadmin4:$(PGADMIN_VERSION)
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --name maildev -p 1080:1080 -p 1025:1025 -d maildev/maildev:$(MAILDEV_VERSION) --incoming-user fake --incoming-pass fakepassword
 
 .PHONY: setup/metrics-services
 setup/metrics-services: down/metrics-services
 	@echo "Setup metrics services"
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:v2.18.0 --web.listen-address=:9191
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name grafana -e GF_AUTH_ANONYMOUS_ENABLED=true -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin -e GF_AUTH_DISABLE_LOGIN_FORM=true -e GF_FEATURE_TOGGLES_ENABLE=traceqlEditor -v $(CURDIR)/.local-resources/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml --network=host grafana/grafana:10.4.1
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name tempo  -v $(CURDIR)/.local-resources/tempo/tempo.yaml:/etc/tempo.yaml -p 14268:14268 -p 3200:3200 -p 4318:4318 -p 4317:4317 grafana/tempo:latest -config.file=/etc/tempo.yaml
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name prometheus -v $(CURDIR)/.local-resources/prometheus/prometheus.yml:/prometheus/prometheus.yml --network=host prom/prometheus:$(PROMETHEUS_VERSION) --web.listen-address=:9191
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name grafana -e GF_AUTH_ANONYMOUS_ENABLED=true -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin -e GF_AUTH_DISABLE_LOGIN_FORM=true -e GF_FEATURE_TOGGLES_ENABLE=traceqlEditor -v $(CURDIR)/.local-resources/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml --network=host grafana/grafana:$(GRAFANA_VERSION)
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name tempo  -v $(CURDIR)/.local-resources/tempo/tempo.yaml:/etc/tempo.yaml -p 14268:14268 -p 3200:3200 -p 4318:4318 -p 4317:4317 grafana/tempo:$(TEMPO_VERSION) -config.file=/etc/tempo.yaml
 
 .PHONY: setup/services
 setup/services: down/services
 	@echo "Setup services"
 	mkdir -p .run/postgres || true
-	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/.run/postgres:/var/lib/postgresql/data postgres:16
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e PGDATA=/var/lib/postgresql/data/pgdata -v $(CURDIR)/.run/postgres:/var/lib/postgresql/data postgres:$(POSTGRESQL_VERSION)
 	tar czvf .local-resources/opa/bundle.tar.gz --directory=.local-resources/opa/bundle example/
-	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:0.25.2 run --server --log-level debug --log-format text --bundle /bundle.tar.gz
-	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name keycloak -p 8088:8080 -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_HTTP_RELATIVE_PATH=/auth quay.io/keycloak/keycloak:24.0.1 start-dev --import-realm
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:$(OPA_VERSION) run --server --log-level debug --log-format text --bundle /bundle.tar.gz
+	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name keycloak -p 8088:8080 -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_HTTP_RELATIVE_PATH=/auth quay.io/keycloak/keycloak:$(KEYCLOAK_VERSION) start-dev --import-realm
 	# User: guest / Password: guest
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:$(RABBITMQ_VERSION)
 
 .PHONY: setup/test/integration
 setup/test/integration:
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm --network=host --name postgres-integration-setup -e PGHOST=localhost -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:16 psql -c 'CREATE DATABASE "postgres-integration"' || true
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm --network=host --name postgres-integration-setup -e PGHOST=localhost -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:$(POSTGRESQL_VERSION) psql -c 'CREATE DATABASE "postgres-integration"' || true
 
 .PHONY: setup/dep/all/install
 setup/dep/all/install: setup/dep/lint/install setup/dep/gen/install setup/dep/test/install setup/dep/build/install
@@ -228,7 +255,7 @@ ifndef HAS_GOLANGCI_LINT
 ifndef HAS_CURL
 	$(error You must install curl)
 endif
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin v1.60.3
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin $(GOLANGCI_LINT_VERSION)
 endif
 
 .PHONY: setup/dep/gen/install

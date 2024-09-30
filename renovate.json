@@ -1,3 +1,80 @@
 {
-  "extends": ["config:base"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)"
+  ],
+  "configMigration": true,
+  "labels": ["renovate"],
+  "pre-commit": {
+    "enabled": true
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["vulnerability-alert"]
+  },
+  "packageRules": [
+    {
+      "groupName": "mkdocs",
+      "groupSlug": "mkdocs",
+      "matchPackageNames": ["mkdocs-material", "squidfunk/mkdocs-material"]
+    },
+    {
+      "groupName": "golangci/golangci-lint",
+      "groupSlug": "golangci_golangci_lint",
+      "matchPackageNames": ["golangci/golangci-lint"]
+    }
+  ],
+  "customManagers": [
+    {
+      "fileMatch": ["^backend/Dockerfile.*"],
+      "matchStrings": [
+        "# renovate: datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)"
+      ],
+      "currentValueTemplate": "{{{ replace '_' '.' currentValue }}}",
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "docker.io/library/alpine",
+      "versioningTemplate": "regex:^(?<major>\\d+)[._](?<minor>\\d+)$",
+      "autoReplaceStringTemplate": "# renovate: datasource=repology depName=alpine_{{{newMajor}}}_{{{newMinor}}}"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
+        "^backend/Makefile$",
+        "^backend/Dockerfile.*",
+        "^.github/workflows/.*\\.yml"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( registryUrl=(?<registryUrl>.*?))?\\s.*?_VERSION\\s*[:=]+\\s*\"(?<currentValue>.*)\"\\s"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    },
+    {
+      "fileMatch": ["^backend/Makefile$"],
+      "matchStrings": [
+        "go install (?<depName>[^@]+?)@(?<currentValue>[0-9.-a-zA-Z]+)"
+      ],
+      "datasourceTemplate": "go"
+    }
+  ],
+  "postUpgradeTasks": {
+    "commands": [
+      "cd backend && make setup/dep/gen/install || true",
+      "cd backend && make setup/dep/lint/install || true",
+      "cd backend && make code/generate code/graphql code/lint || true",
+      "cd frontend && yarn install --immutable",
+      "cd frontend && yarn test:update || true"
+    ],
+    "fileFilters": [
+      "backend/go.sum",
+      "backend/go.mod",
+      "**/*.go",
+      "frontend/package.json",
+      "frontend/yarn.lock",
+      "**/*.snap"
+    ],
+    "executionMode": "branch"
+  }
 }
