@@ -29,6 +29,7 @@
   ],
   "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": ["^backend/Dockerfile.*"],
       "matchStrings": [
         "# renovate: datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)"
@@ -52,6 +53,7 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
+      "customType": "regex",
       "fileMatch": ["^backend/Makefile$"],
       "matchStrings": [
         "go install (?<depName>[^@]+?)@(?<currentValue>[0-9.-a-zA-Z]+)"
