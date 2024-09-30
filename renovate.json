@@ -59,23 +59,5 @@
       "datasourceTemplate": "go"
     }
   ],
-  "postUpgradeTasks": {
-    "commands": [
-      "cd backend && make setup/dep/gen/install || true",
-      "cd backend && make setup/dep/lint/install || true",
-      "cd backend && make code/generate code/graphql code/lint || true",
-      "cd frontend && yarn install --immutable",
-      "cd frontend && yarn test:update || true"
-    ],
-    "fileFilters": [
-      "backend/go.sum",
-      "backend/go.mod",
-      "**/*.go",
-      "frontend/package.json",
-      "frontend/yarn.lock",
-      "**/*.snap"
-    ],
-    "executionMode": "branch"
-  },
   "ignorePaths": ["backend/tools/voyager/**"]
 }
