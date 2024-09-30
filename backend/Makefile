@@ -56,11 +56,11 @@ GOLANGCI_LINT_VERSION := "v1.61.0"
 # renovate: datasource=docker depName=dpage/pgadmin4
 PGADMIN_VERSION := "8.12.0"
 # renovate: datasource=docker depName=maildev/maildev
-MAILDEV_VERSION := "1.11.0"
+MAILDEV_VERSION := "2.1.0"
 # renovate: datasource=docker depName=prom/prometheus
 PROMETHEUS_VERSION := "v2.54.1"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "10.4.9"
+GRAFANA_VERSION := "11.2.1"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "2.6.0"
 # renovate: datasource=docker depName=postgres
@@ -68,7 +68,7 @@ POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "0.68.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "24.0.5"
+KEYCLOAK_VERSION := "25.0.6"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "3-management"
 
