@@ -3351,12 +3351,12 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^16.8.0 || ^17.0.0 || ^18.0.0, @types/react@npm:^18.3.7":
-  version: 18.3.7
-  resolution: "@types/react@npm:18.3.7"
+  version: 18.3.10
+  resolution: "@types/react@npm:18.3.10"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/30cfbe33c82e8033df5f70a4f54068f4344a691cff3f2b3901dd678e89ce5477dc8faada4a45d333ea570e1992ca8fda5b096d9deddfafb8c373acababc40c70
+  checksum: 10/cdc946f15fcad62387e6485a2bbef3e45609708fd81e3ce30b03580077bb8a8a1bd0d19858d8602b33c3921bbb8907ddbc9411fd25294a2c2e944907dad8dd67
   languageName: node
   linkType: hard
 
@@ -5811,12 +5811,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:5.1.0-rc-eb3ad065-20240822":
-  version: 5.1.0-rc-eb3ad065-20240822
-  resolution: "eslint-plugin-react-hooks@npm:5.1.0-rc-eb3ad065-20240822"
+"eslint-plugin-react-hooks@npm:5.1.0-rc-fb9a90fa48-20240614":
+  version: 5.1.0-rc-fb9a90fa48-20240614
+  resolution: "eslint-plugin-react-hooks@npm:5.1.0-rc-fb9a90fa48-20240614"
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
-  checksum: 10/6020f024388a73af15075a6c5d85596c358d6b068ecab684a7b78b4b07d357bc5f45c3421d7edaf807bb3aa27064ac0f947c7e8622882939731d5a8439447e2c
+  checksum: 10/993da76357003f0f788d9eb621d463012fb5ad42cf92d3eacbf7498e2a2fa707d77c59f5e940642724cd61340b1256d13cebaa7b8fbaa3c432c03911ef6bd40e
   languageName: node
   linkType: hard
 
@@ -6375,7 +6375,7 @@ __metadata:
     eslint-plugin-jsx-a11y: "npm:^6.10.0"
     eslint-plugin-prettier: "npm:^5.2.1"
     eslint-plugin-react: "npm:^7.36.1"
-    eslint-plugin-react-hooks: "npm:5.1.0-rc-eb3ad065-20240822"
+    eslint-plugin-react-hooks: "npm:5.1.0-rc-fb9a90fa48-20240614"
     eslint-plugin-unicorn: "npm:^55.0.0"
     graphql: "npm:^16.9.0"
     i18next: "npm:^23.15.1"
