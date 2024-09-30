@@ -21,7 +21,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 	"github.com/samber/lo"
-	_ "go.uber.org/automaxprocs"
+	"go.uber.org/automaxprocs/maxprocs"
 )
 
 type services struct {
@@ -89,6 +89,12 @@ func main() {
 
 	// Setup mandatory services
 	setupMandatoryServices(sv, configFolderPath)
+
+	_, err := maxprocs.Set(maxprocs.Logger(sv.logger.Infof))
+	// Check error
+	if err != nil {
+		sv.logger.Fatal(err)
+	}
 
 	// Catch any panic
 	defer func() {
