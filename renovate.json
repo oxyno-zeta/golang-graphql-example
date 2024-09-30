@@ -76,5 +76,6 @@
       "**/*.snap"
     ],
     "executionMode": "branch"
-  }
+  },
+  "ignorePaths": ["backend/tools/voyager/**"]
 }
