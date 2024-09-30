@@ -52,23 +52,23 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v1.60.3"
+GOLANGCI_LINT_VERSION := "v1.61.0"
 # renovate: datasource=docker depName=dpage/pgadmin4
 PGADMIN_VERSION := "8.12.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "1.11.0"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v2.18.0"
+PROMETHEUS_VERSION := "v2.54.1"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "10.4.1"
+GRAFANA_VERSION := "10.4.9"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "2.6.0"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "0.25.2"
+OPA_VERSION := "0.68.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "24.0.1"
+KEYCLOAK_VERSION := "24.0.5"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "3-management"
 
