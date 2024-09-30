@@ -7,29 +7,41 @@
     ":semanticCommitScope(deps)"
   ],
   "configMigration": true,
-  "labels": ["renovate"],
+  "labels": [
+    "renovate"
+  ],
   "pre-commit": {
     "enabled": true
   },
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["vulnerability-alert"]
+    "labels": [
+      "vulnerability-alert"
+    ]
   },
   "packageRules": [
     {
       "groupName": "mkdocs",
       "groupSlug": "mkdocs",
-      "matchPackageNames": ["mkdocs-material", "squidfunk/mkdocs-material"]
+      "matchPackageNames": [
+        "mkdocs-material",
+        "squidfunk/mkdocs-material"
+      ]
     },
     {
       "groupName": "golangci/golangci-lint",
       "groupSlug": "golangci_golangci_lint",
-      "matchPackageNames": ["golangci/golangci-lint"]
+      "matchPackageNames": [
+        "golangci/golangci-lint"
+      ]
     }
   ],
   "customManagers": [
     {
-      "fileMatch": ["^backend/Dockerfile.*"],
+      "customType": "regex",
+      "fileMatch": [
+        "^backend/Dockerfile.*"
+      ],
       "matchStrings": [
         "# renovate: datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)"
       ],
@@ -52,12 +64,17 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
-      "fileMatch": ["^backend/Makefile$"],
+      "customType": "regex",
+      "fileMatch": [
+        "^backend/Makefile$"
+      ],
       "matchStrings": [
         "go install (?<depName>[^@]+?)@(?<currentValue>[0-9.-a-zA-Z]+)"
       ],
       "datasourceTemplate": "go"
     }
   ],
-  "ignorePaths": ["backend/tools/voyager/**"]
+  "ignorePaths": [
+    "backend/tools/voyager/**"
+  ]
 }
