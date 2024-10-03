@@ -2,12 +2,12 @@ module github.com/oxyno-zeta/golang-graphql-example
 
 go 1.22.5
 
-toolchain go1.23.1
+toolchain go1.23.2
 
 require (
 	cirello.io/pglock v1.14.2
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.54
+	github.com/99designs/gqlgen v0.17.55
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20240617120339-2c008e74bff2
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
