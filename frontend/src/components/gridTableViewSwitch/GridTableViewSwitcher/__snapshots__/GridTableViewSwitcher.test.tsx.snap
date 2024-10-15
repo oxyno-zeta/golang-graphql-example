@@ -100,7 +100,8 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;
@@ -327,7 +328,8 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;
@@ -554,7 +556,8 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;
@@ -781,7 +784,8 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;
@@ -1008,7 +1012,8 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;
@@ -1235,7 +1240,8 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;
@@ -1462,7 +1468,8 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
   border-color: var(--variant-outlinedBorder, currentColor);
   background-color: var(--variant-outlinedBg);
   color: var(--variant-outlinedColor);
-  --variant-containedColor: rgba(0, 0, 0, 0.87);
+  color: inherit;
+  border-color: currentColor;
   --variant-containedBg: #e0e0e0;
   border: none;
   padding: 5px 10px;

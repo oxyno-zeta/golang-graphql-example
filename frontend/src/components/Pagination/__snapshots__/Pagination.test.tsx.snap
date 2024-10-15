@@ -66,6 +66,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -85,7 +86,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
@@ -260,6 +261,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -279,7 +281,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
@@ -451,6 +453,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -470,7 +473,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
@@ -644,6 +647,7 @@ exports[`Pagination should display only next page link as enabled with correct u
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -663,7 +667,7 @@ exports[`Pagination should display only next page link as enabled with correct u
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
@@ -837,6 +841,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -856,7 +861,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
@@ -1029,6 +1034,7 @@ exports[`Pagination should display only previous page links as enabled with corr
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -1048,7 +1054,7 @@ exports[`Pagination should display only previous page links as enabled with corr
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
@@ -1221,6 +1227,7 @@ exports[`Pagination should display previous and next page links as enabled with 
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(0, 0, 0, 0.04);
 }
 
 .emotion-1::-moz-focus-inner {
@@ -1240,7 +1247,7 @@ exports[`Pagination should display previous and next page links as enabled with 
 }
 
 .emotion-1:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--IconButton-hoverBg);
 }
 
 @media (hover: none) {
