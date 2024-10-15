@@ -85,6 +85,7 @@ func TransformTodoJSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Todo JSON Key map To Gorm Column map
 func TransformTodoJSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -112,6 +113,7 @@ func TransformTodoJSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Todo Gorm Column map To JSON Key map
 func TransformTodoGormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,

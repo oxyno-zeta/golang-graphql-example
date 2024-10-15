@@ -56,6 +56,18 @@ func (mr *MockServiceMockRecorder) DatabaseMiddleware(arg0 any) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockService)(nil).DatabaseMiddleware), arg0)
 }
 
+// DownFailedConfigReload mocks base method.
+func (m *MockService) DownFailedConfigReload() {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "DownFailedConfigReload")
+}
+
+// DownFailedConfigReload indicates an expected call of DownFailedConfigReload.
+func (mr *MockServiceMockRecorder) DownFailedConfigReload() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DownFailedConfigReload", reflect.TypeOf((*MockService)(nil).DownFailedConfigReload))
+}
+
 // GraphqlMiddleware mocks base method.
 func (m *MockService) GraphqlMiddleware() graphql.HandlerExtension {
 	m.ctrl.T.Helper()
@@ -144,4 +156,16 @@ func (m *MockService) PrometheusHTTPHandler() http.Handler {
 func (mr *MockServiceMockRecorder) PrometheusHTTPHandler() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PrometheusHTTPHandler", reflect.TypeOf((*MockService)(nil).PrometheusHTTPHandler))
+}
+
+// UpFailedConfigReload mocks base method.
+func (m *MockService) UpFailedConfigReload() {
+	m.ctrl.T.Helper()
+	m.ctrl.Call(m, "UpFailedConfigReload")
+}
+
+// UpFailedConfigReload indicates an expected call of UpFailedConfigReload.
+func (mr *MockServiceMockRecorder) UpFailedConfigReload() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpFailedConfigReload", reflect.TypeOf((*MockService)(nil).UpFailedConfigReload))
 }

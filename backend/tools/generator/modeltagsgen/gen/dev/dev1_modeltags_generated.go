@@ -91,6 +91,7 @@ func TransformDev1JSONKeyToGormColumn(jsonKey string) (string, error) {
 	}
 }
 
+// Transform Dev1 JSON Key map To Gorm Column map
 func TransformDev1JSONKeyMapToGormColumnMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
@@ -118,6 +119,7 @@ func TransformDev1JSONKeyMapToGormColumnMap(
 	return m, nil
 }
 
+// Transform Dev1 Gorm Column map To JSON Key map
 func TransformDev1GormColumnMapToJSONKeyMap(
 	input map[string]interface{},
 	ignoreUnsupportedError bool,
