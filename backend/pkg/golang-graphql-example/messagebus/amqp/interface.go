@@ -66,6 +66,8 @@ type ConsumeConfigInput struct {
 	// RetryDelay is the delay between two consume try.
 	// This take actions when the channel is disconnected for example.
 	RetryDelay time.Duration
+	// Disable retry on channel closed
+	DisableRetryOnChannelClosed bool
 	// AutoAck
 	AutoAck bool
 	// Exclusive

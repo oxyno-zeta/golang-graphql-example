@@ -289,7 +289,7 @@ func (as *amqpService) Consume(
 		// Check error
 		if cErr != nil {
 			// Check if channel is closed, if yes, put it in retry
-			if as.consumerChannel.IsClosed() {
+			if as.consumerChannel.IsClosed() && !consumeCfg.DisableRetryOnChannelClosed {
 				// Create error
 				err := errors.New("error detected when tried to consumer: consumer channel not present or closed, retrying after delay")
 				// Log
