@@ -4816,10 +4816,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.6.0, cookie@npm:^0.6.0":
+"cookie@npm:0.6.0":
   version: 0.6.0
   resolution: "cookie@npm:0.6.0"
   checksum: 10/c1f8f2ea7d443b9331680598b0ae4e6af18a618c37606d1bbdc75bec8361cce09fe93e727059a673f2ba24467131a9fb5a4eec76bb1b149c1b3e1ccb268dc583
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "cookie@npm:0.7.2"
+  checksum: 10/24b286c556420d4ba4e9bc09120c9d3db7d28ace2bd0f8ccee82422ce42322f73c8312441271e5eefafbead725980e5996cc02766dbb89a90ac7f5636ede608f
   languageName: node
   linkType: hard
 
@@ -5924,12 +5931,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:5.1.0-rc-eb3ad065-20240822":
-  version: 5.1.0-rc-eb3ad065-20240822
-  resolution: "eslint-plugin-react-hooks@npm:5.1.0-rc-eb3ad065-20240822"
+"eslint-plugin-react-hooks@npm:5.1.0-rc-fb9a90fa48-20240614":
+  version: 5.1.0-rc-fb9a90fa48-20240614
+  resolution: "eslint-plugin-react-hooks@npm:5.1.0-rc-fb9a90fa48-20240614"
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
-  checksum: 10/6020f024388a73af15075a6c5d85596c358d6b068ecab684a7b78b4b07d357bc5f45c3421d7edaf807bb3aa27064ac0f947c7e8622882939731d5a8439447e2c
+  checksum: 10/993da76357003f0f788d9eb621d463012fb5ad42cf92d3eacbf7498e2a2fa707d77c59f5e940642724cd61340b1256d13cebaa7b8fbaa3c432c03911ef6bd40e
   languageName: node
   linkType: hard
 
@@ -6506,7 +6513,7 @@ __metadata:
     eslint-plugin-jsx-a11y: "npm:6.10.0"
     eslint-plugin-prettier: "npm:5.2.1"
     eslint-plugin-react: "npm:7.37.1"
-    eslint-plugin-react-hooks: "npm:5.1.0-rc-eb3ad065-20240822"
+    eslint-plugin-react-hooks: "npm:5.1.0-rc-fb9a90fa48-20240614"
     eslint-plugin-unicorn: "npm:56.0.0"
     graphql: "npm:16.9.0"
     i18next: "npm:23.16.0"
@@ -6536,7 +6543,7 @@ __metadata:
     ts-node: "npm:10.9.2"
     typescript: "npm:5.6.3"
     typescript-eslint: "npm:8.10.0"
-    universal-cookie: "npm:7.1.4"
+    universal-cookie: "npm:7.2.1"
     unplugin-inject-preload: "npm:3.0.0"
     vite: "npm:5.4.9"
     vite-imagetools: "npm:7.0.4"
@@ -11444,13 +11451,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"universal-cookie@npm:7.1.4":
-  version: 7.1.4
-  resolution: "universal-cookie@npm:7.1.4"
+"universal-cookie@npm:7.2.1":
+  version: 7.2.1
+  resolution: "universal-cookie@npm:7.2.1"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
-    cookie: "npm:^0.6.0"
-  checksum: 10/1a3ae4cd37e90838cc0f034374ae73f294b444a377525a43c4dce80dddd32f1ad36a05b38332f8fb446d641df481ecd99b64fdbb008aa82a6ab5c0d2854a89a4
+    cookie: "npm:^0.7.2"
+  checksum: 10/82c208a5d4983a6c5d0fac59fe6d1ea2c0d6ce95652c8b61ed7118350b33f692b801003da898a9cdf2094280cee92b31bb02fa1536d7d446948b050389c39eb3
   languageName: node
   linkType: hard
 
