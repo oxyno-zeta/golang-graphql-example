@@ -10,6 +10,7 @@ export default {
   args: {
     pageInfo: {
       hasNextPage: true,
+      hasPreviousPage: false,
       endCursor: 'fake-end',
     },
     maxPaginationSize: 10,
