@@ -10,11 +10,11 @@ func (as *amqpService) ExtraSetup(input *ExtraSetupInput) error {
 	// Get a valid channel
 	chann := as.consumerChannel
 	// Check if it isn't opened or null
-	if chann == nil || !chann.IsClosed() {
+	if chann == nil || chann.IsClosed() {
 		chann = as.publisherChannel
 	}
 	// Check if it isn't opened or null
-	if chann == nil || !chann.IsClosed() {
+	if chann == nil || chann.IsClosed() {
 		return errors.WithStack(ErrNoActiveChannelFound)
 	}
 
