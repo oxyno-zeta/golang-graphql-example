@@ -22,7 +22,7 @@ type Service interface {
 	// That will be launched only when all incoming requests are finished.
 	OnExit(hook func())
 	// Middleware to count active requests.
-	ActiveRequestCounterMiddleware() gin.HandlerFunc
+	ActiveRequestCounterMiddleware(ignoredPathList []string) gin.HandlerFunc
 	// Is stopping system will return true if the application is stopping.
 	IsStoppingSystem() bool
 	// IncreaseActiveRequestCounter will increase active request counter by one.

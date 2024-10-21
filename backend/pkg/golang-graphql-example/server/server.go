@@ -157,7 +157,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 		// Answer
 		utils.AnswerWithError(c, err)
 	}))
-	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware())
+	router.Use(svr.signalHandlerSvc.ActiveRequestCounterMiddleware([]string{}))
 	router.Use(correlationid.HTTPMiddleware(svr.logger))
 	router.Use(svr.tracingSvc.HTTPMiddlewareList(correlationid.GetFromContext)...)
 	router.Use(log.Middleware(svr.logger, correlationid.GetFromGin, tracing.GetTraceIDFromContext))

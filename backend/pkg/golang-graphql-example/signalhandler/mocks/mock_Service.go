@@ -42,17 +42,17 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // ActiveRequestCounterMiddleware mocks base method.
-func (m *MockService) ActiveRequestCounterMiddleware() gin.HandlerFunc {
+func (m *MockService) ActiveRequestCounterMiddleware(arg0 []string) gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ActiveRequestCounterMiddleware")
+	ret := m.ctrl.Call(m, "ActiveRequestCounterMiddleware", arg0)
 	ret0, _ := ret[0].(gin.HandlerFunc)
 	return ret0
 }
 
 // ActiveRequestCounterMiddleware indicates an expected call of ActiveRequestCounterMiddleware.
-func (mr *MockServiceMockRecorder) ActiveRequestCounterMiddleware() *gomock.Call {
+func (mr *MockServiceMockRecorder) ActiveRequestCounterMiddleware(arg0 any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ActiveRequestCounterMiddleware", reflect.TypeOf((*MockService)(nil).ActiveRequestCounterMiddleware))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ActiveRequestCounterMiddleware", reflect.TypeOf((*MockService)(nil).ActiveRequestCounterMiddleware), arg0)
 }
 
 // DecreaseActiveRequestCounter mocks base method.
