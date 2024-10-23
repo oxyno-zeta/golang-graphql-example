@@ -55,6 +55,7 @@ export default defineConfig({
     },
     sourcemap: true,
   },
+  assetsInclude: ['**/*.png', '**/*.jpg'],
   cacheDir: './.vite-cache',
   server: {
     port: 3000,
