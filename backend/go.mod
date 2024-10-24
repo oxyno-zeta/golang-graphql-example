@@ -5,7 +5,7 @@ go 1.22.5
 toolchain go1.23.2
 
 require (
-	cirello.io/pglock v1.14.2
+	cirello.io/pglock v1.15.0
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.55
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20240617120339-2c008e74bff2
@@ -44,14 +44,14 @@ require (
 	go.opentelemetry.io/otel/trace v1.31.0
 	go.uber.org/automaxprocs v1.6.0
 	go.uber.org/goleak v1.3.0
-	go.uber.org/mock v0.4.0
+	go.uber.org/mock v0.5.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/oauth2 v0.23.0
 	gorm.io/driver/postgres v1.5.9
 	gorm.io/driver/sqlite v1.5.6
 	gorm.io/gorm v1.25.12
 	gorm.io/plugin/dbresolver v1.5.3
-	gorm.io/plugin/opentelemetry v0.1.7
+	gorm.io/plugin/opentelemetry v0.1.8
 	gorm.io/plugin/prometheus v0.1.0
 )
 
