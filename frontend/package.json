@@ -35,7 +35,7 @@
     "react-i18next": "15.1.1",
     "react-router-dom": "6.28.0",
     "react-window": "1.8.10",
-    "universal-cookie": "7.2.2",
+    "universal-cookie": "7.1.4",
     "yup": "1.4.0"
   },
   "scripts": {
