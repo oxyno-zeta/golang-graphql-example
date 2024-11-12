@@ -27,10 +27,16 @@ function FormInput<T extends FieldValues>({ control, name, textFieldProps = {} }
       const mess = fieldState.error.message as YupTranslateErrorModel;
 
       // Add helper text
-      errorProps.helperText = <>{t(mess.key, mess.values)}</>;
+      errorProps.helperText = t(mess.key, mess.values) as string;
     } else if (typeof fieldState.error.message === 'string') {
       // Add helper text
       errorProps.helperText = t(fieldState.error.message);
+    } else if (Array.isArray(fieldState.error)) {
+      errorProps.helperText = fieldState.error.reduce((acc, v) => {
+        const mess = v.message as YupTranslateErrorModel;
+
+        return `${acc} ${t(mess.key, mess.values)}` as string;
+      }, '');
     }
   }
 
