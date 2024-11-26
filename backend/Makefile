@@ -262,26 +262,26 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.54
+	$(GO) install github.com/99designs/gqlgen@v0.17.57
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
-	$(GO) install go.uber.org/mock/mockgen@v0.4.0
+	$(GO) install go.uber.org/mock/mockgen@v0.5.0
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.23.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.27.0
 endif
 
 .PHONY: setup/dep/test/install
 setup/dep/test/install: setup/dep/install
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
-	$(GO) install gotest.tools/gotestsum@v1.11.0
+	$(GO) install gotest.tools/gotestsum@v1.12.0
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
-	$(GO) install github.com/boumenot/gocover-cobertura@v1.2.0
+	$(GO) install github.com/boumenot/gocover-cobertura@v1.3.0
 endif
 
 .PHONY: setup/dep/build/install
