@@ -69,7 +69,7 @@ POSTGRESQL_VERSION := "16"
 OPA_VERSION := "0.70.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.0.6"
-# renovate: datasource=docker depName=rabbitmq
+# renovate: datasource=docker depName=library/rabbitmq
 RABBITMQ_VERSION := "3-management"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
