@@ -55,10 +55,12 @@
       "fileMatch": [
         "^backend/Makefile$",
         "^backend/Dockerfile.*",
+        "^backend/.mise.toml",
+        "^frontend/.mise.toml",
         "^.github/workflows/.*\\.yml"
       ],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( registryUrl=(?<registryUrl>.*?))?\\s.*?_VERSION\\s*[:=]+\\s*\"(?<currentValue>.*)\"\\s"
+        "#\\s*renovate:\\s*datasource=(?<datasource>.*?)( depName=(?<depName>.*?))?( versioning=(?<versioning>.*?))?( registryUrl=(?<registryUrl>.*?))?\\s.*\\s*[ :=]+\\s*[\"'](?<currentValue>.*)[\"']\\s"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
