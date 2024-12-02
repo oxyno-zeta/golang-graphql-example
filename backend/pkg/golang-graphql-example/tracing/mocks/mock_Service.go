@@ -24,6 +24,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -86,17 +87,17 @@ func (mr *MockServiceMockRecorder) GraphqlMiddleware() *gomock.Call {
 }
 
 // HTTPMiddlewareList mocks base method.
-func (m *MockService) HTTPMiddlewareList(arg0 func(context.Context) string) []gin.HandlerFunc {
+func (m *MockService) HTTPMiddlewareList(getRequestID func(context.Context) string) []gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "HTTPMiddlewareList", arg0)
+	ret := m.ctrl.Call(m, "HTTPMiddlewareList", getRequestID)
 	ret0, _ := ret[0].([]gin.HandlerFunc)
 	return ret0
 }
 
 // HTTPMiddlewareList indicates an expected call of HTTPMiddlewareList.
-func (mr *MockServiceMockRecorder) HTTPMiddlewareList(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) HTTPMiddlewareList(getRequestID any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HTTPMiddlewareList", reflect.TypeOf((*MockService)(nil).HTTPMiddlewareList), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HTTPMiddlewareList", reflect.TypeOf((*MockService)(nil).HTTPMiddlewareList), getRequestID)
 }
 
 // InitializeAndReload mocks base method.
@@ -114,16 +115,16 @@ func (mr *MockServiceMockRecorder) InitializeAndReload() *gomock.Call {
 }
 
 // StartTrace mocks base method.
-func (m *MockService) StartTrace(arg0 context.Context, arg1 string) (context.Context, tracing.Trace) {
+func (m *MockService) StartTrace(ctx context.Context, operationName string) (context.Context, tracing.Trace) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "StartTrace", arg0, arg1)
+	ret := m.ctrl.Call(m, "StartTrace", ctx, operationName)
 	ret0, _ := ret[0].(context.Context)
 	ret1, _ := ret[1].(tracing.Trace)
 	return ret0, ret1
 }
 
 // StartTrace indicates an expected call of StartTrace.
-func (mr *MockServiceMockRecorder) StartTrace(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) StartTrace(ctx, operationName any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), ctx, operationName)
 }

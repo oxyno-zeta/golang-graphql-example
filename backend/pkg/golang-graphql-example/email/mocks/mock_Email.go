@@ -22,6 +22,7 @@ import (
 type MockEmail struct {
 	ctrl     *gomock.Controller
 	recorder *MockEmailMockRecorder
+	isgomock struct{}
 }
 
 // MockEmailMockRecorder is the mock recorder for MockEmail.
@@ -42,107 +43,107 @@ func (m *MockEmail) EXPECT() *MockEmailMockRecorder {
 }
 
 // AddAttachment mocks base method.
-func (m *MockEmail) AddAttachment(arg0 []byte, arg1, arg2 string) error {
+func (m *MockEmail) AddAttachment(data []byte, filename, mimeType string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddAttachment", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "AddAttachment", data, filename, mimeType)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // AddAttachment indicates an expected call of AddAttachment.
-func (mr *MockEmailMockRecorder) AddAttachment(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddAttachment(data, filename, mimeType any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddAttachment", reflect.TypeOf((*MockEmail)(nil).AddAttachment), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddAttachment", reflect.TypeOf((*MockEmail)(nil).AddAttachment), data, filename, mimeType)
 }
 
 // AddAttachmentFile mocks base method.
-func (m *MockEmail) AddAttachmentFile(arg0 string) error {
+func (m *MockEmail) AddAttachmentFile(filePath string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddAttachmentFile", arg0)
+	ret := m.ctrl.Call(m, "AddAttachmentFile", filePath)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // AddAttachmentFile indicates an expected call of AddAttachmentFile.
-func (mr *MockEmailMockRecorder) AddAttachmentFile(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddAttachmentFile(filePath any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddAttachmentFile", reflect.TypeOf((*MockEmail)(nil).AddAttachmentFile), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddAttachmentFile", reflect.TypeOf((*MockEmail)(nil).AddAttachmentFile), filePath)
 }
 
 // AddBcc mocks base method.
-func (m *MockEmail) AddBcc(arg0 ...string) {
+func (m *MockEmail) AddBcc(addresses ...string) {
 	m.ctrl.T.Helper()
 	varargs := []any{}
-	for _, a := range arg0 {
+	for _, a := range addresses {
 		varargs = append(varargs, a)
 	}
 	m.ctrl.Call(m, "AddBcc", varargs...)
 }
 
 // AddBcc indicates an expected call of AddBcc.
-func (mr *MockEmailMockRecorder) AddBcc(arg0 ...any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddBcc(addresses ...any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddBcc", reflect.TypeOf((*MockEmail)(nil).AddBcc), arg0...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddBcc", reflect.TypeOf((*MockEmail)(nil).AddBcc), addresses...)
 }
 
 // AddCc mocks base method.
-func (m *MockEmail) AddCc(arg0 ...string) {
+func (m *MockEmail) AddCc(addresses ...string) {
 	m.ctrl.T.Helper()
 	varargs := []any{}
-	for _, a := range arg0 {
+	for _, a := range addresses {
 		varargs = append(varargs, a)
 	}
 	m.ctrl.Call(m, "AddCc", varargs...)
 }
 
 // AddCc indicates an expected call of AddCc.
-func (mr *MockEmailMockRecorder) AddCc(arg0 ...any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddCc(addresses ...any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddCc", reflect.TypeOf((*MockEmail)(nil).AddCc), arg0...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddCc", reflect.TypeOf((*MockEmail)(nil).AddCc), addresses...)
 }
 
 // AddInlineAttachment mocks base method.
-func (m *MockEmail) AddInlineAttachment(arg0 []byte, arg1, arg2 string) error {
+func (m *MockEmail) AddInlineAttachment(data []byte, filename, mimeType string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddInlineAttachment", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "AddInlineAttachment", data, filename, mimeType)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // AddInlineAttachment indicates an expected call of AddInlineAttachment.
-func (mr *MockEmailMockRecorder) AddInlineAttachment(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddInlineAttachment(data, filename, mimeType any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddInlineAttachment", reflect.TypeOf((*MockEmail)(nil).AddInlineAttachment), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddInlineAttachment", reflect.TypeOf((*MockEmail)(nil).AddInlineAttachment), data, filename, mimeType)
 }
 
 // AddInlineAttachmentFile mocks base method.
-func (m *MockEmail) AddInlineAttachmentFile(arg0 string) error {
+func (m *MockEmail) AddInlineAttachmentFile(filePath string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AddInlineAttachmentFile", arg0)
+	ret := m.ctrl.Call(m, "AddInlineAttachmentFile", filePath)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // AddInlineAttachmentFile indicates an expected call of AddInlineAttachmentFile.
-func (mr *MockEmailMockRecorder) AddInlineAttachmentFile(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddInlineAttachmentFile(filePath any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddInlineAttachmentFile", reflect.TypeOf((*MockEmail)(nil).AddInlineAttachmentFile), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddInlineAttachmentFile", reflect.TypeOf((*MockEmail)(nil).AddInlineAttachmentFile), filePath)
 }
 
 // AddTo mocks base method.
-func (m *MockEmail) AddTo(arg0 ...string) {
+func (m *MockEmail) AddTo(addresses ...string) {
 	m.ctrl.T.Helper()
 	varargs := []any{}
-	for _, a := range arg0 {
+	for _, a := range addresses {
 		varargs = append(varargs, a)
 	}
 	m.ctrl.Call(m, "AddTo", varargs...)
 }
 
 // AddTo indicates an expected call of AddTo.
-func (mr *MockEmailMockRecorder) AddTo(arg0 ...any) *gomock.Call {
+func (mr *MockEmailMockRecorder) AddTo(addresses ...any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddTo", reflect.TypeOf((*MockEmail)(nil).AddTo), arg0...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddTo", reflect.TypeOf((*MockEmail)(nil).AddTo), addresses...)
 }
 
 // GetEmail mocks base method.
@@ -160,97 +161,97 @@ func (mr *MockEmailMockRecorder) GetEmail() *gomock.Call {
 }
 
 // SetDate mocks base method.
-func (m *MockEmail) SetDate(arg0 time.Time) {
+func (m *MockEmail) SetDate(dateTime time.Time) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetDate", arg0)
+	m.ctrl.Call(m, "SetDate", dateTime)
 }
 
 // SetDate indicates an expected call of SetDate.
-func (mr *MockEmailMockRecorder) SetDate(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetDate(dateTime any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDate", reflect.TypeOf((*MockEmail)(nil).SetDate), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetDate", reflect.TypeOf((*MockEmail)(nil).SetDate), dateTime)
 }
 
 // SetFrom mocks base method.
-func (m *MockEmail) SetFrom(arg0 string) {
+func (m *MockEmail) SetFrom(address string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetFrom", arg0)
+	m.ctrl.Call(m, "SetFrom", address)
 }
 
 // SetFrom indicates an expected call of SetFrom.
-func (mr *MockEmailMockRecorder) SetFrom(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetFrom(address any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetFrom", reflect.TypeOf((*MockEmail)(nil).SetFrom), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetFrom", reflect.TypeOf((*MockEmail)(nil).SetFrom), address)
 }
 
 // SetHTMLBody mocks base method.
-func (m *MockEmail) SetHTMLBody(arg0 string) {
+func (m *MockEmail) SetHTMLBody(body string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetHTMLBody", arg0)
+	m.ctrl.Call(m, "SetHTMLBody", body)
 }
 
 // SetHTMLBody indicates an expected call of SetHTMLBody.
-func (mr *MockEmailMockRecorder) SetHTMLBody(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetHTMLBody(body any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetHTMLBody", reflect.TypeOf((*MockEmail)(nil).SetHTMLBody), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetHTMLBody", reflect.TypeOf((*MockEmail)(nil).SetHTMLBody), body)
 }
 
 // SetPriority mocks base method.
-func (m *MockEmail) SetPriority(arg0 email.Priority) {
+func (m *MockEmail) SetPriority(priority email.Priority) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetPriority", arg0)
+	m.ctrl.Call(m, "SetPriority", priority)
 }
 
 // SetPriority indicates an expected call of SetPriority.
-func (mr *MockEmailMockRecorder) SetPriority(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetPriority(priority any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetPriority", reflect.TypeOf((*MockEmail)(nil).SetPriority), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetPriority", reflect.TypeOf((*MockEmail)(nil).SetPriority), priority)
 }
 
 // SetReplyTo mocks base method.
-func (m *MockEmail) SetReplyTo(arg0 string) {
+func (m *MockEmail) SetReplyTo(address string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetReplyTo", arg0)
+	m.ctrl.Call(m, "SetReplyTo", address)
 }
 
 // SetReplyTo indicates an expected call of SetReplyTo.
-func (mr *MockEmailMockRecorder) SetReplyTo(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetReplyTo(address any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetReplyTo", reflect.TypeOf((*MockEmail)(nil).SetReplyTo), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetReplyTo", reflect.TypeOf((*MockEmail)(nil).SetReplyTo), address)
 }
 
 // SetSender mocks base method.
-func (m *MockEmail) SetSender(arg0 string) {
+func (m *MockEmail) SetSender(address string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetSender", arg0)
+	m.ctrl.Call(m, "SetSender", address)
 }
 
 // SetSender indicates an expected call of SetSender.
-func (mr *MockEmailMockRecorder) SetSender(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetSender(address any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSender", reflect.TypeOf((*MockEmail)(nil).SetSender), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSender", reflect.TypeOf((*MockEmail)(nil).SetSender), address)
 }
 
 // SetSubject mocks base method.
-func (m *MockEmail) SetSubject(arg0 string) {
+func (m *MockEmail) SetSubject(subject string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetSubject", arg0)
+	m.ctrl.Call(m, "SetSubject", subject)
 }
 
 // SetSubject indicates an expected call of SetSubject.
-func (mr *MockEmailMockRecorder) SetSubject(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetSubject(subject any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSubject", reflect.TypeOf((*MockEmail)(nil).SetSubject), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetSubject", reflect.TypeOf((*MockEmail)(nil).SetSubject), subject)
 }
 
 // SetTextBody mocks base method.
-func (m *MockEmail) SetTextBody(arg0 string) {
+func (m *MockEmail) SetTextBody(body string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetTextBody", arg0)
+	m.ctrl.Call(m, "SetTextBody", body)
 }
 
 // SetTextBody indicates an expected call of SetTextBody.
-func (mr *MockEmailMockRecorder) SetTextBody(arg0 any) *gomock.Call {
+func (mr *MockEmailMockRecorder) SetTextBody(body any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTextBody", reflect.TypeOf((*MockEmail)(nil).SetTextBody), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTextBody", reflect.TypeOf((*MockEmail)(nil).SetTextBody), body)
 }

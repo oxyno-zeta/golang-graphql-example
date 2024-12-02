@@ -22,6 +22,7 @@ import (
 type MockTrace struct {
 	ctrl     *gomock.Controller
 	recorder *MockTraceMockRecorder
+	isgomock struct{}
 }
 
 // MockTraceMockRecorder is the mock recorder for MockTrace.
@@ -54,18 +55,18 @@ func (mr *MockTraceMockRecorder) Finish() *gomock.Call {
 }
 
 // GetChildTrace mocks base method.
-func (m *MockTrace) GetChildTrace(arg0 context.Context, arg1 string) (context.Context, tracing.Trace) {
+func (m *MockTrace) GetChildTrace(ctx context.Context, operationName string) (context.Context, tracing.Trace) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetChildTrace", arg0, arg1)
+	ret := m.ctrl.Call(m, "GetChildTrace", ctx, operationName)
 	ret0, _ := ret[0].(context.Context)
 	ret1, _ := ret[1].(tracing.Trace)
 	return ret0, ret1
 }
 
 // GetChildTrace indicates an expected call of GetChildTrace.
-func (mr *MockTraceMockRecorder) GetChildTrace(arg0, arg1 any) *gomock.Call {
+func (mr *MockTraceMockRecorder) GetChildTrace(ctx, operationName any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChildTrace", reflect.TypeOf((*MockTrace)(nil).GetChildTrace), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChildTrace", reflect.TypeOf((*MockTrace)(nil).GetChildTrace), ctx, operationName)
 }
 
 // GetTraceID mocks base method.
@@ -83,27 +84,27 @@ func (mr *MockTraceMockRecorder) GetTraceID() *gomock.Call {
 }
 
 // InjectInHTTPHeader mocks base method.
-func (m *MockTrace) InjectInHTTPHeader(arg0 http.Header) {
+func (m *MockTrace) InjectInHTTPHeader(header http.Header) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "InjectInHTTPHeader", arg0)
+	m.ctrl.Call(m, "InjectInHTTPHeader", header)
 }
 
 // InjectInHTTPHeader indicates an expected call of InjectInHTTPHeader.
-func (mr *MockTraceMockRecorder) InjectInHTTPHeader(arg0 any) *gomock.Call {
+func (mr *MockTraceMockRecorder) InjectInHTTPHeader(header any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InjectInHTTPHeader", reflect.TypeOf((*MockTrace)(nil).InjectInHTTPHeader), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InjectInHTTPHeader", reflect.TypeOf((*MockTrace)(nil).InjectInHTTPHeader), header)
 }
 
 // InjectInTextMap mocks base method.
-func (m *MockTrace) InjectInTextMap(arg0 map[string]string) {
+func (m *MockTrace) InjectInTextMap(textMap map[string]string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "InjectInTextMap", arg0)
+	m.ctrl.Call(m, "InjectInTextMap", textMap)
 }
 
 // InjectInTextMap indicates an expected call of InjectInTextMap.
-func (mr *MockTraceMockRecorder) InjectInTextMap(arg0 any) *gomock.Call {
+func (mr *MockTraceMockRecorder) InjectInTextMap(textMap any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InjectInTextMap", reflect.TypeOf((*MockTrace)(nil).InjectInTextMap), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InjectInTextMap", reflect.TypeOf((*MockTrace)(nil).InjectInTextMap), textMap)
 }
 
 // MarkAsError mocks base method.
@@ -119,25 +120,25 @@ func (mr *MockTraceMockRecorder) MarkAsError() *gomock.Call {
 }
 
 // SetTag mocks base method.
-func (m *MockTrace) SetTag(arg0 string, arg1 any) {
+func (m *MockTrace) SetTag(key string, value any) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetTag", arg0, arg1)
+	m.ctrl.Call(m, "SetTag", key, value)
 }
 
 // SetTag indicates an expected call of SetTag.
-func (mr *MockTraceMockRecorder) SetTag(arg0, arg1 any) *gomock.Call {
+func (mr *MockTraceMockRecorder) SetTag(key, value any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTag", reflect.TypeOf((*MockTrace)(nil).SetTag), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTag", reflect.TypeOf((*MockTrace)(nil).SetTag), key, value)
 }
 
 // SetTags mocks base method.
-func (m *MockTrace) SetTags(arg0 map[string]any) {
+func (m *MockTrace) SetTags(tags map[string]any) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetTags", arg0)
+	m.ctrl.Call(m, "SetTags", tags)
 }
 
 // SetTags indicates an expected call of SetTags.
-func (mr *MockTraceMockRecorder) SetTags(arg0 any) *gomock.Call {
+func (mr *MockTraceMockRecorder) SetTags(tags any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTags", reflect.TypeOf((*MockTrace)(nil).SetTags), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetTags", reflect.TypeOf((*MockTrace)(nil).SetTags), tags)
 }

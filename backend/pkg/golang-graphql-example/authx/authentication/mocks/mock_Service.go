@@ -21,6 +21,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -41,29 +42,29 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // Middleware mocks base method.
-func (m *MockService) Middleware(arg0 []*regexp.Regexp) gin.HandlerFunc {
+func (m *MockService) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Middleware", arg0)
+	ret := m.ctrl.Call(m, "Middleware", unauthorizedPathRegexList)
 	ret0, _ := ret[0].(gin.HandlerFunc)
 	return ret0
 }
 
 // Middleware indicates an expected call of Middleware.
-func (mr *MockServiceMockRecorder) Middleware(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Middleware(unauthorizedPathRegexList any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Middleware", reflect.TypeOf((*MockService)(nil).Middleware), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Middleware", reflect.TypeOf((*MockService)(nil).Middleware), unauthorizedPathRegexList)
 }
 
 // OIDCEndpoints mocks base method.
-func (m *MockService) OIDCEndpoints(arg0 gin.IRouter) error {
+func (m *MockService) OIDCEndpoints(router gin.IRouter) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "OIDCEndpoints", arg0)
+	ret := m.ctrl.Call(m, "OIDCEndpoints", router)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // OIDCEndpoints indicates an expected call of OIDCEndpoints.
-func (mr *MockServiceMockRecorder) OIDCEndpoints(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) OIDCEndpoints(router any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OIDCEndpoints", reflect.TypeOf((*MockService)(nil).OIDCEndpoints), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OIDCEndpoints", reflect.TypeOf((*MockService)(nil).OIDCEndpoints), router)
 }

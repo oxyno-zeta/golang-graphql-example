@@ -22,6 +22,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -84,31 +85,31 @@ func (mr *MockServiceMockRecorder) Connect() *gomock.Call {
 }
 
 // Consume mocks base method.
-func (m *MockService) Consume(arg0 context.Context, arg1 func() *amqpbusmessage.ConsumeConfigInput, arg2 func(context.Context, *amqp091.Delivery) error) error {
+func (m *MockService) Consume(ctx context.Context, getConsumeCfg func() *amqpbusmessage.ConsumeConfigInput, cb func(context.Context, *amqp091.Delivery) error) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Consume", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "Consume", ctx, getConsumeCfg, cb)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // Consume indicates an expected call of Consume.
-func (mr *MockServiceMockRecorder) Consume(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Consume(ctx, getConsumeCfg, cb any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Consume", reflect.TypeOf((*MockService)(nil).Consume), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Consume", reflect.TypeOf((*MockService)(nil).Consume), ctx, getConsumeCfg, cb)
 }
 
 // ExtraSetup mocks base method.
-func (m *MockService) ExtraSetup(arg0 *amqpbusmessage.ExtraSetupInput) error {
+func (m *MockService) ExtraSetup(input *amqpbusmessage.ExtraSetupInput) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ExtraSetup", arg0)
+	ret := m.ctrl.Call(m, "ExtraSetup", input)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // ExtraSetup indicates an expected call of ExtraSetup.
-func (mr *MockServiceMockRecorder) ExtraSetup(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) ExtraSetup(input any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtraSetup", reflect.TypeOf((*MockService)(nil).ExtraSetup), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExtraSetup", reflect.TypeOf((*MockService)(nil).ExtraSetup), input)
 }
 
 // Ping mocks base method.
@@ -126,17 +127,17 @@ func (mr *MockServiceMockRecorder) Ping() *gomock.Call {
 }
 
 // Publish mocks base method.
-func (m *MockService) Publish(arg0 context.Context, arg1 *amqp091.Publishing, arg2 *amqpbusmessage.PublishConfigInput) error {
+func (m *MockService) Publish(ctx context.Context, messageCfg *amqp091.Publishing, publishCfg *amqpbusmessage.PublishConfigInput) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Publish", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "Publish", ctx, messageCfg, publishCfg)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // Publish indicates an expected call of Publish.
-func (mr *MockServiceMockRecorder) Publish(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Publish(ctx, messageCfg, publishCfg any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Publish", reflect.TypeOf((*MockService)(nil).Publish), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Publish", reflect.TypeOf((*MockService)(nil).Publish), ctx, messageCfg, publishCfg)
 }
 
 // Reconnect mocks base method.

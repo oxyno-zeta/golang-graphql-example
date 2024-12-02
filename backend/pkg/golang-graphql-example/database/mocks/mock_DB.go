@@ -23,6 +23,7 @@ import (
 type MockDB struct {
 	ctrl     *gomock.Controller
 	recorder *MockDBMockRecorder
+	isgomock struct{}
 }
 
 // MockDBMockRecorder is the mock recorder for MockDB.
@@ -71,10 +72,10 @@ func (mr *MockDBMockRecorder) Connect() *gomock.Call {
 }
 
 // ExecuteTransaction mocks base method.
-func (m *MockDB) ExecuteTransaction(arg0 context.Context, arg1 func(context.Context) error, arg2 ...database.TransactionOption) error {
+func (m *MockDB) ExecuteTransaction(ctx context.Context, cb func(context.Context) error, opts ...database.TransactionOption) error {
 	m.ctrl.T.Helper()
-	varargs := []any{arg0, arg1}
-	for _, a := range arg2 {
+	varargs := []any{ctx, cb}
+	for _, a := range opts {
 		varargs = append(varargs, a)
 	}
 	ret := m.ctrl.Call(m, "ExecuteTransaction", varargs...)
@@ -83,9 +84,9 @@ func (m *MockDB) ExecuteTransaction(arg0 context.Context, arg1 func(context.Cont
 }
 
 // ExecuteTransaction indicates an expected call of ExecuteTransaction.
-func (mr *MockDBMockRecorder) ExecuteTransaction(arg0, arg1 any, arg2 ...any) *gomock.Call {
+func (mr *MockDBMockRecorder) ExecuteTransaction(ctx, cb any, opts ...any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	varargs := append([]any{arg0, arg1}, arg2...)
+	varargs := append([]any{ctx, cb}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ExecuteTransaction", reflect.TypeOf((*MockDB)(nil).ExecuteTransaction), varargs...)
 }
 
@@ -119,17 +120,17 @@ func (mr *MockDBMockRecorder) GetSQLDB() *gomock.Call {
 }
 
 // GetTransactionalOrDefaultGormDB mocks base method.
-func (m *MockDB) GetTransactionalOrDefaultGormDB(arg0 context.Context) *gorm.DB {
+func (m *MockDB) GetTransactionalOrDefaultGormDB(ctx context.Context) *gorm.DB {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetTransactionalOrDefaultGormDB", arg0)
+	ret := m.ctrl.Call(m, "GetTransactionalOrDefaultGormDB", ctx)
 	ret0, _ := ret[0].(*gorm.DB)
 	return ret0
 }
 
 // GetTransactionalOrDefaultGormDB indicates an expected call of GetTransactionalOrDefaultGormDB.
-func (mr *MockDBMockRecorder) GetTransactionalOrDefaultGormDB(arg0 any) *gomock.Call {
+func (mr *MockDBMockRecorder) GetTransactionalOrDefaultGormDB(ctx any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransactionalOrDefaultGormDB", reflect.TypeOf((*MockDB)(nil).GetTransactionalOrDefaultGormDB), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransactionalOrDefaultGormDB", reflect.TypeOf((*MockDB)(nil).GetTransactionalOrDefaultGormDB), ctx)
 }
 
 // Ping mocks base method.

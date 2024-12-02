@@ -20,6 +20,7 @@ import (
 type MockManager struct {
 	ctrl     *gomock.Controller
 	recorder *MockManagerMockRecorder
+	isgomock struct{}
 }
 
 // MockManagerMockRecorder is the mock recorder for MockManager.
@@ -40,15 +41,15 @@ func (m *MockManager) EXPECT() *MockManagerMockRecorder {
 }
 
 // AddOnChangeHook mocks base method.
-func (m *MockManager) AddOnChangeHook(arg0 *config.HookDefinition) {
+func (m *MockManager) AddOnChangeHook(input *config.HookDefinition) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "AddOnChangeHook", arg0)
+	m.ctrl.Call(m, "AddOnChangeHook", input)
 }
 
 // AddOnChangeHook indicates an expected call of AddOnChangeHook.
-func (mr *MockManagerMockRecorder) AddOnChangeHook(arg0 any) *gomock.Call {
+func (mr *MockManagerMockRecorder) AddOnChangeHook(input any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddOnChangeHook", reflect.TypeOf((*MockManager)(nil).AddOnChangeHook), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddOnChangeHook", reflect.TypeOf((*MockManager)(nil).AddOnChangeHook), input)
 }
 
 // GetConfig mocks base method.
@@ -80,27 +81,27 @@ func (mr *MockManagerMockRecorder) InitializeOnce() *gomock.Call {
 }
 
 // Load mocks base method.
-func (m *MockManager) Load(arg0 string) error {
+func (m *MockManager) Load(inputConfigFilePath string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Load", arg0)
+	ret := m.ctrl.Call(m, "Load", inputConfigFilePath)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // Load indicates an expected call of Load.
-func (mr *MockManagerMockRecorder) Load(arg0 any) *gomock.Call {
+func (mr *MockManagerMockRecorder) Load(inputConfigFilePath any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Load", reflect.TypeOf((*MockManager)(nil).Load), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Load", reflect.TypeOf((*MockManager)(nil).Load), inputConfigFilePath)
 }
 
 // SetExtraServices mocks base method.
-func (m *MockManager) SetExtraServices(arg0 config.MetricsService) {
+func (m *MockManager) SetExtraServices(metricsSvc config.MetricsService) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "SetExtraServices", arg0)
+	m.ctrl.Call(m, "SetExtraServices", metricsSvc)
 }
 
 // SetExtraServices indicates an expected call of SetExtraServices.
-func (mr *MockManagerMockRecorder) SetExtraServices(arg0 any) *gomock.Call {
+func (mr *MockManagerMockRecorder) SetExtraServices(metricsSvc any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetExtraServices", reflect.TypeOf((*MockManager)(nil).SetExtraServices), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetExtraServices", reflect.TypeOf((*MockManager)(nil).SetExtraServices), metricsSvc)
 }

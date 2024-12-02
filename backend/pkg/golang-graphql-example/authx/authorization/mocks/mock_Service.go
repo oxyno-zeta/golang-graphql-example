@@ -21,6 +21,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -41,32 +42,32 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // CheckAuthorized mocks base method.
-func (m *MockService) CheckAuthorized(arg0 context.Context, arg1, arg2 string) error {
+func (m *MockService) CheckAuthorized(ctx context.Context, action, resource string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CheckAuthorized", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "CheckAuthorized", ctx, action, resource)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // CheckAuthorized indicates an expected call of CheckAuthorized.
-func (mr *MockServiceMockRecorder) CheckAuthorized(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) CheckAuthorized(ctx, action, resource any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckAuthorized", reflect.TypeOf((*MockService)(nil).CheckAuthorized), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckAuthorized", reflect.TypeOf((*MockService)(nil).CheckAuthorized), ctx, action, resource)
 }
 
 // IsAuthorized mocks base method.
-func (m *MockService) IsAuthorized(arg0 context.Context, arg1, arg2 string) (bool, error) {
+func (m *MockService) IsAuthorized(ctx context.Context, action, resource string) (bool, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "IsAuthorized", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "IsAuthorized", ctx, action, resource)
 	ret0, _ := ret[0].(bool)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // IsAuthorized indicates an expected call of IsAuthorized.
-func (mr *MockServiceMockRecorder) IsAuthorized(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) IsAuthorized(ctx, action, resource any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsAuthorized", reflect.TypeOf((*MockService)(nil).IsAuthorized), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsAuthorized", reflect.TypeOf((*MockService)(nil).IsAuthorized), ctx, action, resource)
 }
 
 // Middleware mocks base method.

@@ -23,6 +23,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -43,69 +44,69 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // Close mocks base method.
-func (m *MockService) Close(arg0 context.Context, arg1 string, arg2 *models.Projection) (*models.Todo, error) {
+func (m *MockService) Close(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Close", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "Close", ctx, id, projection)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Close indicates an expected call of Close.
-func (mr *MockServiceMockRecorder) Close(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Close(ctx, id, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockService)(nil).Close), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockService)(nil).Close), ctx, id, projection)
 }
 
 // Create mocks base method.
-func (m *MockService) Create(arg0 context.Context, arg1 *todos.InputCreateTodo) (*models.Todo, error) {
+func (m *MockService) Create(ctx context.Context, inp *todos.InputCreateTodo) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Create", arg0, arg1)
+	ret := m.ctrl.Call(m, "Create", ctx, inp)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Create indicates an expected call of Create.
-func (mr *MockServiceMockRecorder) Create(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Create(ctx, inp any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockService)(nil).Create), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Create", reflect.TypeOf((*MockService)(nil).Create), ctx, inp)
 }
 
 // Find mocks base method.
-func (m *MockService) Find(arg0 context.Context, arg1 []*models.SortOrder, arg2 *models.Filter, arg3 *models.Projection) ([]*models.Todo, error) {
+func (m *MockService) Find(ctx context.Context, sort []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Find", arg0, arg1, arg2, arg3)
+	ret := m.ctrl.Call(m, "Find", ctx, sort, filter, projection)
 	ret0, _ := ret[0].([]*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Find indicates an expected call of Find.
-func (mr *MockServiceMockRecorder) Find(arg0, arg1, arg2, arg3 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Find(ctx, sort, filter, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Find", reflect.TypeOf((*MockService)(nil).Find), arg0, arg1, arg2, arg3)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Find", reflect.TypeOf((*MockService)(nil).Find), ctx, sort, filter, projection)
 }
 
 // FindByID mocks base method.
-func (m *MockService) FindByID(arg0 context.Context, arg1 string, arg2 *models.Projection) (*models.Todo, error) {
+func (m *MockService) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "FindByID", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "FindByID", ctx, id, projection)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // FindByID indicates an expected call of FindByID.
-func (mr *MockServiceMockRecorder) FindByID(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) FindByID(ctx, id, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByID", reflect.TypeOf((*MockService)(nil).FindByID), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByID", reflect.TypeOf((*MockService)(nil).FindByID), ctx, id, projection)
 }
 
 // GetAllPaginated mocks base method.
-func (m *MockService) GetAllPaginated(arg0 context.Context, arg1 *pagination.PageInput, arg2 []*models.SortOrder, arg3 *models.Filter, arg4 *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
+func (m *MockService) GetAllPaginated(ctx context.Context, page *pagination.PageInput, sort []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAllPaginated", arg0, arg1, arg2, arg3, arg4)
+	ret := m.ctrl.Call(m, "GetAllPaginated", ctx, page, sort, filter, projection)
 	ret0, _ := ret[0].([]*models.Todo)
 	ret1, _ := ret[1].(*pagination.PageOutput)
 	ret2, _ := ret[2].(error)
@@ -113,22 +114,22 @@ func (m *MockService) GetAllPaginated(arg0 context.Context, arg1 *pagination.Pag
 }
 
 // GetAllPaginated indicates an expected call of GetAllPaginated.
-func (mr *MockServiceMockRecorder) GetAllPaginated(arg0, arg1, arg2, arg3, arg4 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) GetAllPaginated(ctx, page, sort, filter, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockService)(nil).GetAllPaginated), arg0, arg1, arg2, arg3, arg4)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockService)(nil).GetAllPaginated), ctx, page, sort, filter, projection)
 }
 
 // Update mocks base method.
-func (m *MockService) Update(arg0 context.Context, arg1 *todos.InputUpdateTodo) (*models.Todo, error) {
+func (m *MockService) Update(ctx context.Context, inp *todos.InputUpdateTodo) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Update", arg0, arg1)
+	ret := m.ctrl.Call(m, "Update", ctx, inp)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // Update indicates an expected call of Update.
-func (mr *MockServiceMockRecorder) Update(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Update(ctx, inp any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockService)(nil).Update), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Update", reflect.TypeOf((*MockService)(nil).Update), ctx, inp)
 }

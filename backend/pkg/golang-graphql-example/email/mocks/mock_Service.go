@@ -20,6 +20,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -82,15 +83,15 @@ func (mr *MockServiceMockRecorder) NewEmail() *gomock.Call {
 }
 
 // Send mocks base method.
-func (m *MockService) Send(arg0 email.Email) error {
+func (m *MockService) Send(em email.Email) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Send", arg0)
+	ret := m.ctrl.Call(m, "Send", em)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // Send indicates an expected call of Send.
-func (mr *MockServiceMockRecorder) Send(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Send(em any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Send", reflect.TypeOf((*MockService)(nil).Send), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Send", reflect.TypeOf((*MockService)(nil).Send), em)
 }

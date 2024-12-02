@@ -21,6 +21,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -41,29 +42,29 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // GetLock mocks base method.
-func (m *MockService) GetLock(arg0 string) sqllockdistributor.Lock {
+func (m *MockService) GetLock(name string) sqllockdistributor.Lock {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLock", arg0)
+	ret := m.ctrl.Call(m, "GetLock", name)
 	ret0, _ := ret[0].(sqllockdistributor.Lock)
 	return ret0
 }
 
 // GetLock indicates an expected call of GetLock.
-func (mr *MockServiceMockRecorder) GetLock(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) GetLock(name any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLock", reflect.TypeOf((*MockService)(nil).GetLock), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLock", reflect.TypeOf((*MockService)(nil).GetLock), name)
 }
 
 // InitializeAndReload mocks base method.
-func (m *MockService) InitializeAndReload(arg0 log.Logger) error {
+func (m *MockService) InitializeAndReload(logger log.Logger) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "InitializeAndReload", arg0)
+	ret := m.ctrl.Call(m, "InitializeAndReload", logger)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // InitializeAndReload indicates an expected call of InitializeAndReload.
-func (mr *MockServiceMockRecorder) InitializeAndReload(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) InitializeAndReload(logger any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeAndReload", reflect.TypeOf((*MockService)(nil).InitializeAndReload), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InitializeAndReload", reflect.TypeOf((*MockService)(nil).InitializeAndReload), logger)
 }

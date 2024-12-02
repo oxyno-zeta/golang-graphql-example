@@ -20,6 +20,7 @@ import (
 type MockAuthorizationService struct {
 	ctrl     *gomock.Controller
 	recorder *MockAuthorizationServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockAuthorizationServiceMockRecorder is the mock recorder for MockAuthorizationService.
@@ -40,15 +41,15 @@ func (m *MockAuthorizationService) EXPECT() *MockAuthorizationServiceMockRecorde
 }
 
 // CheckAuthorized mocks base method.
-func (m *MockAuthorizationService) CheckAuthorized(arg0 context.Context, arg1, arg2 string) error {
+func (m *MockAuthorizationService) CheckAuthorized(ctx context.Context, action, resource string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CheckAuthorized", arg0, arg1, arg2)
+	ret := m.ctrl.Call(m, "CheckAuthorized", ctx, action, resource)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // CheckAuthorized indicates an expected call of CheckAuthorized.
-func (mr *MockAuthorizationServiceMockRecorder) CheckAuthorized(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockAuthorizationServiceMockRecorder) CheckAuthorized(ctx, action, resource any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckAuthorized", reflect.TypeOf((*MockAuthorizationService)(nil).CheckAuthorized), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CheckAuthorized", reflect.TypeOf((*MockAuthorizationService)(nil).CheckAuthorized), ctx, action, resource)
 }

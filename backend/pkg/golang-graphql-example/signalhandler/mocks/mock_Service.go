@@ -22,6 +22,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -42,17 +43,17 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // ActiveRequestCounterMiddleware mocks base method.
-func (m *MockService) ActiveRequestCounterMiddleware(arg0 []string) gin.HandlerFunc {
+func (m *MockService) ActiveRequestCounterMiddleware(ignoredPathList []string) gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ActiveRequestCounterMiddleware", arg0)
+	ret := m.ctrl.Call(m, "ActiveRequestCounterMiddleware", ignoredPathList)
 	ret0, _ := ret[0].(gin.HandlerFunc)
 	return ret0
 }
 
 // ActiveRequestCounterMiddleware indicates an expected call of ActiveRequestCounterMiddleware.
-func (mr *MockServiceMockRecorder) ActiveRequestCounterMiddleware(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) ActiveRequestCounterMiddleware(ignoredPathList any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ActiveRequestCounterMiddleware", reflect.TypeOf((*MockService)(nil).ActiveRequestCounterMiddleware), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ActiveRequestCounterMiddleware", reflect.TypeOf((*MockService)(nil).ActiveRequestCounterMiddleware), ignoredPathList)
 }
 
 // DecreaseActiveRequestCounter mocks base method.
@@ -122,25 +123,25 @@ func (mr *MockServiceMockRecorder) IsStoppingSystem() *gomock.Call {
 }
 
 // OnExit mocks base method.
-func (m *MockService) OnExit(arg0 func()) {
+func (m *MockService) OnExit(hook func()) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnExit", arg0)
+	m.ctrl.Call(m, "OnExit", hook)
 }
 
 // OnExit indicates an expected call of OnExit.
-func (mr *MockServiceMockRecorder) OnExit(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) OnExit(hook any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnExit", reflect.TypeOf((*MockService)(nil).OnExit), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnExit", reflect.TypeOf((*MockService)(nil).OnExit), hook)
 }
 
 // OnSignal mocks base method.
-func (m *MockService) OnSignal(arg0 os.Signal, arg1 func()) {
+func (m *MockService) OnSignal(signal os.Signal, hook func()) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "OnSignal", arg0, arg1)
+	m.ctrl.Call(m, "OnSignal", signal, hook)
 }
 
 // OnSignal indicates an expected call of OnSignal.
-func (mr *MockServiceMockRecorder) OnSignal(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) OnSignal(signal, hook any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnSignal", reflect.TypeOf((*MockService)(nil).OnSignal), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "OnSignal", reflect.TypeOf((*MockService)(nil).OnSignal), signal, hook)
 }

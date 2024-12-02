@@ -23,6 +23,7 @@ import (
 type MockService struct {
 	ctrl     *gomock.Controller
 	recorder *MockServiceMockRecorder
+	isgomock struct{}
 }
 
 // MockServiceMockRecorder is the mock recorder for MockService.
@@ -43,17 +44,17 @@ func (m *MockService) EXPECT() *MockServiceMockRecorder {
 }
 
 // DatabaseMiddleware mocks base method.
-func (m *MockService) DatabaseMiddleware(arg0 string) gorm.Plugin {
+func (m *MockService) DatabaseMiddleware(connectionName string) gorm.Plugin {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DatabaseMiddleware", arg0)
+	ret := m.ctrl.Call(m, "DatabaseMiddleware", connectionName)
 	ret0, _ := ret[0].(gorm.Plugin)
 	return ret0
 }
 
 // DatabaseMiddleware indicates an expected call of DatabaseMiddleware.
-func (mr *MockServiceMockRecorder) DatabaseMiddleware(arg0 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) DatabaseMiddleware(connectionName any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockService)(nil).DatabaseMiddleware), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DatabaseMiddleware", reflect.TypeOf((*MockService)(nil).DatabaseMiddleware), connectionName)
 }
 
 // DownFailedConfigReload mocks base method.
@@ -83,65 +84,65 @@ func (mr *MockServiceMockRecorder) GraphqlMiddleware() *gomock.Call {
 }
 
 // IncreaseFailedAMQPConsumedMessage mocks base method.
-func (m *MockService) IncreaseFailedAMQPConsumedMessage(arg0, arg1, arg2 string) {
+func (m *MockService) IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "IncreaseFailedAMQPConsumedMessage", arg0, arg1, arg2)
+	m.ctrl.Call(m, "IncreaseFailedAMQPConsumedMessage", queue, consumerTag, routingKey)
 }
 
 // IncreaseFailedAMQPConsumedMessage indicates an expected call of IncreaseFailedAMQPConsumedMessage.
-func (mr *MockServiceMockRecorder) IncreaseFailedAMQPConsumedMessage(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseFailedAMQPConsumedMessage", reflect.TypeOf((*MockService)(nil).IncreaseFailedAMQPConsumedMessage), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseFailedAMQPConsumedMessage", reflect.TypeOf((*MockService)(nil).IncreaseFailedAMQPConsumedMessage), queue, consumerTag, routingKey)
 }
 
 // IncreaseFailedAMQPPublishedMessage mocks base method.
-func (m *MockService) IncreaseFailedAMQPPublishedMessage(arg0, arg1 string) {
+func (m *MockService) IncreaseFailedAMQPPublishedMessage(exchange, routingKey string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "IncreaseFailedAMQPPublishedMessage", arg0, arg1)
+	m.ctrl.Call(m, "IncreaseFailedAMQPPublishedMessage", exchange, routingKey)
 }
 
 // IncreaseFailedAMQPPublishedMessage indicates an expected call of IncreaseFailedAMQPPublishedMessage.
-func (mr *MockServiceMockRecorder) IncreaseFailedAMQPPublishedMessage(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) IncreaseFailedAMQPPublishedMessage(exchange, routingKey any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseFailedAMQPPublishedMessage", reflect.TypeOf((*MockService)(nil).IncreaseFailedAMQPPublishedMessage), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseFailedAMQPPublishedMessage", reflect.TypeOf((*MockService)(nil).IncreaseFailedAMQPPublishedMessage), exchange, routingKey)
 }
 
 // IncreaseSuccessfullyAMQPConsumedMessage mocks base method.
-func (m *MockService) IncreaseSuccessfullyAMQPConsumedMessage(arg0, arg1, arg2 string) {
+func (m *MockService) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "IncreaseSuccessfullyAMQPConsumedMessage", arg0, arg1, arg2)
+	m.ctrl.Call(m, "IncreaseSuccessfullyAMQPConsumedMessage", queue, consumerTag, routingKey)
 }
 
 // IncreaseSuccessfullyAMQPConsumedMessage indicates an expected call of IncreaseSuccessfullyAMQPConsumedMessage.
-func (mr *MockServiceMockRecorder) IncreaseSuccessfullyAMQPConsumedMessage(arg0, arg1, arg2 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseSuccessfullyAMQPConsumedMessage", reflect.TypeOf((*MockService)(nil).IncreaseSuccessfullyAMQPConsumedMessage), arg0, arg1, arg2)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseSuccessfullyAMQPConsumedMessage", reflect.TypeOf((*MockService)(nil).IncreaseSuccessfullyAMQPConsumedMessage), queue, consumerTag, routingKey)
 }
 
 // IncreaseSuccessfullyAMQPPublishedMessage mocks base method.
-func (m *MockService) IncreaseSuccessfullyAMQPPublishedMessage(arg0, arg1 string) {
+func (m *MockService) IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string) {
 	m.ctrl.T.Helper()
-	m.ctrl.Call(m, "IncreaseSuccessfullyAMQPPublishedMessage", arg0, arg1)
+	m.ctrl.Call(m, "IncreaseSuccessfullyAMQPPublishedMessage", exchange, routingKey)
 }
 
 // IncreaseSuccessfullyAMQPPublishedMessage indicates an expected call of IncreaseSuccessfullyAMQPPublishedMessage.
-func (mr *MockServiceMockRecorder) IncreaseSuccessfullyAMQPPublishedMessage(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseSuccessfullyAMQPPublishedMessage", reflect.TypeOf((*MockService)(nil).IncreaseSuccessfullyAMQPPublishedMessage), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IncreaseSuccessfullyAMQPPublishedMessage", reflect.TypeOf((*MockService)(nil).IncreaseSuccessfullyAMQPPublishedMessage), exchange, routingKey)
 }
 
 // Instrument mocks base method.
-func (m *MockService) Instrument(arg0 string, arg1 bool) gin.HandlerFunc {
+func (m *MockService) Instrument(serverName string, routerPath bool) gin.HandlerFunc {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Instrument", arg0, arg1)
+	ret := m.ctrl.Call(m, "Instrument", serverName, routerPath)
 	ret0, _ := ret[0].(gin.HandlerFunc)
 	return ret0
 }
 
 // Instrument indicates an expected call of Instrument.
-func (mr *MockServiceMockRecorder) Instrument(arg0, arg1 any) *gomock.Call {
+func (mr *MockServiceMockRecorder) Instrument(serverName, routerPath any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Instrument", reflect.TypeOf((*MockService)(nil).Instrument), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Instrument", reflect.TypeOf((*MockService)(nil).Instrument), serverName, routerPath)
 }
 
 // PrometheusHTTPHandler mocks base method.

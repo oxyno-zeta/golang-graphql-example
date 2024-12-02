@@ -20,6 +20,7 @@ import (
 type MockLock struct {
 	ctrl     *gomock.Controller
 	recorder *MockLockMockRecorder
+	isgomock struct{}
 }
 
 // MockLockMockRecorder is the mock recorder for MockLock.
@@ -54,17 +55,17 @@ func (mr *MockLockMockRecorder) Acquire() *gomock.Call {
 }
 
 // AcquireWithContext mocks base method.
-func (m *MockLock) AcquireWithContext(arg0 context.Context) error {
+func (m *MockLock) AcquireWithContext(ctx context.Context) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "AcquireWithContext", arg0)
+	ret := m.ctrl.Call(m, "AcquireWithContext", ctx)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // AcquireWithContext indicates an expected call of AcquireWithContext.
-func (mr *MockLockMockRecorder) AcquireWithContext(arg0 any) *gomock.Call {
+func (mr *MockLockMockRecorder) AcquireWithContext(ctx any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AcquireWithContext", reflect.TypeOf((*MockLock)(nil).AcquireWithContext), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AcquireWithContext", reflect.TypeOf((*MockLock)(nil).AcquireWithContext), ctx)
 }
 
 // IsAlreadyTaken mocks base method.
