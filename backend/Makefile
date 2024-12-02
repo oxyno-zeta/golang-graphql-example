@@ -70,7 +70,7 @@ OPA_VERSION := "0.70.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.0.6"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.0.4-management"
+RABBITMQ_VERSION := "4.0.4"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -239,7 +239,7 @@ setup/services: down/services
 	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name opa -p 8181:8181 -v $(CURDIR)/.local-resources/opa/bundle.tar.gz:/bundle.tar.gz openpolicyagent/opa:$(OPA_VERSION) run --server --log-level debug --log-format text --bundle /bundle.tar.gz
 	$(DEFAULT_CONTAINER_RUNTIME) run -d --rm --name keycloak -p 8088:8080 -v $(CURDIR)/.local-resources/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -e KC_HTTP_RELATIVE_PATH=/auth quay.io/keycloak/keycloak:$(KEYCLOAK_VERSION) start-dev --import-realm
 	# User: guest / Password: guest
-	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:$(RABBITMQ_VERSION)
+	$(DEFAULT_CONTAINER_RUNTIME) run --rm -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:$(RABBITMQ_VERSION)-management
 
 .PHONY: setup/test/integration
 setup/test/integration:
