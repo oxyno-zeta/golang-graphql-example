@@ -74,5 +74,6 @@
       "datasourceTemplate": "go"
     }
   ],
-  "ignorePaths": ["backend/tools/voyager/**"]
+  "ignorePaths": ["backend/tools/voyager/**"],
+  "ignoreDeps": ["universal-cookie"]
 }
