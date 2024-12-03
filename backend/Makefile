@@ -58,7 +58,7 @@ PGADMIN_VERSION := "8.13.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.1.0"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v2.55.1"
+PROMETHEUS_VERSION := "v3.0.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "11.3.1"
 # renovate: datasource=docker depName=grafana/tempo
