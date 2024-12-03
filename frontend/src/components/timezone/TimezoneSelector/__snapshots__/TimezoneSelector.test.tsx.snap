@@ -1638,7 +1638,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
         style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
       >
         <ul
-          style="height: 21414px; width: 100%;"
+          style="height: 21364px; width: 100%;"
         >
           <div
             class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
@@ -2016,7 +2016,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
         style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
       >
         <ul
-          style="height: 21414px; width: 100%;"
+          style="height: 21364px; width: 100%;"
         >
           <div
             class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
