@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQuery, DocumentNode, QueryHookOptions, OperationVariables } from '@apollo/client';
+import { useQuery, DocumentNode, QueryHookOptions, OperationVariables, type MaybeMasked } from '@apollo/client';
 import { useParams, Params, Navigate, NavigateProps } from 'react-router-dom';
 import CenterLoading, { CenterLoadingProps } from '~components/CenterLoading';
 import ErrorsDisplay, { ErrorsDisplayProps } from '~components/ErrorsDisplay';
@@ -12,7 +12,7 @@ export interface Props<T, P extends OperationVariables> {
   // Build navigate to function will return a path.
   // If path result is empty or undefined, then "no data" is displayed.
   // If you don't want any "no data" displayed, manage the redirect path
-  readonly buildNavigateTo: (params: T | undefined) => string | undefined | null;
+  readonly buildNavigateTo: (params: MaybeMasked<T> | undefined) => string | undefined | null;
   // Build query variables function will return a query variable object.
   readonly buildQueryVariables: (params: Params<string>) => P;
   // Disable center loading subtitle.
