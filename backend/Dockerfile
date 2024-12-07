@@ -6,7 +6,7 @@ ENV UID=1000
 ENV GID=1000
 
 # renovate: datasource=repology depName=alpine_3_21/ca-certificates versioning=loose
-ENV CA_CERTIFICATES_VERSION="20240705-r0"
+ENV CA_CERTIFICATES_VERSION="20241010-r0"
 
 RUN apk add --update --no-cache ca-certificates=${CA_CERTIFICATES_VERSION} && \
     rm -Rf /var/cache/apk/* && \
