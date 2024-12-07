@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	goerrors "emperror.dev/errors"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
@@ -26,6 +27,11 @@ func FromIDRelay(relayID, prefix string) (string, error) {
 	// Check error
 	if err != nil {
 		return "", errors.NewInvalidInputErrorWithError(err)
+	}
+
+	// Validate utf8
+	if !utf8.Valid(idBb) {
+		return "", errors.NewInvalidInputError("not utf8 compatible")
 	}
 
 	idContent := string(idBb)

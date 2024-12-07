@@ -276,9 +276,17 @@ func Test_parsePaginateCursor(t *testing.T) {
 			errorString: "illegal base64 data at input byte 4",
 		},
 		{
-			name: "invalid format",
+			name: "non utf8",
 			args: args{
 				cursorB64: "fake",
+			},
+			wantErr:     true,
+			errorString: "not utf8 compatible",
+		},
+		{
+			name: "invalid format",
+			args: args{
+				cursorB64: base64.StdEncoding.EncodeToString([]byte("fake")),
 			},
 			wantErr:     true,
 			errorString: "format error on relay token",
