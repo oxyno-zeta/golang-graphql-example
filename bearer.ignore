@@ -1,0 +1,27 @@
+{
+  "007fdaec7421587e2732c12bc7730533_0": {
+    "author": "Havrileck Alexandre",
+    "false_positive": true,
+    "ignored_at": "2024-12-07T22:08:28Z"
+  },
+  "33da5def04b1326b4a9a9c9638fea067_0": {
+    "author": "Havrileck Alexandre",
+    "false_positive": true,
+    "ignored_at": "2024-12-07T22:08:28Z"
+  },
+  "a50d447be99d4d966d99b3bf7b43b059_0": {
+    "author": "Havrileck Alexandre",
+    "false_positive": true,
+    "ignored_at": "2024-12-07T22:08:28Z"
+  },
+  "1a9b6d85eecf7820f5febb1817603272_0": {
+    "author": "Havrileck Alexandre",
+    "false_positive": true,
+    "ignored_at": "2024-12-07T22:08:28Z"
+  },
+  "1ebdfe8f6a837666fdeb5c348db788e2_0": {
+    "author": "Havrileck Alexandre",
+    "false_positive": true,
+    "ignored_at": "2024-12-07T22:08:28Z"
+  }
+}
