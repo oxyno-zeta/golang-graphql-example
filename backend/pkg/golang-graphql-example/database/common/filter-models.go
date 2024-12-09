@@ -15,7 +15,7 @@ import (
 //	type Filter struct {
 //	 AND []*Filter
 //	 OR []*Filter
-//		Field1 *GenericFilter `dbfield:"field_1"`
+//	 Field1 *GenericFilter `dbfield:"field_1"`
 //	}
 //
 // .
@@ -87,7 +87,7 @@ type GenericFilter struct {
 //	type Filter struct {
 //	 AND []*Filter
 //	 OR []*Filter
-//		Field1 *DateFilter `dbfield:"field_1"`
+//	 Field1 *DateFilter `dbfield:"field_1"`
 //	}
 //
 // .
