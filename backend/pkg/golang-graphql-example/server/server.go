@@ -226,7 +226,7 @@ func (svr *Server) Listen() error {
 func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
-	h := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{
+	h := handler.New(generated.NewExecutableSchema(generated.Config{
 		Resolvers: &graphql.Resolver{BusiServices: busiServices},
 		Complexity: generated.ComplexityRoot{
 			Mutation: struct {
