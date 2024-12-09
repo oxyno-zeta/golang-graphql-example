@@ -21,62 +21,62 @@ import (
 // .
 type GenericFilter struct {
 	// Allow to test equality to
-	Eq interface{}
+	Eq interface{} `mapstructure:"eq"`
 	// Allow to test non equality to
-	NotEq interface{}
+	NotEq interface{} `mapstructure:"notEq"`
 	// Allow to test greater or equal than
-	Gte interface{}
+	Gte interface{} `mapstructure:"gte"`
 	// Allow to test not greater or equal than
-	NotGte interface{}
+	NotGte interface{} `mapstructure:"notGte"`
 	// Allow to test greater than
-	Gt interface{}
+	Gt interface{} `mapstructure:"gt"`
 	// Allow to test not greater than
-	NotGt interface{}
+	NotGt interface{} `mapstructure:"notGt"`
 	// Allow to test less or equal than
-	Lte interface{}
+	Lte interface{} `mapstructure:"lte"`
 	// Allow to test not less or equal than
-	NotLte interface{}
+	NotLte interface{} `mapstructure:"notLte"`
 	// Allow to test less than
-	Lt interface{}
+	Lt interface{} `mapstructure:"lt"`
 	// Allow to test not less than
-	NotLt interface{}
+	NotLt interface{} `mapstructure:"notLt"`
 	// Allow to test if a string contains another string.
 	// Contains must be a string
-	Contains interface{}
+	Contains interface{} `mapstructure:"contains"`
 	// Allow to test if a string isn't containing another string.
 	// NotContains must be a string
-	NotContains interface{}
+	NotContains interface{} `mapstructure:"notContains"`
 	// Allow to test if a string starts with another string.
 	// StartsWith with must be a string
-	StartsWith interface{}
+	StartsWith interface{} `mapstructure:"startsWith"`
 	// Allow to test if a string isn't starting with another string.
 	// NotStartsWith must be a string
-	NotStartsWith interface{}
+	NotStartsWith interface{} `mapstructure:"notStartsWith"`
 	// Allow to test if a string ends with another string.
 	// EndsWith with must be a string
-	EndsWith interface{}
+	EndsWith interface{} `mapstructure:"endsWith"`
 	// Allow to test if a string isn't ending with another string.
 	// NotEndsWith must be a string
-	NotEndsWith interface{}
+	NotEndsWith interface{} `mapstructure:"notEndsWith"`
 	// Allow to test if value is in array
-	In interface{}
+	In interface{} `mapstructure:"in"`
 	// Allow to test if value isn't in array
-	NotIn interface{}
+	NotIn interface{} `mapstructure:"notIn"`
 	// Allow to test if value is null
-	IsNull bool
+	IsNull bool `mapstructure:"isNull"`
 	// Allow to test if value is not null
-	IsNotNull bool
+	IsNotNull bool `mapstructure:"isNotNull"`
 	// Allow to apply "upper()" function on field
-	FieldUppercase bool
+	FieldUppercase bool `mapstructure:"fieldUppercase"`
 	// Allow to apply "lower()" function on field
-	FieldLowercase bool
+	FieldLowercase bool `mapstructure:"fieldLowercase"`
 	// Allow to apply "upper()" function on values
-	ValueUppercase bool
+	ValueUppercase bool `mapstructure:"valueUppercase"`
 	// Allow to apply "lower()" function on values
-	ValueLowercase bool
+	ValueLowercase bool `mapstructure:"valueLowercase"`
 	// Allow case insensitive search.
 	// That will automatically set FieldLowercase and ValueLowercase fields and generate correct SQL query.
-	CaseInsensitive bool
+	CaseInsensitive bool `mapstructure:"caseInsensitive"`
 }
 
 // DateFilter is a structure that will handle filters for dates.
@@ -93,33 +93,33 @@ type GenericFilter struct {
 // .
 type DateFilter struct {
 	// Allow to test equality to
-	Eq interface{}
+	Eq interface{} `mapstructure:"eq"`
 	// Allow to test non equality to
-	NotEq interface{}
+	NotEq interface{} `mapstructure:"notEq"`
 	// Allow to test greater or equal than
-	Gte interface{}
+	Gte interface{} `mapstructure:"gte"`
 	// Allow to test not greater or equal than
-	NotGte interface{}
+	NotGte interface{} `mapstructure:"notGte"`
 	// Allow to test greater than
-	Gt interface{}
+	Gt interface{} `mapstructure:"gt"`
 	// Allow to test not greater than
-	NotGt interface{}
+	NotGt interface{} `mapstructure:"notGt"`
 	// Allow to test less or equal than
-	Lte interface{}
+	Lte interface{} `mapstructure:"lte"`
 	// Allow to test not less or equal than
-	NotLte interface{}
+	NotLte interface{} `mapstructure:"notLte"`
 	// Allow to test less than
-	Lt interface{}
+	Lt interface{} `mapstructure:"lt"`
 	// Allow to test not less than
-	NotLt interface{}
+	NotLt interface{} `mapstructure:"notLt"`
 	// Allow to test if value is in array
-	In interface{}
+	In interface{} `mapstructure:"in"`
 	// Allow to test if value isn't in array
-	NotIn interface{}
+	NotIn interface{} `mapstructure:"notIn"`
 	// Allow to test if value is null
-	IsNull bool
+	IsNull bool `mapstructure:"isNull"`
 	// Allow to test if value is not null
-	IsNotNull bool
+	IsNotNull bool `mapstructure:"isNotNull"`
 }
 
 // GenericFilterBuilder is an interface that must be implemented in order to work automatic filter.
