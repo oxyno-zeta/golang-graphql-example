@@ -14,6 +14,9 @@ import (
 	gqlerrorcode "github.com/99designs/gqlgen/graphql/errcode"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
+	"github.com/99designs/gqlgen/graphql/handler/lru"
+	"github.com/99designs/gqlgen/graphql/handler/transport"
+	"github.com/99designs/gqlgen/graphql/handler/extension"
 	gqlplayground "github.com/99designs/gqlgen/graphql/playground"
 	helmet "github.com/danielkov/gin-helmet"
 	"github.com/gin-contrib/gzip"
@@ -35,6 +38,7 @@ import (
 	gutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	"github.com/vektah/gqlparser/v2/ast"
 	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 
@@ -246,6 +250,21 @@ func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFu
 			},
 		},
 	}))
+
+	h.AddTransport(transport.Websocket{
+		KeepAlivePingInterval: 10 * time.Second, //nolint:mnd
+	})
+	h.AddTransport(transport.Options{})
+	h.AddTransport(transport.GET{})
+	h.AddTransport(transport.POST{})
+	h.AddTransport(transport.MultipartForm{})
+
+	h.SetQueryCache(lru.New[*ast.QueryDocument](1000)) //nolint:mnd
+
+	h.Use(extension.Introspection{})
+	h.Use(extension.AutomaticPersistedQuery{
+		Cache: lru.New[string](100), //nolint:mnd
+	})
 	h.Use(svr.tracingSvc.GraphqlMiddleware())
 	h.Use(svr.metricsSvc.GraphqlMiddleware())
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
