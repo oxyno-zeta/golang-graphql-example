@@ -7,7 +7,7 @@ toolchain go1.23.4
 require (
 	cirello.io/pglock v1.16.0
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.57
+	github.com/99designs/gqlgen v0.17.60
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20240617120339-2c008e74bff2
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
@@ -48,10 +48,10 @@ require (
 	go.uber.org/zap v1.27.0
 	golang.org/x/oauth2 v0.24.0
 	gorm.io/driver/postgres v1.5.11
-	gorm.io/driver/sqlite v1.5.6
+	gorm.io/driver/sqlite v1.5.7
 	gorm.io/gorm v1.25.12
 	gorm.io/plugin/dbresolver v1.5.3
-	gorm.io/plugin/opentelemetry v0.1.10
+	gorm.io/plugin/opentelemetry v0.1.11
 	gorm.io/plugin/prometheus v0.1.0
 )
 
@@ -126,7 +126,7 @@ require (
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
 	golang.org/x/net v0.30.0 // indirect
 	golang.org/x/sync v0.9.0 // indirect
-	golang.org/x/sys v0.27.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/text v0.20.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20241104194629-dd2ea8efbc28 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241104194629-dd2ea8efbc28 // indirect
