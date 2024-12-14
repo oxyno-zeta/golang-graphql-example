@@ -54,9 +54,9 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 GOLANGCI_LINT_VERSION := "v1.62.2"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "8.13.0"
+PGADMIN_VERSION := "8.14.0"
 # renovate: datasource=docker depName=maildev/maildev
-MAILDEV_VERSION := "2.1.0"
+MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
 PROMETHEUS_VERSION := "v3.0.1"
 # renovate: datasource=docker depName=grafana/grafana
@@ -262,7 +262,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.57
+	$(GO) install github.com/99designs/gqlgen@v0.17.60
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
