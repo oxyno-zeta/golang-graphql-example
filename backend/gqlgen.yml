@@ -6,6 +6,12 @@ schema:
 exec:
   filename: pkg/golang-graphql-example/server/graphql/generated/generated.go
   package: generated
+  # Only for follow-schema layout:
+  dir: pkg/golang-graphql-example/server/graphql/generated/
+  filename_template: "{name}.generated.go"
+  layout: follow-schema
+  # Optional: Maximum number of goroutines in concurrency to use per child resolvers(default: unlimited)
+  # worker_limit: 200
 
 # Uncomment to enable federation
 # federation:
@@ -23,14 +29,11 @@ resolver:
   dir: pkg/golang-graphql-example/server/graphql/
   package: graphql
 
-# Optional: turn on use `gqlgen:"fieldName"` tags in your models
-# struct_tag: json
+# Optional: set to skip running `go mod tidy` when generating server code
+skip_mod_tidy: true
 
-# Optional: turn on to use []Thing instead of []*Thing
-# omit_slice_element_pointers: false
-
-# Optional: set to speed up generation time by not performing a final validation pass.
-# skip_validation: true
+# Optional: turn on to skip generation of ComplexityRoot struct content and Complexity function
+# omit_complexity: false
 
 # gqlgen will search for any type names in the schema in these go packages
 # if they match it will use them, otherwise it will generate them.
