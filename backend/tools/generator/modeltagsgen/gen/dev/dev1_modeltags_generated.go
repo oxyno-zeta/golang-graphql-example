@@ -3,12 +3,19 @@ package dev
 
 import "emperror.dev/errors"
 
+
 // ErrDev1UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrDev1UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrDev1UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrDev1UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrDev1UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrDev1UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Dev1 CreatedAt Gorm Column Name
 const Dev1CreatedAtGormColumnName = "created_at"
 
@@ -30,6 +37,19 @@ const Dev1IDGormColumnName = "id"
 // Dev1 UpdatedAt Gorm Column Name
 const Dev1UpdatedAtGormColumnName = "updated_at"
 
+var Dev1GormColumnNameList = []string{
+    Dev1CreatedAtGormColumnName,
+    Dev1DeletedAtGormColumnName,
+    Dev1Field2GormColumnName,
+    Dev1Field3GormColumnName,
+    Dev1Field4GormColumnName,
+    Dev1IDGormColumnName,
+    Dev1UpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Dev1 CreatedAt JSON Key Name
 const Dev1CreatedAtJSONKeyName = "createdAt"
 
@@ -50,6 +70,55 @@ const Dev1IDJSONKeyName = "id"
 
 // Dev1 UpdatedAt JSON Key Name
 const Dev1UpdatedAtJSONKeyName = "updatedAt"
+
+var Dev1JSONKeyNameList = []string{
+    Dev1CreatedAtJSONKeyName,
+    Dev1DeletedAtJSONKeyName,
+    Dev1Field1JSONKeyName,
+    Dev1Field3JSONKeyName,
+    Dev1Field4JSONKeyName,
+    Dev1IDJSONKeyName,
+    Dev1UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Dev1 CreatedAt Struct Key Name
+const Dev1CreatedAtStructKeyName = "CreatedAt"
+
+// Dev1 DeletedAt Struct Key Name
+const Dev1DeletedAtStructKeyName = "DeletedAt"
+
+// Dev1 Field1 Struct Key Name
+const Dev1Field1StructKeyName = "Field1"
+
+// Dev1 Field2 Struct Key Name
+const Dev1Field2StructKeyName = "Field2"
+
+// Dev1 Field3 Struct Key Name
+const Dev1Field3StructKeyName = "Field3"
+
+// Dev1 Field4 Struct Key Name
+const Dev1Field4StructKeyName = "Field4"
+
+// Dev1 ID Struct Key Name
+const Dev1IDStructKeyName = "ID"
+
+// Dev1 UpdatedAt Struct Key Name
+const Dev1UpdatedAtStructKeyName = "UpdatedAt"
+
+var Dev1StructKeyNameList = []string{
+    Dev1CreatedAtStructKeyName,
+    Dev1DeletedAtStructKeyName,
+    Dev1Field1StructKeyName,
+    Dev1Field2StructKeyName,
+    Dev1Field3StructKeyName,
+    Dev1Field4StructKeyName,
+    Dev1IDStructKeyName,
+    Dev1UpdatedAtStructKeyName,
+}
+
 
 // Transform Dev1 Gorm Column To JSON Key
 func TransformDev1GormColumnToJSONKey(gormColumn string) (string, error) {
@@ -133,6 +202,206 @@ func TransformDev1GormColumnMapToJSONKeyMap(
 		if err != nil {
 			// Check if ignore is enabled and error is matching
 			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Dev1 Struct Key Name To JSON Key
+func TransformDev1StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Dev1CreatedAtStructKeyName:
+		return Dev1CreatedAtJSONKeyName, nil
+	case Dev1DeletedAtStructKeyName:
+		return Dev1DeletedAtJSONKeyName, nil
+	case Dev1Field1StructKeyName:
+		return Dev1Field1JSONKeyName, nil
+	case Dev1Field3StructKeyName:
+		return Dev1Field3JSONKeyName, nil
+	case Dev1Field4StructKeyName:
+		return Dev1Field4JSONKeyName, nil
+	case Dev1IDStructKeyName:
+		return Dev1IDJSONKeyName, nil
+	case Dev1UpdatedAtStructKeyName:
+		return Dev1UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrDev1UnsupportedStructKeyName)
+	}
+}
+
+// Transform Dev1 JSON Key To Struct Key Name
+func TransformDev1JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Dev1CreatedAtJSONKeyName:
+		return Dev1CreatedAtStructKeyName, nil
+	case Dev1DeletedAtJSONKeyName:
+		return Dev1DeletedAtStructKeyName, nil
+	case Dev1Field1JSONKeyName:
+		return Dev1Field1StructKeyName, nil
+	case Dev1Field3JSONKeyName:
+		return Dev1Field3StructKeyName, nil
+	case Dev1Field4JSONKeyName:
+		return Dev1Field4StructKeyName, nil
+	case Dev1IDJSONKeyName:
+		return Dev1IDStructKeyName, nil
+	case Dev1UpdatedAtJSONKeyName:
+		return Dev1UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrDev1UnsupportedJSONKey)
+	}
+}
+
+// Transform Dev1 JSON Key map To Struct Key Name map
+func TransformDev1JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformDev1JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Dev1 Struct Key Name map To JSON Key map
+func TransformDev1StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformDev1StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Dev1 Struct Key Name To Gorm Column
+func TransformDev1StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case Dev1CreatedAtStructKeyName:
+		return Dev1CreatedAtGormColumnName, nil
+	case Dev1DeletedAtStructKeyName:
+		return Dev1DeletedAtGormColumnName, nil
+	case Dev1Field2StructKeyName:
+		return Dev1Field2GormColumnName, nil
+	case Dev1Field3StructKeyName:
+		return Dev1Field3GormColumnName, nil
+	case Dev1Field4StructKeyName:
+		return Dev1Field4GormColumnName, nil
+	case Dev1IDStructKeyName:
+		return Dev1IDGormColumnName, nil
+	case Dev1UpdatedAtStructKeyName:
+		return Dev1UpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrDev1UnsupportedStructKeyName)
+	}
+}
+
+// Transform Dev1 Gorm Column To Struct Key Name
+func TransformDev1GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case Dev1CreatedAtGormColumnName:
+		return Dev1CreatedAtStructKeyName, nil
+	case Dev1DeletedAtGormColumnName:
+		return Dev1DeletedAtStructKeyName, nil
+	case Dev1Field2GormColumnName:
+		return Dev1Field2StructKeyName, nil
+	case Dev1Field3GormColumnName:
+		return Dev1Field3StructKeyName, nil
+	case Dev1Field4GormColumnName:
+		return Dev1Field4StructKeyName, nil
+	case Dev1IDGormColumnName:
+		return Dev1IDStructKeyName, nil
+	case Dev1UpdatedAtGormColumnName:
+		return Dev1UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrDev1UnsupportedGormColumn)
+	}
+}
+
+// Transform Dev1 Gorm Column map To Struct Key Name map
+func TransformDev1GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformDev1GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Dev1 Struct Key Name map To Gorm Column map
+func TransformDev1StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformDev1StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrDev1UnsupportedStructKeyName) {
 				// Continue the loop
 				continue
 			}

@@ -15,19 +15,63 @@ package {{ .PkgName }}
 
 import "emperror.dev/errors"
 
+{{ if not .DisableGorm }}
 // Err{{ $.ObjectName }}UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var Err{{ $.ObjectName }}UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
-
+{{ end -}}
+{{ if not .DisableJSON }}
 // Err{{ $.ObjectName }}UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var Err{{ $.ObjectName }}UnsupportedJSONKey = errors.Sentinel("unsupported json key")
-{{ range $key, $value := .GormMap }}
+{{ end -}}
+{{ if not .DisableStructKeyName }}
+// Err{{ $.ObjectName }}UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var Err{{ $.ObjectName }}UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+{{ end -}}
+
+{{ if not .DisableGorm }}
+/*
+ * Gorm columns Names
+ */
+{{- range $key, $value := .GormMap }}
 // {{ $.ObjectName }} {{ $key }} Gorm Column Name
 const {{ $.ObjectName }}{{ $key }}GormColumnName = "{{ $value }}"
-{{ end -}}
-{{ range $key, $value := .JSONMap }}
+{{ end }}
+var {{ $.ObjectName }}GormColumnNameList = []string{
+{{- range $key, $value := .GormMap }}
+    {{ $.ObjectName }}{{ $key }}GormColumnName,
+{{- end }}
+}
+{{ end }}
+{{ if not .DisableJSON -}}
+/*
+ * JSON Key Names
+ */
+{{- range $key, $value := .JSONMap }}
 // {{ $.ObjectName }} {{ $key }} JSON Key Name
 const {{ $.ObjectName }}{{ $key }}JSONKeyName = "{{ $value }}"
 {{ end }}
+var {{ $.ObjectName }}JSONKeyNameList = []string{
+{{- range $key, $value := .JSONMap }}
+    {{ $.ObjectName }}{{ $key }}JSONKeyName,
+{{- end }}
+}
+{{ end }}
+{{ if not .DisableStructKeyName -}}
+/*
+ * Struct Key Names
+ */
+{{- range $key, $value := .StructKeyNamesMap }}
+// {{ $.ObjectName }} {{ $key }} Struct Key Name
+const {{ $.ObjectName }}{{ $key }}StructKeyName = "{{ $value }}"
+{{ end }}
+var {{ $.ObjectName }}StructKeyNameList = []string{
+{{- range $key, $value := .StructKeyNamesMap }}
+    {{ $.ObjectName }}{{ $key }}StructKeyName,
+{{- end }}
+}
+{{- end }}
+
+{{ if and (not .DisableJSON) (not .DisableGorm) }}
 // Transform {{ .ObjectName }} Gorm Column To JSON Key
 func Transform{{ .ObjectName }}GormColumnToJSONKey(gormColumn string) (string, error) {
 	switch gormColumn {
@@ -111,13 +155,190 @@ func Transform{{ .ObjectName }}GormColumnMapToJSONKeyMap(
 
 	return m, nil
 }
+{{ end -}}
+
+{{- if and (not .DisableJSON) (not .DisableStructKeyName) }}
+// Transform {{ .ObjectName }} Struct Key Name To JSON Key
+func Transform{{ .ObjectName }}StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	{{ range $key, $value := .StructKeyNamesMap }}
+	{{- if not (eq (index $.JSONMap $key) "") -}}
+	case {{ $.ObjectName }}{{ $key }}StructKeyName:
+		return {{ $.ObjectName }}{{ $key }}JSONKeyName, nil
+	{{ end -}}
+	{{ end -}}
+	default:
+		return "", errors.WithStack(Err{{ $.ObjectName }}UnsupportedStructKeyName)
+	}
+}
+
+// Transform {{ .ObjectName }} JSON Key To Struct Key Name
+func Transform{{ .ObjectName }}JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	{{ range $key, $value := .JSONMap }}
+	{{- if not (eq (index $.StructKeyNamesMap $key) "") -}}
+	case {{ $.ObjectName }}{{ $key }}JSONKeyName:
+		return {{ $.ObjectName }}{{ $key }}StructKeyName, nil
+	{{ end -}}
+	{{ end -}}
+	default:
+		return "", errors.WithStack(Err{{ $.ObjectName }}UnsupportedJSONKey)
+	}
+}
+
+// Transform {{ .ObjectName }} JSON Key map To Struct Key Name map
+func Transform{{ .ObjectName }}JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := Transform{{ .ObjectName }}JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, Err{{ $.ObjectName }}UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform {{ .ObjectName }} Struct Key Name map To JSON Key map
+func Transform{{ .ObjectName }}StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := Transform{{ .ObjectName }}StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, Err{{ $.ObjectName }}UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+{{ end -}}
+
+{{- if and (not .DisableGorm) (not .DisableStructKeyName) }}
+// Transform {{ .ObjectName }} Struct Key Name To Gorm Column
+func Transform{{ .ObjectName }}StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	{{ range $key, $value := .StructKeyNamesMap }}
+	{{- if not (eq (index $.GormMap $key) "") -}}
+	case {{ $.ObjectName }}{{ $key }}StructKeyName:
+		return {{ $.ObjectName }}{{ $key }}GormColumnName, nil
+	{{ end -}}
+	{{ end -}}
+	default:
+		return "", errors.WithStack(Err{{ $.ObjectName }}UnsupportedStructKeyName)
+	}
+}
+
+// Transform {{ .ObjectName }} Gorm Column To Struct Key Name
+func Transform{{ .ObjectName }}GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	{{ range $key, $value := .GormMap }}
+	{{- if not (eq (index $.StructKeyNamesMap $key) "") -}}
+	case {{ $.ObjectName }}{{ $key }}GormColumnName:
+		return {{ $.ObjectName }}{{ $key }}StructKeyName, nil
+	{{ end -}}
+	{{ end -}}
+	default:
+		return "", errors.WithStack(Err{{ $.ObjectName }}UnsupportedGormColumn)
+	}
+}
+
+// Transform {{ .ObjectName }} Gorm Column map To Struct Key Name map
+func Transform{{ .ObjectName }}GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := Transform{{ .ObjectName }}GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, Err{{ $.ObjectName }}UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform {{ .ObjectName }} Struct Key Name map To Gorm Column map
+func Transform{{ .ObjectName }}StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := Transform{{ .ObjectName }}StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, Err{{ $.ObjectName }}UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+{{ end -}}
 `
 
 type MainPkg struct {
-	GormMap    map[string]string
-	JSONMap    map[string]string
-	PkgName    string
-	ObjectName string
+	GormMap              map[string]string
+	JSONMap              map[string]string
+	StructKeyNamesMap    map[string]string
+	PkgName              string
+	ObjectName           string
+	DisableJSON          bool
+	DisableGorm          bool
+	DisableStructKeyName bool
 }
 
 func saveJSONKeys(rType reflect.Type, jsonMap map[string]string) {
@@ -140,6 +361,11 @@ func saveJSONKeys(rType reflect.Type, jsonMap map[string]string) {
 			continue
 		}
 
+		// skip private fields
+		if !fieldType.IsExported() {
+			continue
+		}
+
 		// Check if it is empty
 		if jsonTagValue == "" {
 			jsonMap[rType.Field(i).Name] = rType.Field(i).Name
@@ -152,23 +378,26 @@ func saveJSONKeys(rType reflect.Type, jsonMap map[string]string) {
 	}
 }
 
-func generatePackageData(pkgName string, obj interface{}) (*MainPkg, error) {
-	// Manage Gorm
-	// Parse object to get schema
-	s, err := schema.Parse(obj, &sync.Map{}, schema.NamingStrategy{})
-	// Check error
-	if err != nil {
-		return nil, err
-	}
-
+func generatePackageData(pkgName string, obj interface{}, disableJSON, disableGorm, disableStructKeyName bool) (*MainPkg, error) {
 	// Init gorm map
 	gormMap := make(map[string]string)
-	// Loop over gorm fields
-	for _, field := range s.Fields {
-		dbName := field.DBName
-		// Check if db field is set
-		if dbName != "" {
-			gormMap[field.Name] = dbName
+
+	if !disableGorm {
+		// Manage Gorm
+		// Parse object to get schema
+		s, err := schema.Parse(obj, &sync.Map{}, schema.NamingStrategy{})
+		// Check error
+		if err != nil {
+			return nil, err
+		}
+
+		// Loop over gorm fields
+		for _, field := range s.Fields {
+			dbName := field.DBName
+			// Check if db field is set
+			if dbName != "" {
+				gormMap[field.Name] = dbName
+			}
 		}
 	}
 
@@ -178,18 +407,53 @@ func generatePackageData(pkgName string, obj interface{}) (*MainPkg, error) {
 	// Init json map
 	jsonMap := make(map[string]string)
 
-	// Save json keys
-	saveJSONKeys(rType, jsonMap)
+	if !disableJSON {
+		// Save json keys
+		saveJSONKeys(rType, jsonMap)
+	}
+
+	structKeyNamesMap := make(map[string]string)
+
+	if !disableStructKeyName {
+		saveStructKeyNames(rType, structKeyNamesMap)
+	}
 
 	return &MainPkg{
-		PkgName:    pkgName,
-		ObjectName: rType.Name(),
-		GormMap:    gormMap,
-		JSONMap:    jsonMap,
+		PkgName:              pkgName,
+		ObjectName:           rType.Name(),
+		GormMap:              gormMap,
+		JSONMap:              jsonMap,
+		DisableJSON:          disableJSON,
+		DisableGorm:          disableGorm,
+		DisableStructKeyName: disableStructKeyName,
+		StructKeyNamesMap:    structKeyNamesMap,
 	}, nil
 }
 
-func Generate(pkgName string, obj interface{}) (*bytes.Buffer, error) {
+func saveStructKeyNames(rType reflect.Type, structKeyNamesMap map[string]string) {
+	// Loop over object field
+	for i := 0; i < rType.NumField(); i++ {
+		// Get field
+		fieldType := rType.Field(i)
+
+		// Check if it is anonymous
+		if fieldType.Anonymous {
+			// Need to go deeper
+			saveStructKeyNames(fieldType.Type, structKeyNamesMap)
+
+			continue
+		}
+
+		// skip private fields
+		if !fieldType.IsExported() {
+			continue
+		}
+
+		structKeyNamesMap[rType.Field(i).Name] = rType.Field(i).Name
+	}
+}
+
+func Generate(pkgName string, obj interface{}, disableJSON, disableGorm, disableStructKeyName bool) (*bytes.Buffer, error) {
 	// Init template
 	tmpl, err := template.New("test").Parse(tmplStr)
 	// Check error
@@ -200,7 +464,7 @@ func Generate(pkgName string, obj interface{}) (*bytes.Buffer, error) {
 	// Create buffer
 	buf := &bytes.Buffer{}
 	// Get main package data
-	mainPkg, err := generatePackageData(pkgName, obj)
+	mainPkg, err := generatePackageData(pkgName, obj, disableJSON, disableGorm, disableStructKeyName)
 	// Check error
 	if err != nil {
 		return nil, err

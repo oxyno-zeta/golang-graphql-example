@@ -31,8 +31,11 @@ func TestGenerate(t *testing.T) {
 		Name string `json:"name,omitempty"`
 	}
 	type args struct {
-		pkgName string
-		obj     interface{}
+		pkgName              string
+		obj                  interface{}
+		disableJSON          bool
+		disableGorm          bool
+		disableStructKeyName bool
 	}
 	tests := []struct {
 		name    string
@@ -51,12 +54,19 @@ package fake
 
 import "emperror.dev/errors"
 
+
 // ErrObject1UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrObject1UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrObject1UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrObject1UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrObject1UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrObject1UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Object1 CreatedAt Gorm Column Name
 const Object1CreatedAtGormColumnName = "created_at"
 
@@ -72,6 +82,17 @@ const Object1NameGormColumnName = "name"
 // Object1 UpdatedAt Gorm Column Name
 const Object1UpdatedAtGormColumnName = "updated_at"
 
+var Object1GormColumnNameList = []string{
+    Object1CreatedAtGormColumnName,
+    Object1DeletedAtGormColumnName,
+    Object1IDGormColumnName,
+    Object1NameGormColumnName,
+    Object1UpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Object1 CreatedAt JSON Key Name
 const Object1CreatedAtJSONKeyName = "createdAt"
 
@@ -86,6 +107,41 @@ const Object1NameJSONKeyName = "Name"
 
 // Object1 UpdatedAt JSON Key Name
 const Object1UpdatedAtJSONKeyName = "updatedAt"
+
+var Object1JSONKeyNameList = []string{
+    Object1CreatedAtJSONKeyName,
+    Object1DeletedAtJSONKeyName,
+    Object1IDJSONKeyName,
+    Object1NameJSONKeyName,
+    Object1UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Object1 CreatedAt Struct Key Name
+const Object1CreatedAtStructKeyName = "CreatedAt"
+
+// Object1 DeletedAt Struct Key Name
+const Object1DeletedAtStructKeyName = "DeletedAt"
+
+// Object1 ID Struct Key Name
+const Object1IDStructKeyName = "ID"
+
+// Object1 Name Struct Key Name
+const Object1NameStructKeyName = "Name"
+
+// Object1 UpdatedAt Struct Key Name
+const Object1UpdatedAtStructKeyName = "UpdatedAt"
+
+var Object1StructKeyNameList = []string{
+    Object1CreatedAtStructKeyName,
+    Object1DeletedAtStructKeyName,
+    Object1IDStructKeyName,
+    Object1NameStructKeyName,
+    Object1UpdatedAtStructKeyName,
+}
+
 
 // Transform Object1 Gorm Column To JSON Key
 func TransformObject1GormColumnToJSONKey(gormColumn string) (string, error) {
@@ -178,6 +234,190 @@ func TransformObject1GormColumnMapToJSONKeyMap(
 
 	return m, nil
 }
+
+// Transform Object1 Struct Key Name To JSON Key
+func TransformObject1StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Object1CreatedAtStructKeyName:
+		return Object1CreatedAtJSONKeyName, nil
+	case Object1DeletedAtStructKeyName:
+		return Object1DeletedAtJSONKeyName, nil
+	case Object1IDStructKeyName:
+		return Object1IDJSONKeyName, nil
+	case Object1NameStructKeyName:
+		return Object1NameJSONKeyName, nil
+	case Object1UpdatedAtStructKeyName:
+		return Object1UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject1UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object1 JSON Key To Struct Key Name
+func TransformObject1JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Object1CreatedAtJSONKeyName:
+		return Object1CreatedAtStructKeyName, nil
+	case Object1DeletedAtJSONKeyName:
+		return Object1DeletedAtStructKeyName, nil
+	case Object1IDJSONKeyName:
+		return Object1IDStructKeyName, nil
+	case Object1NameJSONKeyName:
+		return Object1NameStructKeyName, nil
+	case Object1UpdatedAtJSONKeyName:
+		return Object1UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject1UnsupportedJSONKey)
+	}
+}
+
+// Transform Object1 JSON Key map To Struct Key Name map
+func TransformObject1JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject1JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject1UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object1 Struct Key Name map To JSON Key map
+func TransformObject1StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject1StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject1UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object1 Struct Key Name To Gorm Column
+func TransformObject1StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case Object1CreatedAtStructKeyName:
+		return Object1CreatedAtGormColumnName, nil
+	case Object1DeletedAtStructKeyName:
+		return Object1DeletedAtGormColumnName, nil
+	case Object1IDStructKeyName:
+		return Object1IDGormColumnName, nil
+	case Object1NameStructKeyName:
+		return Object1NameGormColumnName, nil
+	case Object1UpdatedAtStructKeyName:
+		return Object1UpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrObject1UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object1 Gorm Column To Struct Key Name
+func TransformObject1GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case Object1CreatedAtGormColumnName:
+		return Object1CreatedAtStructKeyName, nil
+	case Object1DeletedAtGormColumnName:
+		return Object1DeletedAtStructKeyName, nil
+	case Object1IDGormColumnName:
+		return Object1IDStructKeyName, nil
+	case Object1NameGormColumnName:
+		return Object1NameStructKeyName, nil
+	case Object1UpdatedAtGormColumnName:
+		return Object1UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject1UnsupportedGormColumn)
+	}
+}
+
+// Transform Object1 Gorm Column map To Struct Key Name map
+func TransformObject1GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject1GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject1UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object1 Struct Key Name map To Gorm Column map
+func TransformObject1StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject1StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject1UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
 `,
 		},
 		{
@@ -191,12 +431,19 @@ package fake
 
 import "emperror.dev/errors"
 
+
 // ErrObject2UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrObject2UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrObject2UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrObject2UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrObject2UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrObject2UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Object2 CreatedAt Gorm Column Name
 const Object2CreatedAtGormColumnName = "created_at"
 
@@ -212,6 +459,17 @@ const Object2NameGormColumnName = "name"
 // Object2 UpdatedAt Gorm Column Name
 const Object2UpdatedAtGormColumnName = "updated_at"
 
+var Object2GormColumnNameList = []string{
+    Object2CreatedAtGormColumnName,
+    Object2DeletedAtGormColumnName,
+    Object2IDGormColumnName,
+    Object2NameGormColumnName,
+    Object2UpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Object2 CreatedAt JSON Key Name
 const Object2CreatedAtJSONKeyName = "createdAt"
 
@@ -223,6 +481,40 @@ const Object2IDJSONKeyName = "id"
 
 // Object2 UpdatedAt JSON Key Name
 const Object2UpdatedAtJSONKeyName = "updatedAt"
+
+var Object2JSONKeyNameList = []string{
+    Object2CreatedAtJSONKeyName,
+    Object2DeletedAtJSONKeyName,
+    Object2IDJSONKeyName,
+    Object2UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Object2 CreatedAt Struct Key Name
+const Object2CreatedAtStructKeyName = "CreatedAt"
+
+// Object2 DeletedAt Struct Key Name
+const Object2DeletedAtStructKeyName = "DeletedAt"
+
+// Object2 ID Struct Key Name
+const Object2IDStructKeyName = "ID"
+
+// Object2 Name Struct Key Name
+const Object2NameStructKeyName = "Name"
+
+// Object2 UpdatedAt Struct Key Name
+const Object2UpdatedAtStructKeyName = "UpdatedAt"
+
+var Object2StructKeyNameList = []string{
+    Object2CreatedAtStructKeyName,
+    Object2DeletedAtStructKeyName,
+    Object2IDStructKeyName,
+    Object2NameStructKeyName,
+    Object2UpdatedAtStructKeyName,
+}
+
 
 // Transform Object2 Gorm Column To JSON Key
 func TransformObject2GormColumnToJSONKey(gormColumn string) (string, error) {
@@ -311,6 +603,186 @@ func TransformObject2GormColumnMapToJSONKeyMap(
 
 	return m, nil
 }
+
+// Transform Object2 Struct Key Name To JSON Key
+func TransformObject2StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Object2CreatedAtStructKeyName:
+		return Object2CreatedAtJSONKeyName, nil
+	case Object2DeletedAtStructKeyName:
+		return Object2DeletedAtJSONKeyName, nil
+	case Object2IDStructKeyName:
+		return Object2IDJSONKeyName, nil
+	case Object2UpdatedAtStructKeyName:
+		return Object2UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject2UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object2 JSON Key To Struct Key Name
+func TransformObject2JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Object2CreatedAtJSONKeyName:
+		return Object2CreatedAtStructKeyName, nil
+	case Object2DeletedAtJSONKeyName:
+		return Object2DeletedAtStructKeyName, nil
+	case Object2IDJSONKeyName:
+		return Object2IDStructKeyName, nil
+	case Object2UpdatedAtJSONKeyName:
+		return Object2UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject2UnsupportedJSONKey)
+	}
+}
+
+// Transform Object2 JSON Key map To Struct Key Name map
+func TransformObject2JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject2JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject2UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object2 Struct Key Name map To JSON Key map
+func TransformObject2StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject2StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject2UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object2 Struct Key Name To Gorm Column
+func TransformObject2StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case Object2CreatedAtStructKeyName:
+		return Object2CreatedAtGormColumnName, nil
+	case Object2DeletedAtStructKeyName:
+		return Object2DeletedAtGormColumnName, nil
+	case Object2IDStructKeyName:
+		return Object2IDGormColumnName, nil
+	case Object2NameStructKeyName:
+		return Object2NameGormColumnName, nil
+	case Object2UpdatedAtStructKeyName:
+		return Object2UpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrObject2UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object2 Gorm Column To Struct Key Name
+func TransformObject2GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case Object2CreatedAtGormColumnName:
+		return Object2CreatedAtStructKeyName, nil
+	case Object2DeletedAtGormColumnName:
+		return Object2DeletedAtStructKeyName, nil
+	case Object2IDGormColumnName:
+		return Object2IDStructKeyName, nil
+	case Object2NameGormColumnName:
+		return Object2NameStructKeyName, nil
+	case Object2UpdatedAtGormColumnName:
+		return Object2UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject2UnsupportedGormColumn)
+	}
+}
+
+// Transform Object2 Gorm Column map To Struct Key Name map
+func TransformObject2GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject2GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject2UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object2 Struct Key Name map To Gorm Column map
+func TransformObject2StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject2StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject2UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
 `,
 		},
 		{
@@ -324,12 +796,19 @@ package fake
 
 import "emperror.dev/errors"
 
+
 // ErrObject3UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrObject3UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrObject3UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrObject3UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrObject3UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrObject3UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Object3 CreatedAt Gorm Column Name
 const Object3CreatedAtGormColumnName = "created_at"
 
@@ -345,6 +824,17 @@ const Object3NameGormColumnName = "full__name"
 // Object3 UpdatedAt Gorm Column Name
 const Object3UpdatedAtGormColumnName = "updated_at"
 
+var Object3GormColumnNameList = []string{
+    Object3CreatedAtGormColumnName,
+    Object3DeletedAtGormColumnName,
+    Object3IDGormColumnName,
+    Object3NameGormColumnName,
+    Object3UpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Object3 CreatedAt JSON Key Name
 const Object3CreatedAtJSONKeyName = "createdAt"
 
@@ -359,6 +849,41 @@ const Object3NameJSONKeyName = "name"
 
 // Object3 UpdatedAt JSON Key Name
 const Object3UpdatedAtJSONKeyName = "updatedAt"
+
+var Object3JSONKeyNameList = []string{
+    Object3CreatedAtJSONKeyName,
+    Object3DeletedAtJSONKeyName,
+    Object3IDJSONKeyName,
+    Object3NameJSONKeyName,
+    Object3UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Object3 CreatedAt Struct Key Name
+const Object3CreatedAtStructKeyName = "CreatedAt"
+
+// Object3 DeletedAt Struct Key Name
+const Object3DeletedAtStructKeyName = "DeletedAt"
+
+// Object3 ID Struct Key Name
+const Object3IDStructKeyName = "ID"
+
+// Object3 Name Struct Key Name
+const Object3NameStructKeyName = "Name"
+
+// Object3 UpdatedAt Struct Key Name
+const Object3UpdatedAtStructKeyName = "UpdatedAt"
+
+var Object3StructKeyNameList = []string{
+    Object3CreatedAtStructKeyName,
+    Object3DeletedAtStructKeyName,
+    Object3IDStructKeyName,
+    Object3NameStructKeyName,
+    Object3UpdatedAtStructKeyName,
+}
+
 
 // Transform Object3 Gorm Column To JSON Key
 func TransformObject3GormColumnToJSONKey(gormColumn string) (string, error) {
@@ -451,6 +976,190 @@ func TransformObject3GormColumnMapToJSONKeyMap(
 
 	return m, nil
 }
+
+// Transform Object3 Struct Key Name To JSON Key
+func TransformObject3StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Object3CreatedAtStructKeyName:
+		return Object3CreatedAtJSONKeyName, nil
+	case Object3DeletedAtStructKeyName:
+		return Object3DeletedAtJSONKeyName, nil
+	case Object3IDStructKeyName:
+		return Object3IDJSONKeyName, nil
+	case Object3NameStructKeyName:
+		return Object3NameJSONKeyName, nil
+	case Object3UpdatedAtStructKeyName:
+		return Object3UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject3UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object3 JSON Key To Struct Key Name
+func TransformObject3JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Object3CreatedAtJSONKeyName:
+		return Object3CreatedAtStructKeyName, nil
+	case Object3DeletedAtJSONKeyName:
+		return Object3DeletedAtStructKeyName, nil
+	case Object3IDJSONKeyName:
+		return Object3IDStructKeyName, nil
+	case Object3NameJSONKeyName:
+		return Object3NameStructKeyName, nil
+	case Object3UpdatedAtJSONKeyName:
+		return Object3UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject3UnsupportedJSONKey)
+	}
+}
+
+// Transform Object3 JSON Key map To Struct Key Name map
+func TransformObject3JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject3JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject3UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object3 Struct Key Name map To JSON Key map
+func TransformObject3StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject3StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject3UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object3 Struct Key Name To Gorm Column
+func TransformObject3StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case Object3CreatedAtStructKeyName:
+		return Object3CreatedAtGormColumnName, nil
+	case Object3DeletedAtStructKeyName:
+		return Object3DeletedAtGormColumnName, nil
+	case Object3IDStructKeyName:
+		return Object3IDGormColumnName, nil
+	case Object3NameStructKeyName:
+		return Object3NameGormColumnName, nil
+	case Object3UpdatedAtStructKeyName:
+		return Object3UpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrObject3UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object3 Gorm Column To Struct Key Name
+func TransformObject3GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case Object3CreatedAtGormColumnName:
+		return Object3CreatedAtStructKeyName, nil
+	case Object3DeletedAtGormColumnName:
+		return Object3DeletedAtStructKeyName, nil
+	case Object3IDGormColumnName:
+		return Object3IDStructKeyName, nil
+	case Object3NameGormColumnName:
+		return Object3NameStructKeyName, nil
+	case Object3UpdatedAtGormColumnName:
+		return Object3UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject3UnsupportedGormColumn)
+	}
+}
+
+// Transform Object3 Gorm Column map To Struct Key Name map
+func TransformObject3GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject3GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject3UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object3 Struct Key Name map To Gorm Column map
+func TransformObject3StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject3StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject3UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
 `,
 		},
 		{
@@ -464,12 +1173,19 @@ package fake
 
 import "emperror.dev/errors"
 
+
 // ErrObject4UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrObject4UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrObject4UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrObject4UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrObject4UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrObject4UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Object4 CreatedAt Gorm Column Name
 const Object4CreatedAtGormColumnName = "created_at"
 
@@ -482,6 +1198,16 @@ const Object4IDGormColumnName = "id"
 // Object4 UpdatedAt Gorm Column Name
 const Object4UpdatedAtGormColumnName = "updated_at"
 
+var Object4GormColumnNameList = []string{
+    Object4CreatedAtGormColumnName,
+    Object4DeletedAtGormColumnName,
+    Object4IDGormColumnName,
+    Object4UpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Object4 CreatedAt JSON Key Name
 const Object4CreatedAtJSONKeyName = "createdAt"
 
@@ -496,6 +1222,41 @@ const Object4NameJSONKeyName = "name"
 
 // Object4 UpdatedAt JSON Key Name
 const Object4UpdatedAtJSONKeyName = "updatedAt"
+
+var Object4JSONKeyNameList = []string{
+    Object4CreatedAtJSONKeyName,
+    Object4DeletedAtJSONKeyName,
+    Object4IDJSONKeyName,
+    Object4NameJSONKeyName,
+    Object4UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Object4 CreatedAt Struct Key Name
+const Object4CreatedAtStructKeyName = "CreatedAt"
+
+// Object4 DeletedAt Struct Key Name
+const Object4DeletedAtStructKeyName = "DeletedAt"
+
+// Object4 ID Struct Key Name
+const Object4IDStructKeyName = "ID"
+
+// Object4 Name Struct Key Name
+const Object4NameStructKeyName = "Name"
+
+// Object4 UpdatedAt Struct Key Name
+const Object4UpdatedAtStructKeyName = "UpdatedAt"
+
+var Object4StructKeyNameList = []string{
+    Object4CreatedAtStructKeyName,
+    Object4DeletedAtStructKeyName,
+    Object4IDStructKeyName,
+    Object4NameStructKeyName,
+    Object4UpdatedAtStructKeyName,
+}
+
 
 // Transform Object4 Gorm Column To JSON Key
 func TransformObject4GormColumnToJSONKey(gormColumn string) (string, error) {
@@ -584,6 +1345,186 @@ func TransformObject4GormColumnMapToJSONKeyMap(
 
 	return m, nil
 }
+
+// Transform Object4 Struct Key Name To JSON Key
+func TransformObject4StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Object4CreatedAtStructKeyName:
+		return Object4CreatedAtJSONKeyName, nil
+	case Object4DeletedAtStructKeyName:
+		return Object4DeletedAtJSONKeyName, nil
+	case Object4IDStructKeyName:
+		return Object4IDJSONKeyName, nil
+	case Object4NameStructKeyName:
+		return Object4NameJSONKeyName, nil
+	case Object4UpdatedAtStructKeyName:
+		return Object4UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject4UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object4 JSON Key To Struct Key Name
+func TransformObject4JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Object4CreatedAtJSONKeyName:
+		return Object4CreatedAtStructKeyName, nil
+	case Object4DeletedAtJSONKeyName:
+		return Object4DeletedAtStructKeyName, nil
+	case Object4IDJSONKeyName:
+		return Object4IDStructKeyName, nil
+	case Object4NameJSONKeyName:
+		return Object4NameStructKeyName, nil
+	case Object4UpdatedAtJSONKeyName:
+		return Object4UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject4UnsupportedJSONKey)
+	}
+}
+
+// Transform Object4 JSON Key map To Struct Key Name map
+func TransformObject4JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject4JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject4UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object4 Struct Key Name map To JSON Key map
+func TransformObject4StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject4StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject4UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object4 Struct Key Name To Gorm Column
+func TransformObject4StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case Object4CreatedAtStructKeyName:
+		return Object4CreatedAtGormColumnName, nil
+	case Object4DeletedAtStructKeyName:
+		return Object4DeletedAtGormColumnName, nil
+	case Object4IDStructKeyName:
+		return Object4IDGormColumnName, nil
+	case Object4UpdatedAtStructKeyName:
+		return Object4UpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrObject4UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object4 Gorm Column To Struct Key Name
+func TransformObject4GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case Object4CreatedAtGormColumnName:
+		return Object4CreatedAtStructKeyName, nil
+	case Object4DeletedAtGormColumnName:
+		return Object4DeletedAtStructKeyName, nil
+	case Object4IDGormColumnName:
+		return Object4IDStructKeyName, nil
+	case Object4UpdatedAtGormColumnName:
+		return Object4UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject4UnsupportedGormColumn)
+	}
+}
+
+// Transform Object4 Gorm Column map To Struct Key Name map
+func TransformObject4GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject4GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject4UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object4 Struct Key Name map To Gorm Column map
+func TransformObject4StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject4StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject4UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
 `,
 		},
 		{
@@ -597,12 +1538,19 @@ package fake
 
 import "emperror.dev/errors"
 
+
 // ErrObject5UnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrObject5UnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrObject5UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrObject5UnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrObject5UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrObject5UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Object5 CreatedAt Gorm Column Name
 const Object5CreatedAtGormColumnName = "created_at"
 
@@ -618,6 +1566,17 @@ const Object5NameGormColumnName = "name"
 // Object5 UpdatedAt Gorm Column Name
 const Object5UpdatedAtGormColumnName = "updated_at"
 
+var Object5GormColumnNameList = []string{
+    Object5CreatedAtGormColumnName,
+    Object5DeletedAtGormColumnName,
+    Object5IDGormColumnName,
+    Object5NameGormColumnName,
+    Object5UpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Object5 CreatedAt JSON Key Name
 const Object5CreatedAtJSONKeyName = "createdAt"
 
@@ -632,6 +1591,41 @@ const Object5NameJSONKeyName = "name"
 
 // Object5 UpdatedAt JSON Key Name
 const Object5UpdatedAtJSONKeyName = "updatedAt"
+
+var Object5JSONKeyNameList = []string{
+    Object5CreatedAtJSONKeyName,
+    Object5DeletedAtJSONKeyName,
+    Object5IDJSONKeyName,
+    Object5NameJSONKeyName,
+    Object5UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Object5 CreatedAt Struct Key Name
+const Object5CreatedAtStructKeyName = "CreatedAt"
+
+// Object5 DeletedAt Struct Key Name
+const Object5DeletedAtStructKeyName = "DeletedAt"
+
+// Object5 ID Struct Key Name
+const Object5IDStructKeyName = "ID"
+
+// Object5 Name Struct Key Name
+const Object5NameStructKeyName = "Name"
+
+// Object5 UpdatedAt Struct Key Name
+const Object5UpdatedAtStructKeyName = "UpdatedAt"
+
+var Object5StructKeyNameList = []string{
+    Object5CreatedAtStructKeyName,
+    Object5DeletedAtStructKeyName,
+    Object5IDStructKeyName,
+    Object5NameStructKeyName,
+    Object5UpdatedAtStructKeyName,
+}
+
 
 // Transform Object5 Gorm Column To JSON Key
 func TransformObject5GormColumnToJSONKey(gormColumn string) (string, error) {
@@ -724,12 +1718,361 @@ func TransformObject5GormColumnMapToJSONKeyMap(
 
 	return m, nil
 }
+
+// Transform Object5 Struct Key Name To JSON Key
+func TransformObject5StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Object5CreatedAtStructKeyName:
+		return Object5CreatedAtJSONKeyName, nil
+	case Object5DeletedAtStructKeyName:
+		return Object5DeletedAtJSONKeyName, nil
+	case Object5IDStructKeyName:
+		return Object5IDJSONKeyName, nil
+	case Object5NameStructKeyName:
+		return Object5NameJSONKeyName, nil
+	case Object5UpdatedAtStructKeyName:
+		return Object5UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject5UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object5 JSON Key To Struct Key Name
+func TransformObject5JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Object5CreatedAtJSONKeyName:
+		return Object5CreatedAtStructKeyName, nil
+	case Object5DeletedAtJSONKeyName:
+		return Object5DeletedAtStructKeyName, nil
+	case Object5IDJSONKeyName:
+		return Object5IDStructKeyName, nil
+	case Object5NameJSONKeyName:
+		return Object5NameStructKeyName, nil
+	case Object5UpdatedAtJSONKeyName:
+		return Object5UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject5UnsupportedJSONKey)
+	}
+}
+
+// Transform Object5 JSON Key map To Struct Key Name map
+func TransformObject5JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject5JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject5UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object5 Struct Key Name map To JSON Key map
+func TransformObject5StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject5StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject5UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object5 Struct Key Name To Gorm Column
+func TransformObject5StructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case Object5CreatedAtStructKeyName:
+		return Object5CreatedAtGormColumnName, nil
+	case Object5DeletedAtStructKeyName:
+		return Object5DeletedAtGormColumnName, nil
+	case Object5IDStructKeyName:
+		return Object5IDGormColumnName, nil
+	case Object5NameStructKeyName:
+		return Object5NameGormColumnName, nil
+	case Object5UpdatedAtStructKeyName:
+		return Object5UpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrObject5UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object5 Gorm Column To Struct Key Name
+func TransformObject5GormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case Object5CreatedAtGormColumnName:
+		return Object5CreatedAtStructKeyName, nil
+	case Object5DeletedAtGormColumnName:
+		return Object5DeletedAtStructKeyName, nil
+	case Object5IDGormColumnName:
+		return Object5IDStructKeyName, nil
+	case Object5NameGormColumnName:
+		return Object5NameStructKeyName, nil
+	case Object5UpdatedAtGormColumnName:
+		return Object5UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject5UnsupportedGormColumn)
+	}
+}
+
+// Transform Object5 Gorm Column map To Struct Key Name map
+func TransformObject5GormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject5GormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject5UnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object5 Struct Key Name map To Gorm Column map
+func TransformObject5StructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject5StructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject5UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+`,
+		},
+		{
+			name: "disable gorm generator",
+			args: args{
+				pkgName:     "fake",
+				obj:         Object3{},
+				disableGorm: true,
+			},
+			want: `// Code generated by ModelTags. DO NOT EDIT.
+package fake
+
+import "emperror.dev/errors"
+
+
+// ErrObject3UnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
+var ErrObject3UnsupportedJSONKey = errors.Sentinel("unsupported json key")
+
+// ErrObject3UnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrObject3UnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * JSON Key Names
+ */
+// Object3 CreatedAt JSON Key Name
+const Object3CreatedAtJSONKeyName = "createdAt"
+
+// Object3 DeletedAt JSON Key Name
+const Object3DeletedAtJSONKeyName = "deletedAt"
+
+// Object3 ID JSON Key Name
+const Object3IDJSONKeyName = "id"
+
+// Object3 Name JSON Key Name
+const Object3NameJSONKeyName = "name"
+
+// Object3 UpdatedAt JSON Key Name
+const Object3UpdatedAtJSONKeyName = "updatedAt"
+
+var Object3JSONKeyNameList = []string{
+    Object3CreatedAtJSONKeyName,
+    Object3DeletedAtJSONKeyName,
+    Object3IDJSONKeyName,
+    Object3NameJSONKeyName,
+    Object3UpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Object3 CreatedAt Struct Key Name
+const Object3CreatedAtStructKeyName = "CreatedAt"
+
+// Object3 DeletedAt Struct Key Name
+const Object3DeletedAtStructKeyName = "DeletedAt"
+
+// Object3 ID Struct Key Name
+const Object3IDStructKeyName = "ID"
+
+// Object3 Name Struct Key Name
+const Object3NameStructKeyName = "Name"
+
+// Object3 UpdatedAt Struct Key Name
+const Object3UpdatedAtStructKeyName = "UpdatedAt"
+
+var Object3StructKeyNameList = []string{
+    Object3CreatedAtStructKeyName,
+    Object3DeletedAtStructKeyName,
+    Object3IDStructKeyName,
+    Object3NameStructKeyName,
+    Object3UpdatedAtStructKeyName,
+}
+
+
+// Transform Object3 Struct Key Name To JSON Key
+func TransformObject3StructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case Object3CreatedAtStructKeyName:
+		return Object3CreatedAtJSONKeyName, nil
+	case Object3DeletedAtStructKeyName:
+		return Object3DeletedAtJSONKeyName, nil
+	case Object3IDStructKeyName:
+		return Object3IDJSONKeyName, nil
+	case Object3NameStructKeyName:
+		return Object3NameJSONKeyName, nil
+	case Object3UpdatedAtStructKeyName:
+		return Object3UpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject3UnsupportedStructKeyName)
+	}
+}
+
+// Transform Object3 JSON Key To Struct Key Name
+func TransformObject3JSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case Object3CreatedAtJSONKeyName:
+		return Object3CreatedAtStructKeyName, nil
+	case Object3DeletedAtJSONKeyName:
+		return Object3DeletedAtStructKeyName, nil
+	case Object3IDJSONKeyName:
+		return Object3IDStructKeyName, nil
+	case Object3NameJSONKeyName:
+		return Object3NameStructKeyName, nil
+	case Object3UpdatedAtJSONKeyName:
+		return Object3UpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrObject3UnsupportedJSONKey)
+	}
+}
+
+// Transform Object3 JSON Key map To Struct Key Name map
+func TransformObject3JSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject3JSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject3UnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Object3 Struct Key Name map To JSON Key map
+func TransformObject3StructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformObject3StructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrObject3UnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
 `,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := Generate(tt.args.pkgName, tt.args.obj)
+			got, err := Generate(tt.args.pkgName, tt.args.obj, tt.args.disableJSON, tt.args.disableGorm, tt.args.disableStructKeyName)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Generate() error = %v, wantErr %v", err, tt.wantErr)
 				return

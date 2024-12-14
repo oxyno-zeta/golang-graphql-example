@@ -18,7 +18,7 @@ var outputStdout = false
 var outputFileName = "{{ .LowercaseStructName }}_{{ .OutputSuffix }}.go"
 
 func main() {
-	buf, err := gen.Generate(pkgName, obj)
+	buf, err := gen.Generate(pkgName, obj, {{ .DisableJSON }}, {{ .DisableGorm }}, {{ .DisableStructKeyName }})
 	// Check error
 	if err != nil {
 		panic(err)

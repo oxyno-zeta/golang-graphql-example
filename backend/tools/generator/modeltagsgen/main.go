@@ -13,15 +13,20 @@ import (
 )
 
 type inputData struct {
-	PkgPath             string
-	PkgName             string
-	StructName          string
-	LowercaseStructName string
-	OutputSuffix        string
+	PkgPath              string
+	PkgName              string
+	StructName           string
+	LowercaseStructName  string
+	OutputSuffix         string
+	DisableJSON          bool
+	DisableGorm          bool
+	DisableStructKeyName bool
 }
 
 func main() {
 	var outputSuffix string
+
+	var disableJSON, disableGorm, disableStructKeyName bool
 
 	var rootCmd = &cobra.Command{
 		Use:   "modeltagsgen [package] [model]",
@@ -30,10 +35,13 @@ func main() {
 		Run: func(_ *cobra.Command, args []string) {
 			// Put args into structure
 			input := &inputData{
-				PkgPath:             args[0],
-				StructName:          args[1],
-				LowercaseStructName: strings.ToLower(args[1]),
-				OutputSuffix:        outputSuffix,
+				PkgPath:              args[0],
+				StructName:           args[1],
+				LowercaseStructName:  strings.ToLower(args[1]),
+				OutputSuffix:         outputSuffix,
+				DisableJSON:          disableJSON,
+				DisableGorm:          disableGorm,
+				DisableStructKeyName: disableStructKeyName,
 			}
 			// Validate a bit
 			if !strings.Contains(input.PkgPath, "/") {
@@ -55,6 +63,9 @@ func main() {
 	}
 
 	rootCmd.PersistentFlags().StringVarP(&outputSuffix, "output-suffix", "o", "modeltags_generated", "model tags generated file name")
+	rootCmd.PersistentFlags().BoolVarP(&disableJSON, "disable-json", "j", false, "disable json")
+	rootCmd.PersistentFlags().BoolVarP(&disableGorm, "disable-gorm", "g", false, "disable gorm")
+	rootCmd.PersistentFlags().BoolVarP(&disableStructKeyName, "disable-struct-key-name", "s", false, "disable struct key name")
 
 	if err := rootCmd.Execute(); err != nil {
 		hardExit(err)
