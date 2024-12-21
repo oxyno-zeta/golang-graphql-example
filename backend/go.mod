@@ -7,7 +7,7 @@ toolchain go1.23.4
 require (
 	cirello.io/pglock v1.16.0
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.60
+	github.com/99designs/gqlgen v0.17.61
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20240617120339-2c008e74bff2
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
@@ -125,7 +125,7 @@ require (
 	golang.org/x/arch v0.12.0 // indirect
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
-	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
