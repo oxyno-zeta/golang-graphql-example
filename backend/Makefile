@@ -29,7 +29,12 @@ GIT_SHA    = $(shell git rev-parse --short HEAD)
 GIT_TAG    = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
 DATE	   = $(shell date +%F_%T%Z)
 
+ifeq ($(GIT_TAG),)
 BINARY_VERSION = ${GIT_SHA}
+else
+BINARY_VERSION = ${GIT_TAG}
+LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.Metadata=
+endif
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.Version=${BINARY_VERSION}
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.GitCommit=${GIT_COMMIT}
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.BuildDate=${DATE}
