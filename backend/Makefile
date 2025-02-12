@@ -59,7 +59,7 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 GOLANGCI_LINT_VERSION := "v1.63.4"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "8.14.0"
+PGADMIN_VERSION := "9.0.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
