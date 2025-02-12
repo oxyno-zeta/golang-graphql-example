@@ -85,7 +85,7 @@ func (ec *executionContext) _PageInfo_hasNextPage(ctx context.Context, field gra
 			ret = graphql.Null
 		}
 	}()
-	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (any, error) {
 		ctx = rctx // use context from middleware stack in children
 		return obj.HasNextPage, nil
 	})
@@ -129,7 +129,7 @@ func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field
 			ret = graphql.Null
 		}
 	}()
-	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (any, error) {
 		ctx = rctx // use context from middleware stack in children
 		return obj.HasPreviousPage, nil
 	})
@@ -173,7 +173,7 @@ func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field gra
 			ret = graphql.Null
 		}
 	}()
-	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (any, error) {
 		ctx = rctx // use context from middleware stack in children
 		return obj.StartCursor, nil
 	})
@@ -214,7 +214,7 @@ func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graph
 			ret = graphql.Null
 		}
 	}()
-	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (any, error) {
 		ctx = rctx // use context from middleware stack in children
 		return obj.EndCursor, nil
 	})
@@ -247,10 +247,10 @@ func (ec *executionContext) fieldContext_PageInfo_endCursor(_ context.Context, f
 
 // region    **************************** input.gotpl *****************************
 
-func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj interface{}) (common.GenericFilter, error) {
+func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
-	asMap := map[string]interface{}{}
-	for k, v := range obj.(map[string]interface{}) {
+	asMap := map[string]any{}
+	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
 	}
 
@@ -285,10 +285,10 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 	return it, nil
 }
 
-func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj interface{}) (common.DateFilter, error) {
+func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj any) (common.DateFilter, error) {
 	var it common.DateFilter
-	asMap := map[string]interface{}{}
-	for k, v := range obj.(map[string]interface{}) {
+	asMap := map[string]any{}
+	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
 	}
 
@@ -427,10 +427,10 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj in
 	return it, nil
 }
 
-func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj interface{}) (common.GenericFilter, error) {
+func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
-	asMap := map[string]interface{}{}
-	for k, v := range obj.(map[string]interface{}) {
+	asMap := map[string]any{}
+	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
 	}
 
@@ -569,10 +569,10 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj int
 	return it, nil
 }
 
-func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj interface{}) (common.GenericFilter, error) {
+func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
-	asMap := map[string]interface{}{}
-	for k, v := range obj.(map[string]interface{}) {
+	asMap := map[string]any{}
+	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
 	}
 
@@ -770,7 +770,7 @@ func (ec *executionContext) marshalNPageInfo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgo
 	return ec._PageInfo(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOBooleanFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx context.Context, v interface{}) (*common.GenericFilter, error) {
+func (ec *executionContext) unmarshalOBooleanFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx context.Context, v any) (*common.GenericFilter, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -778,7 +778,7 @@ func (ec *executionContext) unmarshalOBooleanFilter2ᚖgithubᚗcomᚋoxynoᚑze
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐDateFilter(ctx context.Context, v interface{}) (*common.DateFilter, error) {
+func (ec *executionContext) unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐDateFilter(ctx context.Context, v any) (*common.DateFilter, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -786,7 +786,7 @@ func (ec *executionContext) unmarshalODateFilter2ᚖgithubᚗcomᚋoxynoᚑzeta�
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx context.Context, v interface{}) (*utils.DateFormat, error) {
+func (ec *executionContext) unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx context.Context, v any) (*utils.DateFormat, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -802,7 +802,7 @@ func (ec *executionContext) marshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋ
 	return v
 }
 
-func (ec *executionContext) unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐSortOrderEnum(ctx context.Context, v interface{}) (*common.SortOrderEnum, error) {
+func (ec *executionContext) unmarshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐSortOrderEnum(ctx context.Context, v any) (*common.SortOrderEnum, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -818,7 +818,7 @@ func (ec *executionContext) marshalOSortOrderEnum2ᚖgithubᚗcomᚋoxynoᚑzeta
 	return v
 }
 
-func (ec *executionContext) unmarshalOStringFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx context.Context, v interface{}) (*common.GenericFilter, error) {
+func (ec *executionContext) unmarshalOStringFilter2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋdatabaseᚋcommonᚐGenericFilter(ctx context.Context, v any) (*common.GenericFilter, error) {
 	if v == nil {
 		return nil, nil
 	}

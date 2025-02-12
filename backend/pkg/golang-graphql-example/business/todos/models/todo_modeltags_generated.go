@@ -3,12 +3,19 @@ package models
 
 import "emperror.dev/errors"
 
+
 // ErrTodoUnsupportedGormColumn will be thrown when an unsupported Gorm column will be found in transform function.
 var ErrTodoUnsupportedGormColumn = errors.Sentinel("unsupported gorm column")
 
 // ErrTodoUnsupportedJSONKey will be thrown when an unsupported JSON key will be found in transform function.
 var ErrTodoUnsupportedJSONKey = errors.Sentinel("unsupported json key")
 
+// ErrTodoUnsupportedStructKeyName will be thrown when an unsupported structure key will be found in transform function.
+var ErrTodoUnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
+
+/*
+ * Gorm columns Names
+ */
 // Todo CreatedAt Gorm Column Name
 const TodoCreatedAtGormColumnName = "created_at"
 
@@ -27,6 +34,18 @@ const TodoTextGormColumnName = "text"
 // Todo UpdatedAt Gorm Column Name
 const TodoUpdatedAtGormColumnName = "updated_at"
 
+var TodoGormColumnNameList = []string{
+    TodoCreatedAtGormColumnName,
+    TodoDeletedAtGormColumnName,
+    TodoDoneGormColumnName,
+    TodoIDGormColumnName,
+    TodoTextGormColumnName,
+    TodoUpdatedAtGormColumnName,
+}
+
+/*
+ * JSON Key Names
+ */
 // Todo CreatedAt JSON Key Name
 const TodoCreatedAtJSONKeyName = "createdAt"
 
@@ -44,6 +63,46 @@ const TodoTextJSONKeyName = "Text"
 
 // Todo UpdatedAt JSON Key Name
 const TodoUpdatedAtJSONKeyName = "updatedAt"
+
+var TodoJSONKeyNameList = []string{
+    TodoCreatedAtJSONKeyName,
+    TodoDeletedAtJSONKeyName,
+    TodoDoneJSONKeyName,
+    TodoIDJSONKeyName,
+    TodoTextJSONKeyName,
+    TodoUpdatedAtJSONKeyName,
+}
+
+/*
+ * Struct Key Names
+ */
+// Todo CreatedAt Struct Key Name
+const TodoCreatedAtStructKeyName = "CreatedAt"
+
+// Todo DeletedAt Struct Key Name
+const TodoDeletedAtStructKeyName = "DeletedAt"
+
+// Todo Done Struct Key Name
+const TodoDoneStructKeyName = "Done"
+
+// Todo ID Struct Key Name
+const TodoIDStructKeyName = "ID"
+
+// Todo Text Struct Key Name
+const TodoTextStructKeyName = "Text"
+
+// Todo UpdatedAt Struct Key Name
+const TodoUpdatedAtStructKeyName = "UpdatedAt"
+
+var TodoStructKeyNameList = []string{
+    TodoCreatedAtStructKeyName,
+    TodoDeletedAtStructKeyName,
+    TodoDoneStructKeyName,
+    TodoIDStructKeyName,
+    TodoTextStructKeyName,
+    TodoUpdatedAtStructKeyName,
+}
+
 
 // Transform Todo Gorm Column To JSON Key
 func TransformTodoGormColumnToJSONKey(gormColumn string) (string, error) {
@@ -127,6 +186,198 @@ func TransformTodoGormColumnMapToJSONKeyMap(
 		if err != nil {
 			// Check if ignore is enabled and error is matching
 			if ignoreUnsupportedError && errors.Is(err, ErrTodoUnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Todo Struct Key Name To JSON Key
+func TransformTodoStructKeyNameToJSONKey(structKey string) (string, error) {
+	switch structKey {
+	case TodoCreatedAtStructKeyName:
+		return TodoCreatedAtJSONKeyName, nil
+	case TodoDeletedAtStructKeyName:
+		return TodoDeletedAtJSONKeyName, nil
+	case TodoDoneStructKeyName:
+		return TodoDoneJSONKeyName, nil
+	case TodoIDStructKeyName:
+		return TodoIDJSONKeyName, nil
+	case TodoTextStructKeyName:
+		return TodoTextJSONKeyName, nil
+	case TodoUpdatedAtStructKeyName:
+		return TodoUpdatedAtJSONKeyName, nil
+	default:
+		return "", errors.WithStack(ErrTodoUnsupportedStructKeyName)
+	}
+}
+
+// Transform Todo JSON Key To Struct Key Name
+func TransformTodoJSONKeyToStructKeyName(jsonKey string) (string, error) {
+	switch jsonKey {
+	case TodoCreatedAtJSONKeyName:
+		return TodoCreatedAtStructKeyName, nil
+	case TodoDeletedAtJSONKeyName:
+		return TodoDeletedAtStructKeyName, nil
+	case TodoDoneJSONKeyName:
+		return TodoDoneStructKeyName, nil
+	case TodoIDJSONKeyName:
+		return TodoIDStructKeyName, nil
+	case TodoTextJSONKeyName:
+		return TodoTextStructKeyName, nil
+	case TodoUpdatedAtJSONKeyName:
+		return TodoUpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrTodoUnsupportedJSONKey)
+	}
+}
+
+// Transform Todo JSON Key map To Struct Key Name map
+func TransformTodoJSONKeyMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformTodoJSONKeyToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrTodoUnsupportedJSONKey) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Todo Struct Key Name map To JSON Key map
+func TransformTodoStructKeyNameMapToJSONKeyMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformTodoStructKeyNameToJSONKey(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrTodoUnsupportedStructKeyName) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Todo Struct Key Name To Gorm Column
+func TransformTodoStructKeyNameToGormColumn(structKey string) (string, error) {
+	switch structKey {
+	case TodoCreatedAtStructKeyName:
+		return TodoCreatedAtGormColumnName, nil
+	case TodoDeletedAtStructKeyName:
+		return TodoDeletedAtGormColumnName, nil
+	case TodoDoneStructKeyName:
+		return TodoDoneGormColumnName, nil
+	case TodoIDStructKeyName:
+		return TodoIDGormColumnName, nil
+	case TodoTextStructKeyName:
+		return TodoTextGormColumnName, nil
+	case TodoUpdatedAtStructKeyName:
+		return TodoUpdatedAtGormColumnName, nil
+	default:
+		return "", errors.WithStack(ErrTodoUnsupportedStructKeyName)
+	}
+}
+
+// Transform Todo Gorm Column To Struct Key Name
+func TransformTodoGormColumnToStructKeyName(gormC string) (string, error) {
+	switch gormC {
+	case TodoCreatedAtGormColumnName:
+		return TodoCreatedAtStructKeyName, nil
+	case TodoDeletedAtGormColumnName:
+		return TodoDeletedAtStructKeyName, nil
+	case TodoDoneGormColumnName:
+		return TodoDoneStructKeyName, nil
+	case TodoIDGormColumnName:
+		return TodoIDStructKeyName, nil
+	case TodoTextGormColumnName:
+		return TodoTextStructKeyName, nil
+	case TodoUpdatedAtGormColumnName:
+		return TodoUpdatedAtStructKeyName, nil
+	default:
+		return "", errors.WithStack(ErrTodoUnsupportedGormColumn)
+	}
+}
+
+// Transform Todo Gorm Column map To Struct Key Name map
+func TransformTodoGormColumnMapToStructKeyNameMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformTodoGormColumnToStructKeyName(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrTodoUnsupportedGormColumn) {
+				// Continue the loop
+				continue
+			}
+
+			// Return
+			return nil, err
+		}
+		// Save
+		m[r] = v
+	}
+
+	return m, nil
+}
+
+// Transform Todo Struct Key Name map To Gorm Column map
+func TransformTodoStructKeyNameMapToGormColumnMap(
+	input map[string]interface{},
+	ignoreUnsupportedError bool,
+) (map[string]interface{}, error) {
+	// Rebuild
+	m := map[string]interface{}{}
+	// Loop over input
+	for k, v := range input {
+		r, err := TransformTodoStructKeyNameToGormColumn(k)
+		// Check error
+		if err != nil {
+			// Check if ignore is enabled and error is matching
+			if ignoreUnsupportedError && errors.Is(err, ErrTodoUnsupportedStructKeyName) {
 				// Continue the loop
 				continue
 			}
