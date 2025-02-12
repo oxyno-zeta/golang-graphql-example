@@ -2,7 +2,7 @@ module github.com/oxyno-zeta/golang-graphql-example
 
 go 1.22.7
 
-toolchain go1.23.5
+toolchain go1.24.0
 
 require (
 	cirello.io/pglock v1.16.0
