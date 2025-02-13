@@ -13,10 +13,11 @@ func TestOIDCUser_GetIdentifier(t *testing.T) {
 		Email             string
 		EmailVerified     bool
 	}
+
 	tests := []struct {
 		name   string
-		fields fields
 		want   string
+		fields fields
 	}{
 		{
 			name: "all empty",
@@ -72,6 +73,7 @@ func TestOIDCUser_GetAuthorizationHeader(t *testing.T) {
 	type fields struct {
 		OriginalToken string
 	}
+
 	tests := []struct {
 		name   string
 		fields fields

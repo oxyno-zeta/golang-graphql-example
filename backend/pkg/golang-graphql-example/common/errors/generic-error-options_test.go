@@ -10,6 +10,7 @@ func TestWithErrorMessage(t *testing.T) {
 	type args struct {
 		errMsg string
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -27,6 +28,7 @@ func TestWithErrorMessage(t *testing.T) {
 			if got.Error() != tt.want {
 				t.Errorf("WithErrorMessage() = %v, want %v", got, tt.want)
 			}
+
 			if got.StackTrace() == nil {
 				t.Error("WithErrorMessage() don't have stack trace")
 			}
@@ -38,6 +40,7 @@ func TestWithError(t *testing.T) {
 	type args struct {
 		err error
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -55,6 +58,7 @@ func TestWithError(t *testing.T) {
 			if got.Error() != tt.want {
 				t.Errorf("WithError() = %v, want %v", got, tt.want)
 			}
+
 			if got.StackTrace() == nil {
 				t.Error("WithError() don't have stack trace")
 			}
@@ -66,6 +70,7 @@ func TestWithPublicError(t *testing.T) {
 	type args struct {
 		err error
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -83,6 +88,7 @@ func TestWithPublicError(t *testing.T) {
 			if got.PublicError().Error() != tt.want {
 				t.Errorf("WithPublicError() = %v, want %v", got, tt.want)
 			}
+
 			if got.PublicMessage() != tt.want {
 				t.Errorf("WithPublicError() = %v, want %v", got, tt.want)
 			}
@@ -94,6 +100,7 @@ func TestWithPublicErrorMessage(t *testing.T) {
 	type args struct {
 		errMsg string
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -111,6 +118,7 @@ func TestWithPublicErrorMessage(t *testing.T) {
 			if got.PublicError().Error() != tt.want {
 				t.Errorf("WithPublicError() = %v, want %v", got, tt.want)
 			}
+
 			if got.PublicMessage() != tt.want {
 				t.Errorf("WithPublicError() = %v, want %v", got, tt.want)
 			}
@@ -122,10 +130,11 @@ func TestWithExtensions(t *testing.T) {
 	type args struct {
 		input map[string]interface{}
 	}
+
 	tests := []struct {
-		name string
 		args args
 		want map[string]interface{}
+		name string
 	}{
 		{
 			name: "override",
@@ -145,13 +154,14 @@ func TestWithExtensions(t *testing.T) {
 
 func TestAddExtension(t *testing.T) {
 	type args struct {
-		key   string
 		value interface{}
+		key   string
 	}
+
 	tests := []struct {
-		name string
 		args args
 		want map[string]interface{}
+		name string
 	}{
 		{
 			name: "override",
@@ -179,6 +189,7 @@ func TestWithStatusCode(t *testing.T) {
 	type args struct {
 		input int
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -206,6 +217,7 @@ func TestWithCode(t *testing.T) {
 	type args struct {
 		input string
 	}
+
 	tests := []struct {
 		name string
 		args args
@@ -225,6 +237,7 @@ func TestWithCode(t *testing.T) {
 			if got.Code() != tt.want {
 				t.Errorf("WithCode() = %v, want %v", got.Code(), tt.want)
 			}
+
 			if got.Extensions()["code"] != tt.want {
 				t.Errorf("WithCode() = %v, want %v", got.Extensions()["code"], tt.want)
 			}

@@ -10,7 +10,7 @@ run:
   # exit code when at least one issue was found, default is 1
   issues-exit-code: 1
   # include test files or not, default is true
-  tests: false
+  tests: true
   # list of build tags, all linters use it. Default is empty list.
   build-tags: []
   # by default isn't set. If set we pass it to "go list -mod={option}". From "go help modules":
@@ -365,7 +365,6 @@ linters:
     - bidichk
     - contextcheck
     - nilnil
-    - tenv
     - containedctx
     - errchkjson
     - decorder
@@ -383,6 +382,7 @@ linters:
     - sloglint
     - testifylint
     - copyloopvar
+    - usetesting
   disable:
     - prealloc
     - gochecknoglobals
@@ -401,7 +401,6 @@ linters:
     - interfacebloat
     - zerologlint
     - depguard
-    - exportloopref
   fast: false
 issues:
   # make issues output unique by line, default is true
