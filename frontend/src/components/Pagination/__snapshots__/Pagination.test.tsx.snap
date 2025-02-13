@@ -100,6 +100,10 @@ exports[`Pagination should display 3 disable links when no next or previous page
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -132,6 +136,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route"
+          id=":r1:"
           tabindex="-1"
         >
           <svg
@@ -154,6 +159,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?before=&last=10"
+          id=":r3:"
           tabindex="-1"
         >
           <svg
@@ -176,6 +182,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?after=&first=10"
+          id=":r5:"
           tabindex="-1"
         >
           <svg
@@ -295,6 +302,10 @@ exports[`Pagination should display next and previous page buttons as enabled and
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -325,6 +336,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          id=":r15:"
           tabindex="0"
           type="button"
         >
@@ -346,6 +358,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          id=":r17:"
           tabindex="0"
           type="button"
         >
@@ -367,6 +380,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          id=":r19:"
           tabindex="0"
           type="button"
         >
@@ -487,6 +501,10 @@ exports[`Pagination should display only next page button as enabled and clickabl
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -519,6 +537,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route"
+          id=":rp:"
           tabindex="-1"
         >
           <svg
@@ -541,6 +560,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?before=&last=10"
+          id=":rr:"
           tabindex="-1"
         >
           <svg
@@ -561,6 +581,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          id=":rt:"
           tabindex="0"
           type="button"
         >
@@ -681,6 +702,10 @@ exports[`Pagination should display only next page link as enabled with correct u
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -713,6 +738,7 @@ exports[`Pagination should display only next page link as enabled with correct u
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route"
+          id=":r7:"
           tabindex="-1"
         >
           <svg
@@ -735,6 +761,7 @@ exports[`Pagination should display only next page link as enabled with correct u
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?before=&last=10"
+          id=":r9:"
           tabindex="-1"
         >
           <svg
@@ -756,6 +783,7 @@ exports[`Pagination should display only next page link as enabled with correct u
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?after=fake-end&first=10"
+          id=":rb:"
           tabindex="0"
         >
           <svg
@@ -875,6 +903,10 @@ exports[`Pagination should display only previous page buttons as enabled and cli
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -905,6 +937,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          id=":rv:"
           tabindex="0"
           type="button"
         >
@@ -926,6 +959,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          id=":r11:"
           tabindex="0"
           type="button"
         >
@@ -949,6 +983,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?after=&first=10"
+          id=":r13:"
           tabindex="-1"
         >
           <svg
@@ -1068,6 +1103,10 @@ exports[`Pagination should display only previous page links as enabled with corr
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1099,6 +1138,7 @@ exports[`Pagination should display only previous page links as enabled with corr
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route"
+          id=":rd:"
           tabindex="0"
         >
           <svg
@@ -1120,6 +1160,7 @@ exports[`Pagination should display only previous page links as enabled with corr
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?before=fake-start&last=10"
+          id=":rf:"
           tabindex="0"
         >
           <svg
@@ -1142,6 +1183,7 @@ exports[`Pagination should display only previous page links as enabled with corr
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
           href="/route?after=&first=10"
+          id=":rh:"
           tabindex="-1"
         >
           <svg
@@ -1261,6 +1303,10 @@ exports[`Pagination should display previous and next page links as enabled with 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1292,6 +1338,7 @@ exports[`Pagination should display previous and next page links as enabled with 
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route"
+          id=":rj:"
           tabindex="0"
         >
           <svg
@@ -1313,6 +1360,7 @@ exports[`Pagination should display previous and next page links as enabled with 
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?before=fake-start&last=10"
+          id=":rl:"
           tabindex="0"
         >
           <svg
@@ -1334,6 +1382,7 @@ exports[`Pagination should display previous and next page links as enabled with 
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
           href="/route?after=fake-end&first=10"
+          id=":rn:"
           tabindex="0"
         >
           <svg

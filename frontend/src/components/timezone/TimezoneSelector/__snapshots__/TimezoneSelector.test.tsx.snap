@@ -484,6 +484,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-7 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -580,6 +584,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-8.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-9 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -651,8 +659,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined emotion-2"
         data-shrink="true"
-        for=":r2:"
-        id=":r2:-label"
+        for=":r4:"
+        id=":r4:-label"
       >
         common.timezone
       </label>
@@ -666,7 +674,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           autocapitalize="none"
           autocomplete="off"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
-          id=":r2:"
+          id=":r4:"
           role="combobox"
           spellcheck="false"
           type="text"
@@ -678,6 +686,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.clearAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
+            id=":r6:"
             tabindex="-1"
             title="common.clearAction"
             type="button"
@@ -697,6 +706,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.openAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-8"
+            id=":r7:"
             tabindex="-1"
             title="common.openAction"
             type="button"
@@ -1226,6 +1236,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-7 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1326,6 +1340,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-8.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-9 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1389,7 +1407,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 
 <div>
   <div
-    aria-owns=":r4:-listbox"
+    aria-owns=":r8:-listbox"
     class="MuiAutocomplete-root Mui-expanded Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-0"
   >
     <div
@@ -1398,8 +1416,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined emotion-2"
         data-shrink="true"
-        for=":r4:"
-        id=":r4:-label"
+        for=":r8:"
+        id=":r8:-label"
       >
         common.timezone
       </label>
@@ -1408,13 +1426,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
       >
         <input
           aria-autocomplete="list"
-          aria-controls=":r4:-listbox"
+          aria-controls=":r8:-listbox"
           aria-expanded="true"
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
-          id=":r4:"
+          id=":r8:"
           role="combobox"
           spellcheck="false"
           type="text"
@@ -1426,6 +1444,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.clearAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
+            id=":ra:"
             tabindex="-1"
             title="common.clearAction"
             type="button"
@@ -1445,6 +1464,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.closeAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen emotion-8"
+            id=":rb:"
             tabindex="-1"
             title="common.closeAction"
             type="button"
@@ -1631,9 +1651,9 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   >
     <div>
       <div
-        aria-labelledby=":r4:-label"
+        aria-labelledby=":r8:-label"
         class="MuiAutocomplete-listbox emotion-2"
-        id=":r4:-listbox"
+        id=":r8:-listbox"
         role="listbox"
         style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
       >
@@ -1651,7 +1671,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="0"
-            id=":r4:-option-0"
+            id=":r8:-option-0"
             role="option"
             style="position: absolute; left: 0px; top: 48px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1677,7 +1697,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="1"
-            id=":r4:-option-1"
+            id=":r8:-option-1"
             role="option"
             style="position: absolute; left: 0px; top: 100px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1703,7 +1723,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="2"
-            id=":r4:-option-2"
+            id=":r8:-option-2"
             role="option"
             style="position: absolute; left: 0px; top: 152px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1729,7 +1749,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="3"
-            id=":r4:-option-3"
+            id=":r8:-option-3"
             role="option"
             style="position: absolute; left: 0px; top: 204px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1755,7 +1775,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="4"
-            id=":r4:-option-4"
+            id=":r8:-option-4"
             role="option"
             style="position: absolute; left: 0px; top: 256px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1781,7 +1801,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="5"
-            id=":r4:-option-5"
+            id=":r8:-option-5"
             role="option"
             style="position: absolute; left: 0px; top: 308px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1807,7 +1827,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="6"
-            id=":r4:-option-6"
+            id=":r8:-option-6"
             role="option"
             style="position: absolute; left: 0px; top: 360px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -1833,7 +1853,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="7"
-            id=":r4:-option-7"
+            id=":r8:-option-7"
             role="option"
             style="position: absolute; left: 0px; top: 412px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2009,9 +2029,9 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   >
     <div>
       <div
-        aria-labelledby=":r4:-label"
+        aria-labelledby=":r8:-label"
         class="MuiAutocomplete-listbox emotion-2"
-        id=":r4:-listbox"
+        id=":r8:-listbox"
         role="listbox"
         style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
       >
@@ -2029,7 +2049,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="0"
-            id=":r4:-option-0"
+            id=":r8:-option-0"
             role="option"
             style="position: absolute; left: 0px; top: 48px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2055,7 +2075,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="1"
-            id=":r4:-option-1"
+            id=":r8:-option-1"
             role="option"
             style="position: absolute; left: 0px; top: 100px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2081,7 +2101,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="2"
-            id=":r4:-option-2"
+            id=":r8:-option-2"
             role="option"
             style="position: absolute; left: 0px; top: 152px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2107,7 +2127,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="3"
-            id=":r4:-option-3"
+            id=":r8:-option-3"
             role="option"
             style="position: absolute; left: 0px; top: 204px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2133,7 +2153,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="4"
-            id=":r4:-option-4"
+            id=":r8:-option-4"
             role="option"
             style="position: absolute; left: 0px; top: 256px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2159,7 +2179,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="5"
-            id=":r4:-option-5"
+            id=":r8:-option-5"
             role="option"
             style="position: absolute; left: 0px; top: 308px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2185,7 +2205,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="6"
-            id=":r4:-option-6"
+            id=":r8:-option-6"
             role="option"
             style="position: absolute; left: 0px; top: 360px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2211,7 +2231,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
             aria-selected="false"
             class="MuiAutocomplete-option"
             data-option-index="7"
-            id=":r4:-option-7"
+            id=":r8:-option-7"
             role="option"
             style="position: absolute; left: 0px; top: 412px; height: 52px; width: 100%; display: block;"
             tabindex="-1"
@@ -2733,6 +2753,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-7 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2827,6 +2851,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 .emotion-8.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-8.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-9 {
@@ -2927,6 +2955,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.clearAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
+            id=":r2:"
             tabindex="-1"
             title="common.clearAction"
             type="button"
@@ -2946,6 +2975,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.openAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-8"
+            id=":r3:"
             tabindex="-1"
             title="common.openAction"
             type="button"

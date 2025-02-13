@@ -166,6 +166,10 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -260,6 +264,10 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -781,6 +789,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -887,6 +899,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-57.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-59 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -963,6 +979,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -999,6 +1017,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-60.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-61 {
@@ -1054,6 +1076,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-61::-moz-focus-inner {
@@ -1114,6 +1138,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-61.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -1132,6 +1160,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r7v:"
             tabindex="0"
             type="button"
           >
@@ -1150,6 +1179,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r81:"
           tabindex="0"
           type="button"
         >
@@ -1187,7 +1217,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4c:"
+                  id=":r82:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -1199,6 +1229,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r84:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -1254,7 +1285,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4e:"
+                  id=":r85:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -1266,6 +1297,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r87:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -1318,6 +1350,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r89:"
             tabindex="0"
             type="button"
           >
@@ -1336,6 +1369,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r8b:"
           tabindex="0"
           type="button"
         >
@@ -1373,7 +1407,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4i:"
+                  id=":r8c:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -1385,6 +1419,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r8e:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -1440,7 +1475,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4k:"
+                  id=":r8f:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -1452,6 +1487,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r8h:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -1493,6 +1529,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-57"
       data-mui-internal-clone-element="true"
+      id=":r8j:"
       tabindex="0"
       type="button"
     >
@@ -1513,6 +1550,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-60"
+      id=":r8k:"
       tabindex="0"
       type="button"
     >
@@ -1520,6 +1558,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-61"
+      id=":r8l:"
       tabindex="0"
       type="button"
     >
@@ -1695,6 +1734,10 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1789,6 +1832,10 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -2310,6 +2357,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -2414,6 +2465,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -2450,6 +2503,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-88.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-89 {
@@ -2505,6 +2562,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-89::-moz-focus-inner {
@@ -2565,6 +2624,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-89.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -2583,6 +2646,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r7v:"
             tabindex="0"
             type="button"
           >
@@ -2601,6 +2665,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r81:"
           tabindex="0"
           type="button"
         >
@@ -2638,7 +2703,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4c:"
+                  id=":r82:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -2650,6 +2715,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r84:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -2705,7 +2771,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4e:"
+                  id=":r85:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -2717,6 +2783,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r87:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -2769,6 +2836,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r89:"
             tabindex="0"
             type="button"
           >
@@ -2786,6 +2854,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r8n:"
             tabindex="0"
             type="button"
           >
@@ -2804,6 +2873,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r8b:"
           tabindex="0"
           type="button"
         >
@@ -2841,7 +2911,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4i:"
+                  id=":r8c:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -2853,6 +2923,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r8e:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -2908,7 +2979,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4k:"
+                  id=":r8f:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -2920,6 +2991,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r8h:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -2972,6 +3044,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r8p:"
             tabindex="0"
             type="button"
           >
@@ -2990,6 +3063,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r8r:"
           tabindex="0"
           type="button"
         >
@@ -3027,7 +3101,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4q:"
+                  id=":r8s:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -3039,6 +3113,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r8u:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -3094,7 +3169,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r4s:"
+                  id=":r8v:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -3106,6 +3181,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r91:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -3150,6 +3226,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-88"
+      id=":r8k:"
       tabindex="0"
       type="button"
     >
@@ -3157,6 +3234,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-89"
+      id=":r8l:"
       tabindex="0"
       type="button"
     >
@@ -3332,6 +3410,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -3426,6 +3508,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -3947,6 +4033,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -4051,6 +4141,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -4087,6 +4179,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-88.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-89 {
@@ -4142,6 +4238,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-89::-moz-focus-inner {
@@ -4202,6 +4300,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-89.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -4220,6 +4322,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r4r:"
             tabindex="0"
             type="button"
           >
@@ -4238,6 +4341,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r4t:"
           tabindex="0"
           type="button"
         >
@@ -4275,7 +4379,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r2i:"
+                  id=":r4u:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -4287,6 +4391,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r50:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -4342,7 +4447,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r2k:"
+                  id=":r51:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -4354,6 +4459,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r53:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -4406,6 +4512,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r55:"
             tabindex="0"
             type="button"
           >
@@ -4423,6 +4530,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r57:"
             tabindex="0"
             type="button"
           >
@@ -4441,6 +4549,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r59:"
           tabindex="0"
           type="button"
         >
@@ -4478,7 +4587,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r2p:"
+                  id=":r5a:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -4490,6 +4599,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r5c:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -4545,7 +4655,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r2r:"
+                  id=":r5d:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -4557,6 +4667,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r5f:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -4609,6 +4720,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r5h:"
             tabindex="0"
             type="button"
           >
@@ -4627,6 +4739,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r5j:"
           tabindex="0"
           type="button"
         >
@@ -4664,7 +4777,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r2v:"
+                  id=":r5k:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -4676,6 +4789,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r5m:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -4731,7 +4845,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r31:"
+                  id=":r5n:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -4743,6 +4857,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r5p:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -4787,6 +4902,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-88"
+      id=":r5q:"
       tabindex="0"
       type="button"
     >
@@ -4794,6 +4910,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-89"
+      id=":r5r:"
       tabindex="0"
       type="button"
     >
@@ -4969,6 +5086,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -5063,6 +5184,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -5584,6 +5709,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -5688,6 +5817,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -5724,6 +5855,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-88.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-89 {
@@ -5779,6 +5914,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-89::-moz-focus-inner {
@@ -5839,6 +5976,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-89.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -5857,6 +5998,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r5t:"
             tabindex="0"
             type="button"
           >
@@ -5875,6 +6017,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r5v:"
           tabindex="0"
           type="button"
         >
@@ -5912,7 +6055,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r35:"
+                  id=":r60:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -5924,6 +6067,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r62:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -5979,7 +6123,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r37:"
+                  id=":r63:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -5991,6 +6135,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r65:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -6043,6 +6188,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r67:"
             tabindex="0"
             type="button"
           >
@@ -6060,6 +6206,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r69:"
             tabindex="0"
             type="button"
           >
@@ -6078,6 +6225,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r6b:"
           tabindex="0"
           type="button"
         >
@@ -6115,7 +6263,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3c:"
+                  id=":r6c:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -6127,6 +6275,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r6e:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -6182,7 +6331,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3e:"
+                  id=":r6f:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -6194,6 +6343,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r6h:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -6246,6 +6396,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r5h:"
             tabindex="0"
             type="button"
           >
@@ -6264,6 +6415,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r5j:"
           tabindex="0"
           type="button"
         >
@@ -6301,7 +6453,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r2v:"
+                  id=":r5k:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -6313,6 +6465,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r5m:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -6368,7 +6521,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r31:"
+                  id=":r5n:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -6380,6 +6533,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r5p:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -6424,6 +6578,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-88"
+      id=":r5q:"
       tabindex="0"
       type="button"
     >
@@ -6431,6 +6586,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-89"
+      id=":r5r:"
       tabindex="0"
       type="button"
     >
@@ -6606,6 +6762,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -6700,6 +6860,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -7221,6 +7385,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -7325,6 +7493,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -7361,6 +7531,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-88.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-89 {
@@ -7416,6 +7590,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-89::-moz-focus-inner {
@@ -7476,6 +7652,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-89.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -7494,6 +7674,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r5t:"
             tabindex="0"
             type="button"
           >
@@ -7512,6 +7693,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r5v:"
           tabindex="0"
           type="button"
         >
@@ -7549,7 +7731,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r35:"
+                  id=":r60:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -7561,6 +7743,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r62:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -7616,7 +7799,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r37:"
+                  id=":r63:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -7628,6 +7811,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r65:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -7680,6 +7864,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r6j:"
             tabindex="0"
             type="button"
           >
@@ -7697,6 +7882,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r6l:"
             tabindex="0"
             type="button"
           >
@@ -7715,6 +7901,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r6n:"
           tabindex="0"
           type="button"
         >
@@ -7752,7 +7939,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3j:"
+                  id=":r6o:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -7764,6 +7951,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r6q:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -7819,7 +8007,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3l:"
+                  id=":r6r:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -7831,6 +8019,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r6t:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -7883,6 +8072,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r6v:"
             tabindex="0"
             type="button"
           >
@@ -7901,6 +8091,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r71:"
           tabindex="0"
           type="button"
         >
@@ -7938,7 +8129,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3p:"
+                  id=":r72:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -7950,6 +8141,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r74:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -8005,7 +8197,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3r:"
+                  id=":r75:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -8017,6 +8209,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r77:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -8061,6 +8254,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-88"
+      id=":r5q:"
       tabindex="0"
       type="button"
     >
@@ -8068,6 +8262,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-89"
+      id=":r5r:"
       tabindex="0"
       type="button"
     >
@@ -8243,6 +8438,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -8337,6 +8536,10 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -8858,6 +9061,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -8962,6 +9169,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -8998,6 +9207,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-88.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-89 {
@@ -9053,6 +9266,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-89::-moz-focus-inner {
@@ -9113,6 +9328,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-89.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -9131,6 +9350,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r79:"
             tabindex="0"
             type="button"
           >
@@ -9149,6 +9369,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r7b:"
           tabindex="0"
           type="button"
         >
@@ -9186,7 +9407,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3v:"
+                  id=":r7c:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -9198,6 +9419,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r7e:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -9253,7 +9475,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r41:"
+                  id=":r7f:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -9265,6 +9487,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r7h:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -9317,6 +9540,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r7j:"
             tabindex="0"
             type="button"
           >
@@ -9334,6 +9558,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r7l:"
             tabindex="0"
             type="button"
           >
@@ -9352,6 +9577,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r7n:"
           tabindex="0"
           type="button"
         >
@@ -9389,7 +9615,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r46:"
+                  id=":r7o:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -9401,6 +9627,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r7q:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -9456,7 +9683,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r48:"
+                  id=":r7r:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -9468,6 +9695,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r7t:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -9520,6 +9748,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r6v:"
             tabindex="0"
             type="button"
           >
@@ -9538,6 +9767,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r71:"
           tabindex="0"
           type="button"
         >
@@ -9575,7 +9805,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3p:"
+                  id=":r72:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -9587,6 +9817,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r74:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -9642,7 +9873,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r3r:"
+                  id=":r75:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -9654,6 +9885,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r77:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -9698,6 +9930,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-88"
+      id=":r5q:"
       tabindex="0"
       type="button"
     >
@@ -9705,6 +9938,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-89"
+      id=":r5r:"
       tabindex="0"
       type="button"
     >
@@ -9823,6 +10057,10 @@ exports[`sorts/internal/SortForm should be ok with 1 initial sort 1`] = `
 .emotion-3.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-3.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-4 {
@@ -10344,6 +10582,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-12.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-14 {
   text-align: left;
   position: absolute;
@@ -10450,6 +10692,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-26.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-28 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -10526,6 +10772,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -10562,6 +10810,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-29.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-30 {
@@ -10617,6 +10869,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-30::-moz-focus-inner {
@@ -10677,6 +10931,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   }
 }
 
+.emotion-30.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -10691,6 +10949,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-3"
           data-mui-internal-clone-element="true"
+          id=":r5:"
           tabindex="0"
           type="button"
         >
@@ -10728,7 +10987,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-10"
-                  id=":r2:"
+                  id=":r6:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -10740,6 +10999,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
+                    id=":r8:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -10795,7 +11055,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-10"
-                  id=":r4:"
+                  id=":r9:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -10807,6 +11067,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
+                    id=":rb:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -10848,6 +11109,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-26"
       data-mui-internal-clone-element="true"
+      id=":rd:"
       tabindex="0"
       type="button"
     >
@@ -10868,6 +11130,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-29"
+      id=":re:"
       tabindex="0"
       type="button"
     >
@@ -10875,6 +11138,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-30"
+      id=":rf:"
       tabindex="0"
       type="button"
     >
@@ -11050,6 +11314,10 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -11144,6 +11412,10 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -11665,6 +11937,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -11771,6 +12047,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-57.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-59 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -11847,6 +12127,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -11883,6 +12165,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-60.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-61 {
@@ -11938,6 +12224,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-61::-moz-focus-inner {
@@ -11998,6 +12286,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-61.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -12016,6 +12308,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":rh:"
             tabindex="0"
             type="button"
           >
@@ -12034,6 +12327,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":rj:"
           tabindex="0"
           type="button"
         >
@@ -12071,7 +12365,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r9:"
+                  id=":rk:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -12083,6 +12377,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":rm:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -12138,7 +12433,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":rb:"
+                  id=":rn:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -12150,6 +12445,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":rp:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -12202,6 +12498,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":rr:"
             tabindex="0"
             type="button"
           >
@@ -12220,6 +12517,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":rt:"
           tabindex="0"
           type="button"
         >
@@ -12257,7 +12555,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":rf:"
+                  id=":ru:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -12269,6 +12567,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r10:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -12324,7 +12623,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":rh:"
+                  id=":r11:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -12336,6 +12635,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r13:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -12377,6 +12677,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-57"
       data-mui-internal-clone-element="true"
+      id=":r15:"
       tabindex="0"
       type="button"
     >
@@ -12397,6 +12698,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-60"
+      id=":r16:"
       tabindex="0"
       type="button"
     >
@@ -12404,6 +12706,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-61"
+      id=":r17:"
       tabindex="0"
       type="button"
     >
@@ -12579,6 +12882,10 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-4.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-5 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -12673,6 +12980,10 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
 .emotion-6.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-6.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-7 {
@@ -13194,6 +13505,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-15.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-17 {
   text-align: left;
   position: absolute;
@@ -13298,6 +13613,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -13334,6 +13651,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-88.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-89 {
@@ -13389,6 +13710,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-89::-moz-focus-inner {
@@ -13449,6 +13772,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   }
 }
 
+.emotion-89.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -13467,6 +13794,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r19:"
             tabindex="0"
             type="button"
           >
@@ -13485,6 +13813,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r1b:"
           tabindex="0"
           type="button"
         >
@@ -13522,7 +13851,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":rm:"
+                  id=":r1c:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -13534,6 +13863,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r1e:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -13589,7 +13919,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":ro:"
+                  id=":r1f:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -13601,6 +13931,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r1h:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -13653,6 +13984,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r1j:"
             tabindex="0"
             type="button"
           >
@@ -13670,6 +14002,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r1l:"
             tabindex="0"
             type="button"
           >
@@ -13688,6 +14021,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r1n:"
           tabindex="0"
           type="button"
         >
@@ -13725,7 +14059,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":rt:"
+                  id=":r1o:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -13737,6 +14071,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r1q:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -13792,7 +14127,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":rv:"
+                  id=":r1r:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -13804,6 +14139,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r1t:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -13856,6 +14192,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall emotion-4"
             data-mui-internal-clone-element="true"
+            id=":r1v:"
             tabindex="0"
             type="button"
           >
@@ -13874,6 +14211,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-6"
           data-mui-internal-clone-element="true"
+          id=":r21:"
           tabindex="0"
           type="button"
         >
@@ -13911,7 +14249,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r13:"
+                  id=":r22:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -13923,6 +14261,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r24:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -13978,7 +14317,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-13"
-                  id=":r15:"
+                  id=":r25:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -13990,6 +14329,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
+                    id=":r27:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -14034,6 +14374,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-88"
+      id=":r28:"
       tabindex="0"
       type="button"
     >
@@ -14041,6 +14382,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-89"
+      id=":r29:"
       tabindex="0"
       type="button"
     >
@@ -14142,6 +14484,10 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -14235,6 +14581,8 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -14271,6 +14619,10 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-4.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-5 {
@@ -14326,6 +14678,8 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -14386,6 +14740,10 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
   }
 }
 
+.emotion-5.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -14393,6 +14751,7 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -14413,6 +14772,7 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-4"
+      id=":r2:"
       tabindex="0"
       type="button"
     >
@@ -14420,6 +14780,7 @@ exports[`sorts/internal/SortForm should be ok with no initial sorts 1`] = `
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-5"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -14538,6 +14899,10 @@ exports[`sorts/internal/SortForm should ignore a second key in object 1`] = `
 .emotion-3.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-3.MuiIconButton-loading {
+  color: transparent;
 }
 
 .emotion-4 {
@@ -15059,6 +15424,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-12.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-14 {
   text-align: left;
   position: absolute;
@@ -15165,6 +15534,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-26.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-28 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -15241,6 +15614,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: auto;
   margin-right: 5px;
 }
@@ -15277,6 +15652,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
+}
+
+.emotion-29.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-30 {
@@ -15332,6 +15711,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   --variant-outlinedBorder: rgba(25, 118, 210, 0.5);
   --variant-containedColor: #fff;
   --variant-containedBg: #1976d2;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-30::-moz-focus-inner {
@@ -15392,6 +15773,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   }
 }
 
+.emotion-30.MuiButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     class="MuiDialogContent-root emotion-0"
@@ -15406,6 +15791,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-3"
           data-mui-internal-clone-element="true"
+          id=":r2b:"
           tabindex="0"
           type="button"
         >
@@ -15443,7 +15829,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-10"
-                  id=":r18:"
+                  id=":r2c:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -15455,6 +15841,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
+                    id=":r2e:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -15510,7 +15897,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   autocapitalize="none"
                   autocomplete="off"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-10"
-                  id=":r1a:"
+                  id=":r2f:"
                   role="combobox"
                   spellcheck="false"
                   type="text"
@@ -15522,6 +15909,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   <button
                     aria-label="common.openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
+                    id=":r2h:"
                     tabindex="-1"
                     title="common.openAction"
                     type="button"
@@ -15563,6 +15951,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-26"
       data-mui-internal-clone-element="true"
+      id=":r2j:"
       tabindex="0"
       type="button"
     >
@@ -15583,6 +15972,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
   >
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary emotion-29"
+      id=":r2k:"
       tabindex="0"
       type="button"
     >
@@ -15590,6 +15980,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary emotion-30"
+      id=":r2l:"
       tabindex="0"
       type="button"
     >

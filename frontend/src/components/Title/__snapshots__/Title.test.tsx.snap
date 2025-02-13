@@ -179,6 +179,10 @@ exports[`Title should display title with left element only 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -213,6 +217,7 @@ exports[`Title should display title with left element only 1`] = `
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+      id=":r0:"
       tabindex="0"
       type="button"
     >
@@ -354,6 +359,10 @@ exports[`Title should display title with right and left element 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-1.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-2 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -388,6 +397,7 @@ exports[`Title should display title with right and left element 1`] = `
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+      id=":r2:"
       tabindex="0"
       type="button"
     >
@@ -413,6 +423,7 @@ exports[`Title should display title with right and left element 1`] = `
     />
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -555,6 +566,10 @@ exports[`Title should display title with right element only 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-2.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-3 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -588,6 +603,7 @@ exports[`Title should display title with right element only 1`] = `
     />
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-2"
+      id=":r1:"
       tabindex="0"
       type="button"
     >

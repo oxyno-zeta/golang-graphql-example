@@ -78,6 +78,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -103,6 +107,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r7:"
         tabindex="0"
         type="button"
       >
@@ -200,6 +205,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -265,12 +274,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
 <div>
   <div>
     <span
-      aria-labelledby=":r3:"
+      aria-labelledby=":r6:"
       class=""
       data-mui-internal-clone-element="true"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r7:"
         tabindex="0"
         type="button"
       >
@@ -291,7 +301,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id=":r3:"
+      id=":r6:"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
@@ -384,6 +394,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -409,6 +423,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r5:"
         tabindex="0"
         type="button"
       >
@@ -506,6 +521,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -571,12 +590,13 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
 <div>
   <div>
     <span
-      aria-labelledby=":r2:"
+      aria-labelledby=":r4:"
       class=""
       data-mui-internal-clone-element="true"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r5:"
         tabindex="0"
         type="button"
       >
@@ -597,7 +617,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id=":r2:"
+      id=":r4:"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
@@ -690,6 +710,10 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -715,6 +739,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r5:"
         tabindex="0"
         type="button"
       >
@@ -812,6 +837,10 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -837,6 +866,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r1:"
         tabindex="0"
         type="button"
       >
@@ -934,6 +964,10 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -959,6 +993,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r3:"
         tabindex="0"
         type="button"
       >
@@ -1056,6 +1091,10 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1121,12 +1160,13 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
 <div>
   <div>
     <span
-      aria-labelledby=":r1:"
+      aria-labelledby=":r2:"
       class=""
       data-mui-internal-clone-element="true"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r3:"
         tabindex="0"
         type="button"
       >
@@ -1147,7 +1187,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id=":r1:"
+      id=":r2:"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
@@ -1240,6 +1280,10 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1265,6 +1309,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+        id=":r3:"
         tabindex="0"
         type="button"
       >

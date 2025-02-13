@@ -103,6 +103,8 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -143,6 +145,10 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -188,6 +194,7 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r9:"
       tabindex="0"
       type="button"
     >
@@ -205,6 +212,7 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":rb:"
       tabindex="0"
       type="button"
     >
@@ -331,6 +339,8 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -371,6 +381,10 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -416,6 +430,7 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r9:"
       tabindex="0"
       type="button"
     >
@@ -433,6 +448,7 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":rb:"
       tabindex="0"
       type="button"
     >
@@ -559,6 +575,8 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -599,6 +617,10 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -644,6 +666,7 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -661,6 +684,7 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -787,6 +811,8 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -827,6 +853,10 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -872,6 +902,7 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -889,6 +920,7 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -1015,6 +1047,8 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -1055,6 +1089,10 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -1100,6 +1138,7 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -1117,6 +1156,7 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -1243,6 +1283,8 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -1283,6 +1325,10 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -1328,6 +1374,7 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r5:"
       tabindex="0"
       type="button"
     >
@@ -1345,6 +1392,7 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r7:"
       tabindex="0"
       type="button"
     >
@@ -1471,6 +1519,8 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -1511,6 +1561,10 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
+}
+
+.emotion-1.MuiButton-loading {
+  color: transparent;
 }
 
 .emotion-2 {
@@ -1556,6 +1610,7 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r5:"
       tabindex="0"
       type="button"
     >
@@ -1573,6 +1628,7 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
+      id=":r7:"
       tabindex="0"
       type="button"
     >

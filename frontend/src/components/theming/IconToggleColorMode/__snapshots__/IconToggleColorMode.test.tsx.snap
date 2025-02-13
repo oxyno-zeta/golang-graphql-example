@@ -79,6 +79,10 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   color: rgba(255, 255, 255, 0.3);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -103,6 +107,7 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -200,6 +205,10 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -224,6 +233,7 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -321,6 +331,10 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   color: rgba(0, 0, 0, 0.26);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -345,6 +359,7 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -442,6 +457,10 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   color: rgba(255, 255, 255, 0.3);
 }
 
+.emotion-0.MuiIconButton-loading {
+  color: transparent;
+}
+
 .emotion-1 {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -466,6 +485,7 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
+      id=":r1:"
       tabindex="0"
       type="button"
     >

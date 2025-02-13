@@ -29,8 +29,8 @@ exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
   }
 
   100% {
-    stroke-dasharray: 100px,200px;
-    stroke-dashoffset: -125px;
+    stroke-dasharray: 1px,200px;
+    stroke-dashoffset: -126px;
   }
 }
 
@@ -145,8 +145,8 @@ exports[`QueryRedirectTo should display a loading without subtitle when query is
   }
 
   100% {
-    stroke-dasharray: 100px,200px;
-    stroke-dashoffset: -125px;
+    stroke-dasharray: 1px,200px;
+    stroke-dashoffset: -126px;
   }
 }
 
@@ -244,8 +244,8 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
   }
 
   100% {
-    stroke-dasharray: 100px,200px;
-    stroke-dashoffset: -125px;
+    stroke-dasharray: 1px,200px;
+    stroke-dashoffset: -126px;
   }
 }
 
@@ -409,8 +409,8 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
   }
 
   100% {
-    stroke-dasharray: 100px,200px;
-    stroke-dashoffset: -125px;
+    stroke-dasharray: 1px,200px;
+    stroke-dashoffset: -126px;
   }
 }
 
@@ -554,8 +554,8 @@ exports[`QueryRedirectTo should redirect to new path on success 1`] = `
   }
 
   100% {
-    stroke-dasharray: 100px,200px;
-    stroke-dashoffset: -125px;
+    stroke-dasharray: 1px,200px;
+    stroke-dashoffset: -126px;
   }
 }
 
