@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import Button, { ButtonProps } from '@mui/material/Button';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
-import LoadingButton, { LoadingButtonProps } from '@mui/lab/LoadingButton';
 import DialogActions, { DialogActionsProps } from '@mui/material/DialogActions';
 import DialogContent, { DialogContentProps } from '@mui/material/DialogContent';
 import DialogContentText, { DialogContentTextProps } from '@mui/material/DialogContentText';
@@ -22,7 +21,7 @@ export interface Props {
   readonly dialogContentTextProps?: Partial<DialogContentTextProps>;
   readonly dialogActionsProps?: Partial<DialogActionsProps>;
   readonly cancelButtonProps?: Partial<Omit<ButtonProps, 'onClick'>>;
-  readonly okButtonProps?: Partial<Omit<LoadingButtonProps, 'loading' | 'onClick' | 'disabled'>>;
+  readonly okButtonProps?: Partial<Omit<ButtonProps, 'loading' | 'onClick' | 'disabled'>>;
 }
 
 function AcceptDialog({
@@ -71,7 +70,7 @@ function AcceptDialog({
         <Button onClick={onClose} {...cancelButtonProps}>
           {t('common.cancelAction')}
         </Button>
-        <LoadingButton
+        <Button
           autoFocus
           disabled={okDisabled}
           loading={isLoading}
@@ -80,7 +79,7 @@ function AcceptDialog({
           {...okButtonProps}
         >
           {t('common.okAction')}
-        </LoadingButton>
+        </Button>
       </DialogActions>
     </Dialog>
   );
