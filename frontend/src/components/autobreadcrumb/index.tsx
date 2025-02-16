@@ -1,20 +1,18 @@
-import AutoBreadcrumb, { Props as AutoBreadcrumbProps } from './AutoBreadcrumb';
-import type {
-  RouteHandle,
+import {
+  BreadcrumbData,
   BreadcrumbFixedData,
   BreadcrumbFixedDataConfig,
   BreadcrumbGraphQLData,
   BreadcrumbGraphQLDataConfig,
-  BreadcrumbData,
 } from './types';
+import AutoBreadcrumb from './AutoBreadcrumb';
 
-export default AutoBreadcrumb;
 export type {
-  AutoBreadcrumbProps,
-  RouteHandle,
+  BreadcrumbData,
   BreadcrumbFixedData,
   BreadcrumbFixedDataConfig,
   BreadcrumbGraphQLData,
   BreadcrumbGraphQLDataConfig,
-  BreadcrumbData,
 };
+
+export { AutoBreadcrumb };

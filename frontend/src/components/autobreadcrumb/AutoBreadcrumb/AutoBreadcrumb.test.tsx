@@ -7,7 +7,7 @@ import { render, screen } from '@testing-library/react';
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import { MockedProvider } from '@apollo/client/testing';
-import type { RouteHandle } from './types';
+import type { RouteHandle } from '../types';
 import {
   SimpleErrorQuery,
   SimpleQuery1,
@@ -18,9 +18,7 @@ import {
 
 import AutoBreadcrumb from './AutoBreadcrumb';
 
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
-}));
+jest.mock('react-i18next', () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 
 describe('AutoBreadcrumb', () => {
   describe('Fixed texts', () => {
@@ -33,9 +31,7 @@ describe('AutoBreadcrumb', () => {
             <Outlet />
           </>
         ),
-        handle: {
-          breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'root' } },
-        } as RouteHandle,
+        handle: { breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'root' } } } as RouteHandle,
         children: [
           {
             path: 'level1',
@@ -45,16 +41,12 @@ describe('AutoBreadcrumb', () => {
                 <Outlet />
               </>
             ),
-            handle: {
-              breadcrumb: { id: 'fake-id-2', fixed: { textContent: 'level1' } },
-            } as RouteHandle,
+            handle: { breadcrumb: { id: 'fake-id-2', fixed: { textContent: 'level1' } } } as RouteHandle,
             children: [
               {
                 path: 'level2',
                 element: <div />,
-                handle: {
-                  breadcrumb: { id: 'fake-id-3', fixed: { textContent: 'level2' } },
-                } as RouteHandle,
+                handle: { breadcrumb: { id: 'fake-id-3', fixed: { textContent: 'level2' } } } as RouteHandle,
               },
             ],
           },
@@ -190,9 +182,7 @@ describe('AutoBreadcrumb', () => {
               {
                 path: 'error',
                 element: <div />,
-                handle: {
-                  breadcrumb: { id: 'fake-id-3', graphql: { query: SimpleErrorQuery } },
-                } as RouteHandle,
+                handle: { breadcrumb: { id: 'fake-id-3', graphql: { query: SimpleErrorQuery } } } as RouteHandle,
               },
               {
                 path: 'slow',
@@ -394,9 +384,7 @@ describe('AutoBreadcrumb', () => {
             <Outlet />
           </>
         ),
-        handle: {
-          breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } },
-        } as RouteHandle,
+        handle: { breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } } } as RouteHandle,
         children: [
           {
             path: 'level1',
@@ -510,9 +498,7 @@ describe('AutoBreadcrumb', () => {
             <Outlet />
           </>
         ),
-        handle: {
-          breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } },
-        } as RouteHandle,
+        handle: { breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } } } as RouteHandle,
         children: [
           {
             path: 'level1',

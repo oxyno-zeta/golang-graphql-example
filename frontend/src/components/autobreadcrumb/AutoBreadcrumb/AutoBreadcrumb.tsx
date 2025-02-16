@@ -1,15 +1,16 @@
-import React from 'react';
-import { useMatches, useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import Breadcrumbs, { BreadcrumbsProps } from '@mui/material/Breadcrumbs';
-import { BreadcrumbData, RouteHandle } from './types';
+import type { BreadcrumbData } from '../types';
 import FixedBreadcrumb from './FixedBreadcrumb';
 import GraphQLBreadcrumb from './GraphQLBreadcrumb';
+import AutoBreadcrumbContext from '../contexts/AutoBreadcrumbContext';
 
 export type Props = BreadcrumbsProps;
 
 function AutoBreadcrumb(props: Props) {
-  // Get matches
-  const matches = useMatches();
+  // Get context
+  const ctx = useContext(AutoBreadcrumbContext);
   // Get params
   const params = useParams();
 

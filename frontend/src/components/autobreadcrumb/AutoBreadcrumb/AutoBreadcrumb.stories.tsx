@@ -9,12 +9,9 @@ import {
   SlowQuery,
   mockedResponses,
 } from './AutoBreadcrumb.storage-test';
-import type { RouteHandle } from './types';
+import type { RouteHandle } from '../types';
 
-export default {
-  title: 'Components/AutoBreadcrumb',
-  component: AutoBreadcrumb,
-} as Meta<typeof AutoBreadcrumb>;
+export default { title: 'Components/AutoBreadcrumb', component: AutoBreadcrumb } as Meta<typeof AutoBreadcrumb>;
 
 const allFixedRoutes = [
   {
@@ -35,9 +32,7 @@ const allFixedRoutes = [
         <Outlet />
       </>
     ),
-    handle: {
-      breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } },
-    } as RouteHandle,
+    handle: { breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } } } as RouteHandle,
     children: [
       {
         path: 'level1',
@@ -47,16 +42,12 @@ const allFixedRoutes = [
             <Outlet />
           </>
         ),
-        handle: {
-          breadcrumb: { id: 'fake-id-2', fixed: { textContent: 'fake' } },
-        } as RouteHandle,
+        handle: { breadcrumb: { id: 'fake-id-2', fixed: { textContent: 'fake' } } } as RouteHandle,
         children: [
           {
             path: 'level2',
             element: <div />,
-            handle: {
-              breadcrumb: { id: 'fake-id-3', fixed: { textContent: 'fake' } },
-            } as RouteHandle,
+            handle: { breadcrumb: { id: 'fake-id-3', fixed: { textContent: 'fake' } } } as RouteHandle,
           },
         ],
       },
@@ -110,9 +101,7 @@ const allGraphqlRoutes = [
           {
             path: 'error',
             element: <div />,
-            handle: {
-              breadcrumb: { id: 'fake-id-3', graphql: { query: SimpleErrorQuery } },
-            } as RouteHandle,
+            handle: { breadcrumb: { id: 'fake-id-3', graphql: { query: SimpleErrorQuery } } } as RouteHandle,
           },
           {
             path: 'slow',
@@ -158,9 +147,7 @@ const allMixedRoutes = [
         <Outlet />
       </>
     ),
-    handle: {
-      breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } },
-    } as RouteHandle,
+    handle: { breadcrumb: { id: 'fake-id-1', fixed: { textContent: 'fake' } } } as RouteHandle,
     children: [
       {
         path: 'level1',
@@ -177,9 +164,7 @@ const allMixedRoutes = [
           {
             path: 'level2',
             element: <div />,
-            handle: {
-              breadcrumb: { id: 'fake-id-3', fixed: { textContent: 'fake' } },
-            } as RouteHandle,
+            handle: { breadcrumb: { id: 'fake-id-3', fixed: { textContent: 'fake' } } } as RouteHandle,
           },
         ],
       },

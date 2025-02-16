@@ -3,10 +3,6 @@ import type { LinkProps, SkeletonProps, TypographyProps } from '@mui/material';
 import type { DocumentNode } from 'graphql';
 import type { LinkProps as RouterLinkProps, Params } from 'react-router-dom';
 
-export type RouteHandle = {
-  breadcrumb?: BreadcrumbData;
-};
-
 export type BreadcrumbData = BreadcrumbGraphQLData | BreadcrumbFixedData;
 
 export type BreadcrumbFixedData = {
