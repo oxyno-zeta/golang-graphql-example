@@ -1,7 +1,7 @@
 import type { QueryHookOptions } from '@apollo/client';
 import type { LinkProps, SkeletonProps, TypographyProps } from '@mui/material';
 import type { DocumentNode } from 'graphql';
-import type { LinkProps as RouterLinkProps, Params } from 'react-router-dom';
+import type { LinkProps as RouterLinkProps, Params } from 'react-router';
 
 export type BreadcrumbData = BreadcrumbGraphQLData | BreadcrumbFixedData;
 
@@ -9,13 +9,13 @@ export type BreadcrumbFixedData = {
   // Id is needed for each element to ensure to be unique.
   id: string;
   fixed: BreadcrumbFixedDataConfig;
-  graphql: undefined;
+  graphql?: undefined;
 };
 
 export type BreadcrumbGraphQLData = {
   // Id is needed for each element to ensure to be unique.
   id: string;
-  fixed: undefined;
+  fixed?: undefined;
   graphql: BreadcrumbGraphQLDataConfig;
 };
 

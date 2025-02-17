@@ -14,6 +14,7 @@ function AutoBreadcrumbInjector({ item, children }: Props) {
     pushAutoBreadcrumb(item);
 
     return () => {
+      console.log('pop called in injector');
       popAutoBreadcrumb();
     };
   }, [item, popAutoBreadcrumb, pushAutoBreadcrumb]);
