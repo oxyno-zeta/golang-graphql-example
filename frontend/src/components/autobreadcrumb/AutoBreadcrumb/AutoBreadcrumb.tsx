@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation, useParams, useResolvedPath } from 'react-router';
+import { useLocation, useParams, useResolvedPath, resolvePath } from 'react-router';
 import Breadcrumbs, { BreadcrumbsProps } from '@mui/material/Breadcrumbs';
 import FixedBreadcrumb from './FixedBreadcrumb';
 import GraphQLBreadcrumb from './GraphQLBreadcrumb';
@@ -14,8 +14,9 @@ function AutoBreadcrumb(props: Props) {
   const params = useParams();
   // Get location data
   const locationData = useLocation();
-  console.log(locationData);
-  console.log(useResolvedPath(locationData.pathname));
+  // console.log(locationData);
+  const mm = useResolvedPath(`${locationData.pathname}/../`);
+  console.log(mm);
 
   // Get breadcrumb data
   const crumbs = ctx.getBreadcrumbData();
@@ -26,6 +27,10 @@ function AutoBreadcrumb(props: Props) {
       {crumbs.map((breadcrumbData, i) => {
         // Compute last boolean
         const last = i === crumbs.length - 1;
+        console.log('==========');
+        console.log(build(crumbs.length - i));
+        console.log(resolvePath(build(crumbs.length - i - 1), locationData.pathname));
+        console.log('==========');
 
         if (breadcrumbData.fixed) {
           return (
@@ -33,7 +38,7 @@ function AutoBreadcrumb(props: Props) {
               breadcrumbData={breadcrumbData.fixed}
               key={breadcrumbData.id}
               last={last}
-              pathname={locationData.pathname}
+              pathname={resolvePath(build(crumbs.length - i - 1), locationData.pathname).pathname}
             />
           );
         }
@@ -50,6 +55,16 @@ function AutoBreadcrumb(props: Props) {
       })}
     </Breadcrumbs>
   );
+}
+
+function build(n: number) {
+  let res = '';
+
+  for (let i = 0; i < n; i++) {
+    res += '../';
+  }
+
+  return res;
 }
 
 export default AutoBreadcrumb;

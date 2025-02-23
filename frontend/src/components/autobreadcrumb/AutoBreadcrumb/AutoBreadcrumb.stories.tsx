@@ -19,7 +19,7 @@ const allFixedRoutes = (
     <Route
       path="/"
       element={
-        <AutoBreadcrumbInjector item={{ id: 'fake-id-1', fixed: { textContent: 'fake' } }}>
+        <AutoBreadcrumbInjector item={{ id: 'fake-id-0', fixed: { textContent: 'level0' } }}>
           <div style={{ marginBottom: '30px' }}>
             Menu:
             <br />
@@ -29,26 +29,29 @@ const allFixedRoutes = (
             <br />
             <Link to="/level1/level2">/level1/level2</Link>
           </div>
-          Component:
-          <AutoBreadcrumb />
+          <div>level0 content</div>
           <Outlet />
+          <div style={{ backgroundColor: 'lightblue' }}>
+            Component:
+            <AutoBreadcrumb />
+          </div>
         </AutoBreadcrumbInjector>
       }
     >
       <Route
         path="level1"
         element={
-          <AutoBreadcrumbInjector item={{ id: 'fake-id-2', fixed: { textContent: 'fake' } }}>
-            <div />
+          <AutoBreadcrumbInjector item={{ id: 'fake-id-1', fixed: { textContent: 'level1' } }}>
+            <div>level1 content</div>
             <Outlet />
           </AutoBreadcrumbInjector>
         }
       >
         <Route
-          path="level2"
+          path=":level2"
           element={
-            <AutoBreadcrumbInjector item={{ id: 'fake-id-3', fixed: { textContent: 'fake' } }}>
-              <div />
+            <AutoBreadcrumbInjector item={{ id: 'fake-id-2', fixed: { textContent: 'level2' } }}>
+              <div>level2 content</div>
             </AutoBreadcrumbInjector>
           }
         />

@@ -12,12 +12,14 @@ function AutoBreadcrumbProvider({ children }: Props) {
   const contextValue: AutoBreadcrumbContextModel = useMemo(() => {
     return {
       pushAutoBreadcrumb: (input: BreadcrumbData) => {
-        state.push(input);
-        setState(state);
+        if (!state.some((v: BreadcrumbData) => v.id === input.id)) {
+          setState((s) => {
+            return [...s, input];
+          });
+        }
       },
-      popAutoBreadcrumb: () => {
-        state.pop();
-        setState(state);
+      popAutoBreadcrumb: (input: BreadcrumbData) => {
+        setState((s) => s.filter((v) => v.id !== input.id));
       },
       getBreadcrumbData: () => state,
     };

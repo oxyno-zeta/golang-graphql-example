@@ -3,7 +3,7 @@ import type { BreadcrumbData } from '../types';
 
 export interface AutoBreadcrumbContextModel {
   pushAutoBreadcrumb: (input: BreadcrumbData) => void;
-  popAutoBreadcrumb: () => void;
+  popAutoBreadcrumb: (input: BreadcrumbData) => void;
   getBreadcrumbData: () => BreadcrumbData[];
 }
 
