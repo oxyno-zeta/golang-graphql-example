@@ -8,6 +8,9 @@ export type BreadcrumbData = BreadcrumbGraphQLData | BreadcrumbFixedData;
 export type BreadcrumbFixedData = {
   // Id is needed for each element to ensure to be unique.
   id: string;
+  // Depth to compute routes
+  // Start at 0
+  depth: number;
   fixed: BreadcrumbFixedDataConfig;
   graphql?: undefined;
 };
@@ -15,6 +18,9 @@ export type BreadcrumbFixedData = {
 export type BreadcrumbGraphQLData = {
   // Id is needed for each element to ensure to be unique.
   id: string;
+  // Depth to compute routes
+  // Start at 0
+  depth: number;
   fixed?: undefined;
   graphql: BreadcrumbGraphQLDataConfig;
 };

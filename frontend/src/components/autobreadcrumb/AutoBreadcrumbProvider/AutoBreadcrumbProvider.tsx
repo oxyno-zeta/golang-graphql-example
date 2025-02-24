@@ -14,7 +14,7 @@ function AutoBreadcrumbProvider({ children }: Props) {
       pushAutoBreadcrumb: (input: BreadcrumbData) => {
         if (!state.some((v: BreadcrumbData) => v.id === input.id)) {
           setState((s) => {
-            return [...s, input];
+            return [...s, input].sort((a, b) => a.depth - b.depth);
           });
         }
       },
