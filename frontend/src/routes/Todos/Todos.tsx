@@ -3,7 +3,7 @@ import { gql, useQuery } from '@apollo/client';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import Title from '~components/Title';
 import FilterSearchBar from '~components/filters/FilterSearchBar';
 import ErrorsDisplay from '~components/ErrorsDisplay';

@@ -1,5 +1,5 @@
 import type { URLSearchParams } from 'url';
-import type { URLSearchParamsInit } from 'react-router-dom';
+import type { URLSearchParamsInit } from 'react-router';
 
 export function getAllSearchParams(searchParams: URLSearchParams): Record<string, string> {
   // Initial params

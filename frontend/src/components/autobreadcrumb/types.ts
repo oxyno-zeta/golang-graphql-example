@@ -1,25 +1,40 @@
 import type { QueryHookOptions } from '@apollo/client';
 import type { LinkProps, SkeletonProps, TypographyProps } from '@mui/material';
 import type { DocumentNode } from 'graphql';
-import type { LinkProps as RouterLinkProps, Params } from 'react-router-dom';
+import type { LinkProps as RouterLinkProps, Params } from 'react-router';
 
-export type RouteHandle = {
-  breadcrumb?: BreadcrumbData;
+export type BreadcrumbData = BreadcrumbGraphQLData | BreadcrumbFixedData | BreadcrumbDataIgnoredRoute;
+
+export type BreadcrumbDataIgnoredRoute = {
+  // Id is needed for each element to ensure to be unique.
+  id: string;
+  // Depth to compute routes
+  // Start at 0
+  depth: number;
+  ignored: boolean;
+  fixed?: undefined;
+  graphql?: undefined;
 };
-
-export type BreadcrumbData = BreadcrumbGraphQLData | BreadcrumbFixedData;
 
 export type BreadcrumbFixedData = {
   // Id is needed for each element to ensure to be unique.
   id: string;
+  // Depth to compute routes
+  // Start at 0
+  depth: number;
   fixed: BreadcrumbFixedDataConfig;
-  graphql: undefined;
+  graphql?: undefined;
+  ignored?: undefined;
 };
 
 export type BreadcrumbGraphQLData = {
   // Id is needed for each element to ensure to be unique.
   id: string;
-  fixed: undefined;
+  // Depth to compute routes
+  // Start at 0
+  depth: number;
+  fixed?: undefined;
+  ignored?: undefined;
   graphql: BreadcrumbGraphQLDataConfig;
 };
 

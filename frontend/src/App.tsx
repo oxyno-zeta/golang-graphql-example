@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ErrorBoundary } from 'react-error-boundary';
 import FallbackErrorBoundary from '~components/FallbackErrorBoundary';

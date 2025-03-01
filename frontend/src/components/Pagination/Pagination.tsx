@@ -1,5 +1,5 @@
 import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
-import { Link, useHref, useLocation, createSearchParams, useSearchParams, LinkProps } from 'react-router-dom';
+import { Link, useHref, useLocation, createSearchParams, useSearchParams, LinkProps } from 'react-router';
 import { mdiChevronLeft, mdiChevronRight, mdiChevronDoubleLeft } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';

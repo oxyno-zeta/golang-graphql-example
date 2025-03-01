@@ -1,5 +1,5 @@
 import { URLSearchParams } from 'url';
-import { URLSearchParamsInit } from 'react-router-dom';
+import { URLSearchParamsInit } from 'react-router';
 import { PaginationInputModel } from '../models/general';
 import { getAllSearchParams } from './urlSearchParams';
 

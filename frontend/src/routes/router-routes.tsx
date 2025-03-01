@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Params, RouteObject } from 'react-router-dom';
+import type { Params, RouteObject } from 'react-router';
 import { gql } from '@apollo/client';
 import NotFoundRoute from '~components/NotFoundRoute';
 import MainContentWrapper from '~components/MainContentWrapper';

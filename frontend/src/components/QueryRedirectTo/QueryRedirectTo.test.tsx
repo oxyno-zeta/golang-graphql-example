@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import { render, waitFor } from '@testing-library/react';
 import { ApolloError, gql } from '@apollo/client';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';

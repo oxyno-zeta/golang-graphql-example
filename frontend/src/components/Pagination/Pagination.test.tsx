@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import { fireEvent, render } from '@testing-library/react';
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:

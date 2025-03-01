@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { useTranslation } from 'react-i18next';
-import type { BreadcrumbFixedDataConfig } from './types';
+import type { BreadcrumbFixedDataConfig } from '../types';
 
 interface Props {
   readonly breadcrumbData: BreadcrumbFixedDataConfig;

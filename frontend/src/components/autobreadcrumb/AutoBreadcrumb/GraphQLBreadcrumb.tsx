@@ -1,8 +1,8 @@
 import React from 'react';
-import type { Params } from 'react-router-dom';
+import type { Params } from 'react-router';
 import { useQuery } from '@apollo/client';
 import Skeleton from '@mui/material/Skeleton';
-import type { BreadcrumbGraphQLDataConfig } from './types';
+import type { BreadcrumbGraphQLDataConfig } from '../types';
 import FixedBreadcrumb from './FixedBreadcrumb';
 
 interface Props {

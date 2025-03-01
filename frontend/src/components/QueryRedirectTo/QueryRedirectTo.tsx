@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery, DocumentNode, QueryHookOptions, OperationVariables, type MaybeMasked } from '@apollo/client';
-import { useParams, Params, Navigate, NavigateProps } from 'react-router-dom';
+import { useParams, Params, Navigate, NavigateProps } from 'react-router';
 import CenterLoading, { CenterLoadingProps } from '~components/CenterLoading';
 import ErrorsDisplay, { ErrorsDisplayProps } from '~components/ErrorsDisplay';
 import NoData, { NoDataTypographyProps } from '~components/NoData';

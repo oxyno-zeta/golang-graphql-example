@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AutoBreadcrumb Fixed texts should be ok to display on 1 level 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Fixed texts should be ok to display on 1 level 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -60,7 +60,7 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 1 level 1`] = `
 </div>
 `;
 
-exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -140,6 +140,7 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           root
@@ -162,11 +163,10 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 2 levels 1`] = `
       </li>
     </ol>
   </nav>
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -246,6 +246,7 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           root
@@ -262,7 +263,8 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
-          href="/level1"
+          data-discover="true"
+          href="/level1/"
         >
           level1
         </a>
@@ -285,11 +287,10 @@ exports[`AutoBreadcrumb Fixed texts should be ok to display on 3 levels 1`] = `
     </ol>
   </nav>
   <div />
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb GraphQL texts should be ok to display on 1 level 1`] = `
 @keyframes animation-0 {
   0% {
     opacity: 1;
@@ -373,7 +374,7 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 1`] = `
 </div>
 `;
 
-exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 2`] = `
+exports[`autobreadcrumb/AutoBreadcrumb GraphQL texts should be ok to display on 1 level 2`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -433,7 +434,7 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 1 level 2`] = `
 </div>
 `;
 
-exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 1`] = `
 @keyframes animation-0 {
   0% {
     opacity: 1;
@@ -541,11 +542,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 1`] = 
       </li>
     </ol>
   </nav>
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = `
+exports[`autobreadcrumb/AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -625,6 +625,7 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = 
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           Query1
@@ -647,11 +648,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels 2`] = 
       </li>
     </ol>
   </nav>
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and third with an error 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and third with an error 1`] = `
 @keyframes animation-0 {
   0% {
     opacity: 1;
@@ -774,11 +774,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
     </ol>
   </nav>
   <div />
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and third with an error 2`] = `
+exports[`autobreadcrumb/AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and third with an error 2`] = `
 @keyframes animation-0 {
   0% {
     opacity: 1;
@@ -883,6 +882,7 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           Query1
@@ -899,7 +899,8 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
-          href="/level1"
+          data-discover="true"
+          href="/level1/"
         >
           Query2
         </a>
@@ -921,11 +922,10 @@ exports[`AutoBreadcrumb GraphQL texts should be ok to display on 2 levels and th
     </ol>
   </nav>
   <div />
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 1 level 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 1 level 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -985,7 +985,7 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
 </div>
 `;
 
-exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 1 level with 1 ignored route 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 1 level with 1 ignored route 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -1042,11 +1042,10 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       </li>
     </ol>
   </nav>
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 2 levels with 1 ignored route 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 2 levels with 1 ignored route 1`] = `
 @keyframes animation-0 {
   0% {
     opacity: 1;
@@ -1151,6 +1150,7 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           fake
@@ -1172,12 +1172,140 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       </li>
     </ol>
   </nav>
-  <div />
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 2 levels with 1 ignored route 2`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 2 levels with 1 ignored route 2`] = `
+@keyframes animation-0 {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.emotion-2 {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.emotion-4 {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.11);
+  height: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+  transform-origin: 0 55%;
+  -webkit-transform: scale(1, 0.60);
+  -moz-transform: scale(1, 0.60);
+  -ms-transform: scale(1, 0.60);
+  transform: scale(1, 0.60);
+  border-radius: 4px/6.7px;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
+}
+
+.emotion-4:empty:before {
+  content: "\\00a0";
+}
+
+<div>
+  <nav
+    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+  >
+    <ol
+      class="MuiBreadcrumbs-ol emotion-1"
+    >
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
+          href="/"
+        >
+          fake
+        </a>
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          style="width: 40px;"
+        />
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 2 levels with 1 ignored route 3`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -1257,6 +1385,7 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           fake
@@ -1279,72 +1408,10 @@ exports[`AutoBreadcrumb Mixed texts and ignored routes should be ok to display o
       </li>
     </ol>
   </nav>
-  <div />
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb Mixed texts should be ok to display on 1 level 1`] = `
-.emotion-0 {
-  margin: 0;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.emotion-1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.emotion-2 {
-  margin: 0;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-<div>
-  <nav
-    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
-  >
-    <ol
-      class="MuiBreadcrumbs-ol emotion-1"
-    >
-      <li
-        class="MuiBreadcrumbs-li"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body1 emotion-2"
-        >
-          fake
-        </p>
-      </li>
-    </ol>
-  </nav>
-</div>
-`;
-
-exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 4 levels with 2 ignored routes 1`] = `
 @keyframes animation-0 {
   0% {
     opacity: 1;
@@ -1449,6 +1516,478 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
+          href="/"
+        >
+          fake
+        </a>
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          style="width: 40px;"
+        />
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          style="width: 40px;"
+        />
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 4 levels with 2 ignored routes 2`] = `
+@keyframes animation-0 {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.emotion-2 {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.emotion-4 {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.11);
+  height: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+  transform-origin: 0 55%;
+  -webkit-transform: scale(1, 0.60);
+  -moz-transform: scale(1, 0.60);
+  -ms-transform: scale(1, 0.60);
+  transform: scale(1, 0.60);
+  border-radius: 4px/6.7px;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
+}
+
+.emotion-4:empty:before {
+  content: "\\00a0";
+}
+
+<div>
+  <nav
+    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+  >
+    <ol
+      class="MuiBreadcrumbs-ol emotion-1"
+    >
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
+          href="/"
+        >
+          fake
+        </a>
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          style="width: 40px;"
+        />
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse emotion-4"
+          style="width: 40px;"
+        />
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts and ignored routes should be ok to display on 4 levels with 2 ignored routes 3`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.emotion-2 {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.emotion-6 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+<div>
+  <nav
+    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+  >
+    <ol
+      class="MuiBreadcrumbs-ol emotion-1"
+    >
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
+          href="/"
+        >
+          fake
+        </a>
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
+          href="/level1/level2/"
+        >
+          Query1
+        </a>
+      </li>
+      <li
+        aria-hidden="true"
+        class="MuiBreadcrumbs-separator emotion-3"
+      >
+        /
+      </li>
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-6"
+        >
+          Query2
+        </p>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts should be ok to display on 1 level 1`] = `
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.emotion-2 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+<div>
+  <nav
+    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+  >
+    <ol
+      class="MuiBreadcrumbs-ol emotion-1"
+    >
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-2"
+        >
+          fake
+        </p>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
+@keyframes animation-0 {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.emotion-0 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.emotion-2 {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.emotion-2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.emotion-4 {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.11);
+  height: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: auto;
+  transform-origin: 0 55%;
+  -webkit-transform: scale(1, 0.60);
+  -moz-transform: scale(1, 0.60);
+  -ms-transform: scale(1, 0.60);
+  transform: scale(1, 0.60);
+  border-radius: 4px/6.7px;
+  -webkit-animation: animation-0 2s ease-in-out 0.5s infinite;
+  animation: animation-0 2s ease-in-out 0.5s infinite;
+}
+
+.emotion-4:empty:before {
+  content: "\\00a0";
+}
+
+<div>
+  <nav
+    class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root emotion-0"
+  >
+    <ol
+      class="MuiBreadcrumbs-ol emotion-1"
+    >
+      <li
+        class="MuiBreadcrumbs-li"
+      >
+        <a
+          class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           fake
@@ -1470,11 +2009,10 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 1`] = `
       </li>
     </ol>
   </nav>
-  <div />
 </div>
 `;
 
-exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
+exports[`autobreadcrumb/AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -1554,6 +2092,7 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
       >
         <a
           class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover emotion-2"
+          data-discover="true"
           href="/"
         >
           fake
@@ -1576,6 +2115,5 @@ exports[`AutoBreadcrumb Mixed texts should be ok to display on 2 levels 2`] = `
       </li>
     </ol>
   </nav>
-  <div />
 </div>
 `;
