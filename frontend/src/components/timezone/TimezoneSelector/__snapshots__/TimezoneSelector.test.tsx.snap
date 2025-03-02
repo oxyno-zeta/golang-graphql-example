@@ -686,7 +686,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.clearAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
-            id=":r6:"
             tabindex="-1"
             title="common.clearAction"
             type="button"
@@ -706,7 +705,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.openAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-8"
-            id=":r7:"
             tabindex="-1"
             title="common.openAction"
             type="button"
@@ -1407,7 +1405,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 
 <div>
   <div
-    aria-owns=":r8:-listbox"
     class="MuiAutocomplete-root Mui-expanded Mui-focused MuiAutocomplete-fullWidth MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon emotion-0"
   >
     <div
@@ -1444,7 +1441,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.clearAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
-            id=":ra:"
             tabindex="-1"
             title="common.clearAction"
             type="button"
@@ -1464,7 +1460,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.closeAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator MuiAutocomplete-popupIndicatorOpen emotion-8"
-            id=":rb:"
             tabindex="-1"
             title="common.closeAction"
             type="button"
@@ -2955,7 +2950,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.clearAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-clearIndicator emotion-6"
-            id=":r2:"
             tabindex="-1"
             title="common.clearAction"
             type="button"
@@ -2975,7 +2969,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           <button
             aria-label="common.openAction"
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-8"
-            id=":r3:"
             tabindex="-1"
             title="common.openAction"
             type="button"
