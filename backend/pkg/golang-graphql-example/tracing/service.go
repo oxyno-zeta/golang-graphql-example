@@ -49,9 +49,9 @@ func (s *service) GetTracer() oteltrace.Tracer {
 	return s.tracer
 }
 
-func (s *service) StartTrace(ctx context.Context, operationName string) (context.Context, Trace) {
+func (s *service) StartTrace(ctx context.Context, operationName string, opts ...oteltrace.SpanStartOption) (context.Context, Trace) {
 	// Start a new span from tracer
-	ctx, sp := s.tracer.Start(ctx, operationName)
+	ctx, sp := s.tracer.Start(ctx, operationName, opts...)
 
 	// Return trace object with span
 	return ctx, &trace{span: sp}

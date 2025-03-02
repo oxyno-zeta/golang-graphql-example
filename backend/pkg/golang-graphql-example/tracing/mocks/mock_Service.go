@@ -16,6 +16,7 @@ import (
 	graphql "github.com/99designs/gqlgen/graphql"
 	gin "github.com/gin-gonic/gin"
 	tracing "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
+	trace "go.opentelemetry.io/otel/trace"
 	gomock "go.uber.org/mock/gomock"
 	gorm "gorm.io/gorm"
 )
@@ -115,16 +116,21 @@ func (mr *MockServiceMockRecorder) InitializeAndReload() *gomock.Call {
 }
 
 // StartTrace mocks base method.
-func (m *MockService) StartTrace(ctx context.Context, operationName string) (context.Context, tracing.Trace) {
+func (m *MockService) StartTrace(ctx context.Context, operationName string, opts ...trace.SpanStartOption) (context.Context, tracing.Trace) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "StartTrace", ctx, operationName)
+	varargs := []any{ctx, operationName}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "StartTrace", varargs...)
 	ret0, _ := ret[0].(context.Context)
 	ret1, _ := ret[1].(tracing.Trace)
 	return ret0, ret1
 }
 
 // StartTrace indicates an expected call of StartTrace.
-func (mr *MockServiceMockRecorder) StartTrace(ctx, operationName any) *gomock.Call {
+func (mr *MockServiceMockRecorder) StartTrace(ctx, operationName any, opts ...any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), ctx, operationName)
+	varargs := append([]any{ctx, operationName}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), varargs...)
 }

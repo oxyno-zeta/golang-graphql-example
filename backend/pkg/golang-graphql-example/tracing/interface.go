@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	oteltrace "go.opentelemetry.io/otel/trace"
 	"gorm.io/gorm"
 )
 
@@ -23,8 +24,8 @@ type Service interface {
 	GraphqlMiddleware() gqlgraphql.HandlerExtension
 	// Get database middleware.
 	DatabaseMiddleware() gorm.Plugin
-	// StartSpan will return a new trace created from scratch.
-	StartTrace(ctx context.Context, operationName string) (context.Context, Trace)
+	// StartSpan will return a new trace created.
+	StartTrace(ctx context.Context, operationName string, opts ...oteltrace.SpanStartOption) (context.Context, Trace)
 	// Close is used on application shutdown.
 	Close() error
 }
