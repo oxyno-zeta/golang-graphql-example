@@ -8,6 +8,11 @@ import timezone from 'dayjs/plugin/timezone';
 // import i18n
 import './i18n';
 import './yup-i18n';
+// Import font roboto
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 import subRoutes from './routes/router-routes';
 import App from './App';

@@ -24,6 +24,9 @@ export default defineConfig({
     UnpluginInjectPreload({
       files: [
         {
+          entryMatch: /.*\.woff2$/,
+        },
+        {
           outputMatch: /.*.(png|jpg|webp|avif)$/,
           attributes: {
             rel: 'preload',
