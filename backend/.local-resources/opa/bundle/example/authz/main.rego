@@ -2,6 +2,4 @@ package example.authz
 
 default allowed = false
 
-allowed {
-    input.user.preferred_username == "user"
-}
+allowed if input.user.preferred_username == "user"
