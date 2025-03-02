@@ -1,6 +1,5 @@
 import AutoBreadcrumb, { Props as AutoBreadcrumbProps } from './AutoBreadcrumb';
 import type {
-  RouteHandle,
   BreadcrumbFixedData,
   BreadcrumbFixedDataConfig,
   BreadcrumbGraphQLData,
@@ -11,7 +10,6 @@ import type {
 export default AutoBreadcrumb;
 export type {
   AutoBreadcrumbProps,
-  RouteHandle,
   BreadcrumbFixedData,
   BreadcrumbFixedDataConfig,
   BreadcrumbGraphQLData,
