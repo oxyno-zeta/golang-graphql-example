@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "^1.22.0"
+          go-version: "^1.24.0"
       - uses: golangci/golangci-lint-action@v6
         with:
           # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
@@ -89,7 +89,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "^1.22.0"
+          go-version: "^1.24.0"
       - run: cd backend && make code/build
   backend-build-cross:
     if: |
@@ -108,7 +108,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "^1.22.0"
+          go-version: "^1.24.0"
       - run: cd backend && make code/build-cross
   backend-test:
     if: |
@@ -124,7 +124,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: "^1.22.0"
+          go-version: "^1.24.0"
       - run: |
           if [ -f /usr/local/bin/dockerize ]; then
             echo "dockerize found; skipping installation";
