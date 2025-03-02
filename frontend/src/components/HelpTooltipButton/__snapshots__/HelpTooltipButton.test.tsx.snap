@@ -107,7 +107,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r7:"
         tabindex="0"
         type="button"
       >
@@ -280,7 +279,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r7:"
         tabindex="0"
         type="button"
       >
@@ -423,7 +421,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r5:"
         tabindex="0"
         type="button"
       >
@@ -596,7 +593,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r5:"
         tabindex="0"
         type="button"
       >
@@ -739,7 +735,6 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r5:"
         tabindex="0"
         type="button"
       >
@@ -866,7 +861,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r1:"
         tabindex="0"
         type="button"
       >
@@ -993,7 +987,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r3:"
         tabindex="0"
         type="button"
       >
@@ -1166,7 +1159,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r3:"
         tabindex="0"
         type="button"
       >
@@ -1309,7 +1301,6 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = 
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
-        id=":r3:"
         tabindex="0"
         type="button"
       >

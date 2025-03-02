@@ -107,7 +107,6 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
-      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -233,7 +232,6 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
-      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -359,7 +357,6 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
-      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -485,7 +482,6 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
   >
     <button
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-0"
-      id=":r1:"
       tabindex="0"
       type="button"
     >

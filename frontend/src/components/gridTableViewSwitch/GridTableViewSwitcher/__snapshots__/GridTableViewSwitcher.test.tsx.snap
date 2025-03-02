@@ -194,7 +194,6 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r9:"
       tabindex="0"
       type="button"
     >
@@ -212,7 +211,6 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":rb:"
       tabindex="0"
       type="button"
     >
@@ -430,7 +428,6 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r9:"
       tabindex="0"
       type="button"
     >
@@ -448,7 +445,6 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":rb:"
       tabindex="0"
       type="button"
     >
@@ -666,7 +662,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -684,7 +679,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -902,7 +896,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -920,7 +913,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -1138,7 +1130,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r1:"
       tabindex="0"
       type="button"
     >
@@ -1156,7 +1147,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r3:"
       tabindex="0"
       type="button"
     >
@@ -1374,7 +1364,6 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r5:"
       tabindex="0"
       type="button"
     >
@@ -1392,7 +1381,6 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r7:"
       tabindex="0"
       type="button"
     >
@@ -1610,7 +1598,6 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-firstButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r5:"
       tabindex="0"
       type="button"
     >
@@ -1628,7 +1615,6 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedOutlined MuiButtonGroup-groupedOutlinedHorizontal MuiButtonGroup-groupedOutlinedPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit MuiButtonGroup-lastButton emotion-1"
       data-mui-internal-clone-element="true"
-      id=":r7:"
       tabindex="0"
       type="button"
     >

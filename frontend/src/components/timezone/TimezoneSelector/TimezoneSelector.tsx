@@ -54,7 +54,7 @@ function renderRow(props: ListChildComponentProps) {
   const parts = parse(displayedOption, matches);
 
   return (
-    <li {...d.props} style={{ ...inlineStyle, display: 'block' }}>
+    <li {...d.props} style={{ ...inlineStyle, display: 'block' }} key={d.value}>
       <Typography noWrap>
         {parts.map((part: any, i: number) => (
           <span
@@ -117,12 +117,16 @@ const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
   return (
     <div ref={ref}>
       <OuterElementContext.Provider value={other}>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+        {/* @ts-expect-error */}
         <VariableSizeList
           height={4 * 48}
           innerElementType="ul"
           itemCount={itemCount}
           itemData={itemData}
           itemSize={(index) => getChildSize(itemData[index])}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
           outerElementType={OuterElementType}
           overscanCount={5}
           ref={gridRef}
@@ -193,6 +197,11 @@ function TimezoneSelector({
         return res as unknown as ReactNode;
       }}
       value={getTimezone()}
+      slotProps={{
+        listbox: {
+          component: ListboxComponent,
+        },
+      }}
       {...autocompleteProps}
     />
   );

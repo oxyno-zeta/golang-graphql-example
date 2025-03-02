@@ -135,8 +135,8 @@ exports[`Pagination should display 3 disable links when no next or previous page
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route"
-          id=":r1:"
           tabindex="-1"
         >
           <svg
@@ -158,8 +158,8 @@ exports[`Pagination should display 3 disable links when no next or previous page
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?before=&last=10"
-          id=":r3:"
           tabindex="-1"
         >
           <svg
@@ -181,8 +181,8 @@ exports[`Pagination should display 3 disable links when no next or previous page
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?after=&first=10"
-          id=":r5:"
           tabindex="-1"
         >
           <svg
@@ -336,7 +336,6 @@ exports[`Pagination should display next and previous page buttons as enabled and
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
-          id=":r15:"
           tabindex="0"
           type="button"
         >
@@ -358,7 +357,6 @@ exports[`Pagination should display next and previous page buttons as enabled and
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
-          id=":r17:"
           tabindex="0"
           type="button"
         >
@@ -380,7 +378,6 @@ exports[`Pagination should display next and previous page buttons as enabled and
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
-          id=":r19:"
           tabindex="0"
           type="button"
         >
@@ -536,8 +533,8 @@ exports[`Pagination should display only next page button as enabled and clickabl
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route"
-          id=":rp:"
           tabindex="-1"
         >
           <svg
@@ -559,8 +556,8 @@ exports[`Pagination should display only next page button as enabled and clickabl
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?before=&last=10"
-          id=":rr:"
           tabindex="-1"
         >
           <svg
@@ -581,7 +578,6 @@ exports[`Pagination should display only next page button as enabled and clickabl
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
-          id=":rt:"
           tabindex="0"
           type="button"
         >
@@ -737,8 +733,8 @@ exports[`Pagination should display only next page link as enabled with correct u
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route"
-          id=":r7:"
           tabindex="-1"
         >
           <svg
@@ -760,8 +756,8 @@ exports[`Pagination should display only next page link as enabled with correct u
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?before=&last=10"
-          id=":r9:"
           tabindex="-1"
         >
           <svg
@@ -782,8 +778,8 @@ exports[`Pagination should display only next page link as enabled with correct u
       >
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?after=fake-end&first=10"
-          id=":rb:"
           tabindex="0"
         >
           <svg
@@ -937,7 +933,6 @@ exports[`Pagination should display only previous page buttons as enabled and cli
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
-          id=":rv:"
           tabindex="0"
           type="button"
         >
@@ -959,7 +954,6 @@ exports[`Pagination should display only previous page buttons as enabled and cli
       >
         <button
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
-          id=":r11:"
           tabindex="0"
           type="button"
         >
@@ -982,8 +976,8 @@ exports[`Pagination should display only previous page buttons as enabled and cli
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?after=&first=10"
-          id=":r13:"
           tabindex="-1"
         >
           <svg
@@ -1137,8 +1131,8 @@ exports[`Pagination should display only previous page links as enabled with corr
       >
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route"
-          id=":rd:"
           tabindex="0"
         >
           <svg
@@ -1159,8 +1153,8 @@ exports[`Pagination should display only previous page links as enabled with corr
       >
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?before=fake-start&last=10"
-          id=":rf:"
           tabindex="0"
         >
           <svg
@@ -1182,8 +1176,8 @@ exports[`Pagination should display only previous page links as enabled with corr
         <a
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?after=&first=10"
-          id=":rh:"
           tabindex="-1"
         >
           <svg
@@ -1337,8 +1331,8 @@ exports[`Pagination should display previous and next page links as enabled with 
       >
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route"
-          id=":rj:"
           tabindex="0"
         >
           <svg
@@ -1359,8 +1353,8 @@ exports[`Pagination should display previous and next page links as enabled with 
       >
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?before=fake-start&last=10"
-          id=":rl:"
           tabindex="0"
         >
           <svg
@@ -1381,8 +1375,8 @@ exports[`Pagination should display previous and next page links as enabled with 
       >
         <a
           class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-1"
+          data-discover="true"
           href="/route?after=fake-end&first=10"
-          id=":rn:"
           tabindex="0"
         >
           <svg

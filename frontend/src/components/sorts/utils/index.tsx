@@ -1,4 +1,4 @@
-import { GridSortModel, GridColDef } from '@mui/x-data-grid';
+import { GridSortModel, GridColDef, GridSortItem } from '@mui/x-data-grid';
 import { SortOrderAsc, SortOrderDesc, SortOrderModel } from '../../../models/general';
 
 export function buildMUIXSort(sorts: Record<string, SortOrderModel>[], columns: GridColDef[]): GridSortModel {
@@ -29,7 +29,7 @@ export function buildMUIXSort(sorts: Record<string, SortOrderModel>[], columns: 
     accu.push({ field: key, sort: sort[key] === SortOrderAsc ? 'asc' : 'desc' });
     // Default
     return accu;
-  }, [] as GridSortModel);
+  }, [] as GridSortItem[]);
 
   // Limit to 1 because free version
   // That will also manage the case where the same field is put 2 times into the sorts list
