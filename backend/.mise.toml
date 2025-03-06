@@ -1,7 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tools]
-go = '1.24.0'
+go = '1.24.1'
 golangci-lint = "1.64.6"
 # renovate: datasource=github-tags depName=gotestyourself/gotestsum
 gotestsum = "v1.12.0"
@@ -10,7 +10,7 @@ gotestsum = "v1.12.0"
 # renovate: datasource=go depName=go.uber.org/mock/mockgen
 "go:go.uber.org/mock/mockgen" = "v0.5.0"
 # renovate: datasource=go depName=golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment
-# "go:golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment" = "v0.30.0"
+# "go:golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment" = "v0.31.0"
 # renovate: datasource=github-tags depName=boumenot/gocover-cobertura
 "go:github.com/boumenot/gocover-cobertura" = "v1.3.0"
 # renovate: datasource=github-tags depName=mitchellh/gox
