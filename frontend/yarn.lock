@@ -2220,17 +2220,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-designs@npm:8.2.0":
-  version: 8.2.0
-  resolution: "@storybook/addon-designs@npm:8.2.0"
+"@storybook/addon-designs@npm:8.2.1":
+  version: 8.2.1
+  resolution: "@storybook/addon-designs@npm:8.2.1"
   dependencies:
     "@figspec/react": "npm:^1.0.0"
   peerDependencies:
     "@storybook/blocks": ^8.0.0 || ^8.1.0-0 || ^8.2.0-0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     "@storybook/components": ^8.0.0 || ^8.1.0-0 || ^8.2.0-0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
     "@storybook/theming": ^8.0.0 || ^8.1.0-0 || ^8.2.0-0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
   peerDependenciesMeta:
     "@storybook/blocks":
       optional: true
@@ -2242,7 +2242,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/053a482fa5b6e8adfde6a3f5bb3504e2300dc6ff8a6e33831eff31b8a3f9a483996da608072f5fa24322555893863c356225cad3768356e2baea440bb919a0bc
+  checksum: 10/5363dd1765bf34fc5fa51f1ad9f4480e97cb3f35835dbd89c54db170b1bd5bb36c06c37f93e8fd1e09d5488fef04b1ecbb167036b7a07ce3c94543507f3ca61c
   languageName: node
   linkType: hard
 
@@ -6035,7 +6035,7 @@ __metadata:
     "@mui/x-data-grid": "npm:7.27.3"
     "@mui/x-date-pickers": "npm:7.27.3"
     "@storybook/addon-actions": "npm:8.6.4"
-    "@storybook/addon-designs": "npm:8.2.0"
+    "@storybook/addon-designs": "npm:8.2.1"
     "@storybook/addon-essentials": "npm:8.6.4"
     "@storybook/addon-interactions": "npm:8.6.4"
     "@storybook/addon-links": "npm:8.6.4"
