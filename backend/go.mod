@@ -1,6 +1,6 @@
 module github.com/oxyno-zeta/golang-graphql-example
 
-go 1.24.0
+go 1.24.1
 
 require (
 	cirello.io/pglock v1.16.0
