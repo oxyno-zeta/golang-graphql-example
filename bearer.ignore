@@ -23,5 +23,10 @@
     "author": "Havrileck Alexandre",
     "false_positive": true,
     "ignored_at": "2024-12-07T22:08:28Z"
+  },
+  "58abb7a204034ab0dc8eac58fe570cfb_0": {
+    "author": "Havrileck Alexandre",
+    "false_positive": true,
+    "ignored_at": "2025-03-10T22:19:27Z"
   }
 }
