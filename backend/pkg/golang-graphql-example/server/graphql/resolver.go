@@ -1,6 +1,9 @@
 package graphql
 
-import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
+import (
+	"github.com/microcosm-cc/bluemonday"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
+)
 
 // This file will not be regenerated automatically.
 //
@@ -8,4 +11,6 @@ import "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/
 
 type Resolver struct {
 	BusiServices *business.Services
+	UGCPolicy    *bluemonday.Policy
+	StrictPolicy *bluemonday.Policy
 }

@@ -21,6 +21,7 @@ import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"github.com/microcosm-cc/bluemonday"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
@@ -55,6 +56,9 @@ type Server struct {
 	authorizationSvc  authorization.Service
 	signalHandlerSvc  signalhandler.Service
 	server            *http.Server
+
+	ugcPolicy    *bluemonday.Policy
+	strictPolicy *bluemonday.Policy
 }
 
 func NewServer(
@@ -72,6 +76,8 @@ func NewServer(
 		authenticationSvc: authenticationSvc,
 		authorizationSvc:  authoSvc,
 		signalHandlerSvc:  signalHandlerSvc,
+		ugcPolicy:         bluemonday.UGCPolicy(),
+		strictPolicy:      bluemonday.StrictPolicy(),
 	}
 }
 
@@ -193,7 +199,7 @@ func (svr *Server) generateRouter() (http.Handler, error) {
 	// Integrate graphql dataloaders
 	router.Use(dataloaders.Middleware(svr.busiServices))
 	// Add graphql endpoints
-	router.POST("/api/graphql", svr.graphqlHandler(svr.busiServices))
+	router.POST("/api/graphql", svr.graphqlHandler())
 	router.GET("/api/graphql", gin.WrapH(gqlplayground.Handler("GraphQL", "/api/graphql")))
 
 	// Add gin html files for answer
@@ -226,11 +232,11 @@ func (svr *Server) Listen() error {
 }
 
 // Defining the Graphql handler.
-func (svr *Server) graphqlHandler(busiServices *business.Services) gin.HandlerFunc {
+func (svr *Server) graphqlHandler() gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
 	h := handler.New(generated.NewExecutableSchema(generated.Config{
-		Resolvers: &graphql.Resolver{BusiServices: busiServices},
+		Resolvers: &graphql.Resolver{BusiServices: svr.busiServices, UGCPolicy: svr.ugcPolicy, StrictPolicy: svr.strictPolicy},
 		Complexity: generated.ComplexityRoot{
 			Mutation: struct {
 				CloseTodo  func(childComplexity int, todoID string) int
