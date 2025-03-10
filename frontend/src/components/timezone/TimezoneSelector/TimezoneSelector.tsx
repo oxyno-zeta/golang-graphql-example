@@ -117,16 +117,12 @@ const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
   return (
     <div ref={ref}>
       <OuterElementContext.Provider value={other}>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
-        {/* @ts-expect-error */}
         <VariableSizeList
           height={4 * 48}
           innerElementType="ul"
           itemCount={itemCount}
           itemData={itemData}
           itemSize={(index) => getChildSize(itemData[index])}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
           outerElementType={OuterElementType}
           overscanCount={5}
           ref={gridRef}
