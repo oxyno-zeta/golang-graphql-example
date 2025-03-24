@@ -12,10 +12,12 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 )
 
-const defaultMaxPageSize = 50
-const defaultDefaultPageSize = 10
-const paginationIDPrefix = "paginate"
-const relayIDSplitSize = 2
+const (
+	defaultMaxPageSize     = 50
+	defaultDefaultPageSize = 10
+	paginationIDPrefix     = "paginate"
+	relayIDSplitSize       = 2
+)
 
 func ToIDRelay(prefix, id string) string {
 	return base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", prefix, id)))
@@ -74,18 +76,40 @@ func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *PageI
 	return &res
 }
 
-func GetPageInput(after *string, before *string, first *int, last *int) (*pagination.PageInput, error) {
-	return GetPageInputCustomized(after, before, first, last, defaultMaxPageSize, defaultDefaultPageSize)
+func GetPageInput(
+	after *string,
+	before *string,
+	first *int,
+	last *int,
+) (*pagination.PageInput, error) {
+	return GetPageInputCustomized(
+		after,
+		before,
+		first,
+		last,
+		defaultMaxPageSize,
+		defaultDefaultPageSize,
+	)
 }
 
-func GetPageInputCustomized(after *string, before *string, first *int, last *int, maxPageSize, defaultPageSize int) (*pagination.PageInput, error) {
+func GetPageInputCustomized(
+	after *string,
+	before *string,
+	first *int,
+	last *int,
+	maxPageSize, defaultPageSize int,
+) (*pagination.PageInput, error) {
 	// Check if all cursors are present together
 	if after != nil && before != nil {
-		return nil, errors.NewInvalidInputError("after and before can't be present together at the same time")
+		return nil, errors.NewInvalidInputError(
+			"after and before can't be present together at the same time",
+		)
 	}
 	// Check if first and last are present together
 	if first != nil && last != nil {
-		return nil, errors.NewInvalidInputError("first and last can't be present together at the same time")
+		return nil, errors.NewInvalidInputError(
+			"first and last can't be present together at the same time",
+		)
 	}
 	// Check before and last
 	if before != nil && last == nil {
@@ -147,7 +171,9 @@ func GetPageInputCustomized(after *string, before *string, first *int, last *int
 
 	// Check limit
 	if res.Limit > maxPageSize {
-		return nil, errors.NewInvalidInputError(fmt.Sprintf("first or last is too big, maximum is %d", defaultMaxPageSize))
+		return nil, errors.NewInvalidInputError(
+			fmt.Sprintf("first or last is too big, maximum is %d", defaultMaxPageSize),
+		)
 	}
 
 	// Set default limit

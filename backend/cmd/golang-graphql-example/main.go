@@ -55,8 +55,10 @@ var targetDefinitionsMap = map[string]*targetDefinition{
 var daemonDefinitions = []*daemonDefinition{}
 
 // WaitGroup is used to wait for the program to finish goroutines.
-var wg sync.WaitGroup
-var daemonWg sync.WaitGroup
+var (
+	wg       sync.WaitGroup
+	daemonWg sync.WaitGroup
+)
 
 func main() {
 	// Compute possible targets
@@ -73,7 +75,10 @@ func main() {
 	flag.Var(
 		&targets,
 		"target",
-		"Represents the application target to be launched (possible values:"+strings.Join(possibleTargetValues, ",")+")",
+		"Represents the application target to be launched (possible values:"+strings.Join(
+			possibleTargetValues,
+			",",
+		)+")",
 	)
 	flag.StringVar(
 		&configFolderPath,
@@ -120,7 +125,12 @@ func main() {
 	// Defer sync
 	defer sv.logger.Sync() //nolint: errcheck // This is part of the job
 
-	sv.logger.Infof("Application version: %s (git commit: %s) built on %s", sv.version.Version, sv.version.GitCommit, sv.version.BuildDate)
+	sv.logger.Infof(
+		"Application version: %s (git commit: %s) built on %s",
+		sv.version.Version,
+		sv.version.GitCommit,
+		sv.version.BuildDate,
+	)
 
 	// Check if list is empty
 	if len(targets) == 0 {

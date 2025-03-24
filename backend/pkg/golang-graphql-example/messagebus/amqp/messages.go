@@ -31,7 +31,10 @@ func (as *amqpService) Publish(
 			// Mark trace as in error
 			trace.MarkAsError()
 			// Increase failed counter
-			as.metricsSvc.IncreaseFailedAMQPPublishedMessage(publishCfg.Exchange, publishCfg.RoutingKey)
+			as.metricsSvc.IncreaseFailedAMQPPublishedMessage(
+				publishCfg.Exchange,
+				publishCfg.RoutingKey,
+			)
 		} else {
 			// Increase success counter
 			as.metricsSvc.IncreaseSuccessfullyAMQPPublishedMessage(publishCfg.Exchange, publishCfg.RoutingKey)
@@ -163,7 +166,9 @@ func (as *amqpService) Publish(
 			return errors.WithStack(ErrPublishTimeoutReached)
 		// Error management
 		case err := <-errChan:
-			logger.Error(errors.Wrap(err, "error detected when tried to publish, retrying after delay"))
+			logger.Error(
+				errors.Wrap(err, "error detected when tried to publish, retrying after delay"),
+			)
 			time.Sleep(sendDelayDur)
 		// Published
 		case ack := <-pubResChan:
@@ -258,7 +263,9 @@ func (as *amqpService) Consume(
 		// Check if channel isn't opened or present
 		if as.consumerChannel == nil || as.consumerChannel.IsClosed() {
 			// Create error
-			err := errors.New("error detected when tried to consumer: consumer channel not present or closed, retrying after delay")
+			err := errors.New(
+				"error detected when tried to consumer: consumer channel not present or closed, retrying after delay",
+			)
 			// Log
 			logger.Error(err)
 			// Wait
@@ -291,7 +298,9 @@ func (as *amqpService) Consume(
 			// Check if channel is closed, if yes, put it in retry
 			if as.consumerChannel.IsClosed() && !consumeCfg.DisableRetryOnChannelClosed {
 				// Create error
-				err := errors.New("error detected when tried to consumer: consumer channel not present or closed, retrying after delay")
+				err := errors.New(
+					"error detected when tried to consumer: consumer channel not present or closed, retrying after delay",
+				)
 				// Log
 				logger.Error(err)
 				// Wait

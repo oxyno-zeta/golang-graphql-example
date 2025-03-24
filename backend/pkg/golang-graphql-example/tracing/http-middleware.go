@@ -7,7 +7,9 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
 
-func (*service) HTTPMiddlewareList(getRequestID func(ctx context.Context) string) []gin.HandlerFunc {
+func (*service) HTTPMiddlewareList(
+	getRequestID func(ctx context.Context) string,
+) []gin.HandlerFunc {
 	return []gin.HandlerFunc{
 		otelgin.Middleware(serviceName),
 		func(c *gin.Context) {

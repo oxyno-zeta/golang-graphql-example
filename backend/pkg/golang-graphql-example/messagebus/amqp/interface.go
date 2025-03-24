@@ -13,11 +13,13 @@ import (
 	"github.com/rabbitmq/amqp091-go"
 )
 
-var defaultReconnectWaitingDuration = 200 * time.Millisecond
-var defaultPublishTimeout = 10 * time.Second
-var defaultRetryDelay = time.Second
-var tracingPublishOperation = "amqp:publish"
-var tracingConsumeOperation = "amqp:consume"
+var (
+	defaultReconnectWaitingDuration = 200 * time.Millisecond
+	defaultPublishTimeout           = 10 * time.Second
+	defaultRetryDelay               = time.Second
+	tracingPublishOperation         = "amqp:publish"
+	tracingConsumeOperation         = "amqp:consume"
+)
 
 // ErrPublishTimeoutReached is the error thrown when the publish timeout is over.
 var ErrPublishTimeoutReached = errors.New("timeout reached")

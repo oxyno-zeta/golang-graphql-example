@@ -77,12 +77,22 @@ func (s *service) IsAuthorized(ctx context.Context, action, resource string) (bo
 
 	// Check if user isn't authorized
 	if !authorized {
-		logger.Infof("User %s not authorized for action %s on resource %s", user.GetIdentifier(), action, resource)
+		logger.Infof(
+			"User %s not authorized for action %s on resource %s",
+			user.GetIdentifier(),
+			action,
+			resource,
+		)
 
 		return false, nil
 	}
 
-	logger.Infof("User %s authorized for action %s on resource %s", user.GetIdentifier(), action, resource)
+	logger.Infof(
+		"User %s authorized for action %s on resource %s",
+		user.GetIdentifier(),
+		action,
+		resource,
+	)
 
 	return true, nil
 }

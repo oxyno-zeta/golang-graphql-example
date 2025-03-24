@@ -5,8 +5,10 @@ import (
 	"net/http"
 )
 
-const requestIDHeader = "X-Request-Id"
-const correlationIDHeader = "X-Correlation-Id"
+const (
+	requestIDHeader     = "X-Request-Id"
+	correlationIDHeader = "X-Correlation-Id"
+)
 
 func SetInHeaders(ctx context.Context, h http.Header) {
 	// Get correlation id from context

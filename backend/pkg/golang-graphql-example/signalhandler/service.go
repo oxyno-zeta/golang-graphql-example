@@ -140,7 +140,10 @@ func (s *service) stoppingAppHook() {
 				return
 			}
 			// Log
-			s.logger.Infof("Cannot stop application yet, still detecting %d requests", s.activeRequestCounter)
+			s.logger.Infof(
+				"Cannot stop application yet, still detecting %d requests",
+				s.activeRequestCounter,
+			)
 		}
 	}()
 

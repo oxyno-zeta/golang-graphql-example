@@ -9,5 +9,7 @@ type TransactionOptionsConfig struct {
 	IsolationLevel  sql.IsolationLevel
 }
 
-var WithReadTransactionOpt TransactionOption = func(cfg *TransactionOptionsConfig) { cfg.ReadTransaction = true }
-var WithWriteTransactionOpt TransactionOption = func(cfg *TransactionOptionsConfig) { cfg.ReadTransaction = false }
+var (
+	WithReadTransactionOpt  TransactionOption = func(cfg *TransactionOptionsConfig) { cfg.ReadTransaction = true }
+	WithWriteTransactionOpt TransactionOption = func(cfg *TransactionOptionsConfig) { cfg.ReadTransaction = false }
+)

@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-
 	"github.com/coreos/go-oidc/v3/oidc"
 	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
@@ -23,13 +22,15 @@ import (
 	"golang.org/x/oauth2"
 )
 
-const callbackPath = "/auth/oidc/callback"
-const loginPath = "/auth/oidc"
-const logoutPath = "/auth/oidc/logout"
-const userContextKeyName = "USER_CONTEXT_KEY"
-const redirectQueryKey = "rd"
-const stateRedirectSeparator = ":"
-const stateLength = 2
+const (
+	callbackPath           = "/auth/oidc/callback"
+	loginPath              = "/auth/oidc"
+	logoutPath             = "/auth/oidc/logout"
+	userContextKeyName     = "USER_CONTEXT_KEY"
+	redirectQueryKey       = "rd"
+	stateRedirectSeparator = ":"
+	stateLength            = 2
+)
 
 var userContextKey = &contextKey{name: userContextKeyName}
 
@@ -218,7 +219,10 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 			}
 			// Check if it is invalid
 			if !isValid {
-				err := cerrors.NewInvalidInputError("redirect url is invalid", cerrors.WithPublicErrorMessage("redirect url is invalid"))
+				err := cerrors.NewInvalidInputError(
+					"redirect url is invalid",
+					cerrors.WithPublicErrorMessage("redirect url is invalid"),
+				)
 
 				logger.Error(err)
 				utils.AnswerWithError(c, err)
@@ -313,7 +317,11 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		}
 		// Check if JWT content is empty or not
 		if jwtContent == "" {
-			logger.Error(cerrors.NewUnauthorizedError("No auth header or cookie detected, redirect to oidc login"))
+			logger.Error(
+				cerrors.NewUnauthorizedError(
+					"No auth header or cookie detected, redirect to oidc login",
+				),
+			)
 			redirectOrUnauthorized(c, unauthorizedPathRegexList)
 
 			return
@@ -348,7 +356,9 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 		}
 
 		// Create new request with new context
-		c.Request = c.Request.WithContext(SetAuthenticatedUserToContext(c.Request.Context(), &ouser))
+		c.Request = c.Request.WithContext(
+			SetAuthenticatedUserToContext(c.Request.Context(), &ouser),
+		)
 		// Add it to gin context
 		SetAuthenticatedUserToGin(c, &ouser)
 
@@ -442,7 +452,8 @@ func getJWTToken(logger log.Logger, r *http.Request, cookieName string) (string,
 // IsValidRedirect checks whether the redirect URL is whitelisted.
 func isValidRedirect(redirectURLStr, reqURLStr string) (bool, error) {
 	// Check if it isn't forged with complete urls
-	if !(strings.HasPrefix(redirectURLStr, "http://") || strings.HasPrefix(redirectURLStr, "https://")) {
+	if !strings.HasPrefix(redirectURLStr, "http://") &&
+		!strings.HasPrefix(redirectURLStr, "https://") {
 		return false, nil
 	}
 

@@ -51,7 +51,11 @@ func GetTransactionalGormDBFromContext(ctx context.Context) *gorm.DB {
 	return res
 }
 
-func (sdb *sqldb) ExecuteTransaction(ctx context.Context, cb func(context.Context) error, opts ...TransactionOption) error {
+func (sdb *sqldb) ExecuteTransaction(
+	ctx context.Context,
+	cb func(context.Context) error,
+	opts ...TransactionOption,
+) error {
 	// Create transaction callback
 	txCb := func(tx *gorm.DB) (err error) {
 		// Get parent trace
@@ -133,7 +137,9 @@ func (sdb *sqldb) Connect() error {
 		// Initialize
 		var err error
 		// Parse time
-		sqlConnectionMaxLifetimeDuration, err = time.ParseDuration(cfg.Database.SQLConnectionMaxLifetimeDuration)
+		sqlConnectionMaxLifetimeDuration, err = time.ParseDuration(
+			cfg.Database.SQLConnectionMaxLifetimeDuration,
+		)
 		// Check error
 		if err != nil {
 			return errors.WithStack(err)
@@ -177,9 +183,12 @@ func (sdb *sqldb) Connect() error {
 	// Check if there are replica in configuration
 	if len(cfg.Database.ReplicaConnectionURLs) != 0 {
 		// Create connections list
-		conns := lo.Map(cfg.Database.ReplicaConnectionURLs, func(sc *config.CredentialConfig, _ int) gorm.Dialector {
-			return openFunction(strings.TrimSpace(sc.Value))
-		})
+		conns := lo.Map(
+			cfg.Database.ReplicaConnectionURLs,
+			func(sc *config.CredentialConfig, _ int) gorm.Dialector {
+				return openFunction(strings.TrimSpace(sc.Value))
+			},
+		)
 
 		// Inject db resolver configuration
 		err = dbResult.Use(dbresolver.Register(dbresolver.Config{

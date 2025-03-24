@@ -18,7 +18,11 @@ type service struct {
 	dbSvc   database.DB
 }
 
-func (s *service) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
+func (s *service) FindByID(
+	ctx context.Context,
+	id string,
+	projection *models.Projection,
+) (*models.Todo, error) {
 	// Check authorization
 	err := s.authSvc.CheckAuthorized(
 		ctx,
@@ -112,7 +116,11 @@ func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Tod
 	return s.dao.CreateOrUpdate(ctx, tt)
 }
 
-func (s *service) Close(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
+func (s *service) Close(
+	ctx context.Context,
+	id string,
+	projection *models.Projection,
+) (*models.Todo, error) {
 	// Check authorization
 	err := s.authSvc.CheckAuthorized(
 		ctx,
@@ -136,7 +144,11 @@ func (s *service) Close(ctx context.Context, id string, projection *models.Proje
 			return err2
 		}
 		// Save
-		res, err2 = s.dao.PatchUpdate(ctx, tt, map[string]interface{}{models.TodoDoneJSONKeyName: false})
+		res, err2 = s.dao.PatchUpdate(
+			ctx,
+			tt,
+			map[string]interface{}{models.TodoDoneJSONKeyName: false},
+		)
 
 		return err2
 	})

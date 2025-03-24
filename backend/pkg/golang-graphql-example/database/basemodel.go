@@ -12,8 +12,8 @@ import (
 type Base struct {
 	CreatedAt time.Time  `json:"createdAt"`
 	UpdatedAt time.Time  `json:"updatedAt"`
-	DeletedAt *time.Time `gorm:"index"       json:"deletedAt,omitempty"`
-	ID        string     `gorm:"primary_key" json:"id"`
+	DeletedAt *time.Time `json:"deletedAt,omitempty" gorm:"index"`
+	ID        string     `json:"id"                  gorm:"primary_key"`
 }
 
 // BeforeCreate will set a UUID rather than numeric ID.

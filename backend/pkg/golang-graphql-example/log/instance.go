@@ -12,8 +12,10 @@ import (
 	gormlogger "gorm.io/gorm/logger"
 )
 
-const LogFileMode = 0666
-const LogTraceIDField = "trace_id"
+const (
+	LogFileMode     = 0o666
+	LogTraceIDField = "trace_id"
+)
 
 // This is dirty pkg/errors.
 type stackTracer interface {
@@ -101,7 +103,7 @@ func (ll *loggerIns) Configure(level string, format string, filePath string) err
 
 func (ll *loggerIns) WithField(key string, value interface{}) Logger {
 	// Create new field logger
-	fieldL := ll.SugaredLogger.With(key, value)
+	fieldL := ll.With(key, value)
 
 	return &loggerIns{
 		SugaredLogger: fieldL,
@@ -154,7 +156,7 @@ func (ll *loggerIns) addPotentialWithError(elem interface{}) *zap.SugaredLogger 
 			// Remove first empty string
 			stack = stack[1:]
 			// Add stack trace to field logger
-			return ll.SugaredLogger.With("stacktrace", strings.Join(stack, ","))
+			return ll.With("stacktrace", strings.Join(stack, ","))
 		}
 	}
 

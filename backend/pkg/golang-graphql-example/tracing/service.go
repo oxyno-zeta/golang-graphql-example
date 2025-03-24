@@ -27,8 +27,10 @@ import (
 	gormtracing "gorm.io/plugin/opentelemetry/tracing"
 )
 
-const serviceName = "golang-graphql-example"
-const tracerName = serviceName
+const (
+	serviceName = "golang-graphql-example"
+	tracerName  = serviceName
+)
 
 type service struct {
 	tracerProvider *tracesdk.TracerProvider
@@ -49,7 +51,11 @@ func (s *service) GetTracer() oteltrace.Tracer {
 	return s.tracer
 }
 
-func (s *service) StartTrace(ctx context.Context, operationName string, opts ...oteltrace.SpanStartOption) (context.Context, Trace) {
+func (s *service) StartTrace(
+	ctx context.Context,
+	operationName string,
+	opts ...oteltrace.SpanStartOption,
+) (context.Context, Trace) {
 	// Start a new span from tracer
 	ctx, sp := s.tracer.Start(ctx, operationName, opts...)
 

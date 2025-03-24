@@ -39,7 +39,12 @@ type CheckerInput struct {
 	InitialDelay time.Duration
 }
 
-func NewInternalServer(logger log.Logger, cfgManager config.Manager, metricsSvc metrics.Service, signalHandlerSvc signalhandler.Service) *InternalServer {
+func NewInternalServer(
+	logger log.Logger,
+	cfgManager config.Manager,
+	metricsSvc metrics.Service,
+	signalHandlerSvc signalhandler.Service,
+) *InternalServer {
 	return &InternalServer{
 		logger:           logger,
 		cfgManager:       cfgManager,

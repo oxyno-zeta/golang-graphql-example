@@ -11,7 +11,10 @@ func (impl *managerimpl) loadAllCredentials(out *Config) ([]*CredentialConfig, e
 	return internalLoadAllCredentials(out, impl.credentialConfigPathList)
 }
 
-func internalLoadAllCredentials(out interface{}, credentialConfigPathList [][]string) ([]*CredentialConfig, error) {
+func internalLoadAllCredentials(
+	out interface{},
+	credentialConfigPathList [][]string,
+) ([]*CredentialConfig, error) {
 	// Initialize answer
 	result := make([]*CredentialConfig, 0)
 

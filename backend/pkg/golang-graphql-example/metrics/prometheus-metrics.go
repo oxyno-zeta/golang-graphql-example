@@ -5,13 +5,12 @@ import (
 	"strconv"
 	"time"
 
+	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"gorm.io/gorm"
-
-	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
-	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	gormprometheus "gorm.io/plugin/prometheus"
 )
 
@@ -43,15 +42,21 @@ func (impl *prometheusMetrics) DownFailedConfigReload() {
 	impl.configReloadFail.Set(0)
 }
 
-func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPConsumedMessage(queue, consumerTag, routingKey string) {
+func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPConsumedMessage(
+	queue, consumerTag, routingKey string,
+) {
 	impl.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "success").Inc()
 }
 
-func (impl *prometheusMetrics) IncreaseFailedAMQPConsumedMessage(queue, consumerTag, routingKey string) {
+func (impl *prometheusMetrics) IncreaseFailedAMQPConsumedMessage(
+	queue, consumerTag, routingKey string,
+) {
 	impl.amqpConsumedMessages.WithLabelValues(queue, consumerTag, routingKey, "error").Inc()
 }
 
-func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPPublishedMessage(exchange, routingKey string) {
+func (impl *prometheusMetrics) IncreaseSuccessfullyAMQPPublishedMessage(
+	exchange, routingKey string,
+) {
 	impl.amqpPublishedMessages.WithLabelValues(exchange, routingKey, "success").Inc()
 }
 
@@ -99,7 +104,8 @@ func (impl *prometheusMetrics) Instrument(serverName string, routerPath bool) gi
 		}
 
 		impl.reqDur.WithLabelValues(serverName).Observe(elapsed)
-		impl.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, path).Inc()
+		impl.reqCnt.WithLabelValues(serverName, status, c.Request.Method, c.Request.Host, path).
+			Inc()
 		impl.reqSz.WithLabelValues(serverName).Observe(float64(reqSz))
 		impl.resSz.WithLabelValues(serverName).Observe(resSz)
 	}

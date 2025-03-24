@@ -30,10 +30,18 @@ func New(busiServices *business.Services) *TodosDataloaders {
 					)
 				},
 			),
-			dataloader.WithTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloadertracing.NewTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](nil)),
-			dataloader.WithWait[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloaderscommon.DefaultWait),
-			dataloader.WithBatchCapacity[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloaderscommon.DefaultBatchCapacity),
-			dataloader.WithCache[*dataloaderscommon.IDProjectionKey, *models.Todo](dataloaderscommon.NewCache[*dataloaderscommon.IDProjectionKey, *models.Todo]()),
+			dataloader.WithTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](
+				dataloadertracing.NewTracer[*dataloaderscommon.IDProjectionKey, *models.Todo](nil),
+			),
+			dataloader.WithWait[*dataloaderscommon.IDProjectionKey, *models.Todo](
+				dataloaderscommon.DefaultWait,
+			),
+			dataloader.WithBatchCapacity[*dataloaderscommon.IDProjectionKey, *models.Todo](
+				dataloaderscommon.DefaultBatchCapacity,
+			),
+			dataloader.WithCache[*dataloaderscommon.IDProjectionKey, *models.Todo](
+				dataloaderscommon.NewCache[*dataloaderscommon.IDProjectionKey, *models.Todo](),
+			),
 		),
 		EntitiesLoader: dataloader.NewBatchedLoader(
 			dataloaderscommon.GenericEntitiesLoader(
@@ -62,10 +70,16 @@ func New(busiServices *business.Services) *TodosDataloaders {
 					)
 				},
 			),
-			dataloader.WithTracer[string, *models.Todo](&dataloadertracing.Tracer[string, *models.Todo]{}),
+			dataloader.WithTracer[string, *models.Todo](
+				&dataloadertracing.Tracer[string, *models.Todo]{},
+			),
 			dataloader.WithWait[string, *models.Todo](dataloaderscommon.DefaultWait),
-			dataloader.WithBatchCapacity[string, *models.Todo](dataloaderscommon.DefaultBatchCapacity),
-			dataloader.WithCache[string, *models.Todo](dataloaderscommon.NewCache[string, *models.Todo]()),
+			dataloader.WithBatchCapacity[string, *models.Todo](
+				dataloaderscommon.DefaultBatchCapacity,
+			),
+			dataloader.WithCache[string, *models.Todo](
+				dataloaderscommon.NewCache[string, *models.Todo](),
+			),
 		),
 	}
 }

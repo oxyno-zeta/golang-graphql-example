@@ -19,7 +19,11 @@ func ManageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
 	return manageFilter(filter, db, false)
 }
 
-func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bool) (*gorm.DB, error) {
+func manageFilter(
+	filter interface{},
+	originalDB *gorm.DB,
+	skipInputNotObject bool,
+) (*gorm.DB, error) {
 	// Get reflect value of filter object
 	rVal := reflect.ValueOf(filter)
 	// Get kind of filter
@@ -70,7 +74,10 @@ func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bo
 		// Check if value is a pointer or not
 		if fVal.Kind() != reflect.Ptr {
 			return nil, errors.NewInvalidInputError(
-				fmt.Sprintf("field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface", fType.Name),
+				fmt.Sprintf(
+					"field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface",
+					fType.Name,
+				),
 			)
 		}
 		// Test if field is nil
@@ -86,7 +93,10 @@ func manageFilter(filter interface{}, originalDB *gorm.DB, skipInputNotObject bo
 		// Check that type is supported
 		if !castGFB {
 			return nil, errors.NewInvalidInputError(
-				fmt.Sprintf("field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface", fType.Name),
+				fmt.Sprintf(
+					"field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface",
+					fType.Name,
+				),
 			)
 		}
 
@@ -259,12 +269,28 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 	dbRes := db
 	// Check Equal case
 	if v.Eq != nil {
-		tpl := GenerateQueryTemplate("=", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"=",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), v.Eq)
 	}
 	// Check not equal case
 	if v.NotEq != nil {
-		tpl := GenerateQueryTemplate("=", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"=",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), v.NotEq)
 	}
 	// Check greater and equal than case
@@ -308,7 +334,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("contains " + err.Error())
 		}
 
-		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"LIKE",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%%%s%%", s))
 	}
 	// Check not contains case
@@ -320,7 +354,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("notContains " + err.Error())
 		}
 
-		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"LIKE",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), fmt.Sprintf("%%%s%%", s))
 	}
 	// Check starts with case
@@ -332,7 +374,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("startsWith " + err.Error())
 		}
 
-		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"LIKE",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), s+"%")
 	}
 	// Check not starts with case
@@ -344,7 +394,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("notStartsWith " + err.Error())
 		}
 
-		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"LIKE",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), s+"%")
 	}
 	// Check ends with case
@@ -356,7 +414,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("endsWith " + err.Error())
 		}
 
-		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"LIKE",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), "%"+s)
 	}
 	// Check not ends with case
@@ -368,7 +434,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			return nil, errors.NewInvalidInputError("notEndsWith " + err.Error())
 		}
 
-		tpl := GenerateQueryTemplate("LIKE", "?", v.FieldUppercase, v.FieldLowercase, v.ValueUppercase, v.ValueLowercase, v.CaseInsensitive)
+		tpl := GenerateQueryTemplate(
+			"LIKE",
+			"?",
+			v.FieldUppercase,
+			v.FieldLowercase,
+			v.ValueUppercase,
+			v.ValueLowercase,
+			v.CaseInsensitive,
+		)
 		dbRes = dbRes.Not(fmt.Sprintf(tpl, dbCol), "%"+s)
 	}
 	// Check in case
@@ -381,7 +455,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			val = transformToLowerOrUpperCasesList(val, v.CaseInsensitive || v.ValueLowercase)
 		}
 
-		tpl := GenerateQueryTemplate("IN", "(?)", v.FieldUppercase, v.FieldLowercase || v.CaseInsensitive, false, false, false)
+		tpl := GenerateQueryTemplate(
+			"IN",
+			"(?)",
+			v.FieldUppercase,
+			v.FieldLowercase || v.CaseInsensitive,
+			false,
+			false,
+			false,
+		)
 		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), val)
 	}
 	// Check not in case
@@ -394,7 +476,15 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 			val = transformToLowerOrUpperCasesList(val, v.CaseInsensitive || v.ValueLowercase)
 		}
 
-		tpl := GenerateQueryTemplate("NOT IN", "(?)", v.FieldUppercase, v.FieldLowercase || v.CaseInsensitive, false, false, false)
+		tpl := GenerateQueryTemplate(
+			"NOT IN",
+			"(?)",
+			v.FieldUppercase,
+			v.FieldLowercase || v.CaseInsensitive,
+			false,
+			false,
+			false,
+		)
 		dbRes = dbRes.Where(fmt.Sprintf(tpl, dbCol), val)
 	}
 	// Check is null case
@@ -425,7 +515,8 @@ func transformToLowerOrUpperCasesList(input interface{}, toLowercase bool) inter
 	// Get sub element
 	rType := rValue.Type().Elem()
 	// Check if it isn't a string or *string kind
-	if rType.Kind() != reflect.String && !(rType.Kind() == reflect.Pointer && rType.Elem().Kind() == reflect.String) {
+	if rType.Kind() != reflect.String &&
+		(rType.Kind() != reflect.Pointer || rType.Elem().Kind() != reflect.String) {
 		return input
 	}
 

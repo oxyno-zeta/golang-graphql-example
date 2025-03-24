@@ -10,13 +10,15 @@ import (
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
-const CfgEncryptionNone = "NONE"
-const CfgEncryptionTLS = "TLS"
-const CfgEncryptionSSL = "SSL"
-const CfgAuthenticationPlain = "PLAIN"
-const CfgAuthenticationLogin = "LOGIN"
-const CfgAuthenticationCRAMMD5 = "CRAM-MD5"
-const CfgDefaultTimeout = 10 * time.Second
+const (
+	CfgEncryptionNone        = "NONE"
+	CfgEncryptionTLS         = "TLS"
+	CfgEncryptionSSL         = "SSL"
+	CfgAuthenticationPlain   = "PLAIN"
+	CfgAuthenticationLogin   = "LOGIN"
+	CfgAuthenticationCRAMMD5 = "CRAM-MD5"
+	CfgDefaultTimeout        = 10 * time.Second
+)
 
 type service struct {
 	logger     log.Logger
@@ -66,12 +68,12 @@ func (s *service) InitializeAndReload() error {
 	}
 
 	// Encryption (default value is TLS)
-	switch {
-	case cfg.Encryption == CfgEncryptionTLS:
+	switch cfg.Encryption {
+	case CfgEncryptionTLS:
 		server.Encryption = spmail.EncryptionTLS
-	case cfg.Encryption == CfgEncryptionNone:
+	case CfgEncryptionNone:
 		server.Encryption = spmail.EncryptionNone
-	case cfg.Encryption == CfgEncryptionSSL:
+	case CfgEncryptionSSL:
 		server.Encryption = spmail.EncryptionSSL
 	default:
 		server.Encryption = spmail.EncryptionTLS
@@ -80,12 +82,12 @@ func (s *service) InitializeAndReload() error {
 	// Put authentication only if username and password exists
 	if cfg.Username != nil && cfg.Password != nil {
 		// Authentication type
-		switch {
-		case cfg.AuthenticationType == CfgAuthenticationPlain:
+		switch cfg.AuthenticationType {
+		case CfgAuthenticationPlain:
 			server.Authentication = spmail.AuthPlain
-		case cfg.AuthenticationType == CfgAuthenticationLogin:
+		case CfgAuthenticationLogin:
 			server.Authentication = spmail.AuthLogin
-		case cfg.AuthenticationType == CfgAuthenticationCRAMMD5:
+		case CfgAuthenticationCRAMMD5:
 			server.Authentication = spmail.AuthCRAMMD5
 		default:
 			server.Authentication = spmail.AuthPlain
@@ -161,7 +163,9 @@ func (s *service) Check() error {
 func (s *service) Send(em Email) error {
 	// Check if server exists, if not, skip send
 	if s.server == nil {
-		s.logger.Debug("SMTP server not present (because configration wasn't present probably), send skipped")
+		s.logger.Debug(
+			"SMTP server not present (because configration wasn't present probably), send skipped",
+		)
 
 		return nil
 	}

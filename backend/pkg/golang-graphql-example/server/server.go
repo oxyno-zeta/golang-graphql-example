@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	gqlerrorcode "github.com/99designs/gqlgen/graphql/errcode"
 	"github.com/99designs/gqlgen/graphql/handler"
@@ -236,7 +235,11 @@ func (svr *Server) graphqlHandler() gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
 	h := handler.New(generated.NewExecutableSchema(generated.Config{
-		Resolvers: &graphql.Resolver{BusiServices: svr.busiServices, UGCPolicy: svr.ugcPolicy, StrictPolicy: svr.strictPolicy},
+		Resolvers: &graphql.Resolver{
+			BusiServices: svr.busiServices,
+			UGCPolicy:    svr.ugcPolicy,
+			StrictPolicy: svr.strictPolicy,
+		},
 		Complexity: generated.ComplexityRoot{
 			Mutation: struct {
 				CloseTodo  func(childComplexity int, todoID string) int

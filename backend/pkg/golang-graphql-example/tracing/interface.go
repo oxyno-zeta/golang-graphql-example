@@ -25,7 +25,11 @@ type Service interface {
 	// Get database middleware.
 	DatabaseMiddleware() gorm.Plugin
 	// StartSpan will return a new trace created.
-	StartTrace(ctx context.Context, operationName string, opts ...oteltrace.SpanStartOption) (context.Context, Trace)
+	StartTrace(
+		ctx context.Context,
+		operationName string,
+		opts ...oteltrace.SpanStartOption,
+	) (context.Context, Trace)
 	// Close is used on application shutdown.
 	Close() error
 }

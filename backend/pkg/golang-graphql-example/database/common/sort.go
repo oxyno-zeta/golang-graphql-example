@@ -10,7 +10,9 @@ import (
 )
 
 // ErrSortListMustNotHaveMultipleFields error.
-var ErrSortListMustNotHaveMultipleFields = gerrors.New("sort list objects mustn't have multiple fields with sort values into the same object")
+var ErrSortListMustNotHaveMultipleFields = gerrors.New(
+	"sort list objects mustn't have multiple fields with sort values into the same object",
+)
 
 // Supported enum type for testing purpose.
 var supportedEnumType = reflect.TypeOf(new(SortOrderEnum))
@@ -82,7 +84,12 @@ func manageListSortOrder(rVal *reflect.Value, db *gorm.DB) (*gorm.DB, error) {
 	return res, nil
 }
 
-func manageObjectSortOrder(rKind reflect.Kind, rVal *reflect.Value, refuseMultipleField bool, db *gorm.DB) (*gorm.DB, bool, error) {
+func manageObjectSortOrder(
+	rKind reflect.Kind,
+	rVal *reflect.Value,
+	refuseMultipleField bool,
+	db *gorm.DB,
+) (*gorm.DB, bool, error) {
 	// Create result
 	res := db
 	// Check if kind is supported
@@ -112,7 +119,9 @@ func manageObjectSortOrder(rKind reflect.Kind, rVal *reflect.Value, refuseMultip
 		}
 		// Check that type is supported
 		if fType.Type != supportedEnumType {
-			return nil, false, errors.NewInvalidInputError(fmt.Sprintf("field %s with sort tag must be a *SortOrderEnum", fType.Name))
+			return nil, false, errors.NewInvalidInputError(
+				fmt.Sprintf("field %s with sort tag must be a *SortOrderEnum", fType.Name),
+			)
 		}
 		// Get field value
 		fVal := indirect.Field(i)

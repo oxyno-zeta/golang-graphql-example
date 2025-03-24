@@ -7,16 +7,24 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 )
 
-const edgesFieldName = "Edges"
-const nodeFieldName = "Node"
-const pageInfoFieldName = "PageInfo"
-const cursorFieldName = "Cursor"
+const (
+	edgesFieldName    = "Edges"
+	nodeFieldName     = "Node"
+	pageInfoFieldName = "PageInfo"
+	cursorFieldName   = "Cursor"
+)
 
 // Store supported type of page info.
-var pageInfoSupportedType = reflect.TypeOf(new(PageInfo))
-var cursorSupportedType = reflect.TypeOf("")
+var (
+	pageInfoSupportedType = reflect.TypeOf(new(PageInfo))
+	cursorSupportedType   = reflect.TypeOf("")
+)
 
-func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagination.PageOutput) error {
+func MapConnection(
+	connectionResult interface{},
+	list interface{},
+	pageOut *pagination.PageOutput,
+) error {
 	// Validate that connection result isn't nil
 	if connectionResult == nil {
 		return errors.NewInvalidInputError("connection result argument mustn't be nil")
@@ -45,7 +53,9 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	connectionResultVal := reflect.ValueOf(connectionResult)
 	// Check that top is a pointer
 	if connectionResultVal.Kind() != reflect.Ptr {
-		return errors.NewInvalidInputError("connection result argument must be a pointer to a connection object")
+		return errors.NewInvalidInputError(
+			"connection result argument must be a pointer to a connection object",
+		)
 	}
 
 	// Get connection pointer type
@@ -77,13 +87,17 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	edgeTypePtr := edgesType.Type.Elem()
 	// Check that Edge type is a pointer in slice
 	if edgeTypePtr.Kind() != reflect.Ptr {
-		return errors.NewInvalidInputError("field Edges must be a slice of struct pointers ([]*Edge)")
+		return errors.NewInvalidInputError(
+			"field Edges must be a slice of struct pointers ([]*Edge)",
+		)
 	}
 	// Get edge type
 	edgeTypeStruct := edgeTypePtr.Elem()
 	// Check that Edge is really a struct after pointer
 	if edgeTypeStruct.Kind() != reflect.Struct {
-		return errors.NewInvalidInputError("field Edges must be a slice of struct pointers ([]*Edge)")
+		return errors.NewInvalidInputError(
+			"field Edges must be a slice of struct pointers ([]*Edge)",
+		)
 	}
 
 	// Check that Edge have a Cursor key
@@ -110,7 +124,9 @@ func MapConnection(connectionResult interface{}, list interface{}, pageOut *pagi
 	}
 	// Check that node value is same type as item in list
 	if !nodeType.Type.ConvertibleTo(itemListType) {
-		return errors.NewInvalidInputError("field Node must have the same type of items in the list argument")
+		return errors.NewInvalidInputError(
+			"field Node must have the same type of items in the list argument",
+		)
 	}
 
 	// Indirect top value

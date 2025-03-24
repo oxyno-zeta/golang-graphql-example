@@ -7,7 +7,8 @@ import (
 const ForbiddenErrorCode = "FORBIDDEN"
 
 func NewForbiddenError(msg string, options ...GenericErrorOption) Error {
-	return NewForbiddenErrorWithOptions(append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+	return NewForbiddenErrorWithOptions(
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
 }
 
 func NewForbiddenErrorWithError(err error, options ...GenericErrorOption) Error {

@@ -49,7 +49,8 @@ func (as *amqpService) Close() error {
 		// Closing channel
 		err := as.consumerChannel.Close()
 		// Check error
-		if err != nil && !errors.Is(err, amqp091.ErrClosed) && !strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage) {
+		if err != nil && !errors.Is(err, amqp091.ErrClosed) &&
+			!strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage) {
 			return errors.WithStack(err)
 		}
 	}
@@ -59,7 +60,8 @@ func (as *amqpService) Close() error {
 		// Just closing publisher channel as no consumer are in
 		err := as.publisherChannel.Close()
 		// Check error
-		if err != nil && !errors.Is(err, amqp091.ErrClosed) && !strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage) {
+		if err != nil && !errors.Is(err, amqp091.ErrClosed) &&
+			!strings.Contains(err.Error(), rabbitmqAlreadyClosedErrorMessage) {
 			return errors.WithStack(err)
 		}
 	}
@@ -106,7 +108,10 @@ func (as *amqpService) Connect() error {
 	}
 
 	// Start reconnect as routine
-	go as.reconnect(func() *amqp091.Connection { return as.publisherConnection }, as.connectPublisher)
+	go as.reconnect(
+		func() *amqp091.Connection { return as.publisherConnection },
+		as.connectPublisher,
+	)
 	go as.reconnect(func() *amqp091.Connection { return as.consumerConnection }, as.connectConsumer)
 
 	as.logger.Info("Successfully connected to AMQP broker")
@@ -116,7 +121,11 @@ func (as *amqpService) Connect() error {
 }
 
 // Reconnect channel if disconnected when timeout on consume have been reached for example.
-func (as *amqpService) reconnectChannel(getChannel func() *amqp091.Channel, getConnection func() *amqp091.Connection, connect func() error) {
+func (as *amqpService) reconnectChannel(
+	getChannel func() *amqp091.Channel,
+	getConnection func() *amqp091.Connection,
+	connect func() error,
+) {
 	// Infinite loop
 	for {
 		// Listen for closed events
@@ -125,26 +134,37 @@ func (as *amqpService) reconnectChannel(getChannel func() *amqp091.Channel, getC
 		// Check if reason is set, if not set, it is because the close is coming from application side
 		// Due to a reconnect on connection for example
 		if errReason == nil {
-			as.logger.Debug("Reconnection channel handler have detected an application closing channel event => skip channel reconnection")
+			as.logger.Debug(
+				"Reconnection channel handler have detected an application closing channel event => skip channel reconnection",
+			)
 
 			break
 		}
 		// Check if connection is alive
 		if getConnection().IsClosed() {
 			// Stop
-			as.logger.Info("Reconnection channel handler have detected that channel connection is closed => skip channel reconnection")
+			as.logger.Info(
+				"Reconnection channel handler have detected that channel connection is closed => skip channel reconnection",
+			)
 
 			break
 		}
 
-		as.logger.Error(errors.Wrap(errReason, "Attempting to reconnect to AMQP channel because channel was closed due to error"))
+		as.logger.Error(
+			errors.Wrap(
+				errReason,
+				"Attempting to reconnect to AMQP channel because channel was closed due to error",
+			),
+		)
 
 		// Loop for reconnect
 		for {
 			// Check if connection is alive (again)
 			if getConnection().IsClosed() {
 				// Stop
-				as.logger.Info("Reconnection channel handler have detected that channel connection is closed => skip channel reconnection")
+				as.logger.Info(
+					"Reconnection channel handler have detected that channel connection is closed => skip channel reconnection",
+				)
 
 				break
 			}
@@ -175,12 +195,19 @@ func (as *amqpService) reconnect(getConnection func() *amqp091.Connection, conne
 
 		// Check if reason is set, if not set, it is because the close is coming from application side
 		if errReason == nil {
-			as.logger.Debug("Reconnection handler have detected an application closing connection event => skip reconnection")
+			as.logger.Debug(
+				"Reconnection handler have detected an application closing connection event => skip reconnection",
+			)
 
 			break
 		}
 
-		as.logger.Error(errors.Wrap(errReason, "Attempting to reconnect to AMQP broker because connection was closed due to error"))
+		as.logger.Error(
+			errors.Wrap(
+				errReason,
+				"Attempting to reconnect to AMQP broker because connection was closed due to error",
+			),
+		)
 
 		// Loop for reconnect
 		for {
@@ -218,7 +245,9 @@ func (as *amqpService) connectPublisher() error {
 			err2 := conn.Close()
 			// Check error
 			if err2 != nil {
-				as.logger.Error(errors.Wrap(err2, "connection close error created by channel creation error"))
+				as.logger.Error(
+					errors.Wrap(err2, "connection close error created by channel creation error"),
+				)
 			}
 		}()
 
@@ -267,7 +296,9 @@ func (as *amqpService) connectConsumer() error {
 			err2 := conn.Close()
 			// Check error
 			if err2 != nil {
-				as.logger.Error(errors.Wrap(err2, "connection close error created by channel creation error"))
+				as.logger.Error(
+					errors.Wrap(err2, "connection close error created by channel creation error"),
+				)
 			}
 		}()
 
@@ -415,7 +446,10 @@ func (as *amqpService) connect() (*amqp091.Connection, error) {
 
 	// Check if configuration have a username and a password declared
 	if amqpCfg.Connection.Username != nil && amqpCfg.Connection.Password != nil {
-		fullURL.User = url.UserPassword(amqpCfg.Connection.Username.Value, amqpCfg.Connection.Password.Value)
+		fullURL.User = url.UserPassword(
+			amqpCfg.Connection.Username.Value,
+			amqpCfg.Connection.Password.Value,
+		)
 	}
 
 	as.logger.Debugf("Trying to establish connection to AMQP bus")
@@ -429,7 +463,10 @@ func (as *amqpService) connect() (*amqp091.Connection, error) {
 	return conn, nil
 }
 
-func (*amqpService) createConfiguredChannel(conn *amqp091.Connection, channelQosCfg *config.AMQPChannelQosConfig) (*amqp091.Channel, error) {
+func (*amqpService) createConfiguredChannel(
+	conn *amqp091.Connection,
+	channelQosCfg *config.AMQPChannelQosConfig,
+) (*amqp091.Channel, error) {
 	// Create channel
 	chann, err := conn.Channel()
 	// Check error

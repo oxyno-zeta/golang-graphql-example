@@ -46,7 +46,12 @@ func (gl *gormLogger) Error(ctx context.Context, v string, rest ...interface{}) 
 	gl.getCtxLoggerOrDefault(ctx).Error(val...)
 }
 
-func (gl *gormLogger) Trace(ctx context.Context, begin time.Time, fc func() (string, int64), err error) {
+func (gl *gormLogger) Trace(
+	ctx context.Context,
+	begin time.Time,
+	fc func() (string, int64),
+	err error,
+) {
 	sql, rows := fc()
 	elapsed := time.Since(begin)
 	gl.getCtxLoggerOrDefault(ctx).

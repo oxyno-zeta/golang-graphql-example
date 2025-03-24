@@ -26,8 +26,10 @@ type Service interface {
 
 type Priority string
 
-const HighPriority Priority = "HIGH"
-const LowPriority Priority = "LOW"
+const (
+	HighPriority Priority = "HIGH"
+	LowPriority  Priority = "LOW"
+)
 
 //go:generate mockgen -destination=./mocks/mock_Email.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email Email
 type Email interface {

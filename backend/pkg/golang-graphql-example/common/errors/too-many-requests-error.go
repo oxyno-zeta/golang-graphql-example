@@ -7,11 +7,13 @@ import (
 const TooManyRequestsErrorCode = "TOO_MANY_REQUESTS"
 
 func NewTooManyRequestsError(msg string, options ...GenericErrorOption) Error {
-	return NewTooManyRequestsErrorWithOptions(append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+	return NewTooManyRequestsErrorWithOptions(
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
 }
 
 func NewTooManyRequestsErrorWithError(err error, options ...GenericErrorOption) Error {
-	return NewTooManyRequestsErrorWithOptions(append([]GenericErrorOption{WithError(err)}, options...)...)
+	return NewTooManyRequestsErrorWithOptions(
+		append([]GenericErrorOption{WithError(err)}, options...)...)
 }
 
 func NewTooManyRequestsErrorWithOptions(options ...GenericErrorOption) Error {

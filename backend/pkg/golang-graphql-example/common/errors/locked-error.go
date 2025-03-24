@@ -7,7 +7,8 @@ import (
 const LockedErrorCode = "LOCKED"
 
 func NewLockedError(msg string, options ...GenericErrorOption) Error {
-	return NewLockedErrorWithOptions(append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+	return NewLockedErrorWithOptions(
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
 }
 
 func NewLockedErrorWithError(err error, options ...GenericErrorOption) Error {

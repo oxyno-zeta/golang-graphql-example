@@ -31,13 +31,17 @@ const DefaultCookieName = "oidc"
 const DefaultDatabaseDriver = "POSTGRES"
 
 // Default tracing type.
-const DefaultTracingType = TracingOtelHTTPType
-const TracingOtelHTTPType = "OTEL_HTTP"
+const (
+	DefaultTracingType  = TracingOtelHTTPType
+	TracingOtelHTTPType = "OTEL_HTTP"
+)
 
 // Default tracing sampler type.
-const TracingSamplerAlwaysOff = "ALWAYS_OFF"
-const TracingSamplerAlwaysOn = "ALWAYS_ON"
-const TracingSamplerRatio = "RATIO"
+const (
+	TracingSamplerAlwaysOff = "ALWAYS_OFF"
+	TracingSamplerAlwaysOn  = "ALWAYS_ON"
+	TracingSamplerRatio     = "RATIO"
+)
 
 // Config Configuration object.
 type Config struct {

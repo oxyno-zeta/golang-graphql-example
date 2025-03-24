@@ -13,7 +13,11 @@ type dao struct {
 	db database.DB
 }
 
-func (d *dao) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
+func (d *dao) FindByID(
+	ctx context.Context,
+	id string,
+	projection *models.Projection,
+) (*models.Todo, error) {
 	return databasehelpers.FindByID(
 		ctx,
 		&models.Todo{},
@@ -31,7 +35,11 @@ func (d *dao) CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo
 	)
 }
 
-func (d *dao) PatchUpdate(ctx context.Context, tt *models.Todo, input map[string]interface{}) (*models.Todo, error) {
+func (d *dao) PatchUpdate(
+	ctx context.Context,
+	tt *models.Todo,
+	input map[string]interface{},
+) (*models.Todo, error) {
 	return databasehelpers.PatchUpdate(
 		ctx,
 		tt,

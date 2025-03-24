@@ -120,7 +120,6 @@ func Paging(
 
 		return nil
 	}, localTOpts...)
-
 	// Check error
 	if err != nil {
 		return nil, errors.WithStack(err)
