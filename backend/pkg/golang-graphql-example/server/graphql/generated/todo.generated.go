@@ -1045,9 +1045,7 @@ func (ec *executionContext) unmarshalOTodoFilter2ᚕᚖgithubᚗcomᚋoxynoᚑze
 		return nil, nil
 	}
 	var vSlice []any
-	if v != nil {
-		vSlice = graphql.CoerceList(v)
-	}
+	vSlice = graphql.CoerceList(v)
 	var err error
 	res := make([]*models.Filter, len(vSlice))
 	for i := range vSlice {
@@ -1073,9 +1071,7 @@ func (ec *executionContext) unmarshalOTodoSortOrder2ᚕᚖgithubᚗcomᚋoxyno�
 		return nil, nil
 	}
 	var vSlice []any
-	if v != nil {
-		vSlice = graphql.CoerceList(v)
-	}
+	vSlice = graphql.CoerceList(v)
 	var err error
 	res := make([]*models.SortOrder, len(vSlice))
 	for i := range vSlice {
