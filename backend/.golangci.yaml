@@ -13,6 +13,8 @@ output:
       path: stdout
       print-linter-name: true
       print-issued-lines: true
+    code-climate:
+      path: gl-code-quality-report.json
   path-prefix: ""
 linters:
   enable:
