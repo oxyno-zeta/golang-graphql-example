@@ -90,8 +90,7 @@ code/lint: setup/dep/install setup/dep/lint/install
 	golangci-lint run ./...
 
 .PHONY: code/lint/gitlab
-code/lint/gitlab: setup/dep/install setup/dep/lint/install
-	golangci-lint run ./... --out-format code-climate:gl-code-quality-report.json,line-number
+code/lint/gitlab: code/lint
 
 .PHONY: code/fieldalignment
 code/fieldalignment: setup/dep/install setup/dep/gen/install
