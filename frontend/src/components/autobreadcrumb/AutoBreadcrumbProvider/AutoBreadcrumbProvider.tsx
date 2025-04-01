@@ -36,13 +36,6 @@ function AutoBreadcrumbProvider({ children }: Props) {
               if (uniqueDepths.length !== allDepths.length) {
                 console.error('Same depth is provided more than once. Fix to have one depth on one path');
               }
-
-              // Check that no depth is missing
-              if (sorted[sorted.length - 1].depth !== sorted.length - 1) {
-                console.error(
-                  "One or many breadcrumb data seems to miss or last depth isn't the right one. (This error can arrive when multiple depth are crossed at the same time)",
-                );
-              }
             }
 
             return sorted;
