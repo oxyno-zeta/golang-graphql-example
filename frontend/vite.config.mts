@@ -45,7 +45,7 @@ export default defineConfig({
     }),
   ],
   build: {
-    target: 'es2018',
+    target: 'es2020',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -57,6 +57,9 @@ export default defineConfig({
       },
     },
     sourcemap: true,
+  },
+  resolve: {
+    conditions: ['mui-modern', 'module', 'browser', 'development|production'],
   },
   assetsInclude: ['**/*.png', '**/*.jpg'],
   cacheDir: './.vite-cache',

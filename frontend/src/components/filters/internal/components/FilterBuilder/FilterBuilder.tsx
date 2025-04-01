@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState, memo, useRef } from 'react';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ButtonGroup from '@mui/material/ButtonGroup';

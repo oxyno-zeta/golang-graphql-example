@@ -11,7 +11,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SvgIcon from '@mui/material/SvgIcon';
 import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import { mdiAccessPoint } from '@mdi/js';
 import TopBar from '~components/TopBar';
 import TimezoneProvider from '~components/timezone/TimezoneProvider';

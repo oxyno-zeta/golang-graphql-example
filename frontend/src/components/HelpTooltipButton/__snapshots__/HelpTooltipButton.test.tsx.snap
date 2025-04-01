@@ -273,7 +273,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
 <div>
   <div>
     <span
-      aria-labelledby=":r6:"
+      aria-labelledby="«r6»"
       class=""
       data-mui-internal-clone-element="true"
     >
@@ -299,7 +299,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id=":r6:"
+      id="«r6»"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
@@ -587,7 +587,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
 <div>
   <div>
     <span
-      aria-labelledby=":r4:"
+      aria-labelledby="«r4»"
       class=""
       data-mui-internal-clone-element="true"
     >
@@ -613,7 +613,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id=":r4:"
+      id="«r4»"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
@@ -1153,7 +1153,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
 <div>
   <div>
     <span
-      aria-labelledby=":r2:"
+      aria-labelledby="«r2»"
       class=""
       data-mui-internal-clone-element="true"
     >
@@ -1179,7 +1179,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id=":r2:"
+      id="«r2»"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
