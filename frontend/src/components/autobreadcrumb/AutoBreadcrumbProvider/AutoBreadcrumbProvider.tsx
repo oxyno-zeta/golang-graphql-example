@@ -12,35 +12,38 @@ function AutoBreadcrumbProvider({ children }: Props) {
   const contextValue: AutoBreadcrumbContextModel = useMemo(() => {
     return {
       pushAutoBreadcrumb: (input: BreadcrumbData) => {
-        if (!state.some((v: BreadcrumbData) => v.id === input.id)) {
-          setState((s) => {
-            const sorted = [...s, input].sort((a, b) => a.depth - b.depth);
+        setState((s) => {
+          if (s.some((v: BreadcrumbData) => v.id === input.id)) {
+            return s;
+          }
 
-            // Check that we aren't in production
-            if (process.env.NODE_ENV !== 'production') {
-              // Map all depth
-              const allDepths = sorted.map((it) => it.depth);
-              // Map all ids
-              const allIds = sorted.map((it) => it.id);
-              // Unique depth
-              const uniqueDepths = allDepths.filter((value, index, array) => array.indexOf(value) === index);
-              // Unique id
-              const uniqueIds = allIds.filter((value, index, array) => array.indexOf(value) === index);
+          // Inject and sort data
+          const sorted = [...s, input].sort((a, b) => a.depth - b.depth);
 
-              // Check id uniqueness
-              if (uniqueIds.length !== allIds.length) {
-                console.error('Same id is provided more than once. Fix to have one id on one path');
-              }
+          // Check that we aren't in production
+          if (process.env.NODE_ENV !== 'production') {
+            // Map all depth
+            const allDepths = sorted.map((it) => it.depth);
+            // Map all ids
+            const allIds = sorted.map((it) => it.id);
+            // Unique depth
+            const uniqueDepths = allDepths.filter((value, index, array) => array.indexOf(value) === index);
+            // Unique id
+            const uniqueIds = allIds.filter((value, index, array) => array.indexOf(value) === index);
 
-              // Check depth uniqueness
-              if (uniqueDepths.length !== allDepths.length) {
-                console.error('Same depth is provided more than once. Fix to have one depth on one path');
-              }
+            // Check id uniqueness
+            if (uniqueIds.length !== allIds.length) {
+              console.error('Same id is provided more than once. Fix to have one id on one path');
             }
 
-            return sorted;
-          });
-        }
+            // Check depth uniqueness
+            if (uniqueDepths.length !== allDepths.length) {
+              console.error('Same depth is provided more than once. Fix to have one depth on one path');
+            }
+          }
+
+          return sorted;
+        });
       },
       popAutoBreadcrumb: (input: BreadcrumbData) => {
         setState((s) => s.filter((v) => v.id !== input.id));
