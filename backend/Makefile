@@ -73,7 +73,7 @@ POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "1.3.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.1.4"
+KEYCLOAK_VERSION := "26.2.0"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.0.8"
 
@@ -274,7 +274,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.31.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.32.0
 endif
 
 .PHONY: setup/dep/test/install
