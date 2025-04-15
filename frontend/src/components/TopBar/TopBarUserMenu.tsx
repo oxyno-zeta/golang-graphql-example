@@ -11,7 +11,6 @@ import { mdiAccountCircle } from '@mdi/js';
 import ConfigContext from '../../contexts/ConfigContext';
 import ToggleColorModeMenuItem from '../theming/ToggleColorModeMenuItem';
 import TimezoneSelector from '../timezone/TimezoneSelector';
-import UserInfo from './components/UserInfo';
 
 //
 // Build logout URL
@@ -42,7 +41,11 @@ function buildLogoutURL(signOutURLString: string, oidcClientID: string) {
   return `/oauth2/sign_out?rd=${targetEncodedURI}`;
 }
 
-function TopBarUserMenu() {
+export type TopBarUserMenuProps = {
+  readonly UserInfoComponent?: React.ElementType;
+};
+
+function TopBarUserMenu({ UserInfoComponent = undefined }: TopBarUserMenuProps) {
   // Setup translate
   const { t } = useTranslation();
   // States
@@ -86,13 +89,17 @@ function TopBarUserMenu() {
         }}
       >
         <div style={{ margin: '10px 16px 10px 16px' }}>
-          <div style={{ width: 'calc(100% - 20px)' }}>
-            <UserInfo />
-          </div>
+          {UserInfoComponent ? (
+            <>
+              <div style={{ width: 'calc(100% - 20px)' }}>
+                <UserInfoComponent />
+              </div>
 
-          <div style={{ margin: '0 9px' }}>
-            <Divider />
-          </div>
+              <div style={{ margin: '0 9px' }}>
+                <Divider />
+              </div>
+            </>
+          ) : null}
 
           <div style={{ margin: '5px 0' }}>
             <ToggleColorModeMenuItem />

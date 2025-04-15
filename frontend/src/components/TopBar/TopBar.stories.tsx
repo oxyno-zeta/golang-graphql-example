@@ -9,6 +9,7 @@ import TimezoneProvider from '~components/timezone/TimezoneProvider';
 import ConfigContext from '../../contexts/ConfigContext';
 import { defaultConfig } from '../../models/config';
 import TopBar from './TopBar';
+import UserInfo from './components/UserInfo';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
@@ -49,4 +50,24 @@ Playbook.parameters = {
     //   },
     // ],
   },
+};
+
+export const WithFakeUserInfo: StoryFn<typeof TopBar> = function C() {
+  return (
+    <TimezoneProvider>
+      <ConfigContext.Provider value={defaultConfig}>
+        <TopBar topBarUserMenuProps={{ UserInfoComponent: UserInfo }} />
+      </ConfigContext.Provider>
+    </TimezoneProvider>
+  );
+};
+
+export const DisableUserMenu: StoryFn<typeof TopBar> = function C() {
+  return (
+    <TimezoneProvider>
+      <ConfigContext.Provider value={defaultConfig}>
+        <TopBar disableUserMenu />
+      </ConfigContext.Provider>
+    </TimezoneProvider>
+  );
 };

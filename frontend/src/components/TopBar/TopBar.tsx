@@ -5,9 +5,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import { useTranslation } from 'react-i18next';
-import TopBarUserMenu from './TopBarUserMenu';
+import TopBarUserMenu, { type TopBarUserMenuProps } from './TopBarUserMenu';
 
-function TopBar() {
+type TopBarProps = {
+  readonly TopBarUserMenuComponent?: React.ElementType;
+  readonly topBarUserMenuProps?: TopBarUserMenuProps;
+  readonly disableUserMenu?: boolean;
+};
+
+function TopBar({
+  TopBarUserMenuComponent = TopBarUserMenu,
+  topBarUserMenuProps = {},
+  disableUserMenu = false,
+}: TopBarProps) {
   // Setup translate
   const { t } = useTranslation();
 
@@ -24,7 +34,7 @@ function TopBar() {
           {t('common.mainTitle')}
         </Typography>
         <div style={{ flexGrow: 1 }} />
-        <TopBarUserMenu />
+        {!disableUserMenu && <TopBarUserMenuComponent {...topBarUserMenuProps} />}
       </Toolbar>
     </AppBar>
   );
