@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import { useTranslation } from 'react-i18next';
 import TopBarUserMenu, { type TopBarUserMenuProps } from './TopBarUserMenu';
 
-type TopBarProps = {
+export type TopBarProps = {
   readonly TopBarUserMenuComponent?: React.ElementType;
   readonly topBarUserMenuProps?: TopBarUserMenuProps;
   readonly disableUserMenu?: boolean;
