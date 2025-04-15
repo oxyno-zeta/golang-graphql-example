@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 
-function UserInfo() {
+function FakeUserInfo() {
   return (
     <>
       <Typography gutterBottom style={{ fontSize: 14 }}>
@@ -14,4 +14,4 @@ function UserInfo() {
   );
 }
 
-export default UserInfo;
+export default FakeUserInfo;

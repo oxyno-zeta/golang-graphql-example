@@ -9,7 +9,7 @@ import TimezoneProvider from '~components/timezone/TimezoneProvider';
 import ConfigContext from '../../contexts/ConfigContext';
 import { defaultConfig } from '../../models/config';
 import TopBar from './TopBar';
-import UserInfo from './components/UserInfo';
+import FakeUserInfo from './components/FakeUserInfo';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
@@ -56,7 +56,7 @@ export const WithFakeUserInfo: StoryFn<typeof TopBar> = function C() {
   return (
     <TimezoneProvider>
       <ConfigContext.Provider value={defaultConfig}>
-        <TopBar topBarUserMenuProps={{ UserInfoComponent: UserInfo }} />
+        <TopBar topBarUserMenuProps={{ UserInfoComponent: FakeUserInfo }} />
       </ConfigContext.Provider>
     </TimezoneProvider>
   );
