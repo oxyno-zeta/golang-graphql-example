@@ -373,7 +373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.25.7, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.27.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.27.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7":
   version: 7.27.0
   resolution: "@babel/runtime@npm:7.27.0"
   dependencies:
@@ -1724,7 +1724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/utils@npm:^5.16.6 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta, @mui/utils@npm:^7.0.2":
+"@mui/utils@npm:^7.0.2":
   version: 7.0.2
   resolution: "@mui/utils@npm:7.0.2"
   dependencies:
@@ -1744,22 +1744,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-data-grid@npm:7.28.3":
-  version: 7.28.3
-  resolution: "@mui/x-data-grid@npm:7.28.3"
+"@mui/x-data-grid@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@mui/x-data-grid@npm:8.0.0"
   dependencies:
-    "@babel/runtime": "npm:^7.25.7"
-    "@mui/utils": "npm:^5.16.6 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta"
-    "@mui/x-internals": "npm:7.28.0"
+    "@babel/runtime": "npm:^7.27.0"
+    "@mui/utils": "npm:^7.0.2"
+    "@mui/x-internals": "npm:8.0.0"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
     reselect: "npm:^5.1.1"
-    use-sync-external-store: "npm:^1.0.0"
+    use-sync-external-store: "npm:^1.5.0"
   peerDependencies:
     "@emotion/react": ^11.9.0
     "@emotion/styled": ^11.8.1
-    "@mui/material": ^5.15.14 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta
-    "@mui/system": ^5.15.14 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta
+    "@mui/material": ^5.15.14 || ^6.0.0 || ^7.0.0
+    "@mui/system": ^5.15.14 || ^6.0.0 || ^7.0.0
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
@@ -1767,26 +1767,26 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 10/b176e91b72745ebfe200723bcbd4b4ccee08a8cad9129c2faddb96a7fa42eb3a06a9cd92d9c94dbded1ec299721ae6b3772587dea504cf0ece0f9b424ed32db4
+  checksum: 10/3d0793df38181ae3040ef19436366593842cc96dd094d27ed1d36b5284de27b618eb2f09112fc5cbe303164967e96e486bafb9ac2a4c454b26f1ec8376679a96
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:7.28.3":
-  version: 7.28.3
-  resolution: "@mui/x-date-pickers@npm:7.28.3"
+"@mui/x-date-pickers@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@mui/x-date-pickers@npm:8.0.0"
   dependencies:
-    "@babel/runtime": "npm:^7.25.7"
-    "@mui/utils": "npm:^5.16.6 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta"
-    "@mui/x-internals": "npm:7.28.0"
-    "@types/react-transition-group": "npm:^4.4.11"
+    "@babel/runtime": "npm:^7.27.0"
+    "@mui/utils": "npm:^7.0.2"
+    "@mui/x-internals": "npm:8.0.0"
+    "@types/react-transition-group": "npm:^4.4.12"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
     react-transition-group: "npm:^4.4.5"
   peerDependencies:
     "@emotion/react": ^11.9.0
     "@emotion/styled": ^11.8.1
-    "@mui/material": ^5.15.14 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta
-    "@mui/system": ^5.15.14 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta
+    "@mui/material": ^5.15.14 || ^6.0.0 || ^7.0.0
+    "@mui/system": ^5.15.14 || ^6.0.0 || ^7.0.0
     date-fns: ^2.25.0 || ^3.2.0 || ^4.0.0
     date-fns-jalali: ^2.13.0-0 || ^3.2.0-0 || ^4.0.0-0
     dayjs: ^1.10.7
@@ -1815,19 +1815,19 @@ __metadata:
       optional: true
     moment-jalaali:
       optional: true
-  checksum: 10/f221b1bf346bea360a6cb9edbb4c3025d4371e4d6fd8d94791623953883a468f9a49de215fe8f0a461f5ee827b94b65d057049baba4d58325896758d59c639e3
+  checksum: 10/c4fa8483d2910ec5c8c8de2862733c467dc64484af4d52632a9f7e26ceb08a7aea1f7eaf7a1b1e81f8abc9d2ab955377385bcde032e091c576faca71f15fed8b
   languageName: node
   linkType: hard
 
-"@mui/x-internals@npm:7.28.0":
-  version: 7.28.0
-  resolution: "@mui/x-internals@npm:7.28.0"
+"@mui/x-internals@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@mui/x-internals@npm:8.0.0"
   dependencies:
-    "@babel/runtime": "npm:^7.25.7"
-    "@mui/utils": "npm:^5.16.6 || ^6.0.0 || ^7.0.0 || ^7.0.0-beta"
+    "@babel/runtime": "npm:^7.27.0"
+    "@mui/utils": "npm:^7.0.2"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/7f366dec77aa19cd06f1d33f5fbe74844e4c9fbef370c511779f23e69b455dfdaf7378f0ab4b0e190acb26ffcf353a7927ba5d5ede700031a83b9a9f39cfc8f5
+  checksum: 10/33f1591089a2b37cabfbbca18eedc885c6dc15c5bd94dc7b3bf60c3d3576eb705a27b5096bddfe0c1862f6883a120cbc801c9e5958f7c33c1602a42ba725a56a
   languageName: node
   linkType: hard
 
@@ -2975,7 +2975,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-transition-group@npm:^4.4.11, @types/react-transition-group@npm:^4.4.12":
+"@types/react-transition-group@npm:^4.4.12":
   version: 4.4.12
   resolution: "@types/react-transition-group@npm:4.4.12"
   peerDependencies:
@@ -5704,8 +5704,8 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/lab": "npm:7.0.0-beta.11"
     "@mui/material": "npm:7.0.2"
-    "@mui/x-data-grid": "npm:7.28.3"
-    "@mui/x-date-pickers": "npm:7.28.3"
+    "@mui/x-data-grid": "npm:8.0.0"
+    "@mui/x-date-pickers": "npm:8.0.0"
     "@storybook/addon-actions": "npm:8.6.12"
     "@storybook/addon-designs": "npm:8.2.1"
     "@storybook/addon-essentials": "npm:8.6.12"
@@ -10539,12 +10539,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0":
-  version: 1.4.0
-  resolution: "use-sync-external-store@npm:1.4.0"
+"use-sync-external-store@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "use-sync-external-store@npm:1.5.0"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/08bf581a8a2effaefc355e9d18ed025d436230f4cc973db2f593166df357cf63e47b9097b6e5089b594758bde322e1737754ad64905e030d70f8ff7ee671fd01
+  checksum: 10/ddae7c4572511f7f641d6977bd0725340aa7dbeda8250418b54c1a57ec285083d96cf50d1a1acbd6cf729f7a87071b2302c6fbd29310432bf1b21a961a313279
   languageName: node
   linkType: hard
 
