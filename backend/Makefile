@@ -75,7 +75,7 @@ OPA_VERSION := "1.3.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.2.0"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.0.9"
+RABBITMQ_VERSION := "4.1.0"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -266,7 +266,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.70
+	$(GO) install github.com/99designs/gqlgen@v0.17.72
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
