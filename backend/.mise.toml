@@ -2,11 +2,11 @@
 
 [tools]
 go = '1.24.2'
-golangci-lint = "2.1.2"
+golangci-lint = "2.1.5"
 # renovate: datasource=github-tags depName=gotestyourself/gotestsum
 gotestsum = "v1.12.1"
 # renovate: datasource=github-tags depName=99designs/gqlgen
-"go:github.com/99designs/gqlgen" = "v0.17.70"
+"go:github.com/99designs/gqlgen" = "v0.17.72"
 # renovate: datasource=go depName=go.uber.org/mock/mockgen
 "go:go.uber.org/mock/mockgen" = "v0.5.1"
 # renovate: datasource=go depName=golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment
