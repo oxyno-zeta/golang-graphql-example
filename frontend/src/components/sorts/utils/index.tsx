@@ -1,5 +1,16 @@
-import { GridSortModel, GridColDef, GridSortItem } from '@mui/x-data-grid';
+import { GridSortModel, GridColDef, GridSortDirection } from '@mui/x-data-grid';
 import { SortOrderAsc, SortOrderDesc, SortOrderModel } from '../../../models/general';
+
+interface GridSortItem {
+  /**
+   * The column field identifier.
+   */
+  field: string;
+  /**
+   * The direction of the column that the grid should sort.
+   */
+  sort: GridSortDirection;
+}
 
 export function buildMUIXSort(sorts: Record<string, SortOrderModel>[], columns: GridColDef[]): GridSortModel {
   // Limit to 1 because free version
@@ -26,7 +37,7 @@ export function buildMUIXSort(sorts: Record<string, SortOrderModel>[], columns: 
     }
 
     // Save sort
-    accu.push({ field: key, sort: sort[key] === SortOrderAsc ? 'asc' : 'desc' });
+    accu.push({ field: key, sort: sort[key] === SortOrderAsc ? 'asc' : 'desc' } as GridSortItem);
     // Default
     return accu;
   }, [] as GridSortItem[]);
