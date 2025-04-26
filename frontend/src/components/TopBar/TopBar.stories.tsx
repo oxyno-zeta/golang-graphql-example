@@ -10,6 +10,10 @@ import ConfigContext from '../../contexts/ConfigContext';
 import { defaultConfig } from '../../models/config';
 import TopBar from './TopBar';
 import FakeUserInfo from './components/FakeUserInfo';
+import AppLinkListItemButton from './components/AppLinkListItemButton';
+import { List, SvgIcon } from '@mui/material';
+import { mdiAbacus } from '@mdi/js';
+import TopBarSpacer from './TopBarSpacer';
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
@@ -67,6 +71,34 @@ export const DisableUserMenu: StoryFn<typeof TopBar> = function C() {
     <TimezoneProvider>
       <ConfigContext.Provider value={defaultConfig}>
         <TopBar disableUserMenu />
+      </ConfigContext.Provider>
+    </TimezoneProvider>
+  );
+};
+
+export const WithAppLinks: StoryFn<typeof TopBar> = function C() {
+  return (
+    <TimezoneProvider>
+      <ConfigContext.Provider value={defaultConfig}>
+        <TopBar
+          appLinksElement={
+            <List dense>
+              <AppLinkListItemButton
+                link="https://fake.com"
+                primaryText="fake"
+                secondaryText="secondary"
+                iconElement={
+                  <SvgIcon color="primary">
+                    <path d={mdiAbacus} />
+                  </SvgIcon>
+                }
+              />
+              <AppLinkListItemButton link="https://fake.com" primaryText="fake" />
+            </List>
+          }
+        />
+        <TopBarSpacer />
+        <div>FAKE </div>
       </ConfigContext.Provider>
     </TimezoneProvider>
   );

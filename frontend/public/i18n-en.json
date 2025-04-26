@@ -52,6 +52,7 @@
     "latest": "Latest",
     "deleteConfirmationDialogTitle": "Delete confirmation",
     "deleteConfirmationDialogContent": "Do you confirm that you want to delete {{ item }} ?",
+    "appLinks": "Apps",
     "timezone": "Timezone",
     "date": {
       "nextMonthAction": "Next month",
