@@ -13,6 +13,7 @@ export type TopBarProps = {
   readonly topBarUserMenuProps?: TopBarUserMenuProps;
   readonly disableUserMenu?: boolean;
   readonly appLinksElement?: ReactNode;
+  readonly avatarElement?: ReactNode;
 };
 
 function TopBar({
@@ -20,6 +21,7 @@ function TopBar({
   topBarUserMenuProps = {},
   disableUserMenu = false,
   appLinksElement = undefined,
+  avatarElement = undefined,
 }: TopBarProps) {
   // Setup translate
   const { t } = useTranslation();
@@ -28,7 +30,7 @@ function TopBar({
     <AppBar id="topbar" position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar variant="dense" sx={{ margin: '0 -15px' }}>
         {appLinksElement ? <AppLinksButton>{appLinksElement}</AppLinksButton> : null}
-        <Avatar component={Link} src="/logo.png" to="/" />
+        {avatarElement || <Avatar component={Link} src="/logo.png" to="/" />}
         <Typography
           component={Link}
           sx={{ marginLeft: '10px', textDecoration: 'none', color: 'inherit' }}
