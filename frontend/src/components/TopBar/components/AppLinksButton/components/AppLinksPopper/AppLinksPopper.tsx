@@ -24,6 +24,7 @@ function AppLinksPopper({ onClose, open, anchorElement, children, popperSx = {} 
         minWidth: '300px',
         maxHeight: '500px',
         overflowY: 'auto',
+        zIndex: 1200, // 1300 is the topbar, 0 won't overlap the left drawer
         ...popperSx,
       }}
     >
