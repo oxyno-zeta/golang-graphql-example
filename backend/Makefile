@@ -57,13 +57,13 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v2.1.5"
+GOLANGCI_LINT_VERSION := "v2.1.6"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.2.0"
+PGADMIN_VERSION := "9.3.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.3.0"
+PROMETHEUS_VERSION := "v3.3.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "11.6.1"
 # renovate: datasource=docker depName=grafana/tempo
@@ -71,9 +71,9 @@ TEMPO_VERSION := "2.7.2"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.3.0"
+OPA_VERSION := "1.4.2"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.2.1"
+KEYCLOAK_VERSION := "26.2.3"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.1.0"
 
@@ -266,22 +266,22 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.72
+	$(GO) install github.com/99designs/gqlgen@v0.17.73
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
-	$(GO) install go.uber.org/mock/mockgen@v0.5.1
+	$(GO) install go.uber.org/mock/mockgen@v0.5.2
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.32.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.33.0
 endif
 
 .PHONY: setup/dep/test/install
 setup/dep/test/install: setup/dep/install
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
-	$(GO) install gotest.tools/gotestsum@v1.12.1
+	$(GO) install gotest.tools/gotestsum@v1.12.2
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
