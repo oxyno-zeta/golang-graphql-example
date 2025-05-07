@@ -7,32 +7,45 @@
     ":semanticCommitScope(deps)"
   ],
   "configMigration": true,
-  "labels": ["renovate"],
+  "labels": [
+    "renovate"
+  ],
   "pre-commit": {
     "enabled": true
   },
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["vulnerability-alert"]
+    "labels": [
+      "vulnerability-alert"
+    ]
   },
   "packageRules": [
     {
       "groupName": "mkdocs",
       "groupSlug": "mkdocs",
-      "matchPackageNames": ["mkdocs-material", "squidfunk/mkdocs-material"]
+      "matchPackageNames": [
+        "mkdocs-material",
+        "squidfunk/mkdocs-material"
+      ]
     },
     {
       "groupName": "golangci/golangci-lint",
       "groupSlug": "golangci_golangci_lint",
-      "matchPackageNames": ["golangci/golangci-lint"]
+      "matchPackageNames": [
+        "golangci/golangci-lint"
+      ]
     },
     {
-      "matchFileNames": ["backend/**"],
+      "matchFileNames": [
+        "backend/**"
+      ],
       "groupName": "backend",
       "groupSlug": "backend"
     },
     {
-      "matchFileNames": ["frontend/**"],
+      "matchFileNames": [
+        "frontend/**"
+      ],
       "groupName": "frontend",
       "groupSlug": "frontend"
     }
@@ -40,7 +53,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^backend/Dockerfile.*"],
+      "managerFilePatterns": [
+        "/^backend/Dockerfile.*/"
+      ],
       "matchStrings": [
         "# renovate: datasource=repology depName=alpine_(?<currentValue>\\d+[._]\\d+)"
       ],
@@ -52,12 +67,12 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "^backend/Makefile$",
-        "^backend/Dockerfile.*",
-        "^backend/.mise.toml",
-        "^frontend/.mise.toml",
-        "^.github/workflows/.*\\.yml"
+      "managerFilePatterns": [
+        "/^backend/Makefile$/",
+        "/^backend/Dockerfile.*/",
+        "/^backend/.mise.toml/",
+        "/^frontend/.mise.toml/",
+        "/^.github/workflows/.*\\.yml/"
       ],
       "matchStrings": [
         "#\\s*renovate:\\s*datasource=(?<datasource>.*?)( depName=(?<depName>.*?))?( versioning=(?<versioning>.*?))?( registryUrl=(?<registryUrl>.*?))?\\s.*\\s*[ :=]+\\s*[\"'](?<currentValue>.*)[\"']\\s"
@@ -66,7 +81,9 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["^backend/Makefile$"],
+      "managerFilePatterns": [
+        "/^backend/Makefile$/"
+      ],
       "matchStrings": [
         "go install (?<depName>[^@]+?)@(?<currentValue>[0-9.a-zA-Z-]+)",
         "\\$\\(GO\\) install (?<depName>[^@]+?)@(?<currentValue>[0-9.a-zA-Z-]+)"
@@ -74,6 +91,10 @@
       "datasourceTemplate": "go"
     }
   ],
-  "ignorePaths": ["backend/tools/voyager/**"],
-  "ignoreDeps": ["universal-cookie"]
+  "ignorePaths": [
+    "backend/tools/voyager/**"
+  ],
+  "ignoreDeps": [
+    "universal-cookie"
+  ]
 }
