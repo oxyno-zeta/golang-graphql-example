@@ -40,7 +40,7 @@ type service struct {
 }
 
 func (*service) DatabaseMiddleware() gorm.Plugin {
-	return gormtracing.NewPlugin(gormtracing.WithoutMetrics())
+	return gormtracing.NewPlugin(gormtracing.WithoutMetrics(), gormtracing.WithoutServerAddress())
 }
 
 func (*service) GraphqlMiddleware() gqlgraphql.HandlerExtension {
