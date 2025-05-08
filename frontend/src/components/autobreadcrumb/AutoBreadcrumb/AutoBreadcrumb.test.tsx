@@ -79,6 +79,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements[0].children[0].localName).toEqual('p');
       expect(liElements[0].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements[0].children[0]).toHaveTextContent('root');
+
+      expect(document.title).toEqual('root');
     });
 
     it('should be ok to display on 2 levels', () => {
@@ -116,6 +118,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements[2].children[0].localName).toEqual('p');
       expect(liElements[2].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements[2].children[0]).toHaveTextContent('level1');
+
+      expect(document.title).toEqual('level1');
     });
 
     it('should be ok to display on 3 levels', () => {
@@ -163,6 +167,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements[4].children[0].localName).toEqual('p');
       expect(liElements[4].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements[4].children[0]).toHaveTextContent('level2');
+
+      expect(document.title).toEqual('level2');
     });
   });
 
@@ -272,6 +278,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[0].children[0].localName).toEqual('p');
       expect(liElements2[0].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[0].children[0]).toHaveTextContent('Query1');
+
+      expect(document.title).toEqual('Query1');
     });
 
     it('should be ok to display on 2 levels', async () => {
@@ -334,6 +342,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[2].children[0].localName).toEqual('p');
       expect(liElements2[2].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[2].children[0]).toHaveTextContent('Query2');
+
+      expect(document.title).toEqual('Query2');
     });
 
     it('should be ok to display on 2 levels and third with an error', async () => {
@@ -411,6 +421,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
 
       expect(liElements[4].children[0].localName).toEqual('span');
       expect(liElements[4].children[0]).toHaveClass('MuiSkeleton-root MuiSkeleton-text');
+
+      expect(document.title).toEqual('');
     });
   });
 
@@ -474,6 +486,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[0].children[0].localName).toEqual('p');
       expect(liElements2[0].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[0].children[0]).toHaveTextContent('fake');
+
+      expect(document.title).toEqual('fake');
     });
 
     it('should be ok to display on 2 levels', async () => {
@@ -537,6 +551,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[2].children[0].localName).toEqual('p');
       expect(liElements2[2].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[2].children[0]).toHaveTextContent('Query2');
+
+      expect(document.title).toEqual('Query2');
     });
   });
 
@@ -645,6 +661,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[0].children[0].localName).toEqual('p');
       expect(liElements2[0].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[0].children[0]).toHaveTextContent('fake');
+
+      expect(document.title).toEqual('fake');
     });
 
     it('should be ok to display on 1 level with 1 ignored route', async () => {
@@ -671,6 +689,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[0].children[0].localName).toEqual('p');
       expect(liElements2[0].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[0].children[0]).toHaveTextContent('fake');
+
+      expect(document.title).toEqual('fake');
     });
 
     it('should be ok to display on 2 levels with 1 ignored route', async () => {
@@ -736,6 +756,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[2].children[0].localName).toEqual('p');
       expect(liElements2[2].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[2].children[0]).toHaveTextContent('Query1');
+
+      expect(document.title).toEqual('Query1');
     });
 
     it('should be ok to display on 4 levels with 2 ignored routes', async () => {
@@ -819,6 +841,8 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[4].children[0].localName).toEqual('p');
       expect(liElements2[4].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
       expect(liElements2[4].children[0]).toHaveTextContent('Query2');
+
+      expect(document.title).toEqual('Query2');
     });
   });
 });

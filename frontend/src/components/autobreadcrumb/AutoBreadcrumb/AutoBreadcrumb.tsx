@@ -5,9 +5,9 @@ import FixedBreadcrumb from './FixedBreadcrumb';
 import GraphQLBreadcrumb from './GraphQLBreadcrumb';
 import AutoBreadcrumbContext from '../contexts/AutoBreadcrumbContext';
 
-export type Props = BreadcrumbsProps;
+export type Props = BreadcrumbsProps & { disablePageTitle?: boolean };
 
-function AutoBreadcrumb(props: Props) {
+function AutoBreadcrumb({ disablePageTitle = false, ...props }: Props) {
   // Get context
   const ctx = useContext(AutoBreadcrumbContext);
   // Get params
@@ -40,6 +40,7 @@ function AutoBreadcrumb(props: Props) {
               last={last}
               params={params}
               pathname={computedPathname}
+              disablePageTitle={disablePageTitle}
             />
           );
         }
@@ -51,6 +52,7 @@ function AutoBreadcrumb(props: Props) {
               key={breadcrumbData.id}
               last={last}
               pathname={computedPathname}
+              disablePageTitle={disablePageTitle}
             />
           );
         }

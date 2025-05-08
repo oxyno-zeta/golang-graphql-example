@@ -9,17 +9,21 @@ interface Props {
   readonly breadcrumbData: BreadcrumbFixedDataConfig;
   readonly last: boolean;
   readonly pathname: string;
+  readonly disablePageTitle?: boolean;
 }
 
-function FixedBreadcrumb({ breadcrumbData, last, pathname }: Props) {
+function FixedBreadcrumb({ breadcrumbData, last, pathname, disablePageTitle = false }: Props) {
   // Initialize translate
   const { t } = useTranslation();
 
   if (last) {
     return (
-      <Typography color="text.primary" {...(breadcrumbData.typographyProps || {})}>
-        {t(breadcrumbData.textContent)}
-      </Typography>
+      <>
+        {!disablePageTitle && <title>{t(breadcrumbData.textContent)}</title>}
+        <Typography color="text.primary" {...(breadcrumbData.typographyProps || {})}>
+          {t(breadcrumbData.textContent)}
+        </Typography>
+      </>
     );
   }
 

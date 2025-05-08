@@ -10,9 +10,10 @@ interface Props {
   readonly breadcrumbData: BreadcrumbGraphQLDataConfig;
   readonly last: boolean;
   readonly pathname: string;
+  readonly disablePageTitle?: boolean;
 }
 
-function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname }: Props) {
+function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePageTitle = false }: Props) {
   // Build variables
   const variables = breadcrumbData.buildVariables ? breadcrumbData.buildVariables(params) : {};
 
@@ -46,6 +47,7 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname }: Props) {
       }}
       last={last}
       pathname={pathname}
+      disablePageTitle={disablePageTitle}
     />
   );
 }
