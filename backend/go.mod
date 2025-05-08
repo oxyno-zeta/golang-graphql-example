@@ -30,7 +30,7 @@ require (
 	github.com/spf13/viper v1.20.1
 	github.com/stretchr/testify v1.10.0
 	github.com/thoas/go-funk v0.9.3
-	github.com/vektah/gqlparser/v2 v2.5.26
+	github.com/vektah/gqlparser/v2 v2.5.27
 	github.com/xhit/go-simple-mail/v2 v2.16.0
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.60.0
 	go.opentelemetry.io/contrib/propagators/b3 v1.35.0
@@ -48,9 +48,9 @@ require (
 	golang.org/x/oauth2 v0.30.0
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/driver/sqlite v1.5.7
-	gorm.io/gorm v1.26.0
+	gorm.io/gorm v1.26.1
 	gorm.io/plugin/dbresolver v1.6.0
-	gorm.io/plugin/opentelemetry v0.1.13
+	gorm.io/plugin/opentelemetry v0.1.14
 	gorm.io/plugin/prometheus v0.1.0
 )
 
