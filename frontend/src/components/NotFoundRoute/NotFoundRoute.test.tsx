@@ -18,6 +18,8 @@ describe('NotFoundRoute', () => {
     // Now find errors
     expect(container).toHaveTextContent('common.routeNotFound');
     expect(container).toMatchSnapshot();
+
+    expect(document.title).toEqual('common.routeNotFound');
   });
 
   it('should display no data with specific variant', async () => {
@@ -26,5 +28,7 @@ describe('NotFoundRoute', () => {
     expect(container).toHaveTextContent('common.routeNotFound');
     expect(container.firstChild).toHaveClass('MuiTypography-body2');
     expect(container).toMatchSnapshot();
+
+    expect(document.title).toEqual('common.routeNotFound');
   });
 });

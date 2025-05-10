@@ -11,17 +11,20 @@ function NotFoundRoute({ typographyProps = {} }: Props) {
   const { t } = useTranslation();
 
   return (
-    <Typography
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        textAlign: 'center',
-        margin: '10px 0',
-      }}
-      {...typographyProps}
-    >
-      {t('common.routeNotFound')}
-    </Typography>
+    <>
+      <title>{t('common.routeNotFound')}</title>
+      <Typography
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          textAlign: 'center',
+          margin: '10px 0',
+        }}
+        {...typographyProps}
+      >
+        {t('common.routeNotFound')}
+      </Typography>
+    </>
   );
 }
 
