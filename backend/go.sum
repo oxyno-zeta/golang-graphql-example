@@ -340,6 +340,8 @@ github.com/99designs/gqlgen-contrib v0.1.1-0.20250425145228-5e3e9dcb70b3 h1:p3Mc
 github.com/99designs/gqlgen-contrib v0.1.1-0.20250425145228-5e3e9dcb70b3/go.mod h1:IYkpobNktM85k9gS/eKTJ0FO7Q4R0EBpltYdfIf6AyM=
 github.com/99designs/gqlgen-contrib v0.1.1-0.20250506104326-8679307d3110 h1:J7fgvUi3gHL74ydO+f5VlhLa9WlWmVd8OrNluejsBfs=
 github.com/99designs/gqlgen-contrib v0.1.1-0.20250506104326-8679307d3110/go.mod h1:lcTWivnoORhn8EtdO9/BSL7y8CCAotEU90oVcZOfgec=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20250512175113-5a1cb1eb5887 h1:y8CTIQ2Hh5CeLd75kT7xoJQeTotsES8nnhCrNP9NDmc=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20250512175113-5a1cb1eb5887/go.mod h1:WgK+VKWQDuBUGzHzMBp+eLAUCnUvzPGA7YRFuObxFAk=
 github.com/AdaLogics/go-fuzz-headers v0.0.0-20230811130428-ced1acdcaa24 h1:bvDV9vkmnHYOMsOr4WLk+Vo07yKIzd94sVoIqshQ4bU=
 github.com/AdaLogics/go-fuzz-headers v0.0.0-20230811130428-ced1acdcaa24/go.mod h1:8o94RPi1/7XTJvwPpRSzSUedZrtlirdB3r9Z20bi2f8=
 github.com/AdamKorcz/go-118-fuzz-build v0.0.0-20230306123547-8075edf89bb0 h1:59MxjQVfjXsBpLy+dbd2/ELV5ofnUkUZBvWSC85sheA=
@@ -1118,6 +1120,8 @@ github.com/hasura/go-graphql-client v0.13.1 h1:kKbjhxhpwz58usVl+Xvgah/TDha5K2akN
 github.com/hasura/go-graphql-client v0.13.1/go.mod h1:k7FF7h53C+hSNFRG3++DdVZWIuHdCaTbI7siTJ//zGQ=
 github.com/hasura/go-graphql-client v0.14.0 h1:YJqhFt6KmCaiakqJF6FvgvHvc34SdUi5zQ1imvp7fTI=
 github.com/hasura/go-graphql-client v0.14.0/go.mod h1:jfSZtBER3or+88Q9vFhWHiFMPppfYILRyl+0zsgPIIw=
+github.com/hasura/go-graphql-client v0.14.2 h1:/uF6f9SLvMRSMRwaGbFaHdiBKcPAgF5tPCBkMLVTiz4=
+github.com/hasura/go-graphql-client v0.14.2/go.mod h1:jfSZtBER3or+88Q9vFhWHiFMPppfYILRyl+0zsgPIIw=
 github.com/hpcloud/tail v1.0.0 h1:nfCOvKYfkgYP8hkirhJocXT2+zOD8yUNjXaWfTlyFKI=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
 github.com/iancoleman/strcase v0.2.0 h1:05I4QRnGpI0m37iZQRuskXh+w77mr6Z41lwQzuHLwW0=
