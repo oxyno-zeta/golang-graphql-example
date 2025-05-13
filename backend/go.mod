@@ -6,7 +6,7 @@ require (
 	cirello.io/pglock v1.16.0
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.73
-	github.com/99designs/gqlgen-contrib v0.1.1-0.20250506104326-8679307d3110
+	github.com/99designs/gqlgen-contrib v0.1.1-0.20250512175113-5a1cb1eb5887
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/coreos/go-oidc/v3 v3.14.1
@@ -20,7 +20,7 @@ require (
 	github.com/go-playground/validator/v10 v10.26.0
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.0
-	github.com/hasura/go-graphql-client v0.14.0
+	github.com/hasura/go-graphql-client v0.14.2
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/prometheus/client_golang v1.22.0
 	github.com/rabbitmq/amqp091-go v1.10.0
