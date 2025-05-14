@@ -8,16 +8,16 @@ import (
 	"gorm.io/gorm"
 )
 
-// Base contains common columns for all tables.
-type BaseWithAllIndexes struct {
-	CreatedAt time.Time  `gorm:"index"       json:"createdAt"`
-	UpdatedAt time.Time  `gorm:"index"       json:"updatedAt"`
-	DeletedAt *time.Time `gorm:"index"       json:"deletedAt,omitempty"`
-	ID        string     `gorm:"primary_key" json:"id"`
+// BaseWithoutAllIndexes contains common columns for all tables.
+type BaseWithoutAllIndexes struct {
+	CreatedAt time.Time  `json:"createdAt"`
+	UpdatedAt time.Time  `json:"updatedAt"`
+	DeletedAt *time.Time `json:"deletedAt,omitempty" gorm:"index"`
+	ID        string     `json:"id"                  gorm:"primary_key"`
 }
 
 // BeforeCreate will set a UUID rather than numeric ID.
-func (base *BaseWithAllIndexes) BeforeCreate(_ *gorm.DB) error {
+func (base *BaseWithoutAllIndexes) BeforeCreate(_ *gorm.DB) error {
 	// Check if ID is set to avoid erasing it.
 	// This is useful when it is asked to save object for the first
 	// time with a fixed id.
