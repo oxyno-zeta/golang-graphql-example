@@ -20,7 +20,7 @@ require (
 	github.com/go-playground/validator/v10 v10.26.0
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.0
-	github.com/hasura/go-graphql-client v0.14.2
+	github.com/hasura/go-graphql-client v0.14.3
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/prometheus/client_golang v1.22.0
 	github.com/rabbitmq/amqp091-go v1.10.0
