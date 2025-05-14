@@ -22,8 +22,14 @@ func (*service) HTTPMiddlewareList(
 				"http.host":       c.Request.Host,
 				"http.request_id": getRequestID(c.Request.Context()),
 			})
-			// Add trace id into result headers
-			c.Header(TraceIDHeaderName, t.GetTraceID())
+
+			// Get trace id
+			traceID := t.GetTraceID()
+			// Check if it exists
+			if traceID != "" {
+				// Add trace id into result headers
+				c.Header(TraceIDHeaderName, t.GetTraceID())
+			}
 		},
 	}
 }
