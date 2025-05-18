@@ -53,6 +53,7 @@ function AutoBreadcrumb({ disablePageTitle = false, ...props }: Props) {
               last={last}
               pathname={computedPathname}
               disablePageTitle={disablePageTitle}
+              params={params}
             />
           );
         }

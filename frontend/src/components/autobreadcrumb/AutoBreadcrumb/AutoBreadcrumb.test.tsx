@@ -51,6 +51,29 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
               }
             />
           </Route>
+          <Route
+            path="override"
+            element={
+              <AutoBreadcrumbInjector
+                item={{
+                  depth: 1,
+                  id: 'fake-id-4',
+                  fixed: { textContent: 'level1', overrideComputedPath: () => '/redirect/fake-id-4' },
+                }}
+              >
+                <Outlet />
+              </AutoBreadcrumbInjector>
+            }
+          >
+            <Route
+              path="level2"
+              element={
+                <AutoBreadcrumbInjector item={{ depth: 2, id: 'fake-id-5', fixed: { textContent: 'level2' } }}>
+                  <div />
+                </AutoBreadcrumbInjector>
+              }
+            />
+          </Route>
         </Route>
       </Routes>
     );
@@ -170,6 +193,55 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
 
       expect(document.title).toEqual('level2');
     });
+
+    it('should be ok to display on 3 levels with override path', () => {
+      const { container } = render(
+        <AutoBreadcrumbProvider>
+          <MemoryRouter initialIndex={0} initialEntries={['/override/level2/']}>
+            {allFixedRoutes}
+          </MemoryRouter>
+        </AutoBreadcrumbProvider>,
+      );
+
+      expect(container).toMatchSnapshot();
+
+      expect(container).toHaveTextContent('root');
+      expect(container).toHaveTextContent('/');
+      expect(container).toHaveTextContent('level1');
+      expect(container).toHaveTextContent('level2');
+
+      const navElement = container.querySelector('nav');
+      expect(navElement).not.toBeNull();
+      const olElement = container.querySelector('ol');
+      expect(olElement).not.toBeNull();
+      const liElements = container.querySelectorAll('li');
+      expect(liElements).not.toBeNull();
+      expect(liElements).toHaveLength(5);
+
+      expect(liElements[0].children[0].localName).toEqual('a');
+      expect(liElements[0].children[0]).toHaveClass('MuiTypography-root MuiLink-root');
+      expect(liElements[0].children[0]).toHaveTextContent('root');
+      expect(liElements[0].children[0]).toHaveAttribute('href', '/');
+
+      expect(liElements[1].localName).toEqual('li');
+      expect(liElements[1]).toHaveClass('MuiBreadcrumbs-separator');
+      expect(liElements[1]).toHaveTextContent('/');
+
+      expect(liElements[2].children[0].localName).toEqual('a');
+      expect(liElements[2].children[0]).toHaveClass('MuiTypography-root MuiLink-root');
+      expect(liElements[2].children[0]).toHaveTextContent('level1');
+      expect(liElements[2].children[0]).toHaveAttribute('href', '/redirect/fake-id-4');
+
+      expect(liElements[3].localName).toEqual('li');
+      expect(liElements[3]).toHaveClass('MuiBreadcrumbs-separator');
+      expect(liElements[3]).toHaveTextContent('/');
+
+      expect(liElements[4].children[0].localName).toEqual('p');
+      expect(liElements[4].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
+      expect(liElements[4].children[0]).toHaveTextContent('level2');
+
+      expect(document.title).toEqual('level2');
+    });
   });
 
   describe('GraphQL texts', () => {
@@ -226,6 +298,39 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
                     depth: 2,
                     id: 'fake-id-4',
                     graphql: { query: SlowQuery, getTextContent: (data) => data.slow },
+                  }}
+                >
+                  <div />
+                </AutoBreadcrumbInjector>
+              }
+            />
+          </Route>
+          <Route
+            path="override"
+            element={
+              <AutoBreadcrumbInjector
+                item={{
+                  depth: 2,
+                  id: 'fake-id-5',
+                  graphql: {
+                    query: SimpleQuery2,
+                    getTextContent: (data) => data.name2,
+                    overrideComputedPath: () => '/redirect/fake-id-5',
+                  },
+                }}
+              >
+                <Outlet />
+              </AutoBreadcrumbInjector>
+            }
+          >
+            <Route
+              path="slow"
+              element={
+                <AutoBreadcrumbInjector
+                  item={{
+                    depth: 3,
+                    id: 'fake-id-6',
+                    graphql: { query: SimpleQuery2, getTextContent: () => 'fake6' },
                   }}
                 >
                   <div />
@@ -415,6 +520,51 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements2[2].children[0]).toHaveTextContent('Query2');
       expect(liElements2[2].children[0]).toHaveAttribute('href', '/level1/');
 
+      expect(liElements2[3].localName).toEqual('li');
+      expect(liElements2[3]).toHaveClass('MuiBreadcrumbs-separator');
+      expect(liElements2[3]).toHaveTextContent('/');
+
+      expect(liElements2[4].children[0].localName).toEqual('span');
+      expect(liElements2[4].children[0]).toHaveClass('MuiSkeleton-root MuiSkeleton-text');
+
+      expect(document.title).toEqual('');
+    });
+
+    it('should be ok to display on 2 levels and third with a path override', async () => {
+      const { container } = render(
+        <MockedProvider mocks={mockedResponses}>
+          <AutoBreadcrumbProvider>
+            <MemoryRouter initialIndex={0} initialEntries={['/override/slow']}>
+              {allGraphqlRoutes}
+            </MemoryRouter>
+          </AutoBreadcrumbProvider>
+        </MockedProvider>,
+      );
+
+      expect(container).toMatchSnapshot();
+
+      expect(container).not.toHaveTextContent('Query1');
+      expect(container).toHaveTextContent('/');
+      expect(container).not.toHaveTextContent('Query2');
+
+      const navElement = container.querySelector('nav');
+      expect(navElement).not.toBeNull();
+      const olElement = container.querySelector('ol');
+      expect(olElement).not.toBeNull();
+      const liElements = container.querySelectorAll('li');
+      expect(liElements).not.toBeNull();
+      expect(liElements).toHaveLength(5);
+
+      expect(liElements[0].children[0].localName).toEqual('span');
+      expect(liElements[0].children[0]).toHaveClass('MuiSkeleton-root MuiSkeleton-text');
+
+      expect(liElements[1].localName).toEqual('li');
+      expect(liElements[1]).toHaveClass('MuiBreadcrumbs-separator');
+      expect(liElements[1]).toHaveTextContent('/');
+
+      expect(liElements[2].children[0].localName).toEqual('span');
+      expect(liElements[2].children[0]).toHaveClass('MuiSkeleton-root MuiSkeleton-text');
+
       expect(liElements[3].localName).toEqual('li');
       expect(liElements[3]).toHaveClass('MuiBreadcrumbs-separator');
       expect(liElements[3]).toHaveTextContent('/');
@@ -422,7 +572,43 @@ describe('autobreadcrumb/AutoBreadcrumb', () => {
       expect(liElements[4].children[0].localName).toEqual('span');
       expect(liElements[4].children[0]).toHaveClass('MuiSkeleton-root MuiSkeleton-text');
 
-      expect(document.title).toEqual('');
+      expect(await screen.findByText('Query1')).toBeInTheDocument();
+      expect(await screen.findByText('Query2')).toBeInTheDocument();
+      expect(await screen.findByText('fake6')).toBeInTheDocument();
+
+      expect(container).toMatchSnapshot();
+
+      const navElement2 = container.querySelector('nav');
+      expect(navElement2).not.toBeNull();
+      const olElement2 = container.querySelector('ol');
+      expect(olElement2).not.toBeNull();
+      const liElements2 = container.querySelectorAll('li');
+      expect(liElements2).not.toBeNull();
+      expect(liElements2).toHaveLength(5);
+
+      expect(liElements2[0].children[0].localName).toEqual('a');
+      expect(liElements2[0].children[0]).toHaveClass('MuiTypography-root MuiLink-root');
+      expect(liElements2[0].children[0]).toHaveTextContent('Query1');
+      expect(liElements2[0].children[0]).toHaveAttribute('href', '/');
+
+      expect(liElements2[1].localName).toEqual('li');
+      expect(liElements2[1]).toHaveClass('MuiBreadcrumbs-separator');
+      expect(liElements2[1]).toHaveTextContent('/');
+
+      expect(liElements2[2].children[0].localName).toEqual('a');
+      expect(liElements2[2].children[0]).toHaveClass('MuiTypography-root MuiLink-root');
+      expect(liElements2[2].children[0]).toHaveTextContent('Query2');
+      expect(liElements2[2].children[0]).toHaveAttribute('href', '/redirect/fake-id-5');
+
+      expect(liElements2[3].localName).toEqual('li');
+      expect(liElements2[3]).toHaveClass('MuiBreadcrumbs-separator');
+      expect(liElements2[3]).toHaveTextContent('/');
+
+      expect(liElements2[4].children[0].localName).toEqual('p');
+      expect(liElements2[4].children[0]).toHaveClass('MuiTypography-root MuiTypography-body1');
+      expect(liElements2[4].children[0]).toHaveTextContent('fake6');
+
+      expect(document.title).toEqual('fake6');
     });
   });
 

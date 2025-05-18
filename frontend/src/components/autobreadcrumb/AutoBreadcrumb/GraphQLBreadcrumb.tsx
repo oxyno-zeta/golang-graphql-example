@@ -38,16 +38,24 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePage
   // Get text
   const text = breadcrumbData.getTextContent(data);
 
+  // Create override computed path function if necessary
+  let overrideComputedPath: ((p: string, params: Params<string>) => string) | undefined = undefined;
+  if (breadcrumbData.overrideComputedPath) {
+    overrideComputedPath = (p: string, params: Params<string>) => breadcrumbData.overrideComputedPath!(p, params, data);
+  }
+
   return (
     <FixedBreadcrumb
       breadcrumbData={{
         textContent: text,
         linkProps: breadcrumbData.linkProps,
         typographyProps: breadcrumbData.typographyProps,
+        overrideComputedPath,
       }}
       last={last}
       pathname={pathname}
       disablePageTitle={disablePageTitle}
+      params={params}
     />
   );
 }

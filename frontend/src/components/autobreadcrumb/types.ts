@@ -42,6 +42,7 @@ export type BreadcrumbFixedDataConfig = {
   textContent: string;
   linkProps?: Omit<LinkProps & RouterLinkProps, 'to'>;
   typographyProps?: TypographyProps;
+  overrideComputedPath?: (computedPath: string, params: Params<string>) => string;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,4 +54,5 @@ export type BreadcrumbGraphQLDataConfig<V = Record<string, any>, D = any> = {
   skeletonProps?: SkeletonProps;
   linkProps?: Omit<LinkProps & RouterLinkProps, 'to'>;
   typographyProps?: TypographyProps;
+  overrideComputedPath?: (computedPath: string, params: Params<string>, data: D) => string;
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router';
+import { type Params, Link as RouterLink } from 'react-router';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { useTranslation } from 'react-i18next';
@@ -9,12 +9,17 @@ interface Props {
   readonly breadcrumbData: BreadcrumbFixedDataConfig;
   readonly last: boolean;
   readonly pathname: string;
+  readonly params: Params<string>;
   readonly disablePageTitle?: boolean;
 }
 
-function FixedBreadcrumb({ breadcrumbData, last, pathname, disablePageTitle = false }: Props) {
+function FixedBreadcrumb({ breadcrumbData, last, pathname, params, disablePageTitle = false }: Props) {
   // Initialize translate
   const { t } = useTranslation();
+
+  const computedPath = breadcrumbData.overrideComputedPath
+    ? breadcrumbData.overrideComputedPath(pathname, params)
+    : pathname;
 
   if (last) {
     return (
@@ -28,7 +33,13 @@ function FixedBreadcrumb({ breadcrumbData, last, pathname, disablePageTitle = fa
   }
 
   return (
-    <Link color="inherit" component={RouterLink} to={pathname} underline="hover" {...(breadcrumbData.linkProps || {})}>
+    <Link
+      color="inherit"
+      component={RouterLink}
+      to={computedPath}
+      underline="hover"
+      {...(breadcrumbData.linkProps || {})}
+    >
       {t(breadcrumbData.textContent)}
     </Link>
   );
