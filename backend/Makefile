@@ -65,7 +65,7 @@ MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
 PROMETHEUS_VERSION := "v3.4.0"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "12.0.0"
+GRAFANA_VERSION := "12.0.1"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "2.7.2"
 # renovate: datasource=docker depName=postgres
