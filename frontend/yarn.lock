@@ -1768,13 +1768,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-data-grid@npm:8.3.1":
-  version: 8.3.1
-  resolution: "@mui/x-data-grid@npm:8.3.1"
+"@mui/x-data-grid@npm:8.4.0":
+  version: 8.4.0
+  resolution: "@mui/x-data-grid@npm:8.4.0"
   dependencies:
     "@babel/runtime": "npm:^7.27.1"
     "@mui/utils": "npm:^7.0.2"
-    "@mui/x-internals": "npm:8.3.1"
+    "@mui/x-internals": "npm:8.4.0"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
     reselect: "npm:^5.1.1"
@@ -1791,17 +1791,17 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 10/a833b5ea0baeb9f05759ea4ec838dc3e02932d077d6e95b3852df8dafb7fab01ea5fb2e86c18cf20dfcb2429fb4eee530af38b803e644e7c52bb220e790a1a37
+  checksum: 10/c0b9f0682dbc44ff12f96c2757dc9415dcc8a3044bbf7a111d1215d256d2db3f93d4684b9b0fe4a9bc887ff9f0359a44564fbe4cf37404cd20b8b54c03001e2d
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:8.3.1":
-  version: 8.3.1
-  resolution: "@mui/x-date-pickers@npm:8.3.1"
+"@mui/x-date-pickers@npm:8.4.0":
+  version: 8.4.0
+  resolution: "@mui/x-date-pickers@npm:8.4.0"
   dependencies:
     "@babel/runtime": "npm:^7.27.1"
     "@mui/utils": "npm:^7.0.2"
-    "@mui/x-internals": "npm:8.3.1"
+    "@mui/x-internals": "npm:8.4.0"
     "@types/react-transition-group": "npm:^4.4.12"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
@@ -1839,19 +1839,19 @@ __metadata:
       optional: true
     moment-jalaali:
       optional: true
-  checksum: 10/c4eb28ca692ea5ff83bd6c18c44d07bd3925ec7291a07ddc0f37481923fcc9e76882ce775178fa0753b1f547fee038e64cb00d7aaf4a320505ad948241345af5
+  checksum: 10/b8668e8cf97c238cadca0fb8d36680d1e490bedef3ab4d43c8498298b8f582539625d2b62d0068142290608ea1d44f3f8fa0a1f8498de3fb8e5875370212033c
   languageName: node
   linkType: hard
 
-"@mui/x-internals@npm:8.3.1":
-  version: 8.3.1
-  resolution: "@mui/x-internals@npm:8.3.1"
+"@mui/x-internals@npm:8.4.0":
+  version: 8.4.0
+  resolution: "@mui/x-internals@npm:8.4.0"
   dependencies:
     "@babel/runtime": "npm:^7.27.1"
     "@mui/utils": "npm:^7.0.2"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/f4db3241ae8963321753e436956fcff96285100a173fee9e1c1c39c7517694826be9c5c103fac217e2ec26a5b79920b2c63060c5ebd0f3c28f721a4fa9001e4b
+  checksum: 10/601a9f92adc9f7903cf61622bcec03faf71bc0592ea521541456135e82673705b12fb5b546f2432b742aa5b0ba9ea2e244fd2417b3f0289e91bbca7ea694d253
   languageName: node
   linkType: hard
 
@@ -1920,6 +1920,13 @@ __metadata:
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: 10/ddd16090cde777aaf102940f05d0274602079a95ad9805bd20bc55dcc7c3a2ba1b99dd5c73e5cc2753c3d31250ca52a67d58059459d7d27debb983a9f552936c
+  languageName: node
+  linkType: hard
+
+"@rolldown/pluginutils@npm:1.0.0-beta.9":
+  version: 1.0.0-beta.9
+  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.9"
+  checksum: 10/6d28647e1c186b0e31e07666b850a609efcf5cd5fb0ab57730f932bf57dd2ff9dec15407422e2207503463cbe2fdb4759aaf735f27cb3bbdcca6a083e78a32c0
   languageName: node
   linkType: hard
 
@@ -2958,12 +2965,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:22.15.18":
+"@types/node@npm:*":
   version: 22.15.18
   resolution: "@types/node@npm:22.15.18"
   dependencies:
     undici-types: "npm:~6.21.0"
   checksum: 10/89c8c638beade806753b6fb2f25ed45b0e06f9f7375422137da5752be5c29fa9c75932b942fd55ae7de2b4288e8496912af3e029df45cc93735ac5eb49ece01e
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:22.15.21":
+  version: 22.15.21
+  resolution: "@types/node@npm:22.15.21"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10/cb4189587cca445bfb8166c0ed39f9344d743f37f3da892f2999a99bbabda45dc773237e61ecb7d1dc83dd95718cb1b5715b0be5dd7953565b19019e36a7cf39
   languageName: node
   linkType: hard
 
@@ -3017,12 +3033,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:19.1.4":
+"@types/react@npm:*":
   version: 19.1.4
   resolution: "@types/react@npm:19.1.4"
   dependencies:
     csstype: "npm:^3.0.2"
   checksum: 10/b8744e03bc3f7d4d686681ab039e0b2454fbb2110436b8b7f6ee9e6c5f8f8552231c6c273b908f69b3eae1745aeb7b075949bb3983ba8b36c3b0c2888e22726c
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:19.1.5":
+  version: 19.1.5
+  resolution: "@types/react@npm:19.1.5"
+  dependencies:
+    csstype: "npm:^3.0.2"
+  checksum: 10/ea007c6c3a7afc42421d2cc260446de9e949513cb1261e0e5cf856108afe6e8d53ed51dc26c522a364e4927450092deea68b0423c68f3a22c26dae3fac1363a5
   languageName: node
   linkType: hard
 
@@ -3310,18 +3335,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:4.4.1":
-  version: 4.4.1
-  resolution: "@vitejs/plugin-react@npm:4.4.1"
+"@vitejs/plugin-react@npm:4.5.0":
+  version: 4.5.0
+  resolution: "@vitejs/plugin-react@npm:4.5.0"
   dependencies:
     "@babel/core": "npm:^7.26.10"
     "@babel/plugin-transform-react-jsx-self": "npm:^7.25.9"
     "@babel/plugin-transform-react-jsx-source": "npm:^7.25.9"
+    "@rolldown/pluginutils": "npm:1.0.0-beta.9"
     "@types/babel__core": "npm:^7.20.5"
     react-refresh: "npm:^0.17.0"
   peerDependencies:
     vite: ^4.2.0 || ^5.0.0 || ^6.0.0
-  checksum: 10/bce482d4ecd98d1b15323968ff9ad0a6162a6770fab31f380bb77b5f410319c1848e5cf03d3ccd798e3fc74cdb38ae4dc023cd92576378c81b4d55b1f28b1f1c
+  checksum: 10/0a1c4815fb5a404681443f6e3c4b5a82ec4527dc9fb606f9282bbff5d487b9af5e3433eee2386d4582045bcd691d1aca93df3cbf558164b763b7464710544fe8
   languageName: node
   linkType: hard
 
@@ -5184,6 +5210,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-import-context@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "eslint-import-context@npm:0.1.3"
+  checksum: 10/4d28669a48c326dd3d097806a9214015c3386f2c7637044beef7cfb1b0aa6a077f0f9ee5c26b810b84926b8768c7b15cc3725f880608beec492aa810027ec144
+  languageName: node
+  linkType: hard
+
 "eslint-import-resolver-node@npm:^0.3.9":
   version: 0.3.9
   resolution: "eslint-import-resolver-node@npm:0.3.9"
@@ -5218,15 +5251,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import-x@npm:4.12.2":
-  version: 4.12.2
-  resolution: "eslint-plugin-import-x@npm:4.12.2"
+"eslint-plugin-import-x@npm:4.13.0":
+  version: 4.13.0
+  resolution: "eslint-plugin-import-x@npm:4.13.0"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.31.0"
     comment-parser: "npm:^1.4.1"
     debug: "npm:^4.4.0"
+    eslint-import-context: "npm:^0.1.3"
     eslint-import-resolver-node: "npm:^0.3.9"
-    get-tsconfig: "npm:^4.10.0"
     is-glob: "npm:^4.0.3"
     minimatch: "npm:^9.0.3 || ^10.0.1"
     semver: "npm:^7.7.1"
@@ -5235,7 +5268,7 @@ __metadata:
     unrs-resolver: "npm:^1.7.0"
   peerDependencies:
     eslint: ^8.57.0 || ^9.0.0
-  checksum: 10/ad227d569f3bcff2532f11fd4985095c0cfa7b8757655c8eec70c50753b4ab771591c8431df561761295376f18cbfd020b05d287369de1bbd0418ca6aad271f6
+  checksum: 10/05596e92dbe7bad9941e251f6dcdbccb68423c559bd9c3cdd3e33b60d478002915e9f2ebad662e6a9214d985b4a2ae3e27e78e612ea7a21ff1c78777a51f2b68
   languageName: node
   linkType: hard
 
@@ -5739,8 +5772,8 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/lab": "npm:7.0.0-beta.12"
     "@mui/material": "npm:7.1.0"
-    "@mui/x-data-grid": "npm:8.3.1"
-    "@mui/x-date-pickers": "npm:8.3.1"
+    "@mui/x-data-grid": "npm:8.4.0"
+    "@mui/x-date-pickers": "npm:8.4.0"
     "@storybook/addon-actions": "npm:8.6.14"
     "@storybook/addon-designs": "npm:8.2.1"
     "@storybook/addon-essentials": "npm:8.6.14"
@@ -5759,14 +5792,14 @@ __metadata:
     "@types/eslint__js": "npm:9.14.0"
     "@types/identity-obj-proxy": "npm:3"
     "@types/jest": "npm:29.5.14"
-    "@types/node": "npm:22.15.18"
-    "@types/react": "npm:19.1.4"
+    "@types/node": "npm:22.15.21"
+    "@types/react": "npm:19.1.5"
     "@types/react-dom": "npm:19.1.5"
     "@types/react-test-renderer": "npm:19.1.0"
     "@types/react-window": "npm:1.8.8"
     "@typescript-eslint/eslint-plugin": "npm:8.32.1"
     "@typescript-eslint/parser": "npm:8.32.1"
-    "@vitejs/plugin-react": "npm:4.4.1"
+    "@vitejs/plugin-react": "npm:4.5.0"
     "@welldone-software/why-did-you-render": "npm:10.0.1"
     autosuggest-highlight: "npm:3.3.4"
     axios: "npm:1.9.0"
@@ -5778,14 +5811,14 @@ __metadata:
     eslint-config-prettier: "npm:10.1.5"
     eslint-formatter-gitlab: "npm:6.0.0"
     eslint-import-resolver-typescript: "npm:4.3.5"
-    eslint-plugin-import-x: "npm:4.12.2"
+    eslint-plugin-import-x: "npm:4.13.0"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
     eslint-plugin-prettier: "npm:5.4.0"
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-hooks: "npm:5.2.0"
     eslint-plugin-unicorn: "npm:59.0.1"
     graphql: "npm:16.11.0"
-    i18next: "npm:25.1.3"
+    i18next: "npm:25.2.0"
     i18next-browser-languagedetector: "npm:8.1.0"
     i18next-http-backend: "npm:3.0.2"
     identity-obj-proxy: "npm:3.0.0"
@@ -5798,7 +5831,7 @@ __metadata:
     react-dom: "npm:19.1.0"
     react-error-boundary: "npm:6.0.0"
     react-hook-form: "npm:7.56.4"
-    react-i18next: "npm:15.5.1"
+    react-i18next: "npm:15.5.2"
     react-router: "npm:7.6.0"
     react-window: "npm:1.8.11"
     rollup-plugin-visualizer: "npm:5.14.0"
@@ -5807,7 +5840,7 @@ __metadata:
     storybook-addon-apollo-client: "npm:8.1.2"
     storybook-addon-remix-react-router: "npm:5.0.0"
     storybook-dark-mode: "npm:4.0.2"
-    storybook-react-i18next: "npm:4.0.1"
+    storybook-react-i18next: "npm:4.0.2"
     ts-jest: "npm:29.3.4"
     ts-node: "npm:10.9.2"
     typescript: "npm:5.8.3"
@@ -6280,9 +6313,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:25.1.3":
-  version: 25.1.3
-  resolution: "i18next@npm:25.1.3"
+"i18next@npm:25.2.0":
+  version: 25.2.0
+  resolution: "i18next@npm:25.2.0"
   dependencies:
     "@babel/runtime": "npm:^7.27.1"
   peerDependencies:
@@ -6290,7 +6323,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/b1cabfb4ee07671dd573150d17dc0af9b7f193c487673dfd37c0f0b3ead6e2c27b15dccfee2e889252af19b451b4646620a83844c7ea8f1131122e36630368ea
+  checksum: 10/76961aadcafe301c475e801df914827ea7470987f9b7cf552596bab60117165efaaffcbb69d937af943db5e4eb46cb7798f79042b657ade10dc8983f63c28753
   languageName: node
   linkType: hard
 
@@ -8656,9 +8689,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:15.5.1":
-  version: 15.5.1
-  resolution: "react-i18next@npm:15.5.1"
+"react-i18next@npm:15.5.2":
+  version: 15.5.2
+  resolution: "react-i18next@npm:15.5.2"
   dependencies:
     "@babel/runtime": "npm:^7.25.0"
     html-parse-stringify: "npm:^3.0.1"
@@ -8673,7 +8706,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/19b9ecb1df2eb611c79a27c0f0e9ba7b93933ff7f3c2413507df5f514057b1f860df676157a3eafd5bd76726eb820c1f2ddb8f6be42c39152f2d585864344f01
+  checksum: 10/16e2e71177290ec3e3ca71403d101c511e0a0111f6eaabf5a84477fb5588cc83e27e5fc23d5f4404e6d3ca9f187752c349dd827d386218add27a169e9930fc63
   languageName: node
   linkType: hard
 
@@ -9652,27 +9685,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-i18n@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "storybook-i18n@npm:4.0.2"
+"storybook-i18n@npm:4.0.3":
+  version: 4.0.3
+  resolution: "storybook-i18n@npm:4.0.3"
   peerDependencies:
-    storybook: ^9.0.0-beta.10
-  checksum: 10/bbcf167cf840b31315f28a852c6ee390a811104ad6f98ae05f540d087b3f5d12f438f41b8d1bf75e5bd63e7d38bc8929dc1993d695065a0e2fa07fb0703fad0e
+    storybook: ^9.0.0-beta
+  checksum: 10/9b8b6c20f1ab2ff54b47abc811d19b582f232f8e7dcddf11da8229d62e372e24126099877d686bc88c98e6ff41782375b8ddfdfa332c7bacc4718bedc5c20900
   languageName: node
   linkType: hard
 
-"storybook-react-i18next@npm:4.0.1":
-  version: 4.0.1
-  resolution: "storybook-react-i18next@npm:4.0.1"
+"storybook-react-i18next@npm:4.0.2":
+  version: 4.0.2
+  resolution: "storybook-react-i18next@npm:4.0.2"
   dependencies:
-    storybook-i18n: "npm:^4.0.2"
+    storybook-i18n: "npm:4.0.3"
   peerDependencies:
     i18next: ^22.0.0 || ^23.0.0 || ^24.0.0 || ^25.0.0
     i18next-browser-languagedetector: ^7.0.0 || ^8.0.0
     i18next-http-backend: ^2.0.0 || ^3.0.0
     react-i18next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
-    storybook: ^9.0.0-beta.10
-  checksum: 10/c8d03da17553d806a74df9dd33f4f6437febd77218106efccf6bd74afb1d34f7b529be3c12dd2511f5f1ab43c5d5a219852b34cb97df4e414dd534068a6797a6
+    storybook: ^9.0.0-beta
+  checksum: 10/9caa77f5e0de6b63c3e26aefea3ddd92c9cc12334eda64e4bf1eb7c0ca777719a375ceebb7ce5d37c6ce77642b5cb9b4ba91235e58f08976bac3035674a7afa7
   languageName: node
   linkType: hard
 
