@@ -59,11 +59,11 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 GOLANGCI_LINT_VERSION := "v2.1.6"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.3.0"
+PGADMIN_VERSION := "9.4.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.4.0"
+PROMETHEUS_VERSION := "v3.4.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.0.1"
 # renovate: datasource=docker depName=grafana/tempo
@@ -71,11 +71,11 @@ TEMPO_VERSION := "2.7.2"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.4.2"
+OPA_VERSION := "1.5.1"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.2.4"
+KEYCLOAK_VERSION := "26.2.5"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.1.0"
+RABBITMQ_VERSION := "4.1.1"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -266,7 +266,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.73
+	$(GO) install github.com/99designs/gqlgen@v0.17.74
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
@@ -274,7 +274,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.33.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.34.0
 endif
 
 .PHONY: setup/dep/test/install
