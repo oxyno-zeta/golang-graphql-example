@@ -96,7 +96,7 @@ func manageGenericAttribute(key string, value interface{}) *attribute.KeyValue {
 	case reflect.String:
 		res = attribute.String(key, aValue.String())
 	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		res = attribute.Int64(key, int64(aValue.Uint())) // nolint:gosec // Overflow conversion shouldn't arrive here
+		res = attribute.Int64(key, int64(aValue.Uint())) //nolint:gosec // Overflow conversion shouldn't arrive here
 	default:
 		res = attribute.String(key, fmt.Sprintf("%v", value))
 	}
