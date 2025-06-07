@@ -9,7 +9,7 @@
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
     "@fontsource/roboto": "5.2.5",
-    "@hookform/resolvers": "5.0.1",
+    "@hookform/resolvers": "5.1.0",
     "@mdi/js": "7.4.47",
     "@mui/lab": "7.0.0-beta.13",
     "@mui/material": "7.1.1",
