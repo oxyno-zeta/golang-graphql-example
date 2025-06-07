@@ -1,11 +1,11 @@
-FROM alpine:3.21
+FROM alpine:3.22
 
 ENV USER=appuser
 ENV APP=golang-graphql-example
 ENV UID=1000
 ENV GID=1000
 
-# renovate: datasource=repology depName=alpine_3_21/ca-certificates versioning=loose
+# renovate: datasource=repology depName=alpine_3_22/ca-certificates versioning=loose
 ENV CA_CERTIFICATES_VERSION="20241121-r1"
 
 RUN apk add --update --no-cache ca-certificates=${CA_CERTIFICATES_VERSION} && \
