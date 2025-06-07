@@ -86,7 +86,8 @@ func manageGenericAttribute(key string, value interface{}) *attribute.KeyValue {
 
 	// Parse
 	aValue := reflect.ValueOf(value)
-	switch aValue.Kind() { //nolint:exhaustive // That's why "default" is present...
+	//nolint:exhaustive // That's why "default" is present...
+	switch aValue.Kind() {
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		res = attribute.Int64(key, aValue.Int())
 	case reflect.Float32, reflect.Float64:
