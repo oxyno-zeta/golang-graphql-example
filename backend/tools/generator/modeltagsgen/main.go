@@ -24,7 +24,7 @@ type inputData struct {
 }
 
 func main() {
-	var outputSuffix string
+	var outputSuffix, pkgName string
 
 	var disableJSON, disableGorm, disableStructKeyName bool
 
@@ -37,6 +37,7 @@ func main() {
 			input := &inputData{
 				PkgPath:              args[0],
 				StructName:           args[1],
+				PkgName:              pkgName,
 				LowercaseStructName:  strings.ToLower(args[1]),
 				OutputSuffix:         outputSuffix,
 				DisableJSON:          disableJSON,
@@ -48,10 +49,13 @@ func main() {
 				hardExit(errors.New("pkg name must be place as arg 0"))
 			}
 
-			// Compute pkg name
-			split := strings.Split(input.PkgPath, "/")
-			// Save
-			input.PkgName = split[len(split)-1]
+			// Check if pkg name haven't already been set
+			if pkgName == "" {
+				// Compute pkg name
+				split := strings.Split(input.PkgPath, "/")
+				// Save
+				input.PkgName = split[len(split)-1]
+			}
 
 			// Run
 			err := run(input)
@@ -63,6 +67,7 @@ func main() {
 	}
 
 	rootCmd.PersistentFlags().StringVarP(&outputSuffix, "output-suffix", "o", "modeltags_generated", "model tags generated file name")
+	rootCmd.PersistentFlags().StringVarP(&pkgName, "pkg-name", "p", "", "override pkg name")
 	rootCmd.PersistentFlags().BoolVarP(&disableJSON, "disable-json", "j", false, "disable json")
 	rootCmd.PersistentFlags().BoolVarP(&disableGorm, "disable-gorm", "g", false, "disable gorm")
 	rootCmd.PersistentFlags().BoolVarP(&disableStructKeyName, "disable-struct-key-name", "s", false, "disable struct key name")
