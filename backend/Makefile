@@ -67,7 +67,7 @@ PROMETHEUS_VERSION := "v3.4.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.0.1"
 # renovate: datasource=docker depName=grafana/tempo
-TEMPO_VERSION := "2.7.2"
+TEMPO_VERSION := "2.8.0"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
