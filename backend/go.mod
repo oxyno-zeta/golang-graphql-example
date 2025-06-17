@@ -10,7 +10,7 @@ require (
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/coreos/go-oidc/v3 v3.14.1
-	github.com/danielkov/gin-helmet v0.0.0-20171108135313-1387e224435e
+	github.com/danielkov/gin-helmet v1.0.0
 	github.com/fsnotify/fsnotify v1.9.0
 	github.com/gin-contrib/cors v1.7.5
 	github.com/gin-contrib/gzip v1.2.3
