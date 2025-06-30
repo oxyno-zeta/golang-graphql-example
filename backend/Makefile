@@ -57,21 +57,21 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v2.1.6"
+GOLANGCI_LINT_VERSION := "v2.2.1"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.4.0"
+PGADMIN_VERSION := "9.5.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.4.1"
+PROMETHEUS_VERSION := "v3.4.2"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "12.0.1"
+GRAFANA_VERSION := "12.0.2"
 # renovate: datasource=docker depName=grafana/tempo
-TEMPO_VERSION := "2.8.0"
+TEMPO_VERSION := "2.8.1"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.5.1"
+OPA_VERSION := "1.6.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.2.5"
 # renovate: datasource=docker depName=rabbitmq
@@ -266,7 +266,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.74
+	$(GO) install github.com/99designs/gqlgen@v0.17.76
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
@@ -281,7 +281,7 @@ endif
 setup/dep/test/install: setup/dep/install
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
-	$(GO) install gotest.tools/gotestsum@v1.12.2
+	$(GO) install gotest.tools/gotestsum@v1.12.3
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
