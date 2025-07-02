@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
 .emotion-0 {
@@ -301,7 +301,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
       data-popper-reference-hidden=""
       id="«r6»"
       role="tooltip"
-      style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; top: 0px; left: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
     >
       <div
         class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-3"
@@ -615,7 +615,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
       data-popper-reference-hidden=""
       id="«r4»"
       role="tooltip"
-      style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; top: 0px; left: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
     >
       <div
         class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-3"
@@ -1181,7 +1181,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
       data-popper-reference-hidden=""
       id="«r2»"
       role="tooltip"
-      style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; top: 0px; left: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
     >
       <div
         class="MuiTooltip-tooltip MuiTooltip-tooltipPlacementBottom emotion-3"

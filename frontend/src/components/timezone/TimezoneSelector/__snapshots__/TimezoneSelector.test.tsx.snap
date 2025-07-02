@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 1`] = `
 .emotion-0 {
@@ -1638,7 +1638,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
   role="presentation"
-  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
+  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
@@ -1650,7 +1650,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
         class="MuiAutocomplete-listbox emotion-2"
         id="«r8»-listbox"
         role="listbox"
-        style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
+        style="position: relative; height: 192px; width: 100%; overflow: auto; -webkit-overflow-scrolling: touch; will-change: transform; direction: ltr;"
       >
         <ul
           style="height: 21414px; width: 100%;"
@@ -2028,7 +2028,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
         class="MuiAutocomplete-listbox emotion-2"
         id="«r8»-listbox"
         role="listbox"
-        style="position: relative; height: 192px; width: 100%; overflow: auto; will-change: transform; direction: ltr;"
+        style="position: relative; height: 192px; width: 100%; overflow: auto; -webkit-overflow-scrolling: touch; will-change: transform; direction: ltr;"
       >
         <ul
           style="height: 21414px; width: 100%;"

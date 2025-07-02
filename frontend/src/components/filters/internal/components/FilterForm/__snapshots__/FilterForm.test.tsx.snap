@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`filters/internal/FilterForm should be ok to interact with no initial filters and perform a full clean 1`] = `
 .emotion-0 {
@@ -8479,6 +8479,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-20:focus::-ms-input-
   -webkit-justify-content: center;
   justify-content: center;
   height: 32px;
+  line-height: 1.5;
   color: rgba(0, 0, 0, 0.87);
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 16px;
@@ -12898,7 +12899,7 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
   role="presentation"
-  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
+  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
@@ -16543,7 +16544,7 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
   role="presentation"
-  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
+  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
@@ -17109,7 +17110,7 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
   role="presentation"
-  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
+  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
@@ -19290,7 +19291,7 @@ exports[`filters/internal/FilterForm should be ok to just display and select pre
   data-popper-placement="bottom"
   data-popper-reference-hidden=""
   role="presentation"
-  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; transform: translate(0px, 0px);"
+  style="position: absolute; top: 0px; left: 0px; width: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
