@@ -2435,7 +2435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/icons@npm:1.4.0, @storybook/icons@npm:^1.2.12, @storybook/icons@npm:^1.2.5, @storybook/icons@npm:^1.4.0":
+"@storybook/icons@npm:1.4.0, @storybook/icons@npm:^1.2.12, @storybook/icons@npm:^1.2.5":
   version: 1.4.0
   resolution: "@storybook/icons@npm:1.4.0"
   peerDependencies:
@@ -5913,7 +5913,7 @@ __metadata:
     storybook-addon-apollo-client: "npm:8.1.2"
     storybook-addon-remix-react-router: "npm:5.0.0"
     storybook-dark-mode: "npm:4.0.2"
-    storybook-react-i18next: "npm:4.0.4"
+    storybook-react-i18next: "npm:3.3.1"
     ts-jest: "npm:29.3.4"
     ts-node: "npm:10.9.2"
     typescript: "npm:5.8.3"
@@ -9758,29 +9758,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-i18n@npm:^4.0.5":
-  version: 4.0.5
-  resolution: "storybook-i18n@npm:4.0.5"
-  dependencies:
-    "@storybook/icons": "npm:^1.4.0"
-  peerDependencies:
-    storybook: ^9.0.0
-  checksum: 10/61254830a67ef5f2e2fc52b048d60275ca7e2b0a056b6eae3e3bfb3ca6409071c5973d70acf2e0a667b2c08ee19b04b53914f242514789d8b27bfe35c24c506d
+"storybook-i18n@npm:3.1.1":
+  version: 3.1.1
+  resolution: "storybook-i18n@npm:3.1.1"
+  checksum: 10/c517a8b0b5eb9e79ad2f6866f6dd225612c841baf5397ff43ef8155a0a3c9ba05178ad39bea750260c42193e8c4622c87c6a1cb3e92adfc9559b4b3361414c41
   languageName: node
   linkType: hard
 
-"storybook-react-i18next@npm:4.0.4":
-  version: 4.0.4
-  resolution: "storybook-react-i18next@npm:4.0.4"
+"storybook-react-i18next@npm:3.3.1":
+  version: 3.3.1
+  resolution: "storybook-react-i18next@npm:3.3.1"
   dependencies:
-    storybook-i18n: "npm:^4.0.5"
+    storybook-i18n: "npm:3.1.1"
   peerDependencies:
     i18next: ^22.0.0 || ^23.0.0 || ^24.0.0 || ^25.0.0
     i18next-browser-languagedetector: ^7.0.0 || ^8.0.0
     i18next-http-backend: ^2.0.0 || ^3.0.0
     react-i18next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
-    storybook: ^9.0.0
-  checksum: 10/ebe8c9f8eb838a21a37cc3dff65f0818a37306baaf12a1a6fdd4f22cfc04d260c00f1fd5c238d74ea73c18e7867ac37e375d6c88bef71cd3fe2783a107c1fa65
+  checksum: 10/5e00e07e85d7c69594b09f72e03b2e2e4b59d8b362605ddf1cabf7009c78fb863b7cbcb4cc34105f9ee26472be59b1d57ada74c28c727b2cc917a47c132d4128
   languageName: node
   linkType: hard
 
