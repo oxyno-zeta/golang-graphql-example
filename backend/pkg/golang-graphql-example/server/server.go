@@ -16,7 +16,7 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler/lru"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
 	gqlplayground "github.com/99designs/gqlgen/graphql/playground"
-	helmet "github.com/danielkov/gin-helmet"
+	helmet "github.com/danielkov/gin-helmet/ginhelmet"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
