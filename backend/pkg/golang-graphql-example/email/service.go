@@ -164,7 +164,7 @@ func (s *service) Send(em Email) error {
 	// Check if server exists, if not, skip send
 	if s.server == nil {
 		s.logger.Debug(
-			"SMTP server not present (because configration wasn't present probably), send skipped",
+			"SMTP server not present (because configuration wasn't present probably), send skipped",
 		)
 
 		return nil

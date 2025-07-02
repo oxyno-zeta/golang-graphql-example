@@ -106,6 +106,7 @@ func (*service) requestOPAServer(
 	trace := tracing.GetTraceFromContext(ctx)
 	// Generate child trace
 	ctx, childTrace := trace.GetChildTrace(ctx, "opa-server.request")
+
 	defer func() {
 		// Check error
 		if err != nil {

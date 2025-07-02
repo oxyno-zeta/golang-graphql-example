@@ -228,7 +228,7 @@ func (sdb *sqldb) Connect() error {
 	}
 
 	// Ping db
-	err = sqlDB.Ping()
+	err = sqlDB.Ping() //nolint:noctx // false positive
 	// Check error
 	if err != nil {
 		return errors.WithStack(err)
@@ -291,7 +291,7 @@ func (sdb *sqldb) Ping() error {
 		return errors.WithStack(err)
 	}
 	// Ping database to test connection
-	pingErr := sqlDB.Ping()
+	pingErr := sqlDB.Ping() //nolint:noctx // false positive
 	// Check error
 	if pingErr != nil {
 		return errors.WithStack(pingErr)

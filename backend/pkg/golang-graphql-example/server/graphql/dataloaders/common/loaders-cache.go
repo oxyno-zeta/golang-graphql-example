@@ -62,6 +62,7 @@ func (c *InMemoryCache[K, V]) Delete(ctx context.Context, key K) bool {
 	if _, found := c.Get(ctx, key); found {
 		c.mu.Lock()
 		defer c.mu.Unlock()
+
 		delete(c.items, c.keyString(key))
 
 		return true

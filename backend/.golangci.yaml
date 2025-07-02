@@ -75,7 +75,7 @@ linters:
     - usetesting
     - wastedassign
     - whitespace
-    - wsl
+    - wsl_v5
   disable:
     - depguard
     - err113
