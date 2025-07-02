@@ -1,3 +1,4 @@
+// import { scan } from 'react-scan'; // must be imported before React and React DOM
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router';
@@ -16,6 +17,12 @@ import '@fontsource/roboto/700.css';
 
 import subRoutes from './routes/router-routes';
 import App from './App';
+
+// if (process.env.NODE_ENV !== 'production') {
+//   scan({
+//     enabled: true,
+//   });
+// }
 
 // Extend dayjs
 dayjs.extend(localizedFormat);
