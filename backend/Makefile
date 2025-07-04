@@ -75,7 +75,7 @@ OPA_VERSION := "1.6.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.3.0"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.1.1"
+RABBITMQ_VERSION := "4.1.2"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
