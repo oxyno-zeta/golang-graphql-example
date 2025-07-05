@@ -25,7 +25,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-error-boundary": "6.0.0",
-    "react-hook-form": "7.59.0",
+    "react-hook-form": "7.60.0",
     "react-i18next": "15.6.0",
     "react-router": "7.6.3",
     "react-window": "1.8.11",
