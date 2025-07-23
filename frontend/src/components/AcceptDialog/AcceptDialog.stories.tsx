@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import Button from '@mui/material/Button';
 import AcceptDialog, { Props } from './AcceptDialog';
 

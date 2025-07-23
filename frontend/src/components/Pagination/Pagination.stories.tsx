@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import { withRouter } from 'storybook-addon-remix-react-router';
 import Pagination, { Props } from './Pagination';
 

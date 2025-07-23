@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
-import { Link, Outlet, RouterProvider, createMemoryRouter, MemoryRouter, Routes, Route } from 'react-router';
+import { StoryFn, Meta } from '@storybook/react-vite';
+import { Link, Outlet, MemoryRouter, Routes, Route } from 'react-router';
 import AutoBreadcrumb from './AutoBreadcrumb';
 import {
   SimpleErrorQuery,
@@ -12,9 +12,10 @@ import {
 import AutoBreadcrumbInjector from '../AutoBreadcrumbInjector';
 import AutoBreadcrumbProvider from '../AutoBreadcrumbProvider';
 
-export default { title: 'Components/autobreadcrumb/AutoBreadcrumb', component: AutoBreadcrumb } as Meta<
-  typeof AutoBreadcrumb
->;
+export default {
+  title: 'Components/autobreadcrumb/AutoBreadcrumb',
+  component: AutoBreadcrumb,
+} as Meta<typeof AutoBreadcrumb>;
 
 const allFixedRoutes = (
   <Routes>
