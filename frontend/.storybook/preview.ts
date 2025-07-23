@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import * as jest from 'jest-mock';
 import { MockedProvider } from '@apollo/client/testing';
 import { withMuiTheme } from './with-mui-theme.decorator';
@@ -17,12 +17,6 @@ import '@fontsource/roboto/700.css';
 import '@fontsource/material-icons';
 
 const preview: Preview = {
-  globals: {
-    locale: 'en',
-    locales: {
-      en: 'English',
-    },
-  },
   parameters: {
     i18n,
     apolloClient: {
@@ -56,6 +50,12 @@ const preview: Preview = {
     },
   },
   decorators: [withMuiTheme],
+  initialGlobals: {
+    locale: 'en',
+    locales: {
+      en: 'English',
+    },
+  },
 };
 
 export default preview;

@@ -13,6 +13,8 @@ import eslintConfigAirbnbReactA11y from 'eslint-config-airbnb/rules/react-a11y';
 import eslintConfigAirbnbErrors from 'eslint-config-airbnb-base/rules/errors';
 import eslintConfigAirbnbEs6 from 'eslint-config-airbnb-base/rules/es6';
 import eslintConfigAirbnbStrict from 'eslint-config-airbnb-base/rules/strict';
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook';
 
 import tsParser from '@typescript-eslint/parser';
 
@@ -161,4 +163,9 @@ export default tsEslint.config(
    * Prettier
    */
   eslintPluginPrettierRecommended,
+
+  /**
+   * Storybook
+   */
+  storybook.configs['flat/recommended'],
 );

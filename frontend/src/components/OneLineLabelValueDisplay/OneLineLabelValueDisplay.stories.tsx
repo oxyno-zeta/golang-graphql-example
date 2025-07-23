@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-vite';
 import OneLineLabelValueDisplay, { Props } from './OneLineLabelValueDisplay';
 
 export default {
