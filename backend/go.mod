@@ -49,8 +49,8 @@ require (
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.30.0
-	gorm.io/plugin/dbresolver v1.6.0
-	gorm.io/plugin/opentelemetry v0.1.15
+	gorm.io/plugin/dbresolver v1.6.2
+	gorm.io/plugin/opentelemetry v0.1.16
 	gorm.io/plugin/prometheus v0.1.0
 )
 
