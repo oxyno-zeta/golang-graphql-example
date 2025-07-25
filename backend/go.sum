@@ -60,6 +60,8 @@ github.com/99designs/gqlgen v0.17.76 h1:YsJBcfACWmXWU2t1yCjoGdOmqcTfOFpjbLAE443f
 github.com/99designs/gqlgen v0.17.76/go.mod h1:miiU+PkAnTIDKMQ1BseUOIVeQHoiwYDZGCswoxl7xec=
 github.com/99designs/gqlgen-contrib v0.1.1-0.20250630160649-804db2b4cfcb h1:7dXVq6H3niD983fZN99bm1sMBP6FQDvOxwNdFUtShl0=
 github.com/99designs/gqlgen-contrib v0.1.1-0.20250630160649-804db2b4cfcb/go.mod h1:8JwyQOFN5k3bRlFu51c+TtKz+Xom+U2i40Tm4ijl+ms=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20250724234408-e8e6015d4c2d h1:s6GU8UhpYNuna5kw1dlUCmeUYAsCMtVsWugwbPVypBc=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20250724234408-e8e6015d4c2d/go.mod h1:8JwyQOFN5k3bRlFu51c+TtKz+Xom+U2i40Tm4ijl+ms=
 github.com/Abirdcfly/dupword v0.1.3 h1:9Pa1NuAsZvpFPi9Pqkd93I7LIYRURj+A//dFd5tgBeE=
 github.com/Abirdcfly/dupword v0.1.3/go.mod h1:8VbB2t7e10KRNdwTVoxdBaxla6avbhGzb8sCTygUMhw=
 github.com/AdaLogics/go-fuzz-headers v0.0.0-20230811130428-ced1acdcaa24 h1:bvDV9vkmnHYOMsOr4WLk+Vo07yKIzd94sVoIqshQ4bU=
@@ -1376,6 +1378,8 @@ gorm.io/gorm v1.25.0/go.mod h1:L4uxeKpfBml98NYqVqwAdmV1a2nBtAec/cf3fpucW/k=
 gorm.io/gorm v1.25.7/go.mod h1:hbnx/Oo0ChWMn1BIhpy1oYozzpM15i4YPuHDmfYtwg8=
 gorm.io/gorm v1.30.0 h1:qbT5aPv1UH8gI99OsRlvDToLxW5zR7FzS9acZDOZcgs=
 gorm.io/gorm v1.30.0/go.mod h1:8Z33v652h4//uMA76KjeDH8mJXPm1QNCYrMeatR0DOE=
+gorm.io/gorm v1.30.1 h1:lSHg33jJTBxs2mgJRfRZeLDG+WZaHYCk3Wtfl6Ngzo4=
+gorm.io/gorm v1.30.1/go.mod h1:8Z33v652h4//uMA76KjeDH8mJXPm1QNCYrMeatR0DOE=
 gorm.io/plugin/dbresolver v1.6.0 h1:XvKDeOtTn1EIX6s4SrKpEH82q0gXVemhYjbYZFGFVcw=
 gorm.io/plugin/dbresolver v1.6.0/go.mod h1:tctw63jdrOezFR9HmrKnPkmig3m5Edem9fdxk9bQSzM=
 gorm.io/plugin/dbresolver v1.6.2 h1:F4b85TenghUeITqe3+epPSUtHH7RIk3fXr5l83DF8Pc=

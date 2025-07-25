@@ -6,7 +6,7 @@ require (
 	cirello.io/pglock v1.16.1
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.76
-	github.com/99designs/gqlgen-contrib v0.1.1-0.20250630160649-804db2b4cfcb
+	github.com/99designs/gqlgen-contrib v0.1.1-0.20250724234408-e8e6015d4c2d
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/coreos/go-oidc/v3 v3.14.1
@@ -48,7 +48,7 @@ require (
 	golang.org/x/oauth2 v0.30.0
 	gorm.io/driver/postgres v1.6.0
 	gorm.io/driver/sqlite v1.6.0
-	gorm.io/gorm v1.30.0
+	gorm.io/gorm v1.30.1
 	gorm.io/plugin/dbresolver v1.6.2
 	gorm.io/plugin/opentelemetry v0.1.16
 	gorm.io/plugin/prometheus v0.1.0
