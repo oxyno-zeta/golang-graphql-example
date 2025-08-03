@@ -59,7 +59,7 @@ jobs:
         with:
           # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
           # renovate: datasource=github-tags depName=golangci/golangci-lint
-          version: "v2.3.0"
+          version: "v2.3.1"
 
           # Optional: working directory, useful for monorepos
           working-directory: backend
