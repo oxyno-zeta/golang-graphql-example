@@ -84,7 +84,7 @@
     "@types/react-window": "1.8.8",
     "@typescript-eslint/eslint-plugin": "8.38.0",
     "@typescript-eslint/parser": "8.38.0",
-    "@vitejs/plugin-react": "4.7.0",
+    "@vitejs/plugin-react": "5.0.0",
     "@vueless/storybook-dark-mode": "9.0.6",
     "@welldone-software/why-did-you-render": "10.0.1",
     "concurrently": "9.2.0",
