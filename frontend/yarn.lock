@@ -2161,10 +2161,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rolldown/pluginutils@npm:1.0.0-beta.27":
-  version: 1.0.0-beta.27
-  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.27"
-  checksum: 10/4f7da788d88b33d029d5acf84c63be27c62d7c53017476f2e3026172cf94062cb399cd15194c89574578f192016bbcb1e040ce6811b3bb9ec4d4faa2ad386459
+"@rolldown/pluginutils@npm:1.0.0-beta.30":
+  version: 1.0.0-beta.30
+  resolution: "@rolldown/pluginutils@npm:1.0.0-beta.30"
+  checksum: 10/2016282c4b3116d5ad1184d36fd6c080d9e1c243265c51761d8c14c00ab128dbc70cfbccbab76184ed881b4947196459b37c9ae6abed742eed9fe51d988fabce
   languageName: node
   linkType: hard
 
@@ -3392,19 +3392,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:4.7.0":
-  version: 4.7.0
-  resolution: "@vitejs/plugin-react@npm:4.7.0"
+"@vitejs/plugin-react@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@vitejs/plugin-react@npm:5.0.0"
   dependencies:
     "@babel/core": "npm:^7.28.0"
     "@babel/plugin-transform-react-jsx-self": "npm:^7.27.1"
     "@babel/plugin-transform-react-jsx-source": "npm:^7.27.1"
-    "@rolldown/pluginutils": "npm:1.0.0-beta.27"
+    "@rolldown/pluginutils": "npm:1.0.0-beta.30"
     "@types/babel__core": "npm:^7.20.5"
     react-refresh: "npm:^0.17.0"
   peerDependencies:
     vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
-  checksum: 10/619a5d650ce0e8e2f37dae369b803990c6647e81ec983a00e44a734b3feeefd5a32c20fbee56d496fbc239cad6b949797dddf7c6d9f23c48100c5b2b5dc41e1f
+  checksum: 10/915ebbe48c6f3be46e237316d142a7ebdda06808c8c197ac2b55985602919f00f5567ee38330b757c681203fe8a26677b0c8de4eadd5fe351ddf0ed654916c8f
   languageName: node
   linkType: hard
 
@@ -5861,7 +5861,7 @@ __metadata:
     "@types/react-window": "npm:1.8.8"
     "@typescript-eslint/eslint-plugin": "npm:8.39.1"
     "@typescript-eslint/parser": "npm:8.39.1"
-    "@vitejs/plugin-react": "npm:4.7.0"
+    "@vitejs/plugin-react": "npm:5.0.0"
     "@vueless/storybook-dark-mode": "npm:9.0.6"
     "@welldone-software/why-did-you-render": "npm:10.0.1"
     autosuggest-highlight: "npm:3.3.4"
@@ -5912,7 +5912,7 @@ __metadata:
     universal-cookie: "npm:7.1.4"
     unplugin-inject-preload: "npm:3.0.0"
     vite: "npm:7.1.2"
-    vite-imagetools: "npm:7.1.1"
+    vite-imagetools: "npm:8.0.0"
     vite-plugin-svgr: "npm:4.3.0"
     vite-tsconfig-paths: "npm:5.1.4"
     whatwg-fetch: "npm:3.6.20"
@@ -6473,10 +6473,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"imagetools-core@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "imagetools-core@npm:7.1.0"
-  checksum: 10/b309e0ff36619e854eb58e18b547237633ef06274bfff84a6b6502970d0dfae0e5f93814deefae1c34d5e86a4c3c33a44e5316d03baa4f24b5776d6fe87a5ed7
+"imagetools-core@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "imagetools-core@npm:8.0.0"
+  checksum: 10/678a076e14b6ab3aad27a9e6ac014467e97855b6ac1d85ca06d1f0450754d24e46af5b994c5adb10fc19e82c4ce1b0a0da48b1d3a2011ec579f922d2e090c225
   languageName: node
   linkType: hard
 
@@ -10862,14 +10862,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-imagetools@npm:7.1.1":
-  version: 7.1.1
-  resolution: "vite-imagetools@npm:7.1.1"
+"vite-imagetools@npm:8.0.0":
+  version: 8.0.0
+  resolution: "vite-imagetools@npm:8.0.0"
   dependencies:
     "@rollup/pluginutils": "npm:^5.0.5"
-    imagetools-core: "npm:^7.1.0"
+    imagetools-core: "npm:^8.0.0"
     sharp: "npm:^0.34.1"
-  checksum: 10/0e31ad1ad6d788b427d2baef83a0fd810c053dd9584b6832278be8ec715700574ec337a98f95048b0c1df3478d420b4e8d352858104b36dc3175854da6ec7d28
+  checksum: 10/ebac917c4e8f0de1bb6b64c34c2a6c9800d8efd4e145bbd496fa3f246aec4c875b9babebc79f56fdc91308acc4cb55f5aa59825074b87de314b323e892d8bf76
   languageName: node
   linkType: hard
 
