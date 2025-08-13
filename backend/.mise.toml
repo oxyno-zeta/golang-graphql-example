@@ -2,7 +2,7 @@
 
 [tools]
 go = '1.25.0'
-golangci-lint = "2.3.1"
+golangci-lint = "2.4.0"
 # renovate: datasource=github-tags depName=gotestyourself/gotestsum
 gotestsum = "v1.12.3"
 # renovate: datasource=github-tags depName=99designs/gqlgen
@@ -12,6 +12,6 @@ gotestsum = "v1.12.3"
 # renovate: datasource=go depName=golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment
 # "go:golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment" = "v0.36.0"
 # renovate: datasource=github-tags depName=boumenot/gocover-cobertura
-"go:github.com/boumenot/gocover-cobertura" = "v1.3.0"
+"go:github.com/boumenot/gocover-cobertura" = "v1.4.0"
 # renovate: datasource=github-tags depName=mitchellh/gox
 "go:github.com/mitchellh/gox" = "v1.0.1"
