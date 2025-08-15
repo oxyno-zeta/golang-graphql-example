@@ -9,7 +9,7 @@ import (
 
 // CreateJSONPublishingMessage will create a publish message from data with a json encoded content and content
 // type data set to "application/json".
-func CreateJSONPublishingMessage(data interface{}) (*amqp091.Publishing, error) {
+func CreateJSONPublishingMessage(data any) (*amqp091.Publishing, error) {
 	// Encode it
 	b, err := json.Marshal(data)
 	// Check error
@@ -25,7 +25,7 @@ func CreateJSONPublishingMessage(data interface{}) (*amqp091.Publishing, error) 
 }
 
 // ParseJSONMessage will parse a message as json object if possible.
-func ParseJSONMessage(res interface{}, input *amqp091.Delivery) error {
+func ParseJSONMessage(res any, input *amqp091.Delivery) error {
 	// Check content type
 	if input.ContentType != "application/json" {
 		return errors.WithStack(ErrMessageNotJSON)

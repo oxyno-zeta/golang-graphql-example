@@ -3,9 +3,10 @@ package metrics
 import (
 	"net/http"
 
-	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
+
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
 )
 
 // Avoid adding a big number because getting metrics get a lock on gorm.

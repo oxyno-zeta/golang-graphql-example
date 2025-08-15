@@ -16,7 +16,7 @@ func (chc *customHealthChecker) Name() string {
 	return chc.name
 }
 
-func (chc *customHealthChecker) Execute(_ context.Context) (interface{}, error) {
+func (chc *customHealthChecker) Execute(_ context.Context) (any, error) {
 	// Run check
 	err := chc.fn()
 	// Check error

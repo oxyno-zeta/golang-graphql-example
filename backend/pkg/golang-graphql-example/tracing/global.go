@@ -9,6 +9,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/propagation"
+
 	oteltrace "go.opentelemetry.io/otel/trace"
 )
 
@@ -80,7 +81,7 @@ func ExtractFromHTTPHeaderAndStartSpan(
 	return tr.GetChildTrace(ctx, operationName)
 }
 
-func manageGenericAttribute(key string, value interface{}) *attribute.KeyValue {
+func manageGenericAttribute(key string, value any) *attribute.KeyValue {
 	// Create res
 	var res attribute.KeyValue
 

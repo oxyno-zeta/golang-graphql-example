@@ -5,13 +5,14 @@ import (
 	"fmt"
 
 	"github.com/graph-gophers/dataloader/v7"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/thoas/go-funk"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
 func GenericEntitiesLoader[V any](
-	buildProjection func(ctx context.Context) (interface{}, error),
-	findAll func(ctx context.Context, ids []string, projection interface{}) ([]V, error),
+	buildProjection func(ctx context.Context) (any, error),
+	findAll func(ctx context.Context, ids []string, projection any) ([]V, error),
 	options ...func(*LoaderOption),
 ) dataloader.BatchFunc[string, V] {
 	return func(ctx context.Context, ids []string) []*dataloader.Result[V] {
@@ -60,7 +61,7 @@ func GenericEntitiesLoader[V any](
 }
 
 func GenericLoader[V any](
-	findAll func(ctx context.Context, ids []string, projection interface{}) ([]V, error),
+	findAll func(ctx context.Context, ids []string, projection any) ([]V, error),
 	options ...func(*LoaderOption),
 ) dataloader.BatchFunc[*IDProjectionKey, V] {
 	return func(ctx context.Context, keys []*IDProjectionKey) []*dataloader.Result[V] {

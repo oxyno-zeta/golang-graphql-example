@@ -3,9 +3,10 @@ package email
 import (
 	"time"
 
+	spmail "github.com/xhit/go-simple-mail/v2"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/email Service
@@ -60,7 +61,7 @@ type Email interface {
 	SetPriority(priority Priority)
 	// AddAttachment is used to attach content from a byte array to the email.
 	// Required parameters include a byte array and the desired filename for the attachment. The MIME-Type is optional.
-	AddAttachment(data []byte, filename string, mimeType string) error
+	AddAttachment(data []byte, filename, mimeType string) error
 	// AddAttachmentFile is used to attach content to the email.
 	// It attempts to open the file referenced by filename and, if successful, creates an Attachment.
 	// This Attachment is then appended to the email.
@@ -71,7 +72,7 @@ type Email interface {
 	AddInlineAttachmentFile(filePath string) error
 	// AddInlineAttachment is used to attach content from a byte array to the email as HTML inline attachment.
 	// Required parameters include a byte array and the desired filename for the attachment. The MIME-Type is optional.
-	AddInlineAttachment(data []byte, filename string, mimeType string) error
+	AddInlineAttachment(data []byte, filename, mimeType string) error
 	// GetEmail will get email object (used internally for sending).
 	GetEmail() *spmail.Email
 }

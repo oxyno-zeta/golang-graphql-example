@@ -4,7 +4,9 @@ import (
 	"context"
 
 	"github.com/graph-gophers/dataloader/v7"
+
 	dataloadertracing "github.com/graph-gophers/dataloader/v7/trace/otel"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
@@ -21,7 +23,7 @@ func New(busiServices *business.Services) *TodosDataloaders {
 	return &TodosDataloaders{
 		GenericLoader: dataloader.NewBatchedLoader(
 			dataloaderscommon.GenericLoader(
-				func(ctx context.Context, ids []string, projection interface{}) ([]*models.Todo, error) {
+				func(ctx context.Context, ids []string, projection any) ([]*models.Todo, error) {
 					return busiServices.TodoSvc.Find(
 						ctx,
 						nil,
@@ -45,7 +47,7 @@ func New(busiServices *business.Services) *TodosDataloaders {
 		),
 		EntitiesLoader: dataloader.NewBatchedLoader(
 			dataloaderscommon.GenericEntitiesLoader(
-				func(ctx context.Context) (interface{}, error) {
+				func(ctx context.Context) (any, error) {
 					// Create projection
 					var projection models.Projection
 					// Get projection from context
@@ -61,7 +63,7 @@ func New(busiServices *business.Services) *TodosDataloaders {
 					// Return default
 					return &projection, nil
 				},
-				func(ctx context.Context, ids []string, projection interface{}) ([]*models.Todo, error) {
+				func(ctx context.Context, ids []string, projection any) ([]*models.Todo, error) {
 					return busiServices.TodoSvc.Find(
 						ctx,
 						nil,

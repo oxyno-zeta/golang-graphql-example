@@ -2,6 +2,7 @@ package graphql
 
 import (
 	"github.com/microcosm-cc/bluemonday"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
 )
 

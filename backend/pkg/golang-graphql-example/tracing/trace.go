@@ -6,6 +6,7 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
+
 	oteltrace "go.opentelemetry.io/otel/trace"
 )
 
@@ -17,11 +18,11 @@ func (t *trace) MarkAsError() {
 	t.SetTag("error", true)
 }
 
-func (t *trace) SetTag(key string, value interface{}) {
+func (t *trace) SetTag(key string, value any) {
 	t.span.SetAttributes(*manageGenericAttribute(key, value))
 }
 
-func (t *trace) SetTags(tags map[string]interface{}) {
+func (t *trace) SetTags(tags map[string]any) {
 	for k, v := range tags {
 		t.SetTag(k, v)
 	}

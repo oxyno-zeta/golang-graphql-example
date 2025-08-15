@@ -4,9 +4,10 @@ import (
 	"context"
 
 	"emperror.dev/errors"
+	"gorm.io/gorm"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
-	"gorm.io/gorm"
 )
 
 // PageInput represents an input pagination configuration.
@@ -31,11 +32,11 @@ type PagingOptions struct {
 	// Pagination input
 	PageInput *PageInput
 	// Must be a pointer to an object with *SortOrderEnum objects with tags
-	Sort interface{}
+	Sort any
 	// Must be a pointer to an object with *GenericFilter objects or implementing the GenericFilterBuilder interface and with tags
-	Filter interface{}
+	Filter any
 	// Must be a pointer to an object with booleans with tags
-	Projection interface{}
+	Projection any
 	// This function is called after filters and before any sorts
 	ExtraFunc func(db *gorm.DB) (*gorm.DB, error)
 	// Transaction options
@@ -49,7 +50,7 @@ type PagingOptions struct {
 // .
 func Paging(
 	ctx context.Context,
-	result interface{},
+	result any,
 	options *PagingOptions,
 ) (*PageOutput, error) {
 	// Manage default limit

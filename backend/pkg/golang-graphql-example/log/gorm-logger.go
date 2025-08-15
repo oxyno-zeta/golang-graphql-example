@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"emperror.dev/errors"
+
 	gormlogger "gorm.io/gorm/logger"
 )
 
@@ -28,20 +29,20 @@ func (gl *gormLogger) getCtxLoggerOrDefault(ctx context.Context) Logger {
 	return gl.logger
 }
 
-func (gl *gormLogger) Info(ctx context.Context, v string, rest ...interface{}) {
-	val := []interface{}{v}
+func (gl *gormLogger) Info(ctx context.Context, v string, rest ...any) {
+	val := []any{v}
 	val = append(val, rest...)
 	gl.getCtxLoggerOrDefault(ctx).Info(val...)
 }
 
-func (gl *gormLogger) Warn(ctx context.Context, v string, rest ...interface{}) {
-	val := []interface{}{v}
+func (gl *gormLogger) Warn(ctx context.Context, v string, rest ...any) {
+	val := []any{v}
 	val = append(val, rest...)
 	gl.getCtxLoggerOrDefault(ctx).Warn(val...)
 }
 
-func (gl *gormLogger) Error(ctx context.Context, v string, rest ...interface{}) {
-	val := []interface{}{errors.New(v)}
+func (gl *gormLogger) Error(ctx context.Context, v string, rest ...any) {
+	val := []any{errors.New(v)}
 	val = append(val, rest...)
 	gl.getCtxLoggerOrDefault(ctx).Error(val...)
 }

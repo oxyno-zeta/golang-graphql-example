@@ -5,6 +5,7 @@ import (
 
 	"cirello.io/pglock"
 	"emperror.dev/errors"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
 

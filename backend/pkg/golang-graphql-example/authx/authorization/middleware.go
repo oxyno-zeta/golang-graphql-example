@@ -5,8 +5,10 @@ import (
 	"net/http"
 	"strings"
 
-	goerrors "emperror.dev/errors"
 	"github.com/gin-gonic/gin"
+
+	goerrors "emperror.dev/errors"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"

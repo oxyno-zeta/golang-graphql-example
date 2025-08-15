@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"reflect"
 
-	gerrors "emperror.dev/errors"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"gorm.io/gorm"
+
+	gerrors "emperror.dev/errors"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
 // ErrSortListMustNotHaveMultipleFields error.
@@ -17,11 +19,11 @@ var ErrSortListMustNotHaveMultipleFields = gerrors.New(
 // Supported enum type for testing purpose.
 var supportedEnumType = reflect.TypeOf(new(SortOrderEnum))
 
-func ManageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
+func ManageSortOrder(sort any, db *gorm.DB) (*gorm.DB, error) {
 	return manageSortOrder(sort, db)
 }
 
-func manageSortOrder(sort interface{}, db *gorm.DB) (*gorm.DB, error) {
+func manageSortOrder(sort any, db *gorm.DB) (*gorm.DB, error) {
 	// Get reflect value of sort object
 	rVal := reflect.ValueOf(sort)
 	// Get kind of sort

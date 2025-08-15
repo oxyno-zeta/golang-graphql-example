@@ -7,22 +7,23 @@ import (
 	"strings"
 
 	"github.com/99designs/gqlgen/graphql"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"github.com/samber/lo"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
 const graphqlFieldTagKey = "graphqlfield"
 
 func ManageConnectionNodeProjection(
 	ctx context.Context,
-	projectionOut interface{},
+	projectionOut any,
 ) error {
 	return ManageDepthProjection(ctx, projectionOut, []string{"edges", "node"})
 }
 
 func ManageDepthProjection(
 	ctx context.Context,
-	projectionOut interface{},
+	projectionOut any,
 	fieldChain []string,
 ) error {
 	// Validate projection out
@@ -56,7 +57,7 @@ func ManageDepthProjection(
 
 func ManageSimpleProjection(
 	ctx context.Context,
-	projectionOut interface{},
+	projectionOut any,
 ) error {
 	return ManageDepthProjection(ctx, projectionOut, []string{})
 }
@@ -90,7 +91,7 @@ func diveToGraphqlCollectedField(
 	return diveToGraphqlCollectedField(octx, subFieldCollections, fieldChain)
 }
 
-func validateProjectionOut(projectionOut interface{}) error {
+func validateProjectionOut(projectionOut any) error {
 	// Check if input is nil
 	if projectionOut == nil {
 		return errors.NewInvalidInputError("projection output cannot be nil")
@@ -117,7 +118,7 @@ func validateProjectionOut(projectionOut interface{}) error {
 
 func manageGraphqlProjection(
 	gfields []graphql.CollectedField,
-	projectionOut interface{},
+	projectionOut any,
 ) error {
 	// Get reflect ptr value
 	pOutPtrVal := reflect.ValueOf(projectionOut)

@@ -3,6 +3,7 @@ package migration
 import (
 	"emperror.dev/errors"
 	"github.com/go-gormigrate/gormigrate/v2"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/migration/sequences"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 )

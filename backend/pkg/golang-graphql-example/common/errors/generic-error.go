@@ -4,7 +4,7 @@ import "emperror.dev/errors"
 
 type GenericError struct {
 	err         error
-	ext         map[string]interface{}
+	ext         map[string]any
 	publicError error
 	code        string
 	statusCode  int
@@ -24,7 +24,7 @@ func (e *GenericError) StackTrace() errors.StackTrace {
 	return nil
 }
 
-func (e *GenericError) Extensions() map[string]interface{} {
+func (e *GenericError) Extensions() map[string]any {
 	return e.ext
 }
 

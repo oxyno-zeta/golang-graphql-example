@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"emperror.dev/errors"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 )
@@ -75,7 +76,7 @@ func SoftDelete[T any](
 func PatchUpdate[T any](
 	ctx context.Context,
 	originalObject T,
-	input map[string]interface{},
+	input map[string]any,
 	db database.DB,
 ) (T, error) {
 	// Get gorm gdb
@@ -103,8 +104,8 @@ func PatchUpdate[T any](
 func PatchUpdateAllFiltered[T any](
 	ctx context.Context,
 	model T,
-	input map[string]interface{},
-	filter interface{},
+	input map[string]any,
+	filter any,
 	db database.DB,
 ) error {
 	// Get gorm gdb

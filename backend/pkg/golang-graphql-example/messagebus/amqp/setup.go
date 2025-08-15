@@ -2,8 +2,10 @@ package amqpbusmessage
 
 import (
 	"emperror.dev/errors"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
+
 	amqp "github.com/rabbitmq/amqp091-go"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 )
 
 func (as *amqpService) ExtraSetup(input *ExtraSetupInput) error {

@@ -43,7 +43,7 @@ func (e SortOrderEnum) String() string {
 	return string(e)
 }
 
-func (e *SortOrderEnum) UnmarshalGQL(v interface{}) error {
+func (e *SortOrderEnum) UnmarshalGQL(v any) error {
 	str, ok := v.(string)
 	if !ok {
 		return errors.New("enums must be strings")

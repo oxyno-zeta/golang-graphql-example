@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 )
 
@@ -51,7 +52,7 @@ func Middleware(
 		r := c.Request
 
 		// Create logger fields
-		logFields := make(map[string]interface{})
+		logFields := make(map[string]any)
 
 		// Check if it is http or https
 		scheme := "http"
@@ -94,7 +95,7 @@ func Middleware(
 		bytes := c.Writer.Size()
 
 		// Create new fields
-		endFields := map[string]interface{}{
+		endFields := map[string]any{
 			"resp_status":       status,
 			"resp_bytes_length": bytes,
 			"resp_elapsed_ms":   float64(time.Since(t1).Nanoseconds()) / nsToMs,

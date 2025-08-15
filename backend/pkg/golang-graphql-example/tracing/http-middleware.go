@@ -18,7 +18,7 @@ func (*service) HTTPMiddlewareList(
 			// Get trace
 			t := GetTraceFromContext(c.Request.Context())
 			// Add attributes
-			t.SetTags(map[string]interface{}{
+			t.SetTags(map[string]any{
 				"http.host":       c.Request.Host,
 				"http.request_id": getRequestID(c.Request.Context()),
 			})

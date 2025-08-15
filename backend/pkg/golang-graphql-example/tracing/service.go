@@ -6,25 +6,27 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-	gqlgraphql "github.com/99designs/gqlgen/graphql"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 	"github.com/ravilushqa/otelgqlgen"
-	b3propagator "go.opentelemetry.io/contrib/propagators/b3"
-	jaegerpropagator "go.opentelemetry.io/contrib/propagators/jaeger"
-	otpropagator "go.opentelemetry.io/contrib/propagators/ot"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
+	"gorm.io/gorm"
+
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
+	b3propagator "go.opentelemetry.io/contrib/propagators/b3"
+	jaegerpropagator "go.opentelemetry.io/contrib/propagators/jaeger"
+	otpropagator "go.opentelemetry.io/contrib/propagators/ot"
 	tracesdk "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 	oteltrace "go.opentelemetry.io/otel/trace"
-	"gorm.io/gorm"
 	gormtracing "gorm.io/plugin/opentelemetry/tracing"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
 )
 
 const (

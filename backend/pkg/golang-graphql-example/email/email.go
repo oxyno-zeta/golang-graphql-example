@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"emperror.dev/errors"
+
 	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
@@ -98,7 +99,7 @@ func (e *email) SetPriority(priority Priority) {
 
 // AddAttachment is used to attach content from a byte array to the email.
 // Required parameters include a byte array and the desired filename for the attachment. The MIME-Type is optional.
-func (e *email) AddAttachment(data []byte, filename string, mimeType string) error {
+func (e *email) AddAttachment(data []byte, filename, mimeType string) error {
 	// Add attachment
 	e.spemail.AddAttachmentData(data, filename, mimeType)
 
@@ -151,7 +152,7 @@ func (e *email) AddInlineAttachmentFile(filePath string) error {
 
 // AddInlineAttachment is used to attach content from a byte array to the email as HTML inline attachment.
 // Required parameters include a byte array and the desired filename for the attachment. The MIME-Type is optional.
-func (e *email) AddInlineAttachment(data []byte, filename string, mimeType string) error {
+func (e *email) AddInlineAttachment(data []byte, filename, mimeType string) error {
 	// Add attachment
 	e.spemail.AddInlineData(data, filename, mimeType)
 

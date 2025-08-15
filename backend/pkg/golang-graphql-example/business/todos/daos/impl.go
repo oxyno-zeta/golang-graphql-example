@@ -38,7 +38,7 @@ func (d *dao) CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo
 func (d *dao) PatchUpdate(
 	ctx context.Context,
 	tt *models.Todo,
-	input map[string]interface{},
+	input map[string]any,
 ) (*models.Todo, error) {
 	return databasehelpers.PatchUpdate(
 		ctx,

@@ -21,8 +21,8 @@ var (
 )
 
 func MapConnection(
-	connectionResult interface{},
-	list interface{},
+	connectionResult any,
+	list any,
 	pageOut *pagination.PageOutput,
 ) error {
 	// Validate that connection result isn't nil

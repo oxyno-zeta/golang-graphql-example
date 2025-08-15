@@ -4,12 +4,14 @@ import (
 	"context"
 	"net/http"
 
-	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
+
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
+	oteltrace "go.opentelemetry.io/otel/trace"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	oteltrace "go.opentelemetry.io/otel/trace"
-	"gorm.io/gorm"
 )
 
 // Service Tracing service.
@@ -39,9 +41,9 @@ type Service interface {
 //go:generate mockgen -destination=./mocks/mock_Trace.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Trace
 type Trace interface {
 	// Add tag to trace.
-	SetTag(key string, value interface{})
+	SetTag(key string, value any)
 	// Add tags to trace.
-	SetTags(tags map[string]interface{})
+	SetTags(tags map[string]any)
 	// MarkAsError will mark trace as in error.
 	MarkAsError()
 	// Get a child trace.

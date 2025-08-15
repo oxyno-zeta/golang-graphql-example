@@ -12,7 +12,7 @@ func (impl *managerimpl) loadAllCredentials(out *Config) ([]*CredentialConfig, e
 }
 
 func internalLoadAllCredentials(
-	out interface{},
+	out any,
 	credentialConfigPathList [][]string,
 ) ([]*CredentialConfig, error) {
 	// Initialize answer
@@ -83,7 +83,7 @@ func internalLoadAllCredentials(
 	return result, nil
 }
 
-func internalLoadCredential(in interface{}) (*CredentialConfig, error) {
+func internalLoadCredential(in any) (*CredentialConfig, error) {
 	// Cast
 	vv, ok := in.(*CredentialConfig)
 	// Check if cast is ok

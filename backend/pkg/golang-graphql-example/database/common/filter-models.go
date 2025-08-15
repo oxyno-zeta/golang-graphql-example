@@ -21,47 +21,47 @@ import (
 // .
 type GenericFilter struct {
 	// Allow to test equality to
-	Eq interface{} `mapstructure:"eq"`
+	Eq any `mapstructure:"eq"`
 	// Allow to test non equality to
-	NotEq interface{} `mapstructure:"notEq"`
+	NotEq any `mapstructure:"notEq"`
 	// Allow to test greater or equal than
-	Gte interface{} `mapstructure:"gte"`
+	Gte any `mapstructure:"gte"`
 	// Allow to test not greater or equal than
-	NotGte interface{} `mapstructure:"notGte"`
+	NotGte any `mapstructure:"notGte"`
 	// Allow to test greater than
-	Gt interface{} `mapstructure:"gt"`
+	Gt any `mapstructure:"gt"`
 	// Allow to test not greater than
-	NotGt interface{} `mapstructure:"notGt"`
+	NotGt any `mapstructure:"notGt"`
 	// Allow to test less or equal than
-	Lte interface{} `mapstructure:"lte"`
+	Lte any `mapstructure:"lte"`
 	// Allow to test not less or equal than
-	NotLte interface{} `mapstructure:"notLte"`
+	NotLte any `mapstructure:"notLte"`
 	// Allow to test less than
-	Lt interface{} `mapstructure:"lt"`
+	Lt any `mapstructure:"lt"`
 	// Allow to test not less than
-	NotLt interface{} `mapstructure:"notLt"`
+	NotLt any `mapstructure:"notLt"`
 	// Allow to test if a string contains another string.
 	// Contains must be a string
-	Contains interface{} `mapstructure:"contains"`
+	Contains any `mapstructure:"contains"`
 	// Allow to test if a string isn't containing another string.
 	// NotContains must be a string
-	NotContains interface{} `mapstructure:"notContains"`
+	NotContains any `mapstructure:"notContains"`
 	// Allow to test if a string starts with another string.
 	// StartsWith with must be a string
-	StartsWith interface{} `mapstructure:"startsWith"`
+	StartsWith any `mapstructure:"startsWith"`
 	// Allow to test if a string isn't starting with another string.
 	// NotStartsWith must be a string
-	NotStartsWith interface{} `mapstructure:"notStartsWith"`
+	NotStartsWith any `mapstructure:"notStartsWith"`
 	// Allow to test if a string ends with another string.
 	// EndsWith with must be a string
-	EndsWith interface{} `mapstructure:"endsWith"`
+	EndsWith any `mapstructure:"endsWith"`
 	// Allow to test if a string isn't ending with another string.
 	// NotEndsWith must be a string
-	NotEndsWith interface{} `mapstructure:"notEndsWith"`
+	NotEndsWith any `mapstructure:"notEndsWith"`
 	// Allow to test if value is in array
-	In interface{} `mapstructure:"in"`
+	In any `mapstructure:"in"`
 	// Allow to test if value isn't in array
-	NotIn interface{} `mapstructure:"notIn"`
+	NotIn any `mapstructure:"notIn"`
 	// Allow to test if value is null
 	IsNull bool `mapstructure:"isNull"`
 	// Allow to test if value is not null
@@ -93,29 +93,29 @@ type GenericFilter struct {
 // .
 type DateFilter struct {
 	// Allow to test equality to
-	Eq interface{} `mapstructure:"eq"`
+	Eq any `mapstructure:"eq"`
 	// Allow to test non equality to
-	NotEq interface{} `mapstructure:"notEq"`
+	NotEq any `mapstructure:"notEq"`
 	// Allow to test greater or equal than
-	Gte interface{} `mapstructure:"gte"`
+	Gte any `mapstructure:"gte"`
 	// Allow to test not greater or equal than
-	NotGte interface{} `mapstructure:"notGte"`
+	NotGte any `mapstructure:"notGte"`
 	// Allow to test greater than
-	Gt interface{} `mapstructure:"gt"`
+	Gt any `mapstructure:"gt"`
 	// Allow to test not greater than
-	NotGt interface{} `mapstructure:"notGt"`
+	NotGt any `mapstructure:"notGt"`
 	// Allow to test less or equal than
-	Lte interface{} `mapstructure:"lte"`
+	Lte any `mapstructure:"lte"`
 	// Allow to test not less or equal than
-	NotLte interface{} `mapstructure:"notLte"`
+	NotLte any `mapstructure:"notLte"`
 	// Allow to test less than
-	Lt interface{} `mapstructure:"lt"`
+	Lt any `mapstructure:"lt"`
 	// Allow to test not less than
-	NotLt interface{} `mapstructure:"notLt"`
+	NotLt any `mapstructure:"notLt"`
 	// Allow to test if value is in array
-	In interface{} `mapstructure:"in"`
+	In any `mapstructure:"in"`
 	// Allow to test if value isn't in array
-	NotIn interface{} `mapstructure:"notIn"`
+	NotIn any `mapstructure:"notIn"`
 	// Allow to test if value is null
 	IsNull bool `mapstructure:"isNull"`
 	// Allow to test if value is not null
@@ -287,7 +287,7 @@ func (d *DateFilter) GetGenericFilter() (*GenericFilter, error) {
 	return res, nil
 }
 
-func parseOrGetTime(x interface{}) (*time.Time, error) {
+func parseOrGetTime(x any) (*time.Time, error) {
 	// Get value in reflect mode
 	val := reflect.Indirect(reflect.ValueOf(x))
 	// Get interface value
@@ -320,7 +320,7 @@ func parseOrGetTime(x interface{}) (*time.Time, error) {
 	}
 }
 
-func parseOrGetTimes(x interface{}) ([]*time.Time, error) {
+func parseOrGetTimes(x any) ([]*time.Time, error) {
 	// Prepare result
 	res := make([]*time.Time, 0)
 

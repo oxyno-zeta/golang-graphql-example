@@ -7,10 +7,11 @@ import (
 	"time"
 
 	"emperror.dev/errors"
+	"github.com/rabbitmq/amqp091-go"
+
 	correlationid "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/correlation-id"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/rabbitmq/amqp091-go"
 )
 
 func (as *amqpService) Publish(
@@ -65,7 +66,7 @@ func (as *amqpService) Publish(
 	}
 
 	// Add info to trace
-	trace.SetTags(map[string]interface{}{
+	trace.SetTags(map[string]any{
 		"exchange":       publishCfg.Exchange,
 		"routing-key":    publishCfg.RoutingKey,
 		"correlation-id": message.CorrelationId,
@@ -75,7 +76,7 @@ func (as *amqpService) Publish(
 	})
 
 	// Create logger fields
-	fields := map[string]interface{}{
+	fields := map[string]any{
 		"exchange":       publishCfg.Exchange,
 		"routing-key":    publishCfg.RoutingKey,
 		"correlation-id": message.CorrelationId,
@@ -239,7 +240,7 @@ func (as *amqpService) Consume(
 		}
 
 		// Create consumer logger
-		logger := log.GetLoggerFromContext(ctx).WithFields(map[string]interface{}{
+		logger := log.GetLoggerFromContext(ctx).WithFields(map[string]any{
 			"queue": consumeCfg.QueueName,
 		})
 
@@ -361,7 +362,7 @@ func (as *amqpService) Consume(
 					}
 
 					// Set tags in trace
-					trace.SetTags(map[string]interface{}{
+					trace.SetTags(map[string]any{
 						"queue":          consumeCfg.QueueName,
 						"consumer-tag":   d.ConsumerTag,
 						"routing-key":    d.RoutingKey,
@@ -373,7 +374,7 @@ func (as *amqpService) Consume(
 					})
 
 					// Create fields
-					fields := map[string]interface{}{
+					fields := map[string]any{
 						"correlation_id": d.CorrelationId,
 						"consumer_tag":   d.ConsumerTag,
 						"routing_key":    d.RoutingKey,

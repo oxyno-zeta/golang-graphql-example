@@ -6,6 +6,7 @@ import (
 	"emperror.dev/errors"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 )
 

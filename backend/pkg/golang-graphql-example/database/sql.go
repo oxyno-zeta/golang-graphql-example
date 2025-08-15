@@ -7,15 +7,16 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/samber/lo"
 	"gorm.io/driver/postgres"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/plugin/dbresolver"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
 
 var (

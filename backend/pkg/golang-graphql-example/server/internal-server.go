@@ -6,10 +6,12 @@ import (
 	"time"
 
 	"emperror.dev/errors"
+	"github.com/gin-gonic/gin"
+
 	gosundheit "github.com/AppsFlyer/go-sundheit"
 	healthhttp "github.com/AppsFlyer/go-sundheit/http"
 	helmet "github.com/danielkov/gin-helmet/ginhelmet"
-	"github.com/gin-gonic/gin"
+
 	correlationid "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/correlation-id"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"

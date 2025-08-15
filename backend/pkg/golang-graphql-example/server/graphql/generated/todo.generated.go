@@ -32,57 +32,23 @@ type TodoResolver interface {
 func (ec *executionContext) field_Todo_createdAt_args(ctx context.Context, rawArgs map[string]any) (map[string]any, error) {
 	var err error
 	args := map[string]any{}
-	arg0, err := ec.field_Todo_createdAt_argsFormat(ctx, rawArgs)
+	arg0, err := graphql.ProcessArgField(ctx, rawArgs, "format", ec.unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat)
 	if err != nil {
 		return nil, err
 	}
 	args["format"] = arg0
 	return args, nil
-}
-func (ec *executionContext) field_Todo_createdAt_argsFormat(
-	ctx context.Context,
-	rawArgs map[string]any,
-) (*utils.DateFormat, error) {
-	if _, ok := rawArgs["format"]; !ok {
-		var zeroVal *utils.DateFormat
-		return zeroVal, nil
-	}
-
-	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("format"))
-	if tmp, ok := rawArgs["format"]; ok {
-		return ec.unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx, tmp)
-	}
-
-	var zeroVal *utils.DateFormat
-	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Todo_updatedAt_args(ctx context.Context, rawArgs map[string]any) (map[string]any, error) {
 	var err error
 	args := map[string]any{}
-	arg0, err := ec.field_Todo_updatedAt_argsFormat(ctx, rawArgs)
+	arg0, err := graphql.ProcessArgField(ctx, rawArgs, "format", ec.unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat)
 	if err != nil {
 		return nil, err
 	}
 	args["format"] = arg0
 	return args, nil
-}
-func (ec *executionContext) field_Todo_updatedAt_argsFormat(
-	ctx context.Context,
-	rawArgs map[string]any,
-) (*utils.DateFormat, error) {
-	if _, ok := rawArgs["format"]; !ok {
-		var zeroVal *utils.DateFormat
-		return zeroVal, nil
-	}
-
-	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("format"))
-	if tmp, ok := rawArgs["format"]; ok {
-		return ec.unmarshalODateFormat2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐDateFormat(ctx, tmp)
-	}
-
-	var zeroVal *utils.DateFormat
-	return zeroVal, nil
 }
 
 // endregion ***************************** args.gotpl *****************************

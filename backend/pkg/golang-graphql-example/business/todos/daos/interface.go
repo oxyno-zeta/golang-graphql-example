@@ -27,7 +27,7 @@ type Dao interface {
 	PatchUpdate(
 		ctx context.Context,
 		tt *models.Todo,
-		input map[string]interface{},
+		input map[string]any,
 	) (*models.Todo, error)
 	FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error)
 }

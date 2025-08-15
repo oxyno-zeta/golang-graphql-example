@@ -1,9 +1,10 @@
 package errors
 
 import (
-	gerrors "errors"
 	"reflect"
 	"testing"
+
+	gerrors "errors"
 )
 
 func TestWithErrorMessage(t *testing.T) {
@@ -128,18 +129,18 @@ func TestWithPublicErrorMessage(t *testing.T) {
 
 func TestWithExtensions(t *testing.T) {
 	type args struct {
-		input map[string]interface{}
+		input map[string]any
 	}
 
 	tests := []struct {
 		args args
-		want map[string]interface{}
+		want map[string]any
 		name string
 	}{
 		{
 			name: "override",
-			args: args{input: map[string]interface{}{"fake": "option"}},
-			want: map[string]interface{}{"fake": "option"},
+			args: args{input: map[string]any{"fake": "option"}},
+			want: map[string]any{"fake": "option"},
 		},
 	}
 	for _, tt := range tests {
@@ -154,13 +155,13 @@ func TestWithExtensions(t *testing.T) {
 
 func TestAddExtension(t *testing.T) {
 	type args struct {
-		value interface{}
+		value any
 		key   string
 	}
 
 	tests := []struct {
 		args args
-		want map[string]interface{}
+		want map[string]any
 		name string
 	}{
 		{
@@ -169,7 +170,7 @@ func TestAddExtension(t *testing.T) {
 				key:   "fake",
 				value: "option",
 			},
-			want: map[string]interface{}{
+			want: map[string]any{
 				"fake": "option",
 				"code": "INTERNAL_SERVER_ERROR",
 			},

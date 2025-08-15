@@ -11,9 +11,10 @@ import (
 	"emperror.dev/errors"
 	"github.com/fsnotify/fsnotify"
 	"github.com/go-playground/validator/v10"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/samber/lo"
 	"github.com/spf13/viper"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
 // TemplateErrLoadingEnvCredentialEmpty Template Error when Loading Environment variable Credentials.

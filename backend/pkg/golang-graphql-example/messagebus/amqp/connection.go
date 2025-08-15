@@ -7,13 +7,14 @@ import (
 	"time"
 
 	"emperror.dev/errors"
+	"github.com/rabbitmq/amqp091-go"
+	"github.com/samber/lo"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/rabbitmq/amqp091-go"
-	"github.com/samber/lo"
 )
 
 const rabbitmqAlreadyClosedErrorMessage = "CHANNEL_ERROR - expected 'channel.open'"
@@ -400,7 +401,7 @@ func (as *amqpService) connect() (*amqp091.Connection, error) {
 	extraArgs := amqpCfg.Connection.ExtraArgs
 	// Check if it is set
 	if extraArgs == nil {
-		extraArgs = map[string]interface{}{}
+		extraArgs = map[string]any{}
 	}
 	// Check if connection_name exists in the connection extra args
 	// If it doesn't, override to add hostname as connection_name

@@ -4,19 +4,20 @@ import (
 	"context"
 
 	"emperror.dev/errors"
+	"gorm.io/gorm"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
-	"gorm.io/gorm"
 )
 
 func Find[T any](
 	ctx context.Context,
 	res []T,
 	db database.DB,
-	sort interface{},
-	filter interface{},
-	projection interface{},
+	sort any,
+	filter any,
+	projection any,
 ) ([]T, error) {
 	// Get gorm gdb
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
@@ -56,9 +57,9 @@ func FindWithPagination[T any](
 	res []T,
 	db database.DB,
 	page *pagination.PageInput,
-	sort interface{},
-	filter interface{},
-	projection interface{},
+	sort any,
+	filter any,
+	projection any,
 ) ([]T, error) {
 	// Manage default limit
 	if page.Limit == 0 {
@@ -103,8 +104,8 @@ func CountPaginated[T any](
 	db database.DB,
 	input T,
 	page *pagination.PageInput,
-	sort interface{},
-	filter interface{},
+	sort any,
+	filter any,
 ) (int64, error) {
 	// Initialize count
 	var res int64
@@ -139,8 +140,8 @@ func Count[T any](
 	ctx context.Context,
 	db database.DB,
 	input T,
-	sort interface{},
-	filter interface{},
+	sort any,
+	filter any,
 ) (int64, error) {
 	// Initialize count
 	var res int64
@@ -176,9 +177,9 @@ func GetAllPaginated[T any](
 	res []T,
 	db database.DB,
 	page *pagination.PageInput,
-	sort interface{},
-	filter interface{},
-	projection interface{},
+	sort any,
+	filter any,
+	projection any,
 	tOpts ...database.TransactionOption,
 ) ([]T, *pagination.PageOutput, error) {
 	// Find
@@ -203,7 +204,7 @@ func FindByID[T any](
 	res T,
 	db database.DB,
 	id string,
-	projection interface{},
+	projection any,
 ) (T, error) {
 	// Get gorm db
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
@@ -234,9 +235,9 @@ func FindOne[T any](
 	ctx context.Context,
 	res T,
 	db database.DB,
-	sort interface{},
-	filter interface{},
-	projection interface{},
+	sort any,
+	filter any,
+	projection any,
 ) (T, error) {
 	// Get gorm db
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)

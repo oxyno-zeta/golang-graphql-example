@@ -11,7 +11,7 @@ type Error interface {
 	error
 	stackTracerError
 	// Extensions will return extensions.
-	Extensions() map[string]interface{}
+	Extensions() map[string]any
 	// StatusCode will return status code linked to error.
 	StatusCode() int
 	// PublicMessage will return a public message to be displayed externally.

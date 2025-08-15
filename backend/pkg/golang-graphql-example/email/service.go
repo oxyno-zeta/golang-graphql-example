@@ -5,9 +5,11 @@ import (
 	"time"
 
 	"emperror.dev/errors"
+
+	spmail "github.com/xhit/go-simple-mail/v2"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
-	spmail "github.com/xhit/go-simple-mail/v2"
 )
 
 const (

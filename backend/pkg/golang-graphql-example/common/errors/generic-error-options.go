@@ -14,7 +14,7 @@ func NewGenericError(options ...GenericErrorOption) Error {
 	// Create default error
 	err := &GenericError{
 		err: errors.WithStack(defaultErr),
-		ext: map[string]interface{}{
+		ext: map[string]any{
 			"code": InternalServerErrorCode,
 		},
 		publicError: defaultErr,
@@ -43,12 +43,12 @@ func WithError(err error) GenericErrorOption {
 
 // WithExtensions will replace custom extensions map.
 // Warning: This will remove the "code" extension. It is recommended to use the WithCode option just after.
-func WithExtensions(input map[string]interface{}) GenericErrorOption {
+func WithExtensions(input map[string]any) GenericErrorOption {
 	return func(ge *GenericError) { ge.ext = input }
 }
 
 // AddExtension will add an extension to the custom extensions map.
-func AddExtension(key string, val interface{}) GenericErrorOption {
+func AddExtension(key string, val any) GenericErrorOption {
 	return func(ge *GenericError) { ge.ext[key] = val }
 }
 

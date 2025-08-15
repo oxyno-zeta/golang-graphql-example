@@ -5,12 +5,13 @@ import (
 	"strconv"
 	"time"
 
-	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
-	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"gorm.io/gorm"
+
+	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	gormprometheus "gorm.io/plugin/prometheus"
 )
 

@@ -5,8 +5,9 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"gorm.io/gorm"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
 // AND field.
@@ -15,12 +16,12 @@ const andFieldName = "AND"
 // OR field.
 const orFieldName = "OR"
 
-func ManageFilter(filter interface{}, db *gorm.DB) (*gorm.DB, error) {
+func ManageFilter(filter any, db *gorm.DB) (*gorm.DB, error) {
 	return manageFilter(filter, db, false)
 }
 
 func manageFilter(
-	filter interface{},
+	filter any,
 	originalDB *gorm.DB,
 	skipInputNotObject bool,
 ) (*gorm.DB, error) {
@@ -501,7 +502,7 @@ func manageFilterRequest(dbCol string, v *GenericFilter, db *gorm.DB) (*gorm.DB,
 }
 
 // That will only transform []string. Everything else will returned without any transformation.
-func transformToLowerOrUpperCasesList(input interface{}, toLowercase bool) interface{} {
+func transformToLowerOrUpperCasesList(input any, toLowercase bool) any {
 	// Get reflect value
 	rValue := reflect.ValueOf(input)
 	// Get reflect kind
@@ -567,7 +568,7 @@ func transformToLowerOrUpperCasesList(input interface{}, toLowercase bool) inter
 	return res.Interface()
 }
 
-func getStringValue(x interface{}) (string, error) {
+func getStringValue(x any) (string, error) {
 	// Get reflect value
 	val := reflect.ValueOf(x)
 	// Check if val is a pointer

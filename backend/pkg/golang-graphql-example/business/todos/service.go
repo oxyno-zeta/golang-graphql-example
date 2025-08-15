@@ -147,7 +147,7 @@ func (s *service) Close(
 		res, err2 = s.dao.PatchUpdate(
 			ctx,
 			tt,
-			map[string]interface{}{models.TodoDoneJSONKeyName: false},
+			map[string]any{models.TodoDoneJSONKeyName: false},
 		)
 
 		return err2

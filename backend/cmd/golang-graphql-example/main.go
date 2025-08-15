@@ -7,6 +7,9 @@ import (
 	"sync"
 
 	"emperror.dev/errors"
+	"github.com/samber/lo"
+	"go.uber.org/automaxprocs/maxprocs"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
@@ -20,8 +23,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/version"
-	"github.com/samber/lo"
-	"go.uber.org/automaxprocs/maxprocs"
 )
 
 type services struct {

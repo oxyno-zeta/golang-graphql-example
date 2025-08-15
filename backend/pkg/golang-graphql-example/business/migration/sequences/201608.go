@@ -2,8 +2,9 @@ package sequences
 
 import (
 	"github.com/go-gormigrate/gormigrate/v2"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"gorm.io/gorm"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 )
 
 var Seq201608List = []*gormigrate.Migration{

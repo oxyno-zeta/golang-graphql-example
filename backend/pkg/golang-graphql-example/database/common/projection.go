@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 	"gorm.io/gorm"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
 
-func ManageProjection(projection interface{}, db *gorm.DB) (*gorm.DB, error) {
+func ManageProjection(projection any, db *gorm.DB) (*gorm.DB, error) {
 	// Create result
 	res := db
 	// Get reflect value of projection object

@@ -9,18 +9,22 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-	gqlgraphql "github.com/99designs/gqlgen/graphql"
-	gqlerrorcode "github.com/99designs/gqlgen/graphql/errcode"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/extension"
 	"github.com/99designs/gqlgen/graphql/handler/lru"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
-	gqlplayground "github.com/99designs/gqlgen/graphql/playground"
-	helmet "github.com/danielkov/gin-helmet/ginhelmet"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/microcosm-cc/bluemonday"
+	"github.com/vektah/gqlparser/v2/ast"
+	"github.com/vektah/gqlparser/v2/gqlerror"
+
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
+	gqlerrorcode "github.com/99designs/gqlgen/graphql/errcode"
+	gqlplayground "github.com/99designs/gqlgen/graphql/playground"
+	helmet "github.com/danielkov/gin-helmet/ginhelmet"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
@@ -37,8 +41,6 @@ import (
 	gutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/vektah/gqlparser/v2/ast"
-	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 
 const GraphqlComplexityLimit = 2000
@@ -317,7 +319,7 @@ func (svr *Server) graphqlHandler() gin.HandlerFunc {
 			Rule:       err3.Rule,
 		}
 	})
-	h.SetRecoverFunc(func(ctx context.Context, errI interface{}) (userMessage error) {
+	h.SetRecoverFunc(func(ctx context.Context, errI any) (userMessage error) {
 		// Get logger
 		logger := log.GetLoggerFromContext(ctx)
 
