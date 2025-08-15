@@ -370,13 +370,9 @@ linters:
       - std-error-handling
     rules:
       - linters:
-          - lll
-        source: "^//go:generate "
-      - linters:
           - dupl
           - gocritic
           - govet
-          - lll
         path: \.resolvers\.go
       - linters:
           - gomoddirectives
