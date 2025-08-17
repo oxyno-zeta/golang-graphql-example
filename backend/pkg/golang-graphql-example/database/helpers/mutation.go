@@ -94,6 +94,34 @@ func SoftDelete[T any](
 	return input, nil
 }
 
+func SoftDeleteFiltered[T any](
+	ctx context.Context,
+	input T,
+	filter any,
+	db database.DB,
+) error {
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return err
+	}
+
+	dbres := gdb.Delete(input)
+
+	// Check error
+	err = dbres.Error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Return result
+	return nil
+}
+
 /**
  * PatchUpdate will update specific columns and return the updated object/model.
  * Params:
