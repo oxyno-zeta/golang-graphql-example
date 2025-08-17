@@ -47,6 +47,34 @@ func PermanentDelete[T any](
 	return input, nil
 }
 
+func PermanentDeleteFiltered[T any](
+	ctx context.Context,
+	input T,
+	filter any,
+	db database.DB,
+) error {
+	// Get gorm gdb
+	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Apply filter
+	gdb, err := common.ManageFilter(filter, gdb)
+	// Check error
+	if err != nil {
+		return err
+	}
+
+	dbres := gdb.Unscoped().Delete(input)
+
+	// Check error
+	err = dbres.Error
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	// Return result
+	return nil
+}
+
 func SoftDelete[T any](
 	ctx context.Context,
 	input T,
