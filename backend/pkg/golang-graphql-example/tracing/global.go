@@ -24,6 +24,17 @@ func GetTraceFromContext(ctx context.Context) Trace {
 	}
 }
 
+func GetChildTraceFromContext(ctx context.Context, operationName string) (context.Context, Trace) {
+	// Get trace from context
+	pTrace := GetTraceFromContext(ctx)
+	// Check if parent trace is nil
+	if pTrace == nil {
+		return ctx, nil
+	}
+
+	return pTrace.GetChildTrace(ctx, operationName)
+}
+
 func GetTraceIDFromContext(ctx context.Context) string {
 	tr := GetTraceFromContext(ctx)
 	if tr != nil {
