@@ -6,20 +6,33 @@ import (
 	"emperror.dev/errors"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 )
 
 func CreateOrUpdate[T any](
 	ctx context.Context,
 	input T,
 	db database.DB,
+	opts ...GormOpt,
 ) (T, error) {
 	// Get gorm gdb
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Define error
+	var err error
+	// Apply options
+	for _, o := range opts {
+		gdb, err = o(ctx, gdb)
+		// Check error
+		if err != nil {
+			return *new(T), errors.WithStack(err)
+		}
+	}
+
+	// Save
 	dbres := gdb.Save(input)
 
 	// Check error
-	err := dbres.Error
+	err = dbres.Error
 	if err != nil {
 		return *new(T), errors.WithStack(err)
 	}
@@ -32,13 +45,26 @@ func PermanentDelete[T any](
 	ctx context.Context,
 	input T,
 	db database.DB,
+	opts ...GormOpt,
 ) (T, error) {
 	// Get gorm gdb
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Define error
+	var err error
+	// Apply options
+	for _, o := range opts {
+		gdb, err = o(ctx, gdb)
+		// Check error
+		if err != nil {
+			return *new(T), errors.WithStack(err)
+		}
+	}
+
 	dbres := gdb.Unscoped().Delete(input)
 
 	// Check error
-	err := dbres.Error
+	err = dbres.Error
 	if err != nil {
 		return *new(T), errors.WithStack(err)
 	}
@@ -52,40 +78,45 @@ func PermanentDeleteFiltered[T any](
 	input T,
 	filter any,
 	db database.DB,
+	opts ...GormOpt,
 ) error {
-	// Get gorm gdb
-	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	// Create new options
+	lOpts := make([]GormOpt, 0)
+	// Save input options
+	lOpts = append(lOpts, opts...)
+	// Append filter
+	lOpts = append(lOpts, WithFilterGormOpt(filter))
 
-	// Apply filter
-	gdb, err := common.ManageFilter(filter, gdb)
-	// Check error
-	if err != nil {
-		return err
-	}
-
-	dbres := gdb.Unscoped().Delete(input)
-
-	// Check error
-	err = dbres.Error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
+	// Patch
+	_, err := PermanentDelete(ctx, input, db, lOpts...)
 	// Return result
-	return nil
+	return err
 }
 
 func SoftDelete[T any](
 	ctx context.Context,
 	input T,
 	db database.DB,
+	opts ...GormOpt,
 ) (T, error) {
 	// Get gorm gdb
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Define error
+	var err error
+	// Apply options
+	for _, o := range opts {
+		gdb, err = o(ctx, gdb)
+		// Check error
+		if err != nil {
+			return *new(T), errors.WithStack(err)
+		}
+	}
+
 	dbres := gdb.Delete(input)
 
 	// Check error
-	err := dbres.Error
+	err = dbres.Error
 	if err != nil {
 		return *new(T), errors.WithStack(err)
 	}
@@ -99,27 +130,19 @@ func SoftDeleteFiltered[T any](
 	input T,
 	filter any,
 	db database.DB,
+	opts ...GormOpt,
 ) error {
-	// Get gorm gdb
-	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	// Create new options
+	lOpts := make([]GormOpt, 0)
+	// Save input options
+	lOpts = append(lOpts, opts...)
+	// Append filter
+	lOpts = append(lOpts, WithFilterGormOpt(filter))
 
-	// Apply filter
-	gdb, err := common.ManageFilter(filter, gdb)
-	// Check error
-	if err != nil {
-		return err
-	}
-
-	dbres := gdb.Delete(input)
-
-	// Check error
-	err = dbres.Error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
+	// Patch
+	_, err := SoftDelete(ctx, input, db, lOpts...)
 	// Return result
-	return nil
+	return err
 }
 
 /**
@@ -134,13 +157,26 @@ func PatchUpdate[T any](
 	originalObject T,
 	input map[string]any,
 	db database.DB,
+	opts ...GormOpt,
 ) (T, error) {
 	// Get gorm gdb
 	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+
+	// Define error
+	var err error
+	// Apply options
+	for _, o := range opts {
+		gdb, err = o(ctx, gdb)
+		// Check error
+		if err != nil {
+			return *new(T), errors.WithStack(err)
+		}
+	}
+
 	dbres := gdb.Model(originalObject).Updates(input)
 
 	// Check error
-	err := dbres.Error
+	err = dbres.Error
 	if err != nil {
 		return *new(T), errors.WithStack(err)
 	}
@@ -163,26 +199,17 @@ func PatchUpdateAllFiltered[T any](
 	input map[string]any,
 	filter any,
 	db database.DB,
+	opts ...GormOpt,
 ) error {
-	// Get gorm gdb
-	gdb := db.GetTransactionalOrDefaultGormDB(ctx)
+	// Create new options
+	lOpts := make([]GormOpt, 0)
+	// Save input options
+	lOpts = append(lOpts, opts...)
+	// Append filter
+	lOpts = append(lOpts, WithFilterGormOpt(filter))
 
-	// Apply filter
-	gdb, err := common.ManageFilter(filter, gdb)
-	// Check error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
-	// Updates
-	dbres := gdb.Model(model).Updates(input)
-
-	// Check error
-	err = dbres.Error
-	if err != nil {
-		return errors.WithStack(err)
-	}
-
+	// Patch
+	_, err := PatchUpdate(ctx, model, input, db, lOpts...)
 	// Return result
-	return nil
+	return err
 }
