@@ -41,6 +41,11 @@ type CheckerInput struct {
 	InitialDelay time.Duration
 }
 
+// Configuration endpoint response object.
+type configResponse struct {
+	Config *config.Config `json:"config"`
+}
+
 func NewInternalServer(
 	logger log.Logger,
 	cfgManager config.Manager,
@@ -137,6 +142,16 @@ func (svr *InternalServer) generateInternalRouter() (http.Handler, error) {
 
 		// Otherwise, send health check result
 		gin.WrapH(healthhttp.HandleHealthJSON(h2))(c)
+	})
+	router.GET("/config", func(c *gin.Context) {
+		// Get configuration
+		cfg := svr.cfgManager.GetConfig()
+
+		// Create answer
+		ans := &configResponse{Config: cfg}
+
+		// Answer
+		c.JSON(http.StatusOK, ans)
 	})
 
 	return router, nil
