@@ -359,6 +359,15 @@ linters:
     tagalign:
       align: true
       sort: true
+      order:
+        - mapstructure
+        - gorm
+        - validate
+        - binding
+        - json
+        - yaml
+        - yml
+        - toml
     testpackage:
       skip-regexp: _test\.go
   exclusions:
