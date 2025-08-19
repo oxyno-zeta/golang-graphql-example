@@ -93,6 +93,11 @@ export default tsEslint.config(
   { rules: eslintConfigAirbnbStrict.rules },
 
   /**
+   * Storybook
+   */
+  storybook.configs['flat/recommended'],
+
+  /**
    * Custom
    */
   {
@@ -163,9 +168,4 @@ export default tsEslint.config(
    * Prettier
    */
   eslintPluginPrettierRecommended,
-
-  /**
-   * Storybook
-   */
-  storybook.configs['flat/recommended'],
 );
