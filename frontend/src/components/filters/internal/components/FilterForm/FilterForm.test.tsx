@@ -57,7 +57,7 @@ describe('filters/internal/FilterForm', () => {
 
   beforeEach(() => {
     jest.spyOn(global.Math, 'random').mockImplementation(() => {
-      randomCount += 0.01;
+      randomCount += 0.0001;
 
       return randomCount;
     });
