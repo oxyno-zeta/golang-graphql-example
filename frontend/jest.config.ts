@@ -1,7 +1,9 @@
 import type { Config } from '@jest/types';
 import { pathsToModuleNameMapper } from 'ts-jest';
+import fs from 'fs';
 
-const { compilerOptions } = require('./tsconfig.json');
+const tsconfigStr = fs.readFileSync('./tsconfig.json');
+const { compilerOptions } = JSON.parse(tsconfigStr.toString());
 
 // Delete assets
 delete compilerOptions.paths['~assets/*'];
