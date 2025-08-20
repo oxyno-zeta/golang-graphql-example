@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button, { ButtonProps } from '@mui/material/Button';
-import ButtonGroup, { ButtonGroupProps } from '@mui/material/ButtonGroup';
+import Button, { type ButtonProps } from '@mui/material/Button';
+import ButtonGroup, { type ButtonGroupProps } from '@mui/material/ButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiViewGridOutline, mdiViewSequential } from '@mdi/js';

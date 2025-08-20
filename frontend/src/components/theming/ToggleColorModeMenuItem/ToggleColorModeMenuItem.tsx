@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
-import { PaletteMode } from '@mui/material';
+import { type PaletteMode } from '@mui/material';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 
 export interface Props {

@@ -13,13 +13,18 @@ import GridTableViewSwitcher from '~components/gridTableViewSwitch/GridTableView
 import { onMainSearchChangeContains } from '~components/filters/utils/mainSearch';
 import TopListContainer from '~components/TopListContainer';
 import {
-  TodoSortOrderModel,
-  TodoFilterModel,
+  type TodoSortOrderModel,
+  type TodoFilterModel,
   todoFilterDefinitionObject,
   todoSortFields,
-  TodoModel,
+  type TodoModel,
 } from '~models/todos';
-import { ConnectionModel, FilterQueryParamName, SortQueryParamName, StringFilterModel } from '~models/general';
+import {
+  type ConnectionModel,
+  FilterQueryParamName,
+  SortQueryParamName,
+  type StringFilterModel,
+} from '~models/general';
 import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '~utils/pagination';
 import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '~utils/urlSearchParams';
 import GridTableViewSwitcherContext from '~contexts/GridTableViewSwitcherContext';

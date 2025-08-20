@@ -1,4 +1,4 @@
-import AutoBreadcrumb, { Props as AutoBreadcrumbProps } from './AutoBreadcrumb';
+import AutoBreadcrumb, { type Props as AutoBreadcrumbProps } from './AutoBreadcrumb';
 import type {
   BreadcrumbFixedData,
   BreadcrumbFixedDataConfig,

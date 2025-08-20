@@ -1,10 +1,10 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import GridViewItem from './GridViewItem';
-import { TodoModel } from '../../../../models/todos';
+import { type TodoModel } from '../../../../models/todos';
 import CenterLoading from '../../../../components/CenterLoading';
 import NoData from '../../../../components/NoData';
-import { ConnectionModel } from '../../../../models/general';
+import { type ConnectionModel } from '../../../../models/general';
 
 interface Props {
   readonly data: ConnectionModel<TodoModel> | undefined;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import MainPageCenterLoading, { Props } from './MainPageCenterLoading';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import MainPageCenterLoading, { type Props } from './MainPageCenterLoading';
 
 export default {
   title: 'Components/MainPageCenterLoading',

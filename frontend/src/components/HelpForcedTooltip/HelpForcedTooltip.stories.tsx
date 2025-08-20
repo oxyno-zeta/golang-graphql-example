@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import HelpForcedTooltip, { Props } from './HelpForcedTooltip';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import HelpForcedTooltip, { type Props } from './HelpForcedTooltip';
 
 export default {
   title: 'Components/HelpForcedTooltip',

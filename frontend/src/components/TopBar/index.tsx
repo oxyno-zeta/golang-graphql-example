@@ -1,4 +1,4 @@
-import TopBar, { TopBarProps } from './TopBar';
+import TopBar, { type TopBarProps } from './TopBar';
 import TopBarSpacer from './TopBarSpacer';
 import AppLinkListItemButton from './components/AppLinkListItemButton';
 

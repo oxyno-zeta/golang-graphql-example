@@ -1,7 +1,7 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import Stack from '@mui/material/Stack';
-import StatusChip, { Props } from './StatusChip';
+import StatusChip, { type Props } from './StatusChip';
 
 export default {
   title: 'Components/StatusChip',

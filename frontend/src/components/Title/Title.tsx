@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
-import Typography, { TypographyProps } from '@mui/material/Typography';
-import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
+import React, { type ReactNode } from 'react';
+import Typography, { type TypographyProps } from '@mui/material/Typography';
+import Toolbar, { type ToolbarProps } from '@mui/material/Toolbar';
 
 export interface Props {
   readonly leftElement?: ReactNode;

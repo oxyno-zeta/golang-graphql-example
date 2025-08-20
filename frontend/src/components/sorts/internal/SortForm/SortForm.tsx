@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid';
 import DialogContent from '@mui/material/DialogContent';
 import { useTranslation } from 'react-i18next';
 import SortField from '../SortField';
-import { SortOrderModel, SortOrderFieldModel, SortOrderAsc } from '../../../../models/general';
+import { type SortOrderModel, type SortOrderFieldModel, SortOrderAsc } from '../../../../models/general';
 import { arrayMoveItem } from '../../../../utils/array';
 
 export interface Props<T extends Record<string, SortOrderModel>> {

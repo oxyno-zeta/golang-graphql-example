@@ -1,9 +1,9 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { mdiMenu } from '@mdi/js';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
-import Title, { Props } from './Title';
+import Title, { type Props } from './Title';
 
 export default {
   title: 'Components/Title',

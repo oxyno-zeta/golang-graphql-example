@@ -1,9 +1,9 @@
 import {
-  FilterValueObject,
-  BuilderInitialValueObject,
-  LineOrGroup,
-  FieldInitialValueObject,
-  FieldOperationValueObject,
+  type FilterValueObject,
+  type BuilderInitialValueObject,
+  type LineOrGroup,
+  type FieldInitialValueObject,
+  type FieldOperationValueObject,
 } from './types';
 
 export function generateKey(prefix: string) {

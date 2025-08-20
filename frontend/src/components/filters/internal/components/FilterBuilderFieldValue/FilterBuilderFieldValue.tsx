@@ -10,9 +10,9 @@ import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { DateTimePicker } from '@mui/x-date-pickers';
-import { FilterOperationMetadataModel, FilterDefinitionEnumObjectModel } from '../../../../../models/general';
+import { type FilterOperationMetadataModel, type FilterDefinitionEnumObjectModel } from '../../../../../models/general';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
@@ -47,7 +47,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
     }
 
     return (
-      <Autocomplete<FilterDefinitionEnumObjectModel<any>, true, false, false>
+      <Autocomplete<FilterDefinitionEnumObjectModel<any>, true>
         clearText={t('common.clearAction')}
         closeText={t('common.closeAction')}
         fullWidth
@@ -122,7 +122,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
       vEnum = null;
     }
     return (
-      <Autocomplete<FilterDefinitionEnumObjectModel<any>, false, false, false>
+      <Autocomplete<FilterDefinitionEnumObjectModel<any>>
         clearText={t('common.clearAction')}
         closeText={t('common.closeAction')}
         fullWidth

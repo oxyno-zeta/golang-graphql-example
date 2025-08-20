@@ -1,4 +1,4 @@
-import { FilterDefinitionOperationsModel } from './general';
+import { type FilterDefinitionOperationsModel } from './general';
 
 export const booleanOperations: FilterDefinitionOperationsModel<boolean> = {
   eq: {

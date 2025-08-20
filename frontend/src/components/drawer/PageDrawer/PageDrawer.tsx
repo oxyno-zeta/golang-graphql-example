@@ -1,6 +1,6 @@
-import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
+import React, { type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
-import Drawer, { DrawerProps } from '@mui/material/Drawer';
+import Drawer, { type DrawerProps } from '@mui/material/Drawer';
 import type { Theme, CSSObject } from '@mui/material';
 import type { SystemStyleObject } from '@mui/system';
 import Divider from '@mui/material/Divider';

@@ -1,5 +1,5 @@
 import React from 'react';
-import Chip, { ChipProps } from '@mui/material/Chip';
+import Chip, { type ChipProps } from '@mui/material/Chip';
 
 export type Props = ChipProps;
 

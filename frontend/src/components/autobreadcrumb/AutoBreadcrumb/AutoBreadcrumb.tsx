@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useLocation, useParams, resolvePath } from 'react-router';
-import Breadcrumbs, { BreadcrumbsProps } from '@mui/material/Breadcrumbs';
+import Breadcrumbs, { type BreadcrumbsProps } from '@mui/material/Breadcrumbs';
 import FixedBreadcrumb from './FixedBreadcrumb';
 import GraphQLBreadcrumb from './GraphQLBreadcrumb';
 import AutoBreadcrumbContext from '../contexts/AutoBreadcrumbContext';
@@ -68,7 +68,7 @@ function AutoBreadcrumb({ disablePageTitle = false, ...props }: Props) {
 function build(n: number) {
   let res = '';
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < n; i += 1) {
     res += '../';
   }
 

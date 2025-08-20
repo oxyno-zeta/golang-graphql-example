@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import React, { type ReactNode } from 'react';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { withRouter } from 'storybook-addon-remix-react-router';
 import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
@@ -17,7 +17,7 @@ import TopBar, { TopBarSpacer } from '~components/TopBar';
 import TimezoneProvider from '~components/timezone/TimezoneProvider';
 import ConfigContext from '../../../contexts/ConfigContext';
 import { defaultConfig } from '../../../models/config';
-import ContentDisplayDrawer, { Props } from './ContentDisplayDrawer';
+import ContentDisplayDrawer, { type Props } from './ContentDisplayDrawer';
 import ListNavItemButton from '../ListNavItemButton';
 import PageDrawer from '../PageDrawer';
 import PageDrawerSettingsProvider from '../PageDrawerSettingsProvider';

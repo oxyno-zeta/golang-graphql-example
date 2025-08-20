@@ -1,11 +1,11 @@
-import React, { ReactNode, useState } from 'react';
+import React, { type ReactNode, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiApps } from '@mdi/js';
-import AppLinksPopper from './components/AppLinksPopper';
 import type { SxProps } from '@mui/material';
+import AppLinksPopper from './components/AppLinksPopper';
 
 export interface Props {
   readonly children: ReactNode;

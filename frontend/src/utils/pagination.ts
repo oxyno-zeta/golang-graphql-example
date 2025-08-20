@@ -1,6 +1,6 @@
-import { URLSearchParams } from 'url';
-import { URLSearchParamsInit } from 'react-router';
-import { PaginationInputModel } from '../models/general';
+import { type URLSearchParams } from 'url';
+import { type URLSearchParamsInit } from 'react-router';
+import { type PaginationInputModel } from '../models/general';
 import { getAllSearchParams } from './urlSearchParams';
 
 export function cleanPaginationSearchParams(searchParams: URLSearchParams): URLSearchParams {
@@ -17,12 +17,10 @@ export function cleanAndSetCleanedPagination(
   searchParams: URLSearchParams,
   setSearchParams: (
     nextInit: URLSearchParamsInit,
-    navigateOptions?:
-      | {
-          replace?: boolean | undefined;
-          state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-        }
-      | undefined,
+    navigateOptions?: {
+      replace?: boolean | undefined;
+      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    },
   ) => void,
 ) {
   // Delete pagination params
@@ -38,12 +36,10 @@ export function getPaginationFromSearchParams(
   searchParams: URLSearchParams,
   setSearchParams: (
     nextInit: URLSearchParamsInit,
-    navigateOptions?:
-      | {
-          replace?: boolean | undefined;
-          state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-        }
-      | undefined,
+    navigateOptions?: {
+      replace?: boolean | undefined;
+      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    },
   ) => void,
 ): PaginationInputModel {
   // Get first

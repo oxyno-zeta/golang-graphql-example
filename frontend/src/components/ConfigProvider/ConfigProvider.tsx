@@ -1,10 +1,10 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, type ReactNode } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import ConfigContext from '../../contexts/ConfigContext';
-import { ConfigModel, defaultConfig } from '../../models/config';
+import { type ConfigModel, defaultConfig } from '../../models/config';
 
 interface Props {
   readonly children: ReactNode;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import Footer, { Props } from './Footer';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import Footer, { type Props } from './Footer';
 
 export default {
   title: 'Components/Footer',

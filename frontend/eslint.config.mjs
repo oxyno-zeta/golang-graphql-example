@@ -6,20 +6,82 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintReact from 'eslint-plugin-react';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import tsEslint from 'typescript-eslint';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import { rules as prettierConfigRules } from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
-import eslintConfigAirbnbReact from 'eslint-config-airbnb/rules/react';
-import eslintConfigAirbnbReactA11y from 'eslint-config-airbnb/rules/react-a11y';
-import eslintConfigAirbnbErrors from 'eslint-config-airbnb-base/rules/errors';
-import eslintConfigAirbnbEs6 from 'eslint-config-airbnb-base/rules/es6';
-import eslintConfigAirbnbStrict from 'eslint-config-airbnb-base/rules/strict';
+import {
+  configs as airbnbConfigs,
+  plugins as airbnbPlugins,
+  rules as airbnbRules,
+} from 'eslint-config-airbnb-extended';
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from 'eslint-plugin-storybook';
 
 import tsParser from '@typescript-eslint/parser';
 
 export default tsEslint.config(
-  pluginJs.configs.recommended,
+  /**
+   * ESLint recommended rules
+   */
+  {
+    name: 'js/config',
+    ...pluginJs.configs.recommended,
+  },
+
+  /**
+   * Stylistic Plugin
+   */
+  airbnbPlugins.stylistic,
+
+  /**
+   * Eslint import X
+   */
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
+
+  /**
+   * From Airbnb
+   */
+  ...airbnbConfigs.base.recommended,
+
+  /**
+   * React
+   */
+  eslintReact.configs.flat.all,
+  {
+    files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'react-hooks': hooksPlugin,
+    },
+    rules: {
+      ...hooksPlugin.configs.recommended.rules,
+    },
+  },
+
+  /**
+   * Static AST checker for accessibility rules on JSX elements.
+   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+   */
+  jsxA11y.flatConfigs.recommended,
+
+  /**
+   * Airbnb react
+   */
+  ...airbnbConfigs.react.recommended,
+
+  /**
+   * Unicorn
+   */
+  {
+    plugins: {
+      unicorn: eslintPluginUnicorn,
+    },
+    // rules: {
+    //   'unicorn/better-regex': 'error',
+    //   'unicorn/…': 'error',
+    // },
+  },
+
   /**
    * ESLint Typescript recommended
    * @see
@@ -43,54 +105,67 @@ export default tsEslint.config(
     },
   },
   ...tsEslint.configs.recommended,
-
   /**
-   * Eslint import X
+   * Airbnb Typescript
    */
-  eslintPluginImportX.flatConfigs.recommended,
-  eslintPluginImportX.flatConfigs.typescript,
-
-  /**
-   * React
-   */
-  eslintReact.configs.flat.all,
+  ...airbnbConfigs.base.typescript,
+  ...airbnbConfigs.react.typescript,
   {
-    files: ['**/*.{ts,tsx}'],
-    plugins: {
-      'react-hooks': hooksPlugin,
-    },
+    files: ['**/*.test.ts{x,}'],
     rules: {
-      ...hooksPlugin.configs.recommended.rules,
+      '@typescript-eslint/no-unsafe-return': 0,
     },
   },
-
-  /**
-   * Static AST checker for accessibility rules on JSX elements.
-   * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
-   */
-  jsxA11y.flatConfigs.recommended,
-
-  /**
-   * Unicorn
-   */
+  // Inspired from : airbnbRules.typescript.typescriptEslintStrict
   {
-    plugins: {
-      unicorn: eslintPluginUnicorn,
+    name: 'airbnb/config/typescript/typescript-eslint/strict',
+    files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.d.ts', '**/*.cts'],
+    rules: {
+      // https://typescript-eslint.io/rules/consistent-type-imports
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          disallowTypeAnnotations: true,
+          fixStyle: 'inline-type-imports',
+          prefer: 'type-imports',
+        },
+      ],
+      // https://typescript-eslint.io/rules/ban-ts-comment
+      '@typescript-eslint/ban-ts-comment': [
+        'error',
+        {
+          minimumDescriptionLength: 3,
+          'ts-check': false,
+          'ts-expect-error': 'allow-with-description',
+          'ts-ignore': true,
+          'ts-nocheck': true,
+        },
+      ],
+      // https://typescript-eslint.io/rules/consistent-type-exports
+      '@typescript-eslint/consistent-type-exports': [
+        'error',
+        {
+          fixMixedExportsWithInlineTypeSpecifier: false,
+        },
+      ],
+      // https://typescript-eslint.io/rules/no-duplicate-type-constituents
+      '@typescript-eslint/no-duplicate-type-constituents': [
+        'error',
+        {
+          ignoreIntersections: false,
+          ignoreUnions: false,
+        },
+      ],
+      // https://typescript-eslint.io/rules/no-explicit-any
+      '@typescript-eslint/no-explicit-any': [
+        'error',
+        {
+          fixToUnknown: false,
+          ignoreRestArgs: false,
+        },
+      ],
     },
-    // rules: {
-    //   'unicorn/better-regex': 'error',
-    //   'unicorn/…': 'error',
-    // },
   },
-
-  /**
-   * From Airbnb
-   */
-  { rules: eslintConfigAirbnbReact.rules },
-  { rules: eslintConfigAirbnbReactA11y.rules },
-  { rules: eslintConfigAirbnbErrors.rules },
-  { rules: eslintConfigAirbnbEs6.rules },
-  { rules: eslintConfigAirbnbStrict.rules },
 
   /**
    * Storybook
@@ -102,8 +177,10 @@ export default tsEslint.config(
    */
   {
     rules: {
+      '@typescript-eslint/no-non-null-assertion': 0,
       'react-hooks/exhaustive-deps': 2,
       'import-x/no-named-as-default-member': 0,
+      'import-x/no-rename-default': 0,
       'react/no-object-type-as-default-prop': 0,
       'no-confusing-arrow': 0,
       'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx', '.ts'] }],
@@ -167,5 +244,19 @@ export default tsEslint.config(
   /**
    * Prettier
    */
-  eslintPluginPrettierRecommended,
+  // Prettier Plugin
+  {
+    name: 'prettier/plugin/config',
+    plugins: {
+      prettier: prettierPlugin,
+    },
+  },
+  // Prettier Config
+  {
+    name: 'prettier/config',
+    rules: {
+      ...prettierConfigRules,
+      'prettier/prettier': 'error',
+    },
+  },
 );

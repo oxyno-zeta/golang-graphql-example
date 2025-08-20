@@ -1,5 +1,5 @@
-import React, { UIEventHandler, useEffect, useState } from 'react';
-import MuiAutocomplete, { AutocompleteProps } from '@mui/material/Autocomplete';
+import React, { type UIEventHandler, useEffect, useState } from 'react';
+import MuiAutocomplete, { type AutocompleteProps } from '@mui/material/Autocomplete';
 
 // Imported and edited from issue: https://github.com/mui/material-ui/issues/30249
 

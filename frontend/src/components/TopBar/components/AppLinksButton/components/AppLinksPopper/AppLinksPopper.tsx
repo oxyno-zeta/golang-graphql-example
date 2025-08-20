@@ -1,16 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import Popper from '@mui/material/Popper';
 import Paper from '@mui/material/Paper';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import type { SxProps } from '@mui/material';
 
-export type Props = {
+export interface Props {
   readonly onClose: () => void;
   readonly open: boolean;
   readonly anchorElement: HTMLFormElement | HTMLButtonElement | null;
   readonly children: ReactNode;
   readonly popperSx?: SxProps;
-};
+}
 
 function AppLinksPopper({ onClose, open, anchorElement, children, popperSx = {} }: Props) {
   return (

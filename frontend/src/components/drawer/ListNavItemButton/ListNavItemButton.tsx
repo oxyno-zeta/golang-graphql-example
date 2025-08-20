@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { Link as RouterLink, useMatch, useResolvedPath } from 'react-router';
-import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButton';
+import ListItemButton, { type ListItemButtonProps } from '@mui/material/ListItemButton';
 
 export interface Props {
   readonly to: string;

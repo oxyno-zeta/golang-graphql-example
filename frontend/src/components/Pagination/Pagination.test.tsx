@@ -7,7 +7,7 @@ import { fireEvent, render } from '@testing-library/react';
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-import Pagination, { Props as PaginationProps } from './Pagination';
+import Pagination, { type Props as PaginationProps } from './Pagination';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),

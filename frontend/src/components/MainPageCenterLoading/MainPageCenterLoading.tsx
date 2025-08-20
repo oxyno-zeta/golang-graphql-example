@@ -1,7 +1,7 @@
 import React from 'react';
-import { Theme } from '@mui/material/styles';
-import Backdrop, { BackdropProps } from '@mui/material/Backdrop';
-import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
+import { type Theme } from '@mui/material/styles';
+import Backdrop, { type BackdropProps } from '@mui/material/Backdrop';
+import CircularProgress, { type CircularProgressProps } from '@mui/material/CircularProgress';
 
 export interface Props {
   readonly backdropProps?: Omit<BackdropProps, 'open'>;

@@ -33,12 +33,10 @@ export function setJSONObjectSearchParam(
   searchParams: URLSearchParams,
   setSearchParams: (
     nextInit: URLSearchParamsInit,
-    navigateOptions?:
-      | {
-          replace?: boolean | undefined;
-          state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-        }
-      | undefined,
+    navigateOptions?: {
+      replace?: boolean | undefined;
+      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    },
   ) => void,
 ) {
   // Stringify data
@@ -79,12 +77,10 @@ export function deleteAndSetSearchParam(
   searchParams: URLSearchParams,
   setSearchParams: (
     nextInit: URLSearchParamsInit,
-    navigateOptions?:
-      | {
-          replace?: boolean | undefined;
-          state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-        }
-      | undefined,
+    navigateOptions?: {
+      replace?: boolean | undefined;
+      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    },
   ) => void,
 ) {
   deleteAndSetSearchParams([key], searchParams, setSearchParams);
@@ -95,12 +91,10 @@ export function deleteAndSetSearchParams(
   searchParams: URLSearchParams,
   setSearchParams: (
     nextInit: URLSearchParamsInit,
-    navigateOptions?:
-      | {
-          replace?: boolean | undefined;
-          state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-        }
-      | undefined,
+    navigateOptions?: {
+      replace?: boolean | undefined;
+      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    },
   ) => void,
 ) {
   // Loop over keys

@@ -1,4 +1,5 @@
 // Copied from https://github.com/sindresorhus/array-move/blob/main/index.js
+// eslint-disable-next-line import-x/prefer-default-export
 export function arrayMoveItem<T>(array: T[], fromIndex: number, toIndex: number) {
   const startIndex = fromIndex < 0 ? array.length + fromIndex : fromIndex;
 

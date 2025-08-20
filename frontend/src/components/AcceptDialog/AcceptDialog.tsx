@@ -1,10 +1,10 @@
-import React, { ReactNode, useState } from 'react';
-import Button, { ButtonProps } from '@mui/material/Button';
-import Dialog, { DialogProps } from '@mui/material/Dialog';
-import DialogActions, { DialogActionsProps } from '@mui/material/DialogActions';
-import DialogContent, { DialogContentProps } from '@mui/material/DialogContent';
-import DialogContentText, { DialogContentTextProps } from '@mui/material/DialogContentText';
-import DialogTitle, { DialogTitleProps } from '@mui/material/DialogTitle';
+import React, { type ReactNode, useState } from 'react';
+import Button, { type ButtonProps } from '@mui/material/Button';
+import Dialog, { type DialogProps } from '@mui/material/Dialog';
+import DialogActions, { type DialogActionsProps } from '@mui/material/DialogActions';
+import DialogContent, { type DialogContentProps } from '@mui/material/DialogContent';
+import DialogContentText, { type DialogContentTextProps } from '@mui/material/DialogContentText';
+import DialogTitle, { type DialogTitleProps } from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
 
 export interface Props {

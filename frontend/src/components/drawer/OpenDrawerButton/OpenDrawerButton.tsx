@@ -1,5 +1,5 @@
 import React from 'react';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton, { type IconButtonProps } from '@mui/material/IconButton';
 import { mdiMenu } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';

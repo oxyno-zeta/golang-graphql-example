@@ -8,7 +8,7 @@ import SvgIcon from '@mui/material/SvgIcon';
 import { mdiDotsVertical } from '@mdi/js';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { TodoModel } from '../../../../models/todos';
+import { type TodoModel } from '../../../../models/todos';
 import { getDayjsTz } from '../../../../components/timezone/utils';
 import useTimezone from '../../../../components/timezone/useTimezone';
 

@@ -6,16 +6,16 @@ import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
 import FilterPopper from '../FilterPopper';
 import FilterDialog from '../FilterDialog';
-import { FilterDefinitionFieldsModel } from '../../../models/general';
-import { FilterValueObject, PredefinedFilter } from '../internal/types';
+import { type FilterDefinitionFieldsModel } from '../../../models/general';
+import { type FilterValueObject, type PredefinedFilter } from '../internal/types';
 
-export type Props<T extends FilterValueObject> = {
+export interface Props<T extends FilterValueObject> {
   readonly filter: undefined | null | T;
   readonly onSubmit: (f: T) => void;
   readonly filterDefinitionModel: FilterDefinitionFieldsModel;
   readonly predefinedFilterObjects?: PredefinedFilter[];
   readonly isAdvancedFilterPopperEnabled?: boolean;
-};
+}
 
 function FilterButton<T extends FilterValueObject>({
   filter,

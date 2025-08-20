@@ -8,10 +8,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import { FilterDefinitionFieldsModel } from '../../../../../models/general';
+import { type FilterDefinitionFieldsModel } from '../../../../../models/general';
 import FilterBuilder from '../FilterBuilder';
 import { buildFilterBuilderInitialItems } from '../../utils';
-import { BuilderInitialValueObject, FilterValueObject, PredefinedFilter } from '../../types';
+import { type BuilderInitialValueObject, type FilterValueObject, type PredefinedFilter } from '../../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import Typography, { type TypographyProps } from '@mui/material/Typography';
 
 export interface Props {
   readonly typographyProps?: TypographyProps;

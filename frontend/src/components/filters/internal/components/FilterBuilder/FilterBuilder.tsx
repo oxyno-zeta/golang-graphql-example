@@ -8,10 +8,15 @@ import { mdiPlus, mdiDelete, mdiPlusBoxMultiple } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'react-i18next';
-import { FilterDefinitionFieldsModel } from '../../../../../models/general';
+import { type FilterDefinitionFieldsModel } from '../../../../../models/general';
 import FilterBuilderField from '../FilterBuilderField';
 import { generateKey, buildFieldInitialValue, buildFilterBuilderInitialItems } from '../../utils';
-import { LineOrGroup, BuilderInitialValueObject, FieldInitialValueObject, FilterValueObject } from '../../types';
+import {
+  type LineOrGroup,
+  type BuilderInitialValueObject,
+  type FieldInitialValueObject,
+  type FilterValueObject,
+} from '../../types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

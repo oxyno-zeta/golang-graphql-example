@@ -2,17 +2,17 @@ import React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
-import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
+import { type SortOrderModel, type SortOrderFieldModel } from '../../../models/general';
 import SortForm from '../internal/SortForm';
 
-export type Props<T extends Record<string, SortOrderModel>> = {
+export interface Props<T extends Record<string, SortOrderModel>> {
   readonly onSubmit: (sort: T[]) => void;
   readonly onReset: () => void;
   readonly onClose: () => void;
   readonly open: boolean;
   readonly initialSorts: null | undefined | T[];
   readonly sortFields: SortOrderFieldModel[];
-};
+}
 
 function SortDialog<T extends Record<string, SortOrderModel>>({
   onSubmit,

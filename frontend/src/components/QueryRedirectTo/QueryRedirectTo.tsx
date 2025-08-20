@@ -1,10 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQuery, DocumentNode, QueryHookOptions, OperationVariables, type MaybeMasked } from '@apollo/client';
-import { useParams, Params, Navigate, NavigateProps } from 'react-router';
-import CenterLoading, { CenterLoadingProps } from '~components/CenterLoading';
-import ErrorsDisplay, { ErrorsDisplayProps } from '~components/ErrorsDisplay';
-import NoData, { NoDataTypographyProps } from '~components/NoData';
+import {
+  useQuery,
+  type DocumentNode,
+  type QueryHookOptions,
+  type OperationVariables,
+  type MaybeMasked,
+} from '@apollo/client';
+import { useParams, type Params, Navigate, type NavigateProps } from 'react-router';
+import CenterLoading, { type CenterLoadingProps } from '~components/CenterLoading';
+import ErrorsDisplay, { type ErrorsDisplayProps } from '~components/ErrorsDisplay';
+import NoData, { type NoDataTypographyProps } from '~components/NoData';
 
 export interface Props<T, P extends OperationVariables> {
   // Query document to execute.
@@ -14,7 +20,7 @@ export interface Props<T, P extends OperationVariables> {
   // If you don't want any "no data" displayed, manage the redirect path
   readonly buildNavigateTo: (params: MaybeMasked<T> | undefined) => string | undefined | null;
   // Build query variables function will return a query variable object.
-  readonly buildQueryVariables: (params: Params<string>) => P;
+  readonly buildQueryVariables: (params: Params) => P;
   // Disable center loading subtitle.
   readonly disableCenterLoadingSubtitle?: boolean;
   // Query hook options.

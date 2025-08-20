@@ -1,5 +1,5 @@
 import React from 'react';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import Typography, { type TypographyProps } from '@mui/material/Typography';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiHeart } from '@mdi/js';
 import Box from '@mui/material/Box';

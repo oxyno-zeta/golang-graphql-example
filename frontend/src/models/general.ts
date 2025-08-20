@@ -1,40 +1,40 @@
-export type PageInfoModel = {
+export interface PageInfoModel {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
   startCursor?: string;
   endCursor?: string;
-};
+}
 
-export type EdgeModel<T> = {
+export interface EdgeModel<T> {
   cursor: string;
   node: T;
-};
+}
 
-export type ConnectionModel<T> = {
+export interface ConnectionModel<T> {
   edges?: EdgeModel<T>[];
   pageInfo: PageInfoModel;
-};
+}
 
-export type PaginationInputModel = {
+export interface PaginationInputModel {
   first?: number;
   last?: number;
   before?: string;
   after?: string;
-};
+}
 
 export type SortOrderModel = 'ASC' | 'DESC' | undefined;
 export const SortOrderAsc = 'ASC';
 export const SortOrderDesc = 'DESC';
 export const SortQueryParamName = 'sorts';
 
-export type SortOrderFieldModel = {
+export interface SortOrderFieldModel {
   field: string;
   display: string;
-};
+}
 
 export const FilterQueryParamName = 'filter';
 
-export type StringFilterModel = {
+export interface StringFilterModel {
   eq?: string;
   notEq?: string;
   contains?: string;
@@ -48,11 +48,11 @@ export type StringFilterModel = {
   isNull?: boolean;
   isNotNull?: boolean;
   caseInsensitive?: boolean;
-};
+}
 
 // Note: This is called "IntFilter" but
 // it supports float !
-export type IntFilterModel = {
+export interface IntFilterModel {
   eq?: number;
   notEq?: number;
   gte?: number;
@@ -67,14 +67,14 @@ export type IntFilterModel = {
   notIn?: number[];
   isNull?: boolean;
   isNotNull?: boolean;
-};
+}
 
-export type BooleanFilterModel = {
+export interface BooleanFilterModel {
   eq?: boolean;
   notEq?: boolean;
-};
+}
 
-export type DateFilterModel = {
+export interface DateFilterModel {
   eq?: string;
   notEq?: string;
   gte?: string;
@@ -89,23 +89,23 @@ export type DateFilterModel = {
   isNotNull?: boolean;
   // For the moment, "In" and "NotIn" aren't supported
   // Because I don't know how to manage it in the GUI for the moment
-};
+}
 
-export type FilterDefinitionFieldObjectMetadataModel<T> = {
+export interface FilterDefinitionFieldObjectMetadataModel<T> {
   display: string;
   description?: string;
   operations: FilterDefinitionOperationsModel<T>;
-};
+}
 
 export type FilterDefinitionOperationsModel<T> = Record<string, FilterOperationMetadataModel<T>>;
 
-export type FilterDefinitionEnumObjectModel<T> = {
+export interface FilterDefinitionEnumObjectModel<T> {
   value: T;
   display: string;
   description?: string;
-};
+}
 
-export type FilterOperationMetadataModel<T> = {
+export interface FilterOperationMetadataModel<T> {
   display: string;
   description?: string;
   initialValue?: T | T[] | undefined | null | boolean;
@@ -118,13 +118,13 @@ export type FilterOperationMetadataModel<T> = {
   // Put that flag with "enumValues" for a multi select enum
   multipleSelect?: boolean;
   caseInsensitiveEnabled?: boolean;
-};
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type FilterDefinitionFieldsModel = Record<string, FilterDefinitionFieldObjectMetadataModel<any>>;
 
-export type YupTranslateErrorModel = {
+export interface YupTranslateErrorModel {
   key: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   values?: any;
-};
+}

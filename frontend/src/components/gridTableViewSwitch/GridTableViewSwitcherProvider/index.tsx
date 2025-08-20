@@ -1,5 +1,5 @@
 import GridTableViewSwitcherProvider, {
-  Props as GridTableViewSwitcherProviderProps,
+  type Props as GridTableViewSwitcherProviderProps,
 } from './GridTableViewSwitcherProvider';
 
 export default GridTableViewSwitcherProvider;

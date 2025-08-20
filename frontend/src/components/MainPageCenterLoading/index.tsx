@@ -1,4 +1,4 @@
-import MainPageCenterLoading, { Props as MainPageCenterLoadingProps } from './MainPageCenterLoading';
+import MainPageCenterLoading, { type Props as MainPageCenterLoadingProps } from './MainPageCenterLoading';
 
 export default MainPageCenterLoading;
 export type { MainPageCenterLoadingProps };

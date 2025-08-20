@@ -1,5 +1,5 @@
-import { GridSortModel, GridColDef, GridSortDirection } from '@mui/x-data-grid';
-import { SortOrderAsc, SortOrderDesc, SortOrderModel } from '../../../models/general';
+import { type GridSortModel, type GridColDef, type GridSortDirection } from '@mui/x-data-grid';
+import { SortOrderAsc, SortOrderDesc, type SortOrderModel } from '../../../models/general';
 
 interface GridSortItem {
   /**

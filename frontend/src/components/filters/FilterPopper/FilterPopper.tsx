@@ -6,10 +6,10 @@ import Paper from '@mui/material/Paper';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { useTranslation } from 'react-i18next';
 import FilterForm from '../internal/components/FilterForm';
-import { FilterDefinitionFieldsModel } from '../../../models/general';
-import { FilterValueObject, PredefinedFilter } from '../internal/types';
+import { type FilterDefinitionFieldsModel } from '../../../models/general';
+import { type FilterValueObject, type PredefinedFilter } from '../internal/types';
 
-export type Props<T extends FilterValueObject> = {
+export interface Props<T extends FilterValueObject> {
   readonly onSubmit: (filter: T) => void;
   readonly onReset: () => void;
   readonly onClose: () => void;
@@ -18,7 +18,7 @@ export type Props<T extends FilterValueObject> = {
   readonly predefinedFilterObjects?: PredefinedFilter[];
   readonly initialFilter?: undefined | null | T;
   readonly anchorElement: HTMLFormElement | HTMLButtonElement | null;
-};
+}
 
 function FilterPopper<T extends FilterValueObject>({
   filterDefinitionModel,

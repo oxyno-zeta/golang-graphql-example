@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import React, { type ReactNode } from 'react';
+import IconButton, { type IconButtonProps } from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiHelpCircle } from '@mdi/js';
-import ForcedTooltip, { ForcedTooltipProps } from '../ForcedTooltip';
+import ForcedTooltip, { type ForcedTooltipProps } from '../ForcedTooltip';
 
 export interface Props {
   readonly tooltipTitle: ReactNode;

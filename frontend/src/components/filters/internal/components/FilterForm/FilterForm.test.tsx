@@ -11,7 +11,12 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
-import { BooleanFilterModel, DateFilterModel, FilterDefinitionFieldsModel, StringFilterModel } from '~models/general';
+import {
+  type BooleanFilterModel,
+  type DateFilterModel,
+  type FilterDefinitionFieldsModel,
+  type StringFilterModel,
+} from '~models/general';
 import { booleanOperations, dateOperations, stringOperations } from '~models/general-operations';
 import FilterForm from './FilterForm';
 
@@ -20,13 +25,13 @@ dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-type TestFilterModel = {
+interface TestFilterModel {
   AND?: TestFilterModel[];
   OR?: TestFilterModel[];
   createdAt?: DateFilterModel;
   text?: StringFilterModel;
   done?: BooleanFilterModel;
-};
+}
 
 const testFilterDefinitionObject: FilterDefinitionFieldsModel = {
   createdAt: {
@@ -49,7 +54,7 @@ jest.mock('react-i18next', () => ({
 }));
 
 function generatePseudoRandomSuffix(random: number) {
-  return `${(random + 1).toString(36).substring(2)}`;
+  return (random + 1).toString(36).substring(2);
 }
 
 describe('filters/internal/FilterForm', () => {

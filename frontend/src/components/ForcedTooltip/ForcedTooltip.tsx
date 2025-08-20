@@ -1,5 +1,5 @@
-import React, { ReactElement, useState } from 'react';
-import MuiTooltip, { TooltipProps } from '@mui/material/Tooltip';
+import React, { type ReactElement, useState } from 'react';
+import MuiTooltip, { type TooltipProps } from '@mui/material/Tooltip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 export type Props = Omit<TooltipProps, 'onClose' | 'onOpen' | 'open' | 'children'> & {

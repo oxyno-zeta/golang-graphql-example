@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { render, waitFor } from '@testing-library/react';
 import { ApolloError, gql } from '@apollo/client';
-import { MockedProvider, MockedResponse } from '@apollo/client/testing';
+import { MockedProvider, type MockedResponse } from '@apollo/client/testing';
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)

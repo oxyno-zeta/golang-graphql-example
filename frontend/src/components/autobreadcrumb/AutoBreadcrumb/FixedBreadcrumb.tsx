@@ -9,7 +9,7 @@ interface Props {
   readonly breadcrumbData: BreadcrumbFixedDataConfig;
   readonly last: boolean;
   readonly pathname: string;
-  readonly params: Params<string>;
+  readonly params: Params;
   readonly disablePageTitle?: boolean;
 }
 

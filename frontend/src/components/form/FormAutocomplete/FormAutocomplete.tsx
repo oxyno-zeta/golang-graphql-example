@@ -1,24 +1,27 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Autocomplete, { AutocompleteProps } from '@mui/material/Autocomplete';
+import Autocomplete, { type AutocompleteProps } from '@mui/material/Autocomplete';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import TextField, { TextFieldProps } from '@mui/material/TextField';
+import TextField, { type TextFieldProps } from '@mui/material/TextField';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import { Control, useController, Path, FieldValues } from 'react-hook-form';
+import { type Control, useController, type Path, type FieldValues } from 'react-hook-form';
 import type { YupTranslateErrorModel } from '../../../models/general';
 
-type ValueModel = { display: string; value: string };
+interface ValueModel {
+  display: string;
+  value: string;
+}
 
-type Props<T extends FieldValues> = {
+interface Props<T extends FieldValues> {
   readonly control: Control<T>;
   readonly name: Path<T>;
   readonly values: ValueModel[];
   readonly autocompleteProps?: Partial<AutocompleteProps<ValueModel, false, false, false>>;
   readonly textFieldProps?: Partial<TextFieldProps>;
-};
+}
 
 /* eslint-disable react/no-array-index-key */
 function FormAutocomplete<T extends FieldValues>({
@@ -52,7 +55,7 @@ function FormAutocomplete<T extends FieldValues>({
       errorProps.helperText = fieldState.error.reduce((acc, v) => {
         const mess = v.message as YupTranslateErrorModel;
 
-        return `${acc} ${t(mess.key, mess.values)}` as string;
+        return `${acc} ${t(mess.key, mess.values)}`;
       }, '');
     }
   }
@@ -66,7 +69,7 @@ function FormAutocomplete<T extends FieldValues>({
   }
 
   return (
-    <Autocomplete<ValueModel, false, false, false>
+    <Autocomplete<ValueModel>
       clearText={t('common.clearAction')}
       closeText={t('common.closeAction')}
       getOptionLabel={(option: ValueModel | string) => {

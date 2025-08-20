@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import Button from '@mui/material/Button';
-import AcceptDialog, { Props } from './AcceptDialog';
+import AcceptDialog, { type Props } from './AcceptDialog';
 
 const storybookProps = {
   open: true,

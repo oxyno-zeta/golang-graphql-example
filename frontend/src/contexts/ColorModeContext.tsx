@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { PaletteMode } from '@mui/material';
+import { type PaletteMode } from '@mui/material';
 
 export interface ColorModeContextModel {
   toggleColorMode: () => void;

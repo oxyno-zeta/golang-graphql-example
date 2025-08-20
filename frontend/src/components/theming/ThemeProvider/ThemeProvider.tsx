@@ -1,7 +1,7 @@
-import React, { ReactNode, useState, useMemo, useContext } from 'react';
+import React, { type ReactNode, useState, useMemo, useContext } from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { ThemeProvider as MuiThemeProvider, createTheme, ThemeOptions } from '@mui/material/styles';
-import { PaletteMode } from '@mui/material';
+import { ThemeProvider as MuiThemeProvider, createTheme, type ThemeOptions } from '@mui/material/styles';
+import { type PaletteMode } from '@mui/material';
 import Cookies from 'universal-cookie';
 import ColorModeContext from '../../../contexts/ColorModeContext';
 import ConfigContext from '../../../contexts/ConfigContext';

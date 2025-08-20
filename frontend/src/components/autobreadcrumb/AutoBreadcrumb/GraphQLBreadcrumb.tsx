@@ -6,7 +6,7 @@ import type { BreadcrumbGraphQLDataConfig } from '../types';
 import FixedBreadcrumb from './FixedBreadcrumb';
 
 interface Props {
-  readonly params: Params<string>;
+  readonly params: Params;
   readonly breadcrumbData: BreadcrumbGraphQLDataConfig;
   readonly last: boolean;
   readonly pathname: string;
@@ -39,9 +39,10 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePage
   const text = breadcrumbData.getTextContent(data);
 
   // Create override computed path function if necessary
-  let overrideComputedPath: ((p: string, params: Params<string>) => string) | undefined = undefined;
+  let overrideComputedPath: ((p: string, params: Params) => string) | undefined;
   if (breadcrumbData.overrideComputedPath) {
-    overrideComputedPath = (p: string, params: Params<string>) => breadcrumbData.overrideComputedPath!(p, params, data);
+    overrideComputedPath = (p: string, inputParams: Params) =>
+      breadcrumbData.overrideComputedPath!(p, inputParams, data);
   }
 
   return (

@@ -1,7 +1,14 @@
-import React, { useContext, ReactNode } from 'react';
-import { ApolloClient, InMemoryCache, createHttpLink, ServerError, ApolloProvider, ApolloLink } from '@apollo/client';
+import React, { useContext, type ReactNode } from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  type ServerError,
+  ApolloProvider,
+  ApolloLink,
+} from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { ConfigModel } from '../../models/config';
+import { type ConfigModel } from '../../models/config';
 import ConfigContext from '../../contexts/ConfigContext';
 
 interface Props {

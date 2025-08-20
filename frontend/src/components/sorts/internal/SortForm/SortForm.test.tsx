@@ -7,7 +7,7 @@ import { mdiPlus, mdiDelete, mdiChevronDown, mdiChevronUp } from '@mdi/js';
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-import { SortOrderFieldModel, SortOrderModel } from '~models/general';
+import { type SortOrderFieldModel, type SortOrderModel } from '~models/general';
 import SortForm from './SortForm';
 
 const testSortFields: SortOrderFieldModel[] = [
@@ -15,11 +15,11 @@ const testSortFields: SortOrderFieldModel[] = [
   { field: 'updatedAt', display: 'common.fields.updatedAt' },
   { field: 'text', display: 'test.fields.text' },
 ];
-type TestSortOrderModel = {
+interface TestSortOrderModel {
   createdAt?: SortOrderModel;
   updatedAt?: SortOrderModel;
   text?: SortOrderModel;
-};
+}
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),

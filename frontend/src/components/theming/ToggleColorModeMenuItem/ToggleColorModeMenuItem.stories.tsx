@@ -1,10 +1,10 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import ThemeProvider from '~components/theming/ThemeProvider';
-import ToggleColorModeMenuItem, { Props } from './ToggleColorModeMenuItem';
+import ToggleColorModeMenuItem, { type Props } from './ToggleColorModeMenuItem';
 
 export default {
   title: 'Components/theming/ToggleColorModeMenuItem',

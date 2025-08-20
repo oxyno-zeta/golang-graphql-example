@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom';
 
 import { buildFieldInitialValue, buildFilterBuilderInitialItems } from './utils';
-import { BuilderInitialValueObject } from './types';
+import { type BuilderInitialValueObject } from './types';
 
 describe('buildFilterBuilderInitialItems', () => {
   test('should return an empty result when input is undefined', () => {

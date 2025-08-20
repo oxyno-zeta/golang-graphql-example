@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
-import { SortOrderModel, SortOrderFieldModel } from '../../../../models/general';
+import { type SortOrderModel, type SortOrderFieldModel } from '../../../../models/general';
 
 const valueOptions: { value: SortOrderModel; display: string }[] = [
   { value: 'ASC', display: 'common.sort.asc' },

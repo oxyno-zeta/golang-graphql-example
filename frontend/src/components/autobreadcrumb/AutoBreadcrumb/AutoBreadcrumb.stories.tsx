@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { Link, Outlet, MemoryRouter, Routes, Route } from 'react-router';
 import AutoBreadcrumb from './AutoBreadcrumb';
 import {

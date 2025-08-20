@@ -1,13 +1,13 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import { SortOrderFieldModel, SortOrderModel } from '~models/general';
-import SortButton, { Props } from './SortButton';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import { type SortOrderFieldModel, type SortOrderModel } from '~models/general';
+import SortButton, { type Props } from './SortButton';
 
-type TestSortOrderModel = {
+interface TestSortOrderModel {
   createdAt?: SortOrderModel;
   updatedAt?: SortOrderModel;
   text?: SortOrderModel;
-};
+}
 
 const testSortFields: SortOrderFieldModel[] = [
   { field: 'createdAt', display: 'common.fields.createdAt' },

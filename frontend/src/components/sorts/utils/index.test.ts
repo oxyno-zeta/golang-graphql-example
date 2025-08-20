@@ -3,9 +3,9 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-import { GridColDef, GridSortModel } from '@mui/x-data-grid';
-import { SortOrderModel } from '../../../models/general';
-import { buildMUIXSort, setMUIXSortBuilder } from './index';
+import { type GridColDef, type GridSortModel } from '@mui/x-data-grid';
+import { type SortOrderModel } from '../../../models/general';
+import { buildMUIXSort, setMUIXSortBuilder } from '.';
 
 describe('buildMUIXSort', () => {
   describe('two sortable columns', () => {

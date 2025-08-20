@@ -1,4 +1,4 @@
-import ToggleColorModeMenuItem, { Props as ToggleColorModeMenuItemProps } from './ToggleColorModeMenuItem';
+import ToggleColorModeMenuItem, { type Props as ToggleColorModeMenuItemProps } from './ToggleColorModeMenuItem';
 
 export default ToggleColorModeMenuItem;
 export type { ToggleColorModeMenuItemProps };

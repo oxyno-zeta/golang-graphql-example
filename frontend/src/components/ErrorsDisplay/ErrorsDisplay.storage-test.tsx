@@ -1,4 +1,4 @@
-import { ServerError } from '@apollo/client';
+import { type ServerError } from '@apollo/client';
 import { GraphQLError } from 'graphql';
 
 // Build data for tests

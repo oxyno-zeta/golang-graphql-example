@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import HelpTooltipButton, { Props } from './HelpTooltipButton';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import HelpTooltipButton, { type Props } from './HelpTooltipButton';
 
 export default {
   title: 'Components/HelpTooltipButton',

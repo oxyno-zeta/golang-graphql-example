@@ -1,4 +1,4 @@
-import { StringFilterModel } from '../../../models/general';
+import { type StringFilterModel } from '../../../models/general';
 
 export function onMainSearchChangeContains<T>(
   filterKey: keyof Omit<T, 'AND' | 'OR'>,

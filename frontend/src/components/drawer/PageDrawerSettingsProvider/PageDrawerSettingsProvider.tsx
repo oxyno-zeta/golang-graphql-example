@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useMemo, useState } from 'react';
+import React, { type ReactNode, useContext, useMemo, useState } from 'react';
 import Cookies from 'universal-cookie';
 import PageDrawerSettingsContext from '~contexts/PageDrawerSettingsContext';
 import ConfigContext from '~contexts/ConfigContext';

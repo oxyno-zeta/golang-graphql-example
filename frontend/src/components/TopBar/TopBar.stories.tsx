@@ -1,18 +1,18 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { withRouter } from 'storybook-addon-remix-react-router';
 import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import TimezoneProvider from '~components/timezone/TimezoneProvider';
+import { List, SvgIcon } from '@mui/material';
+import { mdiAbacus } from '@mdi/js';
 import ConfigContext from '../../contexts/ConfigContext';
 import { defaultConfig } from '../../models/config';
 import TopBar from './TopBar';
 import FakeUserInfo from './components/FakeUserInfo';
 import AppLinkListItemButton from './components/AppLinkListItemButton';
-import { List, SvgIcon } from '@mui/material';
-import { mdiAbacus } from '@mdi/js';
 import TopBarSpacer from './TopBarSpacer';
 
 // Extend dayjs

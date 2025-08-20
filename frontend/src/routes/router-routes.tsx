@@ -31,7 +31,7 @@ interface QueryVariables {
 const buildNavigateTo = (params?: QueryResult) =>
   params?.todos?.edges && params?.todos?.edges[0] && `/fake/${params?.todos?.edges[0].node.id}`;
 
-const buildQueryVariables = (params: Params<string>) => ({ name: params.name as string });
+const buildQueryVariables = (params: Params) => ({ name: params.name as string });
 
 const router: RouteObject[] = [
   {

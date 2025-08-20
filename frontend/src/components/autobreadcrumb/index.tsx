@@ -1,9 +1,9 @@
 import {
-  BreadcrumbData,
-  BreadcrumbFixedData,
-  BreadcrumbFixedDataConfig,
-  BreadcrumbGraphQLData,
-  BreadcrumbGraphQLDataConfig,
+  type BreadcrumbData,
+  type BreadcrumbFixedData,
+  type BreadcrumbFixedDataConfig,
+  type BreadcrumbGraphQLData,
+  type BreadcrumbGraphQLDataConfig,
 } from './types';
 import AutoBreadcrumb from './AutoBreadcrumb';
 

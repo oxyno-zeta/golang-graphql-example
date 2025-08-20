@@ -1,7 +1,7 @@
-import React, { Key, ReactNode } from 'react';
-import Typography, { TypographyProps } from '@mui/material/Typography';
+import React, { type Key, type ReactNode } from 'react';
+import Typography, { type TypographyProps } from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { ApolloError, ServerError } from '@apollo/client';
+import { type ApolloError, type ServerError } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
 import {
@@ -25,7 +25,7 @@ export interface Props {
 
 export interface CustomNetworkError {
   message: string;
-  path: null | undefined | ReadonlyArray<string | number>;
+  path: null | undefined | readonly (string | number)[];
 }
 
 function ErrorsDisplay({

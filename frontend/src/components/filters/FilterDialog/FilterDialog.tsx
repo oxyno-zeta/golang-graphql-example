@@ -6,10 +6,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
 import FilterForm from '../internal/components/FilterForm';
-import { FilterDefinitionFieldsModel } from '../../../models/general';
-import { FilterValueObject, PredefinedFilter } from '../internal/types';
+import { type FilterDefinitionFieldsModel } from '../../../models/general';
+import { type FilterValueObject, type PredefinedFilter } from '../internal/types';
 
-export type Props<T extends FilterValueObject> = {
+export interface Props<T extends FilterValueObject> {
   readonly onSubmit: (filter: T) => void;
   readonly onReset: () => void;
   readonly onClose: () => void;
@@ -17,7 +17,7 @@ export type Props<T extends FilterValueObject> = {
   readonly filterDefinitionModel: FilterDefinitionFieldsModel;
   readonly predefinedFilterObjects?: PredefinedFilter[];
   readonly initialFilter?: undefined | null | T;
-};
+}
 
 function FilterDialog<T extends FilterValueObject>({
   filterDefinitionModel,

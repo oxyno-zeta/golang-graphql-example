@@ -41,9 +41,9 @@ function buildLogoutURL(signOutURLString: string, oidcClientID: string) {
   return `/oauth2/sign_out?rd=${targetEncodedURI}`;
 }
 
-export type TopBarUserMenuProps = {
+export interface TopBarUserMenuProps {
   readonly UserInfoComponent?: React.ElementType;
-};
+}
 
 function TopBarUserMenu({ UserInfoComponent = undefined }: TopBarUserMenuProps) {
   // Setup translate

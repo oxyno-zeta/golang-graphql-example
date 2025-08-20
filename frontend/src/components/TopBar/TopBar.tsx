@@ -1,4 +1,4 @@
-import React, { ElementType, ReactNode } from 'react';
+import React, { type ElementType, type ReactNode } from 'react';
 import { Link } from 'react-router';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,13 +8,13 @@ import { useTranslation } from 'react-i18next';
 import TopBarUserMenu, { type TopBarUserMenuProps } from './TopBarUserMenu';
 import AppLinksButton from './components/AppLinksButton';
 
-export type TopBarProps = {
+export interface TopBarProps {
   readonly TopBarUserMenuComponent?: ElementType;
   readonly topBarUserMenuProps?: TopBarUserMenuProps;
   readonly disableUserMenu?: boolean;
   readonly appLinksElement?: ReactNode;
   readonly avatarElement?: ReactNode;
-};
+}
 
 function TopBar({
   TopBarUserMenuComponent = TopBarUserMenu,

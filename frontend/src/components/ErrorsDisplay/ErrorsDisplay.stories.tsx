@@ -1,7 +1,7 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { ApolloError } from '@apollo/client';
-import ErrorsDisplay, { Props } from './ErrorsDisplay';
+import ErrorsDisplay, { type Props } from './ErrorsDisplay';
 import {
   forbiddenNetworkError,
   simpleForbiddenGraphqlError,

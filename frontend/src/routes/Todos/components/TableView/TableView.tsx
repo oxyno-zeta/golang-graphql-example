@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
+import { DataGrid, type GridColDef, type GridRowParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiPencil, mdiDelete } from '@mdi/js';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import { TodoModel, TodoSortOrderModel } from '../../../../models/todos';
-import { ConnectionModel } from '../../../../models/general';
+import { type TodoModel, type TodoSortOrderModel } from '../../../../models/todos';
+import { type ConnectionModel } from '../../../../models/general';
 import getDataGridCommonProps from '../../../../utils/dataGridCommon';
 import { buildMUIXSort, setMUIXSortBuilder } from '../../../../components/sorts/utils';
 import useTimezone from '../../../../components/timezone/useTimezone';

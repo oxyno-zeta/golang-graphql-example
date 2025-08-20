@@ -1,11 +1,11 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { type ReactNode, useContext } from 'react';
 import TextField from '@mui/material/TextField';
-import Autocomplete, { AutocompleteProps, AutocompleteRenderOptionState } from '@mui/material/Autocomplete';
+import Autocomplete, { type AutocompleteProps, type AutocompleteRenderOptionState } from '@mui/material/Autocomplete';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { useTranslation } from 'react-i18next';
-import { VariableSizeList, ListChildComponentProps } from 'react-window';
+import { VariableSizeList, type ListChildComponentProps } from 'react-window';
 import ListSubheader from '@mui/material/ListSubheader';
 import { availableTimezones, getTimeZone } from '../utils';
 import TimezoneContext from '../../../contexts/TimezoneContext';

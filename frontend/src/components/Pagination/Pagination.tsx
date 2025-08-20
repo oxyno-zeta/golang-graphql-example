@@ -1,12 +1,12 @@
-import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
-import { Link, useHref, useLocation, createSearchParams, useSearchParams, LinkProps } from 'react-router';
+import React, { type ForwardRefExoticComponent, type RefAttributes } from 'react';
+import { Link, useHref, useLocation, createSearchParams, useSearchParams, type LinkProps } from 'react-router';
 import { mdiChevronLeft, mdiChevronRight, mdiChevronDoubleLeft } from '@mdi/js';
 import SvgIcon from '@mui/material/SvgIcon';
 import Tooltip from '@mui/material/Tooltip';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Toolbar, { ToolbarProps } from '@mui/material/Toolbar';
+import IconButton, { type IconButtonProps } from '@mui/material/IconButton';
+import Toolbar, { type ToolbarProps } from '@mui/material/Toolbar';
 import { useTranslation } from 'react-i18next';
-import { PageInfoModel } from '../../models/general';
+import { type PageInfoModel } from '../../models/general';
 import { getAllSearchParams } from '../../utils/urlSearchParams';
 import { cleanPaginationSearchParams } from '../../utils/pagination';
 
@@ -25,11 +25,11 @@ export interface Props {
   readonly nextIconButtonProps?: IconButtonProps;
 }
 
-type IconButtonInternalProps = {
+interface IconButtonInternalProps {
   to?: string;
   component?: ForwardRefExoticComponent<LinkProps & RefAttributes<HTMLAnchorElement>>;
   onClick?: () => void;
-};
+}
 
 function Pagination({
   maxPaginationSize,

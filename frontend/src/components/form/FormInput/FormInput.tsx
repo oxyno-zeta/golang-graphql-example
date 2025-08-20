@@ -1,14 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import TextField, { TextFieldProps } from '@mui/material/TextField';
-import { Control, useController, Path, FieldValues } from 'react-hook-form';
+import TextField, { type TextFieldProps } from '@mui/material/TextField';
+import { type Control, useController, type Path, type FieldValues } from 'react-hook-form';
 import type { YupTranslateErrorModel } from '../../../models/general';
 
-type Props<T extends FieldValues> = {
+interface Props<T extends FieldValues> {
   readonly control: Control<T>;
   readonly name: Path<T>;
   readonly textFieldProps?: TextFieldProps;
-};
+}
 
 function FormInput<T extends FieldValues>({ control, name, textFieldProps = {} }: Props<T>) {
   // Setup translate
@@ -35,7 +35,7 @@ function FormInput<T extends FieldValues>({ control, name, textFieldProps = {} }
       errorProps.helperText = fieldState.error.reduce((acc, v) => {
         const mess = v.message as YupTranslateErrorModel;
 
-        return `${acc} ${t(mess.key, mess.values)}` as string;
+        return `${acc} ${t(mess.key, mess.values)}`;
       }, '');
     }
   }

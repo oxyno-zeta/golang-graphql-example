@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useMemo, useContext } from 'react';
+import React, { type ReactNode, useState, useMemo, useContext } from 'react';
 import Cookies from 'universal-cookie';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';

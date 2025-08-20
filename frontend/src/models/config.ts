@@ -1,4 +1,4 @@
-export type ConfigModel = {
+export interface ConfigModel {
   // Graphql Endpoint
   graphqlEndpoint: string;
   // Configuration cookie domain
@@ -13,9 +13,9 @@ export type ConfigModel = {
   // TODO Waiting for Keycloak v19 but code is ready
   oidcSignOutURL?: string;
   oidcClientID?: string;
-};
+}
 
 export const defaultConfig: ConfigModel = {
   graphqlEndpoint: '/api/graphql',
-  configCookieDomain: location.hostname,
+  configCookieDomain: window.location.hostname,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import NotFoundRoute, { Props } from './NotFoundRoute';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import NotFoundRoute, { type Props } from './NotFoundRoute';
 
 export default {
   title: 'Components/NotFoundRoute',

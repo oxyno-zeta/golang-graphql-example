@@ -28,4 +28,4 @@ export type FilterValueObject = {
   OR?: FilterValueObject[];
 } & Record<string, FieldOperationValueObject>;
 
-export type FieldOperationValueObject = { [key: string]: any };
+export type FieldOperationValueObject = Record<string, any>;

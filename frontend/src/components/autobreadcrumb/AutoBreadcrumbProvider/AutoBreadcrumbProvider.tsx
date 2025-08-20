@@ -9,8 +9,8 @@ interface Props {
 function AutoBreadcrumbProvider({ children }: Props) {
   const [state, setState] = useState<BreadcrumbData[]>([]);
 
-  const contextValue: AutoBreadcrumbContextModel = useMemo(() => {
-    return {
+  const contextValue: AutoBreadcrumbContextModel = useMemo(
+    () => ({
       pushAutoBreadcrumb: (input: BreadcrumbData) => {
         setState((s) => {
           if (s.some((v: BreadcrumbData) => v.id === input.id)) {
@@ -49,8 +49,9 @@ function AutoBreadcrumbProvider({ children }: Props) {
         setState((s) => s.filter((v) => v.id !== input.id));
       },
       getBreadcrumbData: () => state,
-    };
-  }, [state, setState]);
+    }),
+    [state, setState],
+  );
 
   return <AutoBreadcrumbContext.Provider value={contextValue}>{children}</AutoBreadcrumbContext.Provider>;
 }

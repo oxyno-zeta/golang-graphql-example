@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import GridTableViewSwitcher, { Props } from './GridTableViewSwitcher';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import GridTableViewSwitcher, { type Props } from './GridTableViewSwitcher';
 import GridTableViewSwitcherProvider from '../GridTableViewSwitcherProvider';
 
 export default {

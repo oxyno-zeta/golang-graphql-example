@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import type { SxProps } from '@mui/material';
 import { TopBarSpacer } from '../TopBar';

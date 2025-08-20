@@ -2,10 +2,10 @@ import React from 'react';
 import Popper from '@mui/material/Popper';
 import Paper from '@mui/material/Paper';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
+import { type SortOrderModel, type SortOrderFieldModel } from '../../../models/general';
 import SortForm from '../internal/SortForm';
 
-export type Props<T extends Record<string, SortOrderModel>> = {
+export interface Props<T extends Record<string, SortOrderModel>> {
   readonly onSubmit: (sort: T[]) => void;
   readonly onReset: () => void;
   readonly onClose: () => void;
@@ -13,7 +13,7 @@ export type Props<T extends Record<string, SortOrderModel>> = {
   readonly anchorElement: HTMLButtonElement | null;
   readonly initialSorts: null | undefined | T[];
   readonly sortFields: SortOrderFieldModel[];
-};
+}
 
 function SortPopper<T extends Record<string, SortOrderModel>>({
   onSubmit,

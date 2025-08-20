@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import InfoForcedTooltip, { Props } from './InfoForcedTooltip';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import InfoForcedTooltip, { type Props } from './InfoForcedTooltip';
 
 export default {
   title: 'Components/InfoForcedTooltip',

@@ -4,16 +4,16 @@ import Tooltip from '@mui/material/Tooltip';
 import SvgIcon from '@mui/material/SvgIcon';
 import { mdiSortVariant } from '@mdi/js';
 import { useTranslation } from 'react-i18next';
-import { SortOrderModel, SortOrderFieldModel } from '../../../models/general';
+import { type SortOrderModel, type SortOrderFieldModel } from '../../../models/general';
 import SortPopper from '../SortPopper';
 import SortDialog from '../SortDialog';
 
-export type Props<T extends Record<string, SortOrderModel>> = {
+export interface Props<T extends Record<string, SortOrderModel>> {
   readonly sorts: null | undefined | T[];
   readonly onSubmit: (s: T[]) => void;
   readonly sortFields: SortOrderFieldModel[];
   readonly isPopperEnabled?: boolean;
-};
+}
 
 function SortButton<T extends Record<string, SortOrderModel>>({
   sorts,

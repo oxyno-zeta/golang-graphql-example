@@ -1,6 +1,6 @@
 import React from 'react';
-import { StoryFn, Meta } from '@storybook/react-vite';
-import NoData, { Props } from './NoData';
+import { type StoryFn, type Meta } from '@storybook/react-vite';
+import NoData, { type Props } from './NoData';
 
 export default {
   title: 'Components/NoData',

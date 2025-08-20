@@ -1,4 +1,4 @@
-import FilterBuilderField, { Props as FilterBuilderFieldProps } from './FilterBuilderField';
+import FilterBuilderField, { type Props as FilterBuilderFieldProps } from './FilterBuilderField';
 
 export default FilterBuilderField;
 export type { FilterBuilderFieldProps };
