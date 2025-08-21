@@ -43,7 +43,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.37.0
 	go.uber.org/automaxprocs v1.6.0
 	go.uber.org/goleak v1.3.0
-	go.uber.org/mock v0.5.2
+	go.uber.org/mock v0.6.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/oauth2 v0.30.0
 	gorm.io/driver/postgres v1.6.0
