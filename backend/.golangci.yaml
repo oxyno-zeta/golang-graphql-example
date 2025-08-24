@@ -400,6 +400,7 @@ linters:
         path: pkg/.*/common/errors/.*\.go
     paths:
       - tools/generator/modeltagsgen
+      - tools/generator/daogen
       - third_party$
       - builtin$
       - examples$
