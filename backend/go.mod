@@ -29,7 +29,7 @@ require (
 	github.com/samber/lo v1.51.0
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.1
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.0
 	github.com/thoas/go-funk v0.9.3
 	github.com/vektah/gqlparser/v2 v2.5.30
 	github.com/xhit/go-simple-mail/v2 v2.16.0
