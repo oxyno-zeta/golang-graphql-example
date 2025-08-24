@@ -30,6 +30,6 @@
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "vite.config.mts", "jest.config.mts"],
+  "exclude": ["node_modules", "vite.config.mts", "jest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
