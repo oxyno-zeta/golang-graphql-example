@@ -44,7 +44,7 @@ func loadConfig() (*Config, error) {
 	}
 
 	// Build configuration path
-	cfgPath := path.Join(cwd, "daogen.yml")
+	cfgPath := path.Join(cwd, ".daogen.yml")
 
 	// Read file
 	yamlFile, err := os.ReadFile(cfgPath)
