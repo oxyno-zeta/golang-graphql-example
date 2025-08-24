@@ -42,78 +42,181 @@ func (m *MockDao) EXPECT() *MockDaoMockRecorder {
 	return m.recorder
 }
 
-// CreateOrUpdate mocks base method.
-func (m *MockDao) CreateOrUpdate(ctx context.Context, tt *models.Todo) (*models.Todo, error) {
+// CountTodo mocks base method.
+func (m *MockDao) CountTodo(ctx context.Context, filter *models.Filter) (int64, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateOrUpdate", ctx, tt)
+	ret := m.ctrl.Call(m, "CountTodo", ctx, filter)
+	ret0, _ := ret[0].(int64)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CountTodo indicates an expected call of CountTodo.
+func (mr *MockDaoMockRecorder) CountTodo(ctx, filter any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CountTodo", reflect.TypeOf((*MockDao)(nil).CountTodo), ctx, filter)
+}
+
+// CountTodoPaginated mocks base method.
+func (m *MockDao) CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models.Filter) (int64, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "CountTodoPaginated", ctx, page, filter)
+	ret0, _ := ret[0].(int64)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CountTodoPaginated indicates an expected call of CountTodoPaginated.
+func (mr *MockDaoMockRecorder) CountTodoPaginated(ctx, page, filter any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CountTodoPaginated", reflect.TypeOf((*MockDao)(nil).CountTodoPaginated), ctx, page, filter)
+}
+
+// CreateOrUpdateTodo mocks base method.
+func (m *MockDao) CreateOrUpdateTodo(ctx context.Context, input *models.Todo) (*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "CreateOrUpdateTodo", ctx, input)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// CreateOrUpdate indicates an expected call of CreateOrUpdate.
-func (mr *MockDaoMockRecorder) CreateOrUpdate(ctx, tt any) *gomock.Call {
+// CreateOrUpdateTodo indicates an expected call of CreateOrUpdateTodo.
+func (mr *MockDaoMockRecorder) CreateOrUpdateTodo(ctx, input any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrUpdate", reflect.TypeOf((*MockDao)(nil).CreateOrUpdate), ctx, tt)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateOrUpdateTodo", reflect.TypeOf((*MockDao)(nil).CreateOrUpdateTodo), ctx, input)
 }
 
-// Find mocks base method.
-func (m *MockDao) Find(ctx context.Context, sort []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, error) {
+// FindAllTodo mocks base method.
+func (m *MockDao) FindAllTodo(ctx context.Context, sorts []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Find", ctx, sort, filter, projection)
+	ret := m.ctrl.Call(m, "FindAllTodo", ctx, sorts, filter, projection)
 	ret0, _ := ret[0].([]*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// Find indicates an expected call of Find.
-func (mr *MockDaoMockRecorder) Find(ctx, sort, filter, projection any) *gomock.Call {
+// FindAllTodo indicates an expected call of FindAllTodo.
+func (mr *MockDaoMockRecorder) FindAllTodo(ctx, sorts, filter, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Find", reflect.TypeOf((*MockDao)(nil).Find), ctx, sort, filter, projection)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindAllTodo", reflect.TypeOf((*MockDao)(nil).FindAllTodo), ctx, sorts, filter, projection)
 }
 
-// FindByID mocks base method.
-func (m *MockDao) FindByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
+// FindOneTodo mocks base method.
+func (m *MockDao) FindOneTodo(ctx context.Context, sorts []*models.SortOrder, filter *models.Filter, projection *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "FindByID", ctx, id, projection)
+	ret := m.ctrl.Call(m, "FindOneTodo", ctx, sorts, filter, projection)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// FindByID indicates an expected call of FindByID.
-func (mr *MockDaoMockRecorder) FindByID(ctx, id, projection any) *gomock.Call {
+// FindOneTodo indicates an expected call of FindOneTodo.
+func (mr *MockDaoMockRecorder) FindOneTodo(ctx, sorts, filter, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByID", reflect.TypeOf((*MockDao)(nil).FindByID), ctx, id, projection)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindOneTodo", reflect.TypeOf((*MockDao)(nil).FindOneTodo), ctx, sorts, filter, projection)
 }
 
-// GetAllPaginated mocks base method.
-func (m *MockDao) GetAllPaginated(ctx context.Context, page *pagination.PageInput, sort []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
+// FindTodoByID mocks base method.
+func (m *MockDao) FindTodoByID(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetAllPaginated", ctx, page, sort, filter, projection)
+	ret := m.ctrl.Call(m, "FindTodoByID", ctx, id, projection)
+	ret0, _ := ret[0].(*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindTodoByID indicates an expected call of FindTodoByID.
+func (mr *MockDaoMockRecorder) FindTodoByID(ctx, id, projection any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindTodoByID", reflect.TypeOf((*MockDao)(nil).FindTodoByID), ctx, id, projection)
+}
+
+// FindTodoPaginated mocks base method.
+func (m *MockDao) FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, *pagination.PageOutput, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FindTodoPaginated", ctx, page, sorts, filter, projection)
 	ret0, _ := ret[0].([]*models.Todo)
 	ret1, _ := ret[1].(*pagination.PageOutput)
 	ret2, _ := ret[2].(error)
 	return ret0, ret1, ret2
 }
 
-// GetAllPaginated indicates an expected call of GetAllPaginated.
-func (mr *MockDaoMockRecorder) GetAllPaginated(ctx, page, sort, filter, projection any) *gomock.Call {
+// FindTodoPaginated indicates an expected call of FindTodoPaginated.
+func (mr *MockDaoMockRecorder) FindTodoPaginated(ctx, page, sorts, filter, projection any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAllPaginated", reflect.TypeOf((*MockDao)(nil).GetAllPaginated), ctx, page, sort, filter, projection)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindTodoPaginated", reflect.TypeOf((*MockDao)(nil).FindTodoPaginated), ctx, page, sorts, filter, projection)
 }
 
-// PatchUpdate mocks base method.
-func (m *MockDao) PatchUpdate(ctx context.Context, tt *models.Todo, input map[string]any) (*models.Todo, error) {
+// FindTodoWithPagination mocks base method.
+func (m *MockDao) FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models.SortOrder, filter *models.Filter, projection *models.Projection) ([]*models.Todo, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "PatchUpdate", ctx, tt, input)
+	ret := m.ctrl.Call(m, "FindTodoWithPagination", ctx, page, sorts, filter, projection)
+	ret0, _ := ret[0].([]*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindTodoWithPagination indicates an expected call of FindTodoWithPagination.
+func (mr *MockDaoMockRecorder) FindTodoWithPagination(ctx, page, sorts, filter, projection any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindTodoWithPagination", reflect.TypeOf((*MockDao)(nil).FindTodoWithPagination), ctx, page, sorts, filter, projection)
+}
+
+// PatchUpdateTodo mocks base method.
+func (m *MockDao) PatchUpdateTodo(ctx context.Context, input *models.Todo, patch map[string]any) (*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PatchUpdateTodo", ctx, input, patch)
 	ret0, _ := ret[0].(*models.Todo)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// PatchUpdate indicates an expected call of PatchUpdate.
-func (mr *MockDaoMockRecorder) PatchUpdate(ctx, tt, input any) *gomock.Call {
+// PatchUpdateTodo indicates an expected call of PatchUpdateTodo.
+func (mr *MockDaoMockRecorder) PatchUpdateTodo(ctx, input, patch any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PatchUpdate", reflect.TypeOf((*MockDao)(nil).PatchUpdate), ctx, tt, input)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PatchUpdateTodo", reflect.TypeOf((*MockDao)(nil).PatchUpdateTodo), ctx, input, patch)
+}
+
+// PatchUpdateTodoFiltered mocks base method.
+func (m *MockDao) PatchUpdateTodoFiltered(ctx context.Context, filter *models.Filter, patch map[string]any) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PatchUpdateTodoFiltered", ctx, filter, patch)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// PatchUpdateTodoFiltered indicates an expected call of PatchUpdateTodoFiltered.
+func (mr *MockDaoMockRecorder) PatchUpdateTodoFiltered(ctx, filter, patch any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PatchUpdateTodoFiltered", reflect.TypeOf((*MockDao)(nil).PatchUpdateTodoFiltered), ctx, filter, patch)
+}
+
+// PermanentDeleteTodo mocks base method.
+func (m *MockDao) PermanentDeleteTodo(ctx context.Context, input *models.Todo) (*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PermanentDeleteTodo", ctx, input)
+	ret0, _ := ret[0].(*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PermanentDeleteTodo indicates an expected call of PermanentDeleteTodo.
+func (mr *MockDaoMockRecorder) PermanentDeleteTodo(ctx, input any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PermanentDeleteTodo", reflect.TypeOf((*MockDao)(nil).PermanentDeleteTodo), ctx, input)
+}
+
+// PermanentDeleteTodoFiltered mocks base method.
+func (m *MockDao) PermanentDeleteTodoFiltered(ctx context.Context, filter *models.Filter) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PermanentDeleteTodoFiltered", ctx, filter)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// PermanentDeleteTodoFiltered indicates an expected call of PermanentDeleteTodoFiltered.
+func (mr *MockDaoMockRecorder) PermanentDeleteTodoFiltered(ctx, filter any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PermanentDeleteTodoFiltered", reflect.TypeOf((*MockDao)(nil).PermanentDeleteTodoFiltered), ctx, filter)
 }

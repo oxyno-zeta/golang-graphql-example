@@ -35,7 +35,7 @@ func (s *service) FindByID(
 	}
 
 	// Find by id
-	res, err := s.dao.FindByID(ctx, id, projection)
+	res, err := s.dao.FindTodoByID(ctx, id, projection)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func (s *service) Find(
 	filter *models.Filter,
 	projection *models.Projection,
 ) ([]*models.Todo, error) {
-	return s.dao.Find(ctx, sort, filter, projection)
+	return s.dao.FindAllTodo(ctx, sort, filter, projection)
 }
 
 func (s *service) GetAllPaginated(
@@ -71,7 +71,7 @@ func (s *service) GetAllPaginated(
 		return nil, nil, err
 	}
 
-	return s.dao.GetAllPaginated(ctx, page, sort, filter, projection)
+	return s.dao.FindTodoPaginated(ctx, page, sort, filter, projection)
 }
 
 func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error) {
@@ -90,7 +90,7 @@ func (s *service) Create(ctx context.Context, inp *InputCreateTodo) (*models.Tod
 		Text: inp.Text,
 	}
 
-	return s.dao.CreateOrUpdate(ctx, tt)
+	return s.dao.CreateOrUpdateTodo(ctx, tt)
 }
 
 func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error) {
@@ -106,14 +106,14 @@ func (s *service) Update(ctx context.Context, inp *InputUpdateTodo) (*models.Tod
 	}
 
 	// Search by id first
-	tt, err := s.dao.FindByID(ctx, inp.ID, nil)
+	tt, err := s.dao.FindTodoByID(ctx, inp.ID, nil)
 	if err != nil {
 		return nil, err
 	}
 	// Update text in existing result
 	tt.Text = inp.Text
 	// Save
-	return s.dao.CreateOrUpdate(ctx, tt)
+	return s.dao.CreateOrUpdateTodo(ctx, tt)
 }
 
 func (s *service) Close(
@@ -138,13 +138,13 @@ func (s *service) Close(
 	// Create transaction
 	err = s.dbSvc.ExecuteTransaction(ctx, func(ctx context.Context) error {
 		// Search by id first
-		tt, err2 := s.dao.FindByID(ctx, id, projection)
+		tt, err2 := s.dao.FindTodoByID(ctx, id, projection)
 		// Check error
 		if err2 != nil {
 			return err2
 		}
 		// Save
-		res, err2 = s.dao.PatchUpdate(
+		res, err2 = s.dao.PatchUpdateTodo(
 			ctx,
 			tt,
 			map[string]any{models.TodoDoneJSONKeyName: false},

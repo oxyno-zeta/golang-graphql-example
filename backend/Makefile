@@ -111,6 +111,7 @@ code/graphql/generate: setup/dep/gen/install
 
 .PHONY: code/generate
 code/generate: setup/dep/gen/install
+	$(GO) $(GO_VENDOR) run ./tools/generator/daogen/
 	$(GO) $(GO_VENDOR) generate ./...
 
 .PHONY: code/graphql

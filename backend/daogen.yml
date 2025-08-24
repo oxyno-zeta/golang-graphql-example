@@ -1,0 +1,15 @@
+neededPackages:
+  db: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database
+  pagination: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination
+  helpers: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/helpers
+daos:
+  - path: ./pkg/golang-graphql-example/business/todos/daos
+    packageName: daos
+    # Optional
+    interfaceName: Dao
+    models:
+      - package: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models
+        structureName: Todo
+        projectionStructureName: Projection
+        sortOrderStructureName: SortOrder
+        filterStructureName: Filter
