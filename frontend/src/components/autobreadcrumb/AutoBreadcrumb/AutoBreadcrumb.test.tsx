@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react';
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-import { MockedProvider } from '@apollo/client/testing';
+import { MockedProvider } from '@apollo/client/testing/react';
 import {
   SimpleErrorQuery,
   SimpleQuery1,

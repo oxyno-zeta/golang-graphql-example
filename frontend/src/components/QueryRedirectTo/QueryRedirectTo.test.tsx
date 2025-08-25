@@ -1,8 +1,9 @@
 import React, { type ReactNode } from 'react';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { render, waitFor } from '@testing-library/react';
-import { ApolloError, gql } from '@apollo/client';
-import { MockedProvider, type MockedResponse } from '@apollo/client/testing';
+import { CombinedGraphQLErrors, gql } from '@apollo/client';
+import { type MockLink } from '@apollo/client/testing';
+import { MockedProvider } from '@apollo/client/testing/react';
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
@@ -26,12 +27,12 @@ const QUERY = gql`
 
 interface Props {
   readonly children: ReactNode;
-  readonly mockedResponse: MockedResponse;
+  readonly mockedResponse: MockLink.MockedResponse;
 }
 
 function TestComponent({ children, mockedResponse }: Props) {
   return (
-    <MockedProvider addTypename={false} mocks={[mockedResponse]}>
+    <MockedProvider mocks={[mockedResponse]}>
       <MemoryRouter initialEntries={['/route/fake-name']}>
         <Routes>
           <Route element={<div>Fake</div>} path="/fake" />
@@ -51,6 +52,7 @@ describe('QueryRedirectTo', () => {
             query: QUERY,
             variables: { name: 'fake-name' },
           },
+          delay: Infinity,
         }}
       >
         <QueryRedirectTo buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
@@ -72,6 +74,7 @@ describe('QueryRedirectTo', () => {
             query: QUERY,
             variables: { name: 'fake-name' },
           },
+          delay: Infinity,
         }}
       >
         <QueryRedirectTo
@@ -98,13 +101,14 @@ describe('QueryRedirectTo', () => {
             query: QUERY,
             variables: { name: 'fake-name' },
           },
-          error: new ApolloError({
-            graphQLErrors: [
+          error: new CombinedGraphQLErrors({
+            errors: [
               new GraphQLError('forbidden graphql error', {
                 extensions: { code: 'FORBIDDEN' },
               }),
             ],
           }),
+          delay: 0,
         }}
       >
         <QueryRedirectTo buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
@@ -113,12 +117,13 @@ describe('QueryRedirectTo', () => {
 
     expect(container).toMatchSnapshot();
 
-    // Find progressbar
-    expect(await findByRole('progressbar')).not.toBeNull();
+    await waitFor(async () => {
+      expect(await findByRole('progressbar')).not.toBeInTheDocument();
+    });
 
     // Now find errors
-    expect(container).toHaveTextContent('common.errors');
     expect(container).toMatchSnapshot();
+    expect(container).toHaveTextContent('common.errors');
   });
 
   it('should display no data when no data is returned from query', async () => {
@@ -132,6 +137,7 @@ describe('QueryRedirectTo', () => {
           result: {
             data: null,
           },
+          delay: 0,
         }}
       >
         <QueryRedirectTo buildNavigateTo={() => null} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
@@ -140,8 +146,9 @@ describe('QueryRedirectTo', () => {
 
     expect(container).toMatchSnapshot();
 
-    // Find progressbar
-    expect(await findByRole('progressbar')).not.toBeNull();
+    await waitFor(async () => {
+      expect(await findByRole('progressbar')).not.toBeInTheDocument();
+    });
 
     // Now find errors
     expect(container).toHaveTextContent('common.noData');
@@ -157,8 +164,9 @@ describe('QueryRedirectTo', () => {
             variables: { name: 'fake-name' },
           },
           result: {
-            data: { fake: { id: '1' } },
+            data: { fake: { id: '1', __typename: 'Fake' } },
           },
+          delay: 0,
         }}
       >
         <QueryRedirectTo buildNavigateTo={() => '/fake'} buildQueryVariables={({ name }) => ({ name })} query={QUERY} />
@@ -167,8 +175,9 @@ describe('QueryRedirectTo', () => {
 
     expect(container).toMatchSnapshot();
 
-    // Find progressbar
-    expect(await findByRole('progressbar')).not.toBeNull();
+    await waitFor(async () => {
+      expect(await findByRole('progressbar')).not.toBeInTheDocument();
+    });
 
     // Workaround to avoid "react component change without any act called"...
     await waitFor(() => 0);

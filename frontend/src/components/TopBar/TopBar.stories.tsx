@@ -39,21 +39,6 @@ Playbook.parameters = {
   reactRouter: {
     routePath: '/route',
   },
-  apolloClient: {
-    // Example coming from https://storybook.js.org/addons/storybook-addon-apollo-client
-    // mocks: [
-    //   {
-    //     request: {
-    //       query: DashboardPageQuery,
-    //     },
-    //     result: {
-    //       data: {
-    //         viewer: null,
-    //       },
-    //     },
-    //   },
-    // ],
-  },
 };
 
 export const WithFakeUserInfo: StoryFn<typeof TopBar> = function C() {

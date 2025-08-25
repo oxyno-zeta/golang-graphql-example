@@ -1,12 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-  useQuery,
-  type DocumentNode,
-  type QueryHookOptions,
-  type OperationVariables,
-  type MaybeMasked,
-} from '@apollo/client';
+import { type DocumentNode, type OperationVariables, type MaybeMasked } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useParams, type Params, Navigate, type NavigateProps } from 'react-router';
 import CenterLoading, { type CenterLoadingProps } from '~components/CenterLoading';
 import ErrorsDisplay, { type ErrorsDisplayProps } from '~components/ErrorsDisplay';
@@ -24,7 +19,7 @@ export interface Props<T, P extends OperationVariables> {
   // Disable center loading subtitle.
   readonly disableCenterLoadingSubtitle?: boolean;
   // Query hook options.
-  readonly queryHookOptions?: Omit<QueryHookOptions<T, P>, 'variables'>;
+  readonly queryHookOptions?: Omit<useQuery.Options<T, P>, 'variables'>;
   // No data Typography props.
   readonly noDataTypographyProps?: NoDataTypographyProps;
   // Center loading props.
@@ -40,7 +35,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
   buildQueryVariables,
   buildNavigateTo,
   disableCenterLoadingSubtitle = false,
-  queryHookOptions = {},
+  queryHookOptions = undefined,
   noDataTypographyProps = {},
   centerLoadingProps = {},
   graphqlErrorsProps = {},
@@ -58,7 +53,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
   const { data, loading, error } = useQuery<T, P>(query, {
     variables: queryVariables,
     fetchPolicy: 'network-only',
-    ...queryHookOptions,
+    ...(queryHookOptions || {}),
   });
 
   // Check loading

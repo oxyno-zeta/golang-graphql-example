@@ -1,5 +1,4 @@
 export const ServerErrorCustomComponentMapKey = 'SERVER_ERROR';
-export const NetworkErrorCustomComponentMapKey = 'NETWORK_ERROR';
 
 export const GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix = 'GRAPHQL_ERRORS_EXTENSIONS_CODE_';
 

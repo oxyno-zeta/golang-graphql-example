@@ -1,18 +1,14 @@
 import React, { type Key, type ReactNode } from 'react';
 import Typography, { type TypographyProps } from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { type ApolloError, type ServerError } from '@apollo/client';
+import { ServerError, CombinedGraphQLErrors } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
-import {
-  GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix,
-  ServerErrorCustomComponentMapKey,
-  NetworkErrorCustomComponentMapKey,
-} from './constants';
+import { GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix, ServerErrorCustomComponentMapKey } from './constants';
 
 export interface Props {
-  readonly error?: ApolloError | Error | null;
-  readonly errors?: (ApolloError | Error)[];
+  readonly error?: Error | null;
+  readonly errors?: Error[];
   readonly noMargin?: boolean;
   readonly containerBoxSx?: SxProps;
   readonly errorTitleTypographyProps?: TypographyProps;
@@ -62,27 +58,19 @@ function ErrorsDisplay({
   // Loop over errors
   errorList?.forEach((err, mainIndex) => {
     const contents: { content: string; key: Key; CustomComp?: React.ElementType; customCompProps?: object }[] = [];
-    if ((err as ApolloError).networkError || (err as ApolloError).graphQLErrors) {
-      // Create intermediate variable just for typescript.............
-      const workingErr: ApolloError = err as ApolloError;
-
-      if (
-        workingErr.networkError &&
-        (!(workingErr.networkError as ServerError).result ||
-          Object.keys((workingErr.networkError as ServerError).result).length === 0 ||
-          !workingErr.graphQLErrors)
-      ) {
+    if (ServerError.is(err) || CombinedGraphQLErrors.is(err)) {
+      if (ServerError.is(err)) {
         contents.push({
-          content: workingErr.networkError.message,
+          content: err.message,
           key: mainIndex,
           CustomComp: customErrorComponents[ServerErrorCustomComponentMapKey],
           customCompProps: customErrorComponentProps[ServerErrorCustomComponentMapKey],
         });
       }
 
-      if (workingErr.graphQLErrors) {
+      if (CombinedGraphQLErrors.is(err)) {
         contents.push(
-          ...workingErr.graphQLErrors.map(({ message, extensions }, i) => {
+          ...err.errors.map(({ message, extensions }, i) => {
             let mess = message;
             let customComp: React.ElementType | undefined;
             let customCompProps: object | undefined;
@@ -103,24 +91,6 @@ function ErrorsDisplay({
               customCompProps,
             };
           }),
-        );
-      }
-
-      if (
-        workingErr.networkError &&
-        (workingErr.networkError as ServerError).result &&
-        ((workingErr.networkError as ServerError).result as Record<string, [CustomNetworkError]>).errors &&
-        Array.isArray(((workingErr.networkError as ServerError).result as Record<string, [CustomNetworkError]>).errors)
-      ) {
-        contents.push(
-          ...((workingErr.networkError as ServerError).result as Record<string, [CustomNetworkError]>).errors
-            .filter((it) => typeof it === 'object' && it !== null) // Ensure that it isn't null or not an object
-            .map(({ message, path }, i) => ({
-              content: `${path?.join('.')} ${message}`,
-              key: `${mainIndex}-networkError-${i}`,
-              CustomComp: customErrorComponents[NetworkErrorCustomComponentMapKey],
-              customCompProps: customErrorComponentProps[NetworkErrorCustomComponentMapKey],
-            })),
         );
       }
     } else {

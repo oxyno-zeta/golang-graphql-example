@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import type { MockedResponse } from '@apollo/client/testing';
+import type { MockLink } from '@apollo/client/testing';
 
 export const SimpleQuery2 = gql`
   query SimpleQuery2 {
@@ -63,4 +63,4 @@ export const mockedResponses = [
       },
     },
   },
-] as MockedResponse[];
+] as MockLink.MockedResponse[];

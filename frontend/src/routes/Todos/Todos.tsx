@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';

@@ -1,4 +1,4 @@
-import type { QueryHookOptions } from '@apollo/client';
+import type { useQuery } from '@apollo/client/react';
 import type { LinkProps, SkeletonProps, TypographyProps } from '@mui/material';
 import type { DocumentNode } from 'graphql';
 import type { LinkProps as RouterLinkProps, Params } from 'react-router';
@@ -49,7 +49,7 @@ export interface BreadcrumbFixedDataConfig {
 export interface BreadcrumbGraphQLDataConfig<V = Record<string, any>, D = any> {
   query: DocumentNode;
   getTextContent: (data: D) => string;
-  queryOptions?: Omit<QueryHookOptions<D>, 'variables'>;
+  queryOptions?: Omit<useQuery.Options<D>, 'variables'>;
   buildVariables?: (params: Params) => V;
   skeletonProps?: SkeletonProps;
   linkProps?: Omit<LinkProps & RouterLinkProps, 'to'>;

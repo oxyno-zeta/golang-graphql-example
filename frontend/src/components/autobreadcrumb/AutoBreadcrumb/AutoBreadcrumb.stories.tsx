@@ -1,6 +1,7 @@
 import React from 'react';
 import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { Link, Outlet, MemoryRouter, Routes, Route } from 'react-router';
+import { MockedProvider } from '@apollo/client/testing/react';
 import AutoBreadcrumb from './AutoBreadcrumb';
 import {
   SimpleErrorQuery,
@@ -161,19 +162,16 @@ const allGraphqlRoutes = (
 
 export const AllGraphql: StoryFn<typeof AutoBreadcrumb> = function C() {
   return (
-    <AutoBreadcrumbProvider>
-      <MemoryRouter initialIndex={0} initialEntries={['/level1']}>
-        {allGraphqlRoutes}
-      </MemoryRouter>
-    </AutoBreadcrumbProvider>
+    <MockedProvider mocks={mockedResponses}>
+      <AutoBreadcrumbProvider>
+        <MemoryRouter initialIndex={0} initialEntries={['/level1']}>
+          {allGraphqlRoutes}
+        </MemoryRouter>
+      </AutoBreadcrumbProvider>
+    </MockedProvider>
   );
 };
-AllGraphql.parameters = {
-  apolloClient: {
-    // Example coming from https://storybook.js.org/addons/storybook-addon-apollo-client
-    mocks: mockedResponses,
-  },
-};
+AllGraphql.parameters = {};
 
 const allMixedRoutes = (
   <Routes>
@@ -242,19 +240,16 @@ const allMixedRoutes = (
 
 export const AllMixed: StoryFn<typeof AutoBreadcrumb> = function C() {
   return (
-    <AutoBreadcrumbProvider>
-      <MemoryRouter initialIndex={0} initialEntries={['/level1/level2']}>
-        {allMixedRoutes}
-      </MemoryRouter>
-    </AutoBreadcrumbProvider>
+    <MockedProvider mocks={mockedResponses}>
+      <AutoBreadcrumbProvider>
+        <MemoryRouter initialIndex={0} initialEntries={['/level1/level2']}>
+          {allMixedRoutes}
+        </MemoryRouter>
+      </AutoBreadcrumbProvider>
+    </MockedProvider>
   );
 };
-AllMixed.parameters = {
-  apolloClient: {
-    // Example coming from https://storybook.js.org/addons/storybook-addon-apollo-client
-    mocks: mockedResponses,
-  },
-};
+AllMixed.parameters = {};
 
 const ignoredRoutes = (
   <Routes>
@@ -359,16 +354,13 @@ const ignoredRoutes = (
 
 export const IgnoredRoutes: StoryFn<typeof AutoBreadcrumb> = function C() {
   return (
-    <AutoBreadcrumbProvider>
-      <MemoryRouter initialIndex={0} initialEntries={['/level1/level2']}>
-        {ignoredRoutes}
-      </MemoryRouter>
-    </AutoBreadcrumbProvider>
+    <MockedProvider mocks={mockedResponses}>
+      <AutoBreadcrumbProvider>
+        <MemoryRouter initialIndex={0} initialEntries={['/level1/level2']}>
+          {ignoredRoutes}
+        </MemoryRouter>
+      </AutoBreadcrumbProvider>
+    </MockedProvider>
   );
 };
-IgnoredRoutes.parameters = {
-  apolloClient: {
-    // Example coming from https://storybook.js.org/addons/storybook-addon-apollo-client
-    mocks: mockedResponses,
-  },
-};
+IgnoredRoutes.parameters = {};

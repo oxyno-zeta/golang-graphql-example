@@ -1,9 +1,11 @@
 import React from 'react';
 import { type StoryFn, type Meta } from '@storybook/react-vite';
-import { ApolloError } from '@apollo/client';
+import { CombinedGraphQLErrors } from '@apollo/client';
 import ErrorsDisplay, { type Props } from './ErrorsDisplay';
 import {
   forbiddenNetworkError,
+  simpleCombinedGraphQLErrorWithoutExtension,
+  simpleForbiddenCombinedGraphQLError,
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorGraphqlError,
@@ -13,10 +15,7 @@ export default {
   title: 'Components/ErrorsDisplay',
   component: ErrorsDisplay,
   args: {
-    error: new ApolloError({
-      errorMessage: 'network apollo error',
-      networkError: forbiddenNetworkError,
-    }),
+    error: forbiddenNetworkError,
   },
 } as Meta<typeof ErrorsDisplay>;
 
@@ -29,51 +28,23 @@ export const ClassicError: StoryFn<typeof ErrorsDisplay> = function C() {
 };
 
 export const GraphQLNetworkError: StoryFn<typeof ErrorsDisplay> = function C() {
-  return (
-    <ErrorsDisplay
-      error={
-        new ApolloError({
-          errorMessage: 'network apollo error',
-          networkError: forbiddenNetworkError,
-        })
-      }
-    />
-  );
+  return <ErrorsDisplay error={forbiddenNetworkError} />;
 };
 
 export const OneGraphQLErrorWithoutExtension: StoryFn<typeof ErrorsDisplay> = function C() {
-  return (
-    <ErrorsDisplay
-      error={
-        new ApolloError({
-          errorMessage: 'one graphql apollo error',
-          graphQLErrors: [simpleGraphqlErrorWithoutExtension],
-        })
-      }
-    />
-  );
+  return <ErrorsDisplay error={simpleCombinedGraphQLErrorWithoutExtension} />;
 };
 
 export const OneGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = function C() {
-  return (
-    <ErrorsDisplay
-      error={
-        new ApolloError({
-          errorMessage: 'one graphql apollo error',
-          graphQLErrors: [simpleForbiddenGraphqlError],
-        })
-      }
-    />
-  );
+  return <ErrorsDisplay error={simpleForbiddenCombinedGraphQLError} />;
 };
 
 export const TwoGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = function C() {
   return (
     <ErrorsDisplay
       error={
-        new ApolloError({
-          errorMessage: 'two graphql apollo error',
-          graphQLErrors: [simpleForbiddenGraphqlError, simpleInternalServerErrorGraphqlError],
+        new CombinedGraphQLErrors({
+          errors: [simpleForbiddenGraphqlError, simpleInternalServerErrorGraphqlError],
         })
       }
     />
@@ -81,15 +52,5 @@ export const TwoGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = funct
 };
 
 export const OneGraphQLErrorWithoutMargin: StoryFn<typeof ErrorsDisplay> = function C() {
-  return (
-    <ErrorsDisplay
-      error={
-        new ApolloError({
-          errorMessage: 'one graphql apollo error',
-          graphQLErrors: [simpleForbiddenGraphqlError],
-        })
-      }
-      noMargin
-    />
-  );
+  return <ErrorsDisplay error={simpleForbiddenCombinedGraphQLError} noMargin />;
 };

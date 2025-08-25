@@ -1,25 +1,22 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ApolloError } from '@apollo/client';
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import { CombinedGraphQLErrors } from '@apollo/client';
 import {
   forbiddenNetworkError,
-  forbiddenNetworkErrorWithErrors,
-  forbiddenNetworkErrorWithMultipleErrors,
+  simpleForbiddenCombinedGraphQLError,
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
+  simpleInternalServerErrorCombinedGraphQLError,
   simpleInternalServerErrorGraphqlError,
 } from './ErrorsDisplay.storage-test';
 
 import ErrorsDisplay from './ErrorsDisplay';
-import {
-  GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey,
-  NetworkErrorCustomComponentMapKey,
-} from './constants';
+import { GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey } from './constants';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -33,122 +30,7 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display a network error when error is present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        error={
-          new ApolloError({
-            errorMessage: 'network apollo error',
-            networkError: forbiddenNetworkError,
-          })
-        }
-      />,
-    );
-
-    const allP = container.querySelectorAll('p');
-    expect(allP).toHaveLength(2);
-
-    // Prepare values
-    const values = ['common.errors:', 'Forbidden'];
-    values.forEach((item) => {
-      expect(container).toHaveTextContent(item);
-    });
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should display a network error when error is present with a custom component', () => {
-    function Fake({ input }: { readonly input: string }) {
-      return <p>{input}</p>;
-    }
-
-    const { container } = render(
-      <ErrorsDisplay
-        customErrorComponentProps={{
-          [NetworkErrorCustomComponentMapKey]: { input: 'fake' },
-        }}
-        customErrorComponents={{
-          [NetworkErrorCustomComponentMapKey]: Fake,
-        }}
-        error={
-          new ApolloError({
-            errorMessage: 'network apollo error',
-            networkError: forbiddenNetworkError,
-          })
-        }
-      />,
-    );
-
-    const allP = container.querySelectorAll('p');
-    expect(allP).toHaveLength(2);
-
-    // Prepare values
-    const values = ['common.errors:', 'Forbidden'];
-    values.forEach((item) => {
-      expect(container).toHaveTextContent(item);
-    });
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should display a network error with 1 error when error is present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        error={
-          new ApolloError({
-            errorMessage: 'network apollo error',
-            networkError: forbiddenNetworkErrorWithErrors,
-          })
-        }
-      />,
-    );
-
-    const allP = container.querySelectorAll('p');
-    expect(allP).toHaveLength(2);
-
-    // Prepare values
-    const values = ['common.errors:', 'fake.path fake message'];
-    values.forEach((item) => {
-      expect(container).toHaveTextContent(item);
-    });
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should display a network error with multiple errors when error is present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        error={
-          new ApolloError({
-            errorMessage: 'network apollo error',
-            networkError: forbiddenNetworkErrorWithMultipleErrors,
-          })
-        }
-      />,
-    );
-
-    const allP = container.querySelectorAll('p');
-    expect(allP).toHaveLength(3);
-
-    // Prepare values
-    const values = ['common.errors:', 'fake.path fake message', 'fake.path2 fake message 2'];
-    values.forEach((item) => {
-      expect(container).toHaveTextContent(item);
-    });
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should display a network error when errors are present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        errors={[
-          new ApolloError({
-            errorMessage: 'network apollo error',
-            networkError: forbiddenNetworkError,
-          }),
-        ]}
-      />,
-    );
+    const { container } = render(<ErrorsDisplay error={forbiddenNetworkError} />);
 
     const allP = container.querySelectorAll('p');
     expect(allP).toHaveLength(2);
@@ -163,16 +45,7 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display a graphql error without extension when error is present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        error={
-          new ApolloError({
-            errorMessage: 'one graphql apollo error',
-            graphQLErrors: [simpleGraphqlErrorWithoutExtension],
-          })
-        }
-      />,
-    );
+    const { container } = render(<ErrorsDisplay error={simpleGraphqlErrorWithoutExtension} />);
 
     const allP = container.querySelectorAll('p');
     expect(allP).toHaveLength(2);
@@ -187,16 +60,7 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display a graphql error without extension when errors are present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        errors={[
-          new ApolloError({
-            errorMessage: 'one graphql apollo error',
-            graphQLErrors: [simpleGraphqlErrorWithoutExtension],
-          }),
-        ]}
-      />,
-    );
+    const { container } = render(<ErrorsDisplay errors={[simpleGraphqlErrorWithoutExtension]} />);
 
     const allP = container.querySelectorAll('p');
     expect(allP).toHaveLength(2);
@@ -211,16 +75,7 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display a graphql error with extension when error is present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        error={
-          new ApolloError({
-            errorMessage: 'one graphql apollo error',
-            graphQLErrors: [simpleForbiddenGraphqlError],
-          })
-        }
-      />,
-    );
+    const { container } = render(<ErrorsDisplay error={simpleForbiddenCombinedGraphQLError} />);
 
     const allP = container.querySelectorAll('p');
     expect(allP).toHaveLength(2);
@@ -235,16 +90,7 @@ describe('ErrorsDisplay', () => {
   });
 
   it('should display a graphql error with extension when errors are present', () => {
-    const { container } = render(
-      <ErrorsDisplay
-        errors={[
-          new ApolloError({
-            errorMessage: 'one graphql apollo error',
-            graphQLErrors: [simpleForbiddenGraphqlError],
-          }),
-        ]}
-      />,
-    );
+    const { container } = render(<ErrorsDisplay errors={[simpleForbiddenCombinedGraphQLError]} />);
 
     const allP = container.querySelectorAll('p');
     expect(allP).toHaveLength(2);
@@ -262,10 +108,7 @@ describe('ErrorsDisplay', () => {
     const { container } = render(
       <ErrorsDisplay
         error={
-          new ApolloError({
-            errorMessage: 'two graphql apollo error',
-            graphQLErrors: [simpleForbiddenGraphqlError, simpleInternalServerErrorGraphqlError],
-          })
+          new CombinedGraphQLErrors({ errors: [simpleForbiddenGraphqlError, simpleInternalServerErrorGraphqlError] })
         }
       />,
     );
@@ -286,9 +129,8 @@ describe('ErrorsDisplay', () => {
     const { container } = render(
       <ErrorsDisplay
         errors={[
-          new ApolloError({
-            errorMessage: 'two graphql apollo error',
-            graphQLErrors: [simpleForbiddenGraphqlError, simpleInternalServerErrorGraphqlError],
+          new CombinedGraphQLErrors({
+            errors: [simpleForbiddenGraphqlError, simpleInternalServerErrorGraphqlError],
           }),
         ]}
       />,
@@ -308,18 +150,7 @@ describe('ErrorsDisplay', () => {
 
   it('should display two graphql error with extension when errors are present (2 items)', () => {
     const { container } = render(
-      <ErrorsDisplay
-        errors={[
-          new ApolloError({
-            errorMessage: 'two graphql apollo error',
-            graphQLErrors: [simpleForbiddenGraphqlError],
-          }),
-          new ApolloError({
-            errorMessage: 'two graphql apollo error',
-            graphQLErrors: [simpleInternalServerErrorGraphqlError],
-          }),
-        ]}
-      />,
+      <ErrorsDisplay errors={[simpleForbiddenCombinedGraphQLError, simpleInternalServerErrorCombinedGraphQLError]} />,
     );
 
     const allP = container.querySelectorAll('p');
@@ -347,16 +178,7 @@ describe('ErrorsDisplay', () => {
         customErrorComponents={{
           [GraphqlErrorsExtensionsCodeForbiddenCustomComponentMapKey]: Fake,
         }}
-        errors={[
-          new ApolloError({
-            errorMessage: 'two graphql apollo error',
-            graphQLErrors: [simpleForbiddenGraphqlError],
-          }),
-          new ApolloError({
-            errorMessage: 'two graphql apollo error',
-            graphQLErrors: [simpleInternalServerErrorGraphqlError],
-          }),
-        ]}
+        errors={[simpleForbiddenCombinedGraphQLError, simpleInternalServerErrorCombinedGraphQLError]}
       />,
     );
 

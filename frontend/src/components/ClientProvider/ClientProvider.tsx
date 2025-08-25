@@ -1,13 +1,7 @@
 import React, { useContext, type ReactNode } from 'react';
-import {
-  ApolloClient,
-  InMemoryCache,
-  createHttpLink,
-  type ServerError,
-  ApolloProvider,
-  ApolloLink,
-} from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
+import { ApolloClient, InMemoryCache, ServerError, ApolloLink, HttpLink } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client/react';
+import { ErrorLink } from '@apollo/client/link/error';
 import { type ConfigModel } from '../../models/config';
 import ConfigContext from '../../contexts/ConfigContext';
 
@@ -33,7 +27,7 @@ function generateClient(cfg: ConfigModel) {
   // Create apollo link
   // This is needed to create a valid forwarder of cookies (for authentication)
   // Documentation: https://www.apollographql.com/docs/react/networking/authentication/#cookie
-  const apolloLink = createHttpLink({
+  const apolloLink = new HttpLink({
     uri: cfg.graphqlEndpoint,
     // Do not touch this parameter
     credentials: 'include',
@@ -43,9 +37,9 @@ function generateClient(cfg: ConfigModel) {
   // the cookie isn't valid anymore, in this case, the next request (done by Apollo Client) won't pass
   // and people will get an error. To avoid that, when an unauthorized error arrive, a page reload
   // will be triggered.
-  const errorLink = onError(({ networkError }) => {
+  const errorLink = new ErrorLink(({ error }) => {
     // Check if error that is coming from server and it is an unauthorized status code.
-    if (networkError && (networkError as ServerError).statusCode === 401) {
+    if (ServerError.is(error) && error.statusCode === 401) {
       window.location.reload();
     }
   });
@@ -54,8 +48,10 @@ function generateClient(cfg: ConfigModel) {
     link: errorLink.concat(forceHeaders).concat(apolloLink),
     // Add memory cache
     cache: new InMemoryCache(),
-    // Connect to dev tools only on dev
-    connectToDevTools: process.env.NODE_ENV !== 'production',
+    devtools: {
+      // Connect to dev tools only on dev
+      enabled: process.env.NODE_ENV !== 'production',
+    },
   });
 
   return client;

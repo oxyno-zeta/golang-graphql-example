@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
 import * as jest from 'jest-mock';
-import { MockedProvider } from '@apollo/client/testing';
 import { withMuiTheme } from './with-mui-theme.decorator';
 import i18n from './i18next.cjs';
 
@@ -19,10 +18,6 @@ import '@fontsource/material-icons';
 const preview: Preview = {
   parameters: {
     i18n,
-    apolloClient: {
-      MockedProvider,
-      // any props you want to pass to MockedProvider on every story
-    },
     actions: { argTypesRegex: '^(on|handle)[A-Z].*' },
     controls: {
       expanded: true,

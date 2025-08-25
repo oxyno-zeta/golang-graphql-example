@@ -3,12 +3,7 @@ import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    'storybook-addon-apollo-client',
-    'storybook-addon-remix-react-router',
-    'storybook-react-i18next',
-    '@vueless/storybook-dark-mode',
-  ],
+  addons: ['storybook-addon-remix-react-router', 'storybook-react-i18next', '@vueless/storybook-dark-mode'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
