@@ -57,6 +57,7 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePage
       pathname={pathname}
       disablePageTitle={disablePageTitle}
       params={params}
+      disableTranslate
     />
   );
 }

@@ -11,9 +11,17 @@ interface Props {
   readonly pathname: string;
   readonly params: Params;
   readonly disablePageTitle?: boolean;
+  readonly disableTranslate?: boolean;
 }
 
-function FixedBreadcrumb({ breadcrumbData, last, pathname, params, disablePageTitle = false }: Props) {
+function FixedBreadcrumb({
+  breadcrumbData,
+  last,
+  pathname,
+  params,
+  disablePageTitle = false,
+  disableTranslate = false,
+}: Props) {
   // Initialize translate
   const { t } = useTranslation();
 
@@ -26,7 +34,7 @@ function FixedBreadcrumb({ breadcrumbData, last, pathname, params, disablePageTi
       <>
         {!disablePageTitle && <title>{t(breadcrumbData.textContent)}</title>}
         <Typography color="text.primary" {...(breadcrumbData.typographyProps || {})}>
-          {t(breadcrumbData.textContent)}
+          {disableTranslate ? breadcrumbData.textContent : t(breadcrumbData.textContent)}
         </Typography>
       </>
     );
@@ -40,7 +48,7 @@ function FixedBreadcrumb({ breadcrumbData, last, pathname, params, disablePageTi
       underline="hover"
       {...(breadcrumbData.linkProps || {})}
     >
-      {t(breadcrumbData.textContent)}
+      {disableTranslate ? breadcrumbData.textContent : t(breadcrumbData.textContent)}
     </Link>
   );
 }
