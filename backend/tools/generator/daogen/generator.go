@@ -71,8 +71,20 @@ func generate(cfg *Config) error {
 func addImports(f *jen.File, list []*DaoModelCfg) {
 	f.ImportName("context", "context")
 
+	// Cache imports to avoid duplicates
+	cache := map[string]string{}
+
 	for i, m := range list {
-		f.ImportAlias(m.Package, "models"+strconv.Itoa(i))
+		// Get from cache
+		_, found := cache[m.Package]
+
+		// If not found
+		if !found {
+			// Alias
+			f.ImportAlias(m.Package, "models"+strconv.Itoa(i))
+			// Save in cache
+			cache[m.Package] = ""
+		}
 	}
 }
 

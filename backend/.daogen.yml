@@ -10,6 +10,9 @@ daos:
     models:
       - package: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models
         structureName: Todo
+        # Optional
         projectionStructureName: Projection
+        # Optional
         sortOrderStructureName: SortOrder
+        # Optional
         filterStructureName: Filter
