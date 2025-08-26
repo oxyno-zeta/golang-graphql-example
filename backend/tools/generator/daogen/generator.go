@@ -53,11 +53,6 @@ func generate(cfg *Config) error {
 
 		generateStructureMethods(f, v, cfg.NeededPackages)
 
-		// f.ImportAlias("fmt", "toto")
-		// f.Func().Id("main").Params().Block(
-		// 	jen.Qual("fmt", "Println").Call(jen.Lit("Hello, world")),
-		// )
-
 		// Generate path
 		p := path.Join(v.Path, strings.ToLower(getInterfaceName(v))+"_generated.go")
 
