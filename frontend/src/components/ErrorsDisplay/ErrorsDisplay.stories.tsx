@@ -7,7 +7,6 @@ import {
   simpleCombinedGraphQLErrorWithoutExtension,
   simpleForbiddenCombinedGraphQLError,
   simpleForbiddenGraphqlError,
-  simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorGraphqlError,
 } from './ErrorsDisplay.storage-test';
 

@@ -62,7 +62,10 @@ function Content() {
   );
 }
 
-export const DisableTopSpace: StoryFn<typeof ContentDisplayDrawer> = function C({ disableTopSpacer, ...args }: Props) {
+export const DisableTopSpace: StoryFn<typeof ContentDisplayDrawer> = function C({
+  disableTopSpacer: _disableTopSpacer,
+  ...args
+}: Props) {
   return (
     <RemoveStorybookPadding>
       <ContentDisplayDrawer disableTopSpacer {...args}>
@@ -72,7 +75,10 @@ export const DisableTopSpace: StoryFn<typeof ContentDisplayDrawer> = function C(
   );
 };
 
-export const DisableResize: StoryFn<typeof ContentDisplayDrawer> = function C({ disableResize, ...args }: Props) {
+export const DisableResize: StoryFn<typeof ContentDisplayDrawer> = function C({
+  disableResize: _disableResize,
+  ...args
+}: Props) {
   return (
     <RemoveStorybookPadding>
       <ContentDisplayDrawer disableResize {...args}>

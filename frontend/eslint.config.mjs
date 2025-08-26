@@ -9,6 +9,7 @@ import tsEslint from 'typescript-eslint';
 import { rules as prettierConfigRules } from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import unusedImports from 'eslint-plugin-unused-imports';
 import {
   configs as airbnbConfigs,
   plugins as airbnbPlugins,
@@ -162,6 +163,29 @@ export default tsEslint.config(
         {
           fixToUnknown: false,
           ignoreRestArgs: false,
+        },
+      ],
+    },
+  },
+
+  /**
+   * Eslint Unused imports
+   */
+  {
+    plugins: {
+      'unused-imports': unusedImports,
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
         },
       ],
     },

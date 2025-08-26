@@ -126,7 +126,10 @@ function RemoveStorybookPadding({ children }: { readonly children: ReactNode }) 
   return <div style={{ margin: '-1rem' }}>{children}</div>;
 }
 
-export const DisableTopSpace: StoryFn<typeof PageDrawer> = function C({ disableTopSpacer, ...args }: Props) {
+export const DisableTopSpace: StoryFn<typeof PageDrawer> = function C({
+  disableTopSpacer: _disableTopSpacer,
+  ...args
+}: Props) {
   return (
     <RemoveStorybookPadding>
       <PageDrawerSettingsProvider>
@@ -136,7 +139,7 @@ export const DisableTopSpace: StoryFn<typeof PageDrawer> = function C({ disableT
   );
 };
 
-export const DisableResize: StoryFn<typeof PageDrawer> = function C({ disableResize, ...args }: Props) {
+export const DisableResize: StoryFn<typeof PageDrawer> = function C({ disableResize: _disableResize, ...args }: Props) {
   return (
     <RemoveStorybookPadding>
       <PageDrawerSettingsProvider>
@@ -146,7 +149,10 @@ export const DisableResize: StoryFn<typeof PageDrawer> = function C({ disableRes
   );
 };
 
-export const DisableCollapse: StoryFn<typeof PageDrawer> = function C({ disableCollapse, ...args }: Props) {
+export const DisableCollapse: StoryFn<typeof PageDrawer> = function C({
+  disableCollapse: _disableCollapse,
+  ...args
+}: Props) {
   return (
     <RemoveStorybookPadding>
       <PageDrawerSettingsProvider>
