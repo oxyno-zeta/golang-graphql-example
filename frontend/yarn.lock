@@ -3002,12 +3002,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:19.1.7":
-  version: 19.1.7
-  resolution: "@types/react-dom@npm:19.1.7"
+"@types/react-dom@npm:19.1.8":
+  version: 19.1.8
+  resolution: "@types/react-dom@npm:19.1.8"
   peerDependencies:
     "@types/react": ^19.0.0
-  checksum: 10/a99465e5a17d40725dedb3708357f8998c57caab768cee0992b4bb7822ce7ed2ec697a5f426cb98d3397b020756a6e4b0986dc5f6f4254e13b3536afb38538e6
+  checksum: 10/61aa2b9c159deba3787183688d3fe70c9f9196aab464f76bbe0a965cd35c485c7158e903631ff89803b19c707e93f8dd632e63fb9bd1ddd430359bd402a2018e
   languageName: node
   linkType: hard
 
@@ -6009,7 +6009,7 @@ __metadata:
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:24.3.0"
     "@types/react": "npm:19.1.11"
-    "@types/react-dom": "npm:19.1.7"
+    "@types/react-dom": "npm:19.1.8"
     "@types/react-test-renderer": "npm:19.1.0"
     "@types/react-window": "npm:1.8.8"
     "@typescript-eslint/eslint-plugin": "npm:8.41.0"
