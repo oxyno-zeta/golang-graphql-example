@@ -48,6 +48,7 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePage
   return (
     <FixedBreadcrumb
       breadcrumbData={{
+        disableTranslate: true,
         textContent: text,
         linkProps: breadcrumbData.linkProps,
         typographyProps: breadcrumbData.typographyProps,
@@ -57,7 +58,6 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePage
       pathname={pathname}
       disablePageTitle={disablePageTitle}
       params={params}
-      disableTranslate
     />
   );
 }
