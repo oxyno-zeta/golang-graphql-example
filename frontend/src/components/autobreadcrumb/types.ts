@@ -1,6 +1,7 @@
 import type { useQuery } from '@apollo/client/react';
 import type { LinkProps, SkeletonProps, TypographyProps } from '@mui/material';
 import type { DocumentNode } from 'graphql';
+import type { TFunction } from 'i18next';
 import type { LinkProps as RouterLinkProps, Params } from 'react-router';
 
 export type BreadcrumbData = BreadcrumbGraphQLData | BreadcrumbFixedData | BreadcrumbDataIgnoredRoute;
@@ -49,7 +50,7 @@ export interface BreadcrumbFixedDataConfig {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface BreadcrumbGraphQLDataConfig<V = Record<string, any>, D = any> {
   query: DocumentNode;
-  getTextContent: (data: D) => string;
+  getTextContent: (data: D, t: TFunction) => string;
   queryOptions?: Omit<useQuery.Options<D>, 'variables'>;
   buildVariables?: (params: Params) => V;
   skeletonProps?: SkeletonProps;

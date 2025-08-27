@@ -2,6 +2,7 @@ import React from 'react';
 import type { Params } from 'react-router';
 import { useQuery } from '@apollo/client/react';
 import Skeleton from '@mui/material/Skeleton';
+import { useTranslation } from 'react-i18next';
 import type { BreadcrumbGraphQLDataConfig } from '../types';
 import FixedBreadcrumb from './FixedBreadcrumb';
 
@@ -14,6 +15,9 @@ interface Props {
 }
 
 function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePageTitle = false }: Props) {
+  // Translate
+  const { t } = useTranslation();
+
   // Build variables
   const variables = breadcrumbData.buildVariables ? breadcrumbData.buildVariables(params) : {};
 
@@ -36,7 +40,7 @@ function GraphQLBreadcrumb({ params, breadcrumbData, last, pathname, disablePage
   }
 
   // Get text
-  const text = breadcrumbData.getTextContent(data);
+  const text = breadcrumbData.getTextContent(data, t);
 
   // Create override computed path function if necessary
   let overrideComputedPath: ((p: string, params: Params) => string) | undefined;
