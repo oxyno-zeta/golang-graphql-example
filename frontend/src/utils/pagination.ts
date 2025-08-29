@@ -1,5 +1,6 @@
 import { type URLSearchParams } from 'url';
-import { type URLSearchParamsInit } from 'react-router';
+import { useSearchParams, type URLSearchParamsInit } from 'react-router';
+import { useMemo } from 'react';
 import { type PaginationInputModel } from '../models/general';
 import { getAllSearchParams } from './urlSearchParams';
 
@@ -30,6 +31,20 @@ export function cleanAndSetCleanedPagination(
   setSearchParams(getAllSearchParams(searchParams));
 }
 
+export function usePaginationFromSearchParams(
+  initPagination: PaginationInputModel,
+  maxPagination: number,
+): PaginationInputModel {
+  // Get search params
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  return useMemo(
+    () => getPaginationFromSearchParams(initPagination, maxPagination, searchParams, setSearchParams),
+    [initPagination, maxPagination, searchParams, setSearchParams],
+  );
+}
+
+// @deprecated
 export function getPaginationFromSearchParams(
   initPagination: PaginationInputModel,
   maxPagination: number,

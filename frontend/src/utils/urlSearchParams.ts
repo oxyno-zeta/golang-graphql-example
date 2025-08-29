@@ -1,5 +1,6 @@
 import type { URLSearchParams } from 'url';
-import type { URLSearchParamsInit } from 'react-router';
+import { useSearchParams, type URLSearchParamsInit } from 'react-router';
+import { useMemo } from 'react';
 
 export function getAllSearchParams(searchParams: URLSearchParams): Record<string, string> {
   // Initial params
@@ -49,6 +50,14 @@ export function setJSONObjectSearchParam(
   setSearchParams(searchParams as URLSearchParamsInit);
 }
 
+export function useJSONObjectFromSearchParam<T>(key: string, init: T): T {
+  // Get search params
+  const [searchParams] = useSearchParams();
+
+  return useMemo<T>(() => getJSONObjectFromSearchParam(key, init, searchParams), [init, key, searchParams]);
+}
+
+// @deprecated
 export function getJSONObjectFromSearchParam<T>(key: string, init: T, searchParams: URLSearchParams): T {
   // Get key
   const objStr = searchParams.get(key);

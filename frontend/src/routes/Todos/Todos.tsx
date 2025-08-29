@@ -26,8 +26,8 @@ import {
   SortQueryParamName,
   type StringFilterModel,
 } from '~models/general';
-import { getPaginationFromSearchParams, cleanAndSetCleanedPagination } from '~utils/pagination';
-import { getJSONObjectFromSearchParam, setJSONObjectSearchParam } from '~utils/urlSearchParams';
+import { cleanAndSetCleanedPagination, usePaginationFromSearchParams } from '~utils/pagination';
+import { setJSONObjectSearchParam, useJSONObjectFromSearchParam } from '~utils/urlSearchParams';
 import GridTableViewSwitcherContext from '~contexts/GridTableViewSwitcherContext';
 import GridView from './components/GridView';
 import TableView from './components/TableView';
@@ -74,20 +74,16 @@ interface QueryVariables {
   filter?: TodoFilterModel | null;
 }
 
-const maxPagination = 20;
+const maxPagination = 5;
 const initialPagination = { first: maxPagination };
 
 function Todos() {
   // Get search params
   const [searchParams, setSearchParams] = useSearchParams();
   // Filter, pagination and sort values
-  const filter = getJSONObjectFromSearchParam<TodoFilterModel>(FilterQueryParamName, {}, searchParams);
-  const sorts = getJSONObjectFromSearchParam<TodoSortOrderModel[]>(
-    SortQueryParamName,
-    [{ createdAt: 'DESC' }],
-    searchParams,
-  );
-  const pagination = getPaginationFromSearchParams(initialPagination, maxPagination, searchParams, setSearchParams);
+  const filter = useJSONObjectFromSearchParam<TodoFilterModel>(FilterQueryParamName, {});
+  const sorts = useJSONObjectFromSearchParam<TodoSortOrderModel[]>(SortQueryParamName, [{ createdAt: 'DESC' }]);
+  const pagination = usePaginationFromSearchParams(initialPagination, maxPagination);
 
   // Setter
   const setSorts = (data: TodoSortOrderModel[]) => {
