@@ -156,7 +156,6 @@ function TimezoneSelector({
 
   return (
     <Autocomplete
-      ListboxComponent={ListboxComponent}
       clearText={t('common.clearAction')}
       closeText={t('common.closeAction')}
       disableListWrap
