@@ -76,13 +76,15 @@ interface QueryVariables {
 
 const maxPagination = 5;
 const initialPagination = { first: maxPagination };
+const initialFilter: TodoFilterModel = {};
+const initialSorts: TodoSortOrderModel[] = [{ createdAt: 'DESC' }];
 
 function Todos() {
   // Get search params
   const [searchParams, setSearchParams] = useSearchParams();
   // Filter, pagination and sort values
-  const filter = useJSONObjectFromSearchParam<TodoFilterModel>(FilterQueryParamName, {});
-  const sorts = useJSONObjectFromSearchParam<TodoSortOrderModel[]>(SortQueryParamName, [{ createdAt: 'DESC' }]);
+  const filter = useJSONObjectFromSearchParam<TodoFilterModel>(FilterQueryParamName, initialFilter);
+  const sorts = useJSONObjectFromSearchParam<TodoSortOrderModel[]>(SortQueryParamName, initialSorts);
   const pagination = usePaginationFromSearchParams(initialPagination, maxPagination);
 
   // Setter
