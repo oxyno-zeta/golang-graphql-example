@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`autobreadcrumb/AutoBreadcrumb Fixed texts should be ok to display on 1 level 1`] = `
 .emotion-0 {

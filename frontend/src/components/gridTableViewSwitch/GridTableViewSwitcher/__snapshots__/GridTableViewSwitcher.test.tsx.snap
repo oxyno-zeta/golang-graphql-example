@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`GridTableViewSwitcher should display as grid and should not do anything to click on grid again 1`] = `
 .emotion-0 {

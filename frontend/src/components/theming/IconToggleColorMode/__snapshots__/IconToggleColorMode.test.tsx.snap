@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`theming/IconToggleColorMode should display a dark theme icon with dark theme and switch to light 1`] = `
 .emotion-0 {
