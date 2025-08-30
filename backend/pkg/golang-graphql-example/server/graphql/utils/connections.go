@@ -135,7 +135,7 @@ func MapConnection(
 	edgesVal := topValInd.FieldByName(edgesFieldName)
 
 	// Loop over all items in list
-	for i := 0; i < listLen; i++ {
+	for i := range listLen {
 		// Create cursor for element
 		cursor := GetPaginateCursor(i, pageOut.Skip)
 

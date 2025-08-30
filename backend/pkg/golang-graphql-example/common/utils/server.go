@@ -47,7 +47,7 @@ func parseForwarded(forwarded string) (addr, proto, host string) {
 		return
 	}
 
-	for _, forwardedPair := range strings.Split(forwarded, ";") {
+	for forwardedPair := range strings.SplitSeq(forwarded, ";") {
 		if tv := strings.SplitN(forwardedPair, "=", forwardedLength); len(tv) == forwardedLength {
 			token, value := tv[0], tv[1]
 			token = strings.TrimSpace(token)

@@ -200,7 +200,7 @@ func manageFilter(
 				var tmpDB *gorm.DB
 				// Array is populated
 				// Loop over elements
-				for i := 0; i < lgt; i++ {
+				for i := range lgt {
 					// Get element
 					elemRVal := orRVal.Index(i)
 					// Get data behind

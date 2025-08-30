@@ -21,7 +21,7 @@ const (
 )
 
 func ToIDRelay(prefix, id string) string {
-	return base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", prefix, id)))
+	return base64.StdEncoding.EncodeToString(fmt.Appendf(nil, "%s:%s", prefix, id))
 }
 
 func FromIDRelay(relayID, prefix string) (string, error) {

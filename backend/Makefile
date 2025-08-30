@@ -96,6 +96,10 @@ code/lint/gitlab: code/lint
 code/fieldalignment: setup/dep/install setup/dep/gen/install
 	fieldalignment -fix -test=false ./...
 
+.PHONY: code/modernize
+code/modernize:
+	$(GO) run golang.org/x/tools/gopls/internal/analysis/modernize/cmd/modernize@latest -fix -test ./...
+
 .PHONY: code/graphql/concat
 code/graphql/concat:
 	cat graphql/*.graphql > tools/graphql-inspector/validation.graphql

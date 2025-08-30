@@ -142,10 +142,10 @@ func manageGraphqlProjection(
 		}
 
 		// Split tag value for multiple fields
-		tagValues := strings.Split(tagValue, ",")
+		tagValues := strings.SplitSeq(tagValue, ",")
 
 		// Loop over tag values
-		for _, value := range tagValues {
+		for value := range tagValues {
 			// Check if tag isn't marked as ignored
 			if value == "-" {
 				// Continue to next field
