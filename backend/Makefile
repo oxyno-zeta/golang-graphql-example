@@ -71,7 +71,7 @@ TEMPO_VERSION := "2.8.2"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.7.1"
+OPA_VERSION := "1.8.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.3.3"
 # renovate: datasource=docker depName=rabbitmq
