@@ -332,7 +332,7 @@ func (as *amqpService) Consume(
 			// Increase active request counter
 			as.signalHandlerSvc.IncreaseActiveRequestCounter()
 
-			go func(d amqp091.Delivery) { //nolint:contextcheck // False positive
+			manageMsgFn := func(d amqp091.Delivery) { //nolint:contextcheck // False positive
 				// Create handler
 				handler := func() (err error) {
 					// Extract trace from message
@@ -466,7 +466,14 @@ func (as *amqpService) Consume(
 
 				// Decrease active request counter
 				as.signalHandlerSvc.DecreaseActiveRequestCounter()
-			}(d)
+			}
+
+			// Check if not in routines is enabled or not
+			if consumeCfg.NotInRoutines {
+				manageMsgFn(d)
+			} else {
+				go manageMsgFn(d)
+			}
 		}
 	}
 }

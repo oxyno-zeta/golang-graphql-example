@@ -79,6 +79,8 @@ type ConsumeConfigInput struct {
 	NoLocal bool
 	// NoWait
 	NoWait bool
+	// Not in routines
+	NotInRoutines bool
 }
 
 // ExtraSetupInput Extra setup input object.
