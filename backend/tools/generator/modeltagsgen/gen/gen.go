@@ -4,10 +4,12 @@ import (
 	"bytes"
 	"fmt"
 	"reflect"
+	"sort"
 	"strings"
 	"sync"
 
 	"github.com/dave/jennifer/jen"
+	"github.com/samber/lo"
 	"gorm.io/gorm/schema"
 )
 
@@ -208,8 +210,14 @@ func addErrors(f *jen.File, mainPkg *MainPkg, disableGorm, disableJSON, disableS
 func generateGormVariables(f *jen.File, mainPkg *MainPkg) {
 	f.Comment("/* Gorm columns Names */")
 
+	// Get ordered keys
+	keys := lo.Keys(mainPkg.GormMap)
+	sort.Strings(keys)
+
 	list := []jen.Code{}
-	for k, v := range mainPkg.GormMap {
+	for _, k := range keys {
+		v := mainPkg.GormMap[k]
+
 		vName := mainPkg.ObjectName + k + gormVariableNameSuffix
 
 		f.Commentf("%s %s Gorm Column Name", mainPkg.ObjectName, k)
@@ -224,8 +232,14 @@ func generateGormVariables(f *jen.File, mainPkg *MainPkg) {
 func generateJSONVariables(f *jen.File, mainPkg *MainPkg) {
 	f.Comment("/* JSON Key Names */")
 
+	// Get ordered keys
+	keys := lo.Keys(mainPkg.JSONMap)
+	sort.Strings(keys)
+
 	list := []jen.Code{}
-	for k, v := range mainPkg.JSONMap {
+	for _, k := range keys {
+		v := mainPkg.JSONMap[k]
+
 		vName := mainPkg.ObjectName + k + jsonKeyNameSuffix
 
 		f.Commentf("%s %s JSON Key Name", mainPkg.ObjectName, k)
@@ -240,8 +254,14 @@ func generateJSONVariables(f *jen.File, mainPkg *MainPkg) {
 func generateStructKeyVariables(f *jen.File, mainPkg *MainPkg) {
 	f.Comment("/* Struct Key Names */")
 
+	// Get ordered keys
+	keys := lo.Keys(mainPkg.StructKeyNamesMap)
+	sort.Strings(keys)
+
 	list := []jen.Code{}
-	for k, v := range mainPkg.StructKeyNamesMap {
+	for _, k := range keys {
+		v := mainPkg.StructKeyNamesMap[k]
+
 		vName := mainPkg.ObjectName + k + structKeyNameSuffix
 
 		f.Commentf("%s %s Struct Key Name", mainPkg.ObjectName, k)
@@ -258,7 +278,11 @@ func generateTransformFunctions(f *jen.File, mainPkg *MainPkg, disableJSON, disa
 		gormToJsonKeyCases := []jen.Code{}
 		jsonToGormKeyCases := []jen.Code{}
 
-		for k := range mainPkg.GormMap {
+		// Get ordered keys
+		keys := lo.Keys(mainPkg.GormMap)
+		sort.Strings(keys)
+
+		for _, k := range keys {
 			gormToJsonKeyCases = append(gormToJsonKeyCases, jen.
 				Case(jen.Id(mainPkg.ObjectName+k+gormVariableNameSuffix)).
 				Block(
@@ -269,7 +293,12 @@ func generateTransformFunctions(f *jen.File, mainPkg *MainPkg, disableJSON, disa
 				),
 			)
 		}
-		for k := range mainPkg.JSONMap {
+
+		// Get ordered keys
+		keys = lo.Keys(mainPkg.JSONMap)
+		sort.Strings(keys)
+
+		for _, k := range keys {
 			jsonToGormKeyCases = append(jsonToGormKeyCases, jen.
 				Case(jen.Id(mainPkg.ObjectName+k+jsonKeyNameSuffix)).
 				Block(
@@ -372,7 +401,11 @@ func generateTransformFunctions(f *jen.File, mainPkg *MainPkg, disableJSON, disa
 		gormToStructKeyCases := []jen.Code{}
 		structToGormKeyCases := []jen.Code{}
 
-		for k := range mainPkg.GormMap {
+		// Get ordered keys
+		keys := lo.Keys(mainPkg.GormMap)
+		sort.Strings(keys)
+
+		for _, k := range keys {
 			gormToStructKeyCases = append(gormToStructKeyCases, jen.
 				Case(jen.Id(mainPkg.ObjectName+k+gormVariableNameSuffix)).
 				Block(
@@ -383,7 +416,12 @@ func generateTransformFunctions(f *jen.File, mainPkg *MainPkg, disableJSON, disa
 				),
 			)
 		}
-		for k := range mainPkg.JSONMap {
+
+		// Get ordered keys
+		keys = lo.Keys(mainPkg.StructKeyNamesMap)
+		sort.Strings(keys)
+
+		for _, k := range keys {
 			structToGormKeyCases = append(structToGormKeyCases, jen.
 				Case(jen.Id(mainPkg.ObjectName+k+structKeyNameSuffix)).
 				Block(
@@ -486,7 +524,11 @@ func generateTransformFunctions(f *jen.File, mainPkg *MainPkg, disableJSON, disa
 		jsonToStructKeyCases := []jen.Code{}
 		structToJsonKeyCases := []jen.Code{}
 
-		for k := range mainPkg.GormMap {
+		// Get ordered keys
+		keys := lo.Keys(mainPkg.JSONMap)
+		sort.Strings(keys)
+
+		for _, k := range keys {
 			jsonToStructKeyCases = append(jsonToStructKeyCases, jen.
 				Case(jen.Id(mainPkg.ObjectName+k+jsonKeyNameSuffix)).
 				Block(
@@ -497,7 +539,12 @@ func generateTransformFunctions(f *jen.File, mainPkg *MainPkg, disableJSON, disa
 				),
 			)
 		}
-		for k := range mainPkg.JSONMap {
+
+		// Get ordered keys
+		keys = lo.Keys(mainPkg.StructKeyNamesMap)
+		sort.Strings(keys)
+
+		for _, k := range keys {
 			structToJsonKeyCases = append(structToJsonKeyCases, jen.
 				Case(jen.Id(mainPkg.ObjectName+k+structKeyNameSuffix)).
 				Block(
