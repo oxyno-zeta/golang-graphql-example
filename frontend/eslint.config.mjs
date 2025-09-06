@@ -201,6 +201,7 @@ export default tsEslint.config(
    */
   {
     rules: {
+      'no-continue': 0,
       '@typescript-eslint/no-non-null-assertion': 0,
       'react-hooks/exhaustive-deps': 2,
       'import-x/no-named-as-default-member': 0,
