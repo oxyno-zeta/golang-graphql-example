@@ -90,6 +90,8 @@ func addImports(f *jen.File, list []*DaoModelCfg) {
 
 func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg) {
 	for _, m := range v.Models {
+		f.Line().Commentf("Starting methods for %s structure", m.StructureName).Line()
+
 		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 			Id("Find" + m.StructureName + "ByID").
 			Add(findByIdParamsAndReturns(m)).Block(jen.Return(
@@ -221,6 +223,8 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 				jen.Id("d.db"),
 			),
 		)).Line()
+
+		f.Line().Commentf("Ending methods for %s structure", m.StructureName).Line()
 	}
 }
 

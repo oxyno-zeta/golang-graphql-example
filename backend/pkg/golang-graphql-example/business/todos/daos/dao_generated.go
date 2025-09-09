@@ -46,6 +46,8 @@ type dao struct {
 
 /* Functions */
 
+// Starting methods for Todo structure
+
 func (d *dao) FindTodoByID(ctx context.Context, id string, projection *models0.Projection) (*models0.Todo, error) {
 	return helpers.FindByID(ctx, &models0.Todo{}, d.db, id, projection)
 }
@@ -93,3 +95,5 @@ func (d *dao) PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch ma
 func (d *dao) PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any) error {
 	return helpers.PatchUpdateAllFiltered(ctx, &models0.Todo{}, patch, filter, d.db)
 }
+
+// Ending methods for Todo structure
