@@ -225,29 +225,37 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 }
 
 func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg) {
-	res := []jen.Code{}
+	list := []jen.Code{}
 
 	// Loop
 	for _, m := range v.Models {
-		res = append(
-			res,
-			jen.Id("Find"+m.StructureName+"ByID").Add(findByIdParamsAndReturns(m)),
-			jen.Id("FindOne"+m.StructureName).Add(findOneParamsAndReturns(m)),
-			jen.Id("Find"+m.StructureName+"WithPagination").Add(findWithPaginationParamsAndReturns(m, neededPackages)),
-			jen.Id("Find"+m.StructureName+"Paginated").Add(findAllPaginatedParamsAndReturns(m, neededPackages)),
-			jen.Id("FindAll"+m.StructureName).Add(findAllParamsAndReturns(m)),
-			jen.Id("Count"+m.StructureName+"Paginated").Add(countPaginatedParamsAndReturns(m, neededPackages)),
-			jen.Id("Count"+m.StructureName).Add(countParamsAndReturns(m)),
-			jen.Id("CreateOrUpdate"+m.StructureName).Add(createOrUpdateParamsAndReturns(m)),
-			jen.Id("PermanentDelete"+m.StructureName).Add(permanentDeleteParamsAndReturns(m)),
-			jen.Id("PermanentDelete"+m.StructureName+"Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)),
-			jen.Id("PatchUpdate"+m.StructureName).Add(patchUpdateParamsAndReturns(m)),
-			jen.Id("PatchUpdate"+m.StructureName+"Filtered").Add(patchUpdateFilteredParamsAndReturns(m)),
+		res := []jen.Code{
+			jen.Id("Find" + m.StructureName + "ByID").Add(findByIdParamsAndReturns(m)),
+			jen.Id("FindOne" + m.StructureName).Add(findOneParamsAndReturns(m)),
+			jen.Id("Find" + m.StructureName + "WithPagination").Add(findWithPaginationParamsAndReturns(m, neededPackages)),
+			jen.Id("Find" + m.StructureName + "Paginated").Add(findAllPaginatedParamsAndReturns(m, neededPackages)),
+			jen.Id("FindAll" + m.StructureName).Add(findAllParamsAndReturns(m)),
+			jen.Id("Count" + m.StructureName + "Paginated").Add(countPaginatedParamsAndReturns(m, neededPackages)),
+			jen.Id("Count" + m.StructureName).Add(countParamsAndReturns(m)),
+			jen.Id("CreateOrUpdate" + m.StructureName).Add(createOrUpdateParamsAndReturns(m)),
+			jen.Id("PermanentDelete" + m.StructureName).Add(permanentDeleteParamsAndReturns(m)),
+			jen.Id("PermanentDelete" + m.StructureName + "Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)),
+			jen.Id("PatchUpdate" + m.StructureName).Add(patchUpdateParamsAndReturns(m)),
+			jen.Id("PatchUpdate" + m.StructureName + "Filtered").Add(patchUpdateFilteredParamsAndReturns(m)),
+		}
+
+		f.Commentf("Dao for structure %s", m.StructureName)
+		f.Type().Id(getStructureInterfaceName(m.StructureName, v)).Interface(
+			res...,
 		)
+		f.Line()
+
+		list = append(list, jen.Id(getStructureInterfaceName(m.StructureName, v)))
 	}
 
+	f.Comment("General Dao")
 	f.Type().Id(getInterfaceName(v)).Interface(
-		res...,
+		list...,
 	)
 }
 
@@ -373,6 +381,10 @@ func findAllParamsAndReturns(m *DaoModelCfg) jen.Code {
 
 func getDaoStructureName(input *DaoCfg) string {
 	return strings.ToLower(getInterfaceName(input))
+}
+
+func getStructureInterfaceName(structureName string, input *DaoCfg) string {
+	return structureName + "Structure" + getInterfaceName(input)
 }
 
 func getInterfaceName(input *DaoCfg) string {

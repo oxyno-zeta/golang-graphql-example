@@ -11,7 +11,8 @@ import (
 
 /* Interface */
 
-type Dao interface {
+// Dao for structure Todo
+type TodoStructureDao interface {
 	FindTodoByID(ctx context.Context, id string, projection *models0.Projection) (*models0.Todo, error)
 	FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) (*models0.Todo, error)
 	FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, error)
@@ -24,6 +25,11 @@ type Dao interface {
 	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter) error
 	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any) (*models0.Todo, error)
 	PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any) error
+}
+
+// General Dao
+type Dao interface {
+	TodoStructureDao
 }
 
 /* New */
