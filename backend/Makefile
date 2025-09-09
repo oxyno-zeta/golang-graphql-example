@@ -59,7 +59,7 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 GOLANGCI_LINT_VERSION := "v2.4.0"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.7.0"
+PGADMIN_VERSION := "9.8.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
@@ -75,7 +75,7 @@ OPA_VERSION := "1.8.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.3.3"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.1.3"
+RABBITMQ_VERSION := "4.1.4"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
