@@ -56,6 +56,13 @@ repos:
         stages: [pre-commit]
   - repo: local
     hooks:
+      - id: check-not-implemented
+        stages: [pre-commit]
+        name: Check "not implemented"
+        entry: ./.pre-commit/check-not-implemented.sh
+        require_serial: false
+        language: script
+        pass_filenames: false
       - id: backend-lint
         stages: [pre-commit]
         files: \.go$
