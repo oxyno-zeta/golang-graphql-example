@@ -6,7 +6,7 @@ import (
 
 	"emperror.dev/errors"
 	"github.com/go-playground/validator/v10"
-	"github.com/stretchr/testify/assert/yaml"
+	"go.yaml.in/yaml/v3"
 )
 
 type Config struct {
