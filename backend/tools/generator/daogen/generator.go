@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"path"
 	"strconv"
 	"strings"
@@ -11,6 +12,13 @@ import (
 
 func generate(cfg *Config) error {
 	for _, v := range cfg.Daos {
+		// Create directory
+		err := os.MkdirAll(v.Path, os.ModePerm)
+		// Check error
+		if err != nil {
+			return errors.WithStack(err)
+		}
+
 		// Create new file
 		f := jen.NewFile(v.PackageName)
 
@@ -57,7 +65,7 @@ func generate(cfg *Config) error {
 		p := path.Join(v.Path, strings.ToLower(getInterfaceName(v))+"_generated.go")
 
 		// Save
-		err := f.Save(p)
+		err = f.Save(p)
 		// Check error
 		if err != nil {
 			return errors.WithStack(err)
