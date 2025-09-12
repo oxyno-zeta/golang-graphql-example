@@ -279,14 +279,14 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.36.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.37.0
 endif
 
 .PHONY: setup/dep/test/install
 setup/dep/test/install: setup/dep/install
 ifndef HAS_GOTESTSUM
 	@echo "=> Installing gotestsum tool"
-	$(GO) install gotest.tools/gotestsum@v1.12.3
+	$(GO) install gotest.tools/gotestsum@v1.13.0
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
