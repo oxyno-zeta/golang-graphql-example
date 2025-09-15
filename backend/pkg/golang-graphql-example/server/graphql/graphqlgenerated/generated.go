@@ -8,12 +8,23 @@ import (
 	utils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
-func MapTodoConnection(list []*models0.Todo, page *pagination.PageOutput) (*model.TodoConnection, error) {
+func MapTodoConnection(list []*models0.Todo, pageOut *pagination.PageOutput) (*model.TodoConnection, error) {
+	edges := make([]*model.TodoEdge, len(list))
+
+	for i, v := range list {
+		cursor := utils.GetPaginateCursor(i, pageOut.Skip)
+
+		edges[i] = &model.TodoEdge{
+			Cursor: cursor,
+			Node:   v,
+		}
+	}
+
 	res := &model.TodoConnection{
-		Edges: []*model.TodoEdge{},
+		Edges: edges,
 		PageInfo: &utils.PageInfo{
-			HasNextPage:     page.HasNext,
-			HasPreviousPage: page.HasPrevious,
+			HasNextPage:     pageOut.HasNext,
+			HasPreviousPage: pageOut.HasPrevious,
 		},
 	}
 

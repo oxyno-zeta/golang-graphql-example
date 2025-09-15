@@ -11,11 +11,14 @@ import (
 
 const (
 	EdgesStructureKeyName                  = "Edges"
+	EdgesNodeKeyName                       = "Node"
+	EdgesCursorKeyName                     = "Cursor"
 	PageInfoStructureKeyName               = "PageInfo"
 	PageInfoUtilsStructureName             = "PageInfo"
 	PageInfoUtilsHasNextPageKeyName        = "HasNextPage"
 	PageInfoUtilsHasPreviousPageKeyName    = "HasPreviousPage"
 	PaginationPageOutputStructureName      = "PageOutput"
+	PaginationPageOutSkipKeyName           = "Skip"
 	PaginationPageOutputHasPreviousKeyName = "HasPrevious"
 	PaginationPageOutputHasNextKeyName     = "HasNext"
 )
@@ -75,18 +78,41 @@ func addImports(f *jen.File, list []*ConnectionCfg, gqlgenModelPackage string) {
 }
 
 func generateConnectionTransform(f *jen.File, conn *ConnectionCfg, neededPackages *NeededPackagesCfg) {
+	const pageOutParamName = "pageOut"
+
 	f.Func().Id("Map"+conn.StructureName+"Connection").Params(
 		jen.Id("list").Index().Op("*").Qual(conn.Package, conn.StructureName),
-		jen.Id("page").Op("*").Qual(neededPackages.Pagination, PaginationPageOutputStructureName),
+		jen.Id(pageOutParamName).Op("*").Qual(neededPackages.Pagination, PaginationPageOutputStructureName),
 	).Parens(jen.List(
 		jen.Op("*").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Connection"),
 		jen.Error(),
 	)).Block(
+		jen.Id("edges").Op(":=").Make(
+			jen.Index().Op("*").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Edge"),
+			jen.Len(jen.Id("list")),
+		),
+		jen.Line(),
+
+		jen.For(jen.Id("i").Op(",").Id("v").Op(":=").Range().Id("list")).Block(
+			jen.Id("cursor").Op(":=").Qual(neededPackages.GraphqlUtils, "GetPaginateCursor").Parens(jen.List(
+				jen.Id("i"),
+				jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutSkipKeyName),
+			)),
+			jen.Line(),
+			jen.Id("edges").Index(jen.Id("i")).Op("=").Op("&").
+				Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Edge").
+				Values(jen.Dict{
+					jen.Id(EdgesNodeKeyName):   jen.Id("v"),
+					jen.Id(EdgesCursorKeyName): jen.Id("cursor"),
+				}),
+		),
+		jen.Line(),
+
 		jen.Id("res").Op(":=").Op("&").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Connection").Values(jen.Dict{
-			jen.Id(EdgesStructureKeyName): jen.Index().Op("*").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Edge").Values(),
+			jen.Id(EdgesStructureKeyName): jen.Id("edges"),
 			jen.Id(PageInfoStructureKeyName): jen.Op("&").Qual(neededPackages.GraphqlUtils, PageInfoUtilsStructureName).Values(jen.Dict{
-				jen.Id(PageInfoUtilsHasNextPageKeyName):     jen.Id("page").Op(".").Id(PaginationPageOutputHasNextKeyName),
-				jen.Id(PageInfoUtilsHasPreviousPageKeyName): jen.Id("page").Op(".").Id(PaginationPageOutputHasPreviousKeyName),
+				jen.Id(PageInfoUtilsHasNextPageKeyName):     jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutputHasNextKeyName),
+				jen.Id(PageInfoUtilsHasPreviousPageKeyName): jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutputHasPreviousKeyName),
 			}),
 		}),
 		jen.Line(),
