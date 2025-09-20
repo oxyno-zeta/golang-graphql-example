@@ -104,33 +104,35 @@ func GetPageInputCustomized(
 	if after != nil && before != nil {
 		return nil, errors.NewInvalidInputError(
 			"after and before can't be present together at the same time",
+			errors.WithPublicErrorMessage("after and before can't be present together at the same time"),
 		)
 	}
 	// Check if first and last are present together
 	if first != nil && last != nil {
 		return nil, errors.NewInvalidInputError(
 			"first and last can't be present together at the same time",
+			errors.WithPublicErrorMessage("first and last can't be present together at the same time"),
 		)
 	}
 	// Check before and last
 	if before != nil && last == nil {
-		return nil, errors.NewInvalidInputError("before must be used with last element")
+		return nil, errors.NewInvalidInputError("before must be used with last element", errors.WithPublicErrorMessage("before must be used with last element"))
 	}
 	// Check before and last case 2
 	if (before == nil || *before == "") && last != nil {
-		return nil, errors.NewInvalidInputError("last must be used with before element")
+		return nil, errors.NewInvalidInputError("last must be used with before element", errors.WithPublicErrorMessage("last must be used with before element"))
 	}
 	// Check first and after
 	if after != nil && first == nil {
-		return nil, errors.NewInvalidInputError("first must be used with after element")
+		return nil, errors.NewInvalidInputError("first must be used with after element", errors.WithPublicErrorMessage("first must be used with after element"))
 	}
 	// Check if last is positive
 	if last != nil && *last <= 0 {
-		return nil, errors.NewInvalidInputError("last must be > 0")
+		return nil, errors.NewInvalidInputError("last must be > 0", errors.WithPublicErrorMessage("last must be > 0"))
 	}
 	// Check if first is positive
 	if first != nil && *first <= 0 {
-		return nil, errors.NewInvalidInputError("first must be > 0")
+		return nil, errors.NewInvalidInputError("first must be > 0", errors.WithPublicErrorMessage("first must be > 0"))
 	}
 
 	// Create parginator input
@@ -172,8 +174,11 @@ func GetPageInputCustomized(
 
 	// Check limit
 	if res.Limit > maxPageSize {
+		errorText := fmt.Sprintf("first or last is too big, maximum is %d", defaultMaxPageSize)
+
 		return nil, errors.NewInvalidInputError(
-			fmt.Sprintf("first or last is too big, maximum is %d", defaultMaxPageSize),
+			errorText,
+			errors.WithPublicErrorMessage(errorText),
 		)
 	}
 
