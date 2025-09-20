@@ -201,6 +201,21 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 			),
 		)).Line()
 		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+			Id("PermanentDelete"+m.StructureName+"ByID").
+			Add(permanentDeleteByIDParamsAndReturns(m)).Block(
+			// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
+			jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
+			jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
+			jen.Line(),
+			jen.Return(
+				jen.Qual(neededPackages.Helpers, "PermanentDelete").Params(
+					jen.Id("ctx"),
+					jen.Id("input"),
+					jen.Id("d.db"),
+				),
+			),
+		).Line()
+		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 			Id("PermanentDelete" + m.StructureName + "Filtered").
 			Add(permanentDeleteFilteredParamsAndReturns(m)).Block(jen.Return(
 			jen.Qual(neededPackages.Helpers, "PermanentDeleteFiltered").Params(
@@ -234,7 +249,8 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 					jen.Id("patch"),
 					jen.Id("d.db"),
 				),
-			)).Line()
+			),
+		).Line()
 		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 			Id("PatchUpdate" + m.StructureName + "Filtered").
 			Add(patchUpdateFilteredParamsAndReturns(m)).Block(jen.Return(
@@ -266,6 +282,7 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 			jen.Id("Count" + m.StructureName).Add(countParamsAndReturns(m)),
 			jen.Id("CreateOrUpdate" + m.StructureName).Add(createOrUpdateParamsAndReturns(m)),
 			jen.Id("PermanentDelete" + m.StructureName).Add(permanentDeleteParamsAndReturns(m)),
+			jen.Id("PermanentDelete" + m.StructureName + "ByID").Add(permanentDeleteByIDParamsAndReturns(m)),
 			jen.Id("PermanentDelete" + m.StructureName + "Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)),
 			jen.Id("PatchUpdate" + m.StructureName).Add(patchUpdateParamsAndReturns(m)),
 			jen.Id("PatchUpdate" + m.StructureName + "ByID").Add(patchUpdateByIDParamsAndReturns(m)),
@@ -331,6 +348,16 @@ func permanentDeleteParamsAndReturns(m *DaoModelCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("input").Op("*").Qual(m.Package, m.StructureName),
+	).Parens(jen.List(
+		jen.Op("*").Qual(m.Package, m.StructureName),
+		jen.Error(),
+	))
+}
+
+func permanentDeleteByIDParamsAndReturns(m *DaoModelCfg) jen.Code {
+	return jen.Params(
+		jen.Id("ctx").Qual("context", "Context"),
+		jen.Id("id").String(),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),

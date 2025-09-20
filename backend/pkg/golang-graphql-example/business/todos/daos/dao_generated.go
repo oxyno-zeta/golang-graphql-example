@@ -22,6 +22,7 @@ type TodoStructureDao interface {
 	CountTodo(ctx context.Context, filter *models0.Filter) (int64, error)
 	CreateOrUpdateTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error)
 	PermanentDeleteTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error)
+	PermanentDeleteTodoByID(ctx context.Context, id string) (*models0.Todo, error)
 	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter) error
 	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any) (*models0.Todo, error)
 	PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any) (*models0.Todo, error)
@@ -82,6 +83,13 @@ func (d *dao) CreateOrUpdateTodo(ctx context.Context, input *models0.Todo) (*mod
 }
 
 func (d *dao) PermanentDeleteTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error) {
+	return helpers.PermanentDelete(ctx, input, d.db)
+}
+
+func (d *dao) PermanentDeleteTodoByID(ctx context.Context, id string) (*models0.Todo, error) {
+	input := &models0.Todo{}
+	input.ID = id
+
 	return helpers.PermanentDelete(ctx, input, d.db)
 }
 
