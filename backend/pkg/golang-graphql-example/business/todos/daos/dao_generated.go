@@ -24,6 +24,7 @@ type TodoStructureDao interface {
 	PermanentDeleteTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error)
 	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter) error
 	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any) (*models0.Todo, error)
+	PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any) (*models0.Todo, error)
 	PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any) error
 }
 
@@ -89,6 +90,13 @@ func (d *dao) PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.F
 }
 
 func (d *dao) PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any) (*models0.Todo, error) {
+	return helpers.PatchUpdate(ctx, input, patch, d.db)
+}
+
+func (d *dao) PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any) (*models0.Todo, error) {
+	input := &models0.Todo{}
+	input.ID = id
+
 	return helpers.PatchUpdate(ctx, input, patch, d.db)
 }
 

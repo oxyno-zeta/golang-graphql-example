@@ -221,6 +221,21 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 			),
 		)).Line()
 		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+			Id("PatchUpdate"+m.StructureName+"ByID").
+			Add(patchUpdateByIDParamsAndReturns(m)).Block(
+			// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
+			jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
+			jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
+			jen.Line(),
+			jen.Return(
+				jen.Qual(neededPackages.Helpers, "PatchUpdate").Params(
+					jen.Id("ctx"),
+					jen.Id("input"),
+					jen.Id("patch"),
+					jen.Id("d.db"),
+				),
+			)).Line()
+		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 			Id("PatchUpdate" + m.StructureName + "Filtered").
 			Add(patchUpdateFilteredParamsAndReturns(m)).Block(jen.Return(
 			jen.Qual(neededPackages.Helpers, "PatchUpdateAllFiltered").Params(
@@ -253,6 +268,7 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 			jen.Id("PermanentDelete" + m.StructureName).Add(permanentDeleteParamsAndReturns(m)),
 			jen.Id("PermanentDelete" + m.StructureName + "Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)),
 			jen.Id("PatchUpdate" + m.StructureName).Add(patchUpdateParamsAndReturns(m)),
+			jen.Id("PatchUpdate" + m.StructureName + "ByID").Add(patchUpdateByIDParamsAndReturns(m)),
 			jen.Id("PatchUpdate" + m.StructureName + "Filtered").Add(patchUpdateFilteredParamsAndReturns(m)),
 		}
 
@@ -283,6 +299,17 @@ func patchUpdateParamsAndReturns(m *DaoModelCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("input").Op("*").Qual(m.Package, m.StructureName),
+		jen.Id("patch").Map(jen.String()).Any(),
+	).Parens(jen.List(
+		jen.Op("*").Qual(m.Package, m.StructureName),
+		jen.Error(),
+	))
+}
+
+func patchUpdateByIDParamsAndReturns(m *DaoModelCfg) jen.Code {
+	return jen.Params(
+		jen.Id("ctx").Qual("context", "Context"),
+		jen.Id("id").String(),
 		jen.Id("patch").Map(jen.String()).Any(),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
