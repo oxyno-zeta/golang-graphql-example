@@ -17,6 +17,8 @@ const (
 	PageInfoUtilsStructureName             = "PageInfo"
 	PageInfoUtilsHasNextPageKeyName        = "HasNextPage"
 	PageInfoUtilsHasPreviousPageKeyName    = "HasPreviousPage"
+	PageInfoUtilsStartCursorKeyName        = "StartCursor"
+	PageInfoUtilsEndCursorKeyName          = "EndCursor"
 	PaginationPageOutputStructureName      = "PageOutput"
 	PaginationPageOutSkipKeyName           = "Skip"
 	PaginationPageOutputHasPreviousKeyName = "HasPrevious"
@@ -93,12 +95,29 @@ func generateConnectionTransform(f *jen.File, conn *ConnectionCfg, neededPackage
 		),
 		jen.Line(),
 
+		jen.Var().Id("startCursor").Op(",").Id("endCursor").Op("*").String(),
+		jen.Line(),
+
+		jen.Id("last").Op(":=").Len(jen.Id("list")).Op("-").Lit(1),
+		jen.Line(),
+
 		jen.For(jen.Id("i").Op(",").Id("v").Op(":=").Range().Id("list")).Block(
 			jen.Id("cursor").Op(":=").Qual(neededPackages.GraphqlUtils, "GetPaginateCursor").Parens(jen.List(
 				jen.Id("i"),
 				jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutSkipKeyName),
 			)),
 			jen.Line(),
+
+			jen.If(jen.Id("i").Op("==").Lit(0)).Block(
+				jen.Id("startCursor").Op("=").Op("&").Id("cursor"),
+			),
+			jen.Line(),
+
+			jen.If(jen.Id("i").Op("==").Id("last")).Block(
+				jen.Id("endCursor").Op("=").Op("&").Id("cursor"),
+			),
+			jen.Line(),
+
 			jen.Id("edges").Index(jen.Id("i")).Op("=").Op("&").
 				Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Edge").
 				Values(jen.Dict{
@@ -113,6 +132,8 @@ func generateConnectionTransform(f *jen.File, conn *ConnectionCfg, neededPackage
 			jen.Id(PageInfoStructureKeyName): jen.Op("&").Qual(neededPackages.GraphqlUtils, PageInfoUtilsStructureName).Values(jen.Dict{
 				jen.Id(PageInfoUtilsHasNextPageKeyName):     jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutputHasNextKeyName),
 				jen.Id(PageInfoUtilsHasPreviousPageKeyName): jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutputHasPreviousKeyName),
+				jen.Id(PageInfoUtilsStartCursorKeyName):     jen.Id("startCursor"),
+				jen.Id(PageInfoUtilsEndCursorKeyName):       jen.Id("endCursor"),
 			}),
 		}),
 		jen.Line(),

@@ -12,6 +12,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/graphqlgenerated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
@@ -102,14 +103,7 @@ func (r *queryResolver) Todos(ctx context.Context, after *string, before *string
 		return nil, err
 	}
 
-	var res model.TodoConnection
-	err = utils.MapConnection(&res, allTodos, pageOut)
-	// Check error
-	if err != nil {
-		return nil, err
-	}
-
-	return &res, nil
+	return graphqlgenerated.MapTodoConnection(allTodos, pageOut)
 }
 
 // Todo is the resolver for the todo field.

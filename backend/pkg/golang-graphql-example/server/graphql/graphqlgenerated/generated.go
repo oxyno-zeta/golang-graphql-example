@@ -11,8 +11,20 @@ import (
 func MapTodoConnection(list []*models0.Todo, pageOut *pagination.PageOutput) (*model.TodoConnection, error) {
 	edges := make([]*model.TodoEdge, len(list))
 
+	var startCursor, endCursor *string
+
+	last := len(list) - 1
+
 	for i, v := range list {
 		cursor := utils.GetPaginateCursor(i, pageOut.Skip)
+
+		if i == 0 {
+			startCursor = &cursor
+		}
+
+		if i == last {
+			endCursor = &cursor
+		}
 
 		edges[i] = &model.TodoEdge{
 			Cursor: cursor,
@@ -23,8 +35,10 @@ func MapTodoConnection(list []*models0.Todo, pageOut *pagination.PageOutput) (*m
 	res := &model.TodoConnection{
 		Edges: edges,
 		PageInfo: &utils.PageInfo{
+			EndCursor:       endCursor,
 			HasNextPage:     pageOut.HasNext,
 			HasPreviousPage: pageOut.HasPrevious,
+			StartCursor:     startCursor,
 		},
 	}
 
