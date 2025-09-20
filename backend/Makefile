@@ -73,7 +73,7 @@ POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "1.8.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.3.3"
+KEYCLOAK_VERSION := "26.3.4"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.1.4"
 
@@ -273,7 +273,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.78
+	$(GO) install github.com/99designs/gqlgen@v0.17.80
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
