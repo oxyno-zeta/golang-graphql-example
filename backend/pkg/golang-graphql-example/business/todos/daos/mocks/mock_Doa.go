@@ -178,6 +178,21 @@ func (mr *MockDaoMockRecorder) PatchUpdateTodo(ctx, input, patch any) *gomock.Ca
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PatchUpdateTodo", reflect.TypeOf((*MockDao)(nil).PatchUpdateTodo), ctx, input, patch)
 }
 
+// PatchUpdateTodoByID mocks base method.
+func (m *MockDao) PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any) (*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PatchUpdateTodoByID", ctx, id, patch)
+	ret0, _ := ret[0].(*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PatchUpdateTodoByID indicates an expected call of PatchUpdateTodoByID.
+func (mr *MockDaoMockRecorder) PatchUpdateTodoByID(ctx, id, patch any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PatchUpdateTodoByID", reflect.TypeOf((*MockDao)(nil).PatchUpdateTodoByID), ctx, id, patch)
+}
+
 // PatchUpdateTodoFiltered mocks base method.
 func (m *MockDao) PatchUpdateTodoFiltered(ctx context.Context, filter *models.Filter, patch map[string]any) error {
 	m.ctrl.T.Helper()
@@ -205,6 +220,21 @@ func (m *MockDao) PermanentDeleteTodo(ctx context.Context, input *models.Todo) (
 func (mr *MockDaoMockRecorder) PermanentDeleteTodo(ctx, input any) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PermanentDeleteTodo", reflect.TypeOf((*MockDao)(nil).PermanentDeleteTodo), ctx, input)
+}
+
+// PermanentDeleteTodoByID mocks base method.
+func (m *MockDao) PermanentDeleteTodoByID(ctx context.Context, id string) (*models.Todo, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PermanentDeleteTodoByID", ctx, id)
+	ret0, _ := ret[0].(*models.Todo)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PermanentDeleteTodoByID indicates an expected call of PermanentDeleteTodoByID.
+func (mr *MockDaoMockRecorder) PermanentDeleteTodoByID(ctx, id any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PermanentDeleteTodoByID", reflect.TypeOf((*MockDao)(nil).PermanentDeleteTodoByID), ctx, id)
 }
 
 // PermanentDeleteTodoFiltered mocks base method.

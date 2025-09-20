@@ -401,6 +401,7 @@ linters:
     paths:
       - tools/generator/modeltagsgen
       - tools/generator/daogen
+      - tools/generator/graphqlgen
       - third_party$
       - builtin$
       - examples$

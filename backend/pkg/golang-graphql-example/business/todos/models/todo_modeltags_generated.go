@@ -13,11 +13,14 @@ var ErrTodoUnsupportedJSONKey = errors.Sentinel("unsupported json key")
 var ErrTodoUnsupportedStructKeyName = errors.Sentinel("unsupported struct key")
 
 /* Gorm columns Names */
-// Todo UpdatedAt Gorm Column Name
-const TodoUpdatedAtGormColumnName = "updated_at"
+// Todo CreatedAt Gorm Column Name
+const TodoCreatedAtGormColumnName = "created_at"
 
 // Todo DeletedAt Gorm Column Name
 const TodoDeletedAtGormColumnName = "deleted_at"
+
+// Todo Done Gorm Column Name
+const TodoDoneGormColumnName = "done"
 
 // Todo ID Gorm Column Name
 const TodoIDGormColumnName = "id"
@@ -25,17 +28,20 @@ const TodoIDGormColumnName = "id"
 // Todo Text Gorm Column Name
 const TodoTextGormColumnName = "text"
 
-// Todo Done Gorm Column Name
-const TodoDoneGormColumnName = "done"
+// Todo UpdatedAt Gorm Column Name
+const TodoUpdatedAtGormColumnName = "updated_at"
 
-// Todo CreatedAt Gorm Column Name
-const TodoCreatedAtGormColumnName = "created_at"
-
-var TodoGormColumnNameList = []string{TodoUpdatedAtGormColumnName, TodoDeletedAtGormColumnName, TodoIDGormColumnName, TodoTextGormColumnName, TodoDoneGormColumnName, TodoCreatedAtGormColumnName}
+var TodoGormColumnNameList = []string{TodoCreatedAtGormColumnName, TodoDeletedAtGormColumnName, TodoDoneGormColumnName, TodoIDGormColumnName, TodoTextGormColumnName, TodoUpdatedAtGormColumnName}
 
 /* JSON Key Names */
+// Todo CreatedAt JSON Key Name
+const TodoCreatedAtJSONKeyName = "createdAt"
+
 // Todo DeletedAt JSON Key Name
 const TodoDeletedAtJSONKeyName = "deletedAt"
+
+// Todo Done JSON Key Name
+const TodoDoneJSONKeyName = "Done"
 
 // Todo ID JSON Key Name
 const TodoIDJSONKeyName = "id"
@@ -43,26 +49,20 @@ const TodoIDJSONKeyName = "id"
 // Todo Text JSON Key Name
 const TodoTextJSONKeyName = "Text"
 
-// Todo Done JSON Key Name
-const TodoDoneJSONKeyName = "Done"
-
-// Todo CreatedAt JSON Key Name
-const TodoCreatedAtJSONKeyName = "createdAt"
-
 // Todo UpdatedAt JSON Key Name
 const TodoUpdatedAtJSONKeyName = "updatedAt"
 
-var TodoJSONKeyNameList = []string{TodoDeletedAtJSONKeyName, TodoIDJSONKeyName, TodoTextJSONKeyName, TodoDoneJSONKeyName, TodoCreatedAtJSONKeyName, TodoUpdatedAtJSONKeyName}
+var TodoJSONKeyNameList = []string{TodoCreatedAtJSONKeyName, TodoDeletedAtJSONKeyName, TodoDoneJSONKeyName, TodoIDJSONKeyName, TodoTextJSONKeyName, TodoUpdatedAtJSONKeyName}
 
 /* Struct Key Names */
 // Todo CreatedAt Struct Key Name
 const TodoCreatedAtStructKeyName = "CreatedAt"
 
-// Todo UpdatedAt Struct Key Name
-const TodoUpdatedAtStructKeyName = "UpdatedAt"
-
 // Todo DeletedAt Struct Key Name
 const TodoDeletedAtStructKeyName = "DeletedAt"
+
+// Todo Done Struct Key Name
+const TodoDoneStructKeyName = "Done"
 
 // Todo ID Struct Key Name
 const TodoIDStructKeyName = "ID"
@@ -70,26 +70,26 @@ const TodoIDStructKeyName = "ID"
 // Todo Text Struct Key Name
 const TodoTextStructKeyName = "Text"
 
-// Todo Done Struct Key Name
-const TodoDoneStructKeyName = "Done"
+// Todo UpdatedAt Struct Key Name
+const TodoUpdatedAtStructKeyName = "UpdatedAt"
 
-var TodoStructKeyNameList = []string{TodoCreatedAtStructKeyName, TodoUpdatedAtStructKeyName, TodoDeletedAtStructKeyName, TodoIDStructKeyName, TodoTextStructKeyName, TodoDoneStructKeyName}
+var TodoStructKeyNameList = []string{TodoCreatedAtStructKeyName, TodoDeletedAtStructKeyName, TodoDoneStructKeyName, TodoIDStructKeyName, TodoTextStructKeyName, TodoUpdatedAtStructKeyName}
 
 // Transform Todo Gorm Column To JSON Key
 func TransformTodoGormColumnToJSONKey(gormColumn string) (string, error) {
 	switch gormColumn {
+	case TodoCreatedAtGormColumnName:
+		return TodoCreatedAtJSONKeyName, nil
+	case TodoDeletedAtGormColumnName:
+		return TodoDeletedAtJSONKeyName, nil
+	case TodoDoneGormColumnName:
+		return TodoDoneJSONKeyName, nil
 	case TodoIDGormColumnName:
 		return TodoIDJSONKeyName, nil
 	case TodoTextGormColumnName:
 		return TodoTextJSONKeyName, nil
-	case TodoDoneGormColumnName:
-		return TodoDoneJSONKeyName, nil
-	case TodoCreatedAtGormColumnName:
-		return TodoCreatedAtJSONKeyName, nil
 	case TodoUpdatedAtGormColumnName:
 		return TodoUpdatedAtJSONKeyName, nil
-	case TodoDeletedAtGormColumnName:
-		return TodoDeletedAtJSONKeyName, nil
 	default:
 		return "", errors.WithStack(ErrTodoUnsupportedGormColumn)
 	}
@@ -100,16 +100,16 @@ func TransformTodoJSONKeyToGormColumn(jsonKey string) (string, error) {
 	switch jsonKey {
 	case TodoCreatedAtJSONKeyName:
 		return TodoCreatedAtGormColumnName, nil
-	case TodoUpdatedAtJSONKeyName:
-		return TodoUpdatedAtGormColumnName, nil
 	case TodoDeletedAtJSONKeyName:
 		return TodoDeletedAtGormColumnName, nil
+	case TodoDoneJSONKeyName:
+		return TodoDoneGormColumnName, nil
 	case TodoIDJSONKeyName:
 		return TodoIDGormColumnName, nil
 	case TodoTextJSONKeyName:
 		return TodoTextGormColumnName, nil
-	case TodoDoneJSONKeyName:
-		return TodoDoneGormColumnName, nil
+	case TodoUpdatedAtJSONKeyName:
+		return TodoUpdatedAtGormColumnName, nil
 	default:
 		return "", errors.WithStack(ErrTodoUnsupportedJSONKey)
 	}
@@ -154,18 +154,18 @@ func TransformTodoGormColumnMapToJSONKeyMap(input map[string]any, ignoreUnsuppor
 // Transform Todo Gorm Column To Struct Key Name
 func TransformTodoGormColumnToStructKeyName(gormColumn string) (string, error) {
 	switch gormColumn {
+	case TodoCreatedAtGormColumnName:
+		return TodoCreatedAtStructKeyName, nil
+	case TodoDeletedAtGormColumnName:
+		return TodoDeletedAtStructKeyName, nil
+	case TodoDoneGormColumnName:
+		return TodoDoneStructKeyName, nil
 	case TodoIDGormColumnName:
 		return TodoIDStructKeyName, nil
 	case TodoTextGormColumnName:
 		return TodoTextStructKeyName, nil
-	case TodoDoneGormColumnName:
-		return TodoDoneStructKeyName, nil
-	case TodoCreatedAtGormColumnName:
-		return TodoCreatedAtStructKeyName, nil
 	case TodoUpdatedAtGormColumnName:
 		return TodoUpdatedAtStructKeyName, nil
-	case TodoDeletedAtGormColumnName:
-		return TodoDeletedAtStructKeyName, nil
 	default:
 		return "", errors.WithStack(ErrTodoUnsupportedGormColumn)
 	}
@@ -174,18 +174,18 @@ func TransformTodoGormColumnToStructKeyName(gormColumn string) (string, error) {
 // Transform Todo Struct Key Name To Gorm Column
 func TransformTodoStructKeyNameToGormColumn(structKey string) (string, error) {
 	switch structKey {
-	case TodoTextStructKeyName:
-		return TodoTextGormColumnName, nil
-	case TodoDoneStructKeyName:
-		return TodoDoneGormColumnName, nil
 	case TodoCreatedAtStructKeyName:
 		return TodoCreatedAtGormColumnName, nil
-	case TodoUpdatedAtStructKeyName:
-		return TodoUpdatedAtGormColumnName, nil
 	case TodoDeletedAtStructKeyName:
 		return TodoDeletedAtGormColumnName, nil
+	case TodoDoneStructKeyName:
+		return TodoDoneGormColumnName, nil
 	case TodoIDStructKeyName:
 		return TodoIDGormColumnName, nil
+	case TodoTextStructKeyName:
+		return TodoTextGormColumnName, nil
+	case TodoUpdatedAtStructKeyName:
+		return TodoUpdatedAtGormColumnName, nil
 	default:
 		return "", errors.WithStack(ErrTodoUnsupportedStructKeyName)
 	}
@@ -232,16 +232,16 @@ func TransformTodoJSONKeyToStructKeyName(jsonKey string) (string, error) {
 	switch jsonKey {
 	case TodoCreatedAtJSONKeyName:
 		return TodoCreatedAtStructKeyName, nil
-	case TodoUpdatedAtJSONKeyName:
-		return TodoUpdatedAtStructKeyName, nil
 	case TodoDeletedAtJSONKeyName:
 		return TodoDeletedAtStructKeyName, nil
+	case TodoDoneJSONKeyName:
+		return TodoDoneStructKeyName, nil
 	case TodoIDJSONKeyName:
 		return TodoIDStructKeyName, nil
 	case TodoTextJSONKeyName:
 		return TodoTextStructKeyName, nil
-	case TodoDoneJSONKeyName:
-		return TodoDoneStructKeyName, nil
+	case TodoUpdatedAtJSONKeyName:
+		return TodoUpdatedAtStructKeyName, nil
 	default:
 		return "", errors.WithStack(ErrTodoUnsupportedJSONKey)
 	}
@@ -250,18 +250,18 @@ func TransformTodoJSONKeyToStructKeyName(jsonKey string) (string, error) {
 // Transform Todo Struct Key Name To JSON Key
 func TransformTodoStructKeyNameToJSONKey(structKey string) (string, error) {
 	switch structKey {
-	case TodoUpdatedAtStructKeyName:
-		return TodoUpdatedAtStructKeyName, nil
+	case TodoCreatedAtStructKeyName:
+		return TodoCreatedAtStructKeyName, nil
 	case TodoDeletedAtStructKeyName:
 		return TodoDeletedAtStructKeyName, nil
+	case TodoDoneStructKeyName:
+		return TodoDoneStructKeyName, nil
 	case TodoIDStructKeyName:
 		return TodoIDStructKeyName, nil
 	case TodoTextStructKeyName:
 		return TodoTextStructKeyName, nil
-	case TodoDoneStructKeyName:
-		return TodoDoneStructKeyName, nil
-	case TodoCreatedAtStructKeyName:
-		return TodoCreatedAtStructKeyName, nil
+	case TodoUpdatedAtStructKeyName:
+		return TodoUpdatedAtStructKeyName, nil
 	default:
 		return "", errors.WithStack(ErrTodoUnsupportedStructKeyName)
 	}
