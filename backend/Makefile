@@ -112,9 +112,11 @@ code/graphql/no-break-check:  code/graphql/concat
 .PHONY: code/graphql/generate
 code/graphql/generate: setup/dep/gen/install
 	gqlgen generate
+	$(GO) $(GO_VENDOR) run ./tools/generator/graphqlgen/
 
 .PHONY: code/generate
 code/generate: setup/dep/gen/install
+	$(GO) $(GO_VENDOR) run ./tools/generator/graphqlgen/
 	$(GO) $(GO_VENDOR) run ./tools/generator/daogen/
 	$(GO) $(GO_VENDOR) generate ./...
 

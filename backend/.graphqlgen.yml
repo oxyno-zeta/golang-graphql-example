@@ -1,0 +1,11 @@
+path: ./pkg/golang-graphql-example/server/graphql/graphqlgenerated/
+packageName: graphqlgenerated
+
+neededPackages:
+  gqlgenModelPackage: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model
+  pagination: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination
+  graphqlUtils: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils
+
+connections:
+  - package: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models
+    structureName: Todo
