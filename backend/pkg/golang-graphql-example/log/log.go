@@ -2,6 +2,7 @@ package log
 
 import (
 	"context"
+	"log/slog"
 	"time"
 
 	gormlogger "gorm.io/gorm/logger"
@@ -32,6 +33,7 @@ type Logger interface {
 
 	GetLockDistributorLogger() LockDistributorLogger
 	GetGormLogger() gormlogger.Interface
+	GetSlogInstance() *slog.Logger
 }
 
 type LockDistributorLogger interface {

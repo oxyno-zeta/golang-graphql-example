@@ -57,7 +57,7 @@ func (impl *managerimpl) Load(inputConfigFilePath string) error {
 	}
 
 	// Generate viper instances for static configs
-	impl.configs = generateViperInstances(files, configFolderPath)
+	impl.configs = impl.generateViperInstances(files, configFolderPath)
 
 	// Load configuration
 	err = impl.loadConfiguration()
@@ -168,7 +168,7 @@ func (impl *managerimpl) watchInternalFile(filePath string, forceStop chan bool,
 	initWG.Wait() // make sure that the go routine above fully ended before returning
 }
 
-func generateViperInstances(files []os.DirEntry, configFolderPath string) []*viper.Viper {
+func (impl *managerimpl) generateViperInstances(files []os.DirEntry, configFolderPath string) []*viper.Viper {
 	list := make([]*viper.Viper, 0)
 	// Loop over static files to create viper instance for them
 	lo.ForEach(files, func(file os.DirEntry, _ int) {
@@ -178,7 +178,7 @@ func generateViperInstances(files []os.DirEntry, configFolderPath string) []*vip
 		// Test if config file name is compliant (ignore hidden files like .keep or directory)
 		if !strings.HasPrefix(filename, ".") && cfgFileName != "" && !file.IsDir() {
 			// Create new viper instance
-			vip := viper.New()
+			vip := viper.NewWithOptions(viper.WithLogger(impl.logger.GetSlogInstance()))
 			// Set config name
 			vip.SetConfigName(cfgFileName)
 			// Add configuration path
@@ -200,7 +200,7 @@ func (impl *managerimpl) loadConfiguration() error {
 	}
 
 	// Create a viper instance for default value and merging
-	globalViper := viper.New()
+	globalViper := viper.NewWithOptions(viper.WithLogger(impl.logger.GetSlogInstance()))
 
 	// Put default values
 	impl.loadDefaultConfigurationValues(globalViper)
