@@ -30,8 +30,10 @@ import (
 )
 
 const (
-	serviceName = "golang-graphql-example"
-	tracerName  = serviceName
+	parentTraceIDTag = "parent-trace-id"
+	childTraceIDTag  = "child-trace-id"
+	serviceName      = "golang-graphql-example"
+	tracerName       = serviceName
 )
 
 type service struct {
@@ -63,6 +65,28 @@ func (s *service) StartTrace(
 
 	// Return trace object with span
 	return ctx, &trace{span: sp}
+}
+
+func (s *service) StartUncorrelatedChildTrace(
+	ctx context.Context,
+	parentTrace Trace,
+	childTraceName, uncorrelatedTraceName string,
+) *UncorrelatedTraceOutput {
+	cCtx, cTrace := parentTrace.GetChildTrace(ctx, childTraceName)
+
+	// Create a new trace from scratch to avoid having to much traces under the same parent
+	uCtx, uTrace := s.StartTrace(ctx, uncorrelatedTraceName, oteltrace.WithNewRoot())
+
+	// Reference parent trace and reverse
+	cTrace.SetTag(childTraceIDTag, uTrace.GetTraceID())
+	uTrace.SetTag(parentTraceIDTag, cTrace.GetTraceID())
+
+	return &UncorrelatedTraceOutput{
+		ChildTrace:          cTrace,
+		ChildContext:        cCtx,
+		UncorrelatedTrace:   uTrace,
+		UncorrelatedContext: uCtx,
+	}
 }
 
 func (s *service) Close() error {

@@ -14,6 +14,13 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
+type UncorrelatedTraceOutput struct {
+	ChildTrace          Trace
+	ChildContext        context.Context
+	UncorrelatedTrace   Trace
+	UncorrelatedContext context.Context
+}
+
 // Service Tracing service.
 //
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Service
@@ -32,6 +39,14 @@ type Service interface {
 		operationName string,
 		opts ...oteltrace.SpanStartOption,
 	) (context.Context, Trace)
+	// StartUncorrelatedChildTrace will create a child trace on the parent trace and create a new trace from scratch and reference this one in the
+	// new child trace created.
+	// This is allowing to create non correlated trace and spread trace load across multiple traces.
+	StartUncorrelatedChildTrace(
+		ctx context.Context,
+		parentTrace Trace,
+		childTraceName, uncorrelatedTraceName string,
+	) *UncorrelatedTraceOutput
 	// Close is used on application shutdown.
 	Close() error
 }

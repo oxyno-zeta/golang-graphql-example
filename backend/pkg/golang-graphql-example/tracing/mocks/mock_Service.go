@@ -134,3 +134,17 @@ func (mr *MockServiceMockRecorder) StartTrace(ctx, operationName any, opts ...an
 	varargs := append([]any{ctx, operationName}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartTrace", reflect.TypeOf((*MockService)(nil).StartTrace), varargs...)
 }
+
+// StartUncorrelatedChildTrace mocks base method.
+func (m *MockService) StartUncorrelatedChildTrace(ctx context.Context, parentTrace tracing.Trace, childTraceName, uncorrelatedTraceName string) *tracing.UncorrelatedTraceOutput {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "StartUncorrelatedChildTrace", ctx, parentTrace, childTraceName, uncorrelatedTraceName)
+	ret0, _ := ret[0].(*tracing.UncorrelatedTraceOutput)
+	return ret0
+}
+
+// StartUncorrelatedChildTrace indicates an expected call of StartUncorrelatedChildTrace.
+func (mr *MockServiceMockRecorder) StartUncorrelatedChildTrace(ctx, parentTrace, childTraceName, uncorrelatedTraceName any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartUncorrelatedChildTrace", reflect.TypeOf((*MockService)(nil).StartUncorrelatedChildTrace), ctx, parentTrace, childTraceName, uncorrelatedTraceName)
+}
