@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	cirello.io/pglock v1.16.1
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.80
+	github.com/99designs/gqlgen v0.17.81
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20250908152412-c2adf2f3a671
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
