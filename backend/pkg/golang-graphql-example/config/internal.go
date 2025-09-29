@@ -377,7 +377,7 @@ func (impl *managerimpl) runReloadHook(h *HookDefinition) (res bool) {
 		// Check if error is empty
 		if err == nil {
 			// Stop here
-			return
+			return res
 		}
 
 		// Save last fail
@@ -396,5 +396,5 @@ func (impl *managerimpl) runReloadHook(h *HookDefinition) (res bool) {
 		time.Sleep(h.RetryWaitDuration)
 	}
 
-	return
+	return res
 }

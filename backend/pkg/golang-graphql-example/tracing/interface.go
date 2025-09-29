@@ -16,9 +16,9 @@ import (
 
 type UncorrelatedTraceOutput struct {
 	ChildTrace          Trace
-	ChildContext        context.Context
+	ChildContext        context.Context //nolint:containedctx // Won't do a 4 output function
 	UncorrelatedTrace   Trace
-	UncorrelatedContext context.Context
+	UncorrelatedContext context.Context //nolint:containedctx // Won't do a 4 output function
 }
 
 // Service Tracing service.

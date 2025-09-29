@@ -44,7 +44,7 @@ func RequestHost(r *http.Request) string {
 
 func parseForwarded(forwarded string) (addr, proto, host string) {
 	if forwarded == "" {
-		return
+		return addr, proto, host
 	}
 
 	for forwardedPair := range strings.SplitSeq(forwarded, ";") {
@@ -64,7 +64,7 @@ func parseForwarded(forwarded string) (addr, proto, host string) {
 		}
 	}
 
-	return
+	return addr, proto, host
 }
 
 func AnswerWithError(c *gin.Context, err error) {

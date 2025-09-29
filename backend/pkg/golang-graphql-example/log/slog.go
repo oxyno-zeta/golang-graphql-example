@@ -15,7 +15,7 @@ type SlogHandler struct {
 }
 
 func (ll *loggerIns) GetSlogInstance() *slog.Logger {
-	zapHandler := slogzap.Option{
+	zapHandler, _ := slogzap.Option{
 		// Fake level
 		Level:  slog.LevelDebug,
 		Logger: ll.Desugar(),
@@ -35,6 +35,10 @@ func (h *SlogHandler) Enabled(_ context.Context, level slog.Level) bool {
 
 func (h *SlogHandler) getSLogLevel() slog.Level {
 	switch h.Level() {
+	case zapcore.InvalidLevel: // Shouldn't arrive but
+		fallthrough
+	case zapcore.DPanicLevel:
+		fallthrough
 	case zapcore.PanicLevel:
 		fallthrough
 	case zapcore.FatalLevel:
