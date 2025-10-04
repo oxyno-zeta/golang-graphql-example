@@ -73,7 +73,7 @@ POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "1.9.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.3.5"
+KEYCLOAK_VERSION := "26.4.0"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.1.4"
 
