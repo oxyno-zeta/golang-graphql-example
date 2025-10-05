@@ -106,7 +106,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
 <div>
   <div>
     <span
-      aria-labelledby="«r3»"
+      aria-labelledby="_r_3_"
       class=""
       data-mui-internal-clone-element="true"
       style="padding: 8px; vertical-align: middle; text-align: center; display: inline-flex;"
@@ -127,7 +127,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse click 2`] = `
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id="«r3»"
+      id="_r_3_"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
     >
@@ -248,7 +248,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
 <div>
   <div>
     <span
-      aria-labelledby="«r2»"
+      aria-labelledby="_r_2_"
       class=""
       data-mui-internal-clone-element="true"
       style="padding: 8px; vertical-align: middle; text-align: center; display: inline-flex;"
@@ -269,7 +269,7 @@ exports[`HelpForcedTooltip should display element tooltip on mouse over only 2`]
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id="«r2»"
+      id="_r_2_"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
     >
@@ -470,7 +470,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
 <div>
   <div>
     <span
-      aria-labelledby="«r1»"
+      aria-labelledby="_r_1_"
       class=""
       data-mui-internal-clone-element="true"
       style="padding: 8px; vertical-align: middle; text-align: center; display: inline-flex;"
@@ -491,7 +491,7 @@ exports[`HelpForcedTooltip should display text tooltip on mouse over only 2`] = 
       data-popper-escaped=""
       data-popper-placement="bottom"
       data-popper-reference-hidden=""
-      id="«r1»"
+      id="_r_1_"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px; margin: 0px; right: auto; bottom: auto; transform: translate(0px, 0px);"
     >
