@@ -2,8 +2,10 @@ import React, { useContext, type ReactNode } from 'react';
 import { ApolloClient, InMemoryCache, ServerError, ApolloLink, HttpLink } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
 import { ErrorLink } from '@apollo/client/link/error';
+import { Observable } from 'rxjs';
 import { type ConfigModel } from '../../models/config';
 import ConfigContext from '../../contexts/ConfigContext';
+import WithTraceError from './WithTraceError';
 
 interface Props {
   readonly children: ReactNode;
@@ -43,9 +45,45 @@ function generateClient(cfg: ConfigModel) {
       window.location.reload();
     }
   });
+
+  // Create link to manage trace id and request id in errors
+  const withTraceErrorLink = new ApolloLink(
+    (operation, forward) =>
+      new Observable((observer) => {
+        forward(operation).subscribe({
+          next: (value) => {
+            observer.next(value);
+          },
+          error: (err) => {
+            // Get context
+            const context = operation.getContext();
+
+            // Check if context have response and headers to build WithTraceError
+            if (context && context.response && context.response.headers) {
+              observer.error(
+                new WithTraceError(
+                  err,
+                  context.response.headers.get('X-Correlation-ID') || context.response.headers.get('X-Request-ID'),
+                  context.response.headers.get('X-Trace-ID'),
+                ),
+              );
+              // Stop
+              return;
+            }
+
+            // Default
+            observer.error(err);
+          },
+          complete: () => {
+            observer.complete();
+          },
+        });
+      }),
+  );
+
   // Create apollo client
   const client = new ApolloClient({
-    link: errorLink.concat(forceHeaders).concat(apolloLink),
+    link: ApolloLink.from([errorLink, forceHeaders, withTraceErrorLink.concat(apolloLink)]),
     // Add memory cache
     cache: new InMemoryCache(),
     devtools: {

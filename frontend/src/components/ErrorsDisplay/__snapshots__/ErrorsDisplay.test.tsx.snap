@@ -1,5 +1,78 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`ErrorsDisplay should display a graphql error with extension and trace and request id when with trace error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
+.emotion-5 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  color: #d32f2f;
+}
+
+<div>
+  <div
+    class="MuiBox-root emotion-0"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root emotion-2"
+    >
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          common.errorCode.INTERNAL_SERVER_ERROR
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-caption emotion-5"
+        >
+          common.supportTraceId
+          : 
+          trace-id
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-caption emotion-5"
+        >
+          common.supportRequestId
+          : 
+          request-id
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
 exports[`ErrorsDisplay should display a graphql error with extension when error is present 1`] = `
 .emotion-0 {
   margin: 64px;
@@ -510,6 +583,88 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
           common.errorCode.INTERNAL_SERVER_ERROR
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display two graphql error with extension when errors are present (2 items and 1 with trace error) 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
+.emotion-7 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  color: #d32f2f;
+}
+
+<div>
+  <div
+    class="MuiBox-root emotion-0"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root emotion-2"
+    >
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          common.errorCode.FORBIDDEN
+        </p>
+      </li>
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          common.errorCode.INTERNAL_SERVER_ERROR
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-caption emotion-7"
+        >
+          common.supportTraceId
+          : 
+          trace-id
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-caption emotion-7"
+        >
+          common.supportRequestId
+          : 
+          request-id
         </p>
       </li>
     </ul>

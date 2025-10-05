@@ -13,6 +13,7 @@ import {
   simpleGraphqlErrorWithoutExtension,
   simpleInternalServerErrorCombinedGraphQLError,
   simpleInternalServerErrorGraphqlError,
+  simpleInternalServerWithTraceErrorCombinedGraphQLError,
 } from './ErrorsDisplay.storage-test';
 
 import ErrorsDisplay from './ErrorsDisplay';
@@ -104,6 +105,28 @@ describe('ErrorsDisplay', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should display a graphql error with extension and trace and request id when with trace error is present', () => {
+    const { container } = render(<ErrorsDisplay error={simpleInternalServerWithTraceErrorCombinedGraphQLError} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(4);
+
+    // Prepare values
+    const values = [
+      'common.errors:',
+      'common.errorCode.INTERNAL_SERVER_ERROR',
+      'trace-id',
+      'request-id',
+      'common.supportTraceId',
+      'common.supportRequestId',
+    ];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should display two graphql error with extension when error is present', () => {
     const { container } = render(
       <ErrorsDisplay
@@ -158,6 +181,33 @@ describe('ErrorsDisplay', () => {
 
     // Prepare values
     const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display two graphql error with extension when errors are present (2 items and 1 with trace error)', () => {
+    const { container } = render(
+      <ErrorsDisplay
+        errors={[simpleForbiddenCombinedGraphQLError, simpleInternalServerWithTraceErrorCombinedGraphQLError]}
+      />,
+    );
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(5);
+
+    // Prepare values
+    const values = [
+      'common.errors:',
+      'common.errorCode.FORBIDDEN',
+      'common.errorCode.INTERNAL_SERVER_ERROR',
+      'trace-id',
+      'request-id',
+      'common.supportTraceId',
+      'common.supportRequestId',
+    ];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });

@@ -1,5 +1,6 @@
 import { CombinedGraphQLErrors, type ServerError } from '@apollo/client';
 import { GraphQLError } from 'graphql';
+import { WithTraceError } from '~components/ClientProvider';
 
 // Build data for tests
 export const forbiddenNetworkError: ServerError = {
@@ -26,3 +27,8 @@ export const simpleInternalServerErrorGraphqlError: GraphQLError = new GraphQLEr
 export const simpleInternalServerErrorCombinedGraphQLError = new CombinedGraphQLErrors({
   errors: [simpleInternalServerErrorGraphqlError],
 });
+export const simpleInternalServerWithTraceErrorCombinedGraphQLError = new WithTraceError(
+  simpleInternalServerErrorCombinedGraphQLError,
+  'request-id',
+  'trace-id',
+);

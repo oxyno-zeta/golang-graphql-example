@@ -54,6 +54,8 @@
     "deleteConfirmationDialogContent": "Do you confirm that you want to delete {{ item }} ?",
     "appLinks": "Apps",
     "timezone": "Timezone",
+    "supportTraceId": "Trace ID for support",
+    "supportRequestId": "Request ID for support",
     "date": {
       "nextMonthAction": "Next month",
       "previousMonthAction": "Previous month",

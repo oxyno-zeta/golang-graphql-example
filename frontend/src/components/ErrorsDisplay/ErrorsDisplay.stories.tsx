@@ -8,6 +8,7 @@ import {
   simpleForbiddenCombinedGraphQLError,
   simpleForbiddenGraphqlError,
   simpleInternalServerErrorGraphqlError,
+  simpleInternalServerWithTraceErrorCombinedGraphQLError,
 } from './ErrorsDisplay.storage-test';
 
 export default {
@@ -52,4 +53,8 @@ export const TwoGraphQLErrorWithExtension: StoryFn<typeof ErrorsDisplay> = funct
 
 export const OneGraphQLErrorWithoutMargin: StoryFn<typeof ErrorsDisplay> = function C() {
   return <ErrorsDisplay error={simpleForbiddenCombinedGraphQLError} noMargin />;
+};
+
+export const OneWithTraceGraphQLError: StoryFn<typeof ErrorsDisplay> = function C() {
+  return <ErrorsDisplay error={simpleInternalServerWithTraceErrorCombinedGraphQLError} />;
 };

@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { ServerError, CombinedGraphQLErrors } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
+import { WithTraceError } from '~components/ClientProvider';
 import { GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix, ServerErrorCustomComponentMapKey } from './constants';
 
 export interface Props {
@@ -56,7 +57,19 @@ function ErrorsDisplay({
   const elements: ReactNode[] = [];
 
   // Loop over errors
-  errorList?.forEach((err, mainIndex) => {
+  errorList?.forEach((errOr, mainIndex) => {
+    let err = errOr;
+    let requestId = '';
+    let traceId = '';
+    // Check if it is a WithTraceError
+    if (WithTraceError.is(err)) {
+      // Replace error and save trace and request id information
+      traceId = err.traceId;
+      requestId = err.requestId;
+      // Erase error
+      err = err.err;
+    }
+
     const contents: { content: string; key: Key; CustomComp?: React.ElementType; customCompProps?: object }[] = [];
     if (ServerError.is(err) || CombinedGraphQLErrors.is(err)) {
       if (ServerError.is(err)) {
@@ -105,11 +118,23 @@ function ErrorsDisplay({
         ...contents.map(({ content, key, CustomComp, customCompProps }) => (
           <Box component="li" key={key} sx={liSx}>
             {CustomComp ? (
-              <CustomComp {...customCompProps} />
+              <CustomComp content={content} error={err} traceId={traceId} requestId={requestId} {...customCompProps} />
             ) : (
-              <Typography color="error" {...errorElementTypographyProps}>
-                {content}
-              </Typography>
+              <>
+                <Typography color="error" {...errorElementTypographyProps}>
+                  {content}
+                </Typography>
+                {traceId ? (
+                  <Typography component="p" color="error" variant="caption" {...errorElementTypographyProps}>
+                    {t('common.supportTraceId')}: {traceId}
+                  </Typography>
+                ) : null}
+                {requestId ? (
+                  <Typography component="p" color="error" variant="caption" {...errorElementTypographyProps}>
+                    {t('common.supportRequestId')}: {requestId}
+                  </Typography>
+                ) : null}
+              </>
             )}
           </Box>
         )),
