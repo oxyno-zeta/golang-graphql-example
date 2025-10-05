@@ -18,6 +18,19 @@ func (t *trace) MarkAsError() {
 	t.SetTag("error", true)
 }
 
+func (t *trace) AddError(err error, opts ...TraceEventOption) {
+	t.span.RecordError(err, opts...)
+}
+
+func (t *trace) AddAndMarkError(err error, opts ...TraceEventOption) {
+	t.MarkAsError()
+	t.AddError(err, opts...)
+}
+
+func (t *trace) AddEvent(eventName string, opts ...TraceEventOption) {
+	t.span.AddEvent(eventName, opts...)
+}
+
 func (t *trace) SetTag(key string, value any) {
 	t.span.SetAttributes(*manageGenericAttribute(key, value))
 }

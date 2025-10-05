@@ -21,6 +21,8 @@ type UncorrelatedTraceOutput struct {
 	UncorrelatedContext context.Context //nolint:containedctx // Won't do a 4 output function
 }
 
+type TraceEventOption = oteltrace.EventOption
+
 // Service Tracing service.
 //
 //go:generate mockgen -destination=./mocks/mock_Service.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing Service
@@ -61,6 +63,13 @@ type Trace interface {
 	SetTags(tags map[string]any)
 	// MarkAsError will mark trace as in error.
 	MarkAsError()
+	// AddError will add error message in event trace.
+	// ! Warning: This won't mark trace as error
+	AddError(err error, opts ...TraceEventOption)
+	// AddAndMarkError will add error message in event trace and mark trace as in error.
+	AddAndMarkError(err error, opts ...TraceEventOption)
+	// AddEvent will add an event in trace.
+	AddEvent(eventName string, opts ...TraceEventOption)
 	// Get a child trace.
 	GetChildTrace(ctx context.Context, operationName string) (context.Context, Trace)
 	// End the trace.

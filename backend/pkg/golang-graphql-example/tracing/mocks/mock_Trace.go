@@ -42,6 +42,57 @@ func (m *MockTrace) EXPECT() *MockTraceMockRecorder {
 	return m.recorder
 }
 
+// AddAndMarkError mocks base method.
+func (m *MockTrace) AddAndMarkError(err error, opts ...tracing.TraceEventOption) {
+	m.ctrl.T.Helper()
+	varargs := []any{err}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	m.ctrl.Call(m, "AddAndMarkError", varargs...)
+}
+
+// AddAndMarkError indicates an expected call of AddAndMarkError.
+func (mr *MockTraceMockRecorder) AddAndMarkError(err any, opts ...any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]any{err}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddAndMarkError", reflect.TypeOf((*MockTrace)(nil).AddAndMarkError), varargs...)
+}
+
+// AddError mocks base method.
+func (m *MockTrace) AddError(err error, opts ...tracing.TraceEventOption) {
+	m.ctrl.T.Helper()
+	varargs := []any{err}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	m.ctrl.Call(m, "AddError", varargs...)
+}
+
+// AddError indicates an expected call of AddError.
+func (mr *MockTraceMockRecorder) AddError(err any, opts ...any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]any{err}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddError", reflect.TypeOf((*MockTrace)(nil).AddError), varargs...)
+}
+
+// AddEvent mocks base method.
+func (m *MockTrace) AddEvent(eventName string, opts ...tracing.TraceEventOption) {
+	m.ctrl.T.Helper()
+	varargs := []any{eventName}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	m.ctrl.Call(m, "AddEvent", varargs...)
+}
+
+// AddEvent indicates an expected call of AddEvent.
+func (mr *MockTraceMockRecorder) AddEvent(eventName any, opts ...any) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]any{eventName}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddEvent", reflect.TypeOf((*MockTrace)(nil).AddEvent), varargs...)
+}
+
 // Finish mocks base method.
 func (m *MockTrace) Finish() {
 	m.ctrl.T.Helper()
