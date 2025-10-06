@@ -400,6 +400,20 @@ linters:
       - linters:
           - dupl
         path: pkg/.*/common/errors/.*\.go
+      - linters:
+          - containedctx
+          - errname
+          - exhaustive
+          - forcetypeassert
+          - goconst
+          - gocritic
+          - gosec
+          - mnd
+          - nilerr
+          - nilnil
+          - tagliatelle
+          - dupl
+        path: pkg/.*/common/errors/.*_test\.go
     paths:
       - tools/generator/modeltagsgen
       - tools/generator/daogen
