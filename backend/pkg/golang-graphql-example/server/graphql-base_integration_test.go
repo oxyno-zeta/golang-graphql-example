@@ -3,6 +3,7 @@
 package server
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -80,7 +81,7 @@ func (suite *GraphQLTestSuite) SetupSuite() {
 	// Create services
 	bSvc := business.NewServices(logger, db, authoCl)
 	// Migrate
-	err = bSvc.MigrateDB()
+	err = bSvc.MigrateDB(context.TODO())
 	suite.NoError(err)
 	// Create server
 	s := NewServer(logger, cfgManagerMock, metricsCtx, tracingSvc, bSvc, authCl, authoCl, signalHandlerSvc)

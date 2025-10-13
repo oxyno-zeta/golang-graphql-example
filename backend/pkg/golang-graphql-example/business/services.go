@@ -1,6 +1,8 @@
 package business
 
 import (
+	"context"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/migration"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
@@ -14,11 +16,11 @@ type Services struct {
 	TodoSvc      todos.Service
 }
 
-func (s *Services) MigrateDB() error {
+func (s *Services) MigrateDB(ctx context.Context) error {
 	// Create migration service
 	migrationSvc := migration.New(s.db)
 
-	return migrationSvc.Migrate()
+	return migrationSvc.Migrate(ctx)
 }
 
 func NewServices(systemLogger log.Logger, db database.DB, authSvc authorization.Service) *Services {

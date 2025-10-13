@@ -1,6 +1,8 @@
 package migration
 
 import (
+	"context"
+
 	"emperror.dev/errors"
 	"github.com/go-gormigrate/gormigrate/v2"
 
@@ -12,9 +14,12 @@ type service struct {
 	dbSvc database.DB
 }
 
-func (s *service) Migrate() error {
+func (s *service) Migrate(ctx context.Context) error {
 	// Get gorm database
 	db := s.dbSvc.GetGormDB()
+
+	// Add context
+	db = db.WithContext(ctx)
 
 	// Create array of sequences
 	sequencesList := [][]*gormigrate.Migration{
