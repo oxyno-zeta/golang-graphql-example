@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { useTranslation } from 'react-i18next';
-import { VariableSizeList, type ListChildComponentProps } from 'react-window';
+import { List, type RowComponentProps, type ListImperativeAPI } from 'react-window';
 import ListSubheader from '@mui/material/ListSubheader';
 import { availableTimezones, getTimeZone } from '../utils';
 import TimezoneContext from '../../../contexts/TimezoneContext';
@@ -29,9 +29,14 @@ interface GroupModel<G, I> {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-array-index-key */
-function renderRow(props: ListChildComponentProps) {
-  const { data, index, style } = props;
-  const dataSet = data[index] as GroupOrItemModel<string, string>;
+function RowComponent({
+  index,
+  itemData,
+  style,
+}: RowComponentProps & {
+  itemData: GroupOrItemModel<string, string>[];
+}) {
+  const dataSet = itemData[index];
   const inlineStyle = {
     ...style,
     top: style.top as number,
@@ -75,32 +80,35 @@ function renderRow(props: ListChildComponentProps) {
 }
 /* eslint-enable */
 
-const OuterElementContext = React.createContext({});
-
-const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => {
-  const outerProps = React.useContext(OuterElementContext);
-  return <div ref={ref} {...props} {...outerProps} />;
-});
-
-function useResetCache(length: number) {
-  const ref = React.useRef<VariableSizeList>(null);
-  React.useEffect(() => {
-    if (ref.current != null) {
-      ref.current.resetAfterIndex(0, true);
-    }
-  }, [length]);
-  return ref;
-}
-
-// Adapter for react-window
-const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLElement>>((props, ref) => {
-  const { children, ...other } = props;
+// Adapter for react-window v2
+const ListboxComponent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLElement> & {
+    internalListRef: React.Ref<ListImperativeAPI>;
+    onItemsBuilt: (optionIndexMap: Map<string, number>) => void;
+  }
+>((props, ref) => {
+  const { children, internalListRef, onItemsBuilt, ...other } = props;
   const itemData: GroupOrItemModel<string, string>[] = [];
+  const optionIndexMap = React.useMemo(() => new Map<string, number>(), []);
 
-  (children as GroupModel<string, string>[]).forEach((item: GroupModel<string, string>) => {
+  (children as GroupModel<string, string>[]).forEach((item) => {
     itemData.push(item);
     itemData.push(...(item.children || []));
   });
+
+  // Map option values to their indices in the flattened array
+  itemData.forEach((item, index) => {
+    if (Array.isArray(item) && item[1]) {
+      optionIndexMap.set(item[1], index);
+    }
+  });
+
+  React.useEffect(() => {
+    if (onItemsBuilt) {
+      onItemsBuilt(optionIndexMap);
+    }
+  }, [onItemsBuilt, optionIndexMap]);
 
   const itemCount = itemData.length;
 
@@ -112,25 +120,27 @@ const ListboxComponent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<H
     return 52;
   };
 
-  const gridRef = useResetCache(itemCount);
+  // Separate className for List, other props for wrapper div (ARIA, handlers)
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { className, style: _style, ...otherProps } = other;
 
   return (
-    <div ref={ref}>
-      <OuterElementContext.Provider value={other}>
-        <VariableSizeList
-          height={4 * 48}
-          innerElementType="ul"
-          itemCount={itemCount}
-          itemData={itemData}
-          itemSize={(index) => getChildSize(itemData[index])}
-          outerElementType={OuterElementType}
-          overscanCount={5}
-          ref={gridRef}
-          width="100%"
-        >
-          {renderRow}
-        </VariableSizeList>
-      </OuterElementContext.Provider>
+    <div ref={ref} {...otherProps}>
+      <List
+        className={className}
+        listRef={internalListRef}
+        key={itemCount}
+        rowCount={itemCount}
+        rowHeight={(index) => getChildSize(itemData[index])}
+        rowComponent={RowComponent}
+        rowProps={{ itemData }}
+        style={{
+          height: 4 * 48,
+          width: '100%',
+        }}
+        overscanCount={5}
+        tagName="ul"
+      />
     </div>
   );
 });

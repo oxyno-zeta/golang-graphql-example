@@ -1644,233 +1644,244 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
-    <div>
-      <div
-        aria-labelledby="_r_8_-label"
+    <div
+      aria-labelledby="_r_8_-label"
+      id="_r_8_-listbox"
+      role="listbox"
+    >
+      <ul
         class="MuiAutocomplete-listbox emotion-2"
-        id="_r_8_-listbox"
-        role="listbox"
-        style="position: relative; height: 192px; width: 100%; overflow: auto; -webkit-overflow-scrolling: touch; will-change: transform; direction: ltr;"
+        role="list"
+        style="position: relative; max-height: 100%; flex-grow: 1; overflow-y: auto; height: 192px; width: 100%;"
       >
-        <ul
-          style="height: 21414px; width: 100%;"
+        <div
+          class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
+          data-react-window-index="0"
+          style="position: absolute; left: 0px; transform: translateY(0px); height: 48px; width: 100%;"
         >
-          <div
-            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
-            style="position: absolute; left: 0px; top: 0px; height: 48px; width: 100%;"
+          Africa
+        </div>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="0"
+          data-react-window-index="1"
+          id="_r_8_-option-0"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(48px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            Africa
-          </div>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="0"
-            id="_r_8_-option-0"
-            role="option"
-            style="position: absolute; left: 0px; top: 48px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            <span
+              style="font-weight: 400;"
+            >
+              Africa/Abidjan
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Abidjan
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="1"
-            id="_r_8_-option-1"
-            role="option"
-            style="position: absolute; left: 0px; top: 100px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="1"
+          data-react-window-index="2"
+          id="_r_8_-option-1"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(100px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Accra
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="2"
-            id="_r_8_-option-2"
-            role="option"
-            style="position: absolute; left: 0px; top: 152px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+              Africa/Accra
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Addis_Ababa
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+03:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="3"
-            id="_r_8_-option-3"
-            role="option"
-            style="position: absolute; left: 0px; top: 204px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="2"
+          data-react-window-index="3"
+          id="_r_8_-option-2"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(152px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Algiers
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+01:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="4"
-            id="_r_8_-option-4"
-            role="option"
-            style="position: absolute; left: 0px; top: 256px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+              Africa/Addis_Ababa
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Asmera
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+03:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="5"
-            id="_r_8_-option-5"
-            role="option"
-            style="position: absolute; left: 0px; top: 308px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC+03:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="3"
+          data-react-window-index="4"
+          id="_r_8_-option-3"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(204px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Bamako
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="6"
-            id="_r_8_-option-6"
-            role="option"
-            style="position: absolute; left: 0px; top: 360px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+              Africa/Algiers
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Bangui
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+01:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="7"
-            id="_r_8_-option-7"
-            role="option"
-            style="position: absolute; left: 0px; top: 412px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC+01:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="4"
+          data-react-window-index="5"
+          id="_r_8_-option-4"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(256px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Banjul
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
+              Africa/Asmera
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC+03:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="5"
+          data-react-window-index="6"
+          id="_r_8_-option-5"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(308px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+          >
+            <span
+              style="font-weight: 400;"
             >
-              UTC
-            </p>
-          </li>
-        </ul>
-      </div>
+              Africa/Bamako
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="6"
+          data-react-window-index="7"
+          id="_r_8_-option-6"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(360px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+          >
+            <span
+              style="font-weight: 400;"
+            >
+              Africa/Bangui
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC+01:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="7"
+          data-react-window-index="8"
+          id="_r_8_-option-7"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(412px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+          >
+            <span
+              style="font-weight: 400;"
+            >
+              Africa/Banjul
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC
+          </p>
+        </li>
+        <div
+          aria-hidden="true"
+          style="height: 22065.777777777777px; width: 100%; z-index: -1;"
+        />
+      </ul>
     </div>
   </div>
 </div>
@@ -2022,233 +2033,244 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
-    <div>
-      <div
-        aria-labelledby="_r_8_-label"
+    <div
+      aria-labelledby="_r_8_-label"
+      id="_r_8_-listbox"
+      role="listbox"
+    >
+      <ul
         class="MuiAutocomplete-listbox emotion-2"
-        id="_r_8_-listbox"
-        role="listbox"
-        style="position: relative; height: 192px; width: 100%; overflow: auto; -webkit-overflow-scrolling: touch; will-change: transform; direction: ltr;"
+        role="list"
+        style="position: relative; max-height: 100%; flex-grow: 1; overflow-y: auto; height: 192px; width: 100%;"
       >
-        <ul
-          style="height: 21414px; width: 100%;"
+        <div
+          class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
+          data-react-window-index="0"
+          style="position: absolute; left: 0px; transform: translateY(0px); height: 48px; width: 100%;"
         >
-          <div
-            class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-3"
-            style="position: absolute; left: 0px; top: 0px; height: 48px; width: 100%;"
+          Africa
+        </div>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="0"
+          data-react-window-index="1"
+          id="_r_8_-option-0"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(48px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            Africa
-          </div>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="0"
-            id="_r_8_-option-0"
-            role="option"
-            style="position: absolute; left: 0px; top: 48px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            <span
+              style="font-weight: 400;"
+            >
+              Africa/Abidjan
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Abidjan
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="1"
-            id="_r_8_-option-1"
-            role="option"
-            style="position: absolute; left: 0px; top: 100px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="1"
+          data-react-window-index="2"
+          id="_r_8_-option-1"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(100px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Accra
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="2"
-            id="_r_8_-option-2"
-            role="option"
-            style="position: absolute; left: 0px; top: 152px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+              Africa/Accra
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Addis_Ababa
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+03:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="3"
-            id="_r_8_-option-3"
-            role="option"
-            style="position: absolute; left: 0px; top: 204px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="2"
+          data-react-window-index="3"
+          id="_r_8_-option-2"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(152px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Algiers
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+01:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="4"
-            id="_r_8_-option-4"
-            role="option"
-            style="position: absolute; left: 0px; top: 256px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+              Africa/Addis_Ababa
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Asmera
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+03:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="5"
-            id="_r_8_-option-5"
-            role="option"
-            style="position: absolute; left: 0px; top: 308px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC+03:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="3"
+          data-react-window-index="4"
+          id="_r_8_-option-3"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(204px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Bamako
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="6"
-            id="_r_8_-option-6"
-            role="option"
-            style="position: absolute; left: 0px; top: 360px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+              Africa/Algiers
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
-            >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Bangui
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
-            >
-              UTC+01:00
-            </p>
-          </li>
-          <li
-            aria-disabled="false"
-            aria-selected="false"
-            class="MuiAutocomplete-option"
-            data-option-index="7"
-            id="_r_8_-option-7"
-            role="option"
-            style="position: absolute; left: 0px; top: 412px; height: 52px; width: 100%; display: block;"
-            tabindex="-1"
+            UTC+01:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="4"
+          data-react-window-index="5"
+          id="_r_8_-option-4"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(256px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
           >
-            <p
-              class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+            <span
+              style="font-weight: 400;"
             >
-              <span
-                style="font-weight: 400;"
-              >
-                Africa/Banjul
-              </span>
-            </p>
-            <p
-              class="MuiTypography-root MuiTypography-body1 emotion-5"
-              style="font-size: 12px;"
+              Africa/Asmera
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC+03:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="5"
+          data-react-window-index="6"
+          id="_r_8_-option-5"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(308px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+          >
+            <span
+              style="font-weight: 400;"
             >
-              UTC
-            </p>
-          </li>
-        </ul>
-      </div>
+              Africa/Bamako
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="6"
+          data-react-window-index="7"
+          id="_r_8_-option-6"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(360px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+          >
+            <span
+              style="font-weight: 400;"
+            >
+              Africa/Bangui
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC+01:00
+          </p>
+        </li>
+        <li
+          aria-disabled="false"
+          aria-selected="false"
+          class="MuiAutocomplete-option"
+          data-option-index="7"
+          data-react-window-index="8"
+          id="_r_8_-option-7"
+          role="option"
+          style="position: absolute; left: 0px; transform: translateY(412px); height: 52px; width: 100%; display: block;"
+          tabindex="-1"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap emotion-4"
+          >
+            <span
+              style="font-weight: 400;"
+            >
+              Africa/Banjul
+            </span>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            style="font-size: 12px;"
+          >
+            UTC
+          </p>
+        </li>
+        <div
+          aria-hidden="true"
+          style="height: 22065.777777777777px; width: 100%; z-index: -1;"
+        />
+      </ul>
     </div>
   </div>
 </div>
