@@ -28,11 +28,29 @@ type DaoCfg struct {
 }
 
 type DaoModelCfg struct {
-	Package                 string `validate:"required" yaml:"package"`
-	StructureName           string `validate:"required" yaml:"structureName"`
-	ProjectionStructureName string `                    yaml:"projectionStructureName"`
-	SortOrderStructureName  string `                    yaml:"sortOrderStructureName"`
-	FilterStructureName     string `                    yaml:"filterStructureName"`
+	Package                 string                      `validate:"required" yaml:"package"`
+	StructureName           string                      `validate:"required" yaml:"structureName"`
+	ProjectionStructureName string                      `                    yaml:"projectionStructureName"`
+	SortOrderStructureName  string                      `                    yaml:"sortOrderStructureName"`
+	FilterStructureName     string                      `                    yaml:"filterStructureName"`
+	DisabledMethods         *DaoModelDisabledMethodsCfg `                    yaml:"disabledMethods"`
+}
+
+type DaoModelDisabledMethodsCfg struct {
+	FindByID                bool `yaml:"findById"`
+	FindOne                 bool `yaml:"findOne"`
+	FindWithPagination      bool `yaml:"findWithPagination"`
+	FindPaginated           bool `yaml:"findPaginated"`
+	FindAll                 bool `yaml:"findAll"`
+	CountPaginated          bool `yaml:"countPaginated"`
+	Count                   bool `yaml:"count"`
+	CreateOrUpdate          bool `yaml:"createOrUpdate"`
+	PermanentDelete         bool `yaml:"permanentDelete"`
+	PermanentDeleteByID     bool `yaml:"permanentDeleteById"`
+	PermanentDeleteFiltered bool `yaml:"permanentDeleteFiltered"`
+	PatchUpdate             bool `yaml:"patchUpdate"`
+	PatchUpdateByID         bool `yaml:"patchUpdateById"`
+	PatchUpdateFiltered     bool `yaml:"patchUpdateFiltered"`
 }
 
 func loadConfig() (*Config, error) {

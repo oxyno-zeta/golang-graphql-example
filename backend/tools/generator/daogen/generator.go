@@ -100,168 +100,209 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 	for _, m := range v.Models {
 		f.Line().Commentf("Starting methods for %s structure", m.StructureName).Line()
 
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("Find" + m.StructureName + "ByID").
-			Add(findByIdParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "FindByID").Params(
-				jen.Id("ctx"),
-				jen.Op("&").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("d.db"),
-				jen.Id("id"),
-				jen.Id("projection"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("FindOne" + m.StructureName).
-			Add(findOneParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "FindOne").Params(
-				jen.Id("ctx"),
-				jen.Op("&").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("d.db"),
-				jen.Id("sorts"),
-				jen.Id("filter"),
-				jen.Id("projection"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("Find" + m.StructureName + "WithPagination").
-			Add(findWithPaginationParamsAndReturns(m, neededPackages)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "FindWithPagination").Params(
-				jen.Id("ctx"),
-				jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("d.db"),
-				jen.Id("page"),
-				jen.Id("sorts"),
-				jen.Id("filter"),
-				jen.Id("projection"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("Find" + m.StructureName + "Paginated").
-			Add(findAllPaginatedParamsAndReturns(m, neededPackages)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "GetAllPaginated").Params(
-				jen.Id("ctx"),
-				jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("d.db"),
-				jen.Id("page"),
-				jen.Id("sorts"),
-				jen.Id("filter"),
-				jen.Id("projection"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("FindAll" + m.StructureName).
-			Add(findAllParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "Find").Params(
-				jen.Id("ctx"),
-				jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("d.db"),
-				jen.Id("sorts"),
-				jen.Id("filter"),
-				jen.Id("projection"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("Count" + m.StructureName + "Paginated").
-			Add(countPaginatedParamsAndReturns(m, neededPackages)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "CountPaginated").Params(
-				jen.Id("ctx"),
-				jen.Id("d.db"),
-				jen.Op("&").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("page"),
-				jen.Id("filter"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("Count" + m.StructureName).
-			Add(countParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "Count").Params(
-				jen.Id("ctx"),
-				jen.Id("d.db"),
-				jen.Op("&").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("filter"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("CreateOrUpdate" + m.StructureName).
-			Add(createOrUpdateParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "CreateOrUpdate").Params(
-				jen.Id("ctx"),
-				jen.Id("input"),
-				jen.Id("d.db"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("PermanentDelete" + m.StructureName).
-			Add(permanentDeleteParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "PermanentDelete").Params(
-				jen.Id("ctx"),
-				jen.Id("input"),
-				jen.Id("d.db"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("PermanentDelete"+m.StructureName+"ByID").
-			Add(permanentDeleteByIDParamsAndReturns(m)).Block(
-			// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
-			jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
-			jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
-			jen.Line(),
-			jen.Return(
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindByID {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("Find" + m.StructureName + "ByID").
+				Add(findByIdParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "FindByID").Params(
+					jen.Id("ctx"),
+					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("d.db"),
+					jen.Id("id"),
+					jen.Id("projection"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindOne {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("FindOne" + m.StructureName).
+				Add(findOneParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "FindOne").Params(
+					jen.Id("ctx"),
+					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("d.db"),
+					jen.Id("sorts"),
+					jen.Id("filter"),
+					jen.Id("projection"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindWithPagination {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("Find" + m.StructureName + "WithPagination").
+				Add(findWithPaginationParamsAndReturns(m, neededPackages)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "FindWithPagination").Params(
+					jen.Id("ctx"),
+					jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("d.db"),
+					jen.Id("page"),
+					jen.Id("sorts"),
+					jen.Id("filter"),
+					jen.Id("projection"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindPaginated {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("Find" + m.StructureName + "Paginated").
+				Add(findAllPaginatedParamsAndReturns(m, neededPackages)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "GetAllPaginated").Params(
+					jen.Id("ctx"),
+					jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("d.db"),
+					jen.Id("page"),
+					jen.Id("sorts"),
+					jen.Id("filter"),
+					jen.Id("projection"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindAll {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("FindAll" + m.StructureName).
+				Add(findAllParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "Find").Params(
+					jen.Id("ctx"),
+					jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("d.db"),
+					jen.Id("sorts"),
+					jen.Id("filter"),
+					jen.Id("projection"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.CountPaginated {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("Count" + m.StructureName + "Paginated").
+				Add(countPaginatedParamsAndReturns(m, neededPackages)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "CountPaginated").Params(
+					jen.Id("ctx"),
+					jen.Id("d.db"),
+					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("page"),
+					jen.Id("filter"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.Count {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("Count" + m.StructureName).
+				Add(countParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "Count").Params(
+					jen.Id("ctx"),
+					jen.Id("d.db"),
+					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("filter"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.CreateOrUpdate {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("CreateOrUpdate" + m.StructureName).
+				Add(createOrUpdateParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "CreateOrUpdate").Params(
+					jen.Id("ctx"),
+					jen.Id("input"),
+					jen.Id("d.db"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PermanentDelete {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("PermanentDelete" + m.StructureName).
+				Add(permanentDeleteParamsAndReturns(m)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "PermanentDelete").Params(
 					jen.Id("ctx"),
 					jen.Id("input"),
 					jen.Id("d.db"),
 				),
-			),
-		).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("PermanentDelete" + m.StructureName + "Filtered").
-			Add(permanentDeleteFilteredParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "PermanentDeleteFiltered").Params(
-				jen.Id("ctx"),
-				jen.Op("&").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("filter"),
-				jen.Id("d.db"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("PatchUpdate" + m.StructureName).
-			Add(patchUpdateParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "PatchUpdate").Params(
-				jen.Id("ctx"),
-				jen.Id("input"),
-				jen.Id("patch"),
-				jen.Id("d.db"),
-			),
-		)).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("PatchUpdate"+m.StructureName+"ByID").
-			Add(patchUpdateByIDParamsAndReturns(m)).Block(
-			// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
-			jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
-			jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
-			jen.Line(),
-			jen.Return(
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PermanentDeleteByID {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("PermanentDelete"+m.StructureName+"ByID").
+				Add(permanentDeleteByIDParamsAndReturns(m)).Block(
+				// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
+				jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
+				jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
+				jen.Line(),
+				jen.Return(
+					jen.Qual(neededPackages.Helpers, "PermanentDelete").Params(
+						jen.Id("ctx"),
+						jen.Id("input"),
+						jen.Id("d.db"),
+					),
+				),
+			).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PermanentDeleteFiltered {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("PermanentDelete" + m.StructureName + "Filtered").
+				Add(permanentDeleteFilteredParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "PermanentDeleteFiltered").Params(
+					jen.Id("ctx"),
+					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("filter"),
+					jen.Id("d.db"),
+				),
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdate {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("PatchUpdate" + m.StructureName).
+				Add(patchUpdateParamsAndReturns(m)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "PatchUpdate").Params(
 					jen.Id("ctx"),
 					jen.Id("input"),
 					jen.Id("patch"),
 					jen.Id("d.db"),
 				),
-			),
-		).Line()
-		f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
-			Id("PatchUpdate" + m.StructureName + "Filtered").
-			Add(patchUpdateFilteredParamsAndReturns(m)).Block(jen.Return(
-			jen.Qual(neededPackages.Helpers, "PatchUpdateAllFiltered").Params(
-				jen.Id("ctx"),
-				jen.Op("&").Qual(m.Package, m.StructureName).Values(),
-				jen.Id("patch"),
-				jen.Id("filter"),
-				jen.Id("d.db"),
-			),
-		)).Line()
+			)).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateByID {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("PatchUpdate"+m.StructureName+"ByID").
+				Add(patchUpdateByIDParamsAndReturns(m)).Block(
+				// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
+				jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
+				jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
+				jen.Line(),
+				jen.Return(
+					jen.Qual(neededPackages.Helpers, "PatchUpdate").Params(
+						jen.Id("ctx"),
+						jen.Id("input"),
+						jen.Id("patch"),
+						jen.Id("d.db"),
+					),
+				),
+			).Line()
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateFiltered {
+			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
+				Id("PatchUpdate" + m.StructureName + "Filtered").
+				Add(patchUpdateFilteredParamsAndReturns(m)).Block(jen.Return(
+				jen.Qual(neededPackages.Helpers, "PatchUpdateAllFiltered").Params(
+					jen.Id("ctx"),
+					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
+					jen.Id("patch"),
+					jen.Id("filter"),
+					jen.Id("d.db"),
+				),
+			)).Line()
+		}
 
 		f.Line().Commentf("Ending methods for %s structure", m.StructureName).Line()
 	}
@@ -272,30 +313,73 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 
 	// Loop
 	for _, m := range v.Models {
-		res := []jen.Code{
-			jen.Id("Find" + m.StructureName + "ByID").Add(findByIdParamsAndReturns(m)),
-			jen.Id("FindOne" + m.StructureName).Add(findOneParamsAndReturns(m)),
-			jen.Id("Find" + m.StructureName + "WithPagination").Add(findWithPaginationParamsAndReturns(m, neededPackages)),
-			jen.Id("Find" + m.StructureName + "Paginated").Add(findAllPaginatedParamsAndReturns(m, neededPackages)),
-			jen.Id("FindAll" + m.StructureName).Add(findAllParamsAndReturns(m)),
-			jen.Id("Count" + m.StructureName + "Paginated").Add(countPaginatedParamsAndReturns(m, neededPackages)),
-			jen.Id("Count" + m.StructureName).Add(countParamsAndReturns(m)),
-			jen.Id("CreateOrUpdate" + m.StructureName).Add(createOrUpdateParamsAndReturns(m)),
-			jen.Id("PermanentDelete" + m.StructureName).Add(permanentDeleteParamsAndReturns(m)),
-			jen.Id("PermanentDelete" + m.StructureName + "ByID").Add(permanentDeleteByIDParamsAndReturns(m)),
-			jen.Id("PermanentDelete" + m.StructureName + "Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)),
-			jen.Id("PatchUpdate" + m.StructureName).Add(patchUpdateParamsAndReturns(m)),
-			jen.Id("PatchUpdate" + m.StructureName + "ByID").Add(patchUpdateByIDParamsAndReturns(m)),
-			jen.Id("PatchUpdate" + m.StructureName + "Filtered").Add(patchUpdateFilteredParamsAndReturns(m)),
+		res := []jen.Code{}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindByID {
+			res = append(res, jen.Id("Find"+m.StructureName+"ByID").Add(findByIdParamsAndReturns(m)))
 		}
 
-		f.Commentf("Dao for structure %s", m.StructureName)
-		f.Type().Id(getStructureInterfaceName(m.StructureName, v)).Interface(
-			res...,
-		)
-		f.Line()
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindOne {
+			res = append(res, jen.Id("FindOne"+m.StructureName).Add(findOneParamsAndReturns(m)))
+		}
 
-		list = append(list, jen.Id(getStructureInterfaceName(m.StructureName, v)))
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindWithPagination {
+			res = append(res, jen.Id("Find"+m.StructureName+"WithPagination").Add(findWithPaginationParamsAndReturns(m, neededPackages)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindPaginated {
+			res = append(res, jen.Id("Find"+m.StructureName+"Paginated").Add(findAllPaginatedParamsAndReturns(m, neededPackages)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.FindAll {
+			res = append(res, jen.Id("FindAll"+m.StructureName).Add(findAllParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.CountPaginated {
+			res = append(res, jen.Id("Count"+m.StructureName+"Paginated").Add(countPaginatedParamsAndReturns(m, neededPackages)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.Count {
+			res = append(res, jen.Id("Count"+m.StructureName).Add(countParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.CreateOrUpdate {
+			res = append(res, jen.Id("CreateOrUpdate"+m.StructureName).Add(createOrUpdateParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.CreateOrUpdate {
+			res = append(res, jen.Id("PermanentDelete"+m.StructureName).Add(permanentDeleteParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateByID {
+			res = append(res, jen.Id("PermanentDelete"+m.StructureName+"ByID").Add(permanentDeleteByIDParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateFiltered {
+			res = append(res, jen.Id("PermanentDelete"+m.StructureName+"Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdate {
+			res = append(res, jen.Id("PatchUpdate"+m.StructureName).Add(patchUpdateParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateByID {
+			res = append(res, jen.Id("PatchUpdate"+m.StructureName+"ByID").Add(patchUpdateByIDParamsAndReturns(m)))
+		}
+
+		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateFiltered {
+			res = append(res, jen.Id("PatchUpdate"+m.StructureName+"Filtered").Add(patchUpdateFilteredParamsAndReturns(m)))
+		}
+
+		if len(res) != 0 {
+			f.Commentf("Dao for structure %s", m.StructureName)
+			f.Type().Id(getStructureInterfaceName(m.StructureName, v)).Interface(
+				res...,
+			)
+			f.Line()
+
+			list = append(list, jen.Id(getStructureInterfaceName(m.StructureName, v)))
+		}
 	}
 
 	f.Comment("General Dao")

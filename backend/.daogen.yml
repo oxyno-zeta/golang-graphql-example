@@ -16,3 +16,5 @@ daos:
         sortOrderStructureName: SortOrder
         # Optional
         filterStructureName: Filter
+        # disabledMethods:
+        #   findById: true
