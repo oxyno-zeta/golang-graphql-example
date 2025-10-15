@@ -63,11 +63,11 @@ PGADMIN_VERSION := "9.8.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.6.0"
+PROMETHEUS_VERSION := "v3.7.0"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.2.0"
 # renovate: datasource=docker depName=grafana/tempo
-TEMPO_VERSION := "2.8.2"
+TEMPO_VERSION := "2.9.0"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
@@ -285,7 +285,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.37.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.38.0
 endif
 
 .PHONY: setup/dep/test/install
