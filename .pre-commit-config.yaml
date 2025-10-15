@@ -87,6 +87,14 @@ repos:
         require_serial: true
         language: script
         pass_filenames: false
+      - id: backend-lint-validate-configuration
+        stages: [pre-commit]
+        files: '\.golangci\.(?:yml|yaml|toml|json)'
+        name: Backend validate configuration
+        entry: ./run-sub-folder-task.sh backend "make code/lint/validate-config"
+        require_serial: false
+        language: script
+        pass_filenames: false
       - id: frontend-lint
         stages: [pre-commit]
         files: \.(tsx|ts|js|jsx)$
