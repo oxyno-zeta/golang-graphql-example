@@ -40,7 +40,7 @@ export interface BreadcrumbGraphQLData {
 }
 
 export interface BreadcrumbFixedDataConfig {
-  disableTranslate: boolean;
+  disableTranslate?: boolean;
   textContent: string;
   linkProps?: Omit<LinkProps & RouterLinkProps, 'to'>;
   typographyProps?: TypographyProps;
