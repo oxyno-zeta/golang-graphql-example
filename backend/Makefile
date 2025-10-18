@@ -59,11 +59,11 @@ HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 GOLANGCI_LINT_VERSION := "v2.5.0"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.8.0"
+PGADMIN_VERSION := "9.9.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.7.0"
+PROMETHEUS_VERSION := "v3.7.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.2.0"
 # renovate: datasource=docker depName=grafana/tempo
@@ -73,7 +73,7 @@ POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "1.9.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.4.0"
+KEYCLOAK_VERSION := "26.4.1"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.1.4"
 
