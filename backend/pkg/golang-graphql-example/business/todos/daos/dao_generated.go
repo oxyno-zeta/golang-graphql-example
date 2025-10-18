@@ -13,20 +13,20 @@ import (
 
 // Dao for structure Todo
 type TodoStructureDao interface {
-	FindTodoByID(ctx context.Context, id string, projection *models0.Projection) (*models0.Todo, error)
-	FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) (*models0.Todo, error)
-	FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, error)
-	FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, *pagination.PageOutput, error)
-	FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, error)
-	CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter) (int64, error)
-	CountTodo(ctx context.Context, filter *models0.Filter) (int64, error)
-	CreateOrUpdateTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error)
-	PermanentDeleteTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error)
-	PermanentDeleteTodoByID(ctx context.Context, id string) (*models0.Todo, error)
-	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter) error
-	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any) (*models0.Todo, error)
-	PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any) (*models0.Todo, error)
-	PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any) error
+	FindTodoByID(ctx context.Context, id string, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error)
+	FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error)
+	FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error)
+	FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...database.TransactionOption) ([]*models0.Todo, *pagination.PageOutput, error)
+	FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error)
+	CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error)
+	CountTodo(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error)
+	CreateOrUpdateTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error)
+	PermanentDeleteTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error)
+	PermanentDeleteTodoByID(ctx context.Context, id string, opts ...helpers.GormOpt) (*models0.Todo, error)
+	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) error
+	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error)
+	PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error)
+	PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any, opts ...helpers.GormOpt) error
 }
 
 // General Dao
@@ -50,66 +50,66 @@ type dao struct {
 
 // Starting methods for Todo structure
 
-func (d *dao) FindTodoByID(ctx context.Context, id string, projection *models0.Projection) (*models0.Todo, error) {
-	return helpers.FindByID(ctx, &models0.Todo{}, d.db, id, projection)
+func (d *dao) FindTodoByID(ctx context.Context, id string, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error) {
+	return helpers.FindByID(ctx, &models0.Todo{}, d.db, id, projection, opts...)
 }
 
-func (d *dao) FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) (*models0.Todo, error) {
-	return helpers.FindOne(ctx, &models0.Todo{}, d.db, sorts, filter, projection)
+func (d *dao) FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error) {
+	return helpers.FindOne(ctx, &models0.Todo{}, d.db, sorts, filter, projection, opts...)
 }
 
-func (d *dao) FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, error) {
-	return helpers.FindWithPagination(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection)
+func (d *dao) FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error) {
+	return helpers.FindWithPagination(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection, opts...)
 }
 
-func (d *dao) FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, *pagination.PageOutput, error) {
-	return helpers.GetAllPaginated(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection)
+func (d *dao) FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...database.TransactionOption) ([]*models0.Todo, *pagination.PageOutput, error) {
+	return helpers.GetAllPaginated(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection, opts...)
 }
 
-func (d *dao) FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection) ([]*models0.Todo, error) {
-	return helpers.Find(ctx, []*models0.Todo{}, d.db, sorts, filter, projection)
+func (d *dao) FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error) {
+	return helpers.Find(ctx, []*models0.Todo{}, d.db, sorts, filter, projection, opts...)
 }
 
-func (d *dao) CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter) (int64, error) {
-	return helpers.CountPaginated(ctx, d.db, &models0.Todo{}, page, filter)
+func (d *dao) CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error) {
+	return helpers.CountPaginated(ctx, d.db, &models0.Todo{}, page, filter, opts...)
 }
 
-func (d *dao) CountTodo(ctx context.Context, filter *models0.Filter) (int64, error) {
-	return helpers.Count(ctx, d.db, &models0.Todo{}, filter)
+func (d *dao) CountTodo(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error) {
+	return helpers.Count(ctx, d.db, &models0.Todo{}, filter, opts...)
 }
 
-func (d *dao) CreateOrUpdateTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error) {
-	return helpers.CreateOrUpdate(ctx, input, d.db)
+func (d *dao) CreateOrUpdateTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error) {
+	return helpers.CreateOrUpdate(ctx, input, d.db, opts...)
 }
 
-func (d *dao) PermanentDeleteTodo(ctx context.Context, input *models0.Todo) (*models0.Todo, error) {
-	return helpers.PermanentDelete(ctx, input, d.db)
+func (d *dao) PermanentDeleteTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error) {
+	return helpers.PermanentDelete(ctx, input, d.db, opts...)
 }
 
-func (d *dao) PermanentDeleteTodoByID(ctx context.Context, id string) (*models0.Todo, error) {
+func (d *dao) PermanentDeleteTodoByID(ctx context.Context, id string, opts ...helpers.GormOpt) (*models0.Todo, error) {
 	input := &models0.Todo{}
 	input.ID = id
 
-	return helpers.PermanentDelete(ctx, input, d.db)
+	return helpers.PermanentDelete(ctx, input, d.db, opts...)
 }
 
-func (d *dao) PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter) error {
-	return helpers.PermanentDeleteFiltered(ctx, &models0.Todo{}, filter, d.db)
+func (d *dao) PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) error {
+	return helpers.PermanentDeleteFiltered(ctx, &models0.Todo{}, filter, d.db, opts...)
 }
 
-func (d *dao) PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any) (*models0.Todo, error) {
-	return helpers.PatchUpdate(ctx, input, patch, d.db)
+func (d *dao) PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error) {
+	return helpers.PatchUpdate(ctx, input, patch, d.db, opts...)
 }
 
-func (d *dao) PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any) (*models0.Todo, error) {
+func (d *dao) PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error) {
 	input := &models0.Todo{}
 	input.ID = id
 
-	return helpers.PatchUpdate(ctx, input, patch, d.db)
+	return helpers.PatchUpdate(ctx, input, patch, d.db, opts...)
 }
 
-func (d *dao) PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any) error {
-	return helpers.PatchUpdateAllFiltered(ctx, &models0.Todo{}, patch, filter, d.db)
+func (d *dao) PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any, opts ...helpers.GormOpt) error {
+	return helpers.PatchUpdateAllFiltered(ctx, &models0.Todo{}, patch, filter, d.db, opts...)
 }
 
 // Ending methods for Todo structure

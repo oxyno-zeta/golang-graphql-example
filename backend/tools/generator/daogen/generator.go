@@ -103,13 +103,14 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindByID {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("Find" + m.StructureName + "ByID").
-				Add(findByIdParamsAndReturns(m)).Block(jen.Return(
+				Add(findByIdParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "FindByID").Params(
 					jen.Id("ctx"),
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
 					jen.Id("d.db"),
 					jen.Id("id"),
 					jen.Id("projection"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -117,7 +118,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindOne {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("FindOne" + m.StructureName).
-				Add(findOneParamsAndReturns(m)).Block(jen.Return(
+				Add(findOneParamsAndReturns(m,neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "FindOne").Params(
 					jen.Id("ctx"),
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
@@ -125,6 +126,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 					jen.Id("sorts"),
 					jen.Id("filter"),
 					jen.Id("projection"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -141,6 +143,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 					jen.Id("sorts"),
 					jen.Id("filter"),
 					jen.Id("projection"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -157,6 +160,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 					jen.Id("sorts"),
 					jen.Id("filter"),
 					jen.Id("projection"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -164,7 +168,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindAll {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("FindAll" + m.StructureName).
-				Add(findAllParamsAndReturns(m)).Block(jen.Return(
+				Add(findAllParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "Find").Params(
 					jen.Id("ctx"),
 					jen.Index().Op("*").Qual(m.Package, m.StructureName).Values(),
@@ -172,6 +176,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 					jen.Id("sorts"),
 					jen.Id("filter"),
 					jen.Id("projection"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -186,6 +191,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
 					jen.Id("page"),
 					jen.Id("filter"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -193,12 +199,13 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.Count {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("Count" + m.StructureName).
-				Add(countParamsAndReturns(m)).Block(jen.Return(
+				Add(countParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "Count").Params(
 					jen.Id("ctx"),
 					jen.Id("d.db"),
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
 					jen.Id("filter"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -206,11 +213,12 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.CreateOrUpdate {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("CreateOrUpdate" + m.StructureName).
-				Add(createOrUpdateParamsAndReturns(m)).Block(jen.Return(
+				Add(createOrUpdateParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "CreateOrUpdate").Params(
 					jen.Id("ctx"),
 					jen.Id("input"),
 					jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -218,11 +226,12 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.PermanentDelete {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("PermanentDelete" + m.StructureName).
-				Add(permanentDeleteParamsAndReturns(m)).Block(jen.Return(
+				Add(permanentDeleteParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "PermanentDelete").Params(
 					jen.Id("ctx"),
 					jen.Id("input"),
 					jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -230,7 +239,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.PermanentDeleteByID {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("PermanentDelete"+m.StructureName+"ByID").
-				Add(permanentDeleteByIDParamsAndReturns(m)).Block(
+				Add(permanentDeleteByIDParamsAndReturns(m, neededPackages)).Block(
 				// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
 				jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
 				jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
@@ -240,6 +249,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 						jen.Id("ctx"),
 						jen.Id("input"),
 						jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 					),
 				),
 			).Line()
@@ -248,12 +258,13 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.PermanentDeleteFiltered {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("PermanentDelete" + m.StructureName + "Filtered").
-				Add(permanentDeleteFilteredParamsAndReturns(m)).Block(jen.Return(
+				Add(permanentDeleteFilteredParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "PermanentDeleteFiltered").Params(
 					jen.Id("ctx"),
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
 					jen.Id("filter"),
 					jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -261,12 +272,13 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdate {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("PatchUpdate" + m.StructureName).
-				Add(patchUpdateParamsAndReturns(m)).Block(jen.Return(
+				Add(patchUpdateParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "PatchUpdate").Params(
 					jen.Id("ctx"),
 					jen.Id("input"),
 					jen.Id("patch"),
 					jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -274,7 +286,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateByID {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("PatchUpdate"+m.StructureName+"ByID").
-				Add(patchUpdateByIDParamsAndReturns(m)).Block(
+				Add(patchUpdateByIDParamsAndReturns(m, neededPackages)).Block(
 				// This is make list this to avoid any choice between Base and BaseWithoutIndexes structures
 				jen.Id("input").Op(":=").Op("&").Qual(m.Package, m.StructureName).Values(),
 				jen.Id("input").Op(".").Id("ID").Op("=").Id("id"),
@@ -285,6 +297,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 						jen.Id("input"),
 						jen.Id("patch"),
 						jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 					),
 				),
 			).Line()
@@ -293,13 +306,14 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateFiltered {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("PatchUpdate" + m.StructureName + "Filtered").
-				Add(patchUpdateFilteredParamsAndReturns(m)).Block(jen.Return(
+				Add(patchUpdateFilteredParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "PatchUpdateAllFiltered").Params(
 					jen.Id("ctx"),
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
 					jen.Id("patch"),
 					jen.Id("filter"),
 					jen.Id("d.db"),
+					jen.Id("opts").Op("..."),
 				),
 			)).Line()
 		}
@@ -316,11 +330,11 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 		res := []jen.Code{}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindByID {
-			res = append(res, jen.Id("Find"+m.StructureName+"ByID").Add(findByIdParamsAndReturns(m)))
+			res = append(res, jen.Id("Find"+m.StructureName+"ByID").Add(findByIdParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindOne {
-			res = append(res, jen.Id("FindOne"+m.StructureName).Add(findOneParamsAndReturns(m)))
+			res = append(res, jen.Id("FindOne"+m.StructureName).Add(findOneParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindWithPagination {
@@ -332,7 +346,7 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindAll {
-			res = append(res, jen.Id("FindAll"+m.StructureName).Add(findAllParamsAndReturns(m)))
+			res = append(res, jen.Id("FindAll"+m.StructureName).Add(findAllParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.CountPaginated {
@@ -340,35 +354,35 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.Count {
-			res = append(res, jen.Id("Count"+m.StructureName).Add(countParamsAndReturns(m)))
+			res = append(res, jen.Id("Count"+m.StructureName).Add(countParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.CreateOrUpdate {
-			res = append(res, jen.Id("CreateOrUpdate"+m.StructureName).Add(createOrUpdateParamsAndReturns(m)))
+			res = append(res, jen.Id("CreateOrUpdate"+m.StructureName).Add(createOrUpdateParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.CreateOrUpdate {
-			res = append(res, jen.Id("PermanentDelete"+m.StructureName).Add(permanentDeleteParamsAndReturns(m)))
+			res = append(res, jen.Id("PermanentDelete"+m.StructureName).Add(permanentDeleteParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateByID {
-			res = append(res, jen.Id("PermanentDelete"+m.StructureName+"ByID").Add(permanentDeleteByIDParamsAndReturns(m)))
+			res = append(res, jen.Id("PermanentDelete"+m.StructureName+"ByID").Add(permanentDeleteByIDParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateFiltered {
-			res = append(res, jen.Id("PermanentDelete"+m.StructureName+"Filtered").Add(permanentDeleteFilteredParamsAndReturns(m)))
+			res = append(res, jen.Id("PermanentDelete"+m.StructureName+"Filtered").Add(permanentDeleteFilteredParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdate {
-			res = append(res, jen.Id("PatchUpdate"+m.StructureName).Add(patchUpdateParamsAndReturns(m)))
+			res = append(res, jen.Id("PatchUpdate"+m.StructureName).Add(patchUpdateParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateByID {
-			res = append(res, jen.Id("PatchUpdate"+m.StructureName+"ByID").Add(patchUpdateByIDParamsAndReturns(m)))
+			res = append(res, jen.Id("PatchUpdate"+m.StructureName+"ByID").Add(patchUpdateByIDParamsAndReturns(m, neededPackages)))
 		}
 
 		if m.DisabledMethods == nil || !m.DisabledMethods.PatchUpdateFiltered {
-			res = append(res, jen.Id("PatchUpdate"+m.StructureName+"Filtered").Add(patchUpdateFilteredParamsAndReturns(m)))
+			res = append(res, jen.Id("PatchUpdate"+m.StructureName+"Filtered").Add(patchUpdateFilteredParamsAndReturns(m, neededPackages)))
 		}
 
 		if len(res) != 0 {
@@ -388,70 +402,77 @@ func generateInterface(f *jen.File, v *DaoCfg, neededPackages *NeededPackagesCfg
 	)
 }
 
-func patchUpdateFilteredParamsAndReturns(m *DaoModelCfg) jen.Code {
+func patchUpdateFilteredParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
 		jen.Id("patch").Map(jen.String()).Any(),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.Error())
 }
 
-func patchUpdateParamsAndReturns(m *DaoModelCfg) jen.Code {
+func patchUpdateParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("input").Op("*").Qual(m.Package, m.StructureName),
 		jen.Id("patch").Map(jen.String()).Any(),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),
 	))
 }
 
-func patchUpdateByIDParamsAndReturns(m *DaoModelCfg) jen.Code {
+func patchUpdateByIDParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("id").String(),
 		jen.Id("patch").Map(jen.String()).Any(),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),
 	))
 }
 
-func createOrUpdateParamsAndReturns(m *DaoModelCfg) jen.Code {
+func createOrUpdateParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("input").Op("*").Qual(m.Package, m.StructureName),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),
 	))
 }
 
-func permanentDeleteParamsAndReturns(m *DaoModelCfg) jen.Code {
+func permanentDeleteParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("input").Op("*").Qual(m.Package, m.StructureName),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),
 	))
 }
 
-func permanentDeleteByIDParamsAndReturns(m *DaoModelCfg) jen.Code {
+func permanentDeleteByIDParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("id").String(),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),
 	))
 }
 
-func permanentDeleteFilteredParamsAndReturns(m *DaoModelCfg) jen.Code {
+func permanentDeleteFilteredParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Error()
 }
 
@@ -462,6 +483,7 @@ func findAllPaginatedParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPack
 		jen.Id("sorts").Index().Op("*").Qual(m.Package, getSortOrderStructureName(m)),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
 		jen.Id("projection").Op("*").Qual(m.Package, getProjectionStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.DB, "TransactionOption"),
 	).Parens(jen.List(
 		jen.Index().Op("*").Qual(m.Package, m.StructureName),
 		jen.Op("*").Qual(neededPackages.Pagination, "PageOutput"),
@@ -476,6 +498,7 @@ func findWithPaginationParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPa
 		jen.Id("sorts").Index().Op("*").Qual(m.Package, getSortOrderStructureName(m)),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
 		jen.Id("projection").Op("*").Qual(m.Package, getProjectionStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Index().Op("*").Qual(m.Package, m.StructureName),
 		jen.Error(),
@@ -487,45 +510,50 @@ func countPaginatedParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackag
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("page").Op("*").Qual(neededPackages.Pagination, "PageInput"),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Int64(),
 		jen.Error(),
 	))
 }
 
-func countParamsAndReturns(m *DaoModelCfg) jen.Code {
+func countParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(
 		jen.Int64(),
 		jen.Error(),
 	))
 }
 
-func findByIdParamsAndReturns(m *DaoModelCfg) jen.Code {
+func findByIdParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("id").String(),
 		jen.Id("projection").Op("*").Qual(m.Package, getProjectionStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(jen.Op("*").Qual(m.Package, m.StructureName), jen.Error()))
 }
 
-func findOneParamsAndReturns(m *DaoModelCfg) jen.Code {
+func findOneParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("sorts").Index().Op("*").Qual(m.Package, getSortOrderStructureName(m)),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
 		jen.Id("projection").Op("*").Qual(m.Package, getProjectionStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(jen.Op("*").Qual(m.Package, m.StructureName), jen.Error()))
 }
 
-func findAllParamsAndReturns(m *DaoModelCfg) jen.Code {
+func findAllParamsAndReturns(m *DaoModelCfg, neededPackages *NeededPackagesCfg) jen.Code {
 	return jen.Params(
 		jen.Id("ctx").Qual("context", "Context"),
 		jen.Id("sorts").Index().Op("*").Qual(m.Package, getSortOrderStructureName(m)),
 		jen.Id("filter").Op("*").Qual(m.Package, getFilterStructureName(m)),
 		jen.Id("projection").Op("*").Qual(m.Package, getProjectionStructureName(m)),
+		jen.Id("opts").Op("...").Qual(neededPackages.Helpers, "GormOpt"),
 	).Parens(jen.List(jen.Index().Op("*").Qual(m.Package, m.StructureName), jen.Error()))
 }
 
