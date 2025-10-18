@@ -1,10 +1,10 @@
 import {
-  type SortOrderModel,
   type DateFilterModel,
   type StringFilterModel,
   type BooleanFilterModel,
   type FilterDefinitionFieldsModel,
   type SortOrderFieldModel,
+  type SortOrderObjectModel,
 } from './general';
 import { stringOperations, booleanOperations, dateOperations } from './general-operations';
 
@@ -16,20 +16,18 @@ export interface TodoModel {
   done: boolean;
 }
 
-export interface TodoSortOrderModel {
-  createdAt?: SortOrderModel;
-  updatedAt?: SortOrderModel;
-  text?: SortOrderModel;
-}
+type TodoSortOrderModelKeys = 'createdAt' | 'updatedAt' | 'text';
+export type TodoSortOrderModel = SortOrderObjectModel<TodoSortOrderModelKeys>;
 
-export interface TodoFilterModel {
+export type TodoFilterModel = {
   AND?: TodoFilterModel[];
   OR?: TodoFilterModel[];
+} & {
   createdAt?: DateFilterModel;
   updatedAt?: DateFilterModel;
   text?: StringFilterModel;
   done?: BooleanFilterModel;
-}
+};
 
 export const todoSortFields: SortOrderFieldModel[] = [
   { field: 'createdAt', display: 'common.fields.createdAt' },

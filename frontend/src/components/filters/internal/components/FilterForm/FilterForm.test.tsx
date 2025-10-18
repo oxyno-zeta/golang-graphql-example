@@ -25,13 +25,14 @@ dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-interface TestFilterModel {
+type TestFilterModel = {
   AND?: TestFilterModel[];
   OR?: TestFilterModel[];
+} & {
   createdAt?: DateFilterModel;
   text?: StringFilterModel;
   done?: BooleanFilterModel;
-}
+};
 
 const testFilterDefinitionObject: FilterDefinitionFieldsModel = {
   createdAt: {

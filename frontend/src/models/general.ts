@@ -23,6 +23,7 @@ export interface PaginationInputModel {
 }
 
 export type SortOrderModel = 'ASC' | 'DESC' | undefined;
+export type SortOrderObjectModel<Keys extends string> = Partial<Record<Keys, SortOrderModel>>;
 export const SortOrderAsc: SortOrderModel = 'ASC';
 export const SortOrderDesc: SortOrderModel = 'DESC';
 export const SortQueryParamName = 'sorts';
