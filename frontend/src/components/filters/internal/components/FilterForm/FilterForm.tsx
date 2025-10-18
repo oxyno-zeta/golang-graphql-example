@@ -40,6 +40,8 @@ function FilterForm({
     // Build new value
     const nV = buildFilterBuilderInitialItems(initialFilter);
     // Set init
+    // Disabled because, yes this is true but it is really painful to do a key with a full object
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setInit((innerInit) => {
       // Check if objects are different
       if (JSON.stringify(nV) !== JSON.stringify(innerInit)) {

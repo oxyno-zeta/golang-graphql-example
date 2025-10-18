@@ -31,6 +31,8 @@ function AutocompleteInfiniteScroll<
   useEffect(() => {
     // this condition checks if there is a necessary DOM Node
     if (listboxNode !== null) {
+      // Here we are modifying dom element directly
+      // eslint-disable-next-line react-hooks/immutability
       listboxNode.scrollTop = position;
     }
     // it will only work when the position or node changes
@@ -62,8 +64,9 @@ function AutocompleteInfiniteScroll<
   return (
     <MuiAutocomplete<T, Multiple, DisableClearable, FreeSolo>
       {...rest}
-      ListboxProps={{
-        onScroll,
+      slotProps={{
+        ...rest.slotProps,
+        listbox: { onScroll },
       }}
     />
   );

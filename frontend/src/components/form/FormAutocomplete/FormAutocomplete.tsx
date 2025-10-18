@@ -61,6 +61,7 @@ function FormAutocomplete<T extends FieldValues>({
   }
 
   // Transform value into value object
+  // eslint-disable-next-line react-hooks/refs
   let value: ValueModel | undefined | null = values.find((it) => it.value === field.value);
   // Check if value is undefined to force it to null
   // This is done to force a controlled component in Autocomplete
@@ -82,6 +83,7 @@ function FormAutocomplete<T extends FieldValues>({
         return (option as ValueModel).display;
       }}
       noOptionsText={t('common.filter.noOptions')}
+      // eslint-disable-next-line react-hooks/refs
       onBlur={field.onBlur}
       onChange={(input, newValue) => {
         if (newValue === null) {
@@ -94,6 +96,7 @@ function FormAutocomplete<T extends FieldValues>({
       }}
       openText={t('common.openAction')}
       options={values}
+      // eslint-disable-next-line react-hooks/refs
       ref={field.ref}
       renderInput={(params) => <TextField {...params} {...textFieldProps} {...errorProps} />}
       renderOption={(props, data: ValueModel, { inputValue }) => {

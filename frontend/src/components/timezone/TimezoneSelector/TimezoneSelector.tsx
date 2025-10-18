@@ -100,6 +100,7 @@ const ListboxComponent = React.forwardRef<
   // Map option values to their indices in the flattened array
   itemData.forEach((item, index) => {
     if (Array.isArray(item) && item[1]) {
+      // eslint-disable-next-line react-hooks/immutability
       optionIndexMap.set(item[1], index);
     }
   });

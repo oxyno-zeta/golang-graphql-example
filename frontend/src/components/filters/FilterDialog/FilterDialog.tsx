@@ -46,8 +46,11 @@ function FilterDialog<T extends FilterValueObject>({
 
   // Watch initial filter
   useEffect(() => {
-    setError(false);
-    resultRef.current = initialFilter;
+    setError(() => {
+      resultRef.current = initialFilter;
+
+      return false;
+    });
   }, [initialFilter]);
 
   return (

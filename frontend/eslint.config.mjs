@@ -6,6 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintReact from 'eslint-plugin-react';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import tsEslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 import { rules as prettierConfigRules } from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
@@ -20,7 +21,7 @@ import storybook from 'eslint-plugin-storybook';
 
 import tsParser from '@typescript-eslint/parser';
 
-export default tsEslint.config(
+export default defineConfig(
   /**
    * ESLint recommended rules
    */
