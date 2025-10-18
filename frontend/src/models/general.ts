@@ -23,8 +23,8 @@ export interface PaginationInputModel {
 }
 
 export type SortOrderModel = 'ASC' | 'DESC' | undefined;
-export const SortOrderAsc = 'ASC';
-export const SortOrderDesc = 'DESC';
+export const SortOrderAsc: SortOrderModel = 'ASC';
+export const SortOrderDesc: SortOrderModel = 'DESC';
 export const SortQueryParamName = 'sorts';
 
 export interface SortOrderFieldModel {
