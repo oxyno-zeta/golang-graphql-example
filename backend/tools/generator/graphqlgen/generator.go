@@ -82,15 +82,15 @@ func addImports(f *jen.File, list []*ConnectionCfg, gqlgenModelPackage string) {
 func generateConnectionTransform(f *jen.File, conn *ConnectionCfg, neededPackages *NeededPackagesCfg) {
 	const pageOutParamName = "pageOut"
 
-	f.Func().Id("Map"+conn.StructureName+"Connection").Params(
+	f.Func().Id("Map"+conn.GraphQLStructureName+"Connection").Params(
 		jen.Id("list").Index().Op("*").Qual(conn.Package, conn.StructureName),
 		jen.Id(pageOutParamName).Op("*").Qual(neededPackages.Pagination, PaginationPageOutputStructureName),
 	).Parens(jen.List(
-		jen.Op("*").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Connection"),
+		jen.Op("*").Qual(neededPackages.GqlgenModelPackage, conn.GraphQLStructureName+"Connection"),
 		jen.Error(),
 	)).Block(
 		jen.Id("edges").Op(":=").Make(
-			jen.Index().Op("*").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Edge"),
+			jen.Index().Op("*").Qual(neededPackages.GqlgenModelPackage, conn.GraphQLStructureName+"Edge"),
 			jen.Len(jen.Id("list")),
 		),
 		jen.Line(),
@@ -119,7 +119,7 @@ func generateConnectionTransform(f *jen.File, conn *ConnectionCfg, neededPackage
 			jen.Line(),
 
 			jen.Id("edges").Index(jen.Id("i")).Op("=").Op("&").
-				Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Edge").
+				Qual(neededPackages.GqlgenModelPackage, conn.GraphQLStructureName+"Edge").
 				Values(jen.Dict{
 					jen.Id(EdgesNodeKeyName):   jen.Id("v"),
 					jen.Id(EdgesCursorKeyName): jen.Id("cursor"),
@@ -127,7 +127,7 @@ func generateConnectionTransform(f *jen.File, conn *ConnectionCfg, neededPackage
 		),
 		jen.Line(),
 
-		jen.Id("res").Op(":=").Op("&").Qual(neededPackages.GqlgenModelPackage, conn.StructureName+"Connection").Values(jen.Dict{
+		jen.Id("res").Op(":=").Op("&").Qual(neededPackages.GqlgenModelPackage, conn.GraphQLStructureName+"Connection").Values(jen.Dict{
 			jen.Id(EdgesStructureKeyName): jen.Id("edges"),
 			jen.Id(PageInfoStructureKeyName): jen.Op("&").Qual(neededPackages.GraphqlUtils, PageInfoUtilsStructureName).Values(jen.Dict{
 				jen.Id(PageInfoUtilsHasNextPageKeyName):     jen.Id(pageOutParamName).Op(".").Id(PaginationPageOutputHasNextKeyName),

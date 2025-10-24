@@ -23,8 +23,9 @@ type NeededPackagesCfg struct {
 }
 
 type ConnectionCfg struct {
-	Package       string `validate:"required" yaml:"package"`
-	StructureName string `validate:"required" yaml:"structureName"`
+	Package              string `validate:"required" yaml:"package"`
+	StructureName        string `validate:"required" yaml:"structureName"`
+	GraphQLStructureName string `                    yaml:"graphqlStructureName"`
 }
 
 func loadConfig() (*Config, error) {
@@ -59,6 +60,13 @@ func loadConfig() (*Config, error) {
 	// Check error
 	if err != nil {
 		return nil, errors.WithStack(err)
+	}
+
+	// Automatically copy structureName to GraphQLStructureName if it's empty
+	for _, conn := range config.Connections {
+		if conn.GraphQLStructureName == "" {
+			conn.GraphQLStructureName = conn.StructureName
+		}
 	}
 
 	// Default
