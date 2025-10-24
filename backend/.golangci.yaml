@@ -413,7 +413,8 @@ linters:
           - nilnil
           - tagliatelle
           - dupl
-        path: pkg/.*/common/errors/.*_test\.go
+          - staticcheck
+        path: pkg/.*/.*_test\.go
     paths:
       - tools/generator/modeltagsgen
       - tools/generator/daogen
