@@ -24,7 +24,7 @@ function FixedBreadcrumb({ breadcrumbData, last, pathname, params, disablePageTi
   if (last) {
     return (
       <>
-        {!disablePageTitle && <title>{t(breadcrumbData.textContent)}</title>}
+        {!disablePageTitle && <title>{breadcrumbData.disableTranslate ? breadcrumbData.textContent : t(breadcrumbData.textContent)}</title>}
         <Typography color="text.primary" {...(breadcrumbData.typographyProps || {})}>
           {breadcrumbData.disableTranslate ? breadcrumbData.textContent : t(breadcrumbData.textContent)}
         </Typography>
