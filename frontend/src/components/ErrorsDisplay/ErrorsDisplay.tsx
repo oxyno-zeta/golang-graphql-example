@@ -5,6 +5,8 @@ import { ServerError, CombinedGraphQLErrors } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
 import { WithTraceError } from '~components/ClientProvider';
+import { isAxiosError, type AxiosError } from 'axios';
+import { type GraphQLFormattedErrorExtensions } from 'graphql';
 import { GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix, ServerErrorCustomComponentMapKey } from './constants';
 
 export interface Props {
@@ -23,6 +25,46 @@ export interface Props {
 export interface CustomNetworkError {
   message: string;
   path: null | undefined | readonly (string | number)[];
+}
+
+interface ErrorRESTBody {
+  error: string;
+  extensions: GraphQLFormattedErrorExtensions | undefined;
+}
+interface ErrorContent {
+  content: string;
+  key: Key;
+  CustomComp?: React.ElementType;
+  customCompProps?: object;
+}
+
+function errorBodyToErrorContent(
+  t: (input: string) => string,
+  message: string,
+  extensions: GraphQLFormattedErrorExtensions | undefined,
+  key: string,
+  customErrorComponents: Record<string, React.ElementType>,
+  customErrorComponentProps: Record<string, object>,
+) {
+  let mess = message;
+  let customComp: React.ElementType | undefined;
+  let customCompProps: object | undefined;
+  // Check if there is a code in extensions
+  if (extensions && extensions.code) {
+    mess = t(`common.errorCode.${extensions.code}`);
+
+    const mapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}${extensions.code}`;
+
+    customComp = customErrorComponents[mapKey];
+    customCompProps = customErrorComponentProps[mapKey];
+  }
+
+  return {
+    content: mess,
+    key,
+    CustomComp: customComp,
+    customCompProps,
+  };
 }
 
 function ErrorsDisplay({
@@ -70,8 +112,29 @@ function ErrorsDisplay({
       err = err.err;
     }
 
-    const contents: { content: string; key: Key; CustomComp?: React.ElementType; customCompProps?: object }[] = [];
-    if (ServerError.is(err) || CombinedGraphQLErrors.is(err)) {
+    const contents: ErrorContent[] = [];
+
+    // Check if it is an AxiosError
+    if (isAxiosError(err)) {
+      const axErr = err as AxiosError<ErrorRESTBody>;
+      if (axErr.response && axErr.response.data && axErr.response.data.error) {
+        const body = axErr.response.data;
+
+        contents.push(
+          errorBodyToErrorContent(
+            t,
+            body.error,
+            body.extensions,
+            `${mainIndex}-axiosError`,
+            customErrorComponents,
+            customErrorComponentProps,
+          ),
+        );
+      } else {
+        // Default
+        contents.push({ content: err.message, key: mainIndex });
+      }
+    } else if (ServerError.is(err) || CombinedGraphQLErrors.is(err)) {
       if (ServerError.is(err)) {
         contents.push({
           content: err.message,
@@ -83,27 +146,16 @@ function ErrorsDisplay({
 
       if (CombinedGraphQLErrors.is(err)) {
         contents.push(
-          ...err.errors.map(({ message, extensions }, i) => {
-            let mess = message;
-            let customComp: React.ElementType | undefined;
-            let customCompProps: object | undefined;
-            // Check if there is a code in extensions
-            if (extensions && extensions.code) {
-              mess = t(`common.errorCode.${extensions.code}`);
-
-              const mapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}${extensions.code}`;
-
-              customComp = customErrorComponents[mapKey];
-              customCompProps = customErrorComponentProps[mapKey];
-            }
-
-            return {
-              content: mess,
-              key: `${mainIndex}-graphQLErrors-${i}`,
-              CustomComp: customComp,
-              customCompProps,
-            };
-          }),
+          ...err.errors.map(({ message, extensions }, i) =>
+            errorBodyToErrorContent(
+              t,
+              message,
+              extensions,
+              `${mainIndex}-graphQLErrors-${i}`,
+              customErrorComponents,
+              customErrorComponentProps,
+            ),
+          ),
         );
       }
     } else {

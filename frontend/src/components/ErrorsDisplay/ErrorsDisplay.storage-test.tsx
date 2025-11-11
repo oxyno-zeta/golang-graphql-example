@@ -1,4 +1,5 @@
 import { CombinedGraphQLErrors, type ServerError } from '@apollo/client';
+import { AxiosError } from 'axios';
 import { GraphQLError } from 'graphql';
 import { WithTraceError } from '~components/ClientProvider';
 
@@ -10,6 +11,16 @@ export const forbiddenNetworkError: ServerError = {
   statusCode: 403,
   bodyText: '',
 };
+export const forbiddenAxiosError: AxiosError = new AxiosError(
+  'fake',
+  '403',
+  undefined,
+  null,
+  new Response({
+    error: 'forbidden',
+    extensions: { code: 'FORBIDDEN' },
+  }),
+);
 export const simpleGraphqlErrorWithoutExtension: GraphQLError = new GraphQLError('simple graphql error');
 export const simpleCombinedGraphQLErrorWithoutExtension = new CombinedGraphQLErrors({
   errors: [simpleGraphqlErrorWithoutExtension],
