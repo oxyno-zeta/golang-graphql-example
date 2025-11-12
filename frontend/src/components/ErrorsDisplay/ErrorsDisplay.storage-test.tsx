@@ -1,6 +1,8 @@
 import { CombinedGraphQLErrors, type ServerError } from '@apollo/client';
+import { AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { GraphQLError } from 'graphql';
 import { WithTraceError } from '~components/ClientProvider';
+import { fromAxiosErrorToWithTraceError } from '~utils/axios-error';
 
 // Build data for tests
 export const forbiddenNetworkError: ServerError = {
@@ -10,6 +12,23 @@ export const forbiddenNetworkError: ServerError = {
   statusCode: 403,
   bodyText: '',
 };
+export const forbiddenAxiosError: AxiosError = new AxiosError('fake', 'ERR_BAD_REQUEST', undefined, null, {
+  data: { error: 'forbidden', extensions: { code: 'FORBIDDEN' } },
+  status: 403,
+  statusText: 'Forbidden',
+  headers: { 'X-Request-ID': 'request-id', 'X-Trace-ID': 'trace-id' },
+  config: { url: 'http://fake.com', method: 'get' } as InternalAxiosRequestConfig,
+});
+export const forbiddenWithTraceAxiosError = fromAxiosErrorToWithTraceError(forbiddenAxiosError);
+export const internalServerErrorAxiosError: AxiosError = new AxiosError('fake', 'ERR_BAD_REQUEST', undefined, null, {
+  data: 'Internal server error',
+  status: 500,
+  statusText: 'Internal server error',
+  headers: {},
+  config: { url: 'http://fake.com', method: 'get' } as InternalAxiosRequestConfig,
+});
+export const internalServerErrorWithTraceDataWithTraceAxiosError =
+  fromAxiosErrorToWithTraceError(internalServerErrorAxiosError);
 export const simpleGraphqlErrorWithoutExtension: GraphQLError = new GraphQLError('simple graphql error');
 export const simpleCombinedGraphQLErrorWithoutExtension = new CombinedGraphQLErrors({
   errors: [simpleGraphqlErrorWithoutExtension],

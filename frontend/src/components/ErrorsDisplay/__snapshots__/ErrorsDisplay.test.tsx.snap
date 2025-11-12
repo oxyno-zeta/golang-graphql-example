@@ -318,6 +318,226 @@ exports[`ErrorsDisplay should display a network error when error is present 1`] 
 </div>
 `;
 
+exports[`ErrorsDisplay should display an axios error with extension and trace and request id when with trace error is present 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
+.emotion-5 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  color: #d32f2f;
+}
+
+<div>
+  <div
+    class="MuiBox-root emotion-0"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root emotion-2"
+    >
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          common.errorCode.FORBIDDEN
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-caption emotion-5"
+        >
+          common.supportTraceId
+          : 
+          trace-id
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-caption emotion-5"
+        >
+          common.supportRequestId
+          : 
+          request-id
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display an axios error with extensions in data but without trace error 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
+<div>
+  <div
+    class="MuiBox-root emotion-0"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root emotion-2"
+    >
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          common.errorCode.FORBIDDEN
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display an axios error without extensions in data and with empty trace error 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
+<div>
+  <div
+    class="MuiBox-root emotion-0"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root emotion-2"
+    >
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          fake
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`ErrorsDisplay should display an axios error without extensions in data but without trace error 1`] = `
+.emotion-0 {
+  margin: 64px;
+}
+
+.emotion-0 color {
+  main: #d32f2f;
+  light: #ef5350;
+  dark: #c62828;
+  contrast-text: #fff;
+}
+
+.emotion-1 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: #d32f2f;
+}
+
+<div>
+  <div
+    class="MuiBox-root emotion-0"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 emotion-1"
+    >
+      common.errors
+      :
+    </p>
+    <ul
+      class="MuiBox-root emotion-2"
+    >
+      <li
+        class="MuiBox-root emotion-2"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 emotion-1"
+        >
+          fake
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
 exports[`ErrorsDisplay should display classic error when error is present 1`] = `
 .emotion-0 {
   margin: 64px;

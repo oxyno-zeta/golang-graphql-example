@@ -3,7 +3,11 @@ import { type StoryFn, type Meta } from '@storybook/react-vite';
 import { CombinedGraphQLErrors } from '@apollo/client';
 import ErrorsDisplay, { type Props } from './ErrorsDisplay';
 import {
+  forbiddenAxiosError,
   forbiddenNetworkError,
+  forbiddenWithTraceAxiosError,
+  internalServerErrorAxiosError,
+  internalServerErrorWithTraceDataWithTraceAxiosError,
   simpleCombinedGraphQLErrorWithoutExtension,
   simpleForbiddenCombinedGraphQLError,
   simpleForbiddenGraphqlError,
@@ -57,4 +61,20 @@ export const OneGraphQLErrorWithoutMargin: StoryFn<typeof ErrorsDisplay> = funct
 
 export const OneWithTraceGraphQLError: StoryFn<typeof ErrorsDisplay> = function C() {
   return <ErrorsDisplay error={simpleInternalServerWithTraceErrorCombinedGraphQLError} />;
+};
+
+export const ForbiddenAxiosError: StoryFn<typeof ErrorsDisplay> = function C() {
+  return <ErrorsDisplay error={forbiddenAxiosError} />;
+};
+
+export const ForbiddenWithTraceAxiosError: StoryFn<typeof ErrorsDisplay> = function C() {
+  return <ErrorsDisplay error={forbiddenWithTraceAxiosError} />;
+};
+
+export const InternalServerErrorAxiosError: StoryFn<typeof ErrorsDisplay> = function C() {
+  return <ErrorsDisplay error={internalServerErrorAxiosError} />;
+};
+
+export const InternalServerErrorWithTraceDataWithTraceAxiosError: StoryFn<typeof ErrorsDisplay> = function C() {
+  return <ErrorsDisplay error={internalServerErrorWithTraceDataWithTraceAxiosError} />;
 };

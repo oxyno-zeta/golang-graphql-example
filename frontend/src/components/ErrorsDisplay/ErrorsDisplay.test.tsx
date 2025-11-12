@@ -7,7 +7,11 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { CombinedGraphQLErrors } from '@apollo/client';
 import {
+  forbiddenAxiosError,
   forbiddenNetworkError,
+  forbiddenWithTraceAxiosError,
+  internalServerErrorAxiosError,
+  internalServerErrorWithTraceDataWithTraceAxiosError,
   simpleForbiddenCombinedGraphQLError,
   simpleForbiddenGraphqlError,
   simpleGraphqlErrorWithoutExtension,
@@ -120,6 +124,73 @@ describe('ErrorsDisplay', () => {
       'common.supportTraceId',
       'common.supportRequestId',
     ];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display an axios error with extension and trace and request id when with trace error is present', () => {
+    const { container } = render(<ErrorsDisplay error={forbiddenWithTraceAxiosError} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(4);
+
+    // Prepare values
+    const values = [
+      'common.errors:',
+      'common.errorCode.FORBIDDEN',
+      'trace-id',
+      'request-id',
+      'common.supportTraceId',
+      'common.supportRequestId',
+    ];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display an axios error with extensions in data but without trace error', () => {
+    const { container } = render(<ErrorsDisplay error={forbiddenAxiosError} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(2);
+
+    // Prepare values
+    const values = ['common.errors:', 'common.errorCode.FORBIDDEN'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display an axios error without extensions in data but without trace error', () => {
+    const { container } = render(<ErrorsDisplay error={internalServerErrorAxiosError} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(2);
+
+    // Prepare values
+    const values = ['common.errors:', 'fake'];
+    values.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should display an axios error without extensions in data and with empty trace error', () => {
+    const { container } = render(<ErrorsDisplay error={internalServerErrorWithTraceDataWithTraceAxiosError} />);
+
+    const allP = container.querySelectorAll('p');
+    expect(allP).toHaveLength(2);
+
+    // Prepare values
+    const values = ['common.errors:', 'fake'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
