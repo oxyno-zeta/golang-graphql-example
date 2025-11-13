@@ -27,7 +27,8 @@ type Service interface {
 //go:generate mockgen -destination=./mocks/mock_Lock.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/lockdistributor/sql Lock
 type Lock interface {
 	// Acquire lock
-	// Deprecated: Use AcquireWithContext instead.
+	// Deprecated:
+	// Use AcquireWithContext instead.
 	Acquire() error
 	// Acquire lock with context
 	AcquireWithContext(ctx context.Context) error

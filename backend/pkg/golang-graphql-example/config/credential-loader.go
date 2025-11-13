@@ -101,7 +101,7 @@ func internalLoadCredential(in any) (*CredentialConfig, error) {
 }
 
 func getCredentialConfigPathList() ([][]string, error) {
-	return getRecursivelyCredentialConfigPathList([]string{}, reflect.TypeOf(Config{}))
+	return getRecursivelyCredentialConfigPathList([]string{}, reflect.TypeFor[Config]())
 }
 
 func getRecursivelyCredentialConfigPathList(keys []string, r reflect.Type) ([][]string, error) {
@@ -109,7 +109,7 @@ func getRecursivelyCredentialConfigPathList(keys []string, r reflect.Type) ([][]
 	res := [][]string{}
 
 	// Create type to save it and use it
-	credCfgType := reflect.TypeOf(CredentialConfig{})
+	credCfgType := reflect.TypeFor[CredentialConfig]()
 
 	// Loop over fields
 	for i := 0; i < r.NumField(); i++ {
