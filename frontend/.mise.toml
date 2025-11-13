@@ -1,4 +1,4 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tools]
-node = { version = '22', postinstall = 'corepack enable' }
+node = { version = '24', postinstall = 'corepack enable' }
