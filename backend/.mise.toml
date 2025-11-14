@@ -2,7 +2,7 @@
 
 [tools]
 go = '1.25.4'
-golangci-lint = "2.6.1"
+golangci-lint = "2.6.2"
 # renovate: datasource=github-tags depName=gotestyourself/gotestsum
 gotestsum = "1.13.0"
 # renovate: datasource=github-tags depName=99designs/gqlgen
