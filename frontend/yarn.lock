@@ -3236,12 +3236,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.2.4":
-  version: 19.2.4
-  resolution: "@types/react@npm:19.2.4"
+"@types/react@npm:19.2.5":
+  version: 19.2.5
+  resolution: "@types/react@npm:19.2.5"
   dependencies:
     csstype: "npm:^3.0.2"
-  checksum: 10/99905270fe1ac5726f3447db5b8f4d5444e2a268cfd239bd3a379f65dc01d7ac6f8984f501e4edd4240e8533eaad30dd812a8443af7e356abb712aded427988e
+  checksum: 10/31067648e1380f6ddade8f586c7ff54db89c1b11e23cb307fb69e5bfceae22105721568e2eec15be2af03e63bf5fb6da4284b8621447d20ade7b7afab043b945
   languageName: node
   linkType: hard
 
@@ -6152,7 +6152,7 @@ __metadata:
     "@types/identity-obj-proxy": "npm:3"
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:24.10.1"
-    "@types/react": "npm:19.2.4"
+    "@types/react": "npm:19.2.5"
     "@types/react-dom": "npm:19.2.3"
     "@types/react-test-renderer": "npm:19.1.0"
     "@typescript-eslint/eslint-plugin": "npm:8.46.4"
@@ -6191,7 +6191,7 @@ __metadata:
     react-dom: "npm:19.2.0"
     react-error-boundary: "npm:6.0.0"
     react-hook-form: "npm:7.66.0"
-    react-i18next: "npm:16.3.2"
+    react-i18next: "npm:16.3.3"
     react-router: "npm:7.9.6"
     react-scan: "npm:0.4.3"
     react-window: "npm:2.2.3"
@@ -9108,9 +9108,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:16.3.2":
-  version: 16.3.2
-  resolution: "react-i18next@npm:16.3.2"
+"react-i18next@npm:16.3.3":
+  version: 16.3.3
+  resolution: "react-i18next@npm:16.3.3"
   dependencies:
     "@babel/runtime": "npm:^7.27.6"
     html-parse-stringify: "npm:^3.0.1"
@@ -9126,7 +9126,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/5f13215ea473996057d1d6aac606354032f12a81f2d33aee3ef6e0c441de33c28a3fb158ee657bfbc7bb0fbe47051b193442f1b6115c11e3bcb9371e5805693a
+  checksum: 10/84e40b97cee012bc525f5c1959dbd80a681d4904530c0c8e887dbbca1cfa84e061d5a52cf93c055e85bdeb2b2ac627a9c6c5e9bca5e05eda31367fb9f135caf4
   languageName: node
   linkType: hard
 
