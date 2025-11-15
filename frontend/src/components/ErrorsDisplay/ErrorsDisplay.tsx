@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import { ServerError, CombinedGraphQLErrors } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import type { SxProps } from '@mui/material';
-import { WithTraceError } from '~components/ClientProvider';
 import { isAxiosError, type AxiosError } from 'axios';
 import { type GraphQLFormattedErrorExtensions } from 'graphql';
+import WithTraceError from '~utils/WithTraceError';
 import { GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix, ServerErrorCustomComponentMapKey } from './constants';
 
 export interface Props {

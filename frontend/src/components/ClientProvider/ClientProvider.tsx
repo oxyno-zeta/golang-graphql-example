@@ -5,7 +5,7 @@ import { ErrorLink } from '@apollo/client/link/error';
 import { type ConfigModel } from '~models/config';
 import { Observable } from 'rxjs';
 import ConfigContext from '../../contexts/ConfigContext';
-import WithTraceError from './WithTraceError';
+import { fromApolloContextErrorToWithTraceError } from '../../utils/WithTraceError';
 
 interface Props {
   readonly children: ReactNode;
@@ -53,21 +53,8 @@ function generateClient(cfg: ConfigModel) {
         // Get context
         const context = operation.getContext();
 
-        // Check if context have response and headers to build WithTraceError
-        if (context && context.response && context.response.headers) {
-          observer.error(
-            new WithTraceError(
-              error,
-              context.response.headers.get('X-Correlation-ID') || context.response.headers.get('X-Request-ID'),
-              context.response.headers.get('X-Trace-ID'),
-            ),
-          );
-          // Stop
-          return;
-        }
-
         // Default
-        observer.error(error);
+        observer.error(fromApolloContextErrorToWithTraceError(error, context));
       }),
   );
 

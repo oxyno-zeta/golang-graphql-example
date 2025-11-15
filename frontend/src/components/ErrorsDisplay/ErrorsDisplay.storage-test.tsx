@@ -1,8 +1,7 @@
 import { CombinedGraphQLErrors, type ServerError } from '@apollo/client';
 import { AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { GraphQLError } from 'graphql';
-import { WithTraceError } from '~components/ClientProvider';
-import { fromAxiosErrorToWithTraceError } from '~utils/axios-error';
+import WithTraceError, { fromAxiosErrorToWithTraceError } from '~utils/WithTraceError';
 
 // Build data for tests
 export const forbiddenNetworkError: ServerError = {
