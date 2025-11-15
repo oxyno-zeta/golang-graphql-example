@@ -9,7 +9,11 @@ export function fromAxiosErrorToWithTraceError(err: AxiosError) {
 
   // Get headers
   if (err.response && err.response.headers) {
-    requestId = (err.response.headers['X-Request-ID'] as string | null | undefined) || '';
+    requestId =
+      ((err.response.headers['X-Request-ID'] || err.response.headers['X-Correlation-ID']) as
+        | string
+        | null
+        | undefined) || '';
     traceId = (err.response.headers['X-Trace-ID'] as string | null | undefined) || '';
   }
 
