@@ -6,7 +6,7 @@ require (
 	cirello.io/pglock v1.16.1
 	emperror.dev/errors v0.8.1
 	github.com/99designs/gqlgen v0.17.83
-	github.com/99designs/gqlgen-contrib v0.1.1-0.20251103175205-aef0e04db719
+	github.com/99designs/gqlgen-contrib v0.1.1-0.20251118154337-ca6fcf964c6c
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/coreos/go-oidc/v3 v3.16.0

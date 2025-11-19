@@ -66,6 +66,8 @@ github.com/99designs/gqlgen-contrib v0.1.1-0.20250908152412-c2adf2f3a671 h1:GIJJ
 github.com/99designs/gqlgen-contrib v0.1.1-0.20250908152412-c2adf2f3a671/go.mod h1:RlK3hRRStOKhvLxMCWxIMTGeShAlwu4hiG7HgoyOZjI=
 github.com/99designs/gqlgen-contrib v0.1.1-0.20251103175205-aef0e04db719 h1:ra6R85rR/Qqn29eXfqLBs/45YO2S03cLbhFhY6WU/F0=
 github.com/99designs/gqlgen-contrib v0.1.1-0.20251103175205-aef0e04db719/go.mod h1:pAYW3GWH6GP4/UOZk3pGqyccUwkWRqYZu/l3MGG9TE0=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20251118154337-ca6fcf964c6c h1:8s9saQU/vwwFURw1kTC+u8Iyabf6reQ4gDZY9y2Z9XU=
+github.com/99designs/gqlgen-contrib v0.1.1-0.20251118154337-ca6fcf964c6c/go.mod h1:pAYW3GWH6GP4/UOZk3pGqyccUwkWRqYZu/l3MGG9TE0=
 github.com/Abirdcfly/dupword v0.1.3 h1:9Pa1NuAsZvpFPi9Pqkd93I7LIYRURj+A//dFd5tgBeE=
 github.com/Abirdcfly/dupword v0.1.3/go.mod h1:8VbB2t7e10KRNdwTVoxdBaxla6avbhGzb8sCTygUMhw=
 github.com/AdaLogics/go-fuzz-headers v0.0.0-20230811130428-ced1acdcaa24 h1:bvDV9vkmnHYOMsOr4WLk+Vo07yKIzd94sVoIqshQ4bU=
