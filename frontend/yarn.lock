@@ -1287,10 +1287,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/roboto@npm:5.2.8":
-  version: 5.2.8
-  resolution: "@fontsource/roboto@npm:5.2.8"
-  checksum: 10/b3f04cee5f9554145b824c53865077a100ba540d0e5c9ad025472c13ecb27ed778381bb05edf0f23da3c7f871422f61a37488b0a8c658577241e5d75279def27
+"@fontsource/roboto@npm:5.2.9":
+  version: 5.2.9
+  resolution: "@fontsource/roboto@npm:5.2.9"
+  checksum: 10/8195c7844ad3371201d77ea11a4a9c1019ddc774b11d3bc3c905416caed03e94d726929b71ea885079a3a2c489ec2bc9cc24d2d871411f6ec83462053ae029dc
   languageName: node
   linkType: hard
 
@@ -2184,14 +2184,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-data-grid@npm:8.18.0":
-  version: 8.18.0
-  resolution: "@mui/x-data-grid@npm:8.18.0"
+"@mui/x-data-grid@npm:8.19.0":
+  version: 8.19.0
+  resolution: "@mui/x-data-grid@npm:8.19.0"
   dependencies:
     "@babel/runtime": "npm:^7.28.4"
     "@mui/utils": "npm:^7.3.5"
-    "@mui/x-internals": "npm:8.18.0"
-    "@mui/x-virtualizer": "npm:0.2.8"
+    "@mui/x-internals": "npm:8.19.0"
+    "@mui/x-virtualizer": "npm:0.2.9"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
     use-sync-external-store: "npm:^1.6.0"
@@ -2207,17 +2207,17 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 10/81891663cea8a334683c776cd4a858f7974f70cbca9ae1ca2511c08d83b32e136efe99de2dfeadbca5e7bcb8cc06392529fad4f42363c842c496e72fb2761b34
+  checksum: 10/08a7099a07c59c581600d00d444149c6f5b73efa27d6fec33176648cb3266d92ee875d1fd2befadb3ae3210c3ed26e7c51637eae5cb458c8433c2b38fd79960d
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:8.18.0":
-  version: 8.18.0
-  resolution: "@mui/x-date-pickers@npm:8.18.0"
+"@mui/x-date-pickers@npm:8.19.0":
+  version: 8.19.0
+  resolution: "@mui/x-date-pickers@npm:8.19.0"
   dependencies:
     "@babel/runtime": "npm:^7.28.4"
     "@mui/utils": "npm:^7.3.5"
-    "@mui/x-internals": "npm:8.18.0"
+    "@mui/x-internals": "npm:8.19.0"
     "@types/react-transition-group": "npm:^4.4.12"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
@@ -2255,13 +2255,13 @@ __metadata:
       optional: true
     moment-jalaali:
       optional: true
-  checksum: 10/b7783f025233bbc5ea1fe7b5e2fcc55654b44531ba0785c0730f7b3b3d6e46816650db64c83091921e427231cb228755bba4652fd3b5e27ca6a93c89adcc04b8
+  checksum: 10/3788534f5803ce66cf671e6cd008cd496b7fa57c0109a6571b11380ba6618af086920650ede64546be93a1267911554a9f0d047f0bec99031a67ab1c20fcbc8b
   languageName: node
   linkType: hard
 
-"@mui/x-internals@npm:8.18.0":
-  version: 8.18.0
-  resolution: "@mui/x-internals@npm:8.18.0"
+"@mui/x-internals@npm:8.19.0":
+  version: 8.19.0
+  resolution: "@mui/x-internals@npm:8.19.0"
   dependencies:
     "@babel/runtime": "npm:^7.28.4"
     "@mui/utils": "npm:^7.3.5"
@@ -2269,21 +2269,21 @@ __metadata:
     use-sync-external-store: "npm:^1.6.0"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/a885aeca0c2eee92c7a44f4ed1cedf4be5e7cc1db21d056bc134d1f06a9d67251a7f8dd26ea3ebb5465f0b0f0f37ecfcb5f180d7903837ddc6a5ebb4762cb3a0
+  checksum: 10/1e55637103207f0a4d0981e7857d07248234e850a907ba6e754882f3a309bb2b24cc070fdb920848da982a0074d634da7e61a70d8b083a421650a5d3b0c34b04
   languageName: node
   linkType: hard
 
-"@mui/x-virtualizer@npm:0.2.8":
-  version: 0.2.8
-  resolution: "@mui/x-virtualizer@npm:0.2.8"
+"@mui/x-virtualizer@npm:0.2.9":
+  version: 0.2.9
+  resolution: "@mui/x-virtualizer@npm:0.2.9"
   dependencies:
     "@babel/runtime": "npm:^7.28.4"
     "@mui/utils": "npm:^7.3.5"
-    "@mui/x-internals": "npm:8.18.0"
+    "@mui/x-internals": "npm:8.19.0"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10/5a60bde101f94de1d7fcd70a1e0013678e413f701f51dc14ece66cb5f426af1658a46d871ca0a298c09f7e7d2289ab9c6d837728932a0221e805ad4bc26c0c09
+  checksum: 10/db4559eadc8554ee722074ae502d1267ccc8f3701637dce1ad597bea5d3a4255775360b0d2413d017127aa46fc515d34914df290362ae16bbd7e01bcc70cd9c6
   languageName: node
   linkType: hard
 
@@ -3729,15 +3729,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vueless/storybook-dark-mode@npm:10.0.2":
-  version: 10.0.2
-  resolution: "@vueless/storybook-dark-mode@npm:10.0.2"
+"@vueless/storybook-dark-mode@npm:10.0.3":
+  version: 10.0.3
+  resolution: "@vueless/storybook-dark-mode@npm:10.0.3"
   dependencies:
     "@storybook/global": "npm:^5.0.0"
     lodash-es: "npm:^4.17.21"
   peerDependencies:
     storybook: ^10.0.0
-  checksum: 10/b1a305c4a55b63a8ab30fffeb7b2c81aae2214f3e20fa08db12a6f79a4ce41fa5a0ec196471ab44f303e5d4555615183baad2e840d925d115b7a7a25ac507717
+  checksum: 10/13753c1f168eff60bf54be371113b015fc8bbc7fa69d4b5a17cd7b339d7e56469f66e332d2b6ff2c8b382fbb15b0ebcf55986d629ec8656a0f22a0ebf9d9b128
   languageName: node
   linkType: hard
 
@@ -6131,13 +6131,13 @@ __metadata:
     "@emotion/styled": "npm:11.14.1"
     "@eslint/js": "npm:9.39.1"
     "@fontsource/material-icons": "npm:5.2.7"
-    "@fontsource/roboto": "npm:5.2.8"
+    "@fontsource/roboto": "npm:5.2.9"
     "@hookform/resolvers": "npm:5.2.2"
     "@mdi/js": "npm:7.4.47"
     "@mui/lab": "npm:7.0.1-beta.19"
     "@mui/material": "npm:7.3.5"
-    "@mui/x-data-grid": "npm:8.18.0"
-    "@mui/x-date-pickers": "npm:8.18.0"
+    "@mui/x-data-grid": "npm:8.19.0"
+    "@mui/x-date-pickers": "npm:8.19.0"
     "@storybook/builder-vite": "npm:10.0.8"
     "@storybook/icons": "npm:2.0.1"
     "@storybook/react-vite": "npm:10.0.8"
@@ -6158,7 +6158,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:8.47.0"
     "@typescript-eslint/parser": "npm:8.47.0"
     "@vitejs/plugin-react": "npm:5.1.1"
-    "@vueless/storybook-dark-mode": "npm:10.0.2"
+    "@vueless/storybook-dark-mode": "npm:10.0.3"
     "@welldone-software/why-did-you-render": "npm:10.0.1"
     autosuggest-highlight: "npm:3.3.4"
     axios: "npm:1.13.2"
@@ -6191,7 +6191,7 @@ __metadata:
     react-dom: "npm:19.2.0"
     react-error-boundary: "npm:6.0.0"
     react-hook-form: "npm:7.66.1"
-    react-i18next: "npm:16.3.4"
+    react-i18next: "npm:16.3.5"
     react-router: "npm:7.9.6"
     react-scan: "npm:0.4.3"
     react-window: "npm:2.2.3"
@@ -6207,7 +6207,7 @@ __metadata:
     typescript-eslint: "npm:8.47.0"
     universal-cookie: "npm:7.1.4"
     unplugin-inject-preload: "npm:3.0.0"
-    vite: "npm:7.2.2"
+    vite: "npm:7.2.4"
     vite-imagetools: "npm:9.0.0"
     vite-plugin-svgr: "npm:4.5.0"
     vite-tsconfig-paths: "npm:5.1.4"
@@ -9108,9 +9108,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:16.3.4":
-  version: 16.3.4
-  resolution: "react-i18next@npm:16.3.4"
+"react-i18next@npm:16.3.5":
+  version: 16.3.5
+  resolution: "react-i18next@npm:16.3.5"
   dependencies:
     "@babel/runtime": "npm:^7.27.6"
     html-parse-stringify: "npm:^3.0.1"
@@ -9126,7 +9126,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/0ecb514e04f5b81bdb4605c6b33c7255b2a6c57d5e5b5158e1df1eaf097a8af2101067e54e8afbc3cb41a27143a4299734eaadeac76fd77da54162f5acbc0e81
+  checksum: 10/079c298d9ba4d89e91f1311939196bb495e8b76e16bdf6899d5fd10b26dd44ebb658d8b9871af7ef4f4234c7371560d8084e18438195a8bae934ee3117f17b0e
   languageName: node
   linkType: hard
 
@@ -11148,9 +11148,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:7.2.2":
-  version: 7.2.2
-  resolution: "vite@npm:7.2.2"
+"vite@npm:7.2.4":
+  version: 7.2.4
+  resolution: "vite@npm:7.2.4"
   dependencies:
     esbuild: "npm:^0.25.0"
     fdir: "npm:^6.5.0"
@@ -11199,7 +11199,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10/aee08b420646d5bcd92d5f4130b13b90303cab1cf48ee4772030f5fa7b464cc602ba578e9b1800a71f9b1c9b8daf1336e8c069a4cf1bb90b7b05ae5b13f62b06
+  checksum: 10/25962e65159e62fa6b643ac5bc79457c61c9b2cec9a1a17763b067b1e5ecac6483ad84247d6d457d81e25c5d1f8c553372bedf71dee09d8c1bd41af6c7b016a5
   languageName: node
   linkType: hard
 
