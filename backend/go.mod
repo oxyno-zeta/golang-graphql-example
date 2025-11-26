@@ -5,11 +5,11 @@ go 1.25.0
 require (
 	cirello.io/pglock v1.16.1
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.83
-	github.com/99designs/gqlgen-contrib v0.1.1-0.20251118154337-ca6fcf964c6c
+	github.com/99designs/gqlgen v0.17.84
+	github.com/99designs/gqlgen-contrib v0.1.1-0.20251124154409-304c2747b730
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
-	github.com/coreos/go-oidc/v3 v3.16.0
+	github.com/coreos/go-oidc/v3 v3.17.0
 	github.com/danielkov/gin-helmet/ginhelmet v1.0.2
 	github.com/dave/jennifer v1.7.1
 	github.com/fsnotify/fsnotify v1.9.0
@@ -46,7 +46,7 @@ require (
 	go.uber.org/automaxprocs v1.6.0
 	go.uber.org/goleak v1.3.0
 	go.uber.org/mock v0.6.0
-	go.uber.org/zap v1.27.0
+	go.uber.org/zap v1.27.1
 	go.yaml.in/yaml/v3 v3.0.4
 	golang.org/x/oauth2 v0.33.0
 	gorm.io/driver/postgres v1.6.0
@@ -141,13 +141,13 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.2 // indirect
 	golang.org/x/arch v0.22.0 // indirect
-	golang.org/x/crypto v0.43.0 // indirect
-	golang.org/x/mod v0.29.0 // indirect
-	golang.org/x/net v0.46.0 // indirect
-	golang.org/x/sync v0.17.0 // indirect
-	golang.org/x/sys v0.37.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
-	golang.org/x/tools v0.38.0 // indirect
+	golang.org/x/crypto v0.44.0 // indirect
+	golang.org/x/mod v0.30.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sync v0.18.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
+	golang.org/x/tools v0.39.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20250825161204-c5933d9347a5 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250825161204-c5933d9347a5 // indirect
 	google.golang.org/grpc v1.75.0 // indirect
