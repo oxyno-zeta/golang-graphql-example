@@ -5497,26 +5497,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-formatter-codeclimate@npm:^1.0.0":
-  version: 1.0.2
-  resolution: "eslint-formatter-codeclimate@npm:1.0.2"
+"eslint-formatter-codeclimate@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "eslint-formatter-codeclimate@npm:2.0.0"
   dependencies:
     codeclimate-types: "npm:^0.3.0"
   peerDependencies:
     eslint: ^9.0.0
-  checksum: 10/0ca0e6682796f2245c40404b751256c23a5fd8d5f9c772cc6d391c47a17153d46a099152f3149ff196f47cb7456df040059d144e908c02bde0cff19b42d000ad
+  checksum: 10/293c12ae258bf0209c300a20640714dd492ab7bb894eebb63793d496f869e3dc1ee71a8ea6f4bc9ddfc4f2c4ccca5e2ebc0dbc5982ba5e2c2e77d890157a05c0
   languageName: node
   linkType: hard
 
-"eslint-formatter-gitlab@npm:6.0.1":
-  version: 6.0.1
-  resolution: "eslint-formatter-gitlab@npm:6.0.1"
+"eslint-formatter-gitlab@npm:7.0.1":
+  version: 7.0.1
+  resolution: "eslint-formatter-gitlab@npm:7.0.1"
   dependencies:
-    eslint-formatter-codeclimate: "npm:^1.0.0"
+    eslint-formatter-codeclimate: "npm:^2.0.0"
     yaml: "npm:^2.0.0"
   peerDependencies:
     eslint: ">=9"
-  checksum: 10/869fdaa6c5e7320154a77fd7686d005b5b7e48d565552805cada8c5c9d344bb9b09bca18b172bfc26124877ff8da45d47c55699ff249a36c3ebcc82becae4d4b
+  checksum: 10/6647b1e3f1f95682edfee5b2e072340906f9a9b2418ab5221a71d26fcfb8260003c94a41ef1dbf1ea9843981f95a17d656e64457900e126add7b0ac4d79b4100
   languageName: node
   linkType: hard
 
@@ -6167,7 +6167,7 @@ __metadata:
     eslint: "npm:9.39.1"
     eslint-config-airbnb-extended: "npm:2.3.2"
     eslint-config-prettier: "npm:10.1.8"
-    eslint-formatter-gitlab: "npm:6.0.1"
+    eslint-formatter-gitlab: "npm:7.0.1"
     eslint-import-resolver-typescript: "npm:4.4.4"
     eslint-plugin-import-x: "npm:4.16.1"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
