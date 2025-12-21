@@ -6569,7 +6569,7 @@ __metadata:
     rollup-preserve-directives: "npm:1.1.3"
     rxjs: "npm:7.8.2"
     storybook: "npm:10.1.8"
-    storybook-addon-remix-react-router: "npm:5.0.0"
+    storybook-addon-remix-react-router: "npm:6.0.0"
     storybook-react-i18next: "npm:10.0.1"
     ts-jest: "npm:29.4.6"
     ts-node: "npm:10.9.2"
@@ -6580,7 +6580,7 @@ __metadata:
     vite: "npm:7.2.7"
     vite-imagetools: "npm:9.0.2"
     vite-plugin-svgr: "npm:4.5.0"
-    vite-tsconfig-paths: "npm:5.1.4"
+    vite-tsconfig-paths: "npm:6.0.3"
     whatwg-fetch: "npm:3.6.20"
     yarn-or-npm: "npm:3.0.1"
     yup: "npm:1.7.1"
@@ -10582,24 +10582,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook-addon-remix-react-router@npm:5.0.0":
-  version: 5.0.0
-  resolution: "storybook-addon-remix-react-router@npm:5.0.0"
+"storybook-addon-remix-react-router@npm:6.0.0":
+  version: 6.0.0
+  resolution: "storybook-addon-remix-react-router@npm:6.0.0"
   dependencies:
     "@mjackson/form-data-parser": "npm:^0.4.0"
     compare-versions: "npm:^6.0.0"
     react-inspector: "npm:6.0.2"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
     react-router: ^7.0.2
-    storybook: ^9.0.0
+    storybook: ^10.0.0
   peerDependenciesMeta:
     react:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/9502bf66237dba2fee8c331f5cbc08a3f8dbb4c147f17fa247382a14171f5668e907eb130e252838af2a9711d80560c41186541992a4a8044f2dfc7b89b5a0d2
+  checksum: 10/bf8dbb1a9849b11173d0f941ed2d6952eeaf7be65ac4e9662489cbf6f5bae2fbd48f685a4da7d7fe3837a168abcfa5ea957124aff9e342a1ae9c592d05bda1bf
   languageName: node
   linkType: hard
 
@@ -11602,9 +11602,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-tsconfig-paths@npm:5.1.4":
-  version: 5.1.4
-  resolution: "vite-tsconfig-paths@npm:5.1.4"
+"vite-tsconfig-paths@npm:6.0.3":
+  version: 6.0.3
+  resolution: "vite-tsconfig-paths@npm:6.0.3"
   dependencies:
     debug: "npm:^4.1.1"
     globrex: "npm:^0.1.2"
@@ -11614,7 +11614,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: 10/b409dbd17829f560021a71dba3e473b9c06dcf5fdc9d630b72c1f787145ec478b38caff1be04868971ac8bdcbf0f5af45eeece23dbc9c59c54b901f867740ae0
+  checksum: 10/271cdc040a03181d13e4253e99ec6deec1cbe4ec4cb2a1377d46dba403483f8e38a5c2ed29ad0493ed51c2cfd658847cb1cdc73e438d6a8bcdd2b52df19d72e2
   languageName: node
   linkType: hard
 
