@@ -63,19 +63,19 @@ PGADMIN_VERSION := "9.11.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.8.0"
+PROMETHEUS_VERSION := "v3.8.1"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "12.3.0"
+GRAFANA_VERSION := "12.3.1"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "2.9.0"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.11.0"
+OPA_VERSION := "1.12.1"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
 KEYCLOAK_VERSION := "26.4.7"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.2.1"
+RABBITMQ_VERSION := "4.2.2"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -277,7 +277,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.84
+	$(GO) install github.com/99designs/gqlgen@v0.17.85
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
