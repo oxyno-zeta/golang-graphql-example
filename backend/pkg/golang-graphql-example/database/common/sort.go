@@ -17,7 +17,7 @@ var ErrSortListMustNotHaveMultipleFields = gerrors.New(
 )
 
 // Supported enum type for testing purpose.
-var supportedEnumType = reflect.TypeOf(new(SortOrderEnum))
+var supportedEnumType = reflect.TypeFor[*SortOrderEnum]()
 
 func ManageSortOrder(sort any, db *gorm.DB) (*gorm.DB, error) {
 	return manageSortOrder(sort, db)
