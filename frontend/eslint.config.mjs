@@ -7,8 +7,7 @@ import eslintReact from 'eslint-plugin-react';
 import hooksPlugin from 'eslint-plugin-react-hooks';
 import tsEslint from 'typescript-eslint';
 import { defineConfig } from 'eslint/config';
-import { rules as prettierConfigRules } from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import unusedImports from 'eslint-plugin-unused-imports';
 import {
@@ -29,6 +28,30 @@ export default defineConfig(
     name: 'js/config',
     ...pluginJs.configs.recommended,
   },
+
+  /**
+   * ESLint Typescript recommended
+   * @see
+   */
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    languageOptions: {
+      parser: tsParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      'import-x/resolver': {
+        typescript: true,
+      },
+    },
+  },
+  ...tsEslint.configs.recommended,
 
   /**
    * Stylistic Plugin
@@ -84,29 +107,6 @@ export default defineConfig(
     // },
   },
 
-  /**
-   * ESLint Typescript recommended
-   * @see
-   */
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    languageOptions: {
-      parser: tsParser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    settings: {
-      'import-x/resolver': {
-        typescript: true,
-      },
-    },
-  },
-  ...tsEslint.configs.recommended,
   /**
    * Airbnb Typescript
    */
@@ -270,19 +270,5 @@ export default defineConfig(
   /**
    * Prettier
    */
-  // Prettier Plugin
-  {
-    name: 'prettier/plugin/config',
-    plugins: {
-      prettier: prettierPlugin,
-    },
-  },
-  // Prettier Config
-  {
-    name: 'prettier/config',
-    rules: {
-      ...prettierConfigRules,
-      'prettier/prettier': 'error',
-    },
-  },
+  eslintConfigPrettier,
 );
