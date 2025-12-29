@@ -1,7 +1,7 @@
 // @ts-check
 
 import pluginJs from '@eslint/js';
-import eslintPluginImportX from 'eslint-plugin-import-x';
+import { importX as eslintPluginImportX } from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintReact from 'eslint-plugin-react';
 import hooksPlugin from 'eslint-plugin-react-hooks';
@@ -30,6 +30,17 @@ export default defineConfig(
   },
 
   /**
+   * Stylistic Plugin
+   */
+  airbnbPlugins.stylistic,
+
+  /**
+   * Eslint import X
+   */
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
+
+  /**
    * ESLint Typescript recommended
    * @see
    */
@@ -45,24 +56,8 @@ export default defineConfig(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    settings: {
-      'import-x/resolver': {
-        typescript: true,
-      },
-    },
   },
   ...tsEslint.configs.recommended,
-
-  /**
-   * Stylistic Plugin
-   */
-  airbnbPlugins.stylistic,
-
-  /**
-   * Eslint import X
-   */
-  eslintPluginImportX.flatConfigs.recommended,
-  eslintPluginImportX.flatConfigs.typescript,
 
   /**
    * From Airbnb
