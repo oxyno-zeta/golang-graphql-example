@@ -17,7 +17,7 @@ func GenericEntitiesLoader[V any](
 ) dataloader.BatchFunc[string, V] {
 	return func(ctx context.Context, ids []string) []*dataloader.Result[V] {
 		// Create result
-		res := make([]*dataloader.Result[V], len(ids))
+		res := make([]*dataloader.Result[V], 0, len(ids))
 
 		// Get options
 		opts := getOptions(options)
@@ -66,7 +66,7 @@ func GenericLoader[V any](
 ) dataloader.BatchFunc[*IDProjectionKey, V] {
 	return func(ctx context.Context, keys []*IDProjectionKey) []*dataloader.Result[V] {
 		// Create result
-		res := make([]*dataloader.Result[V], len(keys))
+		res := make([]*dataloader.Result[V], 0, len(keys))
 
 		// Get options
 		opts := getOptions(options)
