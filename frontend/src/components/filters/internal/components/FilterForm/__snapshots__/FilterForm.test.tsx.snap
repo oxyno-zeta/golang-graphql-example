@@ -30,15 +30,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -1401,15 +1392,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -2772,15 +2754,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -3231,15 +3204,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -4602,15 +4566,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -5061,15 +5016,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -6513,15 +6459,6 @@ exports[`filters/internal/FilterForm should be ok to interact with no initial fi
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -6972,15 +6909,6 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -9117,15 +9045,6 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -11012,15 +10931,6 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -12992,15 +12902,6 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -14746,15 +14647,6 @@ exports[`filters/internal/FilterForm should be ok to just display a simple field
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -17742,15 +17634,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 
 .emotion-12 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-12 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-12 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-12 .MuiButtonGroup-firstButton,
@@ -20004,15 +19887,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 
 .emotion-15 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-15 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-15 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-15 .MuiButtonGroup-firstButton,
@@ -21347,15 +21221,6 @@ exports[`filters/internal/FilterForm should be ok to just display no initial fil
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -22718,15 +22583,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -24778,15 +24634,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -27136,15 +26983,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -29583,15 +29421,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -32054,15 +31883,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -34449,15 +34269,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -37142,15 +36953,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -39924,15 +39726,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -42730,15 +42523,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -45460,15 +45244,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -48190,15 +47965,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -50839,15 +50605,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -52899,15 +52656,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -55548,15 +55296,6 @@ exports[`filters/internal/FilterForm should be ok to just display two fields on 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -58197,15 +57936,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -60257,15 +59987,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -62534,15 +62255,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -64900,15 +64612,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -67290,15 +66993,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -69604,15 +69298,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -71918,15 +71603,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -73978,15 +73654,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -76038,15 +75705,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,
@@ -78098,15 +77756,6 @@ exports[`filters/internal/FilterForm should be ok to just display two simple fie
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-firstButton,

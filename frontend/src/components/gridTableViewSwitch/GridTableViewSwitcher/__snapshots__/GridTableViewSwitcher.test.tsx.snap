@@ -12,15 +12,6 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,
@@ -246,15 +237,6 @@ exports[`GridTableViewSwitcher should display as grid and should not do anything
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,
@@ -480,15 +462,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,
@@ -714,15 +687,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,
@@ -948,15 +912,6 @@ exports[`GridTableViewSwitcher should display as table and allow to switch to gr
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,
@@ -1182,15 +1137,6 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,
@@ -1416,15 +1362,6 @@ exports[`GridTableViewSwitcher should display as table and should not do anythin
 
 .emotion-0 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-0 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-0 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-0 .MuiButtonGroup-firstButton,

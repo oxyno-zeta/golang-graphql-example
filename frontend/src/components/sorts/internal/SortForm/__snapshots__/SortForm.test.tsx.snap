@@ -47,15 +47,6 @@ exports[`sorts/internal/SortForm should be ok to add last available field 1`] = 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -1670,15 +1661,6 @@ exports[`sorts/internal/SortForm should be ok to add last available field 2`] = 
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -3414,15 +3396,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 1`] = `
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -5090,15 +5063,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 2`] = `
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -6766,15 +6730,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 3`] = `
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -8442,15 +8397,6 @@ exports[`sorts/internal/SortForm should be ok to reorder 4`] = `
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -11327,15 +11273,6 @@ exports[`sorts/internal/SortForm should be ok with 2 initial sorts 1`] = `
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -12899,15 +12836,6 @@ exports[`sorts/internal/SortForm should be ok with all initial sorts 1`] = `
 
 .emotion-3 .MuiButtonGroup-grouped {
   min-width: 40px;
-  box-shadow: none;
-}
-
-.emotion-3 .MuiButtonGroup-grouped props {
-  variant: contained;
-}
-
-.emotion-3 .MuiButtonGroup-grouped style:hover {
-  box-shadow: none;
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
