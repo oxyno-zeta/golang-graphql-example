@@ -561,6 +561,8 @@ github.com/gostaticanalysis/nilerr v0.1.1 h1:ThE+hJP0fEp4zWLkWHWcRyI2Od0p7DlgYG3
 github.com/gostaticanalysis/nilerr v0.1.1/go.mod h1:wZYb6YI5YAxxq0i1+VJbY0s2YONW0HU0GPE3+5PWN4A=
 github.com/graph-gophers/dataloader/v7 v7.1.2 h1:hSunstoid8RDqxVoBEzBF+I5JAAwM27q8vnt/G/JTts=
 github.com/graph-gophers/dataloader/v7 v7.1.2/go.mod h1:1bKE0Dm6OUcTB/OAuYVOZctgIz7Q3d0XrYtlIzTgg6Q=
+github.com/graph-gophers/dataloader/v7 v7.1.3 h1:mXCI1E3dBG0aG1Tzg1tXaz+nN140opFIgEfYhxHR0XA=
+github.com/graph-gophers/dataloader/v7 v7.1.3/go.mod h1:cnjGvZ3DuN2hU90Q72WCZNzkCEq/BHwh7fI7w7/GhIg=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.2 h1:8Tjv8EJ+pM1xP8mK6egEbD1OgnVTyacbefKhmbLhIhU=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.2/go.mod h1:pkJQ2tZHJ0aFOVEEot6oZmaVEZcRme73eIFmhiVuRWs=
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 h1:NmZ1PKzSTQbuGHw9DGPFomqkkLWMC+vZCkfs+FHv1Vg=

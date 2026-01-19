@@ -67,13 +67,13 @@ PROMETHEUS_VERSION := "v3.9.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.3.1"
 # renovate: datasource=docker depName=grafana/tempo
-TEMPO_VERSION := "2.9.0"
+TEMPO_VERSION := "2.9.1"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.12.2"
+OPA_VERSION := "1.12.3"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.5.0"
+KEYCLOAK_VERSION := "26.5.1"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.2.2"
 

@@ -20,7 +20,7 @@ require (
 	github.com/go-gormigrate/gormigrate/v2 v2.1.5
 	github.com/go-playground/validator/v10 v10.30.1
 	github.com/gofrs/uuid v4.4.0+incompatible
-	github.com/graph-gophers/dataloader/v7 v7.1.2
+	github.com/graph-gophers/dataloader/v7 v7.1.3
 	github.com/hasura/go-graphql-client v0.15.1
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/prometheus/client_golang v1.23.2
