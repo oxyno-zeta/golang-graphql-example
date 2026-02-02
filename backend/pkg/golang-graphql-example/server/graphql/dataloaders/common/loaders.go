@@ -16,8 +16,7 @@ func GenericEntitiesLoader[V any](
 	options ...func(*LoaderOption),
 ) dataloader.BatchFunc[string, V] {
 	return func(ctx context.Context, ids []string) []*dataloader.Result[V] {
-		// Create result
-		res := make([]*dataloader.Result[V], 0, len(ids))
+		length := len(ids)
 
 		// Get options
 		opts := getOptions(options)
@@ -27,9 +26,7 @@ func GenericEntitiesLoader[V any](
 		// Check error
 		if err != nil {
 			// Fill array with errors
-			FillWithError(res, err)
-			// Return result
-			return res
+			return FillWithError[V](length, err)
 		}
 
 		// Check if projection exists
@@ -39,9 +36,7 @@ func GenericEntitiesLoader[V any](
 			// Check error
 			if err != nil {
 				// Fill array with errors
-				FillWithError(res, errors.NewInternalServerErrorWithError(err))
-				// Return result
-				return res
+				return FillWithError[V](length, errors.NewInternalServerErrorWithError(err))
 			}
 		}
 
@@ -50,9 +45,7 @@ func GenericEntitiesLoader[V any](
 		// Check error
 		if err != nil {
 			// Fill array with errors
-			FillWithError(res, err)
-			// Return result
-			return res
+			return FillWithError[V](length, err)
 		}
 
 		// Default
@@ -65,9 +58,7 @@ func GenericLoader[V any](
 	options ...func(*LoaderOption),
 ) dataloader.BatchFunc[*IDProjectionKey, V] {
 	return func(ctx context.Context, keys []*IDProjectionKey) []*dataloader.Result[V] {
-		// Create result
-		res := make([]*dataloader.Result[V], 0, len(keys))
-
+		length := len(keys)
 		// Get options
 		opts := getOptions(options)
 
@@ -110,9 +101,7 @@ func GenericLoader[V any](
 				// Check error
 				if err != nil {
 					// Fill array with errors
-					FillWithError(res, errors.NewInternalServerErrorWithError(err))
-					// Return result
-					return res
+					return FillWithError[V](length, errors.NewInternalServerErrorWithError(err))
 				}
 			}
 
@@ -121,9 +110,7 @@ func GenericLoader[V any](
 			// Check error
 			if err != nil {
 				// Fill array with errors
-				FillWithError(res, err)
-				// Return result
-				return res
+				return FillWithError[V](length, err)
 			}
 			// Save results
 			data = append(data, dataTmp...)
