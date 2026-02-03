@@ -11,7 +11,7 @@ import (
 
 type Config struct {
 	NeededPackages *NeededPackagesCfg `validate:"required" yaml:"neededPackages"`
-	Daos           []*DaoCfg          `validate:"required" yaml:"daos"`
+	Daos           []*DaoCfg          `validate:"required,unique=Path" yaml:"daos"`
 }
 
 type NeededPackagesCfg struct {
