@@ -57,25 +57,47 @@ func (l *lock) AcquireWithContext(ctx context.Context) (err error) {
 		ct.Finish()
 	}()
 
+	// Create cancellable context
+	cancelCtx, cancel := context.WithCancel(ctx) //nolint:govet
 	// Create timeout
-	timeoutCtx, cancel := context.WithTimeout(ctx, acquireTimeoutDuration)
+	timeoutCtx, cancelTimeout := context.WithTimeout(ctx, acquireTimeoutDuration)
 	// Defer the cancel in case it is finishing earlier
-	defer cancel()
-	// Acquire lock
-	ll, err := l.s.cl.AcquireContext(timeoutCtx, l.name)
-	// Check error
-	if err != nil {
-		// Check if it is a not acquired error to wrap it
-		if errors.Is(err, pglock.ErrNotAcquired) {
-			return ErrLockNotAcquired
+	defer cancelTimeout()
+
+	// Building error chan
+	errChan := make(chan error)
+
+	// Start acquire in routine to manage timeout
+	go func() {
+		// Acquire lock
+		ll, err2 := l.s.cl.AcquireContext(cancelCtx, l.name)
+		// Check error
+		if err2 != nil {
+			// Check if it is a not acquired error to wrap it
+			if errors.Is(err2, pglock.ErrNotAcquired) {
+				errChan <- ErrLockNotAcquired
+
+				return
+			}
+
+			errChan <- errors.WithStack(err2)
 		}
+		// Save lock
+		l.pl = ll
+		// Inform
+		errChan <- nil
+	}()
 
-		return errors.WithStack(err)
+	// Wait for timeout or result
+	select {
+	case <-timeoutCtx.Done():
+		// Timeout raised => Need to cancel context
+		cancel()
+
+		return timeoutCtx.Err()
+	case err = <-errChan:
+		return err //nolint:govet
 	}
-	// Save lock
-	l.pl = ll
-
-	return nil
 }
 
 func (l *lock) Acquire() error {
