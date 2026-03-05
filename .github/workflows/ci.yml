@@ -105,7 +105,7 @@ jobs:
       - backend-lint
     steps:
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
       - uses: actions/checkout@v6
       - uses: actions/setup-go@v6
         with:
