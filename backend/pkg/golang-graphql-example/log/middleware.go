@@ -7,6 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	gqlgraphql "github.com/99designs/gqlgen/graphql"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/utils"
 )
 
@@ -114,5 +116,97 @@ func Middleware(
 		}
 
 		logFunc("request complete")
+	}
+}
+
+func GraphqlAroundRootFieldsMiddleware() func(ctx context.Context, next gqlgraphql.RootResolver) gqlgraphql.Marshaler {
+	return func(ctx context.Context, next gqlgraphql.RootResolver) gqlgraphql.Marshaler {
+		rc := gqlgraphql.GetRootFieldContext(ctx)
+		oc := gqlgraphql.GetOperationContext(ctx)
+
+		opName := "no-operation-context"
+		opType := "no-operation-context"
+
+		if oc != nil {
+			opName = oc.OperationName
+			if opName == "" {
+				opName = "Anonymous"
+			}
+
+			opType = string(oc.Operation.Operation)
+		}
+
+		lInitFields := map[string]any{
+			"graphql_operation_name": opName,
+			"graphql_operation_type": opType,
+		}
+
+		if rc != nil {
+			lInitFields["graphql_root_object_name"] = rc.Object
+			lInitFields["graphql_root_object_field_name"] = rc.Field.Name
+		}
+
+		logger := GetLoggerFromContext(ctx).WithFields(lInitFields)
+		ctx = SetLoggerToContext(ctx, logger)
+
+		start := time.Now()
+
+		logger.Debug("Starting Root GraphQL operation")
+
+		res := next(ctx)
+
+		if rc != nil && rc.Object != "__Query" && rc.Object != "__Type" && rc.Object != "__Schema" {
+			duration := time.Since(start)
+			logger = logger.WithField("graphql_operation_elapsed_ms", float64(duration.Nanoseconds())/nsToMs)
+
+			errs := gqlgraphql.GetErrors(ctx)
+			if len(errs) > 0 {
+				logger.Errorf("Failed Root GraphQL operation")
+
+				for _, err := range errs {
+					logger.Error(err)
+				}
+			} else {
+				logger.Info("Success Root GraphQL operation")
+			}
+		}
+
+		return res
+	}
+}
+
+func GraphqlAroundFieldsMiddleware() func(ctx context.Context, next gqlgraphql.Resolver) (any, error) {
+	return func(ctx context.Context, next gqlgraphql.Resolver) (any, error) {
+		fc := gqlgraphql.GetFieldContext(ctx)
+
+		lInitFields := map[string]any{}
+		if fc != nil {
+			lInitFields["graphql_object_name"] = fc.Object
+			lInitFields["graphql_field_name"] = fc.Field.Name
+			lInitFields["graphql_field_path"] = fc.Path().String()
+		}
+
+		logger := GetLoggerFromContext(ctx).WithFields(lInitFields)
+		ctx = SetLoggerToContext(ctx, logger)
+
+		start := time.Now()
+
+		logger.Debug("Starting Field GraphQL operation")
+
+		res, err := next(ctx)
+
+		if fc != nil && fc.Object != "__Query" && fc.Object != "__Type" && fc.Object != "__Schema" {
+			duration := time.Since(start)
+			logger = logger.WithField("graphql_field_elapsed_ms", float64(duration.Nanoseconds())/nsToMs)
+
+			if err != nil {
+				logger.Error("Failed Field GraphQL operation")
+				logger.Error(err)
+			} else {
+				logger.Debug("Success Field GraphQL operation")
+			}
+		}
+
+		return res, err
 	}
 }
