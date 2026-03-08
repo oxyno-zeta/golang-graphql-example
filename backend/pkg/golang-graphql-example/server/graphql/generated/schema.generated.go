@@ -142,7 +142,7 @@ func (ec *executionContext) _Mutation_createTodo(ctx context.Context, field grap
 		ec.fieldContext_Mutation_createTodo,
 		func(ctx context.Context) (any, error) {
 			fc := graphql.GetFieldContext(ctx)
-			return ec.resolvers.Mutation().CreateTodo(ctx, fc.Args["input"].(model.NewTodo))
+			return ec.Resolvers.Mutation().CreateTodo(ctx, fc.Args["input"].(model.NewTodo))
 		},
 		nil,
 		ec.marshalNTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐTodo,
@@ -195,7 +195,7 @@ func (ec *executionContext) _Mutation_closeTodo(ctx context.Context, field graph
 		ec.fieldContext_Mutation_closeTodo,
 		func(ctx context.Context) (any, error) {
 			fc := graphql.GetFieldContext(ctx)
-			return ec.resolvers.Mutation().CloseTodo(ctx, fc.Args["todoId"].(string))
+			return ec.Resolvers.Mutation().CloseTodo(ctx, fc.Args["todoId"].(string))
 		},
 		nil,
 		ec.marshalNTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐTodo,
@@ -248,7 +248,7 @@ func (ec *executionContext) _Mutation_updateTodo(ctx context.Context, field grap
 		ec.fieldContext_Mutation_updateTodo,
 		func(ctx context.Context) (any, error) {
 			fc := graphql.GetFieldContext(ctx)
-			return ec.resolvers.Mutation().UpdateTodo(ctx, fc.Args["input"].(*model.UpdateTodo))
+			return ec.Resolvers.Mutation().UpdateTodo(ctx, fc.Args["input"].(*model.UpdateTodo))
 		},
 		nil,
 		ec.marshalNTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐTodo,
@@ -301,7 +301,7 @@ func (ec *executionContext) _Query_todos(ctx context.Context, field graphql.Coll
 		ec.fieldContext_Query_todos,
 		func(ctx context.Context) (any, error) {
 			fc := graphql.GetFieldContext(ctx)
-			return ec.resolvers.Query().Todos(ctx, fc.Args["after"].(*string), fc.Args["before"].(*string), fc.Args["first"].(*int), fc.Args["last"].(*int), fc.Args["sort"].(*models.SortOrder), fc.Args["sorts"].([]*models.SortOrder), fc.Args["filter"].(*models.Filter))
+			return ec.Resolvers.Query().Todos(ctx, fc.Args["after"].(*string), fc.Args["before"].(*string), fc.Args["first"].(*int), fc.Args["last"].(*int), fc.Args["sort"].(*models.SortOrder), fc.Args["sorts"].([]*models.SortOrder), fc.Args["filter"].(*models.Filter))
 		},
 		nil,
 		ec.marshalOTodoConnection2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋmodelᚐTodoConnection,
@@ -348,7 +348,7 @@ func (ec *executionContext) _Query_todo(ctx context.Context, field graphql.Colle
 		ec.fieldContext_Query_todo,
 		func(ctx context.Context) (any, error) {
 			fc := graphql.GetFieldContext(ctx)
-			return ec.resolvers.Query().Todo(ctx, fc.Args["id"].(string))
+			return ec.Resolvers.Query().Todo(ctx, fc.Args["id"].(string))
 		},
 		nil,
 		ec.marshalOTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐTodo,
@@ -401,7 +401,7 @@ func (ec *executionContext) _Query___type(ctx context.Context, field graphql.Col
 		ec.fieldContext_Query___type,
 		func(ctx context.Context) (any, error) {
 			fc := graphql.GetFieldContext(ctx)
-			return ec.introspectType(fc.Args["name"].(string))
+			return ec.IntrospectType(fc.Args["name"].(string))
 		},
 		nil,
 		ec.marshalO__Type2ᚖgithubᚗcomᚋ99designsᚋgqlgenᚋgraphqlᚋintrospectionᚐType,
@@ -465,7 +465,7 @@ func (ec *executionContext) _Query___schema(ctx context.Context, field graphql.C
 		field,
 		ec.fieldContext_Query___schema,
 		func(ctx context.Context) (any, error) {
-			return ec.introspectSchema()
+			return ec.IntrospectSchema()
 		},
 		nil,
 		ec.marshalO__Schema2ᚖgithubᚗcomᚋ99designsᚋgqlgenᚋgraphqlᚋintrospectionᚐSchema,
@@ -562,10 +562,10 @@ func (ec *executionContext) _Mutation(ctx context.Context, sel ast.SelectionSet)
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.deferred, int32(len(deferred)))
+	atomic.AddInt32(&ec.Deferred, int32(len(deferred)))
 
 	for label, dfs := range deferred {
-		ec.processDeferredGroup(graphql.DeferredGroup{
+		ec.ProcessDeferredGroup(graphql.DeferredGroup{
 			Label:    label,
 			Path:     graphql.GetPath(ctx),
 			FieldSet: dfs,
@@ -650,10 +650,10 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.deferred, int32(len(deferred)))
+	atomic.AddInt32(&ec.Deferred, int32(len(deferred)))
 
 	for label, dfs := range deferred {
-		ec.processDeferredGroup(graphql.DeferredGroup{
+		ec.ProcessDeferredGroup(graphql.DeferredGroup{
 			Label:    label,
 			Path:     graphql.GetPath(ctx),
 			FieldSet: dfs,

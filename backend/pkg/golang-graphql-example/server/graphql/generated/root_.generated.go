@@ -5,11 +5,9 @@ package generated
 import (
 	"bytes"
 	"context"
-	"errors"
 	"sync/atomic"
 
 	"github.com/99designs/gqlgen/graphql"
-	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
@@ -19,20 +17,10 @@ import (
 
 // NewExecutableSchema creates an ExecutableSchema from the ResolverRoot interface.
 func NewExecutableSchema(cfg Config) graphql.ExecutableSchema {
-	return &executableSchema{
-		schema:     cfg.Schema,
-		resolvers:  cfg.Resolvers,
-		directives: cfg.Directives,
-		complexity: cfg.Complexity,
-	}
+	return &executableSchema{SchemaData: cfg.Schema, Resolvers: cfg.Resolvers, Directives: cfg.Directives, ComplexityRoot: cfg.Complexity}
 }
 
-type Config struct {
-	Schema     *ast.Schema
-	Resolvers  ResolverRoot
-	Directives DirectiveRoot
-	Complexity ComplexityRoot
-}
+type Config = graphql.Config[ResolverRoot, DirectiveRoot, ComplexityRoot]
 
 type ResolverRoot interface {
 	Mutation() MutationResolver
@@ -85,27 +73,22 @@ type ComplexityRoot struct {
 	}
 }
 
-type executableSchema struct {
-	schema     *ast.Schema
-	resolvers  ResolverRoot
-	directives DirectiveRoot
-	complexity ComplexityRoot
-}
+type executableSchema graphql.ExecutableSchemaState[ResolverRoot, DirectiveRoot, ComplexityRoot]
 
 func (e *executableSchema) Schema() *ast.Schema {
-	if e.schema != nil {
-		return e.schema
+	if e.SchemaData != nil {
+		return e.SchemaData
 	}
 	return parsedSchema
 }
 
 func (e *executableSchema) Complexity(ctx context.Context, typeName, field string, childComplexity int, rawArgs map[string]any) (int, bool) {
-	ec := executionContext{nil, e, 0, 0, nil}
+	ec := newExecutionContext(nil, e, nil)
 	_ = ec
 	switch typeName + "." + field {
 
 	case "Mutation.closeTodo":
-		if e.complexity.Mutation.CloseTodo == nil {
+		if e.ComplexityRoot.Mutation.CloseTodo == nil {
 			break
 		}
 
@@ -114,10 +97,10 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Mutation.CloseTodo(childComplexity, args["todoId"].(string)), true
+		return e.ComplexityRoot.Mutation.CloseTodo(childComplexity, args["todoId"].(string)), true
 
 	case "Mutation.createTodo":
-		if e.complexity.Mutation.CreateTodo == nil {
+		if e.ComplexityRoot.Mutation.CreateTodo == nil {
 			break
 		}
 
@@ -126,10 +109,10 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Mutation.CreateTodo(childComplexity, args["input"].(model.NewTodo)), true
+		return e.ComplexityRoot.Mutation.CreateTodo(childComplexity, args["input"].(model.NewTodo)), true
 
 	case "Mutation.updateTodo":
-		if e.complexity.Mutation.UpdateTodo == nil {
+		if e.ComplexityRoot.Mutation.UpdateTodo == nil {
 			break
 		}
 
@@ -138,38 +121,38 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Mutation.UpdateTodo(childComplexity, args["input"].(*model.UpdateTodo)), true
+		return e.ComplexityRoot.Mutation.UpdateTodo(childComplexity, args["input"].(*model.UpdateTodo)), true
 
 	case "PageInfo.endCursor":
-		if e.complexity.PageInfo.EndCursor == nil {
+		if e.ComplexityRoot.PageInfo.EndCursor == nil {
 			break
 		}
 
-		return e.complexity.PageInfo.EndCursor(childComplexity), true
+		return e.ComplexityRoot.PageInfo.EndCursor(childComplexity), true
 
 	case "PageInfo.hasNextPage":
-		if e.complexity.PageInfo.HasNextPage == nil {
+		if e.ComplexityRoot.PageInfo.HasNextPage == nil {
 			break
 		}
 
-		return e.complexity.PageInfo.HasNextPage(childComplexity), true
+		return e.ComplexityRoot.PageInfo.HasNextPage(childComplexity), true
 
 	case "PageInfo.hasPreviousPage":
-		if e.complexity.PageInfo.HasPreviousPage == nil {
+		if e.ComplexityRoot.PageInfo.HasPreviousPage == nil {
 			break
 		}
 
-		return e.complexity.PageInfo.HasPreviousPage(childComplexity), true
+		return e.ComplexityRoot.PageInfo.HasPreviousPage(childComplexity), true
 
 	case "PageInfo.startCursor":
-		if e.complexity.PageInfo.StartCursor == nil {
+		if e.ComplexityRoot.PageInfo.StartCursor == nil {
 			break
 		}
 
-		return e.complexity.PageInfo.StartCursor(childComplexity), true
+		return e.ComplexityRoot.PageInfo.StartCursor(childComplexity), true
 
 	case "Query.todo":
-		if e.complexity.Query.Todo == nil {
+		if e.ComplexityRoot.Query.Todo == nil {
 			break
 		}
 
@@ -178,10 +161,10 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Query.Todo(childComplexity, args["id"].(string)), true
+		return e.ComplexityRoot.Query.Todo(childComplexity, args["id"].(string)), true
 
 	case "Query.todos":
-		if e.complexity.Query.Todos == nil {
+		if e.ComplexityRoot.Query.Todos == nil {
 			break
 		}
 
@@ -190,10 +173,10 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Query.Todos(childComplexity, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int), args["sort"].(*models.SortOrder), args["sorts"].([]*models.SortOrder), args["filter"].(*models.Filter)), true
+		return e.ComplexityRoot.Query.Todos(childComplexity, args["after"].(*string), args["before"].(*string), args["first"].(*int), args["last"].(*int), args["sort"].(*models.SortOrder), args["sorts"].([]*models.SortOrder), args["filter"].(*models.Filter)), true
 
 	case "Todo.createdAt":
-		if e.complexity.Todo.CreatedAt == nil {
+		if e.ComplexityRoot.Todo.CreatedAt == nil {
 			break
 		}
 
@@ -202,31 +185,31 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Todo.CreatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
+		return e.ComplexityRoot.Todo.CreatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
 
 	case "Todo.done":
-		if e.complexity.Todo.Done == nil {
+		if e.ComplexityRoot.Todo.Done == nil {
 			break
 		}
 
-		return e.complexity.Todo.Done(childComplexity), true
+		return e.ComplexityRoot.Todo.Done(childComplexity), true
 
 	case "Todo.id":
-		if e.complexity.Todo.ID == nil {
+		if e.ComplexityRoot.Todo.ID == nil {
 			break
 		}
 
-		return e.complexity.Todo.ID(childComplexity), true
+		return e.ComplexityRoot.Todo.ID(childComplexity), true
 
 	case "Todo.text":
-		if e.complexity.Todo.Text == nil {
+		if e.ComplexityRoot.Todo.Text == nil {
 			break
 		}
 
-		return e.complexity.Todo.Text(childComplexity), true
+		return e.ComplexityRoot.Todo.Text(childComplexity), true
 
 	case "Todo.updatedAt":
-		if e.complexity.Todo.UpdatedAt == nil {
+		if e.ComplexityRoot.Todo.UpdatedAt == nil {
 			break
 		}
 
@@ -235,35 +218,35 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 			return 0, false
 		}
 
-		return e.complexity.Todo.UpdatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
+		return e.ComplexityRoot.Todo.UpdatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
 
 	case "TodoConnection.edges":
-		if e.complexity.TodoConnection.Edges == nil {
+		if e.ComplexityRoot.TodoConnection.Edges == nil {
 			break
 		}
 
-		return e.complexity.TodoConnection.Edges(childComplexity), true
+		return e.ComplexityRoot.TodoConnection.Edges(childComplexity), true
 
 	case "TodoConnection.pageInfo":
-		if e.complexity.TodoConnection.PageInfo == nil {
+		if e.ComplexityRoot.TodoConnection.PageInfo == nil {
 			break
 		}
 
-		return e.complexity.TodoConnection.PageInfo(childComplexity), true
+		return e.ComplexityRoot.TodoConnection.PageInfo(childComplexity), true
 
 	case "TodoEdge.cursor":
-		if e.complexity.TodoEdge.Cursor == nil {
+		if e.ComplexityRoot.TodoEdge.Cursor == nil {
 			break
 		}
 
-		return e.complexity.TodoEdge.Cursor(childComplexity), true
+		return e.ComplexityRoot.TodoEdge.Cursor(childComplexity), true
 
 	case "TodoEdge.node":
-		if e.complexity.TodoEdge.Node == nil {
+		if e.ComplexityRoot.TodoEdge.Node == nil {
 			break
 		}
 
-		return e.complexity.TodoEdge.Node(childComplexity), true
+		return e.ComplexityRoot.TodoEdge.Node(childComplexity), true
 
 	}
 	return 0, false
@@ -271,7 +254,7 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 
 func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 	opCtx := graphql.GetOperationContext(ctx)
-	ec := executionContext{opCtx, e, 0, 0, make(chan graphql.DeferredResult)}
+	ec := newExecutionContext(opCtx, e, make(chan graphql.DeferredResult))
 	inputUnmarshalMap := graphql.BuildUnmarshalerMap(
 		ec.unmarshalInputBooleanFilter,
 		ec.unmarshalInputDateFilter,
@@ -294,9 +277,9 @@ func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 				ctx = graphql.WithUnmarshalerMap(ctx, inputUnmarshalMap)
 				data = ec._Query(ctx, opCtx.Operation.SelectionSet)
 			} else {
-				if atomic.LoadInt32(&ec.pendingDeferred) > 0 {
-					result := <-ec.deferredResults
-					atomic.AddInt32(&ec.pendingDeferred, -1)
+				if atomic.LoadInt32(&ec.PendingDeferred) > 0 {
+					result := <-ec.DeferredResults
+					atomic.AddInt32(&ec.PendingDeferred, -1)
 					data = result.Result
 					response.Path = result.Path
 					response.Label = result.Label
@@ -308,8 +291,8 @@ func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 			var buf bytes.Buffer
 			data.MarshalGQL(&buf)
 			response.Data = buf.Bytes()
-			if atomic.LoadInt32(&ec.deferred) > 0 {
-				hasNext := atomic.LoadInt32(&ec.pendingDeferred) > 0
+			if atomic.LoadInt32(&ec.Deferred) > 0 {
+				hasNext := atomic.LoadInt32(&ec.PendingDeferred) > 0
 				response.HasNext = &hasNext
 			}
 
@@ -337,44 +320,22 @@ func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 }
 
 type executionContext struct {
-	*graphql.OperationContext
-	*executableSchema
-	deferred        int32
-	pendingDeferred int32
-	deferredResults chan graphql.DeferredResult
+	*graphql.ExecutionContextState[ResolverRoot, DirectiveRoot, ComplexityRoot]
 }
 
-func (ec *executionContext) processDeferredGroup(dg graphql.DeferredGroup) {
-	atomic.AddInt32(&ec.pendingDeferred, 1)
-	go func() {
-		ctx := graphql.WithFreshResponseContext(dg.Context)
-		dg.FieldSet.Dispatch(ctx)
-		ds := graphql.DeferredResult{
-			Path:   dg.Path,
-			Label:  dg.Label,
-			Result: dg.FieldSet,
-			Errors: graphql.GetErrors(ctx),
-		}
-		// null fields should bubble up
-		if dg.FieldSet.Invalids > 0 {
-			ds.Result = graphql.Null
-		}
-		ec.deferredResults <- ds
-	}()
-}
-
-func (ec *executionContext) introspectSchema() (*introspection.Schema, error) {
-	if ec.DisableIntrospection {
-		return nil, errors.New("introspection disabled")
+func newExecutionContext(
+	opCtx *graphql.OperationContext,
+	execSchema *executableSchema,
+	deferredResults chan graphql.DeferredResult,
+) executionContext {
+	return executionContext{
+		ExecutionContextState: graphql.NewExecutionContextState[ResolverRoot, DirectiveRoot, ComplexityRoot](
+			opCtx,
+			(*graphql.ExecutableSchemaState[ResolverRoot, DirectiveRoot, ComplexityRoot])(execSchema),
+			parsedSchema,
+			deferredResults,
+		),
 	}
-	return introspection.WrapSchema(ec.Schema()), nil
-}
-
-func (ec *executionContext) introspectType(name string) (*introspection.Type, error) {
-	if ec.DisableIntrospection {
-		return nil, errors.New("introspection disabled")
-	}
-	return introspection.WrapTypeFromDef(ec.Schema(), ec.Schema().Types[name]), nil
 }
 
 var sources = []*ast.Source{

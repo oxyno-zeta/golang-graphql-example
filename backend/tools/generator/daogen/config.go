@@ -28,12 +28,12 @@ type DaoCfg struct {
 }
 
 type DaoModelCfg struct {
+	DisabledMethods         *DaoModelDisabledMethodsCfg `                    yaml:"disabledMethods"`
 	Package                 string                      `validate:"required" yaml:"package"`
 	StructureName           string                      `validate:"required" yaml:"structureName"`
 	ProjectionStructureName string                      `                    yaml:"projectionStructureName"`
 	SortOrderStructureName  string                      `                    yaml:"sortOrderStructureName"`
 	FilterStructureName     string                      `                    yaml:"filterStructureName"`
-	DisabledMethods         *DaoModelDisabledMethodsCfg `                    yaml:"disabledMethods"`
 }
 
 type DaoModelDisabledMethodsCfg struct {

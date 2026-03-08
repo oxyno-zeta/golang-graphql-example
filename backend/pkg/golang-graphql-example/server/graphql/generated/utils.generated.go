@@ -213,7 +213,7 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.BooleanFilter().Eq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.BooleanFilter().Eq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notEq":
@@ -222,12 +222,11 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.BooleanFilter().NotEq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.BooleanFilter().NotEq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		}
 	}
-
 	return it, nil
 }
 
@@ -251,7 +250,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().Eq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().Eq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notEq":
@@ -260,7 +259,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().NotEq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().NotEq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "gte":
@@ -269,7 +268,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().Gte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().Gte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notGte":
@@ -278,7 +277,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().NotGte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().NotGte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "gt":
@@ -287,7 +286,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().Gt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().Gt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notGt":
@@ -296,7 +295,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().NotGt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().NotGt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "lte":
@@ -305,7 +304,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().Lte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().Lte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notLte":
@@ -314,7 +313,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().NotLte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().NotLte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "lt":
@@ -323,7 +322,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().Lt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().Lt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notLt":
@@ -332,7 +331,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().NotLt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().NotLt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "in":
@@ -341,7 +340,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().In(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().In(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notIn":
@@ -350,7 +349,7 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.DateFilter().NotIn(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.DateFilter().NotIn(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "isNull":
@@ -369,7 +368,6 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 			it.IsNotNull = data
 		}
 	}
-
 	return it, nil
 }
 
@@ -393,7 +391,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().Eq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().Eq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notEq":
@@ -402,7 +400,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().NotEq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().NotEq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "gte":
@@ -411,7 +409,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().Gte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().Gte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notGte":
@@ -420,7 +418,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().NotGte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().NotGte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "gt":
@@ -429,7 +427,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().Gt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().Gt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notGt":
@@ -438,7 +436,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().NotGt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().NotGt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "lte":
@@ -447,7 +445,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().Lte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().Lte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notLte":
@@ -456,7 +454,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().NotLte(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().NotLte(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "lt":
@@ -465,7 +463,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().Lt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().Lt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notLt":
@@ -474,7 +472,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().NotLt(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().NotLt(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "in":
@@ -483,7 +481,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().In(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().In(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notIn":
@@ -492,7 +490,7 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.IntFilter().NotIn(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.IntFilter().NotIn(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "isNull":
@@ -511,7 +509,6 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 			it.IsNotNull = data
 		}
 	}
-
 	return it, nil
 }
 
@@ -535,7 +532,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().Eq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().Eq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notEq":
@@ -544,7 +541,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().NotEq(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().NotEq(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "contains":
@@ -553,7 +550,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().Contains(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().Contains(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notContains":
@@ -562,7 +559,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().NotContains(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().NotContains(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "startsWith":
@@ -571,7 +568,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().StartsWith(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().StartsWith(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notStartsWith":
@@ -580,7 +577,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().NotStartsWith(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().NotStartsWith(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "endsWith":
@@ -589,7 +586,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().EndsWith(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().EndsWith(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notEndsWith":
@@ -598,7 +595,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().NotEndsWith(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().NotEndsWith(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "in":
@@ -607,7 +604,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().In(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().In(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "notIn":
@@ -616,7 +613,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			if err != nil {
 				return it, err
 			}
-			if err = ec.resolvers.StringFilter().NotIn(ctx, &it, data); err != nil {
+			if err = ec.Resolvers.StringFilter().NotIn(ctx, &it, data); err != nil {
 				return it, err
 			}
 		case "isNull":
@@ -642,7 +639,6 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 			it.CaseInsensitive = data
 		}
 	}
-
 	return it, nil
 }
 
@@ -688,10 +684,10 @@ func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet,
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.deferred, int32(len(deferred)))
+	atomic.AddInt32(&ec.Deferred, int32(len(deferred)))
 
 	for label, dfs := range deferred {
-		ec.processDeferredGroup(graphql.DeferredGroup{
+		ec.ProcessDeferredGroup(graphql.DeferredGroup{
 			Label:    label,
 			Path:     graphql.GetPath(ctx),
 			FieldSet: dfs,
