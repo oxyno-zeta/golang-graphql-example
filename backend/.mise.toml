@@ -15,3 +15,5 @@ gotestsum = "1.13.0"
 "go:github.com/boumenot/gocover-cobertura" = "v1.4.0"
 # renovate: datasource=github-tags depName=mitchellh/gox
 "go:github.com/mitchellh/gox" = "v1.0.1"
+# renovate: datasource=github-tags depName=air-verse/air
+"go:github.com/air-verse/air" = "v1.63.0"

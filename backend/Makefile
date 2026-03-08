@@ -38,6 +38,7 @@ endif
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.Version=${BINARY_VERSION}
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.GitCommit=${GIT_COMMIT}
 LDFLAGS += -X ${PKG}/pkg/${PROJECT_NAME}/version.BuildDate=${DATE}
+GO_BUILD_CMD = CGO_ENABLED=0 $(GO) build $(GO_VENDOR) -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
 
 HAS_GORELEASER := $(shell command -v goreleaser;)
 HAS_GOLANGCI_LINT := $(shell command -v golangci-lint;)
@@ -47,6 +48,7 @@ HAS_GQLGEN:=$(shell command -v gqlgen;)
 HAS_FIELDALIGNMENT:=$(shell command -v fieldalignment;)
 HAS_GOTESTSUM:=$(shell command -v gotestsum;)
 HAS_GOCOVER_COBERTURA:=$(shell command -v gocover-cobertura;)
+HAS_AIR:=$(shell command -v air;)
 # Uncomment to use gox instead of goreleaser
 # HAS_GOX := $(shell command -v gox;)
 
@@ -129,7 +131,11 @@ code/graphql: code/graphql/generate code/graphql/concat
 
 .PHONY: code/build
 code/build: code/clean setup/dep/install
-	CGO_ENABLED=0 $(GO) build $(GO_VENDOR) -o $(BINDIR)/$(PROJECT_NAME) $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' $(PKG)/cmd/${PROJECT_NAME}
+	$(GO_BUILD_CMD)
+
+.PHONY: code/build/air
+code/build/air: setup/dep/install setup/dep/air/install
+	air --build.cmd "$(GO_BUILD_CMD)" --build.bin "$(BINDIR)/$(PROJECT_NAME)" --build.include_dir "cmd,pkg"
 
 # Uncomment to use gox instead of goreleaser
 # .PHONY: code/build-cross
@@ -261,7 +267,7 @@ setup/test/integration:
 	$(DEFAULT_CONTAINER_RUNTIME) run --rm --network=host --name postgres-integration-setup -e PGHOST=localhost -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:$(POSTGRESQL_VERSION) psql -c 'CREATE DATABASE "postgres-integration"' || true
 
 .PHONY: setup/dep/all/install
-setup/dep/all/install: setup/dep/lint/install setup/dep/gen/install setup/dep/test/install setup/dep/build/install
+setup/dep/all/install: setup/dep/lint/install setup/dep/gen/install setup/dep/test/install setup/dep/build/install setup/dep/air/install
 
 .PHONY: setup/dep/lint/install
 setup/dep/lint/install: setup/dep/install
@@ -306,6 +312,13 @@ setup/dep/build/install: setup/dep/install
 # 	@echo "=> Installing gox"
 # 	$(GO) install github.com/mitchellh/gox@v1.0.1
 # endif
+
+.PHONY: setup/dep/air/install
+setup/dep/air/install: setup/dep/install
+ifndef HAS_AIR
+	@echo "=> Installing air tool"
+	$(GO) install github.com/air-verse/air@v1.63.0
+endif
 
 .PHONY: setup/dep/install
 setup/dep/install:
