@@ -5,7 +5,7 @@ go 1.25.6
 require (
 	cirello.io/pglock v1.16.1
 	emperror.dev/errors v0.8.1
-	github.com/99designs/gqlgen v0.17.87
+	github.com/99designs/gqlgen v0.17.88
 	github.com/99designs/gqlgen-contrib v0.1.1-0.20251208230329-86324b741cc0
 	github.com/AppsFlyer/go-sundheit v0.6.0
 	github.com/DATA-DOG/go-sqlmock v1.5.2
@@ -125,7 +125,7 @@ require (
 	github.com/samber/slog-common v0.20.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
-	github.com/sosodev/duration v1.3.1 // indirect
+	github.com/sosodev/duration v1.4.0 // indirect
 	github.com/sourcegraph/conc v0.3.1-0.20240121214520-5f936abd7ae8 // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
