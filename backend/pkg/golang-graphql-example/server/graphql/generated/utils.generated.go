@@ -195,6 +195,10 @@ func (ec *executionContext) fieldContext_PageInfo_endCursor(_ context.Context, f
 
 func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
@@ -232,6 +236,10 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 
 func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj any) (common.DateFilter, error) {
 	var it common.DateFilter
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
@@ -373,6 +381,10 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 
 func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
@@ -514,6 +526,10 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 
 func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v

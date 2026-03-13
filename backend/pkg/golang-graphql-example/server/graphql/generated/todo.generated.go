@@ -377,6 +377,10 @@ func (ec *executionContext) fieldContext_TodoEdge_node(_ context.Context, field 
 
 func (ec *executionContext) unmarshalInputNewTodo(ctx context.Context, obj any) (model.NewTodo, error) {
 	var it model.NewTodo
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
@@ -403,6 +407,10 @@ func (ec *executionContext) unmarshalInputNewTodo(ctx context.Context, obj any) 
 
 func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj any) (models.Filter, error) {
 	var it models.Filter
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
@@ -464,6 +472,10 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj an
 
 func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj any) (models.SortOrder, error) {
 	var it models.SortOrder
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
@@ -511,6 +523,10 @@ func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj
 
 func (ec *executionContext) unmarshalInputUpdateTodo(ctx context.Context, obj any) (model.UpdateTodo, error) {
 	var it model.UpdateTodo
+	if obj == nil {
+		return it, nil
+	}
+
 	asMap := map[string]any{}
 	for k, v := range obj.(map[string]any) {
 		asMap[k] = v
