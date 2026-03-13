@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import preserveDirectives from 'rollup-preserve-directives';
@@ -13,7 +12,6 @@ export default defineConfig({
       // Exclude storybook stories
       exclude: /\.stories\.(t|j)sx?$/,
     }),
-    tsconfigPaths(),
     visualizer({
       template: 'treemap', // or sunburst
       open: false,
@@ -46,19 +44,24 @@ export default defineConfig({
   ],
   build: {
     target: 'es2020',
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          muibase: ['@mui/material', '@emotion/react', '@emotion/styled'],
-          muiheavy: ['@mui/lab', '@mui/x-data-grid', '@mui/x-date-pickers'],
-          connectivity: ['axios', '@apollo/client', 'graphql'],
-          translate: ['i18next', 'i18next-browser-languagedetector', 'i18next-http-backend', 'react-i18next'],
+        codeSplitting: {
+          minSize: 400000, // 400KB
+          maxSize: 500000, // 500KB
+          groups: [
+            {
+              name: 'vendor',
+              test: /node_modules/,
+            },
+          ],
         },
       },
     },
     sourcemap: true,
   },
   resolve: {
+    tsconfigPaths: true,
     conditions: ['mui-modern', 'module', 'browser', 'development|production'],
   },
   assetsInclude: ['**/*.png', '**/*.jpg'],
