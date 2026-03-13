@@ -17,5 +17,5 @@ export interface ConfigModel {
 
 export const defaultConfig: ConfigModel = {
   graphqlEndpoint: '/api/graphql',
-  configCookieDomain: window.location.hostname,
+  configCookieDomain: globalThis.location.hostname,
 };

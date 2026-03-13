@@ -49,7 +49,7 @@ export function onMainSearchChangeGeneric<T>(
   setFilter((initialFilter: T) => {
     // Create a deep copy in order to force a reload of graphql query.
     // Otherwise, it is ignored
-    const filterCopy = JSON.parse(JSON.stringify(initialFilter));
+    const filterCopy = structuredClone(initialFilter) as any;
     // Check if [filterKey] [filterOperation] is at root level
     if (
       filterCopy &&

@@ -92,14 +92,18 @@ export default defineConfig(
   /**
    * Unicorn
    */
+  eslintPluginUnicorn.configs.unopinionated,
   {
-    plugins: {
-      unicorn: eslintPluginUnicorn,
+    rules: {
+      'unicorn/no-useless-undefined': 'off',
+      'unicorn/no-array-for-each': 'off',
+      'unicorn/no-array-reduce': 'off',
+      'unicorn/no-array-reverse': 'off',
+      'unicorn/no-array-sort': 'off',
+      'unicorn/prefer-ternary': 'off',
+      'unicorn/prefer-at': 'off',
+      'unicorn/no-negated-condition': 'off',
     },
-    // rules: {
-    //   'unicorn/better-regex': 'error',
-    //   'unicorn/…': 'error',
-    // },
   },
 
   /**

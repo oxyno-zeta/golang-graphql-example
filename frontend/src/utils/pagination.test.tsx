@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-import { URLSearchParams } from 'url';
+import { URLSearchParams } from 'node:url';
 import { cleanAndSetCleanedPagination, cleanPaginationSearchParams, getPaginationFromSearchParams } from './pagination';
 
 describe('utils/pagination', () => {

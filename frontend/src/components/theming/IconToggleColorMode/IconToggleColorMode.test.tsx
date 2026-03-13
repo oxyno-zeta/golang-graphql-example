@@ -18,15 +18,15 @@ let matchMedia: (q: string) => MediaQueryList;
 
 describe('theming/IconToggleColorMode', () => {
   beforeAll(() => {
-    matchMedia = window.matchMedia;
+    matchMedia = globalThis.matchMedia;
   });
 
   afterAll(() => {
-    window.matchMedia = matchMedia;
+    globalThis.matchMedia = matchMedia;
   });
 
   it('should display a light theme icon with light theme and switch to dark', async () => {
-    window.matchMedia = jest.fn().mockImplementation((query) => {
+    globalThis.matchMedia = jest.fn().mockImplementation((query) => {
       if (query === '(prefers-color-scheme: dark)') {
         return {
           matches: false,
@@ -67,7 +67,7 @@ describe('theming/IconToggleColorMode', () => {
   });
 
   it('should display a dark theme icon with dark theme and switch to light', async () => {
-    window.matchMedia = jest.fn().mockImplementation((query) => {
+    globalThis.matchMedia = jest.fn().mockImplementation((query) => {
       if (query === '(prefers-color-scheme: dark)') {
         return {
           matches: true,

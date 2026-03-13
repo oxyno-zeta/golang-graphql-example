@@ -53,7 +53,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
   const { data, loading, error } = useQuery<T, P>(query, {
     variables: queryVariables,
     fetchPolicy: 'network-only',
-    ...(queryHookOptions || {}),
+    ...queryHookOptions,
   });
 
   // Check loading

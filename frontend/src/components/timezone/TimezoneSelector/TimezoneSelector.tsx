@@ -93,8 +93,7 @@ const ListboxComponent = React.forwardRef<
   const optionIndexMap = React.useMemo(() => new Map<string, number>(), []);
 
   (children as GroupModel<string, string>[]).forEach((item) => {
-    itemData.push(item);
-    itemData.push(...(item.children || []));
+    itemData.push(item, ...(item.children || []));
   });
 
   // Map option values to their indices in the flattened array

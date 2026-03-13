@@ -52,7 +52,7 @@ function FilterBuilder({
     // Clean result reference
     const resRefKeys = Object.keys(resultsRef.current);
     resRefKeys.forEach((key) => {
-      if (initialValue.items.findIndex((it) => it.key === key) === -1) {
+      if (!initialValue.items.some((it) => it.key === key)) {
         // Key isn't found => Need to clean it
         delete resultsRef.current[key];
       }

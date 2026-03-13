@@ -17,15 +17,15 @@ let matchMedia: (q: string) => MediaQueryList;
 
 describe('theming/ToggleColorModeMenuItem', () => {
   beforeAll(() => {
-    matchMedia = window.matchMedia;
+    matchMedia = globalThis.matchMedia;
   });
 
   afterAll(() => {
-    window.matchMedia = matchMedia;
+    globalThis.matchMedia = matchMedia;
   });
 
   it('should display the light theme as selected and switch to dark', async () => {
-    window.matchMedia = jest.fn().mockImplementation((query) => {
+    globalThis.matchMedia = jest.fn().mockImplementation((query) => {
       if (query === '(prefers-color-scheme: dark)') {
         return {
           matches: false,
@@ -69,7 +69,7 @@ describe('theming/ToggleColorModeMenuItem', () => {
   });
 
   it('should display the dark theme as selected and switch to light', async () => {
-    window.matchMedia = jest.fn().mockImplementation((query) => {
+    globalThis.matchMedia = jest.fn().mockImplementation((query) => {
       if (query === '(prefers-color-scheme: dark)') {
         return {
           matches: true,

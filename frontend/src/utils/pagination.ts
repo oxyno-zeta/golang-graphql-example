@@ -1,4 +1,4 @@
-import { type URLSearchParams } from 'url';
+import { type URLSearchParams } from 'node:url';
 import { useSearchParams, type URLSearchParamsInit } from 'react-router';
 import { useMemo } from 'react';
 import { type PaginationInputModel } from '../models/general';
@@ -85,7 +85,7 @@ export function getPaginationFromSearchParams(
   if (firstStr !== '' && after !== '') {
     try {
       // Parsed first
-      let first = parseInt(firstStr, 10);
+      let first = Number.parseInt(firstStr, 10);
       // Check if parsed as NaN
       if (Number.isNaN(first)) {
         // Cannot be parsed
@@ -119,7 +119,7 @@ export function getPaginationFromSearchParams(
   if (lastStr !== '' && before !== '') {
     try {
       // Parsed last
-      let last = parseInt(lastStr, 10);
+      let last = Number.parseInt(lastStr, 10);
       // Check if parsed as NaN
       if (Number.isNaN(last)) {
         // Cannot be parsed

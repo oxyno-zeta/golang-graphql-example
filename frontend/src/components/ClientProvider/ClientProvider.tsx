@@ -42,7 +42,7 @@ function generateClient(cfg: ConfigModel) {
   const errorLink = new ErrorLink(({ error }) => {
     // Check if error that is coming from server and it is an unauthorized status code.
     if (ServerError.is(error) && error.statusCode === 401) {
-      window.location.reload();
+      globalThis.location.reload();
     }
   });
 

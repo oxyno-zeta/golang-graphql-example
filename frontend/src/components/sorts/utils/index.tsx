@@ -20,14 +20,14 @@ export function buildMUIXSort(sorts: Record<string, SortOrderModel>[], columns: 
   }
 
   // Build fields
-  const fields = columns.filter((it) => it.sortable).map((it) => it.field);
+  const fields = new Set(columns.filter((it) => it.sortable).map((it) => it.field));
 
   // Loop over sorts
   const res: GridSortModel = sorts.reduce((accu, sort) => {
     // Get first key that have a value and is a supported field
     const key = Object.keys(sort)
       // Check if key isn't in supported fields
-      .filter((it) => fields.includes(it))
+      .filter((it) => fields.has(it))
       // Get first key that have a value
       .find((it) => !!sort[it]);
     // Check if such a key haven't been found

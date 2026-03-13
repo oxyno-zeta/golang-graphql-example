@@ -7,7 +7,7 @@ import {
 } from './types';
 
 export function generateKey(prefix: string) {
-  return `${prefix}-${(Math.random() + 1).toString(36).substring(2)}`;
+  return `${prefix}-${(Math.random() + 1).toString(36).slice(2)}`;
 }
 
 // This is copied to avoid interaction with fields validation.

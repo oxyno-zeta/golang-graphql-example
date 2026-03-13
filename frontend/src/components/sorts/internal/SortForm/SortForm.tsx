@@ -45,7 +45,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
   }, [] as string[]);
 
   // Compute available fields
-  const availableFields = sortFields.filter((value) => !sortsKeys.find((key) => key === value.field));
+  const availableFields = sortFields.filter((value) => !sortsKeys.includes(value.field));
 
   // Add new line handler
   const onAddLine = () => {

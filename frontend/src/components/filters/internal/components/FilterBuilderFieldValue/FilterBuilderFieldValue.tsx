@@ -212,7 +212,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           let optionValue: string | number = inputValue;
           // Check if input is a number to parse input value
           if (operation.inputType === 'number') {
-            optionValue = parseFloat(inputValue);
+            optionValue = Number.parseFloat(inputValue);
           }
 
           // Return new option

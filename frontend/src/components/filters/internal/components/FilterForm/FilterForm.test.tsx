@@ -55,14 +55,14 @@ jest.mock('react-i18next', () => ({
 }));
 
 function generatePseudoRandomSuffix(random: number) {
-  return (random + 1).toString(36).substring(2);
+  return (random + 1).toString(36).slice(2);
 }
 
 describe('filters/internal/FilterForm', () => {
   let randomCount = 0;
 
   beforeEach(() => {
-    jest.spyOn(global.Math, 'random').mockImplementation(() => {
+    jest.spyOn(globalThis.Math, 'random').mockImplementation(() => {
       randomCount += 0.0001;
 
       return randomCount;
@@ -70,7 +70,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   afterEach(() => {
-    jest.spyOn(global.Math, 'random').mockRestore();
+    jest.spyOn(globalThis.Math, 'random').mockRestore();
     randomCount = 0;
   });
 

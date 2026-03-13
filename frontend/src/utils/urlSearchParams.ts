@@ -1,4 +1,4 @@
-import type { URLSearchParams } from 'url';
+import type { URLSearchParams } from 'node:url';
 import { useSearchParams, type URLSearchParamsInit } from 'react-router';
 import { useMemo } from 'react';
 

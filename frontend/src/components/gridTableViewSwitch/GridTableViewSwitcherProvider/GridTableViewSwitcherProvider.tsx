@@ -45,7 +45,7 @@ function GridTableViewSwitcherProvider({ children }: Props) {
     const setCookie = (input: boolean) => {
       cookies.set(cookieName, input, {
         path: '/',
-        maxAge: 31536000, // 1 year
+        maxAge: 31_536_000, // 1 year
         domain: configCookieDomain,
       });
     };

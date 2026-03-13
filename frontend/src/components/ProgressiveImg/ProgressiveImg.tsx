@@ -13,9 +13,9 @@ function ProgressiveImg({ placeholderSrc, src, alt, ...props }: Props) {
   useEffect(() => {
     const img = new Image();
     img.src = src;
-    img.onload = () => {
+    img.addEventListener('load', () => {
       setImgSrc(src);
-    };
+    });
   }, [src]);
 
   return <img alt={alt} src={imgSrc} {...props} />;
