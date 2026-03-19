@@ -69,15 +69,15 @@ PROMETHEUS_VERSION := "v3.10.0"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.4.1"
 # renovate: datasource=docker depName=grafana/tempo
-TEMPO_VERSION := "2.10.2"
+TEMPO_VERSION := "2.10.3"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "1.14.1"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.5.5"
+KEYCLOAK_VERSION := "26.5.6"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.2.4"
+RABBITMQ_VERSION := "4.2.5"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
