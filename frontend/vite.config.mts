@@ -43,9 +43,9 @@ export default defineConfig({
     }),
   ],
   build: {
-    target: 'es2020',
     rolldownOptions: {
       output: {
+        strictExecutionOrder: true,
         codeSplitting: {
           minSize: 400000, // 400KB
           maxSize: 500000, // 500KB
