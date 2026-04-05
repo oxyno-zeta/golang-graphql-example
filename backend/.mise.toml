@@ -16,4 +16,4 @@ gotestsum = "1.13.0"
 # renovate: datasource=github-tags depName=mitchellh/gox
 "go:github.com/mitchellh/gox" = "v1.0.1"
 # renovate: datasource=github-tags depName=air-verse/air
-"go:github.com/air-verse/air" = "v1.64.5"
+"go:github.com/air-verse/air" = "v1.65.0"

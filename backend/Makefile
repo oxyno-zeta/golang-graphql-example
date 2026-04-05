@@ -317,7 +317,7 @@ setup/dep/build/install: setup/dep/install
 setup/dep/air/install: setup/dep/install
 ifndef HAS_AIR
 	@echo "=> Installing air tool"
-	$(GO) install github.com/air-verse/air@v1.64.5
+	$(GO) install github.com/air-verse/air@v1.65.0
 endif
 
 .PHONY: setup/dep/install
