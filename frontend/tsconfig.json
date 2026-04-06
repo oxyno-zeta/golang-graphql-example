@@ -19,14 +19,13 @@
     "incremental": true,
     "jsx": "react-jsx",
     "sourceMap": true,
-    "baseUrl": ".",
     "types": ["vite/client", "vite-plugin-svgr/client", "node"],
     "paths": {
-      "~components/*": ["src/components/*"],
-      "~contexts/*": ["src/contexts/*"],
-      "~models/*": ["src/models/*"],
-      "~routes/*": ["src/routes/*"],
-      "~utils/*": ["src/utils/*"]
+      "~components/*": ["./src/components/*"],
+      "~contexts/*": ["./src/contexts/*"],
+      "~models/*": ["./src/models/*"],
+      "~routes/*": ["./src/routes/*"],
+      "~utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"],

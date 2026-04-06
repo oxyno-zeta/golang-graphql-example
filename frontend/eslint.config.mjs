@@ -122,6 +122,8 @@ export default defineConfig(
     name: 'airbnb/config/typescript/typescript-eslint/strict',
     files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.d.ts', '**/*.cts'],
     rules: {
+      // Ignored because seems bugged
+      '@typescript-eslint/no-unnecessary-type-arguments': [0],
       // https://typescript-eslint.io/rules/consistent-type-imports
       '@typescript-eslint/consistent-type-imports': [
         'error',
