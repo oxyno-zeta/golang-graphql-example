@@ -65,7 +65,7 @@ PGADMIN_VERSION := "9.14.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.11.0"
+PROMETHEUS_VERSION := "v3.11.1"
 # renovate: datasource=docker depName=grafana/grafana
 GRAFANA_VERSION := "12.4.2"
 # renovate: datasource=docker depName=grafana/tempo
@@ -73,9 +73,9 @@ TEMPO_VERSION := "2.10.3"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.15.1"
+OPA_VERSION := "1.15.2"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.5.7"
+KEYCLOAK_VERSION := "26.6.0"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.2.5"
 
