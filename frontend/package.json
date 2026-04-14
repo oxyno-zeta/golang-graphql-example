@@ -16,7 +16,7 @@
     "@mui/x-data-grid": "8.28.2",
     "@mui/x-date-pickers": "8.27.2",
     "autosuggest-highlight": "3.3.4",
-    "axios": "1.14.0",
+    "axios": "1.15.0",
     "dayjs": "1.11.20",
     "graphql": "16.13.2",
     "i18next": "25.10.10",
