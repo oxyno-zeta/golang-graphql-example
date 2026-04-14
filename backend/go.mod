@@ -21,7 +21,7 @@ require (
 	github.com/go-playground/validator/v10 v10.30.2
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.3
-	github.com/hasura/go-graphql-client v0.15.1
+	github.com/hasura/go-graphql-client v0.16.0
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/prometheus/client_golang v1.23.2
 	github.com/rabbitmq/amqp091-go v1.10.0
@@ -71,7 +71,7 @@ require (
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect
-	github.com/coder/websocket v1.8.13 // indirect
+	github.com/coder/websocket v1.8.14 // indirect
 	github.com/danielkov/gin-helmet/core v1.0.1 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/gabriel-vasile/mimetype v1.4.13 // indirect
