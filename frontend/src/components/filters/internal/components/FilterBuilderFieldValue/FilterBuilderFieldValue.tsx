@@ -102,8 +102,8 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
             </MenuItem>
           );
         }}
-        renderTags={(tagValue, getTagProps) =>
-          tagValue.map((option, index) => <Chip label={t(option.display)} size="small" {...getTagProps({ index })} />)
+        renderValue={(tagValue, getItemProps) =>
+          tagValue.map((option, index) => <Chip label={t(option.display)} size="small" {...getItemProps({ index })} />)
         }
         size="small"
         value={vEnum}
@@ -163,7 +163,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           const parts = parse(displayedOption, matches);
 
           return (
-            <MenuItem {...props}>
+            <Box component="li" {...props}>
               <Box sx={{ display: 'block' }}>
                 <Typography>
                   {parts.map((part: any, index: number) => (
@@ -183,7 +183,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
                   </Typography>
                 ) : null}
               </Box>
-            </MenuItem>
+            </Box>
           );
         }}
         size="small"
@@ -255,8 +255,8 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
             type={operation.inputType}
           />
         )}
-        renderTags={(tagValue, getTagProps) =>
-          tagValue.map((option, index) => <Chip label={option} size="small" {...getTagProps({ index })} />)
+        renderValue={(tagValue, getItemProps) =>
+          tagValue.map((option, index) => <Chip label={option} size="small" {...getItemProps({ index })} />)
         }
         size="small"
         value={value}

@@ -46,10 +46,16 @@ function CenterLoading({
       <CircularProgress {...circularProgressProps} />
       {subtitle ? (
         <Typography
-          color="text.secondary"
-          sx={{ fontSize: '12px', marginTop: '7px' }}
           variant="subtitle2"
           {...subtitleTypographyProps}
+          sx={[
+            {
+              color: 'text.secondary',
+              fontSize: '12px',
+              marginTop: '7px',
+            },
+            ...(Array.isArray(subtitleTypographyProps.sx) ? subtitleTypographyProps.sx : [subtitleTypographyProps.sx]),
+          ]}
         >
           {subtitle}
         </Typography>

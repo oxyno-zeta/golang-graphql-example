@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`theming/ToggleColorModeMenuItem should display the dark theme as selected and switch to light 1`] = `
+exports[`theming/ToggleColorModeMenuItem > should display the dark theme as selected and switch to light 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -170,7 +170,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -190,7 +190,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
@@ -212,7 +212,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
 </div>
 `;
 
-exports[`theming/ToggleColorModeMenuItem should display the dark theme as selected and switch to light 2`] = `
+exports[`theming/ToggleColorModeMenuItem > should display the dark theme as selected and switch to light 2`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -382,7 +382,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -402,7 +402,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
@@ -424,7 +424,7 @@ exports[`theming/ToggleColorModeMenuItem should display the dark theme as select
 </div>
 `;
 
-exports[`theming/ToggleColorModeMenuItem should display the light theme as selected and switch to dark 1`] = `
+exports[`theming/ToggleColorModeMenuItem > should display the light theme as selected and switch to dark 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -594,7 +594,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   >
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -614,7 +614,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
     </button>
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"
@@ -636,7 +636,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
 </div>
 `;
 
-exports[`theming/ToggleColorModeMenuItem should display the light theme as selected and switch to dark 2`] = `
+exports[`theming/ToggleColorModeMenuItem > should display the light theme as selected and switch to dark 2`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -806,7 +806,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
   >
     <button
       aria-pressed="true"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-firstButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-firstButton emotion-2"
       tabindex="0"
       type="button"
       value="dark"
@@ -826,7 +826,7 @@ exports[`theming/ToggleColorModeMenuItem should display the light theme as selec
     </button>
     <button
       aria-pressed="false"
-      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-groupedHorizontal MuiToggleButtonGroup-lastButton emotion-2"
+      class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
       tabindex="0"
       type="button"
       value="light"

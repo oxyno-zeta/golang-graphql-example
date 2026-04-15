@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Footer should display footer 1`] = `
+exports[`Footer > should display footer 1`] = `
 .emotion-0 {
   -webkit-align-items: center;
   -webkit-box-align: center;

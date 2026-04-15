@@ -1,8 +1,4 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { URLSearchParams } from 'node:url';
 import {
   addJSONObjectSearchParam,
@@ -18,7 +14,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok to delete one not found key', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -32,7 +28,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok to delete one key', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -50,7 +46,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok to delete one not found key', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -65,7 +61,7 @@ describe('utils/urlSearchParams', () => {
       const input = new URLSearchParams();
       const key = 'key1';
       const key2 = 'key2';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -79,7 +75,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok to delete one key', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -96,7 +92,7 @@ describe('utils/urlSearchParams', () => {
       const input = new URLSearchParams();
       const key = 'key1';
       const key2 = 'key2';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -114,7 +110,7 @@ describe('utils/urlSearchParams', () => {
       const input = new URLSearchParams();
       const key = 'key1';
       const key2 = 'key2';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       input.set('stay', 'stay');
       expectedRes.set('stay', 'stay');
@@ -163,7 +159,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok with empty object', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       expectedRes.set(key, '{}');
 
@@ -177,7 +173,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok with simple object', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       expectedRes.set(key, '{"k1":1}');
 
@@ -191,7 +187,7 @@ describe('utils/urlSearchParams', () => {
     it('should be ok with complex object', () => {
       const input = new URLSearchParams();
       const key = 'key1';
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = new URLSearchParams();
       expectedRes.set(key, '{"k1":{"k2":"fake"}}');
 

@@ -1,16 +1,12 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { mdiBrightness2, mdiBrightness7 } from '@mdi/js';
 import ThemeProvider from '~components/theming/ThemeProvider';
 
 import IconToggleColorMode from './IconToggleColorMode';
 
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
@@ -26,17 +22,17 @@ describe('theming/IconToggleColorMode', () => {
   });
 
   it('should display a light theme icon with light theme and switch to dark', async () => {
-    globalThis.matchMedia = jest.fn().mockImplementation((query) => {
+    globalThis.matchMedia = vi.fn().mockImplementation((query) => {
       if (query === '(prefers-color-scheme: dark)') {
         return {
           matches: false,
           media: query,
           onchange: null,
-          addListener: jest.fn(), // deprecated
-          removeListener: jest.fn(), // deprecated
-          addEventListener: jest.fn(),
-          removeEventListener: jest.fn(),
-          dispatchEvent: jest.fn(),
+          addListener: vi.fn(), // deprecated
+          removeListener: vi.fn(), // deprecated
+          addEventListener: vi.fn(),
+          removeEventListener: vi.fn(),
+          dispatchEvent: vi.fn(),
         };
       }
 
@@ -67,17 +63,17 @@ describe('theming/IconToggleColorMode', () => {
   });
 
   it('should display a dark theme icon with dark theme and switch to light', async () => {
-    globalThis.matchMedia = jest.fn().mockImplementation((query) => {
+    globalThis.matchMedia = vi.fn().mockImplementation((query) => {
       if (query === '(prefers-color-scheme: dark)') {
         return {
           matches: true,
           media: query,
           onchange: null,
-          addListener: jest.fn(), // deprecated
-          removeListener: jest.fn(), // deprecated
-          addEventListener: jest.fn(),
-          removeEventListener: jest.fn(),
-          dispatchEvent: jest.fn(),
+          addListener: vi.fn(), // deprecated
+          removeListener: vi.fn(), // deprecated
+          addEventListener: vi.fn(),
+          removeEventListener: vi.fn(),
+          dispatchEvent: vi.fn(),
         };
       }
 

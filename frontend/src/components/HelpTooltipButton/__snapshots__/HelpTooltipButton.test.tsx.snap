@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
+exports[`HelpTooltipButton > should display element tooltip on mouse click 1`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -126,7 +126,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 1`] = `
 </div>
 `;
 
-exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
+exports[`HelpTooltipButton > should display element tooltip on mouse click 2`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -314,7 +314,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse click 2`] = `
 </div>
 `;
 
-exports[`HelpTooltipButton should display element tooltip on mouse over only 1`] = `
+exports[`HelpTooltipButton > should display element tooltip on mouse over only 1`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -440,7 +440,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 1`]
 </div>
 `;
 
-exports[`HelpTooltipButton should display element tooltip on mouse over only 2`] = `
+exports[`HelpTooltipButton > should display element tooltip on mouse over only 2`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -628,7 +628,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 2`]
 </div>
 `;
 
-exports[`HelpTooltipButton should display element tooltip on mouse over only 3`] = `
+exports[`HelpTooltipButton > should display element tooltip on mouse over only 3`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -754,7 +754,7 @@ exports[`HelpTooltipButton should display element tooltip on mouse over only 3`]
 </div>
 `;
 
-exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
+exports[`HelpTooltipButton > should display text tooltip on mouse click 1`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -880,7 +880,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse click 1`] = `
 </div>
 `;
 
-exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = `
+exports[`HelpTooltipButton > should display text tooltip on mouse over only 1`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1006,7 +1006,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 1`] = 
 </div>
 `;
 
-exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = `
+exports[`HelpTooltipButton > should display text tooltip on mouse over only 2`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1194,7 +1194,7 @@ exports[`HelpTooltipButton should display text tooltip on mouse over only 2`] = 
 </div>
 `;
 
-exports[`HelpTooltipButton should display text tooltip on mouse over only 3`] = `
+exports[`HelpTooltipButton > should display text tooltip on mouse over only 3`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

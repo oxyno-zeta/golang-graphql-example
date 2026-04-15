@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotFoundRoute should display no data 1`] = `
+exports[`NotFoundRoute > should display no data 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -29,7 +29,7 @@ exports[`NotFoundRoute should display no data 1`] = `
 </div>
 `;
 
-exports[`NotFoundRoute should display no data with specific variant 1`] = `
+exports[`NotFoundRoute > should display no data with specific variant 1`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;

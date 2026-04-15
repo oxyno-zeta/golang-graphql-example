@@ -1,12 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
-import * as jest from 'jest-mock';
 import { withMuiTheme } from './with-mui-theme.decorator';
 import i18n from './i18next.cjs';
-
-// Inject jest correctly
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-window.jest = jest;
 
 // Load Roboto fonts
 import '@fontsource/roboto/300.css';

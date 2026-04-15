@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 1`] = `
+exports[`timezone/TimezoneSelector > should display a list of timezone when a click is done and to select it 1`] = `
 .emotion-0 {
   width: 100%;
 }
@@ -673,7 +673,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
           id="_r_4_"
           role="combobox"
           spellcheck="false"
@@ -740,7 +740,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 </div>
 `;
 
-exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 2`] = `
+exports[`timezone/TimezoneSelector > should display a list of timezone when a click is done and to select it 2`] = `
 <div>
   <div
     id="result"
@@ -750,7 +750,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 </div>
 `;
 
-exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 3`] = `
+exports[`timezone/TimezoneSelector > should display a list of timezone when a click is done and to select it 3`] = `
 .emotion-0 {
   width: 100%;
 }
@@ -1428,7 +1428,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
           id="_r_8_"
           role="combobox"
           spellcheck="false"
@@ -1495,7 +1495,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
 </div>
 `;
 
-exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 4`] = `
+exports[`timezone/TimezoneSelector > should display a list of timezone when a click is done and to select it 4`] = `
 .emotion-0 {
   z-index: 1300;
 }
@@ -1887,7 +1887,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 </div>
 `;
 
-exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 5`] = `
+exports[`timezone/TimezoneSelector > should display a list of timezone when a click is done and to select it 5`] = `
 .emotion-0 {
   z-index: 1300;
 }
@@ -2276,7 +2276,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 </div>
 `;
 
-exports[`timezone/TimezoneSelector should display a list of timezone when a click is done and to select it 6`] = `
+exports[`timezone/TimezoneSelector > should display a list of timezone when a click is done and to select it 6`] = `
 <div>
   <div
     id="result"
@@ -2286,7 +2286,7 @@ exports[`timezone/TimezoneSelector should display a list of timezone when a clic
 </div>
 `;
 
-exports[`timezone/TimezoneSelector should display an autocomplete with default value 1`] = `
+exports[`timezone/TimezoneSelector > should display an autocomplete with default value 1`] = `
 .emotion-0 {
   width: 100%;
 }
@@ -2959,7 +2959,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-4:focus::-ms-input-p
           aria-invalid="false"
           autocapitalize="none"
           autocomplete="off"
-          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
+          class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused emotion-4"
           id="_r_0_"
           role="combobox"
           spellcheck="false"

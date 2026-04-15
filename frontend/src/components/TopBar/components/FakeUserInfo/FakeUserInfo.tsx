@@ -7,7 +7,13 @@ function FakeUserInfo() {
       <Typography gutterBottom style={{ fontSize: 14 }}>
         Fake User
       </Typography>
-      <Typography color="text.secondary" gutterBottom style={{ fontSize: 11 }}>
+      <Typography
+        gutterBottom
+        style={{ fontSize: 11 }}
+        sx={{
+          color: 'text.secondary',
+        }}
+      >
         fake@fake.com
       </Typography>
     </>

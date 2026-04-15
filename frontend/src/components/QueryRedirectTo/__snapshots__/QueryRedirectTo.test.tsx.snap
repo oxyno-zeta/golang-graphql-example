@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
+exports[`QueryRedirectTo > should display a loading when query is pending 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -98,7 +98,7 @@ exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
+          class="MuiCircularProgress-circle emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -116,7 +116,7 @@ exports[`QueryRedirectTo should display a loading when query is pending 1`] = `
 </div>
 `;
 
-exports[`QueryRedirectTo should display a loading without subtitle when query is pending 1`] = `
+exports[`QueryRedirectTo > should display a loading without subtitle when query is pending 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -202,7 +202,7 @@ exports[`QueryRedirectTo should display a loading without subtitle when query is
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
+          class="MuiCircularProgress-circle emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -215,7 +215,7 @@ exports[`QueryRedirectTo should display a loading without subtitle when query is
 </div>
 `;
 
-exports[`QueryRedirectTo should display an error when an error is raised on query 1`] = `
+exports[`QueryRedirectTo > should display an error when an error is raised on query 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -313,7 +313,7 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
+          class="MuiCircularProgress-circle emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -331,7 +331,7 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
 </div>
 `;
 
-exports[`QueryRedirectTo should display an error when an error is raised on query 2`] = `
+exports[`QueryRedirectTo > should display an error when an error is raised on query 2`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -380,7 +380,7 @@ exports[`QueryRedirectTo should display an error when an error is raised on quer
 </div>
 `;
 
-exports[`QueryRedirectTo should display no data when no data is returned from query 1`] = `
+exports[`QueryRedirectTo > should display no data when no data is returned from query 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -478,7 +478,7 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
+          class="MuiCircularProgress-circle emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -496,7 +496,7 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
 </div>
 `;
 
-exports[`QueryRedirectTo should display no data when no data is returned from query 2`] = `
+exports[`QueryRedirectTo > should display no data when no data is returned from query 2`] = `
 .emotion-0 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -525,7 +525,7 @@ exports[`QueryRedirectTo should display no data when no data is returned from qu
 </div>
 `;
 
-exports[`QueryRedirectTo should redirect to new path on success 1`] = `
+exports[`QueryRedirectTo > should redirect to new path on success 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -623,7 +623,7 @@ exports[`QueryRedirectTo should redirect to new path on success 1`] = `
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
+          class="MuiCircularProgress-circle emotion-3"
           cx="44"
           cy="44"
           fill="none"
@@ -641,7 +641,7 @@ exports[`QueryRedirectTo should redirect to new path on success 1`] = `
 </div>
 `;
 
-exports[`QueryRedirectTo should redirect to new path on success 2`] = `
+exports[`QueryRedirectTo > should redirect to new path on success 2`] = `
 <div>
   <div>
     Fake

@@ -1,12 +1,7 @@
 import React from 'react';
+import '@testing-library/jest-dom/vitest';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import { mdiPlus, mdiDelete, mdiChevronDown, mdiChevronUp } from '@mdi/js';
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
-
 import { type SortOrderObjectModel, type SortOrderFieldModel } from '~models/general';
 import SortForm from './SortForm';
 
@@ -19,14 +14,14 @@ const testSortFields: SortOrderFieldModel[] = [
 type TestSortOrderModelKeys = 'createdAt' | 'updatedAt' | 'text';
 type TestSortOrderModel = SortOrderObjectModel<TestSortOrderModelKeys>;
 
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
 describe('sorts/internal/SortForm', () => {
   it('should be ok with no initial sorts', () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <SortForm<TestSortOrderModel>
@@ -50,8 +45,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok with 1 initial sort', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole, findByTestId, queryAllByRole } = render(
       <SortForm<TestSortOrderModel>
@@ -93,8 +88,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok with 2 initial sorts', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole, findByTestId } = render(
       <SortForm<TestSortOrderModel>
@@ -150,8 +145,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok with all initial sorts', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole, findByTestId } = render(
       <SortForm<TestSortOrderModel>
@@ -218,8 +213,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should ignore a second key in object', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole, findByTestId, queryAllByRole } = render(
       <SortForm<TestSortOrderModel>
@@ -261,8 +256,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to reset value', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <SortForm<TestSortOrderModel>
@@ -282,8 +277,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to click on submit without changing anything', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <SortForm<TestSortOrderModel>
@@ -304,8 +299,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to click on submit with a change on value', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole } = render(
       <SortForm<TestSortOrderModel>
@@ -334,8 +329,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to click on submit with a change on field', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole } = render(
       <SortForm<TestSortOrderModel>
@@ -364,8 +359,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to remove last line', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <SortForm<TestSortOrderModel>
@@ -388,8 +383,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to reorder', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <SortForm<TestSortOrderModel>
@@ -433,8 +428,8 @@ describe('sorts/internal/SortForm', () => {
   });
 
   it('should be ok to add last available field', async () => {
-    const onSubmit = jest.fn().mockImplementation((i) => i);
-    const onReset = jest.fn().mockImplementation((i) => i);
+    const onSubmit = vi.fn().mockImplementation((i) => i);
+    const onReset = vi.fn().mockImplementation((i) => i);
 
     const { container, findAllByRole } = render(
       <SortForm<TestSortOrderModel>

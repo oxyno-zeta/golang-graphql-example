@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'react-i18next';
@@ -61,7 +61,7 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
             const parts = parse(displayedOption, matches);
 
             return (
-              <MenuItem {...props}>
+              <Box component="li" {...props}>
                 <Typography>
                   {parts.map((part: { highlight: boolean; text: string }, index: number) => (
                     <span
@@ -74,7 +74,7 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
                     </span>
                   ))}
                 </Typography>
-              </MenuItem>
+              </Box>
             );
           }}
           size="small"
@@ -108,7 +108,7 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
             const parts = parse(displayedOption, matches);
 
             return (
-              <MenuItem {...props}>
+              <Box component="li" {...props}>
                 <Typography>
                   {parts.map((part: { highlight: boolean; text: string }, index: number) => (
                     <span
@@ -121,7 +121,7 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
                     </span>
                   ))}
                 </Typography>
-              </MenuItem>
+              </Box>
             );
           }}
           size="small"

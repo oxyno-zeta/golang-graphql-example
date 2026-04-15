@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ErrorsDisplay should display a graphql error with extension and trace and request id when with trace error is present 1`] = `
+exports[`ErrorsDisplay > should display a graphql error with extension and trace and request id when with trace error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -73,7 +73,7 @@ exports[`ErrorsDisplay should display a graphql error with extension and trace a
 </div>
 `;
 
-exports[`ErrorsDisplay should display a graphql error with extension when error is present 1`] = `
+exports[`ErrorsDisplay > should display a graphql error with extension when error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -122,7 +122,7 @@ exports[`ErrorsDisplay should display a graphql error with extension when error 
 </div>
 `;
 
-exports[`ErrorsDisplay should display a graphql error with extension when errors are present 1`] = `
+exports[`ErrorsDisplay > should display a graphql error with extension when errors are present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -171,7 +171,7 @@ exports[`ErrorsDisplay should display a graphql error with extension when errors
 </div>
 `;
 
-exports[`ErrorsDisplay should display a graphql error without extension when error is present 1`] = `
+exports[`ErrorsDisplay > should display a graphql error without extension when error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -220,7 +220,7 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
 </div>
 `;
 
-exports[`ErrorsDisplay should display a graphql error without extension when errors are present 1`] = `
+exports[`ErrorsDisplay > should display a graphql error without extension when errors are present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -269,7 +269,7 @@ exports[`ErrorsDisplay should display a graphql error without extension when err
 </div>
 `;
 
-exports[`ErrorsDisplay should display a network error when error is present 1`] = `
+exports[`ErrorsDisplay > should display a network error when error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -318,7 +318,7 @@ exports[`ErrorsDisplay should display a network error when error is present 1`] 
 </div>
 `;
 
-exports[`ErrorsDisplay should display an axios error with extension and trace and request id when with trace error is present 1`] = `
+exports[`ErrorsDisplay > should display an axios error with extension and trace and request id when with trace error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -391,7 +391,7 @@ exports[`ErrorsDisplay should display an axios error with extension and trace an
 </div>
 `;
 
-exports[`ErrorsDisplay should display an axios error with extensions in data but without trace error 1`] = `
+exports[`ErrorsDisplay > should display an axios error with extensions in data but without trace error 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -440,7 +440,7 @@ exports[`ErrorsDisplay should display an axios error with extensions in data but
 </div>
 `;
 
-exports[`ErrorsDisplay should display an axios error without extensions in data and with empty trace error 1`] = `
+exports[`ErrorsDisplay > should display an axios error without extensions in data and with empty trace error 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -489,7 +489,7 @@ exports[`ErrorsDisplay should display an axios error without extensions in data 
 </div>
 `;
 
-exports[`ErrorsDisplay should display an axios error without extensions in data but without trace error 1`] = `
+exports[`ErrorsDisplay > should display an axios error without extensions in data but without trace error 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -538,7 +538,7 @@ exports[`ErrorsDisplay should display an axios error without extensions in data 
 </div>
 `;
 
-exports[`ErrorsDisplay should display classic error when error is present 1`] = `
+exports[`ErrorsDisplay > should display classic error when error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -587,7 +587,7 @@ exports[`ErrorsDisplay should display classic error when error is present 1`] = 
 </div>
 `;
 
-exports[`ErrorsDisplay should display classic error when errors are present (1 item) 1`] = `
+exports[`ErrorsDisplay > should display classic error when errors are present (1 item) 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -636,7 +636,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (1 i
 </div>
 `;
 
-exports[`ErrorsDisplay should display classic error when errors are present (2 items) 1`] = `
+exports[`ErrorsDisplay > should display classic error when errors are present (2 items) 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -694,7 +694,7 @@ exports[`ErrorsDisplay should display classic error when errors are present (2 i
 </div>
 `;
 
-exports[`ErrorsDisplay should display two graphql error with extension when error is present 1`] = `
+exports[`ErrorsDisplay > should display two graphql error with extension when error is present 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -752,7 +752,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`ErrorsDisplay should display two graphql error with extension when errors are present (1 item with 2) 1`] = `
+exports[`ErrorsDisplay > should display two graphql error with extension when errors are present (1 item with 2) 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -810,7 +810,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`ErrorsDisplay should display two graphql error with extension when errors are present (2 items and 1 with trace error) 1`] = `
+exports[`ErrorsDisplay > should display two graphql error with extension when errors are present (2 items and 1 with trace error) 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -892,7 +892,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`ErrorsDisplay should display two graphql error with extension when errors are present (2 items with 1 custom component) 1`] = `
+exports[`ErrorsDisplay > should display two graphql error with extension when errors are present (2 items with 1 custom component) 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -948,7 +948,7 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`ErrorsDisplay should display two graphql error with extension when errors are present (2 items) 1`] = `
+exports[`ErrorsDisplay > should display two graphql error with extension when errors are present (2 items) 1`] = `
 .emotion-0 {
   margin: 64px;
 }
@@ -1006,4 +1006,4 @@ exports[`ErrorsDisplay should display two graphql error with extension when erro
 </div>
 `;
 
-exports[`ErrorsDisplay should return null when no error or errors are present 1`] = `<div />`;
+exports[`ErrorsDisplay > should return null when no error or errors are present 1`] = `<div />`;

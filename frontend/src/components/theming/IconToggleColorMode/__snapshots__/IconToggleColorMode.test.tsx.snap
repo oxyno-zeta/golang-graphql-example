@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`theming/IconToggleColorMode should display a dark theme icon with dark theme and switch to light 1`] = `
+exports[`theming/IconToggleColorMode > should display a dark theme icon with dark theme and switch to light 1`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -125,7 +125,7 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
 </div>
 `;
 
-exports[`theming/IconToggleColorMode should display a dark theme icon with dark theme and switch to light 2`] = `
+exports[`theming/IconToggleColorMode > should display a dark theme icon with dark theme and switch to light 2`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -250,7 +250,7 @@ exports[`theming/IconToggleColorMode should display a dark theme icon with dark 
 </div>
 `;
 
-exports[`theming/IconToggleColorMode should display a light theme icon with light theme and switch to dark 1`] = `
+exports[`theming/IconToggleColorMode > should display a light theme icon with light theme and switch to dark 1`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -375,7 +375,7 @@ exports[`theming/IconToggleColorMode should display a light theme icon with ligh
 </div>
 `;
 
-exports[`theming/IconToggleColorMode should display a light theme icon with light theme and switch to dark 2`] = `
+exports[`theming/IconToggleColorMode > should display a light theme icon with light theme and switch to dark 2`] = `
 .emotion-0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

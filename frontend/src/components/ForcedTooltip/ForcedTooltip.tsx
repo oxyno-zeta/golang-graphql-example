@@ -22,13 +22,15 @@ function ForcedTooltip({ render = undefined, children = undefined, ...props }: P
     <ClickAwayListener onClickAway={onTooltipClose}>
       <div>
         <MuiTooltip
-          PopperProps={{
-            disablePortal: true,
-          }}
           onClose={onTooltipClose}
           onOpen={onTooltipOpen}
           open={open}
           {...props}
+          slotProps={{
+            popper: {
+              disablePortal: true,
+            },
+          }}
         >
           {children || (render && render(onTooltipOpen, onTooltipClose)) || <div />}
         </MuiTooltip>

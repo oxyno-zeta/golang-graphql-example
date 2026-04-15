@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Pagination should display 3 disable links when no next or previous page are present 1`] = `
+exports[`Pagination > should display 3 disable links when no next or previous page are present 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -202,7 +202,7 @@ exports[`Pagination should display 3 disable links when no next or previous page
 </div>
 `;
 
-exports[`Pagination should display next and previous page buttons as enabled and clickable 1`] = `
+exports[`Pagination > should display next and previous page buttons as enabled and clickable 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -398,7 +398,7 @@ exports[`Pagination should display next and previous page buttons as enabled and
 </div>
 `;
 
-exports[`Pagination should display only next page button as enabled and clickable 1`] = `
+exports[`Pagination > should display only next page button as enabled and clickable 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -598,7 +598,7 @@ exports[`Pagination should display only next page button as enabled and clickabl
 </div>
 `;
 
-exports[`Pagination should display only next page link as enabled with correct url 1`] = `
+exports[`Pagination > should display only next page link as enabled with correct url 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -799,7 +799,7 @@ exports[`Pagination should display only next page link as enabled with correct u
 </div>
 `;
 
-exports[`Pagination should display only previous page buttons as enabled and clickable 1`] = `
+exports[`Pagination > should display only previous page buttons as enabled and clickable 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -997,7 +997,7 @@ exports[`Pagination should display only previous page buttons as enabled and cli
 </div>
 `;
 
-exports[`Pagination should display only previous page links as enabled with correct url 1`] = `
+exports[`Pagination > should display only previous page links as enabled with correct url 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -1197,7 +1197,7 @@ exports[`Pagination should display only previous page links as enabled with corr
 </div>
 `;
 
-exports[`Pagination should display previous and next page links as enabled with correct url 1`] = `
+exports[`Pagination > should display previous and next page links as enabled with correct url 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;

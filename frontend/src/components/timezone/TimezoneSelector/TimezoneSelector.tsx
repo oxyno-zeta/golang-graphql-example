@@ -72,7 +72,12 @@ function RowComponent({
           </span>
         ))}
       </Typography>
-      <Typography color="text.secondary" style={{ fontSize: 12 }}>
+      <Typography
+        style={{ fontSize: 12 }}
+        sx={{
+          color: 'text.secondary',
+        }}
+      >
         {getTimeZone(d.value)}
       </Typography>
     </li>

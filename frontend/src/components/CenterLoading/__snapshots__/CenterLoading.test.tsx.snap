@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CenterLoading should display main page center loading 1`] = `
+exports[`CenterLoading > should display main page center loading 1`] = `
 @keyframes animation-0 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -86,7 +86,7 @@ exports[`CenterLoading should display main page center loading 1`] = `
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate emotion-3"
+          class="MuiCircularProgress-circle emotion-3"
           cx="44"
           cy="44"
           fill="none"

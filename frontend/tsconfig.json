@@ -19,7 +19,9 @@
     "incremental": true,
     "jsx": "react-jsx",
     "sourceMap": true,
-    "types": ["vite/client", "vite-plugin-svgr/client", "node"],
+    "types": ["vite/client", "vite-plugin-svgr/client", "node", "vitest/globals"],
+    "rootDir": "src/",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "~components/*": ["./src/components/*"],
       "~contexts/*": ["./src/contexts/*"],
@@ -29,6 +31,6 @@
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "vite.config.mts", "jest.config.ts"],
+  "exclude": ["node_modules", "vite.config.mts", "vitest.config.mts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

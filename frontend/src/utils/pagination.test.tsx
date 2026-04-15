@@ -1,8 +1,4 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { URLSearchParams } from 'node:url';
 import { cleanAndSetCleanedPagination, cleanPaginationSearchParams, getPaginationFromSearchParams } from './pagination';
 
@@ -10,7 +6,7 @@ describe('utils/pagination', () => {
   describe('getPaginationFromSearchParams', () => {
     it('should return init pagination when nothing is found', () => {
       const input = new URLSearchParams();
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -21,7 +17,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('last', '1');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = {};
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
@@ -35,7 +31,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('first', '1');
       input.set('before', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = {};
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
@@ -48,7 +44,7 @@ describe('utils/pagination', () => {
     it('should return init when only first is present', () => {
       const input = new URLSearchParams();
       input.set('first', '2');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = {};
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
@@ -61,7 +57,7 @@ describe('utils/pagination', () => {
     it('should return init when only last is present', () => {
       const input = new URLSearchParams();
       input.set('last', '2');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = {};
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
@@ -75,7 +71,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('first', 'fail');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = {};
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
@@ -89,7 +85,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('last', 'fail');
       input.set('before', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
       const expectedRes = {};
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
@@ -103,7 +99,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('first', '100');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -115,7 +111,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('first', '-100');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -127,7 +123,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('last', '100');
       input.set('before', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -139,7 +135,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('last', '-100');
       input.set('before', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -151,7 +147,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('first', '2');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -163,7 +159,7 @@ describe('utils/pagination', () => {
       const input = new URLSearchParams();
       input.set('last', '2');
       input.set('before', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -177,7 +173,7 @@ describe('utils/pagination', () => {
       input.set('before', 'fake');
       input.set('first', '2');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -190,7 +186,7 @@ describe('utils/pagination', () => {
       input.set('last', '2');
       input.set('before', 'fake');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -203,7 +199,7 @@ describe('utils/pagination', () => {
       input.set('last', '2');
       input.set('before', 'fake');
       input.set('first', '2');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -216,7 +212,7 @@ describe('utils/pagination', () => {
       input.set('last', '2');
       input.set('first', '2');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -229,7 +225,7 @@ describe('utils/pagination', () => {
       input.set('before', 'fake');
       input.set('first', '2');
       input.set('after', 'fake');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       const res = getPaginationFromSearchParams({ first: 1 }, 5, input, fn);
 
@@ -241,7 +237,7 @@ describe('utils/pagination', () => {
   describe('cleanAndSetCleanedPagination', () => {
     it('should not do anything if empty', () => {
       const input = new URLSearchParams();
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       cleanAndSetCleanedPagination(input, fn);
 
@@ -252,7 +248,7 @@ describe('utils/pagination', () => {
     it('should clean pagination and let other params', () => {
       const input = new URLSearchParams();
       input.set('key1', 'v1');
-      const fn = jest.fn().mockImplementation((i) => i);
+      const fn = vi.fn().mockImplementation((i) => i);
 
       cleanAndSetCleanedPagination(input, fn);
 

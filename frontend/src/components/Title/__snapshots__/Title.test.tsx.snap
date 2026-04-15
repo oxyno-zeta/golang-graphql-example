@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Title should display title only 1`] = `
+exports[`Title > should display title only 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -44,7 +44,6 @@ exports[`Title should display title only 1`] = `
   font-size: 1.5rem;
   line-height: 1.334;
   letter-spacing: 0em;
-  color: inherit;
 }
 
 <div>
@@ -65,7 +64,7 @@ exports[`Title should display title only 1`] = `
 </div>
 `;
 
-exports[`Title should display title with left element only 1`] = `
+exports[`Title > should display title with left element only 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -207,7 +206,6 @@ exports[`Title should display title with left element only 1`] = `
   font-size: 1.5rem;
   line-height: 1.334;
   letter-spacing: 0em;
-  color: inherit;
 }
 
 <div>
@@ -244,7 +242,7 @@ exports[`Title should display title with left element only 1`] = `
 </div>
 `;
 
-exports[`Title should display title with right and left element 1`] = `
+exports[`Title > should display title with right and left element 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -386,7 +384,6 @@ exports[`Title should display title with right and left element 1`] = `
   font-size: 1.5rem;
   line-height: 1.334;
   letter-spacing: 0em;
-  color: inherit;
 }
 
 <div>
@@ -439,7 +436,7 @@ exports[`Title should display title with right and left element 1`] = `
 </div>
 `;
 
-exports[`Title should display title with right element only 1`] = `
+exports[`Title > should display title with right element only 1`] = `
 .emotion-0 {
   position: relative;
   display: -webkit-box;
@@ -483,7 +480,6 @@ exports[`Title should display title with right element only 1`] = `
   font-size: 1.5rem;
   line-height: 1.334;
   letter-spacing: 0em;
-  color: inherit;
 }
 
 .emotion-2 {

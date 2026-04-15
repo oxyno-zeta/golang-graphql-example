@@ -4,16 +4,12 @@ import { render, waitFor } from '@testing-library/react';
 import { CombinedGraphQLErrors, gql } from '@apollo/client';
 import { type MockLink } from '@apollo/client/testing';
 import { MockedProvider } from '@apollo/client/testing/react';
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 import { GraphQLError } from 'graphql';
 import QueryRedirectTo from './QueryRedirectTo';
 
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 

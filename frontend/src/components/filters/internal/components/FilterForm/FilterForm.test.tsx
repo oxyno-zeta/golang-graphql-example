@@ -1,11 +1,7 @@
 import React from 'react';
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 import { mdiPlus, mdiDelete, mdiPlusBoxMultiple } from '@mdi/js';
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import * as dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
@@ -50,7 +46,7 @@ const testFilterDefinitionObject: FilterDefinitionFieldsModel = {
   },
 };
 
-jest.mock('react-i18next', () => ({
+vi.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
@@ -62,7 +58,7 @@ describe('filters/internal/FilterForm', () => {
   let randomCount = 0;
 
   beforeEach(() => {
-    jest.spyOn(globalThis.Math, 'random').mockImplementation(() => {
+    vi.spyOn(globalThis.Math, 'random').mockImplementation(() => {
       randomCount += 0.0001;
 
       return randomCount;
@@ -70,12 +66,12 @@ describe('filters/internal/FilterForm', () => {
   });
 
   afterEach(() => {
-    jest.spyOn(globalThis.Math, 'random').mockRestore();
+    vi.spyOn(globalThis.Math, 'random').mockRestore();
     randomCount = 0;
   });
 
   it('should be ok to just display no initial filters', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm filterDefinitionModel={testFilterDefinitionObject} initialFilter={{}} onChange={onChange} />,
@@ -87,8 +83,8 @@ describe('filters/internal/FilterForm', () => {
     const group = await screen.findByRole('group');
     expect(group.children[0]).toHaveAttribute('type', 'button');
     expect(group.children[1]).toHaveAttribute('type', 'button');
-    expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-containedPrimary');
-    expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-outlinedPrimary');
+    expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
+    expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
     expect(group.children[0]).toHaveTextContent('common.operations.and');
     expect(group.children[1]).toHaveTextContent('common.operations.or');
 
@@ -117,7 +113,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to interact with no initial filters and perform a full clean', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm filterDefinitionModel={testFilterDefinitionObject} initialFilter={{}} onChange={onChange} />,
@@ -126,23 +122,23 @@ describe('filters/internal/FilterForm', () => {
     expect(container).toMatchSnapshot();
 
     const group = await screen.findByRole('group');
-    expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-containedPrimary');
-    expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-outlinedPrimary');
+    expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
+    expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
     expect(group.children[0]).toHaveTextContent('common.operations.and');
     expect(group.children[1]).toHaveTextContent('common.operations.or');
 
     // Click on and
     expect(fireEvent.click(group.children[0])).toBeTruthy();
-    expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-containedPrimary');
-    expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-outlinedPrimary');
+    expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
+    expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
     expect(onChange).toHaveBeenLastCalledWith(null);
 
     expect(container).toMatchSnapshot();
 
     // Click on or
     expect(fireEvent.click(group.children[1])).toBeTruthy();
-    expect(group.children[0]).toHaveClass('MuiButton-outlined MuiButton-outlinedPrimary');
-    expect(group.children[1]).toHaveClass('MuiButton-contained MuiButton-containedPrimary');
+    expect(group.children[0]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
+    expect(group.children[1]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
     expect(onChange).toHaveBeenLastCalledWith(null);
 
     const firstLine = await screen.findByTestId('undefinedroot');
@@ -178,8 +174,8 @@ describe('filters/internal/FilterForm', () => {
     expect(groups).toHaveLength(2);
     const line4 = screen.queryByTestId('undefinedroot');
     expect(line4).not.toBeNull();
-    expect(groups[1].children[0]).toHaveClass('MuiButton-contained MuiButton-containedPrimary');
-    expect(groups[1].children[1]).toHaveClass('MuiButton-outlined MuiButton-outlinedPrimary');
+    expect(groups[1].children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
+    expect(groups[1].children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
     expect(groups[1].children[0]).toHaveTextContent('common.operations.and');
     expect(groups[1].children[1]).toHaveTextContent('common.operations.or');
     // Get parent
@@ -209,7 +205,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display a simple field without value and should be able to change it', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -269,7 +265,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display a simple field with simple text value and should be able to change it', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -308,7 +304,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display a simple field with multiples text values and should be able to change it', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -350,7 +346,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display a simple field with simple enum value and should be able to change it', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -402,7 +398,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display two simple fields at root level and should be able to change it', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -460,7 +456,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display two simple fields at root level and should be able to add line', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -529,7 +525,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display two simple fields at root level and should be remove one line', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -561,7 +557,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display two fields on first level and should be able to add group', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -664,7 +660,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display two fields on first level and should be able to edit second group', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -714,7 +710,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display two fields on first level and should be able to delete second group', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm
@@ -760,7 +756,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   it('should be ok to just display and select predefined filter no initial filters', async () => {
-    const onChange = jest.fn().mockImplementation((i) => i);
+    const onChange = vi.fn().mockImplementation((i) => i);
 
     const { container } = render(
       <FilterForm

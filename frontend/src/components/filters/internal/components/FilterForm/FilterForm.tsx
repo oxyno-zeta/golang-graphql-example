@@ -1,5 +1,4 @@
 import React, { useEffect, useState, memo } from 'react';
-import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -96,7 +95,7 @@ function FilterForm({
               const parts = parse(displayedOption, matches);
 
               return (
-                <MenuItem {...props}>
+                <Box component="li" {...props}>
                   <Box sx={{ display: 'block' }}>
                     <Typography>
                       {parts.map((part: any, index: number) => (
@@ -116,7 +115,7 @@ function FilterForm({
                       </Typography>
                     ) : null}
                   </Box>
-                </MenuItem>
+                </Box>
               );
             }}
             size="small"

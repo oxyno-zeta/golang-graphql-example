@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import MenuItem from '@mui/material/MenuItem';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -137,7 +136,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
             const parts = parse(displayedOption, matches);
 
             return (
-              <MenuItem {...props}>
+              <Box component="li" {...props}>
                 <Box sx={{ display: 'block' }}>
                   <Typography>
                     {parts.map((part: any, index: number) => (
@@ -157,7 +156,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                     </Typography>
                   ) : null}
                 </Box>
-              </MenuItem>
+              </Box>
             );
           }}
           size="small"
@@ -223,7 +222,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
               const parts = parse(displayedOption, matches);
 
               return (
-                <MenuItem {...props}>
+                <Box component="li" {...props}>
                   <Box sx={{ display: 'block' }}>
                     <Typography>
                       {parts.map((part: any, index: number) => (
@@ -243,7 +242,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                       </Typography>
                     ) : null}
                   </Box>
-                </MenuItem>
+                </Box>
               );
             }}
             size="small"

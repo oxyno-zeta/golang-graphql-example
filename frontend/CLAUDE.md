@@ -17,7 +17,7 @@ yarn start             # Dev server at http://localhost:3000 (proxies /api → l
 yarn build             # Production build (output: dist/)
 yarn preview           # Preview production build locally
 yarn test              # Jest tests
-yarn test:update       # Jest tests — update snapshots
+yarn test:update       # Vitest — update snapshots
 yarn test:coverage     # Jest tests with coverage report (output: coverage/)
 yarn lint              # ESLint with auto-fix
 yarn lint:tsc          # TypeScript type check only
@@ -36,19 +36,19 @@ yarn test --testPathPattern=ComponentName
 
 ### Tech Stack
 
-| Layer     | Library                        |
-| --------- | ------------------------------ |
-| Framework | React                          |
-| Build     | Vite                           |
-| UI        | MUI (`@mui/material`)          |
-| Data Grid | `@mui/x-data-grid`             |
-| GraphQL   | Apollo Client                  |
-| Forms     | react-hook-form + Yup          |
-| Routing   | react-router                   |
-| i18n      | i18next + react-i18next        |
-| Date/time | dayjs                          |
-| Testing   | Jest + Testing Library         |
-| Storybook | Storybook (Vite builder)       |
+| Layer     | Library                  |
+| --------- | ------------------------ |
+| Framework | React                    |
+| Build     | Vite                     |
+| UI        | MUI (`@mui/material`)    |
+| Data Grid | `@mui/x-data-grid`       |
+| GraphQL   | Apollo Client            |
+| Forms     | react-hook-form + Yup    |
+| Routing   | react-router             |
+| i18n      | i18next + react-i18next  |
+| Date/time | dayjs                    |
+| Testing   | Vitest + Testing Library |
+| Storybook | Storybook (Vite builder) |
 
 ### Directory Layout
 
@@ -181,10 +181,13 @@ Always prefer MUI components over custom HTML or third-party UI libraries:
 
 ### Testing
 
+- **Runner:** Vitest — config in `vitest.config.mts`, setup in `.vitest/vitest.setup.ts`.
 - Tests use `@testing-library/react` with role queries (accessibility-first).
-- Mock i18n in tests: `jest.mock('react-i18next', () => ({ useTranslation: () => ({ t: (key) => key }) }))`
-- Snapshot tests are acceptable for pure presentational components.
+- Use `vi.*` globals (`vi.fn()`, `vi.mock()`, `vi.spyOn()`) — do not use `jest.*`.
+- Mock i18n in tests: `vi.mock('react-i18next', () => ({ useTranslation: () => ({ t: (key) => key }) }))`
+- Snapshot tests are acceptable for pure presentational components. Update with `yarn test:update`.
 - No mocking of Apollo Client — use `MockedProvider` from `@apollo/client/testing`.
+- `@testing-library/jest-dom` matchers (`toHaveClass`, `toHaveTextContent`, etc.) are available globally via the setup file.
 
 ### Storybook
 
