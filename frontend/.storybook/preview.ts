@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import { withMuiTheme } from './with-mui-theme.decorator';
-import i18n from './i18next.cjs';
+import i18n from './i18next.mjs';
 
 // Load Roboto fonts
 import '@fontsource/roboto/300.css';
