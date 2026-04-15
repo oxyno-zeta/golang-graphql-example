@@ -1976,9 +1976,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-data-grid@npm:9.0.1":
-  version: 9.0.1
-  resolution: "@mui/x-data-grid@npm:9.0.1"
+"@mui/x-data-grid@npm:9.0.2":
+  version: 9.0.2
+  resolution: "@mui/x-data-grid@npm:9.0.2"
   dependencies:
     "@babel/runtime": "npm:^7.28.6"
     "@mui/utils": "npm:9.0.0"
@@ -1999,13 +1999,13 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 10/09467ef451e4b9255259e9906e0fca23fb65d215f771cffdbb1d5456a281b2ece18d838fc288d34bb9f134475e345a3f06e1c0a93dae16ca41c6ef6eee0a9d25
+  checksum: 10/e644a49500b15a9ee7c230c96b0168e28badc0f0602066ff79bee169713b86c5054b9121b1cf89ca32cee341d98b02bc64beed7080e65f0c09dd199f8142d0a7
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:9.0.0":
-  version: 9.0.0
-  resolution: "@mui/x-date-pickers@npm:9.0.0"
+"@mui/x-date-pickers@npm:9.0.2":
+  version: 9.0.2
+  resolution: "@mui/x-date-pickers@npm:9.0.2"
   dependencies:
     "@babel/runtime": "npm:^7.28.6"
     "@mui/utils": "npm:9.0.0"
@@ -2047,7 +2047,7 @@ __metadata:
       optional: true
     moment-jalaali:
       optional: true
-  checksum: 10/2be080569be04f4ee956aa50c867c0341c5695a08d3a6c2c49a5c2a33aec394b4a0eeb7aa0040af78a1d1f988030858cc166c78fcb82510ddadf130a07e0d1f7
+  checksum: 10/b95f859bca8e0bc09c586c3653efde901074a03390d08668e8cb3f5f02686c74fb84d4af9f7d250ff365a7c04ef46146f8b2da2c6f9e3874cd39b583bf032828
   languageName: node
   linkType: hard
 
@@ -6281,8 +6281,8 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/lab": "npm:9.0.0-beta.2"
     "@mui/material": "npm:9.0.0"
-    "@mui/x-data-grid": "npm:9.0.1"
-    "@mui/x-date-pickers": "npm:9.0.0"
+    "@mui/x-data-grid": "npm:9.0.2"
+    "@mui/x-date-pickers": "npm:9.0.2"
     "@storybook/builder-vite": "npm:10.3.5"
     "@storybook/icons": "npm:2.0.1"
     "@storybook/react-vite": "npm:10.3.5"
@@ -6321,11 +6321,11 @@ __metadata:
     eslint-plugin-unicorn: "npm:64.0.0"
     eslint-plugin-unused-imports: "npm:4.4.1"
     graphql: "npm:16.13.2"
-    i18next: "npm:26.0.4"
+    i18next: "npm:26.0.5"
     i18next-browser-languagedetector: "npm:8.2.1"
     i18next-http-backend: "npm:3.0.4"
     jsdom: "npm:26.1.0"
-    prettier: "npm:3.8.2"
+    prettier: "npm:3.8.3"
     react: "npm:19.2.5"
     react-docgen: "npm:8.0.3"
     react-dom: "npm:19.2.5"
@@ -6856,9 +6856,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:26.0.4":
-  version: 26.0.4
-  resolution: "i18next@npm:26.0.4"
+"i18next@npm:26.0.5":
+  version: 26.0.5
+  resolution: "i18next@npm:26.0.5"
   dependencies:
     "@babel/runtime": "npm:^7.29.2"
   peerDependencies:
@@ -6866,7 +6866,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/39a8f13851252f97dfd255fae0a72a8aefcab34830def5a2057e631aac5719ba87d3b7e32bef354cd5304f19f78abfafad9dc51eb090c303ebac6ee339cdfb88
+  checksum: 10/cf0194e9b32f64f6f209bb556a5ca94707f4eef19bf9aa26985919e363afa663fdc8d2bf62a05c841b9b6d34741f6a5a405925e8ead431892f3d3a6876a068d1
   languageName: node
   linkType: hard
 
@@ -8681,12 +8681,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.8.2":
-  version: 3.8.2
-  resolution: "prettier@npm:3.8.2"
+"prettier@npm:3.8.3":
+  version: 3.8.3
+  resolution: "prettier@npm:3.8.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10/fd784175bc600c07eb2c44d7ec4ee7133f95f26492adad61b6a15c06f438b858181faf096ab74163d7f49500ad80cff4479c6abb084e161a2e85a9df5974ecd1
+  checksum: 10/4b3b12cbb29e4c96bed936e5d070167552500c18d37676fb3e0caae6199c42860662608e4dc116230698f6e2bb0267ef2548158224c92d40f188d309d72fdd6f
   languageName: node
   linkType: hard
 
