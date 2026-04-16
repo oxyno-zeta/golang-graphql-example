@@ -179,10 +179,11 @@ type LogConfig struct {
 
 // ServerConfig Server configuration.
 type ServerConfig struct {
-	CORS       *ServerCorsConfig     `mapstructure:"cors"       validate:"omitempty" json:"cors,omitempty"`
-	Compress   *ServerCompressConfig `mapstructure:"compress"                        json:"compress,omitempty"`
-	ListenAddr string                `mapstructure:"listenAddr"                      json:"listenAddr,omitempty"`
-	Port       int                   `mapstructure:"port"       validate:"required"  json:"port,omitempty"`
+	CORS                  *ServerCorsConfig     `mapstructure:"cors"                  validate:"omitempty" json:"cors,omitempty"`
+	Compress              *ServerCompressConfig `mapstructure:"compress"                                   json:"compress,omitempty"`
+	ListenAddr            string                `mapstructure:"listenAddr"                                 json:"listenAddr,omitempty"`
+	Port                  int                   `mapstructure:"port"                  validate:"required"  json:"port,omitempty"`
+	DisableGraphqlLogging bool                  `mapstructure:"disableGraphqlLogging"                      json:"disableGraphqlLogging,omitempty"`
 }
 
 // ServerCompressConfig Server compress configuration.

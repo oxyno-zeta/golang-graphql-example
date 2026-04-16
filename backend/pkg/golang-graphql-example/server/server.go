@@ -279,8 +279,12 @@ func (svr *Server) graphqlHandler() gin.HandlerFunc {
 	h.Use(svr.metricsSvc.GraphqlMiddleware())
 	h.Use(extension.FixedComplexityLimit(GraphqlComplexityLimit))
 
-	h.AroundRootFields(log.GraphqlAroundRootFieldsMiddleware())
-	h.AroundFields(log.GraphqlAroundFieldsMiddleware())
+	cfg := svr.cfgManager.GetConfig()
+
+	if !cfg.Server.DisableGraphqlLogging {
+		h.AroundRootFields(log.GraphqlAroundRootFieldsMiddleware())
+		h.AroundFields(log.GraphqlAroundFieldsMiddleware())
+	}
 
 	h.SetErrorPresenter(func(ctx context.Context, err error) *gqlerror.Error {
 		// Get logger
