@@ -4,9 +4,16 @@ on:
     branches-ignore:
       - "github-pages"
   pull_request: {}
+
+permissions:
+  contents: read
+
 jobs:
   changes:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
       backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
@@ -36,6 +43,9 @@ jobs:
       (needs.changes.outputs.frontend == 'true') ||
       (needs.changes.outputs.backend == 'true')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     needs:
       - changes
     steps:
