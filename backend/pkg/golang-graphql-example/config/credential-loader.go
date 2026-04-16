@@ -112,9 +112,7 @@ func getRecursivelyCredentialConfigPathList(keys []string, r reflect.Type) ([][]
 	credCfgType := reflect.TypeFor[CredentialConfig]()
 
 	// Loop over fields
-	for i := 0; i < r.NumField(); i++ {
-		// Get field
-		field := r.Field(i)
+	for field := range r.Fields() {
 		// Get type
 		fieldType := field.Type
 
