@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - If you see something missing in following sections, add it
 - If you see that something have been deleted in project but not in this file, inform and propose a deletion
 - If you see that something needs to be updated, update it
+- When you are changing, adding or deleting code, run `make code/lint` to ensure linter is passing
 
 ## Commands
 
