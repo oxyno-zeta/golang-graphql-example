@@ -5969,7 +5969,7 @@ __metadata:
     graphql: "npm:16.13.2"
     i18next: "npm:26.0.5"
     i18next-browser-languagedetector: "npm:8.2.1"
-    i18next-http-backend: "npm:3.0.4"
+    i18next-http-backend: "npm:3.0.5"
     jsdom: "npm:29.0.2"
     prettier: "npm:3.8.3"
     react: "npm:19.2.5"
@@ -6457,12 +6457,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-http-backend@npm:3.0.4":
-  version: 3.0.4
-  resolution: "i18next-http-backend@npm:3.0.4"
+"i18next-http-backend@npm:3.0.5":
+  version: 3.0.5
+  resolution: "i18next-http-backend@npm:3.0.5"
   dependencies:
     cross-fetch: "npm:4.1.0"
-  checksum: 10/b5bb5bd10e70d9f6defbacd6742a57775bdae915dde7805662786a4d02f480d78b977529bcdb1776afcd7f733eb5741f2c2dca418f94d7b768610d42e70b4d7d
+  checksum: 10/a0a9b75c05e335e1bb6dcf4ff81723e82700f1d16809b55e121054b1822068c72947d9661e29293c24294af6d1d9532999e7445518606a6964fadc7e779eb777
   languageName: node
   linkType: hard
 
