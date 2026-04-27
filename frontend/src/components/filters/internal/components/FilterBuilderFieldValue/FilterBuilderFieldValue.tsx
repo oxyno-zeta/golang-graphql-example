@@ -315,6 +315,22 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
         id={id}
         label={t('common.filter.value')}
         onChange={(event) => {
+          // Check if operation is a number
+          if (operation.inputType === 'number') {
+            // Try to parse and save
+            // ? Note: Parsing number as float will match integers and float. This will let the validation part doing the job.
+            // ? If parsing is ok, save this value
+            // ? If not, saving string and log error
+            try {
+              onChange(Number.parseFloat(event.target.value));
+
+              return;
+            } catch (err) {
+              console.error(err);
+            }
+          }
+
+          // Save value for validation
           onChange(event.target.value);
         }}
         placeholder={t('common.filter.value')}

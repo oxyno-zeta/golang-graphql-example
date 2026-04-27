@@ -30,6 +30,30 @@ export function requiredInputValidate(value: undefined | null | string | string[
   return null;
 }
 
+export function requiredInputIntegerValidate(value: undefined | null | string | string[]) {
+  const req = requiredInputValidate(value);
+
+  // Check if required is raised
+  if (req) {
+    return req;
+  }
+
+  // Create array if not an array to simplify
+  const values = Array.isArray(value) ? value : [value];
+
+  // Check if there is a value that isn't a real integer
+  const hasInvalid = values.some((v) => {
+    const n = Number.parseFloat(v as string);
+    return Number.isNaN(n) || !Number.isInteger(n);
+  });
+
+  if (hasInvalid) {
+    return 'common.fieldValidationError.mustBeAnInteger';
+  }
+
+  return null;
+}
+
 export const stringOperations: FilterDefinitionOperationsModel<string> = {
   eq: {
     display: 'common.operations.eq',
@@ -207,6 +231,105 @@ export const dateOperations: FilterDefinitionOperationsModel<Date> = {
 };
 
 export const intOperations: FilterDefinitionOperationsModel<number> = {
+  eq: {
+    display: 'common.operations.eq',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  notEq: {
+    display: 'common.operations.notEq',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  gte: {
+    display: 'common.operations.gte',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  notGte: {
+    display: 'common.operations.notGte',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  lte: {
+    display: 'common.operations.lte',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  notLte: {
+    display: 'common.operations.notLte',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  gt: {
+    display: 'common.operations.gt',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  notGt: {
+    display: 'common.operations.notGt',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  lt: {
+    display: 'common.operations.lt',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  notLt: {
+    display: 'common.operations.notLt',
+    initialValue: 0,
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+  },
+  in: {
+    display: 'common.operations.in',
+    initialValue: [],
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+    multipleValues: true,
+  },
+  notIn: {
+    display: 'common.operations.notIn',
+    initialValue: [],
+    input: true,
+    inputType: 'number',
+    inputValidate: requiredInputIntegerValidate,
+    multipleValues: true,
+  },
+  isNull: {
+    display: 'common.operations.isNull',
+    input: false,
+    initialValue: true,
+  },
+  isNotNull: {
+    display: 'common.operations.isNotNull',
+    input: false,
+    initialValue: true,
+  },
+};
+
+export const floatOperations: FilterDefinitionOperationsModel<number> = {
   eq: {
     display: 'common.operations.eq',
     initialValue: 0,
