@@ -46,6 +46,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
   // Watch initialValue
   useEffect(() => {
     // Set initial value data
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedField(initialValue.field);
     setSelectedOperation(initialValue.operation);
     setValue(initialValue.value);

@@ -47,7 +47,7 @@ export function setJSONObjectSearchParam(
   searchParams.set(key, objStr);
 
   // Save search params
-  setSearchParams(searchParams as URLSearchParamsInit);
+  setSearchParams(searchParams);
 }
 
 export function useJSONObjectFromSearchParam<T>(key: string, init: T): T {
@@ -113,5 +113,5 @@ export function deleteAndSetSearchParams(
   });
 
   // Clean all
-  setSearchParams(searchParams as URLSearchParamsInit);
+  setSearchParams(searchParams);
 }

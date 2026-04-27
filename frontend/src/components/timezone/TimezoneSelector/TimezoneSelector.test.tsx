@@ -88,7 +88,7 @@ describe('timezone/TimezoneSelector', () => {
 
     // Select
     const options = await screen.findAllByRole('option');
-    fireEvent.click(options[0] as Element);
+    fireEvent.click(options[0]);
 
     expect(valuesContainer).toMatchSnapshot();
 

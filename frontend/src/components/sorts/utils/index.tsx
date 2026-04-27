@@ -37,7 +37,7 @@ export function buildMUIXSort(sorts: Record<string, SortOrderModel>[], columns: 
     }
 
     // Save sort
-    accu.push({ field: key, sort: sort[key] === SortOrderAsc ? 'asc' : 'desc' } as GridSortItem);
+    accu.push({ field: key, sort: sort[key] === SortOrderAsc ? 'asc' : 'desc' });
     // Default
     return accu;
   }, [] as GridSortItem[]);
