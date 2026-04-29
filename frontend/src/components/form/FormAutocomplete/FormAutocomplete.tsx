@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Autocomplete, { type AutocompleteProps } from '@mui/material/Autocomplete';
-import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField, { type TextFieldProps } from '@mui/material/TextField';
@@ -105,7 +104,7 @@ function FormAutocomplete<T extends FieldValues>({
         const parts = parse(displayedOption, matches);
 
         return (
-          <MenuItem {...props}>
+          <Box component="li" {...props}>
             <Box sx={{ display: 'block' }}>
               <Typography>
                 {parts.map((part: { text: string; highlight: boolean }, index: number) => (
@@ -120,7 +119,7 @@ function FormAutocomplete<T extends FieldValues>({
                 ))}
               </Typography>
             </Box>
-          </MenuItem>
+          </Box>
         );
       }}
       value={value}
