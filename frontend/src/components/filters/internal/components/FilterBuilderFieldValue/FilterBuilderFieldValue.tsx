@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import MenuItem from '@mui/material/MenuItem';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -79,7 +78,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           const parts = parse(displayedOption, matches);
 
           return (
-            <MenuItem {...props}>
+            <Box component="li" {...props}>
               <Box sx={{ display: 'block' }}>
                 <Typography>
                   {parts.map((part: any, index: number) => (
@@ -99,7 +98,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
                   </Typography>
                 ) : null}
               </Box>
-            </MenuItem>
+            </Box>
           );
         }}
         renderValue={(tagValue, getItemProps) =>
