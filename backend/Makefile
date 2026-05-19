@@ -59,9 +59,9 @@ HAS_AIR:=$(shell command -v air;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v2.11.4"
+GOLANGCI_LINT_VERSION := "v2.12.2"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.14.0"
+PGADMIN_VERSION := "9.15.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
@@ -73,9 +73,9 @@ TEMPO_VERSION := "2.10.5"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.15.2"
+OPA_VERSION := "1.16.2"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.6.1"
+KEYCLOAK_VERSION := "26.6.2"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.3.0"
 
@@ -291,7 +291,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.44.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.45.0
 endif
 
 .PHONY: setup/dep/test/install
@@ -302,7 +302,7 @@ ifndef HAS_GOTESTSUM
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
-	$(GO) install github.com/boumenot/gocover-cobertura@v1.4.0
+	$(GO) install github.com/boumenot/gocover-cobertura@v1.5.0
 endif
 
 .PHONY: setup/dep/build/install
@@ -317,7 +317,7 @@ setup/dep/build/install: setup/dep/install
 setup/dep/air/install: setup/dep/install
 ifndef HAS_AIR
 	@echo "=> Installing air tool"
-	$(GO) install github.com/air-verse/air@v1.65.1
+	$(GO) install github.com/air-verse/air@v1.65.2
 endif
 
 .PHONY: setup/dep/install
