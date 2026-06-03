@@ -8,7 +8,7 @@ import (
 // Rearrange results to ensure ids <-> items are at the same place.
 func rearrangeResults[T any](input []T, ids []string, idKey string) []*dataloader.Result[T] {
 	// Optimization
-	if len(input) == 1 {
+	if len(input) == 1 && len(ids) == 1 {
 		return []*dataloader.Result[T]{{Data: input[0]}}
 	}
 
