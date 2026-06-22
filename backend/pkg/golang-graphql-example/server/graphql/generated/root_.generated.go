@@ -99,7 +99,6 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.Mutation.CloseTodo(childComplexity, args["todoId"].(string)), true
-
 	case "Mutation.createTodo":
 		if e.ComplexityRoot.Mutation.CreateTodo == nil {
 			break
@@ -111,7 +110,6 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.Mutation.CreateTodo(childComplexity, args["input"].(model.NewTodo)), true
-
 	case "Mutation.updateTodo":
 		if e.ComplexityRoot.Mutation.UpdateTodo == nil {
 			break
@@ -130,21 +128,18 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.PageInfo.EndCursor(childComplexity), true
-
 	case "PageInfo.hasNextPage":
 		if e.ComplexityRoot.PageInfo.HasNextPage == nil {
 			break
 		}
 
 		return e.ComplexityRoot.PageInfo.HasNextPage(childComplexity), true
-
 	case "PageInfo.hasPreviousPage":
 		if e.ComplexityRoot.PageInfo.HasPreviousPage == nil {
 			break
 		}
 
 		return e.ComplexityRoot.PageInfo.HasPreviousPage(childComplexity), true
-
 	case "PageInfo.startCursor":
 		if e.ComplexityRoot.PageInfo.StartCursor == nil {
 			break
@@ -163,7 +158,6 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.Query.Todo(childComplexity, args["id"].(string)), true
-
 	case "Query.todos":
 		if e.ComplexityRoot.Query.Todos == nil {
 			break
@@ -187,28 +181,24 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.Todo.CreatedAt(childComplexity, args["format"].(*utils.DateFormat)), true
-
 	case "Todo.done":
 		if e.ComplexityRoot.Todo.Done == nil {
 			break
 		}
 
 		return e.ComplexityRoot.Todo.Done(childComplexity), true
-
 	case "Todo.id":
 		if e.ComplexityRoot.Todo.ID == nil {
 			break
 		}
 
 		return e.ComplexityRoot.Todo.ID(childComplexity), true
-
 	case "Todo.text":
 		if e.ComplexityRoot.Todo.Text == nil {
 			break
 		}
 
 		return e.ComplexityRoot.Todo.Text(childComplexity), true
-
 	case "Todo.updatedAt":
 		if e.ComplexityRoot.Todo.UpdatedAt == nil {
 			break
@@ -227,7 +217,6 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.TodoConnection.Edges(childComplexity), true
-
 	case "TodoConnection.pageInfo":
 		if e.ComplexityRoot.TodoConnection.PageInfo == nil {
 			break
@@ -241,7 +230,6 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 		}
 
 		return e.ComplexityRoot.TodoEdge.Cursor(childComplexity), true
-
 	case "TodoEdge.node":
 		if e.ComplexityRoot.TodoEdge.Node == nil {
 			break
