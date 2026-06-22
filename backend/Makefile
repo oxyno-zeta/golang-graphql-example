@@ -61,23 +61,23 @@ HAS_AIR:=$(shell command -v air;)
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 GOLANGCI_LINT_VERSION := "v2.12.2"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.14.0"
+PGADMIN_VERSION := "9.15.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.11.3"
+PROMETHEUS_VERSION := "v3.12.0"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "13.0.1"
+GRAFANA_VERSION := "13.0.2"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "3.0.2"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.15.2"
+OPA_VERSION := "1.17.1"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.6.1"
+KEYCLOAK_VERSION := "26.6.3"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.3.0"
+RABBITMQ_VERSION := "4.3.2"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -306,7 +306,7 @@ ifndef HAS_GOTESTSUM
 endif
 ifndef HAS_GOCOVER_COBERTURA
 	@echo "=> Installing gocover-cobertura tool"
-	$(GO) install github.com/boumenot/gocover-cobertura@v1.4.0
+	$(GO) install github.com/boumenot/gocover-cobertura@v1.5.0
 endif
 
 .PHONY: setup/dep/build/install
@@ -321,7 +321,7 @@ setup/dep/build/install: setup/dep/install
 setup/dep/air/install: setup/dep/install
 ifndef HAS_AIR
 	@echo "=> Installing air tool"
-	$(GO) install github.com/air-verse/air@v1.65.1
+	$(GO) install github.com/air-verse/air@v1.65.3
 endif
 
 .PHONY: setup/dep/install
