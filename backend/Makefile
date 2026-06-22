@@ -192,7 +192,7 @@ endif
 
 .PHONY: test/all
 test/all: setup/dep/install setup/dep/test/install setup/test/integration
-	gotestsum --format testname --format-hide-empty-pkg  --junitfile junit.xml -- -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
+	gotestsum --packages ./... --rerun-fails-report=rerun-fail-report.log --rerun-fails=2 --rerun-fails-run-root-test --format testname --format-hide-empty-pkg  --junitfile junit.xml -- -p 1 $(GO_VENDOR) --tags=unit,integration -v -coverpkg=./pkg/... -covermode=count -coverprofile=c.out.tmp ./pkg/...
 
 .PHONY: test/all/original
 test/all/original: setup/dep/install setup/dep/test/install setup/test/integration
