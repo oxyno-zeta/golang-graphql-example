@@ -6282,7 +6282,7 @@ __metadata:
     react-error-boundary: "npm:6.1.1"
     react-hook-form: "npm:7.74.0"
     react-i18next: "npm:17.0.6"
-    react-router: "npm:7.14.2"
+    react-router: "npm:7.15.1"
     react-scan: "npm:0.5.3"
     react-window: "npm:2.2.7"
     rollup-plugin-visualizer: "npm:7.0.1"
@@ -8813,9 +8813,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:7.14.2":
-  version: 7.14.2
-  resolution: "react-router@npm:7.14.2"
+"react-router@npm:7.15.1":
+  version: 7.15.1
+  resolution: "react-router@npm:7.15.1"
   dependencies:
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
@@ -8825,7 +8825,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10/6a12db0f6c8fd9b08631da98ba5e8c63675f4830cb7dccf1d70f3da23acbbc39079f48479b7c2c94b4ecd138fb1e0d4d8efd60914c48b224bfd8f1fd87b3b8cd
+  checksum: 10/0d9f352839708f13586e41bc21d4e74d1ef94ac747d8ba99a424734d17c7f9512926b16ac28a7659cc44ee4dd60b64f63ed58c704deb1cc68800056b377d3b40
   languageName: node
   linkType: hard
 
