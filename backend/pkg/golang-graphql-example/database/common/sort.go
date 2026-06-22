@@ -29,7 +29,7 @@ func manageSortOrder(sort any, db *gorm.DB) (*gorm.DB, error) {
 	// Get kind of sort
 	rKind := rVal.Kind()
 	// Check nil
-	if rKind == reflect.Invalid || (rKind == reflect.Ptr && rVal.IsNil()) {
+	if rKind == reflect.Invalid || (rKind == reflect.Pointer && rVal.IsNil()) {
 		// Stop here
 		return manageDefaultSort(db), nil
 	}
@@ -95,7 +95,7 @@ func manageObjectSortOrder(
 	// Create result
 	res := db
 	// Check if kind is supported
-	if rKind != reflect.Struct && rKind != reflect.Ptr {
+	if rKind != reflect.Struct && rKind != reflect.Pointer {
 		return nil, false, errors.NewInvalidInputError("sort must be an object")
 	}
 

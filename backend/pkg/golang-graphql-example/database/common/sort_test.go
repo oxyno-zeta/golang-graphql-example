@@ -39,7 +39,7 @@ func Test_ManageSortOrder(t *testing.T) {
 		Fake1 SortOrderEnum `dbfield:"fake_1"`
 	}
 	type args struct {
-		sort interface{}
+		sort any
 	}
 	tests := []struct {
 		name              string

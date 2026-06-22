@@ -30,12 +30,12 @@ func manageFilter(
 	// Get kind of filter
 	rKind := rVal.Kind()
 	// Check if filter isn't nil
-	if rKind == reflect.Invalid || (rKind == reflect.Ptr && rVal.IsNil()) {
+	if rKind == reflect.Invalid || (rKind == reflect.Pointer && rVal.IsNil()) {
 		// Stop here
 		return originalDB, nil
 	}
 	// Check if kind is supported
-	if rKind != reflect.Struct && rKind != reflect.Ptr {
+	if rKind != reflect.Struct && rKind != reflect.Pointer {
 		// Check if skip input not an object is enabled
 		// This is used in recursive calls in order to avoid errors when OR or AND cases aren't an object supported
 		if skipInputNotObject {
@@ -73,7 +73,7 @@ func manageFilter(
 		// Get field value
 		fVal := indirect.Field(i)
 		// Check if value is a pointer or not
-		if fVal.Kind() != reflect.Ptr {
+		if fVal.Kind() != reflect.Pointer {
 			return nil, errors.NewInvalidInputError(
 				fmt.Sprintf(
 					"field %s with filter tag must be a *GenericFilter or implement GenericFilterBuilder interface",
@@ -572,7 +572,7 @@ func getStringValue(x any) (string, error) {
 	// Get reflect value
 	val := reflect.ValueOf(x)
 	// Check if val is a pointer
-	if val.Kind() == reflect.Ptr {
+	if val.Kind() == reflect.Pointer {
 		// Indirect for pointers
 		val = reflect.Indirect(val)
 	}

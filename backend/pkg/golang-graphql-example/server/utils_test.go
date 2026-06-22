@@ -7,8 +7,9 @@ import (
 	"time"
 
 	"github.com/gin-contrib/cors"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/config"
 )
 
 func Test_generateCORSConfiguration(t *testing.T) {

@@ -11,12 +11,15 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 )
 
-const reloadEventuallyWait = 10 * time.Second
-const reloadEventuallyTick = 500 * time.Millisecond
+const (
+	reloadEventuallyWait = 10 * time.Second
+	reloadEventuallyTick = 500 * time.Millisecond
+)
 
 func Test_managerimpl_Load(t *testing.T) {
 	tests := []struct {
@@ -94,7 +97,7 @@ database:
 			defer os.RemoveAll(dir) // clean up
 			for k, v := range tt.configs {
 				tmpfn := filepath.Join(dir, k)
-				err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+				err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 				if err != nil {
 					t.Error(err)
 					return
@@ -110,12 +113,12 @@ database:
 			// Create secret files
 			for k, v := range tt.secretFiles {
 				dirToCr := filepath.Dir(k)
-				err = os.MkdirAll(dirToCr, 0666)
+				err = os.MkdirAll(dirToCr, 0o666)
 				if err != nil {
 					t.Error(err)
 					return
 				}
-				err = ioutil.WriteFile(k, []byte(v), 0666)
+				err = ioutil.WriteFile(k, []byte(v), 0o666)
 				if err != nil {
 					t.Error(err)
 					return
@@ -169,7 +172,7 @@ tracing:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -179,9 +182,9 @@ tracing:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -238,7 +241,7 @@ log:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -316,7 +319,7 @@ oidcAuthentication:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -326,9 +329,9 @@ oidcAuthentication:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -398,9 +401,9 @@ oidcAuthentication:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -482,7 +485,7 @@ tracing:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -492,9 +495,9 @@ tracing:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -554,7 +557,7 @@ configuration with error
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -625,7 +628,7 @@ opaServerAuthorization:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -635,9 +638,9 @@ opaServerAuthorization:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -706,7 +709,7 @@ opaServerAuthorization:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -789,7 +792,7 @@ database:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -799,9 +802,9 @@ database:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -881,7 +884,7 @@ opaServerAuthorization:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 
@@ -891,9 +894,9 @@ opaServerAuthorization:
 	// Create secret files
 	for k, v := range secretFiles {
 		dirToCr := filepath.Dir(k)
-		err = os.MkdirAll(dirToCr, 0666)
+		err = os.MkdirAll(dirToCr, 0o666)
 		assert.NoError(t, err)
-		err = ioutil.WriteFile(k, []byte(v), 0666)
+		err = ioutil.WriteFile(k, []byte(v), 0o666)
 		assert.NoError(t, err)
 		defer os.Remove(k)
 	}
@@ -965,7 +968,7 @@ opaServerAuthorization:
 	defer os.RemoveAll(dir) // clean up
 	for k, v := range configs {
 		tmpfn := filepath.Join(dir, k)
-		err = ioutil.WriteFile(tmpfn, []byte(v), 0666)
+		err = ioutil.WriteFile(tmpfn, []byte(v), 0o666)
 		assert.NoError(t, err)
 	}
 

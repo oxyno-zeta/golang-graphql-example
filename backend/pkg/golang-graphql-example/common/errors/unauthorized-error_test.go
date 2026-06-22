@@ -3,11 +3,12 @@
 package errors
 
 import (
-	gerrors "errors"
 	"reflect"
 	"testing"
 
 	"emperror.dev/errors"
+
+	gerrors "errors"
 )
 
 func TestNewUnauthorizedError(t *testing.T) {
@@ -18,14 +19,14 @@ func TestNewUnauthorizedError(t *testing.T) {
 		name       string
 		args       args
 		err        error
-		ext        map[string]interface{}
+		ext        map[string]any
 		statusCode int
 	}{
 		{
 			name:       "constructor",
 			args:       args{msg: "fake"},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "UNAUTHORIZED"},
+			ext:        map[string]any{"code": "UNAUTHORIZED"},
 			statusCode: 401,
 		},
 	}
@@ -56,21 +57,21 @@ func TestNewUnauthorizedErrorWithError(t *testing.T) {
 		name       string
 		args       args
 		err        error
-		ext        map[string]interface{}
+		ext        map[string]any
 		statusCode int
 	}{
 		{
 			name:       "constructor",
 			args:       args{err: errors.New("fake")},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "UNAUTHORIZED"},
+			ext:        map[string]any{"code": "UNAUTHORIZED"},
 			statusCode: 401,
 		},
 		{
 			name:       "constructor with golang error",
 			args:       args{err: gerrors.New("fake")},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "UNAUTHORIZED"},
+			ext:        map[string]any{"code": "UNAUTHORIZED"},
 			statusCode: 401,
 		},
 	}

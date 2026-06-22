@@ -34,13 +34,12 @@ linters:
     - forcetypeassert
     - gochecknoinits
     - gochecksumtype
-    - goconst
     - gocritic
     - godot
     - godox
     - goheader
     - gomoddirectives
-    - gomodguard
+    - gomodguard_v2
     - goprintffuncname
     - gosec
     - gosmopolitan
@@ -79,6 +78,7 @@ linters:
     - iotamixing
     - modernize
   disable:
+    - goconst # Too strict
     - depguard
     - err113
     - exhaustruct

@@ -16,7 +16,7 @@ import (
 )
 
 func Test_ManageFilter(t *testing.T) {
-	starInterface := func(s interface{}) *interface{} { return &s }
+	starInterface := func(s any) *any { return &s }
 	dateStr := "2020-09-19T23:10:35+02:00"
 	date, err := time.Parse(time.RFC3339Nano, dateStr)
 	if err != nil {
@@ -101,7 +101,7 @@ func Test_ManageFilter(t *testing.T) {
 		Field1 *DateFilter `dbfield:"field_1"`
 	}
 	type args struct {
-		filter interface{}
+		filter any
 	}
 	tests := []struct {
 		name                      string
@@ -975,7 +975,7 @@ type IntTestEnum int
 const FakeIntTestEum IntTestEnum = 1
 
 func Test_manageFilterRequest(t *testing.T) {
-	starInterface := func(s interface{}) interface{} { return &s }
+	starInterface := func(s any) any { return &s }
 	starString := func(s string) *string { return &s }
 	now := time.Now()
 
@@ -3193,13 +3193,13 @@ func Test_manageFilterRequest(t *testing.T) {
 
 func Test_transformToLowerOrUpperCasesList(t *testing.T) {
 	type args struct {
-		input       interface{}
+		input       any
 		toLowercase bool
 	}
 	tests := []struct {
 		name string
 		args args
-		want interface{}
+		want any
 	}{
 		{
 			name: "should ignore nil",

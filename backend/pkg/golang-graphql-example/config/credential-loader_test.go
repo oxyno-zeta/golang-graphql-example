@@ -33,7 +33,7 @@ func Test_internalLoadAllCredentials(t *testing.T) {
 	}
 
 	type args struct {
-		out interface{}
+		out any
 	}
 	tests := []struct {
 		name    string
@@ -239,7 +239,7 @@ func Test_getRecursivelyCredentialConfigPathList(t *testing.T) {
 
 	tests := []struct {
 		name    string
-		input   interface{}
+		input   any
 		want    [][]string
 		wantErr bool
 	}{

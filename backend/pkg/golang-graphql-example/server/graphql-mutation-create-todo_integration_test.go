@@ -21,7 +21,7 @@ func (suite *GraphQLTestSuite) TestMutationCreateTodo() {
 	type NewTodo struct {
 		Text string `json:"text"`
 	}
-	variables := map[string]interface{}{
+	variables := map[string]any{
 		"input": NewTodo{Text: "Fake !"},
 	}
 

@@ -33,7 +33,7 @@ func TestManageProjection(t *testing.T) {
 		Field3 bool `dbfield:"field3"`
 	}
 	type args struct {
-		projection interface{}
+		projection any
 	}
 	tests := []struct {
 		name                      string

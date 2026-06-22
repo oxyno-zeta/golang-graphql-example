@@ -7,13 +7,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	gerrors "errors"
+	"github.com/gin-gonic/gin"
+	"github.com/stretchr/testify/assert"
 
 	errors2 "emperror.dev/errors"
+	gerrors "errors"
 
-	"github.com/gin-gonic/gin"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestGetRequestURL(t *testing.T) {
@@ -73,7 +73,6 @@ func Test_RequestHost(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-
 			req, err := http.NewRequest("GET", tt.inputURL, nil)
 			if err != nil {
 				t.Fatal(err)

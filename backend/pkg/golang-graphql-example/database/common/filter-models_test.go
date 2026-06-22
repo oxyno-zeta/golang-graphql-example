@@ -28,18 +28,18 @@ func TestDateFilter_GetGenericFilter(t *testing.T) {
 	date2 = date2.UTC()
 
 	type fields struct {
-		Eq        interface{}
-		NotEq     interface{}
-		Gte       interface{}
-		NotGte    interface{}
-		Gt        interface{}
-		NotGt     interface{}
-		Lte       interface{}
-		NotLte    interface{}
-		Lt        interface{}
-		NotLt     interface{}
-		In        interface{}
-		NotIn     interface{}
+		Eq        any
+		NotEq     any
+		Gte       any
+		NotGte    any
+		Gt        any
+		NotGt     any
+		Lte       any
+		NotLte    any
+		Lt        any
+		NotLt     any
+		In        any
+		NotIn     any
 		IsNull    bool
 		IsNotNull bool
 	}

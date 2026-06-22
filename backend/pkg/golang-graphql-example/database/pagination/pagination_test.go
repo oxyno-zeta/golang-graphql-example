@@ -10,12 +10,13 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 )
 
 type DBSvcTest interface {
@@ -36,9 +37,9 @@ func TestPaging(t *testing.T) {
 	}
 	type args struct {
 		p          *PageInput
-		sort       interface{}
-		filter     interface{}
-		projection interface{}
+		sort       any
+		filter     any
+		projection any
 		extraFunc  func(db *gorm.DB) (*gorm.DB, error)
 	}
 	tests := []struct {

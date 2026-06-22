@@ -17,12 +17,12 @@ func ManageProjection(projection any, db *gorm.DB) (*gorm.DB, error) {
 	// Get kind of projection
 	rKind := rVal.Kind()
 	// Check if projection isn't nil
-	if rKind == reflect.Invalid || (rKind == reflect.Ptr && rVal.IsNil()) {
+	if rKind == reflect.Invalid || (rKind == reflect.Pointer && rVal.IsNil()) {
 		// Stop here
 		return res, nil
 	}
 	// Check if kind is supported
-	if rKind != reflect.Struct && rKind != reflect.Ptr {
+	if rKind != reflect.Struct && rKind != reflect.Pointer {
 		// No skip => Error
 		return nil, errors.NewInvalidInputError("projection must be an object")
 	}

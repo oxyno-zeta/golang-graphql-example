@@ -100,7 +100,7 @@ func validateProjectionOut(projectionOut any) error {
 	// Get projection type
 	projOutType := reflect.TypeOf(projectionOut)
 	// Check if projection out is a pointer
-	if projOutType.Kind() != reflect.Ptr {
+	if projOutType.Kind() != reflect.Pointer {
 		return errors.NewInvalidInputError("projection output must be a pointer to an object")
 	}
 	// Get projection out value

@@ -3,11 +3,12 @@
 package errors
 
 import (
-	gerrors "errors"
 	"reflect"
 	"testing"
 
 	"emperror.dev/errors"
+
+	gerrors "errors"
 )
 
 func TestNewLockedError(t *testing.T) {
@@ -18,14 +19,14 @@ func TestNewLockedError(t *testing.T) {
 		name       string
 		args       args
 		err        error
-		ext        map[string]interface{}
+		ext        map[string]any
 		statusCode int
 	}{
 		{
 			name:       "constructor",
 			args:       args{msg: "fake"},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "LOCKED"},
+			ext:        map[string]any{"code": "LOCKED"},
 			statusCode: 423,
 		},
 	}
@@ -56,21 +57,21 @@ func TestNewLockedErrorWithError(t *testing.T) {
 		name       string
 		args       args
 		err        error
-		ext        map[string]interface{}
+		ext        map[string]any
 		statusCode int
 	}{
 		{
 			name:       "constructor",
 			args:       args{err: errors.New("fake")},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "LOCKED"},
+			ext:        map[string]any{"code": "LOCKED"},
 			statusCode: 423,
 		},
 		{
 			name:       "constructor with golang error",
 			args:       args{err: gerrors.New("fake")},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "LOCKED"},
+			ext:        map[string]any{"code": "LOCKED"},
 			statusCode: 423,
 		},
 	}

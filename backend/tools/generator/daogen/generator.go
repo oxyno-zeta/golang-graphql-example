@@ -118,7 +118,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 		if m.DisabledMethods == nil || !m.DisabledMethods.FindOne {
 			f.Func().Params(jen.Id("d").Op("*").Id(getDaoStructureName(v))).
 				Id("FindOne" + m.StructureName).
-				Add(findOneParamsAndReturns(m,neededPackages)).Block(jen.Return(
+				Add(findOneParamsAndReturns(m, neededPackages)).Block(jen.Return(
 				jen.Qual(neededPackages.Helpers, "FindOne").Params(
 					jen.Id("ctx"),
 					jen.Op("&").Qual(m.Package, m.StructureName).Values(),
@@ -249,7 +249,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 						jen.Id("ctx"),
 						jen.Id("input"),
 						jen.Id("d.db"),
-					jen.Id("opts").Op("..."),
+						jen.Id("opts").Op("..."),
 					),
 				),
 			).Line()
@@ -297,7 +297,7 @@ func generateStructureMethods(f *jen.File, v *DaoCfg, neededPackages *NeededPack
 						jen.Id("input"),
 						jen.Id("patch"),
 						jen.Id("d.db"),
-					jen.Id("opts").Op("..."),
+						jen.Id("opts").Op("..."),
 					),
 				),
 			).Line()

@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	NeededPackages *NeededPackagesCfg `validate:"required" yaml:"neededPackages"`
+	NeededPackages *NeededPackagesCfg `validate:"required"             yaml:"neededPackages"`
 	Daos           []*DaoCfg          `validate:"required,unique=Path" yaml:"daos"`
 }
 
@@ -28,12 +28,12 @@ type DaoCfg struct {
 }
 
 type DaoModelCfg struct {
-	DisabledMethods         *DaoModelDisabledMethodsCfg `                    yaml:"disabledMethods"`
-	Package                 string                      `validate:"required" yaml:"package"`
-	StructureName           string                      `validate:"required" yaml:"structureName"`
-	ProjectionStructureName string                      `                    yaml:"projectionStructureName"`
-	SortOrderStructureName  string                      `                    yaml:"sortOrderStructureName"`
-	FilterStructureName     string                      `                    yaml:"filterStructureName"`
+	DisabledMethods         *DaoModelDisabledMethodsCfg `yaml:"disabledMethods"`
+	Package                 string                      `yaml:"package"                 validate:"required"`
+	StructureName           string                      `yaml:"structureName"           validate:"required"`
+	ProjectionStructureName string                      `yaml:"projectionStructureName"`
+	SortOrderStructureName  string                      `yaml:"sortOrderStructureName"`
+	FilterStructureName     string                      `yaml:"filterStructureName"`
 }
 
 type DaoModelDisabledMethodsCfg struct {

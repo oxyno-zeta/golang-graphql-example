@@ -18,6 +18,11 @@ import (
 	"testing"
 
 	"github.com/hasura/go-graphql-client"
+	"github.com/stretchr/testify/suite"
+	"go.uber.org/goleak"
+	"go.uber.org/mock/gomock"
+	"gorm.io/gorm/schema"
+
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authentication"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/authx/authorization"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business"
@@ -28,10 +33,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/signalhandler"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
-	"github.com/stretchr/testify/suite"
-	"go.uber.org/goleak"
-	"go.uber.org/mock/gomock"
-	"gorm.io/gorm/schema"
 )
 
 type GraphQLTestSuite struct {
@@ -168,7 +169,7 @@ func (suite *GraphQLTestSuite) AfterTest(suiteName, testName string) {
 }
 
 func (suite *GraphQLTestSuite) cleanDB() {
-	modelList := []interface{}{
+	modelList := []any{
 		&models.Todo{},
 	}
 
@@ -181,7 +182,7 @@ func (suite *GraphQLTestSuite) cleanDB() {
 	}
 }
 
-func (suite *GraphQLTestSuite) setupGenericDataset(dataset []interface{}) {
+func (suite *GraphQLTestSuite) setupGenericDataset(dataset []any) {
 	for _, it := range dataset {
 		suite.NoError(suite.db.GetGormDB().Save(it).Error)
 	}

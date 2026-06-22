@@ -56,14 +56,14 @@ func TestManageSimpleProjection(t *testing.T) {
 	}
 	type args struct {
 		fctx          *graphql.FieldContext
-		projectionOut interface{}
+		projectionOut any
 	}
 	tests := []struct {
 		name        string
 		args        args
 		wantErr     bool
 		errorString string
-		want        interface{}
+		want        any
 	}{
 		{
 			name: "nil case",
@@ -409,14 +409,14 @@ func TestManageConnectionNodeProjection(t *testing.T) {
 	}
 	type args struct {
 		fctx          *graphql.FieldContext
-		projectionOut interface{}
+		projectionOut any
 	}
 	tests := []struct {
 		name        string
 		args        args
 		wantErr     bool
 		errorString string
-		want        interface{}
+		want        any
 	}{
 		{
 			name: "nil case",

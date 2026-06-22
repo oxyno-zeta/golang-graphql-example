@@ -3,11 +3,12 @@
 package errors
 
 import (
-	gerrors "errors"
 	"reflect"
 	"testing"
 
 	"emperror.dev/errors"
+
+	gerrors "errors"
 )
 
 func TestNewInternalServerError(t *testing.T) {
@@ -18,14 +19,14 @@ func TestNewInternalServerError(t *testing.T) {
 		name       string
 		args       args
 		err        error
-		ext        map[string]interface{}
+		ext        map[string]any
 		statusCode int
 	}{
 		{
 			name:       "constructor",
 			args:       args{msg: "fake"},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "INTERNAL_SERVER_ERROR"},
+			ext:        map[string]any{"code": "INTERNAL_SERVER_ERROR"},
 			statusCode: 500,
 		},
 	}
@@ -56,21 +57,21 @@ func TestNewInternalServerErrorWithError(t *testing.T) {
 		name       string
 		args       args
 		err        error
-		ext        map[string]interface{}
+		ext        map[string]any
 		statusCode int
 	}{
 		{
 			name:       "constructor",
 			args:       args{err: errors.New("fake")},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "INTERNAL_SERVER_ERROR"},
+			ext:        map[string]any{"code": "INTERNAL_SERVER_ERROR"},
 			statusCode: 500,
 		},
 		{
 			name:       "constructor with golang error",
 			args:       args{err: gerrors.New("fake")},
 			err:        errors.New("fake"),
-			ext:        map[string]interface{}{"code": "INTERNAL_SERVER_ERROR"},
+			ext:        map[string]any{"code": "INTERNAL_SERVER_ERROR"},
 			statusCode: 500,
 		},
 	}
