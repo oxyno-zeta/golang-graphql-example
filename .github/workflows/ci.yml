@@ -19,7 +19,7 @@ jobs:
       frontend: ${{ steps.filter.outputs.frontend }}
       ci: ${{ steps.filter.outputs.ci }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: dorny/paths-filter@v4
         id: filter
         with:
@@ -49,7 +49,7 @@ jobs:
     needs:
       - changes
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run Report
         id: report
         uses: bearer/bearer-action@v2
@@ -61,7 +61,7 @@ jobs:
     needs:
       - changes
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-go@v6
         with:
           go-version: "^1.26.0"
@@ -97,7 +97,7 @@ jobs:
       - changes
       - backend-lint
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-go@v6
         with:
           go-version: "^1.26.0"
@@ -116,7 +116,7 @@ jobs:
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-go@v6
         with:
           go-version: "^1.26.0"
@@ -132,7 +132,7 @@ jobs:
     env:
       DEFAULT_CONTAINER_RUNTIME: docker
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-go@v6
         with:
           go-version: "^1.26.0"
@@ -165,7 +165,7 @@ jobs:
     needs:
       - changes
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -180,7 +180,7 @@ jobs:
       - changes
       - frontend-lint
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -195,7 +195,7 @@ jobs:
       - changes
       - frontend-lint
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -211,7 +211,7 @@ jobs:
       - changes
       - frontend-lint
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
           node-version: 24
