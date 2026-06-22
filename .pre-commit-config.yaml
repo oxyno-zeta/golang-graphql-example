@@ -105,3 +105,19 @@ repos:
         require_serial: false
         language: script
         pass_filenames: false
+      - id: graphql-check-sync-dirs
+        stages: [pre-commit]
+        name: Enforce changes in server and tools/graphql-inspector when graphql folder is modified
+        entry: .pre-commit/check_sync_dirs.py
+        language: python
+        pass_filenames: true
+        require_serial: true
+        args:
+          - --destination-logic=AND
+          # Use ^ to anchor to the beginning of the file path.
+          # Escape special regex characters like dots (\.) if necessary.
+          - --source=^backend/graphql/.*
+          - --destination=^backend/pkg/.*/server/graphql/.*
+          - --destination=^backend/tools/graphql-inspector/.*
+          # Example of matching a specific file type anywhere in a folder:
+          # - --source=^app/.*\.py$
