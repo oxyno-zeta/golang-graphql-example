@@ -65,17 +65,17 @@ PGADMIN_VERSION := "9.15.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.12.0"
+PROMETHEUS_VERSION := "v3.13.0"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "13.0.2"
+GRAFANA_VERSION := "13.1.0"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "3.0.2"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.17.1"
+OPA_VERSION := "1.18.2"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.6.3"
+KEYCLOAK_VERSION := "26.6.4"
 # renovate: datasource=docker depName=rabbitmq
 RABBITMQ_VERSION := "4.3.2"
 
@@ -287,7 +287,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.92
+	$(GO) install github.com/99designs/gqlgen@v0.17.93
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
@@ -295,7 +295,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.44.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.47.0
 endif
 
 .PHONY: setup/dep/test/install
