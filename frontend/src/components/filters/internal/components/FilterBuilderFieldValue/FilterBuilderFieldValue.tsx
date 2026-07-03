@@ -211,7 +211,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           let optionValue: string | number = inputValue;
           // Check if input is a number to parse input value
           if (operation.inputType === 'number') {
-            optionValue = Number.parseFloat(inputValue);
+            optionValue = Number(inputValue);
           }
 
           // Return new option
@@ -321,7 +321,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
             // ? If parsing is ok, save this value
             // ? If not, saving string and log error
             try {
-              onChange(Number.parseFloat(event.target.value));
+              onChange(Number(event.target.value));
 
               return;
             } catch (err) {

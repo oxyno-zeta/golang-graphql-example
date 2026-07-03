@@ -29,13 +29,14 @@ function buildLogoutURL(signOutURLString: string, oidcClientID: string) {
   // Workaround to have code ready
   if (signOutURLString !== '' && oidcClientID !== '') {
     // Encode current origin (aka http://DOMAIN_INCLUDING_PORTS)
-    const currentEncodedURI = encodeURIComponent(globalThis.location.origin);
+    // eslint-disable-next-line no-restricted-globals
+    const currentEncodedURI = encodeURIComponent(location.origin);
 
     signOutURL.searchParams.set('post_logout_redirect_uri', currentEncodedURI);
     signOutURL.searchParams.set('client_id', currentEncodedURI);
   }
   // Encode it
-  const targetEncodedURI = encodeURIComponent(signOutURL.toString());
+  const targetEncodedURI = encodeURIComponent(signOutURL.href);
 
   // Create final URL
   return `/oauth2/sign_out?rd=${targetEncodedURI}`;

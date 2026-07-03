@@ -43,7 +43,7 @@ export function requiredInputIntegerValidate(value: undefined | null | string | 
 
   // Check if there is a value that isn't a real integer
   const hasInvalid = values.some((v) => {
-    const n = Number.parseFloat(v as string);
+    const n = Number(v);
     return Number.isNaN(n) || !Number.isInteger(n);
   });
 

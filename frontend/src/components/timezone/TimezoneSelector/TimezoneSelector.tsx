@@ -174,7 +174,7 @@ function TimezoneSelector({
       clearText={t('common.clearAction')}
       closeText={t('common.closeAction')}
       disableListWrap
-      groupBy={(option) => option.split('/')[0]}
+      groupBy={(option) => option.split('/', 1)[0]}
       noOptionsText={t('common.filter.noOptions')}
       onChange={(event, input) => {
         // Check if input exists

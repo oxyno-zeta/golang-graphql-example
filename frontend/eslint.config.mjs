@@ -103,6 +103,20 @@ export default defineConfig(
       'unicorn/prefer-ternary': 'off',
       'unicorn/prefer-at': 'off',
       'unicorn/no-negated-condition': 'off',
+      'unicorn/prefer-await': 'off',
+      'unicorn/no-for-each': 'off',
+      'unicorn/no-useless-template-literals': 'off',
+      'unicorn/no-unreadable-object-destructuring': 'off',
+    },
+  },
+  {
+    files: ['**/*.{test,stories}.{ts,tsx}'],
+    rules: {
+      // A bit useless on test/stories files
+      'unicorn/better-dom-traversing': 'off',
+      // A bit useless on test/stories files
+      'unicorn/no-top-level-side-effects': 'off',
+      'unicorn/no-global-object-property-assignment': 'off',
     },
   },
 

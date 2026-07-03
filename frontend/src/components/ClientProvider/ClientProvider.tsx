@@ -2,8 +2,8 @@ import React, { useContext, type ReactNode } from 'react';
 import { ApolloClient, InMemoryCache, ServerError, ApolloLink, HttpLink } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
 import { ErrorLink } from '@apollo/client/link/error';
-import { type ConfigModel } from '~models/config';
 import { Observable } from 'rxjs';
+import { type ConfigModel } from '~models/config';
 import ConfigContext from '../../contexts/ConfigContext';
 import { fromApolloContextErrorToWithTraceError } from '../../utils/WithTraceError';
 
@@ -42,7 +42,8 @@ function generateClient(cfg: ConfigModel) {
   const errorLink = new ErrorLink(({ error }) => {
     // Check if error that is coming from server and it is an unauthorized status code.
     if (ServerError.is(error) && error.statusCode === 401) {
-      globalThis.location.reload();
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
     }
   });
 

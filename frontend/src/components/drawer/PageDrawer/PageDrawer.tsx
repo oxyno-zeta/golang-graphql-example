@@ -93,8 +93,8 @@ function PageDrawer({
   );
 
   function handleMouseDown() {
-    document.addEventListener('mouseup', handleMouseUp, true);
-    document.addEventListener('mousemove', handleMouseMove, true);
+    document.addEventListener('mouseup', handleMouseUp, { capture: true });
+    document.addEventListener('mousemove', handleMouseMove, { capture: true });
   }
 
   function handleMouseUp() {

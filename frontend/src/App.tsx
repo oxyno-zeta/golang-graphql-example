@@ -17,7 +17,10 @@ function App() {
   return (
     <Suspense fallback={<MainPageCenterLoading />}>
       <ConfigProvider loadingComponent={<MainPageCenterLoading />}>
-        <ErrorBoundary FallbackComponent={FallbackErrorBoundary}>
+        <ErrorBoundary
+          // eslint-disable-next-line react/no-unstable-nested-components
+          fallbackRender={({ error }) => <FallbackErrorBoundary error={error as Error} />}
+        >
           <ClientProvider>
             <ThemeProvider themeOptions={{}}>
               <TimezoneProvider>

@@ -127,7 +127,7 @@ export const WithTopBarAndRightMenu: StoryFn<typeof ContentDisplayDrawer> = func
                         secondary="Sub menu"
                         sx={listItemTextSx}
                         slotProps={{
-                          secondary: { noWrap: true, fontSize: 12, lineHeight: '16px' },
+                          secondary: { noWrap: true },
                         }}
                       />
                     </ListItemButton>

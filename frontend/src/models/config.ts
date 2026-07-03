@@ -17,5 +17,6 @@ export interface ConfigModel {
 
 export const defaultConfig: ConfigModel = {
   graphqlEndpoint: '/api/graphql',
-  configCookieDomain: globalThis.location.hostname,
+  // eslint-disable-next-line no-restricted-globals
+  configCookieDomain: location.hostname,
 };

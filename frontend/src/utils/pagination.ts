@@ -85,7 +85,7 @@ export function getPaginationFromSearchParams(
   if (firstStr !== '' && after !== '') {
     try {
       // Parsed first
-      let first = Number.parseInt(firstStr, 10);
+      let first = Math.trunc(Number(firstStr));
       // Check if parsed as NaN
       if (Number.isNaN(first)) {
         // Cannot be parsed
@@ -119,7 +119,7 @@ export function getPaginationFromSearchParams(
   if (lastStr !== '' && before !== '') {
     try {
       // Parsed last
-      let last = Number.parseInt(lastStr, 10);
+      let last = Math.trunc(Number(lastStr));
       // Check if parsed as NaN
       if (Number.isNaN(last)) {
         // Cannot be parsed

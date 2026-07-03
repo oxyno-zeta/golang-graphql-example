@@ -44,7 +44,7 @@ describe('filters/internal/FilterForm', () => {
   let randomCount = 0;
 
   beforeEach(() => {
-    vi.spyOn(globalThis.Math, 'random').mockImplementation(() => {
+    vi.spyOn(Math, 'random').mockImplementation(() => {
       randomCount += 0.0001;
 
       return randomCount;
@@ -52,7 +52,7 @@ describe('filters/internal/FilterForm', () => {
   });
 
   afterEach(() => {
-    vi.spyOn(globalThis.Math, 'random').mockRestore();
+    vi.spyOn(Math, 'random').mockRestore();
     randomCount = 0;
   });
 

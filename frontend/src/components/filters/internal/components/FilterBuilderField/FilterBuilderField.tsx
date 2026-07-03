@@ -110,14 +110,16 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           noOptionsText={t('common.filter.noOptions')}
           onChange={(input, newValue) => {
             // Check if value isn't the same as actual
-            if (newValue !== selectedField) {
-              // Set new value
-              setSelectedField(newValue || '');
-              // Force flush operation
-              setSelectedOperation('');
-              // Flush value
-              setValue(undefined);
+            if (newValue === selectedField) {
+              return;
             }
+
+            // Set new value
+            setSelectedField(newValue || '');
+            // Force flush operation
+            setSelectedOperation('');
+            // Flush value
+            setValue(undefined);
           }}
           openText={t('common.openAction')}
           options={fieldKeys}
@@ -195,14 +197,16 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
             noOptionsText={t('common.filter.noOptions')}
             onChange={(input, newValue) => {
               // Check if value isn't the same as actual
-              if (newValue !== selectedOperation) {
-                // Set new value
-                setSelectedOperation(newValue || '');
+              if (newValue === selectedOperation) {
+                return;
+              }
 
-                if (newValue !== null) {
-                  // Reset value
-                  setValue(selectedFieldData.operations[newValue].initialValue);
-                }
+              // Set new value
+              setSelectedOperation(newValue || '');
+
+              if (newValue !== null) {
+                // Reset value
+                setValue(selectedFieldData.operations[newValue].initialValue);
               }
             }}
             openText={t('common.openAction')}
