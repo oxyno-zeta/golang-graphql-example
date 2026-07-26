@@ -62,7 +62,7 @@ jobs:
       - changes
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: "^1.26.0"
       - uses: golangci/golangci-lint-action@v9
@@ -98,7 +98,7 @@ jobs:
       - backend-lint
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: "^1.26.0"
       - run: cd backend && make code/build
@@ -117,7 +117,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v4
       - uses: actions/checkout@v7
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: "^1.26.0"
       - run: cd backend && make code/build-cross
@@ -133,7 +133,7 @@ jobs:
       DEFAULT_CONTAINER_RUNTIME: docker
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-go@v6
+      - uses: actions/setup-go@v7
         with:
           go-version: "^1.26.0"
       - run: |
