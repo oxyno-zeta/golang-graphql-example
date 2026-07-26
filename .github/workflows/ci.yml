@@ -166,7 +166,7 @@ jobs:
       - changes
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
       - run: cd frontend && yarn install --frozen-lockfile
@@ -181,7 +181,7 @@ jobs:
       - frontend-lint
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
       - run: cd frontend && yarn install --frozen-lockfile
@@ -196,7 +196,7 @@ jobs:
       - frontend-lint
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
       - run: cd frontend && yarn install --frozen-lockfile
@@ -212,7 +212,7 @@ jobs:
       - frontend-lint
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
       - run: cd frontend && yarn install --frozen-lockfile
