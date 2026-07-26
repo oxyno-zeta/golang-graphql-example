@@ -269,6 +269,8 @@ setup/services: down/services
 .PHONY: setup/test/integration
 setup/test/integration:
 	$(DEFAULT_CONTAINER_RUNTIME) run --rm --network=host --name postgres-integration-setup -e PGHOST=localhost -e PGUSER=postgres -e PGPASSWORD=postgres -e PGDATABASE=postgres postgres:$(POSTGRESQL_VERSION) psql -c 'CREATE DATABASE "postgres-integration"' || true
+	$(DEFAULT_CONTAINER_RUNTIME) exec rabbitmq rabbitmqctl add_vhost integration || true
+	$(DEFAULT_CONTAINER_RUNTIME) exec rabbitmq rabbitmqctl set_permissions_globally guest '.*' '.*' '.*' || true
 
 .PHONY: setup/dep/all/install
 setup/dep/all/install: setup/dep/lint/install setup/dep/gen/install setup/dep/test/install setup/dep/build/install setup/dep/air/install
