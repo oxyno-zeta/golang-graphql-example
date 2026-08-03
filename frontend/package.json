@@ -27,7 +27,7 @@
     "react-error-boundary": "6.1.2",
     "react-hook-form": "7.80.0",
     "react-i18next": "17.0.8",
-    "react-router": "8.1.0",
+    "react-router": "8.3.0",
     "react-window": "2.2.7",
     "rxjs": "7.8.2",
     "universal-cookie": "7.1.4",
