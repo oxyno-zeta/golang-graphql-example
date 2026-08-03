@@ -1522,6 +1522,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
   padding: 8px 0;
   max-height: 40vh;
   overflow: auto;
+  isolation: isolate;
   position: relative;
 }
 
@@ -1914,6 +1915,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
   padding: 8px 0;
   max-height: 40vh;
   overflow: auto;
+  isolation: isolate;
   position: relative;
 }
 
@@ -2027,7 +2029,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
 <div
   class="MuiPopper-root MuiAutocomplete-popper emotion-0"
   role="presentation"
-  style="width: 0px;"
+  style="width: 0px; position: absolute; top: 0px; left: 0px; transform: translate(0px, 0px);"
 >
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"

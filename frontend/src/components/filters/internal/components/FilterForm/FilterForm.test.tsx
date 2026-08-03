@@ -263,7 +263,9 @@ describe('filters/internal/FilterForm', () => {
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
-    expect(onChange).toHaveBeenCalledWith({ text: { eq: 'fake', caseInsensitive: true } });
+    expect(onChange).toHaveBeenCalledWith({
+      text: { eq: 'fake', caseInsensitive: true },
+    });
 
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
@@ -286,7 +288,9 @@ describe('filters/internal/FilterForm', () => {
     expect(buttons).toHaveLength(2);
 
     fireEvent.change(inputElements[2], { target: { value: 'foo' } });
-    expect(onChange).toHaveBeenLastCalledWith({ text: { eq: 'foo', caseInsensitive: true } });
+    expect(onChange).toHaveBeenLastCalledWith({
+      text: { eq: 'foo', caseInsensitive: true },
+    });
   });
 
   it('should be ok to just display a simple field with multiples text values and should be able to change it', async () => {
@@ -302,7 +306,9 @@ describe('filters/internal/FilterForm', () => {
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
-    expect(onChange).toHaveBeenCalledWith({ text: { in: ['fake'], caseInsensitive: true } });
+    expect(onChange).toHaveBeenCalledWith({
+      text: { in: ['fake'], caseInsensitive: true },
+    });
 
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
@@ -376,6 +382,9 @@ describe('filters/internal/FilterForm', () => {
         expect(role3).toHaveTextContent(v.description);
       }
     });
+
+    inputElements[2].blur();
+    inputElements[2].focus();
     // Select value
     fireEvent.change(inputElements[2], { target: { value: 'false' } });
     fireEvent.keyDown(inputElements[2], { key: 'ArrowDown' });
@@ -422,6 +431,8 @@ describe('filters/internal/FilterForm', () => {
 
     expect(container).not.toHaveTextContent('common.fieldValidationError.required');
 
+    inputElements[2].blur();
+    inputElements[2].focus();
     // Select value
     fireEvent.change(inputElements[2], { target: { value: 'false' } });
     fireEvent.keyDown(inputElements[2], { key: 'ArrowDown' });
@@ -516,7 +527,9 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        initialFilter={{ AND: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }] }}
+        initialFilter={{
+          AND: [{ done: { eq: false } }, { text: { eq: 'foo', caseInsensitive: true } }],
+        }}
         onChange={onChange}
       />,
     );
@@ -546,7 +559,9 @@ describe('filters/internal/FilterForm', () => {
     const { container } = render(
       <FilterForm
         filterDefinitionModel={testFilterDefinitionObject}
-        initialFilter={{ AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }] }}
+        initialFilter={{
+          AND: [{ done: { eq: true } }, { text: { eq: 'foo', caseInsensitive: true } }],
+        }}
         onChange={onChange}
       />,
     );
@@ -636,7 +651,9 @@ describe('filters/internal/FilterForm', () => {
       AND: [
         { done: { eq: true } },
         { text: { eq: 'foo', caseInsensitive: true } },
-        { AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
+        {
+          AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }],
+        },
       ],
     });
   });
@@ -664,7 +681,9 @@ describe('filters/internal/FilterForm', () => {
       AND: [
         { done: { eq: true } },
         { text: { eq: 'foo', caseInsensitive: true } },
-        { AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
+        {
+          AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }],
+        },
       ],
     });
 
@@ -683,7 +702,9 @@ describe('filters/internal/FilterForm', () => {
       AND: [
         { done: { eq: true } },
         { text: { eq: 'foo', caseInsensitive: true } },
-        { OR: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
+        {
+          OR: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }],
+        },
       ],
     });
     expect(container).toMatchSnapshot();
@@ -712,7 +733,9 @@ describe('filters/internal/FilterForm', () => {
       AND: [
         { done: { eq: true } },
         { text: { eq: 'foo', caseInsensitive: true } },
-        { AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }] },
+        {
+          AND: [{ text: { notEq: 'bar', caseInsensitive: true } }, { text: { notEq: 'bar', caseInsensitive: true } }],
+        },
       ],
     });
 

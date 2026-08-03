@@ -316,6 +316,9 @@ describe('sorts/internal/SortForm', () => {
 
     const autocomplInputList = await findAllByRole('combobox');
 
+    autocomplInputList[1].blur();
+    autocomplInputList[1].focus();
+
     expect(fireEvent.change(autocomplInputList[1], { target: { value: 'DESC' } })).toBeTruthy();
     fireEvent.keyDown(autocomplInputList[1], { key: 'ArrowDown' });
     fireEvent.keyDown(autocomplInputList[1], { key: 'Enter' });
@@ -346,7 +349,14 @@ describe('sorts/internal/SortForm', () => {
 
     const autocomplInputList = await findAllByRole('combobox');
 
-    expect(fireEvent.change(autocomplInputList[0], { target: { value: 'common.fields.createdAt' } })).toBeTruthy();
+    autocomplInputList[0].blur();
+    autocomplInputList[0].focus();
+
+    expect(
+      fireEvent.change(autocomplInputList[0], {
+        target: { value: 'common.fields.createdAt' },
+      }),
+    ).toBeTruthy();
     fireEvent.keyDown(autocomplInputList[0], { key: 'ArrowDown' });
     fireEvent.keyDown(autocomplInputList[0], { key: 'Enter' });
 

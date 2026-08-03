@@ -246,10 +246,14 @@ exports[`HelpTooltipButton > should display element tooltip on mouse click 2`] =
 
 .MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
   transform-origin: right center;
+  -webkit-margin-end: 14px;
+  margin-inline-end: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
   transform-origin: left center;
+  -webkit-margin-start: 14px;
+  margin-inline-start: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="top"] .emotion-3 {
@@ -260,14 +264,6 @@ exports[`HelpTooltipButton > should display element tooltip on mouse click 2`] =
 .MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-3 {
   transform-origin: center top;
   margin-top: 14px;
-}
-
-.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
-  margin-right: 14px;
-}
-
-.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
-  margin-left: 14px;
 }
 
 <div>
@@ -560,10 +556,14 @@ exports[`HelpTooltipButton > should display element tooltip on mouse over only 2
 
 .MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
   transform-origin: right center;
+  -webkit-margin-end: 14px;
+  margin-inline-end: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
   transform-origin: left center;
+  -webkit-margin-start: 14px;
+  margin-inline-start: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="top"] .emotion-3 {
@@ -574,14 +574,6 @@ exports[`HelpTooltipButton > should display element tooltip on mouse over only 2
 .MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-3 {
   transform-origin: center top;
   margin-top: 14px;
-}
-
-.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
-  margin-right: 14px;
-}
-
-.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
-  margin-left: 14px;
 }
 
 <div>
@@ -1126,10 +1118,14 @@ exports[`HelpTooltipButton > should display text tooltip on mouse over only 2`] 
 
 .MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
   transform-origin: right center;
+  -webkit-margin-end: 14px;
+  margin-inline-end: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
   transform-origin: left center;
+  -webkit-margin-start: 14px;
+  margin-inline-start: 14px;
 }
 
 .MuiTooltip-popper[data-popper-placement*="top"] .emotion-3 {
@@ -1140,14 +1136,6 @@ exports[`HelpTooltipButton > should display text tooltip on mouse over only 2`] 
 .MuiTooltip-popper[data-popper-placement*="bottom"] .emotion-3 {
   transform-origin: center top;
   margin-top: 14px;
-}
-
-.MuiTooltip-popper[data-popper-placement*="left"] .emotion-3 {
-  margin-right: 14px;
-}
-
-.MuiTooltip-popper[data-popper-placement*="right"] .emotion-3 {
-  margin-left: 14px;
 }
 
 <div>

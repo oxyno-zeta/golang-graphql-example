@@ -119,6 +119,16 @@ export default defineConfig(
       'unicorn/no-global-object-property-assignment': 'off',
     },
   },
+  {
+    files: ['**/*.{test,stories}.{ts,tsx}'],
+    rules: {
+      // A bit useless on test/stories files
+      'unicorn/better-dom-traversing': 'off',
+      // A bit useless on test/stories files
+      'unicorn/no-top-level-side-effects': 'off',
+      'unicorn/no-global-object-property-assignment': 'off',
+    },
+  },
 
   /**
    * Airbnb Typescript
@@ -229,7 +239,9 @@ export default defineConfig(
       'react/forbid-component-props': 0,
       'import-x/no-extraneous-dependencies': [
         'error',
-        { devDependencies: ['**/*.test.{j,t}s*', '**/*.spec.{j,t}s*', '**/*.stories.{j,t}s*'] },
+        {
+          devDependencies: ['**/*.test.{j,t}s*', '**/*.spec.{j,t}s*', '**/*.stories.{j,t}s*'],
+        },
       ],
       'import-x/no-unresolved': 'error',
       'no-console': [0],
