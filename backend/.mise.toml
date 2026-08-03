@@ -1,6 +1,9 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tools]
+"node" = "26.6.0"
+"npm:oxfmt" = "0.62.0"
+pre-commit = '4.6.1'
 go = '1.26.4'
 golangci-lint = "2.12.2"
 # renovate: datasource=github-tags depName=gotestyourself/gotestsum
@@ -17,3 +20,6 @@ gotestsum = "1.13.0"
 "go:github.com/mitchellh/gox" = "v1.0.1"
 # renovate: datasource=github-tags depName=air-verse/air
 "go:github.com/air-verse/air" = "v1.65.3"
+
+[hooks]
+postinstall = "pre-commit install"

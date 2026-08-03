@@ -50,6 +50,15 @@ repos:
         stages: [pre-commit]
   - repo: local
     hooks:
+      - id: oxfmt
+        name: oxfmt
+        description: Formatter
+        entry: oxfmt
+        language: system
+        files: \.(md|mdx|json|yaml|yml|toml|xml)$
+        args: []
+        require_serial: false
+        stages: [pre-commit]
       - id: check-not-implemented
         stages: [pre-commit]
         name: Check "not implemented"
