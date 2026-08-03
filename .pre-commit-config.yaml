@@ -97,11 +97,11 @@ repos:
         require_serial: false
         language: script
         pass_filenames: false
-      - id: frontend-prettier
+      - id: frontend-oxfmt
         stages: [pre-commit]
         files: \.(tsx|ts|js|jsx)$
-        name: Frontend Prettier
-        entry: ./run-sub-folder-task.sh frontend "yarn prettier"
+        name: Frontend Oxfmt
+        entry: ./run-sub-folder-task.sh frontend "yarn oxfmt"
         require_serial: false
         language: script
         pass_filenames: false
