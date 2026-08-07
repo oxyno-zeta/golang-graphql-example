@@ -34,10 +34,10 @@ require (
 	github.com/thoas/go-funk v0.9.3
 	github.com/vektah/gqlparser/v2 v2.5.36
 	github.com/xhit/go-simple-mail/v2 v2.16.0
-	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.69.0
-	go.opentelemetry.io/contrib/propagators/b3 v1.44.0
-	go.opentelemetry.io/contrib/propagators/jaeger v1.44.0
-	go.opentelemetry.io/contrib/propagators/ot v1.44.0
+	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.70.0
+	go.opentelemetry.io/contrib/propagators/b3 v1.45.0
+	go.opentelemetry.io/contrib/propagators/jaeger v1.45.0
+	go.opentelemetry.io/contrib/propagators/ot v1.45.0
 	go.opentelemetry.io/otel v1.45.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.45.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.45.0
