@@ -1,4 +1,4 @@
-package utils
+package graphqlutils
 
 // Pagination information.
 type PageInfo struct {

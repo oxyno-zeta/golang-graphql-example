@@ -10,6 +10,7 @@ import (
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
@@ -34,7 +35,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 // CloseTodo is the resolver for the closeTodo field.
 func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*models.Todo, error) {
 	// Manage relay id
-	bid, err := utils.FromIDRelay(todoID, mappers.TodoIDPrefix)
+	bid, err := graphqlutils.FromRelayID(mappers.TodoIDPrefix, todoID)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -59,7 +60,7 @@ func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model
 // UpdateTodo is the resolver for the updateTodo field.
 func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error) {
 	// Manage relay id
-	bid, err := utils.FromIDRelay(input.ID, mappers.TodoIDPrefix)
+	bid, err := graphqlutils.FromRelayID(mappers.TodoIDPrefix, input.ID)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -78,7 +79,7 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTo
 // Todos is the resolver for the todos field.
 func (r *queryResolver) Todos(ctx context.Context, after *string, before *string, first *int, last *int, sort *models.SortOrder, sorts []*models.SortOrder, filter *models.Filter) (*model.TodoConnection, error) {
 	// Create pagination input
-	pageInput, err := utils.GetPageInput(after, before, first, last)
+	pageInput, err := graphqlutils.GetPageInput(after, before, first, last)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -117,7 +118,7 @@ func (r *queryResolver) Todo(ctx context.Context, id string) (*models.Todo, erro
 		return nil, err
 	}
 
-	uuid, err := utils.FromIDRelay(id, mappers.TodoIDPrefix)
+	uuid, err := graphqlutils.FromRelayID(mappers.TodoIDPrefix, id)
 	// Check error
 	if err != nil {
 		return nil, err

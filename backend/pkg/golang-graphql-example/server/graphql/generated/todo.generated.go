@@ -11,6 +11,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 	"github.com/vektah/gqlparser/v2/ast"
@@ -261,8 +262,8 @@ func (ec *executionContext) _TodoConnection_pageInfo(ctx context.Context, field 
 			return obj.PageInfo, nil
 		},
 		nil,
-		func(ctx context.Context, selections ast.SelectionSet, v *utils.PageInfo) graphql.Marshaler {
-			return ec.marshalNPageInfo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐPageInfo(ctx, selections, v)
+		func(ctx context.Context, selections ast.SelectionSet, v *graphqlutils.PageInfo) graphql.Marshaler {
+			return ec.marshalNPageInfo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋcommonᚋgraphqlutilsᚐPageInfo(ctx, selections, v)
 		},
 		true,
 		true,

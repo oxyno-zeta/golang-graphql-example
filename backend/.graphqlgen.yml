@@ -4,7 +4,7 @@ packageName: graphqlgenerated
 neededPackages:
   gqlgenModelPackage: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model
   pagination: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination
-  graphqlUtils: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils
+  graphqlUtils: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils
 
 connections:
   - package: github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models

@@ -10,6 +10,7 @@ import (
 	"sync/atomic"
 
 	"github.com/99designs/gqlgen/graphql"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 	"github.com/vektah/gqlparser/v2/ast"
@@ -70,7 +71,7 @@ type StringFilterResolver interface {
 
 // region    **************************** field.gotpl *****************************
 
-func (ec *executionContext) _PageInfo_hasNextPage(ctx context.Context, field graphql.CollectedField, obj *utils.PageInfo) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_hasNextPage(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
 	return graphql.ResolveField(
 		ctx,
 		ec.OperationContext,
@@ -93,7 +94,7 @@ func (ec *executionContext) fieldContext_PageInfo_hasNextPage(_ context.Context,
 	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type Boolean does not have child fields"))
 }
 
-func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field graphql.CollectedField, obj *utils.PageInfo) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
 	return graphql.ResolveField(
 		ctx,
 		ec.OperationContext,
@@ -116,7 +117,7 @@ func (ec *executionContext) fieldContext_PageInfo_hasPreviousPage(_ context.Cont
 	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type Boolean does not have child fields"))
 }
 
-func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field graphql.CollectedField, obj *utils.PageInfo) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
 	return graphql.ResolveField(
 		ctx,
 		ec.OperationContext,
@@ -139,7 +140,7 @@ func (ec *executionContext) fieldContext_PageInfo_startCursor(_ context.Context,
 	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type String does not have child fields"))
 }
 
-func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graphql.CollectedField, obj *utils.PageInfo) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
 	return graphql.ResolveField(
 		ctx,
 		ec.OperationContext,
@@ -641,7 +642,7 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 
 var pageInfoImplementors = []string{"PageInfo"}
 
-func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet, obj *utils.PageInfo) graphql.Marshaler {
+func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet, obj *graphqlutils.PageInfo) graphql.Marshaler {
 	fields := graphql.CollectFields(ec.OperationContext, sel, pageInfoImplementors)
 
 	out := graphql.NewFieldSet(fields)
@@ -696,7 +697,7 @@ func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet,
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) marshalNPageInfo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋserverᚋgraphqlᚋutilsᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v *utils.PageInfo) graphql.Marshaler {
+func (ec *executionContext) marshalNPageInfo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋcommonᚋgraphqlutilsᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v *graphqlutils.PageInfo) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			graphql.AddErrorf(ctx, "the requested element is null which the schema does not allow")

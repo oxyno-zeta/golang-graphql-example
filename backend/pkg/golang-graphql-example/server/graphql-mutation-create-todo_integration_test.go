@@ -6,8 +6,8 @@ import (
 	"context"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	graphqlutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
 func (suite *GraphQLTestSuite) TestMutationCreateTodo() {
@@ -31,7 +31,7 @@ func (suite *GraphQLTestSuite) TestMutationCreateTodo() {
 	suite.Equal(m.Todo.Done, false)
 	suite.Equal(m.Todo.Text, "Fake !")
 	suite.NotEmpty(m.Todo.ID)
-	uuid, err := utils.FromIDRelay(string(m.Todo.ID), mappers.TodoIDPrefix)
+	uuid, err := graphqlutils.FromRelayID(string(m.Todo.ID), mappers.TodoIDPrefix)
 	suite.NoError(err)
 	suite.NotEmpty(uuid)
 

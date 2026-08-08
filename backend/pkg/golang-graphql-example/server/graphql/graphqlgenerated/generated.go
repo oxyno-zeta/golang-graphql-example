@@ -3,9 +3,9 @@ package graphqlgenerated
 
 import (
 	models0 "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
+	graphqlutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
 	pagination "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 	model "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
-	utils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
 
 func MapTodoConnection(list []*models0.Todo, pageOut *pagination.PageOutput) (*model.TodoConnection, error) {
@@ -16,7 +16,7 @@ func MapTodoConnection(list []*models0.Todo, pageOut *pagination.PageOutput) (*m
 	last := len(list) - 1
 
 	for i, v := range list {
-		cursor := utils.GetPaginateCursor(i, pageOut.Skip)
+		cursor := graphqlutils.GetPaginateCursor(i, pageOut.Skip)
 
 		if i == 0 {
 			startCursor = &cursor
@@ -34,7 +34,7 @@ func MapTodoConnection(list []*models0.Todo, pageOut *pagination.PageOutput) (*m
 
 	res := &model.TodoConnection{
 		Edges: edges,
-		PageInfo: &utils.PageInfo{
+		PageInfo: &graphqlutils.PageInfo{
 			EndCursor:       endCursor,
 			HasNextPage:     pageOut.HasNext,
 			HasPreviousPage: pageOut.HasPrevious,

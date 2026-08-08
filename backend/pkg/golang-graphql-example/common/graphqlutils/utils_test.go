@@ -1,6 +1,6 @@
 //go:build unit
 
-package utils
+package graphqlutils
 
 import (
 	"encoding/base64"
@@ -34,9 +34,10 @@ func Test_ToIDRelay(t *testing.T) {
 			want: base64.StdEncoding.EncodeToString([]byte("prefix:id")),
 		},
 	}
+	t.Parallel()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := ToIDRelay(tt.args.prefix, tt.args.id); got != tt.want {
+			if got := ToRelayID(tt.args.prefix, tt.args.id); got != tt.want {
 				t.Errorf("ToIDRelay() = %v, want %v", got, tt.want)
 			}
 		})
@@ -239,6 +240,7 @@ func TestGetPageInput(t *testing.T) {
 			errorString: "last must be used with before element",
 		},
 	}
+	t.Parallel()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := GetPageInput(tt.args.after, tt.args.before, tt.args.first, tt.args.last)
@@ -323,6 +325,7 @@ func Test_parsePaginateCursor(t *testing.T) {
 			want: 1,
 		},
 	}
+		t.Parallel()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := parsePaginateCursor(tt.args.cursorB64)
@@ -383,6 +386,7 @@ func Test_GetPaginateCursor(t *testing.T) {
 			want: base64.StdEncoding.EncodeToString([]byte("paginate:11")),
 		},
 	}
+		t.Parallel()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := GetPaginateCursor(tt.args.index, tt.args.skip); got != tt.want {
@@ -441,6 +445,7 @@ func Test_GetPageInfo(t *testing.T) {
 			},
 		},
 	}
+	t.Parallel()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := GetPageInfo(tt.args.startCursor, tt.args.endCursor, tt.args.p); !reflect.DeepEqual(got, tt.want) {

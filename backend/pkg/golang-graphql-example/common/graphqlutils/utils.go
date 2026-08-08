@@ -1,4 +1,4 @@
-package utils
+package graphqlutils
 
 import (
 	"encoding/base64"
@@ -13,18 +13,11 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 )
 
-const (
-	defaultMaxPageSize     = 50
-	defaultDefaultPageSize = 10
-	paginationIDPrefix     = "paginate"
-	relayIDSplitSize       = 2
-)
-
-func ToIDRelay(prefix, id string) string {
+func ToRelayID(prefix, id string) string {
 	return base64.StdEncoding.EncodeToString(fmt.Appendf(nil, "%s:%s", prefix, id))
 }
 
-func FromIDRelay(relayID, prefix string) (string, error) {
+func FromRelayID(prefix, relayID string) (string, error) {
 	// Base64 decode
 	idBb, err := base64.StdEncoding.DecodeString(relayID)
 	// Check error
@@ -40,7 +33,7 @@ func FromIDRelay(relayID, prefix string) (string, error) {
 	idContent := string(idBb)
 	// Split
 	sp := strings.Split(idContent, ":")
-	if len(sp) != relayIDSplitSize {
+	if len(sp) != RelayIDSplitSize {
 		return "", errors.NewInvalidInputError("format error on relay token")
 	}
 	// Check that first item of split is a good
@@ -52,7 +45,7 @@ func FromIDRelay(relayID, prefix string) (string, error) {
 }
 
 func GetPaginateCursor(tableIndex, skip int) string {
-	return ToIDRelay(paginationIDPrefix, strconv.Itoa(tableIndex+skip+1))
+	return ToRelayID(PaginationIDPrefix, strconv.Itoa(tableIndex+skip+1))
 }
 
 func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *PageInfo {
@@ -88,8 +81,8 @@ func GetPageInput(
 		before,
 		first,
 		last,
-		defaultMaxPageSize,
-		defaultDefaultPageSize,
+		DefaultMaxPageSize,
+		DefaultDefaultPageSize,
 	)
 }
 
@@ -174,7 +167,7 @@ func GetPageInputCustomized(
 
 	// Check limit
 	if res.Limit > maxPageSize {
-		errorText := fmt.Sprintf("first or last is too big, maximum is %d", defaultMaxPageSize)
+		errorText := fmt.Sprintf("first or last is too big, maximum is %d", DefaultMaxPageSize)
 
 		return nil, errors.NewInvalidInputError(
 			errorText,
@@ -191,7 +184,7 @@ func GetPageInputCustomized(
 }
 
 func parsePaginateCursor(cursorB64 string) (int, error) {
-	val, err := FromIDRelay(cursorB64, paginationIDPrefix)
+	val, err := FromRelayID(cursorB64, PaginationIDPrefix)
 	// Check error
 	if err != nil {
 		return 0, err

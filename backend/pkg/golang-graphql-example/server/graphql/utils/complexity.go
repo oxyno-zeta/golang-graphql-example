@@ -1,5 +1,7 @@
 package utils
 
+import graphqlutils "github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
+
 //
 // All calculation in here are based on: https://shopify.engineering/rate-limiting-graphql-apis-calculating-query-complexity
 //
@@ -43,7 +45,7 @@ func CalculateQueryConnectionComplexity(
 
 	// Check if size is size is empty
 	if size == 0 {
-		size = defaultDefaultPageSize
+		size = graphqlutils.DefaultDefaultPageSize
 	}
 
 	// Result

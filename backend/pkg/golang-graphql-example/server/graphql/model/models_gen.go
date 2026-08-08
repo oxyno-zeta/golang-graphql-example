@@ -4,7 +4,7 @@ package model
 
 import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/graphqlutils"
 )
 
 type Mutation struct {
@@ -18,8 +18,8 @@ type Query struct {
 }
 
 type TodoConnection struct {
-	Edges    []*TodoEdge     `json:"edges,omitempty"`
-	PageInfo *utils.PageInfo `json:"pageInfo"`
+	Edges    []*TodoEdge            `json:"edges,omitempty"`
+	PageInfo *graphqlutils.PageInfo `json:"pageInfo"`
 }
 
 type TodoEdge struct {
