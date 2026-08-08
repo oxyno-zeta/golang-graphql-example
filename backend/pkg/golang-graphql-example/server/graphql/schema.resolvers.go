@@ -15,7 +15,6 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/dataloaders/common"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/generated"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/graphqlgenerated"
-	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/mappers"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/model"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/server/graphql/utils"
 )
@@ -35,7 +34,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 // CloseTodo is the resolver for the closeTodo field.
 func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*models.Todo, error) {
 	// Manage relay id
-	bid, err := graphqlutils.FromRelayID(mappers.TodoIDPrefix, todoID)
+	bid, err := graphqlutils.FromRelayID(todos.TodoIDPrefix, todoID)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -60,7 +59,7 @@ func (r *mutationResolver) CloseTodo(ctx context.Context, todoID string) (*model
 // UpdateTodo is the resolver for the updateTodo field.
 func (r *mutationResolver) UpdateTodo(ctx context.Context, input *model.UpdateTodo) (*models.Todo, error) {
 	// Manage relay id
-	bid, err := graphqlutils.FromRelayID(mappers.TodoIDPrefix, input.ID)
+	bid, err := graphqlutils.FromRelayID(todos.TodoIDPrefix, input.ID)
 	// Check error
 	if err != nil {
 		return nil, err
@@ -118,7 +117,7 @@ func (r *queryResolver) Todo(ctx context.Context, id string) (*models.Todo, erro
 		return nil, err
 	}
 
-	uuid, err := graphqlutils.FromRelayID(mappers.TodoIDPrefix, id)
+	uuid, err := graphqlutils.FromRelayID(todos.TodoIDPrefix, id)
 	// Check error
 	if err != nil {
 		return nil, err

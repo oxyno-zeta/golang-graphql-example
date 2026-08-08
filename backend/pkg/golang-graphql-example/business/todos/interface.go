@@ -9,6 +9,8 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 )
 
+const TodoIDPrefix = "todos"
+
 //go:generate mockgen -destination=./mocks/mock_AuthorizationService.go -package=mocks github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos AuthorizationService
 type AuthorizationService interface {
 	CheckAuthorized(ctx context.Context, action, resource string) error
