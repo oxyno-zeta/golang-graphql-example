@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"emperror.dev/errors"
-	"github.com/gofrs/uuid"
+	"github.com/gofrs/uuid/v5"
 )
 
 type contextKey struct {

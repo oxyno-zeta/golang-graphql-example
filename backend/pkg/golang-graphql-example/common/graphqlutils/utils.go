@@ -45,7 +45,7 @@ func FromRelayID(prefix, relayID string) (string, error) {
 }
 
 func GetPaginateCursor(tableIndex, skip int) string {
-	return ToRelayID(PaginationIDPrefix, strconv.Itoa(tableIndex+skip+1))
+	return ToRelayID(strconv.Itoa(tableIndex+skip+1), PaginationIDPrefix)
 }
 
 func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *PageInfo {
@@ -184,7 +184,7 @@ func GetPageInputCustomized(
 }
 
 func parsePaginateCursor(cursorB64 string) (int, error) {
-	val, err := FromRelayID(cursorB64, PaginationIDPrefix)
+	val, err := FromRelayID(PaginationIDPrefix, cursorB64)
 	// Check error
 	if err != nil {
 		return 0, err

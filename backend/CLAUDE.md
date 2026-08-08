@@ -110,7 +110,7 @@ go test -tags=integration ./pkg/golang-graphql-example/... -run TestMySuite/Test
 | -------------------------- | ------------------------------------- |
 | `github.com/samber/lo`     | Functional helpers (map, filter, …)   |
 | `emperror.dev/errors`      | Error handling/wrapping               |
-| `github.com/gofrs/uuid`    | UUID generation                       |
+| `github.com/gofrs/uuid/v5` | UUID generation                       |
 | `cirello.io/pglock`        | PostgreSQL-backed distributed locking |
 | `go.uber.org/automaxprocs` | Auto GOMAXPROCS from cgroup limits    |
 

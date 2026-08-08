@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"emperror.dev/errors"
-	"github.com/gofrs/uuid"
+	"github.com/gofrs/uuid/v5"
 	"gorm.io/gorm"
 )
 

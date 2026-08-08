@@ -10,7 +10,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
 )
 
-func Test_ToIDRelay(t *testing.T) {
+func Test_ToRelayID(t *testing.T) {
 	type args struct {
 		prefix string
 		id     string
@@ -38,7 +38,7 @@ func Test_ToIDRelay(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := ToRelayID(tt.args.prefix, tt.args.id); got != tt.want {
-				t.Errorf("ToIDRelay() = %v, want %v", got, tt.want)
+				t.Errorf("ToRelayID() = %v, want %v", got, tt.want)
 			}
 		})
 	}
