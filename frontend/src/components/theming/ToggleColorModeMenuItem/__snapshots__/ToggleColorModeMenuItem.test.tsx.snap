@@ -191,7 +191,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
     <button
       aria-pressed="false"
       class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
-      tabindex="0"
+      tabindex="-1"
       type="button"
       value="light"
     >
@@ -403,7 +403,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
     <button
       aria-pressed="true"
       class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
-      tabindex="0"
+      tabindex="-1"
       type="button"
       value="light"
     >
@@ -615,7 +615,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
     <button
       aria-pressed="true"
       class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root Mui-selected MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
-      tabindex="0"
+      tabindex="-1"
       type="button"
       value="light"
     >
@@ -827,7 +827,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
     <button
       aria-pressed="false"
       class="MuiButtonBase-root MuiToggleButtonGroup-grouped MuiToggleButton-root MuiToggleButton-fullWidth MuiToggleButton-sizeSmall MuiToggleButton-standard MuiToggleButtonGroup-grouped MuiToggleButtonGroup-lastButton emotion-2"
-      tabindex="0"
+      tabindex="-1"
       type="button"
       value="light"
     >

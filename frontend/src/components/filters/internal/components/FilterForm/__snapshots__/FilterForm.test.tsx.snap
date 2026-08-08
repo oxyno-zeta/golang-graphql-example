@@ -823,7 +823,8 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -855,6 +856,10 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -2185,7 +2190,8 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -2217,6 +2223,10 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -3997,7 +4007,8 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -4029,6 +4040,10 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -5809,7 +5824,8 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-31.Mui-disabled {
@@ -5841,6 +5857,10 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
 
 .emotion-31.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-31.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-32 {
@@ -7718,7 +7738,8 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -7750,6 +7771,10 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -8324,7 +8349,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-20:focus::-ms-input-
   position: relative;
   border-radius: 4px;
   padding-left: 14px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-45.Mui-disabled {
@@ -8356,6 +8382,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-20:focus::-ms-input-
 
 .emotion-45.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-45.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-46 {
@@ -9844,7 +9874,8 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -9876,6 +9907,10 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -11730,7 +11765,8 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -11762,6 +11798,10 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -12559,7 +12599,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   overflow: auto;
 }
 
-.emotion-2 {
+.emotion-3 {
   list-style: none;
   margin: 0;
   padding: 8px 0;
@@ -12569,7 +12609,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   position: relative;
 }
 
-.emotion-2 .MuiAutocomplete-option {
+.emotion-3 .MuiAutocomplete-option {
   min-height: 48px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -12595,53 +12635,53 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 }
 
 @media (min-width:600px) {
-  .emotion-2 .MuiAutocomplete-option {
+  .emotion-3 .MuiAutocomplete-option {
     min-height: auto;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focused {
+.emotion-3 .MuiAutocomplete-option.Mui-focused {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option.Mui-focused {
+  .emotion-3 .MuiAutocomplete-option.Mui-focused {
     background-color: transparent;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-disabled="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-disabled="true"] {
   opacity: 0.38;
   pointer-events: none;
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option.Mui-focusVisible {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"] {
   background-color: rgba(25, 118, 210, 0.08);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
   background-color: rgba(25, 118, 210, 0.12);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+  .emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
     background-color: rgba(0, 0, 0, 0.08);
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
   background-color: rgba(25, 118, 210, 0.2);
 }
 
-.emotion-4 {
+.emotion-5 {
   display: block;
 }
 
-.emotion-5 {
+.emotion-6 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -12662,26 +12702,32 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="MuiAutocomplete-status emotion-2"
+      role="status"
+    />
     <ul
       aria-labelledby="undefineddone00-operation-label"
-      class="MuiAutocomplete-listbox emotion-2"
+      class="MuiAutocomplete-listbox emotion-3"
       id="undefineddone00-operation-listbox"
       role="listbox"
     >
       <li
         aria-disabled="false"
         aria-selected="true"
-        class="MuiAutocomplete-option MuiBox-root emotion-3 Mui-focused"
+        class="MuiAutocomplete-option MuiBox-root emotion-4 Mui-focused"
         data-option-index="0"
         id="undefineddone00-operation-option-0"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 700;"
@@ -12694,17 +12740,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="1"
         id="undefineddone00-operation-option-1"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -13558,7 +13604,8 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -13590,6 +13637,10 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -15303,7 +15354,8 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -15335,6 +15387,10 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -16043,7 +16099,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   overflow: auto;
 }
 
-.emotion-2 {
+.emotion-3 {
   list-style: none;
   margin: 0;
   padding: 8px 0;
@@ -16053,7 +16109,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   position: relative;
 }
 
-.emotion-2 .MuiAutocomplete-option {
+.emotion-3 .MuiAutocomplete-option {
   min-height: 48px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16079,53 +16135,53 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 }
 
 @media (min-width:600px) {
-  .emotion-2 .MuiAutocomplete-option {
+  .emotion-3 .MuiAutocomplete-option {
     min-height: auto;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focused {
+.emotion-3 .MuiAutocomplete-option.Mui-focused {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option.Mui-focused {
+  .emotion-3 .MuiAutocomplete-option.Mui-focused {
     background-color: transparent;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-disabled="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-disabled="true"] {
   opacity: 0.38;
   pointer-events: none;
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option.Mui-focusVisible {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"] {
   background-color: rgba(25, 118, 210, 0.08);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
   background-color: rgba(25, 118, 210, 0.12);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+  .emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
     background-color: rgba(0, 0, 0, 0.08);
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
   background-color: rgba(25, 118, 210, 0.2);
 }
 
-.emotion-4 {
+.emotion-5 {
   display: block;
 }
 
-.emotion-5 {
+.emotion-6 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -16146,26 +16202,32 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="MuiAutocomplete-status emotion-2"
+      role="status"
+    />
     <ul
       aria-labelledby="undefinedtext00-operation-label"
-      class="MuiAutocomplete-listbox emotion-2"
+      class="MuiAutocomplete-listbox emotion-3"
       id="undefinedtext00-operation-listbox"
       role="listbox"
     >
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="0"
         id="undefinedtext00-operation-option-0"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16178,17 +16240,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="1"
         id="undefinedtext00-operation-option-1"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16201,17 +16263,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="2"
         id="undefinedtext00-operation-option-2"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16224,17 +16286,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="3"
         id="undefinedtext00-operation-option-3"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16247,17 +16309,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="4"
         id="undefinedtext00-operation-option-4"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16270,17 +16332,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="5"
         id="undefinedtext00-operation-option-5"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16293,17 +16355,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="6"
         id="undefinedtext00-operation-option-6"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16316,17 +16378,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="7"
         id="undefinedtext00-operation-option-7"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16339,17 +16401,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="8"
         id="undefinedtext00-operation-option-8"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16362,17 +16424,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="9"
         id="undefinedtext00-operation-option-9"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16385,17 +16447,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="true"
-        class="MuiAutocomplete-option MuiBox-root emotion-3 Mui-focused"
+        class="MuiAutocomplete-option MuiBox-root emotion-4 Mui-focused"
         data-option-index="10"
         id="undefinedtext00-operation-option-10"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 700;"
@@ -16408,17 +16470,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="11"
         id="undefinedtext00-operation-option-11"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16454,7 +16516,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   overflow: auto;
 }
 
-.emotion-2 {
+.emotion-3 {
   list-style: none;
   margin: 0;
   padding: 8px 0;
@@ -16464,7 +16526,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   position: relative;
 }
 
-.emotion-2 .MuiAutocomplete-option {
+.emotion-3 .MuiAutocomplete-option {
   min-height: 48px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16490,53 +16552,53 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
 }
 
 @media (min-width:600px) {
-  .emotion-2 .MuiAutocomplete-option {
+  .emotion-3 .MuiAutocomplete-option {
     min-height: auto;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focused {
+.emotion-3 .MuiAutocomplete-option.Mui-focused {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option.Mui-focused {
+  .emotion-3 .MuiAutocomplete-option.Mui-focused {
     background-color: transparent;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-disabled="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-disabled="true"] {
   opacity: 0.38;
   pointer-events: none;
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option.Mui-focusVisible {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"] {
   background-color: rgba(25, 118, 210, 0.08);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
   background-color: rgba(25, 118, 210, 0.12);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+  .emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
     background-color: rgba(0, 0, 0, 0.08);
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
   background-color: rgba(25, 118, 210, 0.2);
 }
 
-.emotion-4 {
+.emotion-5 {
   display: block;
 }
 
-.emotion-5 {
+.emotion-6 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -16545,7 +16607,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   letter-spacing: 0.00938em;
 }
 
-.emotion-6 {
+.emotion-7 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -16569,26 +16631,32 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="MuiAutocomplete-status emotion-2"
+      role="status"
+    />
     <ul
       aria-labelledby="undefinedtext00-field-label"
-      class="MuiAutocomplete-listbox emotion-2"
+      class="MuiAutocomplete-listbox emotion-3"
       id="undefinedtext00-field-listbox"
       role="listbox"
     >
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="0"
         id="undefinedtext00-field-option-0"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -16597,7 +16665,7 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
             </span>
           </p>
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-6"
+            class="MuiTypography-root MuiTypography-body1 emotion-7"
           >
             longgggggggggggggggggggg description
           </p>
@@ -16606,17 +16674,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="true"
-        class="MuiAutocomplete-option MuiBox-root emotion-3 Mui-focused"
+        class="MuiAutocomplete-option MuiBox-root emotion-4 Mui-focused"
         data-option-index="1"
         id="undefinedtext00-field-option-1"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 700;"
@@ -16629,17 +16697,17 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3"
+        class="MuiAutocomplete-option MuiBox-root emotion-4"
         data-option-index="2"
         id="undefinedtext00-field-option-2"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -17918,7 +17986,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-28.Mui-disabled {
@@ -17950,6 +18019,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
 
 .emotion-28.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-28.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-29 {
@@ -18495,7 +18568,7 @@ exports[`filters/internal/FilterForm > should be ok to just display and select p
   overflow: auto;
 }
 
-.emotion-2 {
+.emotion-3 {
   list-style: none;
   margin: 0;
   padding: 8px 0;
@@ -18505,7 +18578,7 @@ exports[`filters/internal/FilterForm > should be ok to just display and select p
   position: relative;
 }
 
-.emotion-2 .MuiAutocomplete-option {
+.emotion-3 .MuiAutocomplete-option {
   min-height: 48px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -18531,53 +18604,53 @@ exports[`filters/internal/FilterForm > should be ok to just display and select p
 }
 
 @media (min-width:600px) {
-  .emotion-2 .MuiAutocomplete-option {
+  .emotion-3 .MuiAutocomplete-option {
     min-height: auto;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focused {
+.emotion-3 .MuiAutocomplete-option.Mui-focused {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option.Mui-focused {
+  .emotion-3 .MuiAutocomplete-option.Mui-focused {
     background-color: transparent;
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-disabled="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-disabled="true"] {
   opacity: 0.38;
   pointer-events: none;
 }
 
-.emotion-2 .MuiAutocomplete-option.Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option.Mui-focusVisible {
   background-color: rgba(0, 0, 0, 0.12);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"] {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"] {
   background-color: rgba(25, 118, 210, 0.08);
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
   background-color: rgba(25, 118, 210, 0.12);
 }
 
 @media (hover: none) {
-  .emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+  .emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focused {
     background-color: rgba(0, 0, 0, 0.08);
   }
 }
 
-.emotion-2 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
+.emotion-3 .MuiAutocomplete-option[aria-selected="true"].Mui-focusVisible {
   background-color: rgba(25, 118, 210, 0.2);
 }
 
-.emotion-4 {
+.emotion-5 {
   display: block;
 }
 
-.emotion-5 {
+.emotion-6 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -18598,26 +18671,32 @@ exports[`filters/internal/FilterForm > should be ok to just display and select p
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAutocomplete-paper emotion-1"
     style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
   >
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="MuiAutocomplete-status emotion-2"
+      role="status"
+    />
     <ul
       aria-labelledby="predefined-filters-label"
-      class="MuiAutocomplete-listbox emotion-2"
+      class="MuiAutocomplete-listbox emotion-3"
       id="predefined-filters-listbox"
       role="listbox"
     >
       <li
         aria-disabled="false"
         aria-selected="false"
-        class="MuiAutocomplete-option MuiBox-root emotion-3 Mui-focused Mui-focusVisible"
+        class="MuiAutocomplete-option MuiBox-root emotion-4 Mui-focused Mui-focusVisible"
         data-option-index="0"
         id="predefined-filters-option-0"
         role="option"
         tabindex="-1"
       >
         <div
-          class="MuiBox-root emotion-4"
+          class="MuiBox-root emotion-5"
         >
           <p
-            class="MuiTypography-root MuiTypography-body1 emotion-5"
+            class="MuiTypography-root MuiTypography-body1 emotion-6"
           >
             <span
               style="font-weight: 400;"
@@ -18892,7 +18971,8 @@ exports[`filters/internal/FilterForm > should be ok to just display and select p
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-4.Mui-disabled {
@@ -18924,6 +19004,10 @@ exports[`filters/internal/FilterForm > should be ok to just display and select p
 
 .emotion-4.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-4.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-5 {
@@ -21432,7 +21516,8 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -21464,6 +21549,10 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -22810,7 +22899,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -22842,6 +22932,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -24861,7 +24955,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -24893,6 +24988,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -27210,7 +27309,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -27242,6 +27342,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -29648,7 +29752,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -29680,6 +29785,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -32110,7 +32219,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -32142,6 +32252,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -34496,7 +34610,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -34528,6 +34643,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -37180,7 +37299,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -37212,6 +37332,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -39953,7 +40077,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -39985,6 +40110,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -42750,7 +42879,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -42782,6 +42912,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -45471,7 +45605,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -45503,6 +45638,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -48192,7 +48331,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -48224,6 +48364,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -50832,7 +50976,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -50864,6 +51009,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -52883,7 +53032,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -52915,6 +53065,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -55523,7 +55677,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -55555,6 +55710,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -58163,7 +58322,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -58195,6 +58355,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -60214,7 +60378,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -60246,6 +60411,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -62482,7 +62651,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -62514,6 +62684,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -64839,7 +65013,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -64871,6 +65046,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -67220,7 +67399,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -67252,6 +67432,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -69525,7 +69709,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -69557,6 +69742,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -71830,7 +72019,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -71862,6 +72052,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -73881,7 +74075,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -73913,6 +74108,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -75932,7 +76131,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -75964,6 +76164,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
@@ -77983,7 +78187,8 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   width: 100%;
   position: relative;
   border-radius: 4px;
-  padding-right: 14px;
+  --_trailingPad: 14px;
+  padding-right: var(--_trailingPad);
 }
 
 .emotion-19.Mui-disabled {
@@ -78015,6 +78220,10 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
 
 .emotion-19.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
+}
+
+.emotion-19.MuiSelect-root {
+  --_trailingPad: 0px;
 }
 
 .emotion-20 {
