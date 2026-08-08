@@ -3,11 +3,14 @@ package common
 import (
 	"fmt"
 	"reflect"
+	"strings"
 
 	"gorm.io/gorm"
 
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/common/errors"
 )
+
+const maxOptionsSplitLength = 2
 
 func ManageProjection(projection any, db *gorm.DB) (*gorm.DB, error) {
 	// Create result
@@ -45,6 +48,19 @@ func ManageProjection(projection any, db *gorm.DB) (*gorm.DB, error) {
 		fType := typeOfIndi.Field(i)
 		// Get tag on field
 		tagVal := fType.Tag.Get(dbColTagName)
+		// Try to split to get options
+		tagValSplit := strings.Split(tagVal, ";")
+		// Too much options check
+		if len(tagValSplit) > maxOptionsSplitLength {
+			return nil, errors.NewInvalidInputError(fmt.Sprintf("field %s with too much options in tag %s", fType.Name, dbColTagName))
+		}
+		// Override tag if needed and save tag options
+		options := make([]string, 0)
+		// Manage save of possible options
+		if len(tagValSplit) > 1 {
+			tagVal = tagValSplit[0]
+			options = tagValSplit[1:]
+		}
 		// Check that field have a tag set and correct
 		if tagVal == "" || tagVal == "-" {
 			// Skip this value
@@ -62,6 +78,20 @@ func ManageProjection(projection any, db *gorm.DB) (*gorm.DB, error) {
 		val := fVal.Interface()
 		// Cast it to boolean
 		v, _ := val.(bool)
+
+		// Check if option is present
+		// ? Note: We can work like this today because we only have 1 option
+		if len(options) != 0 {
+			// Get option
+			option := options[0]
+			// Check if it is the always fetch option
+			if option != dbTagValueAlwaysFetch {
+				return nil, errors.NewInvalidInputError(fmt.Sprintf("field %s unsupported option in tag %s", fType.Name, dbColTagName))
+			}
+
+			// Force fetch and so override possible value
+			v = true
+		}
 
 		// Manage projection if enabled
 		if v {

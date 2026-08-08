@@ -32,6 +32,21 @@ func TestManageProjection(t *testing.T) {
 		Field2 bool `dbfield:"field2"`
 		Field3 bool `dbfield:"field3"`
 	}
+	type Proj6 struct {
+		Field1 bool `dbfield:"field1;alwaysFetch"`
+		Field2 bool `dbfield:"field2"`
+		Field3 bool `dbfield:"field3"`
+	}
+	type Proj7 struct {
+		Field1 bool `dbfield:"-;alwaysFetch"`
+		Field2 bool `dbfield:"field2"`
+		Field3 bool `dbfield:"field3"`
+	}
+	type Proj8 struct {
+		Field1 bool `dbfield:";alwaysFetch"`
+		Field2 bool `dbfield:"field2"`
+		Field3 bool `dbfield:"field3"`
+	}
 	type args struct {
 		projection any
 	}
@@ -106,7 +121,52 @@ func TestManageProjection(t *testing.T) {
 			},
 			expectedIntermediateQuery: "field1,field2,field3",
 		},
+		{
+			name: "multiple field in projection with all fields set and always fetch",
+			args: args{
+				projection: &Proj6{
+					Field1: true,
+					Field2: true,
+					Field3: true,
+				},
+			},
+			expectedIntermediateQuery: "field1,field2,field3",
+		},
+		{
+			name: "multiple field in projection without all fields set but always fetch is present",
+			args: args{
+				projection: &Proj6{
+					Field1: false,
+					Field2: true,
+					Field3: false,
+				},
+			},
+			expectedIntermediateQuery: "field1,field2",
+		},
+		{
+			name: "always fetch on a dash tag value",
+			args: args{
+				projection: &Proj7{
+					Field1: false,
+					Field2: true,
+					Field3: false,
+				},
+			},
+			expectedIntermediateQuery: "field2",
+		},
+		{
+			name: "always fetch on an empty tag value",
+			args: args{
+				projection: &Proj8{
+					Field1: false,
+					Field2: true,
+					Field3: false,
+				},
+			},
+			expectedIntermediateQuery: "field2",
+		},
 	}
+	t.Parallel()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			sqlDB, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))

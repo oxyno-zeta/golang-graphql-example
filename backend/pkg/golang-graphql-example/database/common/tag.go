@@ -1,3 +1,6 @@
 package common
 
-const dbColTagName = "dbfield"
+const (
+	dbColTagName          string = "dbfield"
+	dbTagValueAlwaysFetch string = "alwaysFetch"
+)
