@@ -171,18 +171,18 @@ function TimezoneSelector({
 
   return (
     <Autocomplete
-      clearText={t('common.clearAction')}
-      closeText={t('common.closeAction')}
+      clearText={t('common:clearAction')}
+      closeText={t('common:closeAction')}
       disableListWrap
       groupBy={(option) => option.split('/', 1)[0]}
-      noOptionsText={t('common.filter.noOptions')}
+      noOptionsText={t('common:filter.noOptions')}
       onChange={(event, input) => {
         // Check if input exists
         if (input) {
           setTimezone(input);
         }
       }}
-      openText={t('common.openAction')}
+      openText={t('common:openAction')}
       options={availableTimezones}
       renderGroup={(params) => {
         const res: GroupModel<string, string> = {
@@ -194,7 +194,7 @@ function TimezoneSelector({
         // TODO: Post React 18 update - validate this conversion, look like a hidden bug
         return res as unknown as ReactNode;
       }}
-      renderInput={(params) => <TextField {...params} label={t('common.timezone')} />}
+      renderInput={(params) => <TextField {...params} label={t('common:timezone')} />}
       renderOption={(props, option, state) => {
         const res: ItemModel<string> = {
           type: 'item',

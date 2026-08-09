@@ -106,7 +106,7 @@ function FilterSearchBar<T extends FilterValueObject>({
         value={value}
       />
       <Divider orientation="vertical" sx={{ height: 28 }} />
-      <Tooltip title={<>{t('common.filter.buttonTooltip')}</>}>
+      <Tooltip title={<>{t('common:filter.buttonTooltip')}</>}>
         <Button
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
           onClick={onClick}

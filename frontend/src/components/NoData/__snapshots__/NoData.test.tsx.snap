@@ -24,7 +24,7 @@ exports[`NoData > should display no data 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body1 emotion-0"
   >
-    common.noData
+    common:noData
   </p>
 </div>
 `;
@@ -53,7 +53,7 @@ exports[`NoData > should display no data with specific variant 1`] = `
   <p
     class="MuiTypography-root MuiTypography-body2 emotion-0"
   >
-    common.noData
+    common:noData
   </p>
 </div>
 `;

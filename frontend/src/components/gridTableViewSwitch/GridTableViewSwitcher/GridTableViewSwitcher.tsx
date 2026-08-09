@@ -27,7 +27,7 @@ function GridTableViewSwitcher({ buttonGroupProps = {}, tableButtonProps = {}, g
       variant="outlined"
       {...buttonGroupProps}
     >
-      <Tooltip title={<>{t('common.tableViewTooltip')}</>}>
+      <Tooltip title={<>{t('common:tableViewTooltip')}</>}>
         <Button
           color="inherit"
           onClick={() => {
@@ -48,7 +48,7 @@ function GridTableViewSwitcher({ buttonGroupProps = {}, tableButtonProps = {}, g
           </SvgIcon>
         </Button>
       </Tooltip>
-      <Tooltip title={<>{t('common.gridViewTooltip')}</>}>
+      <Tooltip title={<>{t('common:gridViewTooltip')}</>}>
         <Button
           color="inherit"
           onClick={() => {

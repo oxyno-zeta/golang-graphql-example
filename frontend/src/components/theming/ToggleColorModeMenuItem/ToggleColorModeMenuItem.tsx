@@ -26,7 +26,7 @@ function ToggleColorModeMenuItem({ titleStyle = { fontSize: 13, marginBottom: '2
 
   return (
     <>
-      <Typography style={titleStyle}>{t('common.themeTitle')}</Typography>
+      <Typography style={titleStyle}>{t('common:themeTitle')}</Typography>
       <ToggleButtonGroup
         exclusive
         fullWidth
@@ -40,13 +40,13 @@ function ToggleColorModeMenuItem({ titleStyle = { fontSize: 13, marginBottom: '2
           <SvgIcon sx={{ marginRight: '5px' }}>
             <path d={mdiBrightness2} />
           </SvgIcon>{' '}
-          {t('common.darkThemeSelector')}
+          {t('common:darkThemeSelector')}
         </ToggleButton>
         <ToggleButton value="light">
           <SvgIcon sx={{ marginRight: '5px' }}>
             <path d={mdiBrightness7} />
           </SvgIcon>{' '}
-          {t('common.lightThemeSelector')}
+          {t('common:lightThemeSelector')}
         </ToggleButton>
       </ToggleButtonGroup>
     </>

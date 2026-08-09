@@ -98,7 +98,7 @@ function FilterPopper<T extends FilterValueObject>({
               }}
               sx={{ marginLeft: 'auto', marginRight: '5px' }}
             >
-              {t('common.resetAction')}
+              {t('common:resetAction')}
             </Button>
             <Button
               autoFocus
@@ -108,7 +108,7 @@ function FilterPopper<T extends FilterValueObject>({
               }}
               variant="contained"
             >
-              {t('common.applyAction')}
+              {t('common:applyAction')}
             </Button>
           </DialogActions>
         </Paper>

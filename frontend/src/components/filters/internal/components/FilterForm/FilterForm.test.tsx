@@ -18,7 +18,7 @@ dayjs.extend(timezone);
 
 const testFilterDefinitionObject: FilterDefinitionFieldsModel = {
   createdAt: {
-    display: 'common.fields.createdAt',
+    display: 'common:fields.createdAt',
     description: 'longgggggggggggggggggggg description',
     operations: dateOperations,
   },
@@ -71,8 +71,8 @@ describe('filters/internal/FilterForm', () => {
     expect(group.children[1]).toHaveAttribute('type', 'button');
     expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
     expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
-    expect(group.children[0]).toHaveTextContent('common.operations.and');
-    expect(group.children[1]).toHaveTextContent('common.operations.or');
+    expect(group.children[0]).toHaveTextContent('common:operations.and');
+    expect(group.children[1]).toHaveTextContent('common:operations.or');
 
     // Get parent
     const parentElem = group.parentElement as Element;
@@ -89,13 +89,13 @@ describe('filters/internal/FilterForm', () => {
     expect(firstLine.firstChild?.firstChild).toHaveClass('MuiButtonBase-root');
     expect(firstLine.firstChild?.firstChild?.firstChild?.firstChild).toHaveAttribute('d', mdiDelete);
 
-    expect(firstLine).toHaveTextContent('common.filter.field');
+    expect(firstLine).toHaveTextContent('common:filter.field');
 
     const inputElement = await screen.findByRole('combobox');
-    expect(inputElement).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElement).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElement).toHaveAttribute('value', '');
 
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
   });
 
   it('should be ok to interact with no initial filters and perform a full clean', async () => {
@@ -110,8 +110,8 @@ describe('filters/internal/FilterForm', () => {
     const group = await screen.findByRole('group');
     expect(group.children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
     expect(group.children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
-    expect(group.children[0]).toHaveTextContent('common.operations.and');
-    expect(group.children[1]).toHaveTextContent('common.operations.or');
+    expect(group.children[0]).toHaveTextContent('common:operations.and');
+    expect(group.children[1]).toHaveTextContent('common:operations.or');
 
     // Click on and
     expect(fireEvent.click(group.children[0])).toBeTruthy();
@@ -162,8 +162,8 @@ describe('filters/internal/FilterForm', () => {
     expect(line4).not.toBeNull();
     expect(groups[1].children[0]).toHaveClass('MuiButton-contained MuiButton-colorPrimary');
     expect(groups[1].children[1]).toHaveClass('MuiButton-outlined MuiButton-colorPrimary');
-    expect(groups[1].children[0]).toHaveTextContent('common.operations.and');
-    expect(groups[1].children[1]).toHaveTextContent('common.operations.or');
+    expect(groups[1].children[0]).toHaveTextContent('common:operations.and');
+    expect(groups[1].children[1]).toHaveTextContent('common:operations.or');
     // Get parent
     const parentElem2 = groups[1].parentElement as Element;
     expect(parentElem2.children[1]).toHaveAttribute('type', 'button');
@@ -177,9 +177,9 @@ describe('filters/internal/FilterForm', () => {
     expect(parentElem2.children[3].firstChild?.firstChild).toHaveAttribute('d', mdiDelete);
 
     const inputElement = await screen.findByRole('combobox');
-    expect(inputElement).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElement).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElement).toHaveAttribute('value', '');
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
 
     // Delete line
     expect(fireEvent.click(parentElem2.children[3].firstChild?.firstChild as Element)).toBeTruthy();
@@ -208,18 +208,18 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(2);
 
-    expect(container).toHaveTextContent('common.filter.field');
-    expect(container).toHaveTextContent('common.filter.operation');
+    expect(container).toHaveTextContent('common:filter.field');
+    expect(container).toHaveTextContent('common:filter.operation');
 
-    expect(inputElements[0]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[0]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[0]).toHaveAttribute('value', 'todos.fields.text');
-    expect(inputElements[1]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[1]).toHaveAttribute('value', 'common.operations.isNull');
+    expect(inputElements[1]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[1]).toHaveAttribute('value', 'common:operations.isNull');
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     // Get second action
-    const buttons = await screen.findAllByTitle('common.openAction');
+    const buttons = await screen.findAllByTitle('common:openAction');
     expect(buttons).toHaveLength(2);
 
     // Open second autocomplete
@@ -270,21 +270,21 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
 
-    expect(container).toHaveTextContent('common.filter.field');
-    expect(container).toHaveTextContent('common.filter.operation');
-    expect(container).toHaveTextContent('common.filter.value');
+    expect(container).toHaveTextContent('common:filter.field');
+    expect(container).toHaveTextContent('common:filter.operation');
+    expect(container).toHaveTextContent('common:filter.value');
 
-    expect(inputElements[0]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[0]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[0]).toHaveAttribute('value', 'todos.fields.text');
-    expect(inputElements[1]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[1]).toHaveAttribute('value', 'common.operations.eq');
-    expect(inputElements[2]).toHaveAttribute('placeholder', 'common.filter.value');
+    expect(inputElements[1]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[1]).toHaveAttribute('value', 'common:operations.eq');
+    expect(inputElements[2]).toHaveAttribute('placeholder', 'common:filter.value');
     expect(inputElements[2]).toHaveAttribute('value', 'fake');
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     // Get second action
-    const buttons = await screen.findAllByTitle('common.openAction');
+    const buttons = await screen.findAllByTitle('common:openAction');
     expect(buttons).toHaveLength(2);
 
     fireEvent.change(inputElements[2], { target: { value: 'foo' } });
@@ -313,18 +313,18 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
 
-    expect(container).toHaveTextContent('common.filter.field');
-    expect(container).toHaveTextContent('common.filter.operation');
-    expect(container).toHaveTextContent('common.filter.value');
+    expect(container).toHaveTextContent('common:filter.field');
+    expect(container).toHaveTextContent('common:filter.operation');
+    expect(container).toHaveTextContent('common:filter.value');
 
-    expect(inputElements[0]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[0]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[0]).toHaveAttribute('value', 'todos.fields.text');
-    expect(inputElements[1]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[1]).toHaveAttribute('value', 'common.operations.in');
-    expect(inputElements[2]).toHaveAttribute('placeholder', 'common.filter.value');
+    expect(inputElements[1]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[1]).toHaveAttribute('value', 'common:operations.in');
+    expect(inputElements[2]).toHaveAttribute('placeholder', 'common:filter.value');
     expect(inputElements[2]).toHaveAttribute('value', '');
     expect(container).toHaveTextContent('fake');
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     // Get chip
     const chipElement1 = inputElements[2].parentElement?.firstChild;
@@ -333,7 +333,7 @@ describe('filters/internal/FilterForm', () => {
     fireEvent.click(chipElement1?.lastChild as Element);
     expect(container).toMatchSnapshot();
     expect(container).not.toHaveTextContent('fake');
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
     expect(onChange).toHaveBeenLastCalledWith(null);
   });
 
@@ -355,21 +355,21 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(3);
 
-    expect(container).toHaveTextContent('common.filter.field');
-    expect(container).toHaveTextContent('common.filter.operation');
-    expect(container).toHaveTextContent('common.filter.value');
+    expect(container).toHaveTextContent('common:filter.field');
+    expect(container).toHaveTextContent('common:filter.operation');
+    expect(container).toHaveTextContent('common:filter.value');
 
-    expect(inputElements[0]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[0]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[0]).toHaveAttribute('value', 'todos.fields.done');
-    expect(inputElements[1]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[1]).toHaveAttribute('value', 'common.operations.eq');
-    expect(inputElements[2]).toHaveAttribute('placeholder', 'common.filter.value');
-    expect(inputElements[2]).toHaveAttribute('value', 'common.boolean.true');
+    expect(inputElements[1]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[1]).toHaveAttribute('value', 'common:operations.eq');
+    expect(inputElements[2]).toHaveAttribute('placeholder', 'common:filter.value');
+    expect(inputElements[2]).toHaveAttribute('value', 'common:boolean.true');
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     // Get third action
-    const buttons = await screen.findAllByTitle('common.openAction');
+    const buttons = await screen.findAllByTitle('common:openAction');
     expect(buttons).toHaveLength(3);
 
     // Open third autocomplete
@@ -412,24 +412,24 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(6);
 
-    expect(container).toHaveTextContent('common.filter.field');
-    expect(container).toHaveTextContent('common.filter.operation');
-    expect(container).toHaveTextContent('common.filter.value');
+    expect(container).toHaveTextContent('common:filter.field');
+    expect(container).toHaveTextContent('common:filter.operation');
+    expect(container).toHaveTextContent('common:filter.value');
 
-    expect(inputElements[0]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[0]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[0]).toHaveAttribute('value', 'todos.fields.done');
-    expect(inputElements[1]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[1]).toHaveAttribute('value', 'common.operations.eq');
-    expect(inputElements[2]).toHaveAttribute('placeholder', 'common.filter.value');
-    expect(inputElements[2]).toHaveAttribute('value', 'common.boolean.true');
-    expect(inputElements[3]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[1]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[1]).toHaveAttribute('value', 'common:operations.eq');
+    expect(inputElements[2]).toHaveAttribute('placeholder', 'common:filter.value');
+    expect(inputElements[2]).toHaveAttribute('value', 'common:boolean.true');
+    expect(inputElements[3]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[3]).toHaveAttribute('value', 'todos.fields.text');
-    expect(inputElements[4]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[4]).toHaveAttribute('value', 'common.operations.eq');
-    expect(inputElements[5]).toHaveAttribute('placeholder', 'common.filter.value');
+    expect(inputElements[4]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[4]).toHaveAttribute('value', 'common:operations.eq');
+    expect(inputElements[5]).toHaveAttribute('placeholder', 'common:filter.value');
     expect(inputElements[5]).toHaveAttribute('value', 'foo');
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     inputElements[2].blur();
     inputElements[2].focus();
@@ -472,7 +472,7 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(6);
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     const buttons = container.querySelectorAll('button');
 
@@ -481,7 +481,7 @@ describe('filters/internal/FilterForm', () => {
     expect(onChange).toHaveBeenLastCalledWith(null);
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
 
     // Set value
     let inputElements2 = container.querySelectorAll('input');
@@ -492,7 +492,7 @@ describe('filters/internal/FilterForm', () => {
     fireEvent.keyDown(lastInput, { key: 'ArrowDown' });
     fireEvent.keyDown(lastInput, { key: 'Enter' });
     expect(container).toMatchSnapshot();
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
 
     inputElements2 = container.querySelectorAll('input');
     expect(inputElements2).toHaveLength(8);
@@ -575,7 +575,7 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(6);
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     let buttons = container.querySelectorAll('button');
 
@@ -584,7 +584,7 @@ describe('filters/internal/FilterForm', () => {
     expect(onChange).toHaveBeenLastCalledWith(null);
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
     buttons = container.querySelectorAll('button');
     expect(buttons).toHaveLength(23);
 
@@ -597,7 +597,7 @@ describe('filters/internal/FilterForm', () => {
     fireEvent.keyDown(lastInput, { key: 'ArrowDown' });
     fireEvent.keyDown(lastInput, { key: 'Enter' });
     expect(container).toMatchSnapshot();
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
 
     inputElements2 = container.querySelectorAll('input');
     expect(inputElements2).toHaveLength(8);
@@ -627,7 +627,7 @@ describe('filters/internal/FilterForm', () => {
     fireEvent.keyDown(lastInput, { key: 'ArrowDown' });
     fireEvent.keyDown(lastInput, { key: 'Enter' });
     expect(container).toMatchSnapshot();
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
 
     inputElements2 = container.querySelectorAll('input');
     expect(inputElements2).toHaveLength(11);
@@ -690,7 +690,7 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(12);
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     const buttons = container.querySelectorAll('button');
 
@@ -742,7 +742,7 @@ describe('filters/internal/FilterForm', () => {
     const inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(12);
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
 
     const buttons = container.querySelectorAll('button');
 
@@ -770,7 +770,7 @@ describe('filters/internal/FilterForm', () => {
 
     await waitFor(() => 0);
     expect(container).toMatchSnapshot();
-    expect(container).toHaveTextContent('common.fieldValidationError.required');
+    expect(container).toHaveTextContent('common:fieldValidationError.required');
 
     let inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(2);
@@ -792,20 +792,20 @@ describe('filters/internal/FilterForm', () => {
     fireEvent.click(buttons[1]);
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.filter.field');
-    expect(container).toHaveTextContent('common.filter.operation');
-    expect(container).toHaveTextContent('common.filter.value');
+    expect(container).toHaveTextContent('common:filter.field');
+    expect(container).toHaveTextContent('common:filter.operation');
+    expect(container).toHaveTextContent('common:filter.value');
 
     inputElements = container.querySelectorAll('input');
     expect(inputElements).toHaveLength(4);
-    expect(inputElements[1]).toHaveAttribute('placeholder', 'common.filter.field');
+    expect(inputElements[1]).toHaveAttribute('placeholder', 'common:filter.field');
     expect(inputElements[1]).toHaveAttribute('value', 'todos.fields.done');
-    expect(inputElements[2]).toHaveAttribute('placeholder', 'common.filter.operation');
-    expect(inputElements[2]).toHaveAttribute('value', 'common.operations.eq');
-    expect(inputElements[3]).toHaveAttribute('placeholder', 'common.filter.value');
-    expect(inputElements[3]).toHaveAttribute('value', 'common.boolean.true');
+    expect(inputElements[2]).toHaveAttribute('placeholder', 'common:filter.operation');
+    expect(inputElements[2]).toHaveAttribute('value', 'common:operations.eq');
+    expect(inputElements[3]).toHaveAttribute('placeholder', 'common:filter.value');
+    expect(inputElements[3]).toHaveAttribute('value', 'common:boolean.true');
 
-    expect(container).not.toHaveTextContent('common.fieldValidationError.required');
+    expect(container).not.toHaveTextContent('common:fieldValidationError.required');
     expect(onChange).toHaveBeenLastCalledWith({ done: { eq: true } });
   });
 });

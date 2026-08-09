@@ -51,7 +51,7 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
     },
     {
       field: 'createdAt',
-      headerName: t('common.fields.createdAt'),
+      headerName: t('common:fields.createdAt'),
       flex: 0.2,
       editable: false,
       filterable: false,
@@ -71,7 +71,7 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
     {
       field: 'actions',
       type: 'actions',
-      headerName: t('common.actions'),
+      headerName: t('common:actions'),
       width: 90,
       getActions: () => [
         <IconButton key="0" size="small">

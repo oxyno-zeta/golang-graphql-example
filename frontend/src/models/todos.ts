@@ -30,14 +30,14 @@ export type TodoFilterModel = {
 };
 
 export const todoSortFields: SortOrderFieldModel[] = [
-  { field: 'createdAt', display: 'common.fields.createdAt' },
-  { field: 'updatedAt', display: 'common.fields.updatedAt' },
+  { field: 'createdAt', display: 'common:fields.createdAt' },
+  { field: 'updatedAt', display: 'common:fields.updatedAt' },
   { field: 'text', display: 'todos.fields.text' },
 ];
 
 export const todoFilterDefinitionObject: FilterDefinitionFieldsModel = {
   createdAt: {
-    display: 'common.fields.createdAt',
+    display: 'common:fields.createdAt',
     description: 'longgggggggggggggggggggg description',
     operations: dateOperations,
   },

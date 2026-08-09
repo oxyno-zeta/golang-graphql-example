@@ -162,7 +162,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
     class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
-    common.themeTitle
+    common:themeTitle
   </p>
   <div
     class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
@@ -186,7 +186,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
         />
       </svg>
        
-      common.darkThemeSelector
+      common:darkThemeSelector
     </button>
     <button
       aria-pressed="false"
@@ -206,7 +206,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
         />
       </svg>
        
-      common.lightThemeSelector
+      common:lightThemeSelector
     </button>
   </div>
 </div>
@@ -374,7 +374,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
     class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
-    common.themeTitle
+    common:themeTitle
   </p>
   <div
     class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
@@ -398,7 +398,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
         />
       </svg>
        
-      common.darkThemeSelector
+      common:darkThemeSelector
     </button>
     <button
       aria-pressed="true"
@@ -418,7 +418,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the dark theme as sele
         />
       </svg>
        
-      common.lightThemeSelector
+      common:lightThemeSelector
     </button>
   </div>
 </div>
@@ -586,7 +586,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
     class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
-    common.themeTitle
+    common:themeTitle
   </p>
   <div
     class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
@@ -610,7 +610,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
         />
       </svg>
        
-      common.darkThemeSelector
+      common:darkThemeSelector
     </button>
     <button
       aria-pressed="true"
@@ -630,7 +630,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
         />
       </svg>
        
-      common.lightThemeSelector
+      common:lightThemeSelector
     </button>
   </div>
 </div>
@@ -798,7 +798,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
     class="MuiTypography-root MuiTypography-body1 emotion-0"
     style="font-size: 13px; margin-bottom: 2px;"
   >
-    common.themeTitle
+    common:themeTitle
   </p>
   <div
     class="MuiToggleButtonGroup-root MuiToggleButtonGroup-horizontal MuiToggleButtonGroup-fullWidth emotion-1"
@@ -822,7 +822,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
         />
       </svg>
        
-      common.darkThemeSelector
+      common:darkThemeSelector
     </button>
     <button
       aria-pressed="false"
@@ -842,7 +842,7 @@ exports[`theming/ToggleColorModeMenuItem > should display the light theme as sel
         />
       </svg>
        
-      common.lightThemeSelector
+      common:lightThemeSelector
     </button>
   </div>
 </div>

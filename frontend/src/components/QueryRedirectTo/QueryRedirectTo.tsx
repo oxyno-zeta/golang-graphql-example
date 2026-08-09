@@ -61,7 +61,7 @@ function QueryRedirectTo<T, P extends OperationVariables>({
     return (
       <CenterLoading
         containerBoxSx={{ margin: '15px 0' }}
-        subtitle={!disableCenterLoadingSubtitle ? t('common.loadingText') : undefined}
+        subtitle={!disableCenterLoadingSubtitle ? t('common:loadingText') : undefined}
         {...centerLoadingProps}
       />
     );

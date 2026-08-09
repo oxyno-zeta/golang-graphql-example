@@ -34,7 +34,7 @@ function SortDialog<T extends Record<string, SortOrderModel>>({
       onClose={onClose}
       open={open}
     >
-      <DialogTitle id="sort-dialog-title">{t('common.sort.dialogTitle')}</DialogTitle>
+      <DialogTitle id="sort-dialog-title">{t('common:sort.dialogTitle')}</DialogTitle>
       {open ? (
         <SortForm initialSorts={initialSorts} onReset={onReset} onSubmit={onSubmit} sortFields={sortFields} />
       ) : null}

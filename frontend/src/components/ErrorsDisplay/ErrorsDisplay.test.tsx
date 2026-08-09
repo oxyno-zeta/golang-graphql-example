@@ -37,7 +37,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'Forbidden'];
+    const values = ['common:errors:', 'Forbidden'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -52,7 +52,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'simple graphql error'];
+    const values = ['common:errors:', 'simple graphql error'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -67,7 +67,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'simple graphql error'];
+    const values = ['common:errors:', 'simple graphql error'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -82,7 +82,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'common.errorCode.FORBIDDEN'];
+    const values = ['common:errors:', 'common:errorCode.FORBIDDEN'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -97,7 +97,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'common.errorCode.FORBIDDEN'];
+    const values = ['common:errors:', 'common:errorCode.FORBIDDEN'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -113,12 +113,12 @@ describe('ErrorsDisplay', () => {
 
     // Prepare values
     const values = [
-      'common.errors:',
-      'common.errorCode.INTERNAL_SERVER_ERROR',
+      'common:errors:',
+      'common:errorCode.INTERNAL_SERVER_ERROR',
       'trace-id',
       'request-id',
-      'common.supportTraceId',
-      'common.supportRequestId',
+      'common:supportTraceId',
+      'common:supportRequestId',
     ];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
@@ -135,12 +135,12 @@ describe('ErrorsDisplay', () => {
 
     // Prepare values
     const values = [
-      'common.errors:',
-      'common.errorCode.FORBIDDEN',
+      'common:errors:',
+      'common:errorCode.FORBIDDEN',
       'trace-id',
       'request-id',
-      'common.supportTraceId',
-      'common.supportRequestId',
+      'common:supportTraceId',
+      'common:supportRequestId',
     ];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
@@ -156,7 +156,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'common.errorCode.FORBIDDEN'];
+    const values = ['common:errors:', 'common:errorCode.FORBIDDEN'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -171,7 +171,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'fake'];
+    const values = ['common:errors:', 'fake'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -186,7 +186,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'fake'];
+    const values = ['common:errors:', 'fake'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -207,7 +207,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(3);
 
     // Prepare values
-    const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
+    const values = ['common:errors:', 'common:errorCode.FORBIDDEN', 'common:errorCode.INTERNAL_SERVER_ERROR'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -230,7 +230,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(3);
 
     // Prepare values
-    const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
+    const values = ['common:errors:', 'common:errorCode.FORBIDDEN', 'common:errorCode.INTERNAL_SERVER_ERROR'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -247,7 +247,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(3);
 
     // Prepare values
-    const values = ['common.errors:', 'common.errorCode.FORBIDDEN', 'common.errorCode.INTERNAL_SERVER_ERROR'];
+    const values = ['common:errors:', 'common:errorCode.FORBIDDEN', 'common:errorCode.INTERNAL_SERVER_ERROR'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -267,13 +267,13 @@ describe('ErrorsDisplay', () => {
 
     // Prepare values
     const values = [
-      'common.errors:',
-      'common.errorCode.FORBIDDEN',
-      'common.errorCode.INTERNAL_SERVER_ERROR',
+      'common:errors:',
+      'common:errorCode.FORBIDDEN',
+      'common:errorCode.INTERNAL_SERVER_ERROR',
       'trace-id',
       'request-id',
-      'common.supportTraceId',
-      'common.supportRequestId',
+      'common:supportTraceId',
+      'common:supportRequestId',
     ];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
@@ -303,11 +303,11 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(3);
 
     // Prepare values
-    const values = ['common.errors:', 'fake', 'common.errorCode.INTERNAL_SERVER_ERROR'];
+    const values = ['common:errors:', 'fake', 'common:errorCode.INTERNAL_SERVER_ERROR'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
-    expect(container).not.toHaveTextContent('common.errorCode.FORBIDDEN');
+    expect(container).not.toHaveTextContent('common:errorCode.FORBIDDEN');
 
     expect(container).toMatchSnapshot();
   });
@@ -319,7 +319,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'error1'];
+    const values = ['common:errors:', 'error1'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -334,7 +334,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(2);
 
     // Prepare values
-    const values = ['common.errors:', 'error1'];
+    const values = ['common:errors:', 'error1'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
@@ -349,7 +349,7 @@ describe('ErrorsDisplay', () => {
     expect(allP).toHaveLength(3);
 
     // Prepare values
-    const values = ['common.errors:', 'error1', 'error2'];
+    const values = ['common:errors:', 'error1', 'error2'];
     values.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });

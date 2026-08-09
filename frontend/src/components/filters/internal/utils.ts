@@ -13,7 +13,7 @@ export function generateKey(prefix: string) {
 // This is copied to avoid interaction with fields validation.
 export function requiredInputValidate(value: undefined | null | string) {
   if (value === undefined || value === null || value === '') {
-    return 'common.fieldValidationError.required';
+    return 'common:fieldValidationError.required';
   }
 
   // Default
@@ -27,7 +27,13 @@ export function buildFilterBuilderInitialItems(
   // Initialize result
   const res: BuilderInitialValueObject = {
     group: 'AND',
-    items: [{ type: 'line', key: `${keyPrefix}root`, initialValue: buildFieldInitialValue(undefined)[0] }],
+    items: [
+      {
+        type: 'line',
+        key: `${keyPrefix}root`,
+        initialValue: buildFieldInitialValue(undefined)[0],
+      },
+    ],
   };
 
   // Check if initial value is set

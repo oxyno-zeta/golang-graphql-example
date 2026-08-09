@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { type SortOrderModel, type SortOrderFieldModel } from '../../../../models/general';
 
 const valueOptions: { value: SortOrderModel; display: string }[] = [
-  { value: 'ASC', display: 'common.sort.asc' },
-  { value: 'DESC', display: 'common.sort.desc' },
+  { value: 'ASC', display: 'common:sort.asc' },
+  { value: 'DESC', display: 'common:sort.desc' },
 ];
 
 /* eslint-disable react/no-array-index-key */
@@ -43,21 +43,24 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
         }}
       >
         <Autocomplete
-          closeText={t('common.closeAction')}
+          closeText={t('common:closeAction')}
           disableClearable
           fullWidth
           getOptionLabel={(option) => t(option.display)}
           isOptionEqualToValue={(a, b) => a.field === b.field}
-          noOptionsText={t('common.filter.noOptions')}
+          noOptionsText={t('common:filter.noOptions')}
           onChange={(input, newValue) => {
             onChange({ [newValue.field]: fieldValue });
           }}
-          openText={t('common.openAction')}
+          openText={t('common:openAction')}
           options={availableFields}
           renderInput={(params) => <TextField {...params} />}
           renderOption={(props, option, { inputValue }) => {
             const displayedOption = t(option.display);
-            const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+            const matches = match(displayedOption, inputValue, {
+              insideWords: true,
+              findAllOccurrences: true,
+            });
             const parts = parse(displayedOption, matches);
 
             return (
@@ -91,20 +94,23 @@ function SortField({ value, sortFields, availableFields, onChange }: Props) {
         }}
       >
         <Autocomplete
-          closeText={t('common.closeAction')}
+          closeText={t('common:closeAction')}
           disableClearable
           fullWidth
           getOptionLabel={(option) => t(option.display)}
-          noOptionsText={t('common.filter.noOptions')}
+          noOptionsText={t('common:filter.noOptions')}
           onChange={(input, newValue) => {
             onChange({ [key]: newValue.value });
           }}
-          openText={t('common.openAction')}
+          openText={t('common:openAction')}
           options={valueOptions}
           renderInput={(params) => <TextField {...params} />}
           renderOption={(props, option, { inputValue }) => {
             const displayedOption = t(option.display);
-            const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+            const matches = match(displayedOption, inputValue, {
+              insideWords: true,
+              findAllOccurrences: true,
+            });
             const parts = parse(displayedOption, matches);
 
             return (

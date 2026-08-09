@@ -51,7 +51,7 @@ function errorBodyToErrorContent(
   let customCompProps: object | undefined;
   // Check if there is a code in extensions
   if (extensions && extensions.code) {
-    mess = t(`common.errorCode.${extensions.code}`);
+    mess = t(`common:errorCode.${extensions.code}`);
 
     const mapKey = `${GraphqlErrorsExtensionsCodeCustomComponentMapKeyPrefix}${extensions.code}`;
 
@@ -178,12 +178,12 @@ function ErrorsDisplay({
                 </Typography>
                 {traceId ? (
                   <Typography component="p" color="error" variant="caption" {...errorElementTypographyProps}>
-                    {t('common.supportTraceId')}: {traceId}
+                    {t('common:supportTraceId')}: {traceId}
                   </Typography>
                 ) : null}
                 {requestId ? (
                   <Typography component="p" color="error" variant="caption" {...errorElementTypographyProps}>
-                    {t('common.supportRequestId')}: {requestId}
+                    {t('common:supportRequestId')}: {requestId}
                   </Typography>
                 ) : null}
               </>
@@ -197,7 +197,7 @@ function ErrorsDisplay({
   return (
     <Box sx={{ color: 'error', margin: noMargin ? 0 : 8, ...containerBoxSx }}>
       <Typography color="error" {...errorTitleTypographyProps}>
-        {t('common.errors')}:
+        {t('common:errors')}:
       </Typography>
       <Box component="ul" sx={ulSx}>
         {elements}

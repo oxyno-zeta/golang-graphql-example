@@ -28,8 +28,8 @@ export const Subtitles: StoryFn<typeof CenterLoading> = function C() {
   const { t } = useTranslation();
   return (
     <Stack spacing={2}>
-      <CenterLoading subtitle={t('common.loadingText')} />
-      <CenterLoading circularProgressProps={{ color: 'error' }} subtitle={t('common.errors')} />
+      <CenterLoading subtitle={t('common:loadingText')} />
+      <CenterLoading circularProgressProps={{ color: 'error' }} subtitle={t('common:errors')} />
     </Stack>
   );
 };

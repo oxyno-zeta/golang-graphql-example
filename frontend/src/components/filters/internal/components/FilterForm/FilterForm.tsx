@@ -57,8 +57,8 @@ function FilterForm({
       {predefinedFilterObjects ? (
         <Box sx={{ display: 'flex', margin: '7px 0' }}>
           <Autocomplete
-            clearText={t('common.clearAction')}
-            closeText={t('common.closeAction')}
+            clearText={t('common:clearAction')}
+            closeText={t('common:closeAction')}
             freeSolo
             fullWidth
             getOptionLabel={(option: PredefinedFilter | string) => {
@@ -71,7 +71,7 @@ function FilterForm({
               return t((option as PredefinedFilter).display);
             }}
             id="predefined-filters"
-            noOptionsText={t('common.filter.noOptions')}
+            noOptionsText={t('common:filter.noOptions')}
             onChange={(input, newValue) => {
               // Handle empty case
               if (newValue === '') {
@@ -80,18 +80,21 @@ function FilterForm({
               // Normal case
               setPredefinedFilter(newValue as PredefinedFilter);
             }}
-            openText={t('common.openAction')}
+            openText={t('common:openAction')}
             options={predefinedFilterObjects}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label={t('common.filter.selectPredefinedFilter')}
-                placeholder={t('common.filter.selectPredefinedFilter')}
+                label={t('common:filter.selectPredefinedFilter')}
+                placeholder={t('common:filter.selectPredefinedFilter')}
               />
             )}
             renderOption={(props, option: PredefinedFilter, { inputValue }) => {
               const displayedOption = t(option.display);
-              const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+              const matches = match(displayedOption, inputValue, {
+                insideWords: true,
+                findAllOccurrences: true,
+              });
               const parts = parse(displayedOption, matches);
 
               return (
@@ -110,7 +113,13 @@ function FilterForm({
                       ))}
                     </Typography>
                     {option.description ? (
-                      <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
+                      <Typography
+                        sx={{
+                          fontStyle: 'italic',
+                          overflowWrap: 'break-word',
+                          whiteSpace: 'normal',
+                        }}
+                      >
                         {t(option.description)}
                       </Typography>
                     ) : null}
@@ -131,7 +140,7 @@ function FilterForm({
             size="small"
             sx={{ marginLeft: '5px' }}
           >
-            {t('common.loadAction')}
+            {t('common:loadAction')}
           </Button>
         </Box>
       ) : null}

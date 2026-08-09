@@ -21,7 +21,7 @@ function AppLinksButton({ children, appLinksPopperSx = undefined }: Props) {
 
   return (
     <>
-      <Tooltip title={<>{t('common.appLinks')}</>}>
+      <Tooltip title={<>{t('common:appLinks')}</>}>
         <IconButton
           onClick={() => {
             setOpen(true);

@@ -110,7 +110,7 @@ exports[`QueryRedirectTo > should display a loading when query is pending 1`] = 
     <h6
       class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
-      common.loadingText
+      common:loadingText
     </h6>
   </div>
 </div>
@@ -325,7 +325,7 @@ exports[`QueryRedirectTo > should display an error when an error is raised on qu
     <h6
       class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
-      common.loadingText
+      common:loadingText
     </h6>
   </div>
 </div>
@@ -360,7 +360,7 @@ exports[`QueryRedirectTo > should display an error when an error is raised on qu
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -372,7 +372,7 @@ exports[`QueryRedirectTo > should display an error when an error is raised on qu
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
     </ul>
@@ -490,7 +490,7 @@ exports[`QueryRedirectTo > should display no data when no data is returned from 
     <h6
       class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
-      common.loadingText
+      common:loadingText
     </h6>
   </div>
 </div>
@@ -520,7 +520,7 @@ exports[`QueryRedirectTo > should display no data when no data is returned from 
   <p
     class="MuiTypography-root MuiTypography-body1 emotion-0"
   >
-    common.noData
+    common:noData
   </p>
 </div>
 `;
@@ -635,7 +635,7 @@ exports[`QueryRedirectTo > should redirect to new path on success 1`] = `
     <h6
       class="MuiTypography-root MuiTypography-subtitle2 emotion-4"
     >
-      common.loadingText
+      common:loadingText
     </h6>
   </div>
 </div>

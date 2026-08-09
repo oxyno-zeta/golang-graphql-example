@@ -15,7 +15,7 @@ function OpenDrawerButton({ onDrawerToggle, iconButtonProps = {} }: Props) {
   const { t } = useTranslation();
 
   return (
-    <Tooltip title={<>{t('common.openAction')}</>}>
+    <Tooltip title={<>{t('common:openAction')}</>}>
       <span>
         <IconButton color="inherit" onClick={onDrawerToggle} sx={{ display: { lg: 'none' } }} {...iconButtonProps}>
           <SvgIcon>

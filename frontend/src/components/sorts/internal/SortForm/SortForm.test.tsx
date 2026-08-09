@@ -6,8 +6,8 @@ import { type SortOrderObjectModel, type SortOrderFieldModel } from '~models/gen
 import SortForm from './SortForm';
 
 const testSortFields: SortOrderFieldModel[] = [
-  { field: 'createdAt', display: 'common.fields.createdAt' },
-  { field: 'updatedAt', display: 'common.fields.updatedAt' },
+  { field: 'createdAt', display: 'common:fields.createdAt' },
+  { field: 'updatedAt', display: 'common:fields.updatedAt' },
   { field: 'text', display: 'test.fields.text' },
 ];
 
@@ -34,8 +34,8 @@ describe('sorts/internal/SortForm', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.resetAction');
-    expect(container).toHaveTextContent('common.applyAction');
+    expect(container).toHaveTextContent('common:resetAction');
+    expect(container).toHaveTextContent('common:applyAction');
 
     const buttons = container.querySelectorAll('button');
     expect(buttons).toHaveLength(3);
@@ -59,8 +59,8 @@ describe('sorts/internal/SortForm', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.resetAction');
-    expect(container).toHaveTextContent('common.applyAction');
+    expect(container).toHaveTextContent('common:resetAction');
+    expect(container).toHaveTextContent('common:applyAction');
 
     const buttons = container.querySelectorAll('button');
     expect(buttons).toHaveLength(6);
@@ -71,7 +71,7 @@ describe('sorts/internal/SortForm', () => {
     expect(autocomplInputList[0]).toHaveAttribute('type', 'text');
     expect(autocomplInputList[0]).toHaveAttribute('value', 'test.fields.text');
     expect(autocomplInputList[1]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[1]).toHaveAttribute('value', 'common.sort.asc');
+    expect(autocomplInputList[1]).toHaveAttribute('value', 'common:sort.asc');
 
     const pathElements = container.querySelectorAll('path');
     // Last button must be the add
@@ -102,8 +102,8 @@ describe('sorts/internal/SortForm', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.resetAction');
-    expect(container).toHaveTextContent('common.applyAction');
+    expect(container).toHaveTextContent('common:resetAction');
+    expect(container).toHaveTextContent('common:applyAction');
 
     const buttons = container.querySelectorAll('button');
     expect(buttons).toHaveLength(11);
@@ -114,11 +114,11 @@ describe('sorts/internal/SortForm', () => {
     expect(autocomplInputList[0]).toHaveAttribute('type', 'text');
     expect(autocomplInputList[0]).toHaveAttribute('value', 'test.fields.text');
     expect(autocomplInputList[1]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[1]).toHaveAttribute('value', 'common.sort.asc');
+    expect(autocomplInputList[1]).toHaveAttribute('value', 'common:sort.asc');
     expect(autocomplInputList[2]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[2]).toHaveAttribute('value', 'common.fields.createdAt');
+    expect(autocomplInputList[2]).toHaveAttribute('value', 'common:fields.createdAt');
     expect(autocomplInputList[3]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[3]).toHaveAttribute('value', 'common.sort.desc');
+    expect(autocomplInputList[3]).toHaveAttribute('value', 'common:sort.desc');
 
     const pathElements = container.querySelectorAll('path');
     // Last button must be the add
@@ -159,8 +159,8 @@ describe('sorts/internal/SortForm', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.resetAction');
-    expect(container).toHaveTextContent('common.applyAction');
+    expect(container).toHaveTextContent('common:resetAction');
+    expect(container).toHaveTextContent('common:applyAction');
 
     const buttons = container.querySelectorAll('button');
     expect(buttons).toHaveLength(15);
@@ -171,15 +171,15 @@ describe('sorts/internal/SortForm', () => {
     expect(autocomplInputList[0]).toHaveAttribute('type', 'text');
     expect(autocomplInputList[0]).toHaveAttribute('value', 'test.fields.text');
     expect(autocomplInputList[1]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[1]).toHaveAttribute('value', 'common.sort.asc');
+    expect(autocomplInputList[1]).toHaveAttribute('value', 'common:sort.asc');
     expect(autocomplInputList[2]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[2]).toHaveAttribute('value', 'common.fields.createdAt');
+    expect(autocomplInputList[2]).toHaveAttribute('value', 'common:fields.createdAt');
     expect(autocomplInputList[3]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[3]).toHaveAttribute('value', 'common.sort.desc');
+    expect(autocomplInputList[3]).toHaveAttribute('value', 'common:sort.desc');
     expect(autocomplInputList[4]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[4]).toHaveAttribute('value', 'common.fields.updatedAt');
+    expect(autocomplInputList[4]).toHaveAttribute('value', 'common:fields.updatedAt');
     expect(autocomplInputList[5]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[5]).toHaveAttribute('value', 'common.sort.asc');
+    expect(autocomplInputList[5]).toHaveAttribute('value', 'common:sort.asc');
 
     const pathElements = container.querySelectorAll('path');
     // Last button mustn't be the add (as it should be removed)
@@ -227,8 +227,8 @@ describe('sorts/internal/SortForm', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.resetAction');
-    expect(container).toHaveTextContent('common.applyAction');
+    expect(container).toHaveTextContent('common:resetAction');
+    expect(container).toHaveTextContent('common:applyAction');
 
     const buttons = container.querySelectorAll('button');
     expect(buttons).toHaveLength(6);
@@ -239,7 +239,7 @@ describe('sorts/internal/SortForm', () => {
     expect(autocomplInputList[0]).toHaveAttribute('type', 'text');
     expect(autocomplInputList[0]).toHaveAttribute('value', 'test.fields.text');
     expect(autocomplInputList[1]).toHaveAttribute('type', 'text');
-    expect(autocomplInputList[1]).toHaveAttribute('value', 'common.sort.asc');
+    expect(autocomplInputList[1]).toHaveAttribute('value', 'common:sort.asc');
 
     const pathElements = container.querySelectorAll('path');
     // Last button must be the add
@@ -354,7 +354,7 @@ describe('sorts/internal/SortForm', () => {
 
     expect(
       fireEvent.change(autocomplInputList[0], {
-        target: { value: 'common.fields.createdAt' },
+        target: { value: 'common:fields.createdAt' },
       }),
     ).toBeTruthy();
     fireEvent.keyDown(autocomplInputList[0], { key: 'ArrowDown' });
@@ -457,17 +457,17 @@ describe('sorts/internal/SortForm', () => {
     let autocomplInputList = await findAllByRole('combobox');
 
     expect(autocomplInputList[0]).toHaveAttribute('value', 'test.fields.text');
-    expect(autocomplInputList[1]).toHaveAttribute('value', 'common.sort.asc');
-    expect(autocomplInputList[2]).toHaveAttribute('value', 'common.fields.createdAt');
-    expect(autocomplInputList[3]).toHaveAttribute('value', 'common.sort.desc');
+    expect(autocomplInputList[1]).toHaveAttribute('value', 'common:sort.asc');
+    expect(autocomplInputList[2]).toHaveAttribute('value', 'common:fields.createdAt');
+    expect(autocomplInputList[3]).toHaveAttribute('value', 'common:sort.desc');
 
     // Click on Add
     expect(fireEvent.click(buttons[buttons.length - 3])).toBeTruthy();
 
     autocomplInputList = await findAllByRole('combobox');
 
-    expect(autocomplInputList[4]).toHaveAttribute('value', 'common.fields.updatedAt');
-    expect(autocomplInputList[5]).toHaveAttribute('value', 'common.sort.asc');
+    expect(autocomplInputList[4]).toHaveAttribute('value', 'common:fields.updatedAt');
+    expect(autocomplInputList[5]).toHaveAttribute('value', 'common:sort.asc');
     expect(container).toMatchSnapshot();
   });
 });

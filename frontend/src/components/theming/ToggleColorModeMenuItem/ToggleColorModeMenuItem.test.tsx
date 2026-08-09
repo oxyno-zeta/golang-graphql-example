@@ -46,9 +46,9 @@ describe('theming/ToggleColorModeMenuItem', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.themeTitle');
-    expect(container).toHaveTextContent('common.darkThemeSelector');
-    expect(container).toHaveTextContent('common.lightThemeSelector');
+    expect(container).toHaveTextContent('common:themeTitle');
+    expect(container).toHaveTextContent('common:darkThemeSelector');
+    expect(container).toHaveTextContent('common:lightThemeSelector');
 
     const allButtons = container.querySelectorAll('button');
 
@@ -90,9 +90,9 @@ describe('theming/ToggleColorModeMenuItem', () => {
 
     expect(container).toMatchSnapshot();
 
-    expect(container).toHaveTextContent('common.themeTitle');
-    expect(container).toHaveTextContent('common.darkThemeSelector');
-    expect(container).toHaveTextContent('common.lightThemeSelector');
+    expect(container).toHaveTextContent('common:themeTitle');
+    expect(container).toHaveTextContent('common:darkThemeSelector');
+    expect(container).toHaveTextContent('common:lightThemeSelector');
 
     const allButtons = container.querySelectorAll('button');
 

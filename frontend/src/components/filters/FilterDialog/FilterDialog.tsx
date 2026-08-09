@@ -62,7 +62,7 @@ function FilterDialog<T extends FilterValueObject>({
       onClose={onClose}
       open={open}
     >
-      <DialogTitle id="filter-dialog-title">{t('common.filter.dialogTitle')}</DialogTitle>
+      <DialogTitle id="filter-dialog-title">{t('common:filter.dialogTitle')}</DialogTitle>
       <DialogContent>
         <FilterForm
           filterDefinitionModel={filterDefinitionModel}
@@ -78,7 +78,7 @@ function FilterDialog<T extends FilterValueObject>({
           }}
           sx={{ marginLeft: 'auto', marginRight: '5px' }}
         >
-          {t('common.resetAction')}
+          {t('common:resetAction')}
         </Button>
         <Button
           autoFocus
@@ -88,7 +88,7 @@ function FilterDialog<T extends FilterValueObject>({
           }}
           variant="contained"
         >
-          {t('common.applyAction')}
+          {t('common:applyAction')}
         </Button>
       </DialogActions>
     </Dialog>

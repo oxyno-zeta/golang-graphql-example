@@ -68,7 +68,7 @@ function AcceptDialog({
       </DialogContent>
       <DialogActions {...dialogActionsProps}>
         <Button onClick={onClose} {...cancelButtonProps}>
-          {t('common.cancelAction')}
+          {t('common:cancelAction')}
         </Button>
         <Button
           autoFocus
@@ -78,7 +78,7 @@ function AcceptDialog({
           variant="contained"
           {...okButtonProps}
         >
-          {t('common.okAction')}
+          {t('common:okAction')}
         </Button>
       </DialogActions>
     </Dialog>

@@ -23,7 +23,7 @@ function IconToggleColorMode({ iconButtonProps = {} }: Props) {
   const { toggleColorMode } = colorMode;
 
   return (
-    <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common.lightThemeTooltip' : 'common.darkThemeTooltip')}</>}>
+    <Tooltip title={<>{t(theme.palette.mode === 'dark' ? 'common:lightThemeTooltip' : 'common:darkThemeTooltip')}</>}>
       <span>
         <IconButton color="inherit" onClick={toggleColorMode} {...iconButtonProps}>
           {theme.palette.mode === 'dark' ? (

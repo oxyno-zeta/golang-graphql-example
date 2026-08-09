@@ -105,7 +105,7 @@ function Pagination({
   return (
     <Toolbar variant="dense" {...toolbarProps}>
       <div style={{ marginLeft: 'auto' }}>
-        <Tooltip title={<>{t('common.firstPageAction')}</>}>
+        <Tooltip title={<>{t('common:firstPageAction')}</>}>
           <span>
             <IconButton disabled={!pageInfo.hasPreviousPage} {...firstPageProps} {...firstIconButtonProps}>
               <SvgIcon>
@@ -114,7 +114,7 @@ function Pagination({
             </IconButton>
           </span>
         </Tooltip>
-        <Tooltip title={<>{t('common.previousPageAction')}</>}>
+        <Tooltip title={<>{t('common:previousPageAction')}</>}>
           <span>
             <IconButton disabled={!pageInfo.hasPreviousPage} {...previousPageProps} {...previousIconButtonProps}>
               <SvgIcon>
@@ -123,7 +123,7 @@ function Pagination({
             </IconButton>
           </span>
         </Tooltip>
-        <Tooltip title={<>{t('common.nextPageAction')}</>}>
+        <Tooltip title={<>{t('common:nextPageAction')}</>}>
           <span>
             <IconButton disabled={!pageInfo.hasNextPage} {...nextPageProps} {...nextIconButtonProps}>
               <SvgIcon>

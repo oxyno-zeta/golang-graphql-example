@@ -20,7 +20,7 @@ function NoData({ typographyProps = {} }: Props) {
       }}
       {...typographyProps}
     >
-      {t('common.noData')}
+      {t('common:noData')}
     </Typography>
   );
 }

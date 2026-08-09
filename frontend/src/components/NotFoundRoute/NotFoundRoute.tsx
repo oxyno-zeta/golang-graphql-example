@@ -12,7 +12,7 @@ function NotFoundRoute({ typographyProps = {} }: Props) {
 
   return (
     <>
-      <title>{t('common.routeNotFound')}</title>
+      <title>{t('common:routeNotFound')}</title>
       <Typography
         sx={{
           display: 'flex',
@@ -22,7 +22,7 @@ function NotFoundRoute({ typographyProps = {} }: Props) {
         }}
         {...typographyProps}
       >
-        {t('common.routeNotFound')}
+        {t('common:routeNotFound')}
       </Typography>
     </>
   );

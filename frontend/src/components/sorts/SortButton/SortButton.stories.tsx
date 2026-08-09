@@ -7,8 +7,8 @@ type TestSortOrderModelKeys = 'createdAt' | 'updatedAt' | 'text';
 type TestSortOrderModel = SortOrderObjectModel<TestSortOrderModelKeys>;
 
 const testSortFields: SortOrderFieldModel[] = [
-  { field: 'createdAt', display: 'common.fields.createdAt' },
-  { field: 'updatedAt', display: 'common.fields.updatedAt' },
+  { field: 'createdAt', display: 'common:fields.createdAt' },
+  { field: 'updatedAt', display: 'common:fields.updatedAt' },
   { field: 'text', display: 'test.fields.text' },
 ];
 

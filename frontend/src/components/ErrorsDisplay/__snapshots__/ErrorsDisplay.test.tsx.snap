@@ -39,7 +39,7 @@ exports[`ErrorsDisplay > should display a graphql error with extension and trace
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -51,19 +51,19 @@ exports[`ErrorsDisplay > should display a graphql error with extension and trace
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.INTERNAL_SERVER_ERROR
+          common:errorCode.INTERNAL_SERVER_ERROR
         </p>
         <p
           class="MuiTypography-root MuiTypography-caption emotion-5"
         >
-          common.supportTraceId
+          common:supportTraceId
           : 
           trace-id
         </p>
         <p
           class="MuiTypography-root MuiTypography-caption emotion-5"
         >
-          common.supportRequestId
+          common:supportRequestId
           : 
           request-id
         </p>
@@ -102,7 +102,7 @@ exports[`ErrorsDisplay > should display a graphql error with extension when erro
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -114,7 +114,7 @@ exports[`ErrorsDisplay > should display a graphql error with extension when erro
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
     </ul>
@@ -151,7 +151,7 @@ exports[`ErrorsDisplay > should display a graphql error with extension when erro
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -163,7 +163,7 @@ exports[`ErrorsDisplay > should display a graphql error with extension when erro
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
     </ul>
@@ -200,7 +200,7 @@ exports[`ErrorsDisplay > should display a graphql error without extension when e
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -249,7 +249,7 @@ exports[`ErrorsDisplay > should display a graphql error without extension when e
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -298,7 +298,7 @@ exports[`ErrorsDisplay > should display a network error when error is present 1`
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -357,7 +357,7 @@ exports[`ErrorsDisplay > should display an axios error with extension and trace 
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -369,19 +369,19 @@ exports[`ErrorsDisplay > should display an axios error with extension and trace 
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
         <p
           class="MuiTypography-root MuiTypography-caption emotion-5"
         >
-          common.supportTraceId
+          common:supportTraceId
           : 
           trace-id
         </p>
         <p
           class="MuiTypography-root MuiTypography-caption emotion-5"
         >
-          common.supportRequestId
+          common:supportRequestId
           : 
           request-id
         </p>
@@ -420,7 +420,7 @@ exports[`ErrorsDisplay > should display an axios error with extensions in data b
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -432,7 +432,7 @@ exports[`ErrorsDisplay > should display an axios error with extensions in data b
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
     </ul>
@@ -469,7 +469,7 @@ exports[`ErrorsDisplay > should display an axios error without extensions in dat
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -518,7 +518,7 @@ exports[`ErrorsDisplay > should display an axios error without extensions in dat
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -567,7 +567,7 @@ exports[`ErrorsDisplay > should display classic error when error is present 1`] 
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -616,7 +616,7 @@ exports[`ErrorsDisplay > should display classic error when errors are present (1
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -665,7 +665,7 @@ exports[`ErrorsDisplay > should display classic error when errors are present (2
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -723,7 +723,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -735,7 +735,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
       <li
@@ -744,7 +744,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.INTERNAL_SERVER_ERROR
+          common:errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>
@@ -781,7 +781,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -793,7 +793,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
       <li
@@ -802,7 +802,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.INTERNAL_SERVER_ERROR
+          common:errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>
@@ -849,7 +849,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -861,7 +861,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
       <li
@@ -870,19 +870,19 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.INTERNAL_SERVER_ERROR
+          common:errorCode.INTERNAL_SERVER_ERROR
         </p>
         <p
           class="MuiTypography-root MuiTypography-caption emotion-7"
         >
-          common.supportTraceId
+          common:supportTraceId
           : 
           trace-id
         </p>
         <p
           class="MuiTypography-root MuiTypography-caption emotion-7"
         >
-          common.supportRequestId
+          common:supportRequestId
           : 
           request-id
         </p>
@@ -921,7 +921,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -940,7 +940,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.INTERNAL_SERVER_ERROR
+          common:errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>
@@ -977,7 +977,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
     <p
       class="MuiTypography-root MuiTypography-body1 emotion-1"
     >
-      common.errors
+      common:errors
       :
     </p>
     <ul
@@ -989,7 +989,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.FORBIDDEN
+          common:errorCode.FORBIDDEN
         </p>
       </li>
       <li
@@ -998,7 +998,7 @@ exports[`ErrorsDisplay > should display two graphql error with extension when er
         <p
           class="MuiTypography-root MuiTypography-body1 emotion-1"
         >
-          common.errorCode.INTERNAL_SERVER_ERROR
+          common:errorCode.INTERNAL_SERVER_ERROR
         </p>
       </li>
     </ul>

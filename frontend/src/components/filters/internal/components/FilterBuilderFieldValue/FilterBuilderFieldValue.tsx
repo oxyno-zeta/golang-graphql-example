@@ -47,34 +47,37 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
 
     return (
       <Autocomplete<FilterDefinitionEnumObjectModel<any>, true>
-        clearText={t('common.clearAction')}
-        closeText={t('common.closeAction')}
+        clearText={t('common:clearAction')}
+        closeText={t('common:closeAction')}
         fullWidth
         getOptionLabel={(option) => t(option.display)}
         id={id}
         multiple
-        noOptionsText={t('common.filter.noOptions')}
+        noOptionsText={t('common:filter.noOptions')}
         onChange={(event, newValue) => {
           // Reformat data
           const res = newValue.map((it) => it.value);
           // Save values
           onChange(res);
         }}
-        openText={t('common.openAction')}
+        openText={t('common:openAction')}
         options={operation.enumValues}
         renderInput={(params) => (
           <TextField
             {...params}
             error={!!errorMsg}
             helperText={errorMsg ? t(errorMsg) : null}
-            label={t('common.filter.value')}
-            placeholder={t('common.filter.value')}
+            label={t('common:filter.value')}
+            placeholder={t('common:filter.value')}
             type={operation.inputType}
           />
         )}
         renderOption={(props, data: FilterDefinitionEnumObjectModel<any>, { inputValue }) => {
           const displayedOption = t(data.display);
-          const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+          const matches = match(displayedOption, inputValue, {
+            insideWords: true,
+            findAllOccurrences: true,
+          });
           const parts = parse(displayedOption, matches);
 
           return (
@@ -93,7 +96,13 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
                   ))}
                 </Typography>
                 {data.description ? (
-                  <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
+                  <Typography
+                    sx={{
+                      fontStyle: 'italic',
+                      overflowWrap: 'break-word',
+                      whiteSpace: 'normal',
+                    }}
+                  >
                     {t(data.description)}
                   </Typography>
                 ) : null}
@@ -122,8 +131,8 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
     }
     return (
       <Autocomplete<FilterDefinitionEnumObjectModel<any>>
-        clearText={t('common.clearAction')}
-        closeText={t('common.closeAction')}
+        clearText={t('common:clearAction')}
+        closeText={t('common:closeAction')}
         fullWidth
         getOptionLabel={(option: FilterDefinitionEnumObjectModel<any> | string) => {
           // Check if option is empty
@@ -135,7 +144,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           return t((option as FilterDefinitionEnumObjectModel<any>).display);
         }}
         id={id}
-        noOptionsText={t('common.filter.noOptions')}
+        noOptionsText={t('common:filter.noOptions')}
         onChange={(input, newValue) => {
           // Check if new value is a string
           if (newValue === null) {
@@ -145,20 +154,23 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
 
           onChange(newValue.value);
         }}
-        openText={t('common.openAction')}
+        openText={t('common:openAction')}
         options={operation.enumValues}
         renderInput={(params) => (
           <TextField
             {...params}
             error={!!errorMsg}
             helperText={errorMsg ? t(errorMsg) : null}
-            label={t('common.filter.value')}
-            placeholder={t('common.filter.value')}
+            label={t('common:filter.value')}
+            placeholder={t('common:filter.value')}
           />
         )}
         renderOption={(props, data: FilterDefinitionEnumObjectModel<any>, { inputValue }) => {
           const displayedOption = t(data.display);
-          const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+          const matches = match(displayedOption, inputValue, {
+            insideWords: true,
+            findAllOccurrences: true,
+          });
           const parts = parse(displayedOption, matches);
 
           return (
@@ -177,7 +189,13 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
                   ))}
                 </Typography>
                 {data.description ? (
-                  <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
+                  <Typography
+                    sx={{
+                      fontStyle: 'italic',
+                      overflowWrap: 'break-word',
+                      whiteSpace: 'normal',
+                    }}
+                  >
                     {t(data.description)}
                   </Typography>
                 ) : null}
@@ -195,8 +213,8 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
   if (operation.input && operation.multipleValues) {
     return (
       <Autocomplete
-        clearText={t('common.clearAction')}
-        closeText={t('common.closeAction')}
+        clearText={t('common:clearAction')}
+        closeText={t('common:closeAction')}
         filterOptions={(options, params) => {
           // Open params
           const { inputValue } = params;
@@ -218,7 +236,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           return [
             {
               value: optionValue,
-              display: t('common.filter.addOption', { option: inputValue }),
+              display: t('common:filter.addOption', { option: inputValue }),
             },
           ];
         }}
@@ -226,7 +244,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
         getOptionLabel={(option) => option.display}
         id={id}
         multiple
-        noOptionsText={t('common.filter.noOptions')}
+        noOptionsText={t('common:filter.noOptions')}
         onChange={(event, newValue) => {
           // Reformat data
           const res = newValue.map((it) => {
@@ -242,15 +260,15 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           // Save values
           onChange(res);
         }}
-        openText={t('common.openAction')}
+        openText={t('common:openAction')}
         options={[]}
         renderInput={(params) => (
           <TextField
             {...params}
             error={!!errorMsg}
             helperText={errorMsg ? t(errorMsg) : null}
-            label={t('common.filter.value')}
-            placeholder={t('common.filter.value')}
+            label={t('common:filter.value')}
+            placeholder={t('common:filter.value')}
             type={operation.inputType}
           />
         )}
@@ -278,13 +296,13 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           <DateTimePicker
             ampm={false}
             ampmInClock={false}
-            label={t('common.filter.value')}
+            label={t('common:filter.value')}
             localeText={{
-              openPreviousView: t('common.date.previousMonthAction'),
-              previousMonth: t('common.date.previousMonthAction'),
-              openNextView: t('common.date.nextMonthAction'),
-              nextMonth: t('common.date.nextMonthAction'),
-              toolbarTitle: t('common.date.dateTimePickerToolbarTitle'),
+              openPreviousView: t('common:date.previousMonthAction'),
+              previousMonth: t('common:date.previousMonthAction'),
+              openNextView: t('common:date.nextMonthAction'),
+              nextMonth: t('common:date.nextMonthAction'),
+              toolbarTitle: t('common:date.dateTimePickerToolbarTitle'),
             }}
             onChange={(newValue) => {
               // Check if date is null
@@ -312,7 +330,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
         fullWidth
         helperText={errorMsg ? t(errorMsg) : null}
         id={id}
-        label={t('common.filter.value')}
+        label={t('common:filter.value')}
         onChange={(event) => {
           // Check if operation is a number
           if (operation.inputType === 'number') {
@@ -332,7 +350,7 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
           // Save value for validation
           onChange(event.target.value);
         }}
-        placeholder={t('common.filter.value')}
+        placeholder={t('common:filter.value')}
         size="small"
         type={operation.inputType}
         value={value}

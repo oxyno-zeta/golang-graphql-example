@@ -91,8 +91,8 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
         sx={{ display: 'flex' }}
       >
         <Autocomplete
-          clearText={t('common.clearAction')}
-          closeText={t('common.closeAction')}
+          clearText={t('common:clearAction')}
+          closeText={t('common:closeAction')}
           fullWidth
           id={`${id}-field`}
           isOptionEqualToValue={(option, v) => {
@@ -107,7 +107,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
             // Check if displayed option is the same as value
             return t(optDisplay) === v;
           }}
-          noOptionsText={t('common.filter.noOptions')}
+          noOptionsText={t('common:filter.noOptions')}
           onChange={(input, newValue) => {
             // Check if value isn't the same as actual
             if (newValue === selectedField) {
@@ -121,21 +121,24 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
             // Flush value
             setValue(undefined);
           }}
-          openText={t('common.openAction')}
+          openText={t('common:openAction')}
           options={fieldKeys}
           renderInput={(params) => (
             <TextField
               {...params}
               error={!!fieldErrorMsg}
               helperText={fieldErrorMsg ? t(fieldErrorMsg) : null}
-              label={t('common.filter.field')}
-              placeholder={t('common.filter.field')}
+              label={t('common:filter.field')}
+              placeholder={t('common:filter.field')}
             />
           )}
           renderOption={(props, fieldKey: string, { inputValue }) => {
             const fieldData = filterDefinitionModel[fieldKey];
             const displayedOption = t(fieldData.display);
-            const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+            const matches = match(displayedOption, inputValue, {
+              insideWords: true,
+              findAllOccurrences: true,
+            });
             const parts = parse(displayedOption, matches);
 
             return (
@@ -154,7 +157,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                     ))}
                   </Typography>
                   {fieldData.description ? (
-                    <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
+                    <Typography
+                      sx={{
+                        fontStyle: 'italic',
+                        overflowWrap: 'break-word',
+                        whiteSpace: 'normal',
+                      }}
+                    >
                       {t(fieldData.description)}
                     </Typography>
                   ) : null}
@@ -177,8 +186,8 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
       >
         {selectedFieldData ? (
           <Autocomplete
-            clearText={t('common.clearAction')}
-            closeText={t('common.closeAction')}
+            clearText={t('common:clearAction')}
+            closeText={t('common:closeAction')}
             fullWidth
             getOptionLabel={(option: string) => t(option)}
             id={`${id}-operation`}
@@ -194,7 +203,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
               // Check if displayed option is the same as value
               return t(optDisplay) === v;
             }}
-            noOptionsText={t('common.filter.noOptions')}
+            noOptionsText={t('common:filter.noOptions')}
             onChange={(input, newValue) => {
               // Check if value isn't the same as actual
               if (newValue === selectedOperation) {
@@ -209,21 +218,24 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                 setValue(selectedFieldData.operations[newValue].initialValue);
               }
             }}
-            openText={t('common.openAction')}
+            openText={t('common:openAction')}
             options={operations}
             renderInput={(params) => (
               <TextField
                 {...params}
                 error={!!operationErrorMsg}
                 helperText={operationErrorMsg ? t(operationErrorMsg) : null}
-                label={t('common.filter.operation')}
-                placeholder={t('common.filter.operation')}
+                label={t('common:filter.operation')}
+                placeholder={t('common:filter.operation')}
               />
             )}
             renderOption={(props, key: string, { inputValue }) => {
               const opData = selectedFieldData.operations[key];
               const displayedOption = t(opData.display);
-              const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
+              const matches = match(displayedOption, inputValue, {
+                insideWords: true,
+                findAllOccurrences: true,
+              });
               const parts = parse(displayedOption, matches);
 
               return (
@@ -242,7 +254,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
                       ))}
                     </Typography>
                     {opData.description ? (
-                      <Typography sx={{ fontStyle: 'italic', overflowWrap: 'break-word', whiteSpace: 'normal' }}>
+                      <Typography
+                        sx={{
+                          fontStyle: 'italic',
+                          overflowWrap: 'break-word',
+                          whiteSpace: 'normal',
+                        }}
+                      >
                         {t(opData.description)}
                       </Typography>
                     ) : null}

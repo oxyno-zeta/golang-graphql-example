@@ -30,7 +30,7 @@ type TestFilterModel = {
 
 const testFilterDefinitionObject: FilterDefinitionFieldsModel = {
   createdAt: {
-    display: 'common.fields.createdAt',
+    display: 'common:fields.createdAt',
     description: 'longgggggggggggggggggggg description',
     operations: dateOperations,
   },

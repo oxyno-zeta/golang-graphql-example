@@ -2,28 +2,28 @@ import { type FilterDefinitionOperationsModel } from './general';
 
 export const booleanOperations: FilterDefinitionOperationsModel<boolean> = {
   eq: {
-    display: 'common.operations.eq',
+    display: 'common:operations.eq',
     initialValue: true,
     input: false,
     enumValues: [
-      { display: 'common.boolean.true', value: true },
-      { display: 'common.boolean.false', value: false },
+      { display: 'common:boolean.true', value: true },
+      { display: 'common:boolean.false', value: false },
     ],
   },
   notEq: {
-    display: 'common.operations.notEq',
+    display: 'common:operations.notEq',
     initialValue: true,
     input: false,
     enumValues: [
-      { display: 'common.boolean.true', value: true },
-      { display: 'common.boolean.false', value: false },
+      { display: 'common:boolean.true', value: true },
+      { display: 'common:boolean.false', value: false },
     ],
   },
 };
 
 export function requiredInputValidate(value: undefined | null | string | string[]) {
   if (value === undefined || value === null || value.length === 0 || value === '') {
-    return 'common.fieldValidationError.required';
+    return 'common:fieldValidationError.required';
   }
 
   // Default
@@ -48,7 +48,7 @@ export function requiredInputIntegerValidate(value: undefined | null | string | 
   });
 
   if (hasInvalid) {
-    return 'common.fieldValidationError.mustBeAnInteger';
+    return 'common:fieldValidationError.mustBeAnInteger';
   }
 
   return null;
@@ -56,21 +56,21 @@ export function requiredInputIntegerValidate(value: undefined | null | string | 
 
 export const stringOperations: FilterDefinitionOperationsModel<string> = {
   eq: {
-    display: 'common.operations.eq',
+    display: 'common:operations.eq',
     initialValue: '',
     input: true,
     inputType: 'string',
     caseInsensitiveEnabled: true,
   },
   notEq: {
-    display: 'common.operations.notEq',
+    display: 'common:operations.notEq',
     initialValue: '',
     input: true,
     inputType: 'string',
     caseInsensitiveEnabled: true,
   },
   contains: {
-    display: 'common.operations.contains',
+    display: 'common:operations.contains',
     initialValue: '',
     input: true,
     inputType: 'string',
@@ -78,7 +78,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   notContains: {
-    display: 'common.operations.notContains',
+    display: 'common:operations.notContains',
     initialValue: '',
     input: true,
     inputType: 'string',
@@ -86,7 +86,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   startsWith: {
-    display: 'common.operations.startsWith',
+    display: 'common:operations.startsWith',
     initialValue: '',
     input: true,
     inputType: 'string',
@@ -94,7 +94,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   notStartsWith: {
-    display: 'common.operations.notStartsWith',
+    display: 'common:operations.notStartsWith',
     initialValue: '',
     input: true,
     inputType: 'string',
@@ -102,7 +102,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   endsWith: {
-    display: 'common.operations.endsWith',
+    display: 'common:operations.endsWith',
     initialValue: '',
     input: true,
     inputType: 'string',
@@ -110,7 +110,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   notEndsWith: {
-    display: 'common.operations.notEndsWith',
+    display: 'common:operations.notEndsWith',
     initialValue: '',
     input: true,
     inputType: 'string',
@@ -118,7 +118,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   in: {
-    display: 'common.operations.in',
+    display: 'common:operations.in',
     initialValue: [],
     input: true,
     inputType: 'string',
@@ -127,7 +127,7 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   notIn: {
-    display: 'common.operations.notIn',
+    display: 'common:operations.notIn',
     initialValue: [],
     input: true,
     inputType: 'string',
@@ -136,12 +136,12 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
     caseInsensitiveEnabled: true,
   },
   isNull: {
-    display: 'common.operations.isNull',
+    display: 'common:operations.isNull',
     input: false,
     initialValue: true,
   },
   isNotNull: {
-    display: 'common.operations.isNotNull',
+    display: 'common:operations.isNotNull',
     input: false,
     initialValue: true,
   },
@@ -149,82 +149,82 @@ export const stringOperations: FilterDefinitionOperationsModel<string> = {
 
 export const dateOperations: FilterDefinitionOperationsModel<Date> = {
   eq: {
-    display: 'common.operations.eq',
+    display: 'common:operations.eq',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   notEq: {
-    display: 'common.operations.notEq',
+    display: 'common:operations.notEq',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   gte: {
-    display: 'common.operations.gte',
+    display: 'common:operations.gte',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   notGte: {
-    display: 'common.operations.notGte',
+    display: 'common:operations.notGte',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   lte: {
-    display: 'common.operations.lte',
+    display: 'common:operations.lte',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   notLte: {
-    display: 'common.operations.notLte',
+    display: 'common:operations.notLte',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   gt: {
-    display: 'common.operations.gt',
+    display: 'common:operations.gt',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   notGt: {
-    display: 'common.operations.notGt',
+    display: 'common:operations.notGt',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   lt: {
-    display: 'common.operations.lt',
+    display: 'common:operations.lt',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   notLt: {
-    display: 'common.operations.notLt',
+    display: 'common:operations.notLt',
     initialValue: null,
     input: true,
     inputType: 'date',
     inputValidate: requiredInputValidate,
   },
   isNull: {
-    display: 'common.operations.isNull',
+    display: 'common:operations.isNull',
     input: false,
     initialValue: true,
   },
   isNotNull: {
-    display: 'common.operations.isNotNull',
+    display: 'common:operations.isNotNull',
     input: false,
     initialValue: true,
   },
@@ -232,77 +232,77 @@ export const dateOperations: FilterDefinitionOperationsModel<Date> = {
 
 export const intOperations: FilterDefinitionOperationsModel<number> = {
   eq: {
-    display: 'common.operations.eq',
+    display: 'common:operations.eq',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   notEq: {
-    display: 'common.operations.notEq',
+    display: 'common:operations.notEq',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   gte: {
-    display: 'common.operations.gte',
+    display: 'common:operations.gte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   notGte: {
-    display: 'common.operations.notGte',
+    display: 'common:operations.notGte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   lte: {
-    display: 'common.operations.lte',
+    display: 'common:operations.lte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   notLte: {
-    display: 'common.operations.notLte',
+    display: 'common:operations.notLte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   gt: {
-    display: 'common.operations.gt',
+    display: 'common:operations.gt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   notGt: {
-    display: 'common.operations.notGt',
+    display: 'common:operations.notGt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   lt: {
-    display: 'common.operations.lt',
+    display: 'common:operations.lt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   notLt: {
-    display: 'common.operations.notLt',
+    display: 'common:operations.notLt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputIntegerValidate,
   },
   in: {
-    display: 'common.operations.in',
+    display: 'common:operations.in',
     initialValue: [],
     input: true,
     inputType: 'number',
@@ -310,7 +310,7 @@ export const intOperations: FilterDefinitionOperationsModel<number> = {
     multipleValues: true,
   },
   notIn: {
-    display: 'common.operations.notIn',
+    display: 'common:operations.notIn',
     initialValue: [],
     input: true,
     inputType: 'number',
@@ -318,12 +318,12 @@ export const intOperations: FilterDefinitionOperationsModel<number> = {
     multipleValues: true,
   },
   isNull: {
-    display: 'common.operations.isNull',
+    display: 'common:operations.isNull',
     input: false,
     initialValue: true,
   },
   isNotNull: {
-    display: 'common.operations.isNotNull',
+    display: 'common:operations.isNotNull',
     input: false,
     initialValue: true,
   },
@@ -331,77 +331,77 @@ export const intOperations: FilterDefinitionOperationsModel<number> = {
 
 export const floatOperations: FilterDefinitionOperationsModel<number> = {
   eq: {
-    display: 'common.operations.eq',
+    display: 'common:operations.eq',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   notEq: {
-    display: 'common.operations.notEq',
+    display: 'common:operations.notEq',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   gte: {
-    display: 'common.operations.gte',
+    display: 'common:operations.gte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   notGte: {
-    display: 'common.operations.notGte',
+    display: 'common:operations.notGte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   lte: {
-    display: 'common.operations.lte',
+    display: 'common:operations.lte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   notLte: {
-    display: 'common.operations.notLte',
+    display: 'common:operations.notLte',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   gt: {
-    display: 'common.operations.gt',
+    display: 'common:operations.gt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   notGt: {
-    display: 'common.operations.notGt',
+    display: 'common:operations.notGt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   lt: {
-    display: 'common.operations.lt',
+    display: 'common:operations.lt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   notLt: {
-    display: 'common.operations.notLt',
+    display: 'common:operations.notLt',
     initialValue: 0,
     input: true,
     inputType: 'number',
     inputValidate: requiredInputValidate,
   },
   in: {
-    display: 'common.operations.in',
+    display: 'common:operations.in',
     initialValue: [],
     input: true,
     inputType: 'number',
@@ -409,7 +409,7 @@ export const floatOperations: FilterDefinitionOperationsModel<number> = {
     multipleValues: true,
   },
   notIn: {
-    display: 'common.operations.notIn',
+    display: 'common:operations.notIn',
     initialValue: [],
     input: true,
     inputType: 'number',
@@ -417,12 +417,12 @@ export const floatOperations: FilterDefinitionOperationsModel<number> = {
     multipleValues: true,
   },
   isNull: {
-    display: 'common.operations.isNull',
+    display: 'common:operations.isNull',
     input: false,
     initialValue: true,
   },
   isNotNull: {
-    display: 'common.operations.isNotNull',
+    display: 'common:operations.isNotNull',
     input: false,
     initialValue: true,
   },

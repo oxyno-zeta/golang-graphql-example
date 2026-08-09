@@ -130,7 +130,14 @@ function FilterBuilder({
       const key = generateKey('line');
 
       // Create new items list
-      const newItems = [...v, { type: 'line', key, initialValue: buildFieldInitialValue(undefined)[0] }];
+      const newItems = [
+        ...v,
+        {
+          type: 'line',
+          key,
+          initialValue: buildFieldInitialValue(undefined)[0],
+        },
+      ];
       // Save new result value
       resultsRef.current[key] = null;
       // Save management
@@ -189,7 +196,7 @@ function FilterBuilder({
             }}
             variant={groupKey === 'AND' ? 'contained' : undefined}
           >
-            {t('common.operations.and')}
+            {t('common:operations.and')}
           </Button>
           <Button
             onClick={() => {
@@ -199,17 +206,17 @@ function FilterBuilder({
             }}
             variant={groupKey === 'OR' ? 'contained' : undefined}
           >
-            {t('common.operations.or')}
+            {t('common:operations.or')}
           </Button>
         </ButtonGroup>
-        <Tooltip title={<>{t('common.filter.addNewField')}</>}>
+        <Tooltip title={<>{t('common:filter.addNewField')}</>}>
           <IconButton onClick={addLineHandler} sx={{ margin: '0 5px' }}>
             <SvgIcon>
               <path d={mdiPlus} />
             </SvgIcon>
           </IconButton>
         </Tooltip>
-        <Tooltip title={<>{t('common.filter.addNewGroupField')}</>}>
+        <Tooltip title={<>{t('common:filter.addNewGroupField')}</>}>
           <IconButton onClick={addGroupHandler} sx={{ margin: '0 5px' }}>
             <SvgIcon>
               <path d={mdiPlusBoxMultiple} />
@@ -217,7 +224,7 @@ function FilterBuilder({
           </IconButton>
         </Tooltip>
         {onRemove ? (
-          <Tooltip title={<>{t('common.filter.deleteGroupField')}</>}>
+          <Tooltip title={<>{t('common:filter.deleteGroupField')}</>}>
             <IconButton onClick={onRemove}>
               <SvgIcon>
                 <path d={mdiDelete} />
@@ -230,8 +237,14 @@ function FilterBuilder({
           if (it.type === 'line') {
             return (
               <Box data-testid={it.key} key={it.key} sx={{ display: 'flex', margin: '10px 0 5px 0' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', margin: '-20px 5px 0 0' }}>
-                  <Tooltip title={<>{t('common.filter.deleteField')}</>}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    margin: '-20px 5px 0 0',
+                  }}
+                >
+                  <Tooltip title={<>{t('common:filter.deleteField')}</>}>
                     <IconButton onClick={localRemoveHandler(it.key)}>
                       <SvgIcon>
                         <path d={mdiDelete} />

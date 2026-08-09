@@ -65,11 +65,17 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
 
           return (
             <Box data-testid={id} key={id} sx={{ display: 'flex', margin: '10px 0 20px 0' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '5px' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginRight: '5px',
+                }}
+              >
                 {result.length > 1 && (
                   <ButtonGroup orientation="vertical">
                     {index !== 0 && (
-                      <Tooltip title={<>{t('common.upAction')}</>}>
+                      <Tooltip title={<>{t('common:upAction')}</>}>
                         <IconButton
                           onClick={() => {
                             // Move
@@ -87,7 +93,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
                       </Tooltip>
                     )}
                     {index !== result.length - 1 && (
-                      <Tooltip title={<>{t('common.downAction')}</>}>
+                      <Tooltip title={<>{t('common:downAction')}</>}>
                         <IconButton
                           onClick={() => {
                             // Move
@@ -106,7 +112,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
                     )}
                   </ButtonGroup>
                 )}
-                <Tooltip title={<>{t('common.sort.deleteField')}</>}>
+                <Tooltip title={<>{t('common:sort.deleteField')}</>}>
                   <IconButton
                     onClick={() => {
                       const res = [...result];
@@ -142,7 +148,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
           );
         })}
         {availableFields.length !== 0 && (
-          <Tooltip title={<>{t('common.sort.addNewField')}</>}>
+          <Tooltip title={<>{t('common:sort.addNewField')}</>}>
             <IconButton onClick={onAddLine} sx={{ margin: '0 5px' }}>
               <SvgIcon>
                 <path d={mdiPlus} />
@@ -158,7 +164,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
           }}
           sx={{ marginLeft: 'auto', marginRight: '5px' }}
         >
-          {t('common.resetAction')}
+          {t('common:resetAction')}
         </Button>
         <Button
           autoFocus
@@ -167,7 +173,7 @@ function SortForm<T extends Record<string, SortOrderModel>>({ onSubmit, onReset,
           }}
           variant="contained"
         >
-          {t('common.applyAction')}
+          {t('common:applyAction')}
         </Button>
       </DialogActions>
     </>

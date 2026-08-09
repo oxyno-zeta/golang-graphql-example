@@ -52,7 +52,7 @@ function SortButton<T extends Record<string, SortOrderModel>>({
 
   return (
     <>
-      <Tooltip title={<>{t('common.sort.buttonTooltip')}</>}>
+      <Tooltip title={<>{t('common:sort.buttonTooltip')}</>}>
         <Button
           color="inherit"
           onClick={onClick}
@@ -61,7 +61,11 @@ function SortButton<T extends Record<string, SortOrderModel>>({
               setAnchorEl(d);
             }
           }}
-          sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
+          sx={{
+            border: (theme) => `1px solid ${theme.palette.divider}`,
+            padding: '5px 10px',
+            minWidth: '46px',
+          }}
           variant="outlined"
         >
           <SvgIcon color="inherit">

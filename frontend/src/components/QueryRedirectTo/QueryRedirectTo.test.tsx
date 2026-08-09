@@ -58,7 +58,7 @@ describe('QueryRedirectTo', () => {
     expect(container).toMatchSnapshot();
 
     // Find progressbar
-    expect(container).toHaveTextContent('common.loadingText');
+    expect(container).toHaveTextContent('common:loadingText');
     expect(await findByRole('progressbar')).not.toBeNull();
   });
 
@@ -85,7 +85,7 @@ describe('QueryRedirectTo', () => {
     expect(container).toMatchSnapshot();
 
     // Find progressbar
-    expect(container).not.toHaveTextContent('common.loadingText');
+    expect(container).not.toHaveTextContent('common:loadingText');
     expect(await findByRole('progressbar')).not.toBeNull();
   });
 
@@ -119,7 +119,7 @@ describe('QueryRedirectTo', () => {
 
     // Now find errors
     expect(container).toMatchSnapshot();
-    expect(container).toHaveTextContent('common.errors');
+    expect(container).toHaveTextContent('common:errors');
   });
 
   it('should display no data when no data is returned from query', async () => {
@@ -147,7 +147,7 @@ describe('QueryRedirectTo', () => {
     });
 
     // Now find errors
-    expect(container).toHaveTextContent('common.noData');
+    expect(container).toHaveTextContent('common:noData');
     expect(container).toMatchSnapshot();
   });
 

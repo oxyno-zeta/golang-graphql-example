@@ -56,7 +56,7 @@ function FilterButton<T extends FilterValueObject>({
 
   return (
     <>
-      <Tooltip title={<>{t('common.filter.buttonTooltip')}</>}>
+      <Tooltip title={<>{t('common:filter.buttonTooltip')}</>}>
         <Button
           color={filter && Object.keys(filter).length !== 0 ? 'primary' : 'inherit'}
           onClick={onClick}
@@ -65,7 +65,11 @@ function FilterButton<T extends FilterValueObject>({
               setAnchorEl(d);
             }
           }}
-          sx={{ border: (theme) => `1px solid ${theme.palette.divider}`, padding: '5px 10px', minWidth: '46px' }}
+          sx={{
+            border: (theme) => `1px solid ${theme.palette.divider}`,
+            padding: '5px 10px',
+            minWidth: '46px',
+          }}
           variant="outlined"
         >
           <SvgIcon>

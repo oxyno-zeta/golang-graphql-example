@@ -1221,10 +1221,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -1282,16 +1282,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -1401,16 +1401,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -1468,16 +1468,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -1540,14 +1540,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-61"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
     </button>
   </div>
 </div>
@@ -2692,10 +2692,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -2753,16 +2753,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -2889,16 +2889,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -2956,16 +2956,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -3075,16 +3075,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.updatedAt"
+                  value="common:fields.updatedAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -3142,16 +3142,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -3197,14 +3197,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-89"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
     </button>
   </div>
 </div>
@@ -4349,10 +4349,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -4410,16 +4410,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -4546,16 +4546,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -4613,16 +4613,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -4732,16 +4732,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.updatedAt"
+                  value="common:fields.updatedAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -4799,16 +4799,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -4854,14 +4854,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-89"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
     </button>
   </div>
 </div>
@@ -6000,16 +6000,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -6067,16 +6067,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -6209,10 +6209,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -6270,16 +6270,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -6389,16 +6389,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.updatedAt"
+                  value="common:fields.updatedAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -6456,16 +6456,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -6511,14 +6511,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-89"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
     </button>
   </div>
 </div>
@@ -7657,16 +7657,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -7724,16 +7724,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -7860,16 +7860,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.updatedAt"
+                  value="common:fields.updatedAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -7927,16 +7927,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -8052,10 +8052,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -8113,16 +8113,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -8168,14 +8168,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-89"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
     </button>
   </div>
 </div>
@@ -9314,16 +9314,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.updatedAt"
+                  value="common:fields.updatedAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -9381,16 +9381,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -9517,16 +9517,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -9584,16 +9584,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -9709,10 +9709,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -9770,16 +9770,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -9825,14 +9825,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-89"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
     </button>
   </div>
 </div>
@@ -10903,10 +10903,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-11"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -10964,16 +10964,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-11"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -11036,14 +11036,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-30"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
       <span
         class="MuiTouchRipple-root emotion-31"
       />
@@ -12285,10 +12285,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -12346,16 +12346,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -12465,16 +12465,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -12532,16 +12532,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -12604,14 +12604,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-61"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
       <span
         class="MuiTouchRipple-root emotion-62"
       />
@@ -13771,10 +13771,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -13832,16 +13832,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -13968,16 +13968,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.createdAt"
+                  value="common:fields.createdAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -14035,16 +14035,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.desc"
+                  value="common:sort.desc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -14154,16 +14154,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.fields.updatedAt"
+                  value="common:fields.updatedAt"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -14221,16 +14221,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-14"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-15"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -14276,14 +14276,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-13:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-89"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
       <span
         class="MuiTouchRipple-root emotion-90"
       />
@@ -14686,14 +14686,14 @@ exports[`sorts/internal/SortForm > should be ok with no initial sorts 1`] = `
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-5"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
       <span
         class="MuiTouchRipple-root emotion-6"
       />
@@ -15767,10 +15767,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   class="MuiAutocomplete-endAdornment emotion-11"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -15828,16 +15828,16 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
                   role="combobox"
                   spellcheck="false"
                   type="text"
-                  value="common.sort.asc"
+                  value="common:sort.asc"
                 />
                 <div
                   class="MuiAutocomplete-endAdornment emotion-11"
                 >
                   <button
-                    aria-label="common.openAction"
+                    aria-label="common:openAction"
                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator emotion-12"
                     tabindex="-1"
-                    title="common.openAction"
+                    title="common:openAction"
                     type="button"
                   >
                     <svg
@@ -15900,14 +15900,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-10:focus::-ms-input-
       tabindex="0"
       type="button"
     >
-      common.resetAction
+      common:resetAction
     </button>
     <button
       class="MuiButtonBase-root Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-sizeMedium MuiButton-colorPrimary emotion-30"
       tabindex="0"
       type="button"
     >
-      common.applyAction
+      common:applyAction
       <span
         class="MuiTouchRipple-root emotion-31"
       />

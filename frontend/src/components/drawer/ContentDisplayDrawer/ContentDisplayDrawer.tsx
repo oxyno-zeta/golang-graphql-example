@@ -103,10 +103,10 @@ function ContentDisplayDrawer({
       <div style={{ display: 'flex', alignItems: 'center', margin: '10px' }}>
         {titleElement || (
           <Typography sx={{ marginRight: 'auto' }} variant="h6">
-            {t('common.details')}
+            {t('common:details')}
           </Typography>
         )}
-        <Tooltip title={<>{t('common.closeAction')}</>}>
+        <Tooltip title={<>{t('common:closeAction')}</>}>
           <span>
             <IconButton onClick={onClose} sx={{ marginLeft: 'auto' }}>
               <SvgIcon>

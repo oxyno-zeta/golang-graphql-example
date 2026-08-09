@@ -29,7 +29,7 @@ export default function getDataGridCommonProps(t: (d: string) => string | undefi
       ...sx,
     },
     localeText: {
-      noRowsLabel: t('common.noData'),
+      noRowsLabel: t('common:noData'),
     },
     isRowSelectable: () => false,
   };

@@ -70,8 +70,8 @@ function FormAutocomplete<T extends FieldValues>({
 
   return (
     <Autocomplete<ValueModel>
-      clearText={t('common.clearAction')}
-      closeText={t('common.closeAction')}
+      clearText={t('common:clearAction')}
+      closeText={t('common:closeAction')}
       getOptionLabel={(option: ValueModel | string) => {
         // Check if option is empty
         if (option === '') {
@@ -81,7 +81,7 @@ function FormAutocomplete<T extends FieldValues>({
         // Normal case
         return (option as ValueModel).display;
       }}
-      noOptionsText={t('common.filter.noOptions')}
+      noOptionsText={t('common:filter.noOptions')}
       // eslint-disable-next-line react-hooks/refs
       onBlur={field.onBlur}
       onChange={(input, newValue) => {
@@ -93,7 +93,7 @@ function FormAutocomplete<T extends FieldValues>({
 
         field.onChange(newValue.value);
       }}
-      openText={t('common.openAction')}
+      openText={t('common:openAction')}
       options={values}
       // eslint-disable-next-line react-hooks/refs
       ref={field.ref}

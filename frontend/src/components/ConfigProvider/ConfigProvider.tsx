@@ -59,7 +59,7 @@ function ConfigProvider({ children, loadingComponent, skipConfigLoader = false }
           position: 'absolute',
         }}
       >
-        <Typography color="error">{t('common.configLoadError')}</Typography>
+        <Typography color="error">{t('common:configLoadError')}</Typography>
       </Box>
     );
   }
@@ -76,7 +76,7 @@ function ConfigProvider({ children, loadingComponent, skipConfigLoader = false }
           position: 'absolute',
         }}
       >
-        <Typography color="error">{t('common.configEmptyError')}</Typography>
+        <Typography color="error">{t('common:configEmptyError')}</Typography>
       </Box>
     );
   }

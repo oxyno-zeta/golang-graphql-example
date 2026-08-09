@@ -29,8 +29,10 @@ const i18n = use(Backend)
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
+    ns: ['common', 'project'],
+    defaultNS: 'project',
     backend: {
-      loadPath: '/i18n-{{lng}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 

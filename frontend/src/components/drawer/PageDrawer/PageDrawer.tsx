@@ -220,7 +220,7 @@ function PageDrawer({
                         </SvgIcon>
                       </ListItemIcon>
                       <ListItemText sx={isCollapsedComputed ? { display: 'none' } : {}}>
-                        {t('common.collapseSidebarAction')}
+                        {t('common:collapseSidebarAction')}
                       </ListItemText>
                     </ListItemButton>
                   </ListItem>

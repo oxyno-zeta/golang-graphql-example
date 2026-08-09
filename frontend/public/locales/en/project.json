@@ -1,0 +1,11 @@
+{
+  "common": {
+    "mainTitle": "Todo List"
+  },
+  "todos": {
+    "fields": {
+      "text": "Text",
+      "done": "Done"
+    }
+  }
+}

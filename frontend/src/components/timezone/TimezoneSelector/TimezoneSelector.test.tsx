@@ -35,14 +35,14 @@ describe('timezone/TimezoneSelector', () => {
 
     expect(container.firstChild).toHaveClass('MuiAutocomplete-root');
 
-    expect(container).toHaveTextContent('common.timezone');
+    expect(container).toHaveTextContent('common:timezone');
 
     const combobox = await findByRole('combobox');
     expect(combobox).toHaveAttribute('type', 'text');
     expect(combobox).toHaveAttribute('value', 'UTC');
 
-    expect(await findByTitle('common.clearAction')).not.toBeNull();
-    expect(await findByTitle('common.openAction')).not.toBeNull();
+    expect(await findByTitle('common:clearAction')).not.toBeNull();
+    expect(await findByTitle('common:openAction')).not.toBeNull();
   });
 
   it('should display a list of timezone when a click is done and to select it', async () => {
@@ -70,7 +70,7 @@ describe('timezone/TimezoneSelector', () => {
       </TimezoneProvider>,
     );
 
-    const openButton = await findByTitle('common.openAction');
+    const openButton = await findByTitle('common:openAction');
     expect(openButton).not.toBeNull();
 
     expect(fireEvent.click(openButton)).toBeTruthy();

@@ -66,7 +66,7 @@ function TopBarUserMenu({ UserInfoComponent = undefined }: TopBarUserMenuProps) 
 
   return (
     <>
-      <Tooltip title={t('common.accountMenu')}>
+      <Tooltip title={t('common:accountMenu')}>
         <span>
           <IconButton onClick={onOpenUserMenu}>
             <SvgIcon>
@@ -119,7 +119,7 @@ function TopBarUserMenu({ UserInfoComponent = undefined }: TopBarUserMenuProps) 
         <MenuList>
           {oidcSignOutURL ? (
             <MenuItem component="a" href={buildLogoutURL(oidcSignOutURL, oidcClientID || '')} rel="noopener noreferrer">
-              {t('common.signOutAction')}
+              {t('common:signOutAction')}
             </MenuItem>
           ) : null}
         </MenuList>
