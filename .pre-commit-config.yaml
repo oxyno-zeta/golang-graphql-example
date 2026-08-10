@@ -74,6 +74,14 @@ repos:
         require_serial: false
         language: script
         pass_filenames: false
+      - id: backend-format
+        stages: [pre-commit]
+        files: \.go$
+        name: Backend Format
+        entry: ./run-sub-folder-task.sh backend "make code/format"
+        require_serial: false
+        language: script
+        pass_filenames: false
       - id: backend-graphql-concat
         stages: [pre-commit]
         files: \.graphql$
