@@ -22,6 +22,8 @@ gotestsum = "1.13.0"
 "go:github.com/air-verse/air" = "v1.67.4"
 # renovate: datasource=github-tags depName=go-delve/delve
 "go:github.com/go-delve/delve/cmd/dlv" = "v1.27.1"
+# renovate: datasource=go depName=golang.org/x/tools/gopls
+"go:golang.org/x/tools/gopls" = "v0.23.0"
 
 [hooks]
 postinstall = "pre-commit install"
