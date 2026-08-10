@@ -1,7 +1,5 @@
 {
-  "common": {
-    "mainTitle": "Todo List"
-  },
+  "mainTitle": "Todo List",
   "todos": {
     "fields": {
       "text": "Text",

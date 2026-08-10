@@ -37,7 +37,7 @@ function TopBar({
           to="/"
           variant="h6"
         >
-          {t('common.mainTitle')}
+          {t('mainTitle')}
         </Typography>
         <div style={{ flexGrow: 1 }} />
         {!disableUserMenu && <TopBarUserMenuComponent {...topBarUserMenuProps} />}
