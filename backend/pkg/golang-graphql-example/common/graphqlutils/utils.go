@@ -45,7 +45,7 @@ func FromRelayID(prefix, relayID string) (string, error) {
 }
 
 func GetPaginateCursor(tableIndex, skip int) string {
-	return ToRelayID(strconv.Itoa(tableIndex+skip+1), PaginationIDPrefix)
+	return ToRelayID(PaginationIDPrefix, strconv.Itoa(tableIndex+skip+1))
 }
 
 func GetPageInfo(startCursor, endCursor string, p *pagination.PageOutput) *PageInfo {
