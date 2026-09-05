@@ -59,25 +59,25 @@ HAS_AIR:=$(shell command -v air;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v2.12.2"
+GOLANGCI_LINT_VERSION := "v2.13.2"
 # renovate: datasource=docker depName=dpage/pgadmin4
 PGADMIN_VERSION := "9.15.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.13.2"
+PROMETHEUS_VERSION := "v3.14.0"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "13.1.3"
+GRAFANA_VERSION := "13.2.1"
 # renovate: datasource=docker depName=grafana/tempo
-TEMPO_VERSION := "3.0.2"
+TEMPO_VERSION := "3.0.3"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.19.0"
+OPA_VERSION := "1.20.2"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.7.1"
+KEYCLOAK_VERSION := "26.7.3"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.3.4"
+RABBITMQ_VERSION := "4.3.5"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -289,7 +289,7 @@ endif
 setup/dep/gen/install:
 ifndef HAS_GQLGEN
 	@echo "=> Installing gqlgen tool"
-	$(GO) install github.com/99designs/gqlgen@v0.17.94
+	$(GO) install github.com/99designs/gqlgen@v0.17.95
 endif
 ifndef HAS_MOCKGEN
 	@echo "=> Installing mockgen tool"
@@ -297,7 +297,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.48.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.49.0
 endif
 
 .PHONY: setup/dep/test/install
