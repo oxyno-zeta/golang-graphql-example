@@ -526,7 +526,7 @@ func (*amqpService) extractTraceFromHeaders(h amqp091.Table) (context.Context, t
 	// Loop over input headers
 	for k, v := range h {
 		// Check if value is a string
-		switch v := v.(type) { //nolint: gocritic,revive // Ignore because can't do this in if
+		switch v := v.(type) { //nolint: gocritic,revive,nolintlint // Ignore because can't do this in if
 		case string:
 			headers[k] = v
 		}

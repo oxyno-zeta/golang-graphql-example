@@ -135,7 +135,7 @@ func (s *service) stoppingAppHook() {
 					h()
 				}
 				// Stopping application
-				os.Exit(0) //nolint: revive // Ignore this as this is wanted
+				os.Exit(0)
 
 				return
 			}

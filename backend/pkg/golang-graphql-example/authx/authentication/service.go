@@ -276,7 +276,7 @@ func (s *service) OIDCEndpoints(router gin.IRouter) error {
 		// Now, we know that we can open jwt token to get claims
 
 		// Build cookie
-		cookie := &http.Cookie{
+		cookie := &http.Cookie{ //nolint:gosec
 			Expires:  idToken.Expiry,
 			Name:     cfg.OIDCAuthentication.CookieName,
 			Value:    rawIDToken,
@@ -369,7 +369,7 @@ func (s *service) Middleware(unauthorizedPathRegexList []*regexp.Regexp) gin.Han
 }
 
 func flushAuthCookie(c *gin.Context, cfg *config.Config) {
-	http.SetCookie(c.Writer, &http.Cookie{
+	http.SetCookie(c.Writer, &http.Cookie{ //nolint:gosec
 		Expires:  time.Unix(0, 0),
 		Name:     cfg.OIDCAuthentication.CookieName,
 		Value:    "",
