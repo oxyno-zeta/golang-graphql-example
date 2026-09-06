@@ -8,7 +8,8 @@ const NotFoundErrorCode = "NOT_FOUND"
 
 func NewNotFoundError(msg string, options ...GenericErrorOption) Error {
 	return NewNotFoundErrorWithOptions(
-		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...,
+	)
 }
 
 func NewNotFoundErrorWithError(err error, options ...GenericErrorOption) Error {

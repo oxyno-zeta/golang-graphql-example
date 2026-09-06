@@ -6,7 +6,8 @@ const InternalServerErrorCode = "INTERNAL_SERVER_ERROR"
 
 func NewInternalServerError(msg string, options ...GenericErrorOption) Error {
 	return NewInternalServerErrorWithOptions(
-		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...,
+	)
 }
 
 func NewInternalServerErrorWithError(err error, options ...GenericErrorOption) Error {

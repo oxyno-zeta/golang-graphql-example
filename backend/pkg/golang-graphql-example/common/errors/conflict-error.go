@@ -6,7 +6,8 @@ const ConflictErrorCode = "CONFLICT"
 
 func NewConflictError(msg string, options ...GenericErrorOption) Error {
 	return NewConflictErrorWithOptions(
-		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...,
+	)
 }
 
 func NewConflictErrorWithError(err error, options ...GenericErrorOption) Error {

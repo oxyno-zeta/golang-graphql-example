@@ -8,12 +8,14 @@ const UnauthorizedErrorCode = "UNAUTHORIZED"
 
 func NewUnauthorizedError(msg string, options ...GenericErrorOption) Error {
 	return NewUnauthorizedErrorWithOptions(
-		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...)
+		append([]GenericErrorOption{WithErrorMessage(msg)}, options...)...,
+	)
 }
 
 func NewUnauthorizedErrorWithError(err error, options ...GenericErrorOption) Error {
 	return NewUnauthorizedErrorWithOptions(
-		append([]GenericErrorOption{WithError(err)}, options...)...)
+		append([]GenericErrorOption{WithError(err)}, options...)...,
+	)
 }
 
 func NewUnauthorizedErrorWithOptions(options ...GenericErrorOption) Error {
