@@ -70,7 +70,7 @@ repos:
         stages: [pre-commit]
         files: \.go$
         name: Backend Lint
-        entry: ./run-sub-folder-task.sh backend "make code/lint"
+        entry: ./run-sub-folder-task.sh backend "make code/lint/git-stage"
         require_serial: false
         language: script
         pass_filenames: false

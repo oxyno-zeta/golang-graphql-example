@@ -91,6 +91,10 @@ DEFAULT_CONTAINER_RUNTIME ?= podman
 code/lint: setup/dep/install setup/dep/lint/install
 	golangci-lint run ./...
 
+.PHONY: code/lint/git-stage
+code/lint/git-stage: setup/dep/install setup/dep/lint/install
+	golangci-lint run --new-from-rev HEAD ./...
+
 .PHONY: code/format
 code/format: setup/dep/install setup/dep/lint/install
 	golangci-lint fmt ./...
