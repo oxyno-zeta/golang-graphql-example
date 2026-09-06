@@ -31,9 +31,11 @@ exports[`GridTableViewSwitcher > should display as grid and should not do anythi
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,
@@ -256,9 +258,11 @@ exports[`GridTableViewSwitcher > should display as grid and should not do anythi
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,
@@ -481,9 +485,11 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,
@@ -706,9 +712,11 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,
@@ -931,9 +939,11 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,
@@ -1156,9 +1166,11 @@ exports[`GridTableViewSwitcher > should display as table and should not do anyth
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,
@@ -1381,9 +1393,11 @@ exports[`GridTableViewSwitcher > should display as table and should not do anyth
   border-right-color: transparent;
 }
 
-.emotion-0 .MuiButtonGroup-firstButton:hover,
-.emotion-0 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-0 .MuiButtonGroup-firstButton:hover,
+  .emotion-0 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-0 .MuiButtonGroup-lastButton,

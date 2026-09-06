@@ -49,9 +49,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -1416,9 +1418,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -2783,9 +2787,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -3233,9 +3239,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -4600,9 +4608,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -5050,9 +5060,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -6498,9 +6510,11 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -6948,9 +6962,11 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -9084,9 +9100,11 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -10975,9 +10993,11 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -12814,9 +12834,11 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -14564,9 +14586,11 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -17282,9 +17306,11 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   border-right-color: transparent;
 }
 
-.emotion-12 .MuiButtonGroup-firstButton:hover,
-.emotion-12 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-12 .MuiButtonGroup-firstButton:hover,
+  .emotion-12 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-12 .MuiButtonGroup-lastButton,
@@ -19408,9 +19434,11 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   border-right-color: transparent;
 }
 
-.emotion-15 .MuiButtonGroup-firstButton:hover,
-.emotion-15 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-15 .MuiButtonGroup-firstButton:hover,
+  .emotion-15 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-15 .MuiButtonGroup-lastButton,
@@ -20742,9 +20770,11 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -22109,9 +22139,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -24165,9 +24197,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -26519,9 +26553,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -28962,9 +28998,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -31429,9 +31467,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -33820,9 +33860,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -36509,9 +36551,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -39287,9 +39331,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -42089,9 +42135,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -44815,9 +44863,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -47541,9 +47591,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -50186,9 +50238,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -52242,9 +52296,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -54887,9 +54943,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -57532,9 +57590,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -59588,9 +59648,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -61861,9 +61923,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -64223,9 +64287,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -66609,9 +66675,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -68919,9 +68987,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -71229,9 +71299,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -73285,9 +73357,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -75341,9 +75415,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -77397,9 +77473,11 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   border-right-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-right-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-right-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,

@@ -66,9 +66,11 @@ exports[`sorts/internal/SortForm > should be ok to add last available field 1`] 
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -1619,9 +1621,11 @@ exports[`sorts/internal/SortForm > should be ok to add last available field 2`] 
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -3276,9 +3280,11 @@ exports[`sorts/internal/SortForm > should be ok to reorder 1`] = `
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -4933,9 +4939,11 @@ exports[`sorts/internal/SortForm > should be ok to reorder 2`] = `
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -6590,9 +6598,11 @@ exports[`sorts/internal/SortForm > should be ok to reorder 3`] = `
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -8247,9 +8257,11 @@ exports[`sorts/internal/SortForm > should be ok to reorder 4`] = `
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -11118,9 +11130,11 @@ exports[`sorts/internal/SortForm > should be ok with 2 initial sorts 1`] = `
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
@@ -12686,9 +12700,11 @@ exports[`sorts/internal/SortForm > should be ok with all initial sorts 1`] = `
   border-bottom-color: transparent;
 }
 
-.emotion-3 .MuiButtonGroup-firstButton:hover,
-.emotion-3 .MuiButtonGroup-middleButton:hover {
-  border-bottom-color: currentColor;
+@media (hover: hover) {
+  .emotion-3 .MuiButtonGroup-firstButton:hover,
+  .emotion-3 .MuiButtonGroup-middleButton:hover {
+    border-bottom-color: currentColor;
+  }
 }
 
 .emotion-3 .MuiButtonGroup-lastButton,
