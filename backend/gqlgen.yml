@@ -46,6 +46,10 @@ autobind:
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
+  # Sanitize incoming strings before they reach resolvers, including input lists.
+  String:
+    model:
+      - ./pkg/golang-graphql-example/server/graphql/utils.String
   DateFormat:
     model:
       - ./pkg/golang-graphql-example/server/graphql/utils.DateFormat
