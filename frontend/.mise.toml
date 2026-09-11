@@ -1,7 +1,7 @@
 #:schema https://mise.jdx.dev/schema/mise.json
 
 [tools]
-"npm:oxfmt" = "0.66.0"
+"npm:oxfmt" = "0.67.0"
 pre-commit = '4.6.2'
 node = { version = '24', postinstall = 'corepack enable' }
 
