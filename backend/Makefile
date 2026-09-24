@@ -63,7 +63,7 @@ GOLANGCI_LINT_VERSION := "v2.13.2"
 # renovate: datasource=docker depName=dpage/pgadmin4
 PGADMIN_VERSION := "9.15.0"
 # renovate: datasource=docker depName=maildev/maildev
-MAILDEV_VERSION := "2.2.1"
+MAILDEV_VERSION := "3.0.0"
 # renovate: datasource=docker depName=prom/prometheus
 PROMETHEUS_VERSION := "v3.14.0"
 # renovate: datasource=docker depName=grafana/grafana
