@@ -59,25 +59,25 @@ HAS_AIR:=$(shell command -v air;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v2.13.2"
+GOLANGCI_LINT_VERSION := "v2.14.0"
 # renovate: datasource=docker depName=dpage/pgadmin4
-PGADMIN_VERSION := "9.15.0"
+PGADMIN_VERSION := "9.18.0"
 # renovate: datasource=docker depName=maildev/maildev
 MAILDEV_VERSION := "2.2.1"
 # renovate: datasource=docker depName=prom/prometheus
-PROMETHEUS_VERSION := "v3.14.0"
+PROMETHEUS_VERSION := "v3.15.0"
 # renovate: datasource=docker depName=grafana/grafana
-GRAFANA_VERSION := "13.2.1"
+GRAFANA_VERSION := "13.2.2"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "3.0.3"
 # renovate: datasource=docker depName=postgres
 POSTGRESQL_VERSION := "16"
 # renovate: datasource=docker depName=openpolicyagent/opa
-OPA_VERSION := "1.20.2"
+OPA_VERSION := "1.21.0"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
-KEYCLOAK_VERSION := "26.7.3"
+KEYCLOAK_VERSION := "26.7.4"
 # renovate: datasource=docker depName=rabbitmq
-RABBITMQ_VERSION := "4.3.5"
+RABBITMQ_VERSION := "4.3.6"
 
 DEFAULT_CONTAINER_RUNTIME ?= podman
 
@@ -301,7 +301,7 @@ ifndef HAS_MOCKGEN
 endif
 ifndef HAS_FIELDALIGNMENT
 	@echo "=> Installing fieldalignment tool"
-	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.49.0
+	$(GO) install golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment@v0.50.0
 endif
 
 .PHONY: setup/dep/test/install
