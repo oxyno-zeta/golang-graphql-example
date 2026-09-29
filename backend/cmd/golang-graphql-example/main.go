@@ -47,8 +47,9 @@ type services struct {
 
 var targetDefinitionsMap = map[string]*targetDefinition{
 	// Basics
-	"migrate-db": migrateDBTarget,
-	"server":     serverTarget,
+	"migrate-db":                migrateDBTarget,
+	"server":                    serverTarget,
+	"business-metrics-exporter": businessMetricsExporterTarget,
 	// Extra
 }
 
