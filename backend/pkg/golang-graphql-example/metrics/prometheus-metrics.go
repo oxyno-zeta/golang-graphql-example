@@ -225,7 +225,7 @@ func (impl *prometheusMetrics) register() {
 
 	impl.businessMetricUpdateManaged = prometheus.NewCounterVec(
 		prometheus.CounterOpts{
-			Name: "business_metric_update_managed",
+			Name: "business_metric_update_managed_total",
 			Help: "How many business metric update have been managed by id and status",
 		},
 		[]string{"id", "status"},

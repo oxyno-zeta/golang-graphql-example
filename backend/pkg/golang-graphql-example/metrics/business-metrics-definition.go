@@ -153,11 +153,27 @@ func (impl *prometheusMetrics) internalStartUpdaterBusinessMetricDefinitions(ctx
 
 	// Infinite loop
 	for {
+		// Stop when the updater context is canceled
+		select {
+		case <-ctx.Done():
+			return
+		default:
+		}
+
 		// Start
 		f()
 
 		// Wait
-		time.Sleep(def.Interval)
+		timer := time.NewTimer(def.Interval)
+		select {
+		// Consider the stop of upper context to stop interval
+		case <-ctx.Done():
+			timer.Stop()
+
+			return
+		// Wait for interval
+		case <-timer.C:
+		}
 	}
 }
 
@@ -169,7 +185,7 @@ func (impl *prometheusMetrics) internalInitialFetchBusinessMetricDefinitions(ctx
 	defer cancel()
 
 	// Start trace
-	ctx, trace := impl.tracingSvc.StartTrace(ctx, businessMetricsDefinitionInitialFetchTraceName)
+	nCtx, trace := impl.tracingSvc.StartTrace(nCtx, businessMetricsDefinitionInitialFetchTraceName)
 	// Add metadata
 	trace.SetTag(businessMetricsTraceIDTagKey, def.ID)
 
