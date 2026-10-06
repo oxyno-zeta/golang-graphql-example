@@ -80,6 +80,9 @@ func setupBasicsServices(_ []string, sv *services) {
 	// Save
 	sv.tracingSvc = tracingSvc
 
+	// Add tracing service to metric services
+	sv.metricsSvc.AddExtraServices(tracingSvc)
+
 	// Create database service
 	db := database.NewDatabase("main", cfgManager, logger, metricsSvc, tracingSvc)
 	// Connect to engine

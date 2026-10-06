@@ -7,6 +7,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos/models"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database/pagination"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 )
 
 const TodoIDPrefix = "todos"
@@ -35,6 +36,7 @@ type Service interface {
 	Create(ctx context.Context, inp *InputCreateTodo) (*models.Todo, error)
 	Update(ctx context.Context, inp *InputUpdateTodo) (*models.Todo, error)
 	Close(ctx context.Context, id string, projection *models.Projection) (*models.Todo, error)
+	GetBusinessMetricDefinitions() []*metrics.BusinessMetricDefinition
 }
 
 type InputCreateTodo struct {

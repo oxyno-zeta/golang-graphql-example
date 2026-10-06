@@ -8,6 +8,7 @@ import (
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/business/todos"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/database"
 	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/log"
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/metrics"
 )
 
 type Services struct {
@@ -21,6 +22,10 @@ func (s *Services) MigrateDB(ctx context.Context) error {
 	migrationSvc := migration.New(s.db)
 
 	return migrationSvc.Migrate(ctx)
+}
+
+func (s *Services) GetBusinessMetricDefinitions() []*metrics.BusinessMetricDefinition {
+	return s.TodoSvc.GetBusinessMetricDefinitions()
 }
 
 func NewServices(systemLogger log.Logger, db database.DB, authSvc authorization.Service) *Services {

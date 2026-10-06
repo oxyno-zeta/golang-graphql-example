@@ -13,18 +13,29 @@ import (
 	gqlprometheus "github.com/99designs/gqlgen-contrib/prometheus"
 	gqlgraphql "github.com/99designs/gqlgen/graphql"
 	gormprometheus "gorm.io/plugin/prometheus"
+
+	"github.com/oxyno-zeta/golang-graphql-example/pkg/golang-graphql-example/tracing"
 )
 
 type prometheusMetrics struct {
-	reqCnt                *prometheus.CounterVec
-	resSz                 *prometheus.SummaryVec
-	reqDur                *prometheus.SummaryVec
-	reqSz                 *prometheus.SummaryVec
-	up                    prometheus.Gauge
-	configReloadFail      prometheus.Gauge
-	gormPrometheus        map[string]gorm.Plugin
-	amqpConsumedMessages  *prometheus.CounterVec
-	amqpPublishedMessages *prometheus.CounterVec
+	tracingSvc tracing.Service
+
+	reqCnt                      *prometheus.CounterVec
+	resSz                       *prometheus.SummaryVec
+	reqDur                      *prometheus.SummaryVec
+	reqSz                       *prometheus.SummaryVec
+	up                          prometheus.Gauge
+	configReloadFail            prometheus.Gauge
+	gormPrometheus              map[string]gorm.Plugin
+	amqpConsumedMessages        *prometheus.CounterVec
+	amqpPublishedMessages       *prometheus.CounterVec
+	businessMetricUpdateManaged *prometheus.CounterVec
+
+	businessMetricsDefinitions []*BusinessMetricDefinition
+}
+
+func (impl *prometheusMetrics) AddExtraServices(tracingSvc tracing.Service) {
+	impl.tracingSvc = tracingSvc
 }
 
 func (*prometheusMetrics) GraphqlMiddleware() gqlgraphql.HandlerExtension {
@@ -211,6 +222,15 @@ func (impl *prometheusMetrics) register() {
 		[]string{"exchange", "routing_key", "status"},
 	)
 	prometheus.MustRegister(impl.amqpPublishedMessages)
+
+	impl.businessMetricUpdateManaged = prometheus.NewCounterVec(
+		prometheus.CounterOpts{
+			Name: "business_metric_update_managed_total",
+			Help: "How many business metric update have been managed by id and status",
+		},
+		[]string{"id", "status"},
+	)
+	prometheus.MustRegister(impl.businessMetricUpdateManaged)
 
 	// Register gqlgen graphql prometheus metrics
 	gqlprometheus.Register()
