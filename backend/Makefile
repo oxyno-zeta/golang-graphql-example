@@ -71,7 +71,7 @@ GRAFANA_VERSION := "13.2.3"
 # renovate: datasource=docker depName=grafana/tempo
 TEMPO_VERSION := "3.1.0"
 # renovate: datasource=docker depName=postgres
-POSTGRESQL_VERSION := "16"
+POSTGRESQL_VERSION := "18.6"
 # renovate: datasource=docker depName=openpolicyagent/opa
 OPA_VERSION := "1.21.1"
 # renovate: datasource=docker depName=quay.io/keycloak/keycloak
