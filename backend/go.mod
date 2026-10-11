@@ -23,7 +23,7 @@ require (
 	github.com/graph-gophers/dataloader/v7 v7.2.0
 	github.com/hasura/go-graphql-client v0.16.0
 	github.com/microcosm-cc/bluemonday v1.0.27
-	github.com/prometheus/client_golang v1.24.1
+	github.com/prometheus/client_golang v1.25.0
 	github.com/rabbitmq/amqp091-go v1.15.0
 	github.com/ravilushqa/otelgqlgen v0.19.0
 	github.com/samber/lo v1.53.0
@@ -32,7 +32,7 @@ require (
 	github.com/spf13/viper v1.21.0
 	github.com/stretchr/testify v1.12.1
 	github.com/thoas/go-funk v0.9.3
-	github.com/vektah/gqlparser/v2 v2.5.61
+	github.com/vektah/gqlparser/v2 v2.5.62
 	github.com/xhit/go-simple-mail/v2 v2.16.0
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.72.0
 	go.opentelemetry.io/contrib/propagators/b3 v1.47.0
@@ -49,7 +49,7 @@ require (
 	go.uber.org/zap v1.28.0
 	go.yaml.in/yaml/v3 v3.0.5
 	golang.org/x/oauth2 v0.37.0
-	golang.org/x/sync v0.23.0
+	golang.org/x/sync v0.24.0
 	gorm.io/driver/postgres v1.6.3
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.31.2
@@ -102,7 +102,7 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/klauspost/compress v1.19.2 // indirect
+	github.com/klauspost/compress v1.20.1 // indirect
 	github.com/klauspost/cpuid/v2 v2.4.0 // indirect
 	github.com/leodido/go-urn v1.5.0 // indirect
 	github.com/lib/pq v1.12.3 // indirect
@@ -116,9 +116,9 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.28 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/prometheus/client_model v0.6.2 // indirect
-	github.com/prometheus/common v0.70.1 // indirect
-	github.com/prometheus/procfs v0.21.1 // indirect
+	github.com/prometheus/client_model v0.6.3 // indirect
+	github.com/prometheus/common v0.72.0 // indirect
+	github.com/prometheus/procfs v0.22.0 // indirect
 	github.com/quic-go/qpack v0.6.0 // indirect
 	github.com/quic-go/quic-go v0.63.0 // indirect
 	github.com/sagikazarmark/locafero v0.12.0 // indirect
