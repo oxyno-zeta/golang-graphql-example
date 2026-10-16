@@ -59,7 +59,7 @@ HAS_AIR:=$(shell command -v air;)
 # ? Note: Go install versions are inline because renovate can manage them like that.
 
 # renovate: datasource=github-tags depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION := "v2.14.0"
+GOLANGCI_LINT_VERSION := "v2.15.0"
 # renovate: datasource=docker depName=dpage/pgadmin4
 PGADMIN_VERSION := "9.18.0"
 # renovate: datasource=docker depName=maildev/maildev
