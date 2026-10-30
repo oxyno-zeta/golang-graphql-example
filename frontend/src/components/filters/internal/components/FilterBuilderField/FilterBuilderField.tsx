@@ -114,10 +114,10 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
               return;
             }
 
-            // Set new value
-            setSelectedField(newValue || '');
             // Force flush operation
             setSelectedOperation('');
+            // Set new value
+            setSelectedField(newValue || '');
             // Flush value
             setValue(undefined);
           }}
@@ -135,10 +135,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
           renderOption={(props, fieldKey: string, { inputValue }) => {
             const fieldData = filterDefinitionModel[fieldKey];
             const displayedOption = t(fieldData.display);
-            const matches = match(displayedOption, inputValue, {
-              insideWords: true,
-              findAllOccurrences: true,
-            });
+            const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
             const parts = parse(displayedOption, matches);
 
             return (
@@ -230,12 +227,13 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
               />
             )}
             renderOption={(props, key: string, { inputValue }) => {
+              if (!selectedFieldData.operations[key]) {
+                return;
+              }
+
               const opData = selectedFieldData.operations[key];
               const displayedOption = t(opData.display);
-              const matches = match(displayedOption, inputValue, {
-                insideWords: true,
-                findAllOccurrences: true,
-              });
+              const matches = match(displayedOption, inputValue, { insideWords: true, findAllOccurrences: true });
               const parts = parse(displayedOption, matches);
 
               return (
