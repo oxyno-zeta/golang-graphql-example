@@ -228,7 +228,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
             )}
             renderOption={(props, key: string, { inputValue }) => {
               if (!selectedFieldData.operations[key]) {
-                return;
+                return null;
               }
 
               const opData = selectedFieldData.operations[key];
