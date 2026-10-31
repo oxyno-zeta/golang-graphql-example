@@ -42,7 +42,7 @@ function generateClient(cfg: ConfigModel) {
   const errorLink = new ErrorLink(({ error }) => {
     // Check if error that is coming from server and it is an unauthorized status code.
     if (ServerError.is(error) && error.statusCode === 401) {
-      // eslint-disable-next-line no-restricted-globals
+      // oxlint-disable-next-line no-restricted-globals
       location.reload();
     }
   });

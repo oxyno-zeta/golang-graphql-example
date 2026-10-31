@@ -29,7 +29,7 @@ function buildLogoutURL(signOutURLString: string, oidcClientID: string) {
   // Workaround to have code ready
   if (signOutURLString !== '' && oidcClientID !== '') {
     // Encode current origin (aka http://DOMAIN_INCLUDING_PORTS)
-    // eslint-disable-next-line no-restricted-globals
+    // oxlint-disable-next-line no-restricted-globals
     const currentEncodedURI = encodeURIComponent(location.origin);
 
     signOutURL.searchParams.set('post_logout_redirect_uri', currentEncodedURI);

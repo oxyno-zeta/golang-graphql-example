@@ -27,8 +27,8 @@ interface GroupModel<G, I> {
   children: ItemModel<I>[];
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-array-index-key */
+/* oxlint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable react/no-array-index-key */
 function RowComponent({
   index,
   itemData,
@@ -92,6 +92,7 @@ const ListboxComponent = React.forwardRef<
     internalListRef: React.Ref<ListImperativeAPI>;
     onItemsBuilt: (optionIndexMap: Map<string, number>) => void;
   }
+  //oxlint-disable-next-line react/function-component-definition
 >((props, ref) => {
   const { children, internalListRef, onItemsBuilt, ...other } = props;
   const itemData: GroupOrItemModel<string, string>[] = [];
@@ -104,7 +105,7 @@ const ListboxComponent = React.forwardRef<
   // Map option values to their indices in the flattened array
   itemData.forEach((item, index) => {
     if (Array.isArray(item) && item[1]) {
-      // eslint-disable-next-line react-hooks/immutability
+      // oxlint-disable-next-line react-hooks-js/immutability
       optionIndexMap.set(item[1], index);
     }
   });

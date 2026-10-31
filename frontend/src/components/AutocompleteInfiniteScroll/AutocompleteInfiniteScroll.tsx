@@ -32,7 +32,7 @@ function AutocompleteInfiniteScroll<
     // this condition checks if there is a necessary DOM Node
     if (listboxNode !== null) {
       // Here we are modifying dom element directly
-      // eslint-disable-next-line react-hooks/immutability
+      // oxlint-disable-next-line react-hooks-js/immutability
       listboxNode.scrollTop = position;
     }
     // it will only work when the position or node changes

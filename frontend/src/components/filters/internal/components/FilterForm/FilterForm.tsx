@@ -12,8 +12,8 @@ import FilterBuilder from '../FilterBuilder';
 import { buildFilterBuilderInitialItems } from '../../utils';
 import { type BuilderInitialValueObject, type FilterValueObject, type PredefinedFilter } from '../../types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-array-index-key */
+/* oxlint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable react/no-array-index-key */
 export interface Props {
   readonly filterDefinitionModel: FilterDefinitionFieldsModel;
   readonly onChange: (filter: FilterValueObject | null) => void;
@@ -40,7 +40,7 @@ function FilterForm({
     const nV = buildFilterBuilderInitialItems(initialFilter);
     // Set init
     // Disabled because, yes this is true but it is really painful to do a key with a full object
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // oxlint-disable-next-line react-hooks-js/set-state-in-effect
     setInit((innerInit) => {
       // Check if objects are different
       if (JSON.stringify(nV) !== JSON.stringify(innerInit)) {
@@ -153,6 +153,6 @@ function FilterForm({
     </>
   );
 }
-/* eslint-enable react/no-array-index-key */
+/* oxlint-enable react/no-array-index-key */
 
 export default memo(FilterForm);

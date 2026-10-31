@@ -47,7 +47,7 @@ export interface BreadcrumbFixedDataConfig {
   overrideComputedPath?: (computedPath: string, params: Params) => string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line @typescript-eslint/no-explicit-any
 export interface BreadcrumbGraphQLDataConfig<V = Record<string, any>, D = any> {
   query: DocumentNode;
   getTextContent: (data: D, t: TFunction) => string;

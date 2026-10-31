@@ -12,7 +12,7 @@ interface Props {
   readonly skipConfigLoader?: boolean;
 }
 
-/* eslint-disable react-hooks/rules-of-hooks */
+/* oxlint-disable react-hooks-js/rules-of-hooks */
 function ConfigProvider({ children, loadingComponent, skipConfigLoader = false }: Props) {
   // Check if skip is enabled
   if (skipConfigLoader) {

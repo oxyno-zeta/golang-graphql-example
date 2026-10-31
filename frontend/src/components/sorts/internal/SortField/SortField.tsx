@@ -14,7 +14,7 @@ const valueOptions: { value: SortOrderModel; display: string }[] = [
   { value: 'DESC', display: 'common:sort.desc' },
 ];
 
-/* eslint-disable react/no-array-index-key */
+/* oxlint-disable react/no-array-index-key */
 export interface Props {
   readonly value: Record<string, SortOrderModel>;
   readonly sortFields: SortOrderFieldModel[];

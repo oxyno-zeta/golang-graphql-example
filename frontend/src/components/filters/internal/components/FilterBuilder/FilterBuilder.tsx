@@ -18,7 +18,7 @@ import {
   type FilterValueObject,
 } from '../../types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable @typescript-eslint/no-explicit-any */
 
 export interface Props {
   readonly filterDefinitionModel: FilterDefinitionFieldsModel;
@@ -46,7 +46,7 @@ function FilterBuilder({
   useEffect(() => {
     // Set initial value data
     // Disabled because, yes this is true but it is really painful to do a key with a full object
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // oxlint-disable-next-line react-hooks-js/set-state-in-effect
     setGroupKey(initialValue.group);
     setItems(initialValue.items);
     // Clean result reference

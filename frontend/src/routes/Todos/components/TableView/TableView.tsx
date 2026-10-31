@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataGrid, type GridColDef, type GridRowParams } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
@@ -27,6 +27,22 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
   const theme = useTheme();
   const sizeMatching = useMediaQuery(theme.breakpoints.up('lg'));
   const timezone = useTimezone();
+
+  const getActionsRender = useCallback(
+    () => [
+      <IconButton key="0" size="small">
+        <SvgIcon style={{ fontSize: '1.25rem' }}>
+          <path d={mdiPencil} />
+        </SvgIcon>
+      </IconButton>,
+      <IconButton key="1" size="small">
+        <SvgIcon style={{ fontSize: '1.25rem' }}>
+          <path d={mdiDelete} />
+        </SvgIcon>
+      </IconButton>,
+    ],
+    [],
+  );
 
   let items: TodoModel[] = [];
   if (data && data.edges) {
@@ -73,18 +89,7 @@ function TableView({ data, loading, sorts, setSorts }: Props) {
       type: 'actions',
       headerName: t('common:actions'),
       width: 90,
-      getActions: () => [
-        <IconButton key="0" size="small">
-          <SvgIcon style={{ fontSize: '1.25rem' }}>
-            <path d={mdiPencil} />
-          </SvgIcon>
-        </IconButton>,
-        <IconButton key="1" size="small">
-          <SvgIcon style={{ fontSize: '1.25rem' }}>
-            <path d={mdiDelete} />
-          </SvgIcon>
-        </IconButton>,
-      ],
+      getActions: getActionsRender,
     },
   ];
 

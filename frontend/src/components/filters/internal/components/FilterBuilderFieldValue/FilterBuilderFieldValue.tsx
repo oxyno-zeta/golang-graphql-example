@@ -13,8 +13,8 @@ import dayjs, { type Dayjs } from 'dayjs';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import { type FilterOperationMetadataModel, type FilterDefinitionEnumObjectModel } from '../../../../../models/general';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-array-index-key */
+/* oxlint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable react/no-array-index-key */
 export interface Props {
   readonly id: string;
   readonly value: any;
@@ -361,6 +361,6 @@ function FilterBuilderFieldValue({ value, onChange, operation, errorMsg, id }: P
   // Default
   return null;
 }
-/* eslint-enable @typescript-eslint/no-explicit-any */
+/* oxlint-enable @typescript-eslint/no-explicit-any */
 
 export default memo(FilterBuilderFieldValue);

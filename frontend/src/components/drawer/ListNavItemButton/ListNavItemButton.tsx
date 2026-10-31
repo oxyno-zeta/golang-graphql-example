@@ -11,7 +11,7 @@ export interface Props {
 function ListNavItemButton({ to, children, listItemButtonProps = {} }: Props) {
   const match = useMatch({ path: useResolvedPath(to).pathname, end: true });
 
-  /* eslint-disable @typescript-eslint/no-explicit-any */
+  /* oxlint-disable @typescript-eslint/no-explicit-any */
   // Coming from official mui documentation
   // https://mui.com/material-ui/react-breadcrumbs/#integration-with-react-router
   return (

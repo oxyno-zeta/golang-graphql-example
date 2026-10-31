@@ -16,7 +16,7 @@ export function getAllSearchParams(searchParams: URLSearchParams): Record<string
 
 export function addJSONObjectSearchParam(
   key: string,
-  data: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  data: Record<string, any>, // oxlint-disable-line @typescript-eslint/no-explicit-any
   searchParams: URLSearchParams,
 ) {
   // Stringify data
@@ -30,13 +30,13 @@ export function addJSONObjectSearchParam(
 
 export function setJSONObjectSearchParam(
   key: string,
-  data: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  data: Record<string, any>, // oxlint-disable-line @typescript-eslint/no-explicit-any
   searchParams: URLSearchParams,
   setSearchParams: (
     nextInit: URLSearchParamsInit,
     navigateOptions?: {
       replace?: boolean | undefined;
-      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+      state?: any; // oxlint-disable-line @typescript-eslint/no-explicit-any
     },
   ) => void,
 ) {
@@ -88,7 +88,7 @@ export function deleteAndSetSearchParam(
     nextInit: URLSearchParamsInit,
     navigateOptions?: {
       replace?: boolean | undefined;
-      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+      state?: any; // oxlint-disable-line @typescript-eslint/no-explicit-any
     },
   ) => void,
 ) {
@@ -102,7 +102,7 @@ export function deleteAndSetSearchParams(
     nextInit: URLSearchParamsInit,
     navigateOptions?: {
       replace?: boolean | undefined;
-      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+      state?: any; // oxlint-disable-line @typescript-eslint/no-explicit-any
     },
   ) => void,
 ) {

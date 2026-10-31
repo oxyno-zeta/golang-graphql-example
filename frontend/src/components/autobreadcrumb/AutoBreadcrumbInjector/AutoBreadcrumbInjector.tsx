@@ -16,7 +16,7 @@ function AutoBreadcrumbInjector({ item, children }: Props) {
     return () => {
       popAutoBreadcrumb(item);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // oxlint-disable-next-line react-hooks-js/exhaustive-deps
   }, [item]);
 
   return children;

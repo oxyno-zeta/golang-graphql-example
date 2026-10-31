@@ -13,7 +13,7 @@ export function getMainSearchInitialValueContains<T>(filterKey: keyof Omit<T, 'A
   return getMainSearchInitialValueGeneric<T, string>(filterKey, 'contains', '', filter);
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable @typescript-eslint/no-explicit-any */
 export function getMainSearchInitialValueGeneric<T, R>(
   filterKey: keyof Omit<T, 'AND' | 'OR'>,
   filterOperation: string,

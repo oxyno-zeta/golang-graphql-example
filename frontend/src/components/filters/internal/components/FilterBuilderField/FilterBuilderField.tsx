@@ -12,8 +12,8 @@ import FilterBuilderFieldValue from '../FilterBuilderFieldValue';
 import { requiredInputValidate } from '../../utils';
 import type { FieldInitialValueObject, FieldOperationValueObject, FilterValueObject } from '../../types';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/no-array-index-key */
+/* oxlint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable react/no-array-index-key */
 export interface Props {
   readonly id: string;
   readonly filterDefinitionModel: FilterDefinitionFieldsModel;
@@ -46,7 +46,7 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
   // Watch initialValue
   useEffect(() => {
     // Set initial value data
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // oxlint-disable-next-line react-hooks-js/set-state-in-effect
     setSelectedField(initialValue.field);
     setSelectedOperation(initialValue.operation);
     setValue(initialValue.value);
@@ -295,6 +295,6 @@ function FilterBuilderField({ filterDefinitionModel, onChange, initialValue, id 
     </>
   );
 }
-/* eslint-enable @typescript-eslint/no-explicit-any */
+/* oxlint-enable @typescript-eslint/no-explicit-any */
 
 export default FilterBuilderField;

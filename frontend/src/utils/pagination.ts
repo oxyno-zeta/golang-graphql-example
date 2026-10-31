@@ -20,7 +20,7 @@ export function cleanAndSetCleanedPagination(
     nextInit: URLSearchParamsInit,
     navigateOptions?: {
       replace?: boolean | undefined;
-      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+      state?: any; // oxlint-disable-line @typescript-eslint/no-explicit-any
     },
   ) => void,
 ) {
@@ -53,7 +53,7 @@ export function getPaginationFromSearchParams(
     nextInit: URLSearchParamsInit,
     navigateOptions?: {
       replace?: boolean | undefined;
-      state?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+      state?: any; // oxlint-disable-line @typescript-eslint/no-explicit-any
     },
   ) => void,
 ): PaginationInputModel {
