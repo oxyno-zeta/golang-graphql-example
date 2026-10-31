@@ -96,8 +96,6 @@ exports[`GridTableViewSwitcher > should display as grid and should not do anythi
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -138,10 +136,6 @@ exports[`GridTableViewSwitcher > should display as grid and should not do anythi
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {
@@ -323,8 +317,6 @@ exports[`GridTableViewSwitcher > should display as grid and should not do anythi
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -365,10 +357,6 @@ exports[`GridTableViewSwitcher > should display as grid and should not do anythi
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {
@@ -550,8 +538,6 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -592,10 +578,6 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {
@@ -777,8 +759,6 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -819,10 +799,6 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {
@@ -1004,8 +980,6 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -1046,10 +1020,6 @@ exports[`GridTableViewSwitcher > should display as table and allow to switch to 
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {
@@ -1231,8 +1201,6 @@ exports[`GridTableViewSwitcher > should display as table and should not do anyth
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -1273,10 +1241,6 @@ exports[`GridTableViewSwitcher > should display as table and should not do anyth
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {
@@ -1458,8 +1422,6 @@ exports[`GridTableViewSwitcher > should display as table and should not do anyth
   color: inherit;
   border-color: currentColor;
   --variant-containedBg: #e0e0e0;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   border: none;
   padding: 5px 10px;
   min-width: 46px;
@@ -1500,10 +1462,6 @@ exports[`GridTableViewSwitcher > should display as table and should not do anyth
     --variant-textBg: rgba(0, 0, 0, 0.04);
     --variant-outlinedBg: rgba(0, 0, 0, 0.04);
   }
-}
-
-.emotion-1.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-2 {

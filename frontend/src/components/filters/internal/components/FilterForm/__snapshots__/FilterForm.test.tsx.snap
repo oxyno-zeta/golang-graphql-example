@@ -116,8 +116,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -178,10 +176,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -239,8 +233,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -279,10 +271,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -1485,8 +1473,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -1547,10 +1533,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1608,8 +1590,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -1648,10 +1628,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -2856,8 +2832,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -2896,10 +2870,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-4.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-5 {
@@ -2957,8 +2927,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -3017,10 +2985,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -3308,8 +3272,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -3348,10 +3310,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-4.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-5 {
@@ -3409,8 +3367,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -3469,10 +3425,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -4677,8 +4629,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -4717,10 +4667,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-4.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-5 {
@@ -4778,8 +4724,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -4838,10 +4782,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -5129,8 +5069,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -5169,10 +5107,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-4.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-5 {
@@ -5230,8 +5164,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -5290,10 +5222,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -6579,8 +6507,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -6619,10 +6545,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-4.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-5 {
@@ -6680,8 +6602,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -6740,10 +6660,6 @@ exports[`filters/internal/FilterForm > should be ok to interact with no initial 
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -7029,8 +6945,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -7091,10 +7005,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -7152,8 +7062,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -7192,10 +7100,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -9167,8 +9071,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -9229,10 +9131,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -9290,8 +9188,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -9330,10 +9226,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -11060,8 +10952,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -11122,10 +11012,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -11183,8 +11069,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -11223,10 +11107,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -12901,8 +12781,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -12963,10 +12841,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -13024,8 +12898,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -13064,10 +12936,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -14653,8 +14521,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -14715,10 +14581,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -14776,8 +14638,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -14816,10 +14676,6 @@ exports[`filters/internal/FilterForm > should be ok to just display a simple fie
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -17215,8 +17071,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   --variant-containedBg: #1976d2;
   padding: 4px 5px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: 5px;
 }
 
@@ -17252,10 +17106,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-8.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-9 {
@@ -17373,8 +17223,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-13::-moz-focus-inner {
@@ -17435,10 +17283,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   }
 }
 
-.emotion-13.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-14 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -17496,8 +17340,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-14::-moz-focus-inner {
@@ -17536,10 +17378,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-14.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-15 {
@@ -19343,8 +19181,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   --variant-containedBg: #1976d2;
   padding: 4px 5px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   margin-left: 5px;
 }
 
@@ -19380,10 +19216,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-11.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-12 {
@@ -19501,8 +19333,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-16::-moz-focus-inner {
@@ -19563,10 +19393,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   }
 }
 
-.emotion-16.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -19624,8 +19450,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-17::-moz-focus-inner {
@@ -19664,10 +19488,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-17.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-18 {
@@ -20837,8 +20657,6 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -20899,10 +20717,6 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -20960,8 +20774,6 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -21000,10 +20812,6 @@ exports[`filters/internal/FilterForm > should be ok to just display no initial f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -22206,8 +22014,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -22268,10 +22074,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -22329,8 +22131,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -22369,10 +22169,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -24264,8 +24060,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -24326,10 +24120,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -24387,8 +24177,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -24427,10 +24215,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -26620,8 +26404,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -26682,10 +26464,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -26743,8 +26521,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -26783,10 +26559,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -29065,8 +28837,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -29127,10 +28897,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -29188,8 +28954,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -29228,10 +28992,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -31534,8 +31294,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -31596,10 +31354,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -31657,8 +31411,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -31697,10 +31449,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -33927,8 +33675,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -33989,10 +33735,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -34050,8 +33792,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -34090,10 +33830,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -36618,8 +36354,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -36680,10 +36414,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -36741,8 +36471,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -36781,10 +36509,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -39398,8 +39122,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -39460,10 +39182,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -39521,8 +39239,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -39561,10 +39277,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -42202,8 +41914,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -42264,10 +41974,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -42325,8 +42031,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -42365,10 +42069,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -44930,8 +44630,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -44992,10 +44690,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -45053,8 +44747,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -45093,10 +44785,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -47658,8 +47346,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -47720,10 +47406,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -47781,8 +47463,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -47821,10 +47501,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -50305,8 +49981,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -50367,10 +50041,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -50428,8 +50098,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -50468,10 +50136,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -52363,8 +52027,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -52425,10 +52087,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -52486,8 +52144,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -52526,10 +52182,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -55010,8 +54662,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -55072,10 +54722,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -55133,8 +54779,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -55173,10 +54817,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two fields o
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -57657,8 +57297,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -57719,10 +57357,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -57780,8 +57414,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -57820,10 +57452,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -59715,8 +59343,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -59777,10 +59403,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -59838,8 +59460,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -59878,10 +59498,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -61990,8 +61606,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -62052,10 +61666,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -62113,8 +61723,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -62153,10 +61761,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -64354,8 +63958,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -64416,10 +64018,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -64477,8 +64075,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -64517,10 +64113,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -66742,8 +66334,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -66804,10 +66394,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -66865,8 +66451,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -66905,10 +66489,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -69054,8 +68634,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -69116,10 +68694,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -69177,8 +68751,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -69217,10 +68789,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -71366,8 +70934,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -71428,10 +70994,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -71489,8 +71051,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -71529,10 +71089,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -73426,8 +72982,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -73466,10 +73020,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-4.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-5 {
@@ -73527,8 +73077,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -73587,10 +73135,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -75482,8 +75026,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -75544,10 +75086,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -75605,8 +75143,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -75645,10 +75181,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {
@@ -77540,8 +77072,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 4px 10px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-4::-moz-focus-inner {
@@ -77602,10 +77132,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   }
 }
 
-.emotion-4.MuiButton-loading {
-  color: transparent;
-}
-
 .emotion-5 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -77663,8 +77189,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
   --variant-containedBg: #1976d2;
   padding: 3px 9px;
   font-size: 0.8125rem;
-  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .emotion-5::-moz-focus-inner {
@@ -77703,10 +77227,6 @@ exports[`filters/internal/FilterForm > should be ok to just display two simple f
     --variant-outlinedBorder: #1976d2;
     --variant-outlinedBg: rgba(25, 118, 210, 0.04);
   }
-}
-
-.emotion-5.MuiButton-loading {
-  color: transparent;
 }
 
 .emotion-6 {

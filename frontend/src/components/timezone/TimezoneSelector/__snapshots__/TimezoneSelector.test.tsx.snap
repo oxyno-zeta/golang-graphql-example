@@ -1896,6 +1896,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
         </li>
         <div
           aria-hidden="true"
+          data-react-window-sizer=""
           style="height: 22065.777777777777px; width: 100%; z-index: -1;"
         />
       </ul>
@@ -2292,6 +2293,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
         </li>
         <div
           aria-hidden="true"
+          data-react-window-sizer=""
           style="height: 22065.777777777777px; width: 100%; z-index: -1;"
         />
       </ul>
