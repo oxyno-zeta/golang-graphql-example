@@ -4,7 +4,6 @@ package generated
 
 import (
 	"context"
-	"errors"
 	"math"
 	"strconv"
 	"sync/atomic"
@@ -91,7 +90,7 @@ func (ec *executionContext) _PageInfo_hasNextPage(ctx context.Context, field gra
 	)
 }
 func (ec *executionContext) fieldContext_PageInfo_hasNextPage(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type Boolean does not have child fields"))
+	return graphql.NewScalarFieldContext("PageInfo", field, false, false, "Boolean")
 }
 
 func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
@@ -114,7 +113,7 @@ func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field
 	)
 }
 func (ec *executionContext) fieldContext_PageInfo_hasPreviousPage(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type Boolean does not have child fields"))
+	return graphql.NewScalarFieldContext("PageInfo", field, false, false, "Boolean")
 }
 
 func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
@@ -137,7 +136,7 @@ func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field gra
 	)
 }
 func (ec *executionContext) fieldContext_PageInfo_startCursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type String does not have child fields"))
+	return graphql.NewScalarFieldContext("PageInfo", field, false, false, "String")
 }
 
 func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graphql.CollectedField, obj *graphqlutils.PageInfo) (ret graphql.Marshaler) {
@@ -160,7 +159,7 @@ func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graph
 	)
 }
 func (ec *executionContext) fieldContext_PageInfo_endCursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("PageInfo", field, false, false, errors.New("field of type String does not have child fields"))
+	return graphql.NewScalarFieldContext("PageInfo", field, false, false, "String")
 }
 
 // endregion **************************** field.gotpl *****************************
@@ -206,6 +205,18 @@ func (ec *executionContext) unmarshalInputBooleanFilter(ctx context.Context, obj
 		}
 	}
 	return it, nil
+}
+
+// UnmarshalBooleanFilter unmarshals raw into the BooleanFilter input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalBooleanFilter(ctx context.Context, raw any) (common.GenericFilter, error) {
+	var out common.GenericFilter
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "BooleanFilter", raw, &out)
+	return out, err
 }
 
 func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj any) (common.DateFilter, error) {
@@ -353,6 +364,18 @@ func (ec *executionContext) unmarshalInputDateFilter(ctx context.Context, obj an
 	return it, nil
 }
 
+// UnmarshalDateFilter unmarshals raw into the DateFilter input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalDateFilter(ctx context.Context, raw any) (common.DateFilter, error) {
+	var out common.DateFilter
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "DateFilter", raw, &out)
+	return out, err
+}
+
 func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
 	if obj == nil {
@@ -498,6 +521,18 @@ func (ec *executionContext) unmarshalInputIntFilter(ctx context.Context, obj any
 	return it, nil
 }
 
+// UnmarshalIntFilter unmarshals raw into the IntFilter input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalIntFilter(ctx context.Context, raw any) (common.GenericFilter, error) {
+	var out common.GenericFilter
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "IntFilter", raw, &out)
+	return out, err
+}
+
 func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj any) (common.GenericFilter, error) {
 	var it common.GenericFilter
 	if obj == nil {
@@ -632,6 +667,18 @@ func (ec *executionContext) unmarshalInputStringFilter(ctx context.Context, obj 
 	return it, nil
 }
 
+// UnmarshalStringFilter unmarshals raw into the StringFilter input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalStringFilter(ctx context.Context, raw any) (common.GenericFilter, error) {
+	var out common.GenericFilter
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "StringFilter", raw, &out)
+	return out, err
+}
+
 // endregion **************************** input.gotpl *****************************
 
 // region    ************************** interface.gotpl ***************************
@@ -646,8 +693,7 @@ func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet,
 	fields := graphql.CollectFields(ec.OperationContext, sel, pageInfoImplementors)
 
 	out := graphql.NewFieldSet(fields)
-	deferredFieldSet := graphql.NewFieldSet(nil)
-	deferLabelToView := make(map[string]*graphql.FieldSetView)
+	deferred := graphql.NewDeferredGroup(ctx)
 	for i, field := range fields {
 		switch field.Name {
 		case "__typename":
@@ -681,14 +727,10 @@ func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet,
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.Deferred, int32(min(len(deferLabelToView), math.MaxInt32)))
-
-	ec.ProcessDeferredGroup(graphql.DeferredGroup{
-		Defers:   deferLabelToView,
-		Path:     graphql.GetPath(ctx),
-		FieldSet: deferredFieldSet,
-		Context:  ctx,
-	})
+	if n := len(deferred.Defers); n > 0 {
+		atomic.AddInt32(&ec.Deferred, int32(min(n, math.MaxInt32)))
+		ec.ProcessDeferredGroup(deferred)
+	}
 
 	return out
 }
@@ -699,9 +741,7 @@ func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet,
 
 func (ec *executionContext) marshalNPageInfo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋcommonᚋgraphqlutilsᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v *graphqlutils.PageInfo) graphql.Marshaler {
 	if v == nil {
-		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
-			graphql.AddErrorf(ctx, "the requested element is null which the schema does not allow")
-		}
+		graphql.AddInvalidNullError(ctx, "PageInfo!")
 		return graphql.Null
 	}
 	return ec._PageInfo(ctx, sel, v)

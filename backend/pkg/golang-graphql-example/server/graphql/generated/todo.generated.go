@@ -81,7 +81,7 @@ func (ec *executionContext) _Todo_id(ctx context.Context, field graphql.Collecte
 	)
 }
 func (ec *executionContext) fieldContext_Todo_id(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("Todo", field, true, true, errors.New("field of type ID does not have child fields"))
+	return graphql.NewScalarFieldContext("Todo", field, true, true, "ID")
 }
 
 func (ec *executionContext) _Todo_createdAt(ctx context.Context, field graphql.CollectedField, obj *models.Todo) (ret graphql.Marshaler) {
@@ -192,7 +192,7 @@ func (ec *executionContext) _Todo_text(ctx context.Context, field graphql.Collec
 	)
 }
 func (ec *executionContext) fieldContext_Todo_text(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("Todo", field, false, false, errors.New("field of type String does not have child fields"))
+	return graphql.NewScalarFieldContext("Todo", field, false, false, "String")
 }
 
 func (ec *executionContext) _Todo_done(ctx context.Context, field graphql.CollectedField, obj *models.Todo) (ret graphql.Marshaler) {
@@ -215,7 +215,7 @@ func (ec *executionContext) _Todo_done(ctx context.Context, field graphql.Collec
 	)
 }
 func (ec *executionContext) fieldContext_Todo_done(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("Todo", field, false, false, errors.New("field of type Boolean does not have child fields"))
+	return graphql.NewScalarFieldContext("Todo", field, false, false, "Boolean")
 }
 
 func (ec *executionContext) _TodoConnection_edges(ctx context.Context, field graphql.CollectedField, obj *model.TodoConnection) (ret graphql.Marshaler) {
@@ -302,7 +302,7 @@ func (ec *executionContext) _TodoEdge_cursor(ctx context.Context, field graphql.
 	)
 }
 func (ec *executionContext) fieldContext_TodoEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
-	return graphql.NewScalarFieldContext("TodoEdge", field, false, false, errors.New("field of type String does not have child fields"))
+	return graphql.NewScalarFieldContext("TodoEdge", field, false, false, "String")
 }
 
 func (ec *executionContext) _TodoEdge_node(ctx context.Context, field graphql.CollectedField, obj *model.TodoEdge) (ret graphql.Marshaler) {
@@ -371,6 +371,18 @@ func (ec *executionContext) unmarshalInputNewTodo(ctx context.Context, obj any) 
 	return it, nil
 }
 
+// UnmarshalNewTodo unmarshals raw into the NewTodo input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalNewTodo(ctx context.Context, raw any) (model.NewTodo, error) {
+	var out model.NewTodo
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "NewTodo", raw, &out)
+	return out, err
+}
+
 func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj any) (models.Filter, error) {
 	var it models.Filter
 	if obj == nil {
@@ -436,6 +448,18 @@ func (ec *executionContext) unmarshalInputTodoFilter(ctx context.Context, obj an
 	return it, nil
 }
 
+// UnmarshalTodoFilter unmarshals raw into the TodoFilter input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalTodoFilter(ctx context.Context, raw any) (models.Filter, error) {
+	var out models.Filter
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "TodoFilter", raw, &out)
+	return out, err
+}
+
 func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj any) (models.SortOrder, error) {
 	var it models.SortOrder
 	if obj == nil {
@@ -487,6 +511,18 @@ func (ec *executionContext) unmarshalInputTodoSortOrder(ctx context.Context, obj
 	return it, nil
 }
 
+// UnmarshalTodoSortOrder unmarshals raw into the TodoSortOrder input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalTodoSortOrder(ctx context.Context, raw any) (models.SortOrder, error) {
+	var out models.SortOrder
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "TodoSortOrder", raw, &out)
+	return out, err
+}
+
 func (ec *executionContext) unmarshalInputUpdateTodo(ctx context.Context, obj any) (model.UpdateTodo, error) {
 	var it model.UpdateTodo
 	if obj == nil {
@@ -524,6 +560,18 @@ func (ec *executionContext) unmarshalInputUpdateTodo(ctx context.Context, obj an
 	return it, nil
 }
 
+// UnmarshalUpdateTodo unmarshals raw into the UpdateTodo input type, using the
+// unmarshaler bound to ctx's request. Call it from a resolver to decode an input
+// object that was not passed as a field argument.
+//
+// ctx must come from a gqlgen request; outside one there is no unmarshaler to use
+// and the returned error says so.
+func UnmarshalUpdateTodo(ctx context.Context, raw any) (model.UpdateTodo, error) {
+	var out model.UpdateTodo
+	err := graphql.UnmarshalNamedInputFromContext(ctx, "UpdateTodo", raw, &out)
+	return out, err
+}
+
 // endregion **************************** input.gotpl *****************************
 
 // region    ************************** interface.gotpl ***************************
@@ -538,126 +586,29 @@ func (ec *executionContext) _Todo(ctx context.Context, sel ast.SelectionSet, obj
 	fields := graphql.CollectFields(ec.OperationContext, sel, todoImplementors)
 
 	out := graphql.NewFieldSet(fields)
-	deferredFieldSet := graphql.NewFieldSet(nil)
-	deferLabelToView := make(map[string]*graphql.FieldSetView)
+	deferred := graphql.NewDeferredGroup(ctx)
 	for i, field := range fields {
 		switch field.Name {
 		case "__typename":
 			out.Values[i] = graphql.MarshalString("Todo")
 		case "id":
-			field := field
-
-			innerFunc := func(ctx context.Context, fs *graphql.FieldSet) (res graphql.Marshaler) {
-				defer func() {
-					if r := recover(); r != nil {
-						ec.Error(ctx, ec.Recover(ctx, r))
-					}
-				}()
-				res = ec._Todo_id(ctx, field, obj)
-				if res == graphql.Null {
-					atomic.AddUint32(&fs.Invalids, 1)
-				}
-				return res
-			}
-
-			if field.IsDeferred() {
-				deferredFieldSet.AddField(field)
-				fieldIndex := len(deferredFieldSet.Values) - 1
-				deferredFieldSet.Concurrently(fieldIndex, func(ctx context.Context) graphql.Marshaler {
-					return innerFunc(ctx, deferredFieldSet)
+			out.ResolveConcurrently(ec.OperationContext, &deferred, i,
+				true, true,
+				func(ctx context.Context) graphql.Marshaler {
+					return ec._Todo_id(ctx, field, obj)
 				})
-
-				for _, deferrable := range field.Deferrables {
-					view, ok := deferLabelToView[deferrable.Label]
-					if !ok {
-						view = deferredFieldSet.NewView()
-						deferLabelToView[deferrable.Label] = view
-					}
-					view.AddIndices(fieldIndex)
-				}
-
-				// don't run the out.Concurrently() call below
-				out.Values[i] = graphql.Null
-				continue
-			}
-
-			out.Concurrently(i, func(ctx context.Context) graphql.Marshaler { return innerFunc(ctx, out) })
 		case "createdAt":
-			field := field
-
-			innerFunc := func(ctx context.Context, fs *graphql.FieldSet) (res graphql.Marshaler) {
-				defer func() {
-					if r := recover(); r != nil {
-						ec.Error(ctx, ec.Recover(ctx, r))
-					}
-				}()
-				res = ec._Todo_createdAt(ctx, field, obj)
-				if res == graphql.Null {
-					atomic.AddUint32(&fs.Invalids, 1)
-				}
-				return res
-			}
-
-			if field.IsDeferred() {
-				deferredFieldSet.AddField(field)
-				fieldIndex := len(deferredFieldSet.Values) - 1
-				deferredFieldSet.Concurrently(fieldIndex, func(ctx context.Context) graphql.Marshaler {
-					return innerFunc(ctx, deferredFieldSet)
+			out.ResolveConcurrently(ec.OperationContext, &deferred, i,
+				true, true,
+				func(ctx context.Context) graphql.Marshaler {
+					return ec._Todo_createdAt(ctx, field, obj)
 				})
-
-				for _, deferrable := range field.Deferrables {
-					view, ok := deferLabelToView[deferrable.Label]
-					if !ok {
-						view = deferredFieldSet.NewView()
-						deferLabelToView[deferrable.Label] = view
-					}
-					view.AddIndices(fieldIndex)
-				}
-
-				// don't run the out.Concurrently() call below
-				out.Values[i] = graphql.Null
-				continue
-			}
-
-			out.Concurrently(i, func(ctx context.Context) graphql.Marshaler { return innerFunc(ctx, out) })
 		case "updatedAt":
-			field := field
-
-			innerFunc := func(ctx context.Context, fs *graphql.FieldSet) (res graphql.Marshaler) {
-				defer func() {
-					if r := recover(); r != nil {
-						ec.Error(ctx, ec.Recover(ctx, r))
-					}
-				}()
-				res = ec._Todo_updatedAt(ctx, field, obj)
-				if res == graphql.Null {
-					atomic.AddUint32(&fs.Invalids, 1)
-				}
-				return res
-			}
-
-			if field.IsDeferred() {
-				deferredFieldSet.AddField(field)
-				fieldIndex := len(deferredFieldSet.Values) - 1
-				deferredFieldSet.Concurrently(fieldIndex, func(ctx context.Context) graphql.Marshaler {
-					return innerFunc(ctx, deferredFieldSet)
+			out.ResolveConcurrently(ec.OperationContext, &deferred, i,
+				true, true,
+				func(ctx context.Context) graphql.Marshaler {
+					return ec._Todo_updatedAt(ctx, field, obj)
 				})
-
-				for _, deferrable := range field.Deferrables {
-					view, ok := deferLabelToView[deferrable.Label]
-					if !ok {
-						view = deferredFieldSet.NewView()
-						deferLabelToView[deferrable.Label] = view
-					}
-					view.AddIndices(fieldIndex)
-				}
-
-				// don't run the out.Concurrently() call below
-				out.Values[i] = graphql.Null
-				continue
-			}
-
-			out.Concurrently(i, func(ctx context.Context) graphql.Marshaler { return innerFunc(ctx, out) })
 		case "text":
 			out.Values[i] = ec._Todo_text(ctx, field, obj)
 			if out.Values[i] == graphql.Null {
@@ -677,14 +628,10 @@ func (ec *executionContext) _Todo(ctx context.Context, sel ast.SelectionSet, obj
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.Deferred, int32(min(len(deferLabelToView), math.MaxInt32)))
-
-	ec.ProcessDeferredGroup(graphql.DeferredGroup{
-		Defers:   deferLabelToView,
-		Path:     graphql.GetPath(ctx),
-		FieldSet: deferredFieldSet,
-		Context:  ctx,
-	})
+	if n := len(deferred.Defers); n > 0 {
+		atomic.AddInt32(&ec.Deferred, int32(min(n, math.MaxInt32)))
+		ec.ProcessDeferredGroup(deferred)
+	}
 
 	return out
 }
@@ -695,8 +642,7 @@ func (ec *executionContext) _TodoConnection(ctx context.Context, sel ast.Selecti
 	fields := graphql.CollectFields(ec.OperationContext, sel, todoConnectionImplementors)
 
 	out := graphql.NewFieldSet(fields)
-	deferredFieldSet := graphql.NewFieldSet(nil)
-	deferLabelToView := make(map[string]*graphql.FieldSetView)
+	deferred := graphql.NewDeferredGroup(ctx)
 	for i, field := range fields {
 		switch field.Name {
 		case "__typename":
@@ -720,14 +666,10 @@ func (ec *executionContext) _TodoConnection(ctx context.Context, sel ast.Selecti
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.Deferred, int32(min(len(deferLabelToView), math.MaxInt32)))
-
-	ec.ProcessDeferredGroup(graphql.DeferredGroup{
-		Defers:   deferLabelToView,
-		Path:     graphql.GetPath(ctx),
-		FieldSet: deferredFieldSet,
-		Context:  ctx,
-	})
+	if n := len(deferred.Defers); n > 0 {
+		atomic.AddInt32(&ec.Deferred, int32(min(n, math.MaxInt32)))
+		ec.ProcessDeferredGroup(deferred)
+	}
 
 	return out
 }
@@ -738,8 +680,7 @@ func (ec *executionContext) _TodoEdge(ctx context.Context, sel ast.SelectionSet,
 	fields := graphql.CollectFields(ec.OperationContext, sel, todoEdgeImplementors)
 
 	out := graphql.NewFieldSet(fields)
-	deferredFieldSet := graphql.NewFieldSet(nil)
-	deferLabelToView := make(map[string]*graphql.FieldSetView)
+	deferred := graphql.NewDeferredGroup(ctx)
 	for i, field := range fields {
 		switch field.Name {
 		case "__typename":
@@ -763,14 +704,10 @@ func (ec *executionContext) _TodoEdge(ctx context.Context, sel ast.SelectionSet,
 		return graphql.Null
 	}
 
-	atomic.AddInt32(&ec.Deferred, int32(min(len(deferLabelToView), math.MaxInt32)))
-
-	ec.ProcessDeferredGroup(graphql.DeferredGroup{
-		Defers:   deferLabelToView,
-		Path:     graphql.GetPath(ctx),
-		FieldSet: deferredFieldSet,
-		Context:  ctx,
-	})
+	if n := len(deferred.Defers); n > 0 {
+		atomic.AddInt32(&ec.Deferred, int32(min(n, math.MaxInt32)))
+		ec.ProcessDeferredGroup(deferred)
+	}
 
 	return out
 }
@@ -786,9 +723,7 @@ func (ec *executionContext) unmarshalNNewTodo2githubᚗcomᚋoxynoᚑzetaᚋgola
 
 func (ec *executionContext) marshalNTodo2ᚖgithubᚗcomᚋoxynoᚑzetaᚋgolangᚑgraphqlᚑexampleᚋpkgᚋgolangᚑgraphqlᚑexampleᚋbusinessᚋtodosᚋmodelsᚐTodo(ctx context.Context, sel ast.SelectionSet, v *models.Todo) graphql.Marshaler {
 	if v == nil {
-		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
-			graphql.AddErrorf(ctx, "the requested element is null which the schema does not allow")
-		}
+		graphql.AddInvalidNullError(ctx, "Todo!")
 		return graphql.Null
 	}
 	return ec._Todo(ctx, sel, v)

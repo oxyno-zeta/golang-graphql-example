@@ -244,16 +244,18 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 	opCtx := graphql.GetOperationContext(ctx)
 	ec := newExecutionContext(opCtx, e, make(chan graphql.DeferredResult))
-	inputUnmarshalMap := graphql.BuildUnmarshalerMap(
-		ec.unmarshalInputBooleanFilter,
-		ec.unmarshalInputDateFilter,
-		ec.unmarshalInputIntFilter,
-		ec.unmarshalInputNewTodo,
-		ec.unmarshalInputStringFilter,
-		ec.unmarshalInputTodoFilter,
-		ec.unmarshalInputTodoSortOrder,
-		ec.unmarshalInputUpdateTodo,
-	)
+	inputUnmarshalers := func() *graphql.InputUnmarshalerIndex {
+		return graphql.NewInputUnmarshalerIndex(
+			graphql.NewInputUnmarshaler("BooleanFilter", ec.unmarshalInputBooleanFilter),
+			graphql.NewInputUnmarshaler("DateFilter", ec.unmarshalInputDateFilter),
+			graphql.NewInputUnmarshaler("IntFilter", ec.unmarshalInputIntFilter),
+			graphql.NewInputUnmarshaler("NewTodo", ec.unmarshalInputNewTodo),
+			graphql.NewInputUnmarshaler("StringFilter", ec.unmarshalInputStringFilter),
+			graphql.NewInputUnmarshaler("TodoFilter", ec.unmarshalInputTodoFilter),
+			graphql.NewInputUnmarshaler("TodoSortOrder", ec.unmarshalInputTodoSortOrder),
+			graphql.NewInputUnmarshaler("UpdateTodo", ec.unmarshalInputUpdateTodo),
+		)
+	}
 	first := true
 
 	switch opCtx.Operation.Operation {
@@ -263,7 +265,7 @@ func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 			var data graphql.Marshaler
 			if first {
 				first = false
-				ctx = graphql.WithUnmarshalerMap(ctx, inputUnmarshalMap)
+				ctx = graphql.WithLazyInputUnmarshalerIndex(ctx, inputUnmarshalers)
 				data = ec._Query(ctx, opCtx.Operation.SelectionSet)
 			} else {
 				if atomic.LoadInt32(&ec.PendingDeferred) > 0 {
@@ -293,7 +295,7 @@ func (e *executableSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 				return nil
 			}
 			first = false
-			ctx = graphql.WithUnmarshalerMap(ctx, inputUnmarshalMap)
+			ctx = graphql.WithLazyInputUnmarshalerIndex(ctx, inputUnmarshalers)
 			data := ec._Mutation(ctx, opCtx.Operation.SelectionSet)
 			var buf bytes.Buffer
 			data.MarshalGQL(&buf)
