@@ -3,7 +3,7 @@
 [tools]
 "npm:oxfmt" = "0.73.0"
 pre-commit = '4.7.0'
-node = { version = '24', postinstall = 'corepack enable' }
+node = { version = '26', postinstall = 'corepack enable' }
 
 [hooks]
 postinstall = "pre-commit install"
