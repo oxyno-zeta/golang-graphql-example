@@ -1352,9 +1352,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:7.0.0":
-  version: 7.0.0
-  resolution: "@hookform/resolvers@npm:7.0.0"
+"@hookform/resolvers@npm:7.0.1":
+  version: 7.0.1
+  resolution: "@hookform/resolvers@npm:7.0.1"
   dependencies:
     "@standard-schema/utils": "npm:^0.3.0"
   peerDependencies:
@@ -1429,7 +1429,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/5d97377ac68ab26daf0a6d1112d9b7a926a905abdd333ff9a8430fa6598cee0591e536ad8f6404a9967e0cf5124770a58374a1079f9e8ab469ccc2dde56512f7
+  checksum: 10/0f17d35262354d6500bc8ac244315f9ad1d456b20a4477e28e0941da11cbf2885374051a797df7c79452baebc6a8b36966ce942421d404122a9c2c6fcfe02bc6
   languageName: node
   linkType: hard
 
@@ -6414,7 +6414,7 @@ __metadata:
     "@emotion/styled": "npm:11.14.1"
     "@fontsource/material-icons": "npm:5.3.0"
     "@fontsource/roboto": "npm:5.3.0"
-    "@hookform/resolvers": "npm:7.0.0"
+    "@hookform/resolvers": "npm:7.0.1"
     "@mdi/js": "npm:7.4.47"
     "@mui/lab": "npm:9.0.0-beta.10"
     "@mui/material": "npm:9.5.0"
@@ -6445,8 +6445,8 @@ __metadata:
     eslint-plugin-storybook: "npm:10.6.5"
     eslint-plugin-unused-imports: "npm:4.4.1"
     graphql: "npm:17.0.2"
-    i18next: "npm:26.5.12"
-    i18next-browser-languagedetector: "npm:8.2.4"
+    i18next: "npm:26.7.1"
+    i18next-browser-languagedetector: "npm:8.3.0"
     i18next-http-backend: "npm:4.0.2"
     jsdom: "npm:30.1.3"
     oxlint: "npm:1.90.0"
@@ -6456,10 +6456,10 @@ __metadata:
     react-dom: "npm:19.3.1"
     react-error-boundary: "npm:6.1.6"
     react-hook-form: "npm:7.91.0"
-    react-i18next: "npm:17.1.9"
+    react-i18next: "npm:17.1.11"
     react-router: "npm:8.5.1"
     react-scan: "npm:0.5.7"
-    react-window: "npm:2.5.2"
+    react-window: "npm:2.5.3"
     rollup-plugin-visualizer: "npm:7.1.1"
     rollup-preserve-directives: "npm:1.1.3"
     rxjs: "npm:7.8.2"
@@ -6843,12 +6843,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-browser-languagedetector@npm:8.2.4":
-  version: 8.2.4
-  resolution: "i18next-browser-languagedetector@npm:8.2.4"
+"i18next-browser-languagedetector@npm:8.3.0":
+  version: 8.3.0
+  resolution: "i18next-browser-languagedetector@npm:8.3.0"
   dependencies:
     "@babel/runtime": "npm:^7.29.2"
-  checksum: 10/43ba08ca6ece8af78f96b278927503f843084b0866aa8a96f712a693a0e087a7f80f2ad3bae79240722c8a2724f0bfba7a6abd710d481babfc61da5307b867f0
+  checksum: 10/1b9117fd3a4d70d844bf731200d3dafde8276fc0625fd5c75d40d5774320f3ddae6795c2d92058e4001e99d6138a113e521405555a4e0834d1cd372bb3e00a5d
   languageName: node
   linkType: hard
 
@@ -6859,15 +6859,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:26.5.12":
-  version: 26.5.12
-  resolution: "i18next@npm:26.5.12"
+"i18next@npm:26.7.1":
+  version: 26.7.1
+  resolution: "i18next@npm:26.7.1"
   peerDependencies:
     typescript: ^5 || ^6 || ^7
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/719e006e82c8d4bf826ffab60a190d15e9f2e39da86401f24203261921d2b81e98da9728f41d9f99f9e6388f9b69f9ef5899d1b42ae35800bd413c85c027b890
+  checksum: 10/f3305d668fff3a3bab45c6ac2b28048774e9f814a7a9bf7e50d179a75ae0570f5d594853f014e63412b28e9ca793fcb1d46bc624e0de64125e00e77c5d86c5f6
   languageName: node
   linkType: hard
 
@@ -9040,9 +9040,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:17.1.9":
-  version: 17.1.9
-  resolution: "react-i18next@npm:17.1.9"
+"react-i18next@npm:17.1.11":
+  version: 17.1.11
+  resolution: "react-i18next@npm:17.1.11"
   dependencies:
     "@babel/runtime": "npm:^7.29.7"
     html-parse-stringify: "npm:^4.0.1"
@@ -9058,7 +9058,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/8e1f309c94ea5917f57103417ba183ae2bc30820cb664a8ff7089cc0b3cc20257f313b863f2e9f4e805fe583d2b2ffc7d38652f279057d5efbe4ecfcc13ffb52
+  checksum: 10/80eca1a1be6ed84b18ec865925f912cbf737d9d4ccebd0866d9bb14ede8d65590f86c9d47566baec0d30c102d2980dbd207f108f1b5b8bbd8aeffaa773949ff3
   languageName: node
   linkType: hard
 
@@ -9161,9 +9161,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:2.5.2":
-  version: 2.5.2
-  resolution: "react-window@npm:2.5.2"
+"react-window@npm:2.5.3":
+  version: 2.5.3
+  resolution: "react-window@npm:2.5.3"
   peerDependencies:
     "@types/react": ^18.2.6 || ^19.0.0
     react: ^18.0.0 || ^19.0.0
@@ -9171,7 +9171,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/42129c81890827e864adc4070cf93a2e0d51ac8f75eb63f12d4f2c4e8bc79f6e440d9c65b38b716cedd70fbfa62b43b3abbadd4d1de7ea244e451ecc8b6b8a8d
+  checksum: 10/0eb7abf3ae1dd4dc47df15232bd542cfd0d3fc4bd55d873ad8b72a05506a7c578eb19d47376b9926931937e594095014361b87a40a144a29c6313bc9fa3b56de
   languageName: node
   linkType: hard
 
