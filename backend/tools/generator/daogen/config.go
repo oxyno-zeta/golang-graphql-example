@@ -21,10 +21,12 @@ type NeededPackagesCfg struct {
 }
 
 type DaoCfg struct {
-	Path          string         `validate:"required" yaml:"path"`
-	PackageName   string         `validate:"required" yaml:"packageName"`
-	InterfaceName string         `                    yaml:"interfaceName"`
-	Models        []*DaoModelCfg `                    yaml:"models"        validated:"required"`
+	// DisableV2 preserves the original DAO API without per-call hook options.
+	DisableV2     bool           `yaml:"disableV2"`
+	Path          string         `yaml:"path"          validate:"required"`
+	PackageName   string         `yaml:"packageName"   validate:"required"`
+	InterfaceName string         `yaml:"interfaceName"`
+	Models        []*DaoModelCfg `yaml:"models"                            validated:"required"`
 }
 
 type DaoModelCfg struct {

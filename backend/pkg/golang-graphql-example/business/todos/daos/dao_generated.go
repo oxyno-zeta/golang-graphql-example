@@ -13,20 +13,20 @@ import (
 
 // Dao for structure Todo
 type TodoStructureDao interface {
-	FindTodoByID(ctx context.Context, id string, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error)
-	FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error)
-	FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error)
-	FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...database.TransactionOption) ([]*models0.Todo, *pagination.PageOutput, error)
-	FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error)
-	CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error)
-	CountTodo(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error)
-	CreateOrUpdateTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error)
-	PermanentDeleteTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error)
-	PermanentDeleteTodoByID(ctx context.Context, id string, opts ...helpers.GormOpt) (*models0.Todo, error)
-	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) error
-	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error)
-	PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error)
-	PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any, opts ...helpers.GormOpt) error
+	FindTodoByID(ctx context.Context, id string, projection *models0.Projection, callOpts ...DaoFindTodoByIDOption) (*models0.Todo, error)
+	FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindOneTodoOption) (*models0.Todo, error)
+	FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindTodoWithPaginationOption) ([]*models0.Todo, error)
+	FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindTodoPaginatedOption) ([]*models0.Todo, *pagination.PageOutput, error)
+	FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindAllTodoOption) ([]*models0.Todo, error)
+	CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter, callOpts ...DaoCountTodoPaginatedOption) (int64, error)
+	CountTodo(ctx context.Context, filter *models0.Filter, callOpts ...DaoCountTodoOption) (int64, error)
+	CreateOrUpdateTodo(ctx context.Context, input *models0.Todo, callOpts ...DaoCreateOrUpdateTodoOption) (*models0.Todo, error)
+	PermanentDeleteTodo(ctx context.Context, input *models0.Todo, callOpts ...DaoPermanentDeleteTodoOption) (*models0.Todo, error)
+	PermanentDeleteTodoByID(ctx context.Context, id string, callOpts ...DaoPermanentDeleteTodoByIDOption) (*models0.Todo, error)
+	PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter, callOpts ...DaoPermanentDeleteTodoFilteredOption) error
+	PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any, callOpts ...DaoPatchUpdateTodoOption) (*models0.Todo, error)
+	PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any, callOpts ...DaoPatchUpdateTodoByIDOption) (*models0.Todo, error)
+	PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any, callOpts ...DaoPatchUpdateTodoFilteredOption) error
 }
 
 // General Dao
@@ -50,66 +50,668 @@ type dao struct {
 
 // Starting methods for Todo structure
 
-func (d *dao) FindTodoByID(ctx context.Context, id string, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error) {
-	return helpers.FindByID(ctx, &models0.Todo{}, d.db, id, projection, opts...)
+type daoFindTodoByIDOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
 }
 
-func (d *dao) FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) (*models0.Todo, error) {
-	return helpers.FindOne(ctx, &models0.Todo{}, d.db, sorts, filter, projection, opts...)
+// DaoFindTodoByIDOption configures one FindTodoByID invocation. Hooks run in registration order.
+type DaoFindTodoByIDOption func(*daoFindTodoByIDOptions)
+
+// WithDaoFindTodoByIDHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoFindTodoByIDHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoFindTodoByIDOption {
+	return func(options *daoFindTodoByIDOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
 }
 
-func (d *dao) FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error) {
-	return helpers.FindWithPagination(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection, opts...)
+// WithDaoFindTodoByIDHook appends one hook called after a successful operation.
+func WithDaoFindTodoByIDHook(hook func(ctx context.Context, result *models0.Todo) error) DaoFindTodoByIDOption {
+	return WithDaoFindTodoByIDHooks(hook)
 }
 
-func (d *dao) FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...database.TransactionOption) ([]*models0.Todo, *pagination.PageOutput, error) {
-	return helpers.GetAllPaginated(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection, opts...)
+// WithDaoFindTodoByIDDatabaseOptions appends database options for this invocation.
+func WithDaoFindTodoByIDDatabaseOptions(opts ...helpers.GormOpt) DaoFindTodoByIDOption {
+	return func(options *daoFindTodoByIDOptions) {
+		options.opts = append(options.opts, opts...)
+	}
 }
 
-func (d *dao) FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, opts ...helpers.GormOpt) ([]*models0.Todo, error) {
-	return helpers.Find(ctx, []*models0.Todo{}, d.db, sorts, filter, projection, opts...)
+func (d *dao) FindTodoByID(ctx context.Context, id string, projection *models0.Projection, callOpts ...DaoFindTodoByIDOption) (*models0.Todo, error) {
+	options := &daoFindTodoByIDOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.FindByID(ctx, &models0.Todo{}, d.db, id, projection, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
 }
 
-func (d *dao) CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error) {
-	return helpers.CountPaginated(ctx, d.db, &models0.Todo{}, page, filter, opts...)
+type daoFindOneTodoOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
 }
 
-func (d *dao) CountTodo(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) (int64, error) {
-	return helpers.Count(ctx, d.db, &models0.Todo{}, filter, opts...)
+// DaoFindOneTodoOption configures one FindOneTodo invocation. Hooks run in registration order.
+type DaoFindOneTodoOption func(*daoFindOneTodoOptions)
+
+// WithDaoFindOneTodoHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoFindOneTodoHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoFindOneTodoOption {
+	return func(options *daoFindOneTodoOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
 }
 
-func (d *dao) CreateOrUpdateTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error) {
-	return helpers.CreateOrUpdate(ctx, input, d.db, opts...)
+// WithDaoFindOneTodoHook appends one hook called after a successful operation.
+func WithDaoFindOneTodoHook(hook func(ctx context.Context, result *models0.Todo) error) DaoFindOneTodoOption {
+	return WithDaoFindOneTodoHooks(hook)
 }
 
-func (d *dao) PermanentDeleteTodo(ctx context.Context, input *models0.Todo, opts ...helpers.GormOpt) (*models0.Todo, error) {
-	return helpers.PermanentDelete(ctx, input, d.db, opts...)
+// WithDaoFindOneTodoDatabaseOptions appends database options for this invocation.
+func WithDaoFindOneTodoDatabaseOptions(opts ...helpers.GormOpt) DaoFindOneTodoOption {
+	return func(options *daoFindOneTodoOptions) {
+		options.opts = append(options.opts, opts...)
+	}
 }
 
-func (d *dao) PermanentDeleteTodoByID(ctx context.Context, id string, opts ...helpers.GormOpt) (*models0.Todo, error) {
+func (d *dao) FindOneTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindOneTodoOption) (*models0.Todo, error) {
+	options := &daoFindOneTodoOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.FindOne(ctx, &models0.Todo{}, d.db, sorts, filter, projection, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoFindTodoWithPaginationOptions struct {
+	hooks []func(ctx context.Context, results []*models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoFindTodoWithPaginationOption configures one FindTodoWithPagination invocation. Hooks run in registration order.
+type DaoFindTodoWithPaginationOption func(*daoFindTodoWithPaginationOptions)
+
+// WithDaoFindTodoWithPaginationHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoFindTodoWithPaginationHooks(hooks ...func(ctx context.Context, results []*models0.Todo) error) DaoFindTodoWithPaginationOption {
+	return func(options *daoFindTodoWithPaginationOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoFindTodoWithPaginationHook appends one hook called after a successful operation.
+func WithDaoFindTodoWithPaginationHook(hook func(ctx context.Context, results []*models0.Todo) error) DaoFindTodoWithPaginationOption {
+	return WithDaoFindTodoWithPaginationHooks(hook)
+}
+
+// WithDaoFindTodoWithPaginationDatabaseOptions appends database options for this invocation.
+func WithDaoFindTodoWithPaginationDatabaseOptions(opts ...helpers.GormOpt) DaoFindTodoWithPaginationOption {
+	return func(options *daoFindTodoWithPaginationOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) FindTodoWithPagination(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindTodoWithPaginationOption) ([]*models0.Todo, error) {
+	options := &daoFindTodoWithPaginationOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.FindWithPagination(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoFindTodoPaginatedOptions struct {
+	hooks []func(ctx context.Context, results []*models0.Todo, page *pagination.PageOutput) error
+	opts  []database.TransactionOption
+}
+
+// DaoFindTodoPaginatedOption configures one FindTodoPaginated invocation. Hooks run in registration order.
+type DaoFindTodoPaginatedOption func(*daoFindTodoPaginatedOptions)
+
+// WithDaoFindTodoPaginatedHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoFindTodoPaginatedHooks(hooks ...func(ctx context.Context, results []*models0.Todo, page *pagination.PageOutput) error) DaoFindTodoPaginatedOption {
+	return func(options *daoFindTodoPaginatedOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoFindTodoPaginatedHook appends one hook called after a successful operation.
+func WithDaoFindTodoPaginatedHook(hook func(ctx context.Context, results []*models0.Todo, page *pagination.PageOutput) error) DaoFindTodoPaginatedOption {
+	return WithDaoFindTodoPaginatedHooks(hook)
+}
+
+// WithDaoFindTodoPaginatedDatabaseOptions appends database options for this invocation.
+func WithDaoFindTodoPaginatedDatabaseOptions(opts ...database.TransactionOption) DaoFindTodoPaginatedOption {
+	return func(options *daoFindTodoPaginatedOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) FindTodoPaginated(ctx context.Context, page *pagination.PageInput, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindTodoPaginatedOption) ([]*models0.Todo, *pagination.PageOutput, error) {
+	options := &daoFindTodoPaginatedOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, pageOutput, err := helpers.GetAllPaginated(ctx, []*models0.Todo{}, d.db, page, sorts, filter, projection, opts...)
+	if err != nil {
+		return nil, nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result, pageOutput); err != nil {
+				return nil, nil, err
+			}
+		}
+	}
+	return result, pageOutput, err
+}
+
+type daoFindAllTodoOptions struct {
+	hooks []func(ctx context.Context, results []*models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoFindAllTodoOption configures one FindAllTodo invocation. Hooks run in registration order.
+type DaoFindAllTodoOption func(*daoFindAllTodoOptions)
+
+// WithDaoFindAllTodoHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoFindAllTodoHooks(hooks ...func(ctx context.Context, results []*models0.Todo) error) DaoFindAllTodoOption {
+	return func(options *daoFindAllTodoOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoFindAllTodoHook appends one hook called after a successful operation.
+func WithDaoFindAllTodoHook(hook func(ctx context.Context, results []*models0.Todo) error) DaoFindAllTodoOption {
+	return WithDaoFindAllTodoHooks(hook)
+}
+
+// WithDaoFindAllTodoDatabaseOptions appends database options for this invocation.
+func WithDaoFindAllTodoDatabaseOptions(opts ...helpers.GormOpt) DaoFindAllTodoOption {
+	return func(options *daoFindAllTodoOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) FindAllTodo(ctx context.Context, sorts []*models0.SortOrder, filter *models0.Filter, projection *models0.Projection, callOpts ...DaoFindAllTodoOption) ([]*models0.Todo, error) {
+	options := &daoFindAllTodoOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.Find(ctx, []*models0.Todo{}, d.db, sorts, filter, projection, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoCountTodoPaginatedOptions struct {
+	hooks []func(ctx context.Context, count int64) error
+	opts  []helpers.GormOpt
+}
+
+// DaoCountTodoPaginatedOption configures one CountTodoPaginated invocation. Hooks run in registration order.
+type DaoCountTodoPaginatedOption func(*daoCountTodoPaginatedOptions)
+
+// WithDaoCountTodoPaginatedHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoCountTodoPaginatedHooks(hooks ...func(ctx context.Context, count int64) error) DaoCountTodoPaginatedOption {
+	return func(options *daoCountTodoPaginatedOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoCountTodoPaginatedHook appends one hook called after a successful operation.
+func WithDaoCountTodoPaginatedHook(hook func(ctx context.Context, count int64) error) DaoCountTodoPaginatedOption {
+	return WithDaoCountTodoPaginatedHooks(hook)
+}
+
+// WithDaoCountTodoPaginatedDatabaseOptions appends database options for this invocation.
+func WithDaoCountTodoPaginatedDatabaseOptions(opts ...helpers.GormOpt) DaoCountTodoPaginatedOption {
+	return func(options *daoCountTodoPaginatedOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) CountTodoPaginated(ctx context.Context, page *pagination.PageInput, filter *models0.Filter, callOpts ...DaoCountTodoPaginatedOption) (int64, error) {
+	options := &daoCountTodoPaginatedOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.CountPaginated(ctx, d.db, &models0.Todo{}, page, filter, opts...)
+	if err != nil {
+		return 0, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return 0, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoCountTodoOptions struct {
+	hooks []func(ctx context.Context, count int64) error
+	opts  []helpers.GormOpt
+}
+
+// DaoCountTodoOption configures one CountTodo invocation. Hooks run in registration order.
+type DaoCountTodoOption func(*daoCountTodoOptions)
+
+// WithDaoCountTodoHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoCountTodoHooks(hooks ...func(ctx context.Context, count int64) error) DaoCountTodoOption {
+	return func(options *daoCountTodoOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoCountTodoHook appends one hook called after a successful operation.
+func WithDaoCountTodoHook(hook func(ctx context.Context, count int64) error) DaoCountTodoOption {
+	return WithDaoCountTodoHooks(hook)
+}
+
+// WithDaoCountTodoDatabaseOptions appends database options for this invocation.
+func WithDaoCountTodoDatabaseOptions(opts ...helpers.GormOpt) DaoCountTodoOption {
+	return func(options *daoCountTodoOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) CountTodo(ctx context.Context, filter *models0.Filter, callOpts ...DaoCountTodoOption) (int64, error) {
+	options := &daoCountTodoOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.Count(ctx, d.db, &models0.Todo{}, filter, opts...)
+	if err != nil {
+		return 0, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return 0, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoCreateOrUpdateTodoOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoCreateOrUpdateTodoOption configures one CreateOrUpdateTodo invocation. Hooks run in registration order.
+type DaoCreateOrUpdateTodoOption func(*daoCreateOrUpdateTodoOptions)
+
+// WithDaoCreateOrUpdateTodoHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoCreateOrUpdateTodoHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoCreateOrUpdateTodoOption {
+	return func(options *daoCreateOrUpdateTodoOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoCreateOrUpdateTodoHook appends one hook called after a successful operation.
+func WithDaoCreateOrUpdateTodoHook(hook func(ctx context.Context, result *models0.Todo) error) DaoCreateOrUpdateTodoOption {
+	return WithDaoCreateOrUpdateTodoHooks(hook)
+}
+
+// WithDaoCreateOrUpdateTodoDatabaseOptions appends database options for this invocation.
+func WithDaoCreateOrUpdateTodoDatabaseOptions(opts ...helpers.GormOpt) DaoCreateOrUpdateTodoOption {
+	return func(options *daoCreateOrUpdateTodoOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) CreateOrUpdateTodo(ctx context.Context, input *models0.Todo, callOpts ...DaoCreateOrUpdateTodoOption) (*models0.Todo, error) {
+	options := &daoCreateOrUpdateTodoOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.CreateOrUpdate(ctx, input, d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoPermanentDeleteTodoOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoPermanentDeleteTodoOption configures one PermanentDeleteTodo invocation. Hooks run in registration order.
+type DaoPermanentDeleteTodoOption func(*daoPermanentDeleteTodoOptions)
+
+// WithDaoPermanentDeleteTodoHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoPermanentDeleteTodoHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoPermanentDeleteTodoOption {
+	return func(options *daoPermanentDeleteTodoOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoPermanentDeleteTodoHook appends one hook called after a successful operation.
+func WithDaoPermanentDeleteTodoHook(hook func(ctx context.Context, result *models0.Todo) error) DaoPermanentDeleteTodoOption {
+	return WithDaoPermanentDeleteTodoHooks(hook)
+}
+
+// WithDaoPermanentDeleteTodoDatabaseOptions appends database options for this invocation.
+func WithDaoPermanentDeleteTodoDatabaseOptions(opts ...helpers.GormOpt) DaoPermanentDeleteTodoOption {
+	return func(options *daoPermanentDeleteTodoOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) PermanentDeleteTodo(ctx context.Context, input *models0.Todo, callOpts ...DaoPermanentDeleteTodoOption) (*models0.Todo, error) {
+	options := &daoPermanentDeleteTodoOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.PermanentDelete(ctx, input, d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoPermanentDeleteTodoByIDOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoPermanentDeleteTodoByIDOption configures one PermanentDeleteTodoByID invocation. Hooks run in registration order.
+type DaoPermanentDeleteTodoByIDOption func(*daoPermanentDeleteTodoByIDOptions)
+
+// WithDaoPermanentDeleteTodoByIDHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoPermanentDeleteTodoByIDHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoPermanentDeleteTodoByIDOption {
+	return func(options *daoPermanentDeleteTodoByIDOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoPermanentDeleteTodoByIDHook appends one hook called after a successful operation.
+func WithDaoPermanentDeleteTodoByIDHook(hook func(ctx context.Context, result *models0.Todo) error) DaoPermanentDeleteTodoByIDOption {
+	return WithDaoPermanentDeleteTodoByIDHooks(hook)
+}
+
+// WithDaoPermanentDeleteTodoByIDDatabaseOptions appends database options for this invocation.
+func WithDaoPermanentDeleteTodoByIDDatabaseOptions(opts ...helpers.GormOpt) DaoPermanentDeleteTodoByIDOption {
+	return func(options *daoPermanentDeleteTodoByIDOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) PermanentDeleteTodoByID(ctx context.Context, id string, callOpts ...DaoPermanentDeleteTodoByIDOption) (*models0.Todo, error) {
+	options := &daoPermanentDeleteTodoByIDOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
 	input := &models0.Todo{}
 	input.ID = id
 
-	return helpers.PermanentDelete(ctx, input, d.db, opts...)
+	result, err := helpers.PermanentDelete(ctx, input, d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
 }
 
-func (d *dao) PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter, opts ...helpers.GormOpt) error {
-	return helpers.PermanentDeleteFiltered(ctx, &models0.Todo{}, filter, d.db, opts...)
+type daoPermanentDeleteTodoFilteredOptions struct {
+	hooks []func(ctx context.Context, filter *models0.Filter) error
+	opts  []helpers.GormOpt
 }
 
-func (d *dao) PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error) {
-	return helpers.PatchUpdate(ctx, input, patch, d.db, opts...)
+// DaoPermanentDeleteTodoFilteredOption configures one PermanentDeleteTodoFiltered invocation. Hooks run in registration order.
+type DaoPermanentDeleteTodoFilteredOption func(*daoPermanentDeleteTodoFilteredOptions)
+
+// WithDaoPermanentDeleteTodoFilteredHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoPermanentDeleteTodoFilteredHooks(hooks ...func(ctx context.Context, filter *models0.Filter) error) DaoPermanentDeleteTodoFilteredOption {
+	return func(options *daoPermanentDeleteTodoFilteredOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
 }
 
-func (d *dao) PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any, opts ...helpers.GormOpt) (*models0.Todo, error) {
+// WithDaoPermanentDeleteTodoFilteredHook appends one hook called after a successful operation.
+func WithDaoPermanentDeleteTodoFilteredHook(hook func(ctx context.Context, filter *models0.Filter) error) DaoPermanentDeleteTodoFilteredOption {
+	return WithDaoPermanentDeleteTodoFilteredHooks(hook)
+}
+
+// WithDaoPermanentDeleteTodoFilteredDatabaseOptions appends database options for this invocation.
+func WithDaoPermanentDeleteTodoFilteredDatabaseOptions(opts ...helpers.GormOpt) DaoPermanentDeleteTodoFilteredOption {
+	return func(options *daoPermanentDeleteTodoFilteredOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) PermanentDeleteTodoFiltered(ctx context.Context, filter *models0.Filter, callOpts ...DaoPermanentDeleteTodoFilteredOption) error {
+	options := &daoPermanentDeleteTodoFilteredOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	err := helpers.PermanentDeleteFiltered(ctx, &models0.Todo{}, filter, d.db, opts...)
+	if err != nil {
+		return err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, filter); err != nil {
+				return err
+			}
+		}
+	}
+	return err
+}
+
+type daoPatchUpdateTodoOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoPatchUpdateTodoOption configures one PatchUpdateTodo invocation. Hooks run in registration order.
+type DaoPatchUpdateTodoOption func(*daoPatchUpdateTodoOptions)
+
+// WithDaoPatchUpdateTodoHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoPatchUpdateTodoHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoPatchUpdateTodoOption {
+	return func(options *daoPatchUpdateTodoOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoPatchUpdateTodoHook appends one hook called after a successful operation.
+func WithDaoPatchUpdateTodoHook(hook func(ctx context.Context, result *models0.Todo) error) DaoPatchUpdateTodoOption {
+	return WithDaoPatchUpdateTodoHooks(hook)
+}
+
+// WithDaoPatchUpdateTodoDatabaseOptions appends database options for this invocation.
+func WithDaoPatchUpdateTodoDatabaseOptions(opts ...helpers.GormOpt) DaoPatchUpdateTodoOption {
+	return func(options *daoPatchUpdateTodoOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) PatchUpdateTodo(ctx context.Context, input *models0.Todo, patch map[string]any, callOpts ...DaoPatchUpdateTodoOption) (*models0.Todo, error) {
+	options := &daoPatchUpdateTodoOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	result, err := helpers.PatchUpdate(ctx, input, patch, d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
+}
+
+type daoPatchUpdateTodoByIDOptions struct {
+	hooks []func(ctx context.Context, result *models0.Todo) error
+	opts  []helpers.GormOpt
+}
+
+// DaoPatchUpdateTodoByIDOption configures one PatchUpdateTodoByID invocation. Hooks run in registration order.
+type DaoPatchUpdateTodoByIDOption func(*daoPatchUpdateTodoByIDOptions)
+
+// WithDaoPatchUpdateTodoByIDHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoPatchUpdateTodoByIDHooks(hooks ...func(ctx context.Context, result *models0.Todo) error) DaoPatchUpdateTodoByIDOption {
+	return func(options *daoPatchUpdateTodoByIDOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoPatchUpdateTodoByIDHook appends one hook called after a successful operation.
+func WithDaoPatchUpdateTodoByIDHook(hook func(ctx context.Context, result *models0.Todo) error) DaoPatchUpdateTodoByIDOption {
+	return WithDaoPatchUpdateTodoByIDHooks(hook)
+}
+
+// WithDaoPatchUpdateTodoByIDDatabaseOptions appends database options for this invocation.
+func WithDaoPatchUpdateTodoByIDDatabaseOptions(opts ...helpers.GormOpt) DaoPatchUpdateTodoByIDOption {
+	return func(options *daoPatchUpdateTodoByIDOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) PatchUpdateTodoByID(ctx context.Context, id string, patch map[string]any, callOpts ...DaoPatchUpdateTodoByIDOption) (*models0.Todo, error) {
+	options := &daoPatchUpdateTodoByIDOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
 	input := &models0.Todo{}
 	input.ID = id
 
-	return helpers.PatchUpdate(ctx, input, patch, d.db, opts...)
+	result, err := helpers.PatchUpdate(ctx, input, patch, d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, result); err != nil {
+				return nil, err
+			}
+		}
+	}
+	return result, err
 }
 
-func (d *dao) PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any, opts ...helpers.GormOpt) error {
-	return helpers.PatchUpdateAllFiltered(ctx, &models0.Todo{}, patch, filter, d.db, opts...)
+type daoPatchUpdateTodoFilteredOptions struct {
+	hooks []func(ctx context.Context, filter *models0.Filter, patch map[string]any) error
+	opts  []helpers.GormOpt
+}
+
+// DaoPatchUpdateTodoFilteredOption configures one PatchUpdateTodoFiltered invocation. Hooks run in registration order.
+type DaoPatchUpdateTodoFilteredOption func(*daoPatchUpdateTodoFilteredOptions)
+
+// WithDaoPatchUpdateTodoFilteredHooks appends hooks called after a successful operation. Nil hooks are skipped; the first hook error stops the list.
+func WithDaoPatchUpdateTodoFilteredHooks(hooks ...func(ctx context.Context, filter *models0.Filter, patch map[string]any) error) DaoPatchUpdateTodoFilteredOption {
+	return func(options *daoPatchUpdateTodoFilteredOptions) {
+		options.hooks = append(options.hooks, hooks...)
+	}
+}
+
+// WithDaoPatchUpdateTodoFilteredHook appends one hook called after a successful operation.
+func WithDaoPatchUpdateTodoFilteredHook(hook func(ctx context.Context, filter *models0.Filter, patch map[string]any) error) DaoPatchUpdateTodoFilteredOption {
+	return WithDaoPatchUpdateTodoFilteredHooks(hook)
+}
+
+// WithDaoPatchUpdateTodoFilteredDatabaseOptions appends database options for this invocation.
+func WithDaoPatchUpdateTodoFilteredDatabaseOptions(opts ...helpers.GormOpt) DaoPatchUpdateTodoFilteredOption {
+	return func(options *daoPatchUpdateTodoFilteredOptions) {
+		options.opts = append(options.opts, opts...)
+	}
+}
+
+func (d *dao) PatchUpdateTodoFiltered(ctx context.Context, filter *models0.Filter, patch map[string]any, callOpts ...DaoPatchUpdateTodoFilteredOption) error {
+	options := &daoPatchUpdateTodoFilteredOptions{}
+	for _, opt := range callOpts {
+		opt(options)
+	}
+	opts := options.opts
+	err := helpers.PatchUpdateAllFiltered(ctx, &models0.Todo{}, patch, filter, d.db, opts...)
+	if err != nil {
+		return err
+	}
+	for _, hook := range options.hooks {
+		if hook != nil {
+			if err := hook(ctx, filter, patch); err != nil {
+				return err
+			}
+		}
+	}
+	return err
 }
 
 // Ending methods for Todo structure
