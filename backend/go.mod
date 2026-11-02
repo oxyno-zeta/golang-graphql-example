@@ -18,7 +18,7 @@ require (
 	github.com/gin-contrib/static v1.1.9
 	github.com/gin-gonic/gin v1.12.0
 	github.com/go-gormigrate/gormigrate/v2 v2.1.7
-	github.com/go-playground/validator/v10 v10.30.5
+	github.com/go-playground/validator/v10 v10.30.6
 	github.com/gofrs/uuid/v5 v5.5.1
 	github.com/graph-gophers/dataloader/v7 v7.2.0
 	github.com/hasura/go-graphql-client v0.16.0
@@ -75,7 +75,7 @@ require (
 	github.com/coder/websocket v1.8.15 // indirect
 	github.com/danielkov/gin-helmet/core v1.0.2 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
-	github.com/gabriel-vasile/mimetype v1.4.15 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.16 // indirect
 	github.com/gin-contrib/sse v1.1.2 // indirect
 	github.com/go-faster/city v1.0.1 // indirect
 	github.com/go-faster/errors v0.8.0 // indirect
