@@ -1352,9 +1352,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:7.0.0":
-  version: 7.0.0
-  resolution: "@hookform/resolvers@npm:7.0.0"
+"@hookform/resolvers@npm:7.0.1":
+  version: 7.0.1
+  resolution: "@hookform/resolvers@npm:7.0.1"
   dependencies:
     "@standard-schema/utils": "npm:^0.3.0"
   peerDependencies:
@@ -1429,7 +1429,7 @@ __metadata:
       optional: true
     zod:
       optional: true
-  checksum: 10/5d97377ac68ab26daf0a6d1112d9b7a926a905abdd333ff9a8430fa6598cee0591e536ad8f6404a9967e0cf5124770a58374a1079f9e8ab469ccc2dde56512f7
+  checksum: 10/0f17d35262354d6500bc8ac244315f9ad1d456b20a4477e28e0941da11cbf2885374051a797df7c79452baebc6a8b36966ce942421d404122a9c2c6fcfe02bc6
   languageName: node
   linkType: hard
 
@@ -4505,15 +4505,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-react@npm:6.1.2":
-  version: 6.1.2
-  resolution: "@vitejs/plugin-react@npm:6.1.2"
+"@vitejs/plugin-react@npm:6.2.1":
+  version: 6.2.1
+  resolution: "@vitejs/plugin-react@npm:6.2.1"
   dependencies:
     "@rolldown/pluginutils": "npm:^1.0.1"
   peerDependencies:
-    "@rolldown/plugin-babel": ^0.1.7 || ^0.2.0
+    "@rolldown/plugin-babel": ^0.1.7 || ^0.2.0 || ^0.3.0
     babel-plugin-react-compiler: ^1.0.0
-    oxc-transform-react: ^0.152.0
+    oxc-transform-react: ">=0.152.0 <0.157.0"
     vite: ^8.0.0
   peerDependenciesMeta:
     "@rolldown/plugin-babel":
@@ -4522,29 +4522,29 @@ __metadata:
       optional: true
     oxc-transform-react:
       optional: true
-  checksum: 10/3d80e79bf54450b09019c158a817d299903a1352c06fa537d8ca774ab0de1461492944eb00029974099f18eeee41a45fc238400035c98cbf371fdc103622b45b
+  checksum: 10/7274c52ad63fa5c28af0dc26451858456aa2c910a3a8c6957fd0a568fc1630e825865eeab2663c78f6cbc8f778b9dd59299c5b176bc16b39e21926208fc54460
   languageName: node
   linkType: hard
 
-"@vitest/coverage-v8@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@vitest/coverage-v8@npm:5.0.5"
+"@vitest/coverage-v8@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@vitest/coverage-v8@npm:5.1.0"
   dependencies:
     "@bcoe/v8-coverage": "npm:^1.0.2"
-    "@vitest/istanbul-lib-coverage": "npm:^1.0.2"
-    "@vitest/istanbul-lib-report": "npm:^1.0.2"
+    "@vitest/istanbul-lib-coverage": "npm:^2.1.0"
+    "@vitest/istanbul-lib-report": "npm:^2.1.0"
     ast-v8-to-istanbul: "npm:^1.0.7"
     magicast: "npm:^0.5.5"
     obug: "npm:^3.0.0"
     std-env: "npm:^4.3.0"
     tinyrainbow: "npm:^3.2.0"
   peerDependencies:
-    "@vitest/browser": 5.0.5
-    vitest: 5.0.5
+    "@vitest/browser": 5.1.0
+    vitest: 5.1.0
   peerDependenciesMeta:
     "@vitest/browser":
       optional: true
-  checksum: 10/f015d4779a60193d7b6ea1a2d17ad822bdfb5cae40d63f715ffb66b40eb63cd482414521f2bfa0623e8042ee4fa6615c2a0564c9aa6f92a2d37273a6d491e533
+  checksum: 10/3d9990e702e7719e6aa3557c80a03a801864d316455afe0632186da4d9e7c2ac038bf6637129bc70105aefa7d5d0f9e0aa18615bcfbabfcfda9d4487fd44bdaa
   languageName: node
   linkType: hard
 
@@ -4561,28 +4561,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/istanbul-lib-coverage@npm:1.0.2, @vitest/istanbul-lib-coverage@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@vitest/istanbul-lib-coverage@npm:1.0.2"
-  checksum: 10/de20649829feeadadf2e1ea2a0aa339ae334993d9f1a243412a435805f8f76c2d3917e0988b9dd6fc4ad84ebbcdbf9dd52480ee0eb5d771642f987a4801efa37
+"@vitest/istanbul-lib-coverage@npm:2.1.0, @vitest/istanbul-lib-coverage@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@vitest/istanbul-lib-coverage@npm:2.1.0"
+  checksum: 10/2c5dc3a1ecb270d5510a0451d716703107f40d70654711939be4b5154f8c7d2eff3eabfb68c5c4aa8d4425016b67156a4d07a28b294ee9dcb5c42d2c4d7298c1
   languageName: node
   linkType: hard
 
-"@vitest/istanbul-lib-report@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@vitest/istanbul-lib-report@npm:1.0.2"
+"@vitest/istanbul-lib-report@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@vitest/istanbul-lib-report@npm:2.1.0"
   dependencies:
-    "@vitest/istanbul-lib-coverage": "npm:1.0.2"
-  checksum: 10/2c14e92633b33945ca8c852e23140c654ddfc1e0aa46774ece9f17589a0146c2866af9d54292d14be93e0dfe9781c3b9929a08abbf7df153677e069e9a70e469
+    "@vitest/istanbul-lib-coverage": "npm:2.1.0"
+  checksum: 10/c5c5657181d2809caebdd3065e06c3cc6c3a083188419c27f55ba79db5a856ca4045496f9267db1a6bf5ed7116e546e22af3a13dd53b353a3a5421a6af96c351
   languageName: node
   linkType: hard
 
-"@vitest/mocker@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@vitest/mocker@npm:5.0.5"
+"@vitest/mocker@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@vitest/mocker@npm:5.1.0"
   dependencies:
     "@jridgewell/trace-mapping": "npm:0.3.31"
-    "@vitest/spy": "npm:5.0.5"
+    "@vitest/spy": "npm:5.1.0"
     estree-walker: "npm:^3.0.3"
     magic-string: "npm:^1.4.3"
   peerDependencies:
@@ -4593,7 +4593,7 @@ __metadata:
       optional: true
     vite:
       optional: true
-  checksum: 10/8e8918921f9acf09eda6de98821f95bdc32743afd5c675e44b1bf26c7798d0b35ababc12b0a243c99ff9f71fc1f199addd27f109ffa46d2559dbaaac79dc0cb2
+  checksum: 10/4160807bae9b4d09bb64df70233e96917f6a35b72d3618dbec807e34f2b17f596b33d540532c61a4e04fe69bd322f5c00594eab20db66121b400bd37128007b5
   languageName: node
   linkType: hard
 
@@ -4615,10 +4615,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/spy@npm:5.0.5":
-  version: 5.0.5
-  resolution: "@vitest/spy@npm:5.0.5"
-  checksum: 10/f9661bc0312ec3670b83a9221e6d7830eaecae65a985d51cec27dc12177c06b6726b211c0cd8d84e3deddeb8508a770969221b804f93c0df22c7935f584d06e0
+"@vitest/spy@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@vitest/spy@npm:5.1.0"
+  checksum: 10/565fa1393f82598bd9c846e98ab61de3bd1006c2aa95cecfc852999b64e9b1d58783f65ff6491d3ab329e1a97760393f303ca18ae1887e2a56bfe992f7aa57ad
   languageName: node
   linkType: hard
 
@@ -6414,7 +6414,7 @@ __metadata:
     "@emotion/styled": "npm:11.14.1"
     "@fontsource/material-icons": "npm:5.3.0"
     "@fontsource/roboto": "npm:5.3.0"
-    "@hookform/resolvers": "npm:7.0.0"
+    "@hookform/resolvers": "npm:7.0.1"
     "@mdi/js": "npm:7.4.47"
     "@mui/lab": "npm:9.0.0-beta.10"
     "@mui/material": "npm:9.5.0"
@@ -6432,8 +6432,8 @@ __metadata:
     "@types/react": "npm:19.3.0"
     "@types/react-dom": "npm:19.3.0"
     "@types/react-test-renderer": "npm:19.3.0"
-    "@vitejs/plugin-react": "npm:6.1.2"
-    "@vitest/coverage-v8": "npm:5.0.5"
+    "@vitejs/plugin-react": "npm:6.2.1"
+    "@vitest/coverage-v8": "npm:5.1.0"
     "@vueless/storybook-dark-mode": "npm:10.0.8"
     "@welldone-software/why-did-you-render": "npm:10.0.1"
     autosuggest-highlight: "npm:3.3.4"
@@ -6445,8 +6445,8 @@ __metadata:
     eslint-plugin-storybook: "npm:10.6.5"
     eslint-plugin-unused-imports: "npm:4.4.1"
     graphql: "npm:17.0.2"
-    i18next: "npm:26.5.12"
-    i18next-browser-languagedetector: "npm:8.2.4"
+    i18next: "npm:26.7.1"
+    i18next-browser-languagedetector: "npm:8.3.0"
     i18next-http-backend: "npm:4.0.2"
     jsdom: "npm:30.1.3"
     oxlint: "npm:1.90.0"
@@ -6456,10 +6456,10 @@ __metadata:
     react-dom: "npm:19.3.1"
     react-error-boundary: "npm:6.1.6"
     react-hook-form: "npm:7.91.0"
-    react-i18next: "npm:17.1.9"
+    react-i18next: "npm:17.1.11"
     react-router: "npm:8.5.1"
     react-scan: "npm:0.5.7"
-    react-window: "npm:2.5.2"
+    react-window: "npm:2.5.3"
     rollup-plugin-visualizer: "npm:7.1.1"
     rollup-preserve-directives: "npm:1.1.3"
     rxjs: "npm:7.8.2"
@@ -6473,7 +6473,7 @@ __metadata:
     vite: "npm:8.3.5"
     vite-imagetools: "npm:12.0.1"
     vite-plugin-svgr: "npm:5.2.0"
-    vitest: "npm:5.0.5"
+    vitest: "npm:5.1.0"
     whatwg-fetch: "npm:3.6.20"
     yarn-or-npm: "npm:3.0.1"
     yup: "npm:1.7.1"
@@ -6843,12 +6843,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next-browser-languagedetector@npm:8.2.4":
-  version: 8.2.4
-  resolution: "i18next-browser-languagedetector@npm:8.2.4"
+"i18next-browser-languagedetector@npm:8.3.0":
+  version: 8.3.0
+  resolution: "i18next-browser-languagedetector@npm:8.3.0"
   dependencies:
     "@babel/runtime": "npm:^7.29.2"
-  checksum: 10/43ba08ca6ece8af78f96b278927503f843084b0866aa8a96f712a693a0e087a7f80f2ad3bae79240722c8a2724f0bfba7a6abd710d481babfc61da5307b867f0
+  checksum: 10/1b9117fd3a4d70d844bf731200d3dafde8276fc0625fd5c75d40d5774320f3ddae6795c2d92058e4001e99d6138a113e521405555a4e0834d1cd372bb3e00a5d
   languageName: node
   linkType: hard
 
@@ -6859,15 +6859,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:26.5.12":
-  version: 26.5.12
-  resolution: "i18next@npm:26.5.12"
+"i18next@npm:26.7.1":
+  version: 26.7.1
+  resolution: "i18next@npm:26.7.1"
   peerDependencies:
     typescript: ^5 || ^6 || ^7
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/719e006e82c8d4bf826ffab60a190d15e9f2e39da86401f24203261921d2b81e98da9728f41d9f99f9e6388f9b69f9ef5899d1b42ae35800bd413c85c027b890
+  checksum: 10/f3305d668fff3a3bab45c6ac2b28048774e9f814a7a9bf7e50d179a75ae0570f5d594853f014e63412b28e9ca793fcb1d46bc624e0de64125e00e77c5d86c5f6
   languageName: node
   linkType: hard
 
@@ -9040,9 +9040,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:17.1.9":
-  version: 17.1.9
-  resolution: "react-i18next@npm:17.1.9"
+"react-i18next@npm:17.1.11":
+  version: 17.1.11
+  resolution: "react-i18next@npm:17.1.11"
   dependencies:
     "@babel/runtime": "npm:^7.29.7"
     html-parse-stringify: "npm:^4.0.1"
@@ -9058,7 +9058,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/8e1f309c94ea5917f57103417ba183ae2bc30820cb664a8ff7089cc0b3cc20257f313b863f2e9f4e805fe583d2b2ffc7d38652f279057d5efbe4ecfcc13ffb52
+  checksum: 10/80eca1a1be6ed84b18ec865925f912cbf737d9d4ccebd0866d9bb14ede8d65590f86c9d47566baec0d30c102d2980dbd207f108f1b5b8bbd8aeffaa773949ff3
   languageName: node
   linkType: hard
 
@@ -9161,9 +9161,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-window@npm:2.5.2":
-  version: 2.5.2
-  resolution: "react-window@npm:2.5.2"
+"react-window@npm:2.5.3":
+  version: 2.5.3
+  resolution: "react-window@npm:2.5.3"
   peerDependencies:
     "@types/react": ^18.2.6 || ^19.0.0
     react: ^18.0.0 || ^19.0.0
@@ -9171,7 +9171,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 10/42129c81890827e864adc4070cf93a2e0d51ac8f75eb63f12d4f2c4e8bc79f6e440d9c65b38b716cedd70fbfa62b43b3abbadd4d1de7ea244e451ecc8b6b8a8d
+  checksum: 10/0eb7abf3ae1dd4dc47df15232bd542cfd0d3fc4bd55d873ad8b72a05506a7c578eb19d47376b9926931937e594095014361b87a40a144a29c6313bc9fa3b56de
   languageName: node
   linkType: hard
 
@@ -10734,12 +10734,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:5.0.5":
-  version: 5.0.5
-  resolution: "vitest@npm:5.0.5"
+"vitest@npm:5.1.0":
+  version: 5.1.0
+  resolution: "vitest@npm:5.1.0"
   dependencies:
     "@types/chai": "npm:^5.2.2"
-    "@vitest/mocker": "npm:5.0.5"
+    "@vitest/mocker": "npm:5.1.0"
     chai: "npm:^6.3.0"
     es-module-lexer: "npm:^2.3.2"
     expect-type: "npm:^1.4.0"
@@ -10755,12 +10755,12 @@ __metadata:
     "@edge-runtime/vm": "*"
     "@opentelemetry/api": ^1.9.0
     "@types/node": ^22.0.0 || >=24.0.0
-    "@vitest/browser-playwright": 5.0.5
-    "@vitest/browser-preview": 5.0.5
+    "@vitest/browser-playwright": 5.1.0
+    "@vitest/browser-preview": 5.1.0
     "@vitest/browser-webdriverio": ^5.0.0-beta.5 || >=5.0.0
-    "@vitest/coverage-istanbul": 5.0.5
-    "@vitest/coverage-v8": 5.0.5
-    "@vitest/ui": 5.0.5
+    "@vitest/coverage-istanbul": 5.1.0
+    "@vitest/coverage-v8": 5.1.0
+    "@vitest/ui": 5.1.0
     happy-dom: "*"
     jsdom: "*"
     vite: ^6.4.0 || ^7.0.0 || ^8.0.0
@@ -10791,7 +10791,7 @@ __metadata:
       optional: false
   bin:
     vitest: ./vitest.mjs
-  checksum: 10/1c580bb518134eb5118799cb65f4809055154b12c3109e86a8459582fed8bbc297362333e2e7bc592917f58024f270ce8de0da94d67527f5a896cada103058d4
+  checksum: 10/1e04646b4953e10625794fba01f8393145d617700974b8622ef6966b380bb5271c4e0df79b644d9355b08345cc6d4e5e6ef76004bb5d343fe4cee0f707105cbe
   languageName: node
   linkType: hard
 
