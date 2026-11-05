@@ -1669,7 +1669,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
       <ul
         class="MuiAutocomplete-listbox emotion-3"
         role="list"
-        style="position: relative; max-height: 100%; flex-grow: 1; overflow-y: auto; height: 192px; width: 100%;"
+        style="position: relative; flex-grow: 1; max-height: 100%; overflow-y: auto; height: 192px; width: 100%;"
       >
         <div
           class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-4"
@@ -2066,7 +2066,7 @@ exports[`timezone/TimezoneSelector > should display a list of timezone when a cl
       <ul
         class="MuiAutocomplete-listbox emotion-3"
         role="list"
-        style="position: relative; max-height: 100%; flex-grow: 1; overflow-y: auto; height: 192px; width: 100%;"
+        style="position: relative; flex-grow: 1; max-height: 100%; overflow-y: auto; height: 192px; width: 100%;"
       >
         <div
           class="MuiListSubheader-root MuiListSubheader-gutters MuiListSubheader-sticky emotion-4"
