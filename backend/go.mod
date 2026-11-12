@@ -13,9 +13,9 @@ require (
 	github.com/danielkov/gin-helmet/ginhelmet v1.0.2
 	github.com/dave/jennifer v1.7.1
 	github.com/fsnotify/fsnotify v1.10.1
-	github.com/gin-contrib/cors v1.7.10
-	github.com/gin-contrib/gzip v1.2.9
-	github.com/gin-contrib/static v1.1.9
+	github.com/gin-contrib/cors v1.7.11
+	github.com/gin-contrib/gzip v1.2.10
+	github.com/gin-contrib/static v1.1.10
 	github.com/gin-gonic/gin v1.12.0
 	github.com/go-gormigrate/gormigrate/v2 v2.1.7
 	github.com/go-playground/validator/v10 v10.30.6
@@ -48,8 +48,8 @@ require (
 	go.uber.org/mock v0.6.0
 	go.uber.org/zap v1.28.0
 	go.yaml.in/yaml/v3 v3.0.6
-	golang.org/x/oauth2 v0.37.0
-	golang.org/x/sync v0.24.0
+	golang.org/x/oauth2 v0.38.0
+	golang.org/x/sync v0.25.0
 	gorm.io/driver/postgres v1.6.3
 	gorm.io/driver/sqlite v1.6.0
 	gorm.io/gorm v1.31.2
@@ -142,7 +142,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/arch v0.31.0 // indirect
 	golang.org/x/crypto v0.58.0 // indirect
-	golang.org/x/net v0.61.0 // indirect
+	golang.org/x/net v0.62.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect
 	golang.org/x/text v0.43.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260928230214-8a89bd6388cc // indirect
